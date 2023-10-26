@@ -1,4 +1,4 @@
-package com.example.pw2;
+package com.example.pw2.controller;
 
 import java.io.*;
 
