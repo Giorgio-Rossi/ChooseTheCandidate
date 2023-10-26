@@ -7,7 +7,8 @@ import jakarta.servlet.annotation.*;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
-    private String message;
+    private static final long serialVersionUID = 1L;
+	private String message;
 
     public void init() {
         message = "Il commit/pull ha funzionato nuovamente!";
