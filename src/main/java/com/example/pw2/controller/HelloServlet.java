@@ -7,11 +7,12 @@ import jakarta.servlet.annotation.*;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
-    //private static final long serialVersionUID = 1L;
 	private String message;
 
+    //private static final long serialVersionUID = 1L;
+
     public void init() {
-        message = "Il commit/pull ha funzionato nuovamenteTTTTTTTT888888!";
+        message = "Le lezioni di linux sono 2 palle!!";
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
