@@ -12,7 +12,7 @@ public class HelloServlet extends HttpServlet {
     //private static final long serialVersionUID = 1L;
 
     public void init() {
-        message = "Le lezioni di linuxxxxx sono 2 pallegiotrrigorogiriogorigorig!!!!!!";
+        message = "Le lezioni di linuxxxxx sono 2 palle!!!!!!";
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
