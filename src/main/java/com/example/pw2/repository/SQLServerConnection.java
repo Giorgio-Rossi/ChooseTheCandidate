@@ -8,23 +8,23 @@ public class SQLServerConnection {
     public static void main(String[] args) {
     	
     	// Da modificare in base al nome del vostro DB e alla porta utilizzata per Server 
-        String jdbcUrl = "jdbc:sqlserver://localhost:1433;databaseName=YourDatabase";
+     //   String jdbcUrl = "jdbc:sqlserver://localhost:8080;databaseName=YourDatabase";
         
         // Vostro Username
-        String user = "YourUsername";
+   //     String user = "YourUsername";
         
         // Vostra Pass
-        String password = "YourPassword";
+   //     String password = "YourPassword";
 
-        try {
-            Connection connection = DriverManager.getConnection(jdbcUrl, user, password);
-            if (connection != null) {
-                System.out.println("Connessione al database riuscita!");
+    //    try {
+          //  Connection connection = DriverManager.getConnection(jdbcUrl, user, password);
+         //   if (connection != null) {
+          //      System.out.println("Connessione al database riuscita!");
               
-            }
-        } catch (SQLException e) {
-            System.err.println("Errore durante la connessione al database: " + e.getMessage());
-            e.printStackTrace();
-        }
+   //         }
+   //     } catch (SQLException e) {
+  //          System.err.println("Errore durante la connessione al database: " + e.getMessage());
+     //       e.printStackTrace();
+   //     }
     }
 }
