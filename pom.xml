@@ -35,26 +35,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        
-        <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
-<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
-<dependency>
-    <groupId>com.microsoft.sqlserver</groupId>
-    <artifactId>mssql-jdbc</artifactId>
-    <version>9.2.1.jre8</version>
-</dependency>
-
-
-        
-    </dependencies>
-<repositories>
-    <!-- Repository di Microsoft per il driver JDBC di SQL Server -->
-    <repository>
-        <id>microsoft-mssql-jdbc</id>
-        <url>https://packages.microsoft.com/maven/public</url>
-    </repository>
-</repositories>
-
+    <dependency>
+        <groupId>com.microsoft.sqlserver</groupId>
+        <artifactId>mssql-jdbc</artifactId>
+        <version>12.4.1.jre11</version>
+    </dependency>
+</dependencies>
 
     <build>
         <plugins>
@@ -63,6 +49,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
             </plugin>
+
         </plugins>
     </build>
 </project>
