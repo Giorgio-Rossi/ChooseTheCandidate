@@ -8,7 +8,7 @@
 
 <form method="post" action="profilo.html">
 	 <label for="nome">Nome</label>
-	 <input type="text" name="nome" id="nome" readonly value="${utente.getNome()}"/>
+	 <input type="text" name="nome" id="nome" readonly value="${utente.nome}"/>
 </form>
 
 </body>
