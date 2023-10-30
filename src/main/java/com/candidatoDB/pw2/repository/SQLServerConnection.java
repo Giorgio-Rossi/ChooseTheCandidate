@@ -10,10 +10,10 @@ public class SQLServerConnection {
  
 	public static void main(String[] args)
 			throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-		String dburl = "jdbc:sqlserver://127.0.0.1;databaseName=AdventureWorks;encrypt=false;";
+		String dburl = "jdbc:sqlserver://127.0.0.1;databaseName=ProjectWork2;encrypt=false;";
  
 		String user = "sa";
-		String password = "GiorgioRossi2023";
+		String password = "zucchetti";
  
 		try {
 			Connection connection = DriverManager.getConnection(dburl, user, password);
@@ -22,11 +22,11 @@ public class SQLServerConnection {
 			}
  
 			Statement stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from Person.Person");
+			ResultSet rs = stmt.executeQuery("select * from dbo.Esperienza");
 			while (rs.next()) {
 				// Display values
-				System.out.print(", First: " + rs.getString("FirstName"));
-				System.out.println(", Last: " + rs.getString("LastName"));
+				System.out.print(", First: " + rs.getString("azienda"));
+				System.out.println(", Last: " + rs.getString("anni"));
 			}
 			rs.close();
 			stmt.close();
