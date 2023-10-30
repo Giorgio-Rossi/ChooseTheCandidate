@@ -6,19 +6,10 @@
 </head>
 <body>
 
+<form method="post" action="profilo.html">
+	 <label for="nome">Nome</label>
+	 <input type="text" name="nome" id="nome" readonly value="${utente.getNome()}"/>
+</form>
 
-
-<h1><%= "Hellocxz   World!" %>
-</h1>
-
-<h2> LINUX power</h2>
-
-<br/>
-<a href="hello-servlet">Hello rServletAAAA</a>
-
-<h6> Maven addicteddddd</h6>
-
-
-<h1><%= "Pulipolizia   World!" %>
 </body>
 </html>
