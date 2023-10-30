@@ -10,7 +10,7 @@ public class SQLServerConnection {
  
 	public static void main(String[] args)
 			throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-		String dburl = "jdbc:sqlserver://127.0.0.1;databaseName=AdventureWorks;encrypt=false;";
+		String dburl = "jdbc:sqlserver://127.0.0.1;databaseName=ProjectWork2;encrypt=false;";
  
 		String user = "sa";
 		String password = "GiorgioRossi2023";
