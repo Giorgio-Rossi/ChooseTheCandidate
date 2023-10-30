@@ -1,0 +1,54 @@
+@charset "ISO-8859-1";
+
+
+.totReg{
+	height	:vh100;
+	width:50%;
+	align-items: center;
+	justify-content: center;
+	border: 3px solid;
+  	border-color:rgb(128, 128, 192);
+}
+.registrazione{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid;
+  border-color:rgb(255, 0, 0);
+}
+body{
+	 background-color:#1b1b1b;
+}
+.regLeft{
+	width:50%;
+  display: flex;
+   border: 3px solid;
+  border-color:midnightblue;
+  font-size: 30px;
+}
+.regRight{
+width:50%;
+  display: flex;
+    border: 3px solid;
+  border-color:green;
+  font-size: 30px;
+}
+
+.immagineHP{
+  	width:50%;
+  	display: flex;
+	border: 3px solid;
+  	border-color:white;
+  	object-fit: fill;
+
+}
+.container{
+	  display: flex;
+	  width:100%;
+	  height:vh100;
+	 
+	  border: 1px;
+	  border: 3px solid;
+	  border-color:orange;
+}
