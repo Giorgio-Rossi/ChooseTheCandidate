@@ -16,21 +16,15 @@ import com.candidatoDB.pw2.entity.Citta;
 //CONSTRAINT FK_istruzione_citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta),
 //CONSTRAINT FK_utente_istruzione FOREIGN KEY (id_user) REFERENCES Utente (id_user)
 
-
 public class Istruzione {
-	
-	
-	
-	private int id_istruzione; 
-private String 	grado;
-private List<Citta> id_citta = new ArrayList<Citta>();
-private String	descrizione_istruzione;
-private Date	data_inizio ;
-private Date	data_fine ;
-private int id_user; 
-private int	valutazione;
-	
-	
-	
+
+	private int id_istruzione;
+	private String grado;
+	private int id_citta;
+	private String descrizione_istruzione;
+	private Date data_inizio;
+	private Date data_fine;
+	private int id_user;
+	private int valutazione;
 
 }
