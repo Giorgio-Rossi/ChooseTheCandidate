@@ -1,40 +1,28 @@
 package com.candidatoDB.pw2.repository;
- 
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
- 
+
 public class SQLServerConnection {
- 
-	public static void main(String[] args)
-			throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-		String dburl = "jdbc:sqlserver://127.0.0.1;databaseName=ProjectWork2;encrypt=false;";
- 
-		String user = "sa";
-		String password = "GiorgioRossi2023";
- 
-		try {
-			Connection connection = DriverManager.getConnection(dburl, user, password);
-			if (connection != null) {
-				System.out.println("Connessione al database riuscita!");
-			}
- 
-			Statement stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from Person.Person");
-			while (rs.next()) {
-				// Display values
-				System.out.print(", First: " + rs.getString("FirstName"));
-				System.out.println(", Last: " + rs.getString("LastName"));
-			}
-			rs.close();
-			stmt.close();
-			connection.close();
-			
-		} catch (SQLException e) {
-			System.err.println("Errore durante la connessione al database: " + e.getMessage());
-			e.printStackTrace();
-		}
-	}
+    public static void main(String[] args) throws ClassNotFoundException {
+        try{
+            String dburl = "jdbc:sqlserver://FRALON-NB;integratedSecurity=true;databaseName=JOBHUNTER;trustServerCertificate=true";
+            Connection connection = DriverManager.getConnection(dburl);
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM Utente");
+            while (resultSet.next()) {
+                System.out.print("Nome: " + resultSet.getString("nome")+"\n");
+                System.out.print("Cognome: " + resultSet.getString("cognome")+"\n");
+                System.out.print("CodiceFiscale: " + resultSet.getString("codice_fiscale")+"\n");
+                System.out.print("Password: " + resultSet.getString("password")+"\n");
+                System.out.print("Ruolo: " + resultSet.getString("ruolo_admin")+"\n");
+                System.out.print("Data di nascita: " + resultSet.getDate("data_nascita")+"\n");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
