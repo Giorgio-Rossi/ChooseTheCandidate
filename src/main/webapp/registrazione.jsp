@@ -11,7 +11,7 @@
 	
 		<div class="left">
 			<div class="top">
-				<img src="img/logo.png" alt ="Immagine HP">
+				<img src="img/logoPagina.png" alt ="Immagine HP">
 				</div>
 				<div class="bottom">
 					<div class="formleft">
