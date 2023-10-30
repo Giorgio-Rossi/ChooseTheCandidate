@@ -1,13 +1,3 @@
-/*CREATE TABLE TempSalesReason 
-   (
-      TempID int NOT NULL, Name nvarchar(50)
-      , CONSTRAINT PK_TempSales PRIMARY KEY NONCLUSTERED (TempID)
-      , CONSTRAINT FK_TempSales_SalesReason FOREIGN KEY (TempID)
-        REFERENCES Sales.SalesReason (SalesReasonID)
-        
-   )
-;*/
-
 create table CategoriaPosizione(
 id_Categoria int identity not null primary key,
 descrizione varchar(70)
@@ -67,34 +57,18 @@ create table Quiz(
 id_quiz int identity not null primary key,
 descrizione varchar(50),
 n_domande smallint
-)
-
-create table Domanda(
-id_domanda int identity not null primary key,
-testo varchar(150),
-punteggio smallint
-)
-
-create table QuizDomanda(
-id_quiz_domanda int identity not null primary key,
 id_domanda int not null,
-id_quiz int not null
-
-CONSTRAINT FK_Quiz_QuizDomanda FOREIGN KEY (id_quiz) REFERENCES Quiz (id_quiz),
-CONSTRAINT FK_Domanda_QuizDomanda FOREIGN KEY (id_domanda) REFERENCES Domanda (id_domanda)
-)
-
-create table RisposteDomanda(
-id_risposta int identity not null primary key,
+testo_domanda varchar(150),
+punteggio_domanda smallint,
 scelta1 varchar(150) not null,
 scelta2 varchar(150), 
 scelta3 varchar(150), 
 scelta4 varchar(150),
-scelta_corretta smallint check(scelta_corretta in('scelta1','scelta2','scelta3','scelta4')),
-id_domanda int not null,
+scelta_corretta int not null,
 
-CONSTRAINT FK_Risposte_Domanda FOREIGN KEY (id_domanda) REFERENCES Domanda (id_domanda),
 )
+
+
 
 create table UtenteQuiz(
 id_utente_quiz int identity not null primary key,
