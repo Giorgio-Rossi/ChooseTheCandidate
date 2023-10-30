@@ -22,11 +22,10 @@ public class SQLServerConnection {
 			}
  
 			Statement stmt = connection.createStatement();
-<<<<<<< HEAD
-			ResultSet rs = stmt.executeQuery("select * from Esperienza");
-=======
+
+
 			ResultSet rs = stmt.executeQuery("select * from dbo.Esperienza");
->>>>>>> branch 'master' of https://github.com/Lollof00/PW2.git
+
 			while (rs.next()) {
 				// Display values
 				System.out.print(", First: " + rs.getString("azienda"));
