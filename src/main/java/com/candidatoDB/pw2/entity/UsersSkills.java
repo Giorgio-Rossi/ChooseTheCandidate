@@ -24,6 +24,18 @@ public class UsersSkills {
 	
 	
 	
+	public UsersSkills() {
+		super();
+	}
+	
+	
+	public UsersSkills(int id_user_skills, int id_user, List<Skill> id_skills, boolean verificata) {
+		super();
+		this.id_user_skills = id_user_skills;
+		this.id_user = id_user;
+		this.id_skills = id_skills;
+		this.verificata = verificata;
+	}
 	public int getId_user_skills() {
 		return id_user_skills;
 	}
@@ -48,6 +60,16 @@ public class UsersSkills {
 	public void setVerificata(boolean verificata) {
 		this.verificata = verificata;
 	}
+
+
+	@Override
+	public String toString() {
+		return "UsersSkills [id_user_skills=" + id_user_skills + ", id_user=" + id_user + ", id_skills=" + id_skills
+				+ ", verificata=" + verificata + "]";
+	}
+	
+	
+	
 }
 
 

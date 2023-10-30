@@ -145,9 +145,5 @@ public class Utente {
 				+ ", password=" + password + "]";
 	}
 	
-	
-	
-	
-	
 
 }
