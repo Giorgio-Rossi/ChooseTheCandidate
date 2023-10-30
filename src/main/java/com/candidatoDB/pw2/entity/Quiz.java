@@ -8,4 +8,5 @@ public class Quiz {
 private int id_quiz;
 private String descrizione;
 private int n_domande;
+
 }
