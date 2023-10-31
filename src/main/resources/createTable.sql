@@ -138,3 +138,9 @@ data_candidatura datetime,
 CONSTRAINT FK_Posizione_CandidaturaUser FOREIGN KEY (id_posizione) REFERENCES Posizione (id_posizione),
 CONSTRAINT FK_User_CandidaturaUser FOREIGN KEY (id_user) REFERENCES Utente (id_user),
 )
+
+ALTER TABLE Skill
+    ADD id_quiz int;
+
+ALTER TABLE Skill
+    ADD CONSTRAINT FK_Skill_Quiz FOREIGN KEY (id_quiz) REFERENCES Quiz (id_quiz);
