@@ -1,7 +1,18 @@
+<<<<<<< HEAD
 INSERT INTO Utente VALUES ('admin', 'admin', null,null, null, null, null, null, null, 'admin', 'admin' );
 INSERT INTO Utente VALUES ('Giorgio', 'Rossi', null, null, null, null, null, null, null, 'admin', 'admin' );
 INSERT INTO Utente VALUES ('Nicolo', 'Drovandi', null,null, null, null, null, null, null, 'admin', 'admin' );
 INSERT INTO Utente VALUES ('Marco','Rossi','CF156','marcorossi@gmail.com','20000203','Via Marconi 8','1','17900','347689876','user','salvini');
+
+
+INSERT INTO Utente VALUES ('admin', 'admin', null,'admin@gmail.com', null, null, null, null, null, 'admin', 'admin' );
+INSERT INTO Utente VALUES ('Giorgio', 'Rossi', null, 'giorgiorossi@gmail.com', null, null, null, null, null, 'admin', 'admin' );
+INSERT INTO Utente VALUES ('Nicolo', 'Drovandi', null,'nicolodrovandi@gmail.com', null, null, null, null, null, 'admin', 'admin' );
+INSERT INTO Utente VALUES ('Lorenzo', 'Franco', null,'lorenzofranco@gmail.com', null, null, null, null, null, 'admin', 'admin' );
+INSERT INTO Utente VALUES ('Luca', 'Sanguinetti', null, 'lucasanguinetti@gmail.com', null, null, null, null, null, 'admin', 'admin' );
+INSERT INTO Utente VALUES ('Claudio', 'Balzani', null,'claudiobalzani@gmail.com', null, null, null, null, null, 'admin', 'admin' );
+INSERT INTO Utente VALUES ('Biagio', 'Ricci', null,'biagioricci@gmail.com', null, null, null, null, null, 'admin', 'admin' );
+
 
 INSERT INTO Utente VALUES ('matteo','salvo','CF1','matteosalvo@gmail.com','20000203','Via Marconi 2','1','17900','347689876','user','salvini');
 INSERT INTO Utente VALUES ('fiona','giusti','CF2','fionagiusti@gmail.com','20030806','Via Roma 29','1','16177','349680856','user','fiona');
