@@ -61,8 +61,6 @@ public class CandidaturaUser {
 				+ id_user + ", data_candidatura=" + data_candidatura + "]";
 	}
 	
-	
-	
 }
 	
 
