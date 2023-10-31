@@ -2,12 +2,13 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="container">
+<body class="container2">
 	
 		<div class="left">
 			<div class="top">
@@ -19,7 +20,7 @@
 						
 			  			 <input type="text" class="placeCol" id="nomeReg" name="nomeReg" placeholder="Nome"><br>
 			  			 <!--  <input type="date" id="dataNascitaReg" value="2018-07-22" min="1900-01-01" max="2023-12-31" ><br>-->
-			  			 <input type="text" class="placeCol" placeholder="Data Nascita" onfocus="(this.type='date')" min="1900-01-01" max="2023-12-31" style="width:52%;"><br>
+			  			 <input type="text" class="placeCol" placeholder="Data Nascita" onfocus="(this.type='date')" min="1900-01-01" max="2023-12-31" style="width:70%;"><br>
 			  			 <input type="text" class="placeCol" id="emailReg" name="emailReg" placeholder="Email"><br>
 			  			 <input type="text" class="placeCol" id="passwordReg" name="passwordReg" placeholder="Password"><br>
 			
@@ -45,9 +46,14 @@
 	  		</div>
 		</div>
 		<div class="right">
-			<div class="img">
-				<img src="img/copertina.jpg" alt ="Immagine HP" >
+	
+				<!-- <img src="img/copertina.jpg" alt ="Immagine HP" >-->
+			
+			<div  id="img" class="subtitleImg">
+				<h1>CAMBIARE IL MONDO,<br> UN POSSO ALLA VOLTA</h1>
 			</div>
+
+			
 		</div>
 	
 </body>
