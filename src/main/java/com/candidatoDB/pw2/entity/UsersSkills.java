@@ -4,15 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import com.candidatoDB.pw2.entity.Skill;
 
-//id_user_skills int identity not null primary key,
-//id_user int not null,
-//id_skill int not null,
-//verificata bit,
-//
-//CONSTRAINT FK_Skill_UserSkills FOREIGN KEY (id_skill) REFERENCES Skill (id_skill),
-//CONSTRAINT FK_Utente_UserSkills FOREIGN KEY (id_user) REFERENCES Utente (id_user)
-//);
-
 public class UsersSkills {
 
 
@@ -20,14 +11,11 @@ public class UsersSkills {
 	private int id_user;
 	private List<Skill> id_skills = new ArrayList<Skill>();
 	private boolean verificata;
-	
-	
-	
+
 	
 	public UsersSkills() {
 		super();
 	}
-	
 	
 	public UsersSkills(int id_user_skills, int id_user, List<Skill> id_skills, boolean verificata) {
 		super();

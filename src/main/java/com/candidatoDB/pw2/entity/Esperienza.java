@@ -2,19 +2,6 @@ package com.candidatoDB.pw2.entity;
 
 import java.util.Date;
 
-//id_esperienza int identity not null primary key,
-//anni smallint,
-//descrizione_attivita varchar(100),
-//id_user int not null,
-//azienda varchar(50),
-//data_inizio datetime,
-//data_fine datetime,
-//ral int,
-//tipo_contratto varchar(50),
-//settore varchar(20),
-//posizione_lavorativa varchar(30),
-//CONSTRAINT FK_utente_esperienza FOREIGN KEY (id_user) REFERENCES Utente (id_user)
-
 public class Esperienza {
 
 	private int id_esperienza;
@@ -28,5 +15,103 @@ public class Esperienza {
 	private String tipo_contratto;
 	private String settore;
 	private String posizione_lavorativa;
+	
+
+	public Esperienza() {
+		super();
+	}
+	
+	public Esperienza(int id_esperienza, int anni, String descrizione_attivita, int id_user, String azienda,
+			Date data_inizio, Date data_fine, int ral, String tipo_contratto, String settore,
+			String posizione_lavorativa) {
+		super();
+		this.id_esperienza = id_esperienza;
+		this.anni = anni;
+		this.descrizione_attivita = descrizione_attivita;
+		this.id_user = id_user;
+		this.azienda = azienda;
+		this.data_inizio = data_inizio;
+		this.data_fine = data_fine;
+		this.ral = ral;
+		this.tipo_contratto = tipo_contratto;
+		this.settore = settore;
+		this.posizione_lavorativa = posizione_lavorativa;
+	}
+	
+	public int getId_esperienza() {
+		return id_esperienza;
+	}
+	public void setId_esperienza(int id_esperienza) {
+		this.id_esperienza = id_esperienza;
+	}
+	public int getAnni() {
+		return anni;
+	}
+	public void setAnni(int anni) {
+		this.anni = anni;
+	}
+	public String getDescrizione_attivita() {
+		return descrizione_attivita;
+	}
+	public void setDescrizione_attivita(String descrizione_attivita) {
+		this.descrizione_attivita = descrizione_attivita;
+	}
+	public int getId_user() {
+		return id_user;
+	}
+	public void setId_user(int id_user) {
+		this.id_user = id_user;
+	}
+	public String getAzienda() {
+		return azienda;
+	}
+	public void setAzienda(String azienda) {
+		this.azienda = azienda;
+	}
+	public Date getData_inizio() {
+		return data_inizio;
+	}
+	public void setData_inizio(Date data_inizio) {
+		this.data_inizio = data_inizio;
+	}
+	public Date getData_fine() {
+		return data_fine;
+	}
+	public void setData_fine(Date data_fine) {
+		this.data_fine = data_fine;
+	}
+	public int getRal() {
+		return ral;
+	}
+	public void setRal(int ral) {
+		this.ral = ral;
+	}
+	public String getTipo_contratto() {
+		return tipo_contratto;
+	}
+	public void setTipo_contratto(String tipo_contratto) {
+		this.tipo_contratto = tipo_contratto;
+	}
+	public String getSettore() {
+		return settore;
+	}
+	public void setSettore(String settore) {
+		this.settore = settore;
+	}
+	public String getPosizione_lavorativa() {
+		return posizione_lavorativa;
+	}
+	public void setPosizione_lavorativa(String posizione_lavorativa) {
+		this.posizione_lavorativa = posizione_lavorativa;
+	}
+	@Override
+	public String toString() {
+		return "Esperienza [id_esperienza=" + id_esperienza + ", anni=" + anni + ", descrizione_attivita="
+				+ descrizione_attivita + ", id_user=" + id_user + ", azienda=" + azienda + ", data_inizio="
+				+ data_inizio + ", data_fine=" + data_fine + ", ral=" + ral + ", tipo_contratto=" + tipo_contratto
+				+ ", settore=" + settore + ", posizione_lavorativa=" + posizione_lavorativa + "]";
+	}
+	
+	
 
 }

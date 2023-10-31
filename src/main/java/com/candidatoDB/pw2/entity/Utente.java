@@ -3,23 +3,6 @@ package com.candidatoDB.pw2.entity;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
-import com.candidatoDB.pw2.entity.Esperienza;
-
-//create table Utente(
-//id_user int identity not null primary key,
-//nome varchar(20) not null,
-//cognome varchar(40) not null,
-//codice_fiscale varchar(16),
-//email varchar(30),
-//data_nascita datetime,
-//indirizzo varchar(50),
-//id_citta int,
-//cap varchar(5),
-//telefono varchar(9),
-//ruolo_admin varchar(10) not null check(ruolo_admin in('user','admin')),
-//password varchar(70) not null,
-//CONSTRAINT FK_utente_citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta)
-//)
 
 public class Utente {
 	
@@ -39,8 +22,9 @@ public class Utente {
 	
 	
 	
-	
-	
+	public Utente() {
+		super();
+	}
 	public Utente(int id_user, String nome, String cognome, String codice_fiscale, String email, Date data_nascita,
 			String indirizzo, int id_citta, String cap, String telefono, String ruolo_admin, String password,
 			List<Esperienza> new_esperienza) {

@@ -1,28 +1,15 @@
 package com.candidatoDB.pw2.entity;
 
-
-
-//id_citta int identity not null primary key,
-//regione varchar(70),
-//nome varchar(50) not null
-
-
-
 public class Citta {
 	
 	private int id_citta;
 	private String regione;
 	private String nome;
-	
-	
-	
-	
-	
+		
 	
 	public Citta() {
 		super();
 	}
-
 
 
 	public Citta(int id_citta, String regione, String nome) {
@@ -32,8 +19,7 @@ public class Citta {
 		this.nome = nome;
 	}
 	
-	
-	
+		
 	public int getId_citta() {
 		return id_citta;
 	}

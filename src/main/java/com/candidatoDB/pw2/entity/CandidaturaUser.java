@@ -2,15 +2,6 @@ package com.candidatoDB.pw2.entity;
 
 import java.util.Date;
 
-//
-//id_candidatura_user int identity not null primary key,
-//id_posizione int not null,
-//id_user int not null,
-//data_candidatura datetime,
-//
-//CONSTRAINT FK_Posizione_CandidaturaUser FOREIGN KEY (id_posizione) REFERENCES Posizione (id_posizione),
-//CONSTRAINT FK_User_CandidaturaUser FOREIGN KEY (id_user) REFERENCES Utente (id_user),
-
 public class CandidaturaUser {
 
 	
@@ -18,4 +9,57 @@ public class CandidaturaUser {
 	private int id_posizione;
 	private int id_user;
 	private Date data_candidatura;
+	
+	
+	public CandidaturaUser() {
+		super();
+	}
+	
+	public CandidaturaUser(int id_candidatura, int id_posizione, int id_user, Date data_candidatura) {
+		super();
+		this.id_candidatura = id_candidatura;
+		this.id_posizione = id_posizione;
+		this.id_user = id_user;
+		this.data_candidatura = data_candidatura;
+	}
+	
+	public int getId_candidatura() {
+		return id_candidatura;
+	}
+	
+	public void setId_candidatura(int id_candidatura) {
+		this.id_candidatura = id_candidatura;
+	}
+	
+	public int getId_posizione() {
+		return id_posizione;
+	}
+	
+	public void setId_posizione(int id_posizione) {
+		this.id_posizione = id_posizione;
+	}
+	
+	public int getId_user() {
+		return id_user;
+	}
+	
+	public void setId_user(int id_user) {
+		this.id_user = id_user;
+	
+	public Date getData_candidatura() {
+		return data_candidatura;
+	}
+	
+	public void setData_candidatura(Date data_candidatura) {
+		this.data_candidatura = data_candidatura;
+	}
+
+	@Override
+	public String toString() {
+		return "CandidaturaUser [id_candidatura=" + id_candidatura + ", id_posizione=" + id_posizione + ", id_user="
+				+ id_user + ", data_candidatura=" + data_candidatura + "]";
+	}
+	
+	
+	
 }
