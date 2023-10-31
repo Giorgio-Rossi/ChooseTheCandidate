@@ -1,4 +1,4 @@
-
+<%@ page import="com.servlets.pw2.controller.ErrorManager" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
 
 %>
@@ -16,26 +16,35 @@
             <div class="col-sm-6 text-white" style="background-color: #1b1b1b">
 
                 <div class="px-5 ms-xl-4">
-                    <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
-                    <span class="h1 fw-bold mb-0"> <img src="${pageContext.request.contextPath}/img/logo.png"
-                                                        style="width: 250px;" alt="logo"></span>
+                    <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4 " style="color: #709085;"></i>
+                    <span class="h1 fw-bold mb-0"> <img src="${pageContext.request.contextPath}/img/logoPagina.png"
+                                                        style="width: 50%;" alt="logo"></span>
                 </div>
 
-                <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+                <div class="d-flex justify-content-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
 
-                    <form style="width: 23rem;" method="post" action="${pageContext.request.contextPath}/login">
+                    <form style="width: 23rem;" class="align-items-center" method="post" action="${pageContext.request.contextPath}/login">
 
                         <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
 
                         <div class="form-outline mb-4">
-                            <input type="email" name="email" id="form2Example18" class="form-control form-control-lg" />
+                            <input type="email" name="email" id="form2Example18" class="form-control form-control-lg" required/>
                             <label class="form-label" for="form2Example18">Indirizzo email</label>
                         </div>
 
                         <div class="form-outline mb-4">
-                            <input type="password" name="password" id="form2Example28" class="form-control form-control-lg" />
+                            <input type="password" name="password" id="form2Example28" class="form-control form-control-lg" required/>
                             <label class="form-label" for="form2Example28">Password</label>
                         </div>
+                        <%
+                            if(!ErrorManager.getErrorMessage(request).isEmpty()){
+                        %>
+                            <div class="alert alert-danger" role="alert">
+                            <%= ErrorManager.getErrorMessage(request)%>
+                            </div>
+                        <%
+                        };
+                        %>
 
                         <div class="pt-1 mb-4">
                             <button class="btn btn-info btn-lg btn-block" type="submit">Login</button>

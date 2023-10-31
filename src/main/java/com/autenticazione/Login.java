@@ -1,6 +1,7 @@
 package com.autenticazione;
 
 import com.servlets.pw2.controller.DbOperations;
+import com.servlets.pw2.controller.ErrorManager;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,15 +24,20 @@ public class Login extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         try{
-            if(dbOperations.Autenticazione(email, password).equals("user")){
+            String ruolo = dbOperations.Autenticazione(email, password);
+            if(ruolo.equals("user")){
                 HttpSession session = req.getSession(true);
                 session.setAttribute("email",email);
                 session.setAttribute("ruolo","user");
                 resp.sendRedirect("home/homeuser.jsp");
+            }else if(ruolo.equals("admin")){
+                // ridireziona alla home dell'admin
             }else{
-                System.out.println("Sono un admin");
+                ErrorManager.setErrorMessage("Nome utente o password errati", req);
+                req.getRequestDispatcher("login.jsp").forward(req,resp);
             }
         } catch (IOException e) {
+            ErrorManager.setErrorMessage("Qualcosa è andato storto", req);
             throw new RuntimeException(e);
         }
     }
