@@ -4,6 +4,6 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Questa è la home dell'utente</h1>
+<h1>Ciao <%=request.getSession().getAttribute("email")%></h1>
 </body>
 </html>

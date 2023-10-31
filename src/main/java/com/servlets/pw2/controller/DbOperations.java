@@ -13,8 +13,8 @@ public class DbOperations {
     }
 
 
-    public String Autenticazione(String email, String password){
-        String ruolo = "";
+    public String[] Autenticazione(String email, String password){
+        String[] ris= new String[2];
         try{
             result = connection.getConnection().prepareStatement("SELECT * FROM Utente where email=? and password=?");
             result.setString(1,email);
@@ -22,14 +22,16 @@ public class DbOperations {
             ResultSet resultSet = result.executeQuery();
 
             if(resultSet.next()){
-                ruolo = resultSet.getString("ruolo_admin");
-
+                ris[0]= resultSet.getString("ruolo_admin");
+                ris[1]= resultSet.getString("nome");
             }else {
-                return "Utente non trovato";
+                ris[0] = "";
+                ris[1] = "";
+                return ris;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return ruolo;
+        return ris;
     }
 }
