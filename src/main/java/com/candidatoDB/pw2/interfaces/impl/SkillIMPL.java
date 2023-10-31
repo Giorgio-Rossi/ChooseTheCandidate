@@ -132,7 +132,6 @@ public class SkillIMPL implements SkillDAO {
 			if (resultSet.next()) {
 				skill = new Skill();
 				skill.setId_skill(resultSet.getInt(1));
-
 				skill.setNome(resultSet.getString(2));
 
 				skill.setTipo_skill(resultSet.getString(3));
