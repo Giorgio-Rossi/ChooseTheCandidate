@@ -46,6 +46,10 @@ public class CandidaturaUser {
 	public void setId_user(int id_user) {
 		this.id_user = id_user;
 	}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> branch 'master' of https://github.com/Lollof00/PW2.git
 	public Date getData_candidatura() {
 		return data_candidatura;
 	}
@@ -63,3 +67,5 @@ public class CandidaturaUser {
 	
 	
 }
+	
+
