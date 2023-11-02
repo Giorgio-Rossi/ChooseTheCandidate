@@ -52,9 +52,7 @@
 			<div  id="img" class="subtitleImg">
 				<h1>CAMBIARE IL MONDO,<br> UN POSSO ALLA VOLTA</h1>
 			</div>
-
-			
 		</div>
-	
+
 </body>
 </html>
