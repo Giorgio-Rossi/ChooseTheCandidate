@@ -35,6 +35,7 @@ body{
 	  background-size: cover;
 	  object-fit: fill;
 	  filter: brightness(0.9);
+	  
 
 }
 
@@ -70,37 +71,38 @@ body{
 }
 .bottom{
 	height: 45%;
+	justify-content:center;
 	align-items: center;
 	display: flex;
 	flex-direction: row;
+	width:100%;
 }
 .formRegistra form{
 	display: flex;
+	justify-content:center;
 	flex-direction: row;
-	align-items: center;
+
 	zoom:0.9;
+	
 }
-.bottomRegister{
-	width:50%;
-	align-self: flex-end;
-	transform: translateY(120%);
-	 /*border: 3px solid green;*/
-	}
+
 .formleft{
 	align-self: flex-start;
-	align-items: center;
 	 font-size: 2em;
 	 transform: translateX(15%);
 
 }
 .formright{
 	align-self: flex-start;
-	align-items: center;
 	 font-size: 2em;
-	 transform: translateX(-15%);
-	
+	 transform: translateX(-15%);	
 }
+.bottomRegister{
 
+	align-self: flex-end;
+	transform: translateY(120%);
+	 /*border: 3px solid green;*/
+	}
 button {
 
 	background-color: #0dcaf0;
@@ -117,7 +119,7 @@ button {
 }
 
 input {
-	display: flexbox;
+	
     font-style: bold;
     font-size:2em;
     font-family:inherit ;
