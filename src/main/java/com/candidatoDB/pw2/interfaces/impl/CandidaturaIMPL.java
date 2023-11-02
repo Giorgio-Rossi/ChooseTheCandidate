@@ -13,6 +13,7 @@ import com.candidatoDB.pw2.interfaces.CandidaturaDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
 
+
 public class CandidaturaIMPL implements CandidaturaDAO {
 	private SQLServerConnection connection = new SQLServerConnection();
 
