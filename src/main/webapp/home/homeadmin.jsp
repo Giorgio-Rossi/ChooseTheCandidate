@@ -5,5 +5,7 @@
 </head>
 <body>
 <h1>Ciao <%=request.getSession().getAttribute("email")%> sei un <%=request.getSession().getAttribute("ruolo")%></h1>
+
+
 </body>
 </html>
