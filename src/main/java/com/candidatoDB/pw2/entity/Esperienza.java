@@ -1,13 +1,14 @@
 package com.candidatoDB.pw2.entity;
 
 import java.util.Date;
+import com.candidatoDB.pw2.entity.Utente;
 
 public class Esperienza {
 
 	private int id_esperienza;
 	private int anni;
 	private String descrizione_attivita;
-	private int id_user;
+	private Utente utente;
 	private String azienda;
 	private Date data_inizio;
 	private Date data_fine;
@@ -15,20 +16,20 @@ public class Esperienza {
 	private String tipo_contratto;
 	private String settore;
 	private String posizione_lavorativa;
-	
 
+	
+	
 	public Esperienza() {
 		super();
 	}
-	
-	public Esperienza(int id_esperienza, int anni, String descrizione_attivita, int id_user, String azienda,
+	public Esperienza(int id_esperienza, int anni, String descrizione_attivita, Utente utente, String azienda,
 			Date data_inizio, Date data_fine, int ral, String tipo_contratto, String settore,
 			String posizione_lavorativa) {
 		super();
 		this.id_esperienza = id_esperienza;
 		this.anni = anni;
 		this.descrizione_attivita = descrizione_attivita;
-		this.id_user = id_user;
+		this.utente = utente;
 		this.azienda = azienda;
 		this.data_inizio = data_inizio;
 		this.data_fine = data_fine;
@@ -37,7 +38,6 @@ public class Esperienza {
 		this.settore = settore;
 		this.posizione_lavorativa = posizione_lavorativa;
 	}
-	
 	public int getId_esperienza() {
 		return id_esperienza;
 	}
@@ -56,11 +56,11 @@ public class Esperienza {
 	public void setDescrizione_attivita(String descrizione_attivita) {
 		this.descrizione_attivita = descrizione_attivita;
 	}
-	public int getId_user() {
-		return id_user;
+	public Utente getUtente() {
+		return utente;
 	}
-	public void setId_user(int id_user) {
-		this.id_user = id_user;
+	public void setUtente(Utente utente) {
+		this.utente = utente;
 	}
 	public String getAzienda() {
 		return azienda;
@@ -107,10 +107,13 @@ public class Esperienza {
 	@Override
 	public String toString() {
 		return "Esperienza [id_esperienza=" + id_esperienza + ", anni=" + anni + ", descrizione_attivita="
-				+ descrizione_attivita + ", id_user=" + id_user + ", azienda=" + azienda + ", data_inizio="
-				+ data_inizio + ", data_fine=" + data_fine + ", ral=" + ral + ", tipo_contratto=" + tipo_contratto
-				+ ", settore=" + settore + ", posizione_lavorativa=" + posizione_lavorativa + "]";
+				+ descrizione_attivita + ", utente=" + utente + ", azienda=" + azienda + ", data_inizio=" + data_inizio
+				+ ", data_fine=" + data_fine + ", ral=" + ral + ", tipo_contratto=" + tipo_contratto + ", settore="
+				+ settore + ", posizione_lavorativa=" + posizione_lavorativa + "]";
 	}
+	
+
+	
 	
 	
 
