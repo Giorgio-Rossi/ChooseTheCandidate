@@ -76,7 +76,7 @@
                     <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
                         <i class="bi bi-person" style="font-size: 10rem;text-align: center"></i>
                         <div class="card-body">
-                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Completa il profilo</a></h5>
+                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Completa il profiloo</a></h5>
                         </div>
                     </div>
                 </div>
