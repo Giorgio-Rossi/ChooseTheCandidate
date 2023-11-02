@@ -67,6 +67,7 @@ public class PosizioneIMPL implements PosizioneDAO {
     			DBUtil.close((Connection) connection);
     		}
 
+        
         return posizioni;
     
 }
