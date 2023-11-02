@@ -47,7 +47,7 @@
 </div>
 <div class="right">
 	<div  id="img" class="subtitleImg">
-		<h1>CAMBIARE IL MONDO<br> UN PASSO ALLA VOLTAaaaa</h1>
+		<h1>CAMBIARE IL MONDO<br> UN PASSO ALLA VOLTA</h1>
 	</div>
 
 </div>
