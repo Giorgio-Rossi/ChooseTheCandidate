@@ -9,13 +9,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homeuser.css">
 
-<body>
-<h1>Ciao <%=request.getSession().getAttribute("email")%> sei un <%=request.getSession().getAttribute("ruolo")%></h1>
-
-<header>
-    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-        <div class="position-sticky">
-            <div class="list-group list-group-flush mx-3 mt-4" style="gap: 3rem">
+<body style="background-color:#d4d4d4">
+<span>
+<h1 style="text-align:center;margin-top:10px">Ciao <%=request.getSession().getAttribute("email")%> sei un <%=request.getSession().getAttribute("ruolo")%><span style="float:right;font-family:Comic Sans MS">JOB HUNTER &thinsp;</span></h1>
+ 
+</span>
+<header >
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse" style="background-color:#0072BC;z-index: 1;zoom:1.2;">
+        <div class="position-sticky"style="display:flex">
+            <div class="list-group list-group-flush mx-3 mt-4" style="gap: 3rem;justify-content:center;align-items:center" >
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true"><i class="bi bi-person-circle" style="margin-right: 5px;font-size: 20px"></i><span>Profilo</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-file-earmark-person" style="margin-right: 5px;font-size: 20px"></i><span>Curriculum</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-search" style="margin-right: 5px;font-size: 20px"></i><span>Ricerca Posizioni</span></a>
@@ -24,7 +26,7 @@
             </div>
         </div>
     </nav>
-    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:white; z-index: -1 ">
         <div class="container-fluid">
             <button
                     class="navbar-toggler"
@@ -52,12 +54,12 @@
 </header>
 
 
-<main style="margin-top: 58px">
-    <div class="container pt-3">
-        <div class="container">
+<main>
+    <div class="container pt-3" style="display:flex">
+        <div class="container" style="align-items:center;justify-content:center;">
             <div class="row">
                 <div class="col-lg-4 d-flex align-items-stretch " style="padding-top: 50px;">
-                    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                    <div class="card shadow-lg p-3 mb-5 rounded" style="width: 18rem;">
                         <i class="bi bi-card-list" style="font-size: 10rem;text-align: center"></i>
                         <div class="card-body">
                             <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Statistiche Quiz</a></h5>
@@ -70,7 +72,7 @@
                         <div class="card-body">
                             <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Skills Verificate</a></h5>
                         </div>
-                    </div>
+                    </div>	
                 </div>
                 <div class="col-lg-4 d-flex align-items-stretch" style="padding-top: 50px">
                     <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
