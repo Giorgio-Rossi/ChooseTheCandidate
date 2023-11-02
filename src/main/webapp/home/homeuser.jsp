@@ -58,7 +58,7 @@
             <div class="row">
                 <div class="col-lg-4 d-flex align-items-stretch" style="padding-top: 50px">
                     <div class="card" style="width: 18rem;">
-                        <i class="bi bi-card-list" style="font-size: 10rem;text-align: center"></i>
+                        <i class="bi bi-clipboard-data" style="font-size: 10rem;text-align: center"></i>
                         <div class="card-body">
                             <h5 class="card-title">Statistiche Quiz</h5>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
