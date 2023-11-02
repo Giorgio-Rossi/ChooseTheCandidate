@@ -84,7 +84,7 @@
                     <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
                         <i class="bi bi-award" style="font-size: 10rem;text-align: center"></i>
                         <div class="card-body">
-                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Miglior Candidatura</a></h5>
+                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Miglior Candidaturaaa</a></h5>
                         </div>
                     </div>
                 </div>
