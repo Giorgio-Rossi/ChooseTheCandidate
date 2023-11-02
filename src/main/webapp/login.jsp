@@ -26,11 +26,10 @@
 >>>>>>> b8fa5dc4bc4a84fdae0c0d241cb60e42540b3400
 				<div class="email">
 					<input type="email" name="email" required placeholder="Email"/><br>
-					
-				</div>	
+				</div>
+				
 				<div class="passw">
 				<input type="password" name="password" required placeholder="Password"/><br>
-				
 				<%
 				if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){
 				%>
@@ -41,6 +40,7 @@
 				};
 				%>
 				</div>
+				
 				<div class="bottomLogin">
 <<<<<<< HEAD
 				<button form="form1"  type="submit">Login</button>
@@ -56,6 +56,7 @@
 					</div>
 >>>>>>> b8fa5dc4bc4a84fdae0c0d241cb60e42540b3400
 				</div>
+				
 	        </form>
 	    </div>
 	</div>
