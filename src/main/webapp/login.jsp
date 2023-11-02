@@ -38,7 +38,7 @@
 	<div class="bottomLogin">
 		<button form="form1"  type="submit">Login</button>
 		<div class="linksLog">
-			<p><a href="#!">Password dimenticata?</a></p>
+			<p><a href="#!">Password dime nticata?</a></p>
 			<p>Non hai un account? <a href="${pageContext.request.contextPath}/registrazione.jsp"><b>Registrati qui</b></a></p>
 		</div>
 	</div>
