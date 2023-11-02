@@ -21,13 +21,15 @@
 			<h3>Log in</h3>
 
 			<form  method="post" id="form1" action="${pageContext.request.contextPath}/login">
+<<<<<<< HEAD
 
 				<div class="email">
+=======
+				<div class="formLogin">
+>>>>>>> df338ba8b60180593e757eafd0ceb8aeda35378c
 					<input type="email" name="email" required placeholder="Email"/><br>
+					<input type="password" name="password" required placeholder="Password"/><br>
 				</div>
-				
-				<div class="passw">
-				<input type="password" name="password" required placeholder="Password"/><br>
 				<%
 				if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){
 				%>
@@ -50,8 +52,7 @@
 				</div>
 				
 	        </form>
-	    </div>
-	</div>
+	 </div>
      <div class="right">
 		<div  id="img" class="subtitleImg">
 			<h1>CAMBIARE IL MONDO<br> UN PASSO ALLA VOLTA</h1>
