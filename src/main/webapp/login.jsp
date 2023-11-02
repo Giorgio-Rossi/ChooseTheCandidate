@@ -38,7 +38,7 @@
 	<div class="bottomLogin">
 		<button form="form1"  type="submit">Login</button>
 		<div class="linksLog">
-			<p><a href="#!">Password dime nticata?</a></p>
+			<p><a href="#!">Password dimenticata?</a></p>
 			<p>Non hai un account? <a href="${pageContext.request.contextPath}/registrazione.jsp"><b>Registrati qui</b></a></p>
 		</div>
 	</div>
@@ -47,7 +47,7 @@
 </div>
 <div class="right">
 	<div  id="img" class="subtitleImg">
-		<h1>CAMBIARE IL MONDO<br> UN PASSO ALLA VOLTA</h1>
+		<h1>CAMBIARE IL MONDO<br> UN PASSO ALLA VOLTAaaaa</h1>
 	</div>
 
 </div>
