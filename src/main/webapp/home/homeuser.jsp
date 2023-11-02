@@ -20,7 +20,7 @@
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-file-earmark-person" style="margin-right: 5px;font-size: 20px"></i><span>Curriculum</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-search" style="margin-right: 5px;font-size: 20px"></i><span>Ricerca Posizioni</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-check2-circle" style="margin-right: 5px;font-size: 20px"></i><span>Candidature Effettuate</span></a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-box-arrow-right" style="margin-right: 5px;font-size: 20px"></i><span>Logout</span></a>
+                <a href="${pageContext.request.contextPath}/logout" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-box-arrow-right" style="margin-right: 5px;font-size: 20px"></i><span>Logout</span></a>
             </div>
         </div>
     </nav>
@@ -56,57 +56,51 @@
     <div class="container pt-3">
         <div class="container">
             <div class="row">
+                <div class="col-lg-4 d-flex align-items-stretch " style="padding-top: 50px;">
+                    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                        <i class="bi bi-card-list" style="font-size: 10rem;text-align: center"></i>
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Statistiche Quiz</a></h5>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-4 d-flex align-items-stretch" style="padding-top: 50px">
-                    <div class="card" style="width: 18rem;">
+                    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
                         <i class="bi bi-clipboard-data" style="font-size: 10rem;text-align: center"></i>
                         <div class="card-body">
-                            <h5 class="card-title">Statistiche Quiz</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Skills Verificate</a></h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 d-flex align-items-stretch" style="padding-top: 50px">
-                    <div class="card" style="width: 18rem;">
-                        <i class="bi bi-card-list" style="font-size: 10rem;text-align: center"></i>
+                    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                        <i class="bi bi-person" style="font-size: 10rem;text-align: center"></i>
                         <div class="card-body">
-                            <h5 class="card-title">Skills Verificate</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Completa il profilo</a></h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 d-flex align-items-stretch" style="padding-top: 50px">
-                    <div class="card" style="width: 18rem;">
-                        <i class="bi bi-card-list" style="font-size: 10rem;text-align: center"></i>
+                    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                        <i class="bi bi-award" style="font-size: 10rem;text-align: center"></i>
                         <div class="card-body">
-                            <h5 class="card-title">Completa il profilo</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Miglior Candidatura</a></h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 d-flex align-items-stretch" style="padding-top: 50px">
-                    <div class="card" style="width: 18rem;">
-                        <i class="bi bi-card-list" style="font-size: 10rem;text-align: center"></i>
+                    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                        <i class="bi bi-receipt-cutoff" style="font-size: 10rem;text-align: center"></i>
                         <div class="card-body">
-                            <h5 class="card-title">Miglior Candidatura??</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Candidatura più recente</a></h5>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 d-flex align-items-stretch" style="padding-top: 50px">
-                    <div class="card" style="width: 18rem;">
-                        <i class="bi bi-card-list" style="font-size: 10rem;text-align: center"></i>
+                    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
+                        <i class="bi bi-calendar" style="font-size: 10rem;text-align: center"></i>
                         <div class="card-body">
-                            <h5 class="card-title">Candidatura più recente</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 d-flex align-items-stretch" style="padding-top: 50px">
-                    <div class="card" style="width: 18rem;">
-                        <i class="bi bi-card-list" style="font-size: 10rem;text-align: center"></i>
-                        <div class="card-body">
-                            <h5 class="card-title">Annunci Recenti</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Annunci Recenti</a></h5>
                         </div>
                     </div>
                 </div>
