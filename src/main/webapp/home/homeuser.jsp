@@ -100,7 +100,7 @@
                     <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
                         <i class="bi bi-calendar" style="font-size: 10rem;text-align: center"></i>
                         <div class="card-body">
-                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Annunci Recentiii</a></h5>
+                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Annunci Recentiiii</a></h5>
                         </div>
                     </div>
                 </div>
