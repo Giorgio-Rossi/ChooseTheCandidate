@@ -74,17 +74,31 @@ body{
 	display: flex;
 	flex-direction: row;
 }
-
+.formRegistra form{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+.bottomRegister{
+	width:50%;
+	align-self: flex-end;
+	transform: translateY(120%);
+	 /*border: 3px solid green;*/
+	}
 .formleft{
-	width:100%;
+	align-self: flex-start;
+	align-items: center;
 	 font-size: 2em;
-	 transform: translateX(30px);
+	  border: 3px solid green;
+	 transform: translateX(15%);
+
 }
 .formright{
-
-	width:100%;
+	align-self: flex-start;
+	align-items: center;
 	 font-size: 2em;
-	 transform: translateX(-30px);
+	 border: 3px solid green;
+	 transform: translateX(-15%);
 	
 
 }
@@ -177,7 +191,7 @@ input {
 	padding-top: 3%;
 }
 .linksLog {
-	padding-top: 30%;
+	padding-top: 15%;
 	font-size: 0.6em;
 }
 a:link, a:visited {
