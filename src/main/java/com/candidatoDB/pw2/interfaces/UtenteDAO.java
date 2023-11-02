@@ -13,10 +13,6 @@ public interface UtenteDAO {
 
 	void update(Utente utente);
 
-	void delete(Utente utente);
-
-	List<Utente> findAll();
-
 	Utente findById(int id_user);
 
 	List<Esperienza> findEsperienzeById(int id_user);
@@ -24,5 +20,8 @@ public interface UtenteDAO {
 	List<Quiz> findByUtenteQuiz(int id_utente_quiz);
 	
 	int findPunteggioById (int id_utente_quiz);
+	
+	void deleteEsperienza ( Esperienza esperienza);
+	
 
 }
