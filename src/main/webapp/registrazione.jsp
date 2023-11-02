@@ -21,7 +21,7 @@
 					<!-- <form method="get" id="form1" action="something.php">
 					</form>
 					<button type="submit" form="form1">Click me!</button> -->
-					<form method="post" id="form1" action="${request.contextPath}/PW2/registrazione">
+					<form method="post" id="form1"  action="${pageContext.request.contextPath}/registrazione.jsp">
 						
 			  			 <input type="text"  name="nome" placeholder="Nome"  required><br>
 			  			 <!--  <input type="date" id="dataNascitaReg" value="2018-07-22" min="1900-01-01" max="2023-12-31" ><br>-->
@@ -32,7 +32,7 @@
 					</form>
 					</div>
 					<div class="formright">
-					<form method="post" id="form1" action="${request.contextPath}/PW2/registrazione">
+					<form method="post" id="form1" action="${pageContext.request.contextPath}/registrazione.jsp">
 						 
 			  			 <input type="text"  name="cognome" placeholder="Cognome"  required><br>
 			  			 <input type="text" name="codice_fiscale" placeholder="Codice Fiscale"  required><br>
@@ -49,7 +49,7 @@
 	  		<div >
 	  			<button type="submit" class="registrati"  form="form1">Conferma</button>
 	  			<div class="linksLog" style="padding-top: 4%;">
-					<p>Sei già registrato? <a href="${request.contextPath}/PW2/login.jsp"><b>Torna al login</b></a></p>
+					<p>Sei già registrato? <a href="${pageContext.request.contextPath}/login.jsp"><b>Torna al login</b></a></p>
 				</div>
 	  		</div>
 		</div>

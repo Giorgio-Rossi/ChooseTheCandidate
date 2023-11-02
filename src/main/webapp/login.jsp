@@ -19,7 +19,7 @@
 		<div class="center">
 	
 			<h3>Log in</h3>
-			<form  method="post" id="form1" action="${request.contextPath}/PW2/login">
+			<form  method="post" id="form1"  action="${pageContext.request.contextPath}/login">
 				<div class="email">
 					<input type="email" name="email" required placeholder="Email"/><br>
 					
@@ -41,7 +41,7 @@
 				<button form="form1"  type="submit">Login</button>
 				<div class="linksLog">
 					<p><a href="#!">Password dimenticata?</a></p>
-					<p>Non hai un account? <a href="${request.contextPath}/PW2/registrazione.jsp"><b>Registrati qui</b></a></p>
+					<p>Non hai un account? <a href="${pageContext.request.contextPath}/registrazione.jsp"><b>Registrati qui</b></a></p>
 				</div>
 				</div>
 	        </form>
