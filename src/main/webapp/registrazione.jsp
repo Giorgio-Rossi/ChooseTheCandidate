@@ -32,8 +32,8 @@
 					
 							</div>
 							<div class="bottomRegister">
+							
 					  			<button type="submit" class="registrati" >Conferma</button>
-					  			
 					  			<div class="linksLog" style="padding-top: 4%;">
 									<p>Sei già registrato? <a href="${pageContext.request.contextPath}/login.jsp"><b>Torna al login</b></a></p>
 								</div>

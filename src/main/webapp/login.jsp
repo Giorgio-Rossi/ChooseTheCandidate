@@ -22,11 +22,10 @@
 			<form  method="post" id="form1" action="${pageContext.request.contextPath}/login">
 				<div class="email">
 					<input type="email" name="email" required placeholder="Email"/><br>
-					
-				</div>	
+				</div>
+				
 				<div class="passw">
 				<input type="password" name="password" required placeholder="Password"/><br>
-				
 				<%
 				if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){
 				%>
@@ -37,6 +36,7 @@
 				};
 				%>
 				</div>
+				
 				<div class="bottomLogin">
 					<button form="form1"  type="submit">Login</button>
 					<div class="linksLog">
@@ -44,6 +44,7 @@
 						<p>Non hai un account? <a href="${pageContext.request.contextPath}/registrazione.jsp"><b>Registrati qui</b></a></p>
 					</div>
 				</div>
+				
 	        </form>
 	    </div>
 	</div>
