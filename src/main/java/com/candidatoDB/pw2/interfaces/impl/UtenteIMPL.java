@@ -84,17 +84,8 @@ public class UtenteIMPL implements UtenteDAO {
 
 	}
 
-	@Override
-	public void delete(Utente utente) {
-		// TODO Auto-generated method stub
 
-	}
 
-	@Override
-	public List<Utente> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public Utente findById(int id_user) {
@@ -150,6 +141,25 @@ public class UtenteIMPL implements UtenteDAO {
 	public int findPunteggioById(int id_utente_quiz) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void deleteEsperienza(Esperienza esperienza) {
+		String sql = "DELETE FROM Utente INNER JOIN Eseperienza ON Utente.id_user = Esperienza.id_user WHERE id_esperienza = ?";
+		PreparedStatement statement = null;
+		try {
+		
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setInt(1, esperienza.getId_esperienza());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(statement);
+			DBUtil.close((Connection) connection);
+		}
+
+		
 	}
 
 }
