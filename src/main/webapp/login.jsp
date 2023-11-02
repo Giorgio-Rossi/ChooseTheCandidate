@@ -19,17 +19,14 @@
 		<div class="center">
 	
 			<h3>Log in</h3>
-
 			<form  method="post" id="form1" action="${pageContext.request.contextPath}/login">
-<<<<<<< HEAD
-
 				<div class="email">
-=======
-				<div class="formLogin">
->>>>>>> df338ba8b60180593e757eafd0ceb8aeda35378c
 					<input type="email" name="email" required placeholder="Email"/><br>
-					<input type="password" name="password" required placeholder="Password"/><br>
-				</div>
+					
+				</div>	
+				<div class="passw">
+				<input type="password" name="password" required placeholder="Password"/><br>
+				
 				<%
 				if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){
 				%>
@@ -40,22 +37,19 @@
 				};
 				%>
 				</div>
-				
 				<div class="bottomLogin">
-
 				<button form="form1"  type="submit">Login</button>
 				<div class="linksLog">
 					<p><a href="#!">Password dimenticata?</a></p>
 					<p>Non hai un account? <a href="${pageContext.request.contextPath}/registrazione.jsp"><b>Registrati qui</b></a></p>
 				</div>
-
 				</div>
-				
 	        </form>
-	 </div>
+	    </div>
+	</div>
      <div class="right">
 		<div  id="img" class="subtitleImg">
-			<h1>CAMBIARE IL MONDO<br> UN PASSO ALLA VOLTA</h1>
+			<h1>CAMBIARE IL MONDO,<br> UN POSSO ALLA VOLTA</h1>
 		</div>
 
 	</div>
