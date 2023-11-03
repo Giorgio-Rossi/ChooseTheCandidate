@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%   response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+
 <html>
 <head>
     <title>Home</title>
@@ -45,8 +48,9 @@
                         loading="lazy"
                 />
             </a>
+            <h1 style="text-align:center;margin-top:10px">Ciao <%=request.getSession().getAttribute("email")%></h1>
             <span>
-            <h1 style="text-align:center;margin-top:10px">Ciao <%=request.getSession().getAttribute("email")%> sei un <%=request.getSession().getAttribute("ruolo")%><span style="float:right;font-family:Comic Sans MS">JOB HUNTER &thinsp;</span></h1>
+            <h1><span style="float:right;font-family:Comic Sans MS">JOB HUNTER &thinsp;</span></h1>
             </span>
         </div>
     </nav>
