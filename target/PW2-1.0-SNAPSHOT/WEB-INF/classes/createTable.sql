@@ -144,3 +144,9 @@ ALTER TABLE Skill
 
 ALTER TABLE Skill
     ADD CONSTRAINT FK_Skill_Quiz FOREIGN KEY (id_quiz) REFERENCES Quiz (id_quiz);
+
+ALTER TABLE Utente
+    ADD foto_profilo varchar(100);
+
+ALTER TABLE Utente
+    ADD    genere varchar(30)  check(genere in('uomo','donna','non specificare'));

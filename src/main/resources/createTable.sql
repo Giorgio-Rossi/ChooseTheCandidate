@@ -147,3 +147,6 @@ ALTER TABLE Skill
 
 ALTER TABLE Utente
     ADD foto_profilo varchar(100);
+
+ALTER TABLE Utente
+    ADD    genere varchar(30)  check(genere in('uomo','donna','non specificare'));
