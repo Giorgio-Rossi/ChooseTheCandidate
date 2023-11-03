@@ -1,3 +1,5 @@
 Manifest-Version: 1.0
-Class-Path: 
+Created-By: IntelliJ IDEA
+Built-By: FRALON
+Build-Jdk: Amazon Corretto version 20.0.2
 
