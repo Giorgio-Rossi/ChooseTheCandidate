@@ -17,7 +17,7 @@ public class UserCheckFilter implements Filter{
         HttpSession session = request.getSession(false);
 
 
-        boolean isLogged = (session!=null && session.getAttribute("email") !=null);
+        boolean isLogged = (session!=null && session.getAttribute("nome") !=null);
         String loginURI = request.getContextPath()+"/login.jsp";
         System.out.println(loginURI);
         boolean isLoginRequest = request.getRequestURI().equals(loginURI);

@@ -2,13 +2,17 @@
 
 %>
 
+<%   response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+
 <!DOCTYPE html>
 <html>
 
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<title>Registrazione</title>
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/img/logoPag.png" style="border-radius: 10px">
+
 </head>
 <body class="container2">
 

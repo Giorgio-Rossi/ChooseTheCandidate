@@ -1,5 +1,6 @@
 package com.autenticazione;
 
+import com.candidatoDB.pw2.entity.Utente;
 import com.servlets.pw2.controller.DbOperations;
 import com.servlets.pw2.controller.ErrorManager;
 
@@ -32,12 +33,12 @@ public class Login extends HttpServlet {
 
             if(ruolo[0].equals("user")){
                 HttpSession session = req.getSession(true);
-                session.setAttribute("email",ruolo[1]);
+                session.setAttribute("nome",ruolo[1]);
                 session.setAttribute("ruolo","user");
                 resp.sendRedirect("home/homeuser.jsp");
             }else if(ruolo[0].equals("admin")){
                 HttpSession session = req.getSession(true);
-                session.setAttribute("email",ruolo[1]);
+                session.setAttribute("nome",ruolo[1]);
                 session.setAttribute("ruolo","admin");
                 resp.sendRedirect("home/homeadmin.jsp");
             }else{
