@@ -50,7 +50,7 @@
             </a>
             <h1 style="text-align:center;margin-top:10px">Ciao <%=request.getSession().getAttribute("email")%></h1>
             <span>
-            <h1><span style="float:right;font-family:Comic Sans MS">JOB HUNTER &thinsp;</span></h1>
+            <h1><span style="float:right;font-family:Comic Sans MS">8 ORE DI FORMAZIONE SUL LAVORO &thinsp;</span></h1>
             </span>
         </div>
     </nav>
