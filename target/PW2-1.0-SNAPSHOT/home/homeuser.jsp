@@ -1,6 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"
-%>
-<%   response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Home</title>
@@ -12,14 +10,11 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homeuser.css">
 
 <body style="background-color:#d4d4d4">
-<span>
-<h1 style="text-align:center;margin-top:10px">Ciao <%=request.getSession().getAttribute("email")%> sei un <%=request.getSession().getAttribute("ruolo")%><span style="float:right;font-family:Comic Sans MS">JOB HUNTER &thinsp;</span></h1>
- 
-</span>
-<header >
-    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse" style="background-color:#0072BC;z-index: 1;zoom:1.2;">
-        <div class="position-sticky"style="display:flex">
-            <div class="list-group list-group-flush mx-3 mt-4" style="gap: 3rem;justify-content:center;align-items:center" >
+
+<header>
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse " style="background-color:#0072BC">
+        <div class="position-sticky">
+            <div class="list-group list-group-flush mx-3 mt-4" style="gap: 3rem">
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true"><i class="bi bi-person-circle" style="margin-right: 5px;font-size: 20px"></i><span>Profilo</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-file-earmark-person" style="margin-right: 5px;font-size: 20px"></i><span>Curriculum</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-search" style="margin-right: 5px;font-size: 20px"></i><span>Ricerca Posizioni</span></a>
@@ -28,7 +23,7 @@
             </div>
         </div>
     </nav>
-    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color:white; z-index: -1 ">
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top" style="background-color:white;">
         <div class="container-fluid">
             <button
                     class="navbar-toggler"
@@ -50,18 +45,21 @@
                         loading="lazy"
                 />
             </a>
+            <span>
+            <h1 style="text-align:center;margin-top:10px">Ciao <%=request.getSession().getAttribute("email")%> sei un <%=request.getSession().getAttribute("ruolo")%><span style="float:right;font-family:Comic Sans MS">JOB HUNTER &thinsp;</span></h1>
+            </span>
         </div>
     </nav>
 
 </header>
 
 
-<main>
-    <div class="container pt-3" style="display:flex">
-        <div class="container" style="align-items:center;justify-content:center;">
+<main style="margin-top: 58px">
+    <div class="container pt-3">
+        <div class="container">
             <div class="row">
                 <div class="col-lg-4 d-flex align-items-stretch " style="padding-top: 50px;">
-                    <div class="card shadow-lg p-3 mb-5 rounded" style="width: 18rem;">
+                    <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
                         <i class="bi bi-card-list" style="font-size: 10rem;text-align: center"></i>
                         <div class="card-body">
                             <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Statistiche Quiz</a></h5>
@@ -74,13 +72,13 @@
                         <div class="card-body">
                             <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Skills Verificate</a></h5>
                         </div>
-                    </div>	
+                    </div>
                 </div>
                 <div class="col-lg-4 d-flex align-items-stretch" style="padding-top: 50px">
                     <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
                         <i class="bi bi-person" style="font-size: 10rem;text-align: center"></i>
                         <div class="card-body">
-                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Completa il profiloo</a></h5>
+                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Completa il profilo</a></h5>
                         </div>
                     </div>
                 </div>
@@ -88,7 +86,7 @@
                     <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
                         <i class="bi bi-award" style="font-size: 10rem;text-align: center"></i>
                         <div class="card-body">
-                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Miglior Candidaturaaa</a></h5>
+                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Miglior Candidatura</a></h5>
                         </div>
                     </div>
                 </div>
@@ -104,7 +102,7 @@
                     <div class="card shadow-lg p-3 mb-5 bg-body rounded" style="width: 18rem;">
                         <i class="bi bi-calendar" style="font-size: 10rem;text-align: center"></i>
                         <div class="card-body">
-                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Annunci Recentiiiii</a></h5>
+                            <h5 class="card-title" style="text-align: center"><a class="btn btn-info" href="../login.jsp">Annunci Recenti</a></h5>
                         </div>
                     </div>
                 </div>
