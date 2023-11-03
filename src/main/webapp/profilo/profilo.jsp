@@ -75,16 +75,16 @@
                                         </div>
                                         <div class="d-flex justify-content-center">
                                         <label for="fileUpload" class="file-upload btn btn-primary  rounded-pill shadow"><i class="bi bi-upload"></i> Cambia la foto profilo
-                                            <input id="fileUpload" type="file" style="display: none">
+                                            <input id="fileUpload" type="file" accept="image/*" style="display: none">
                                         </label>
                                         </div>
                                             <div class="text-center text-sm-right">
-                                                <div class="text-muted"><small>Joined 09 Dec 2017</small></div>
+                                                <div class="text-muted"><small>Registrato il 09 Dec 2017</small></div>
                                             </div>
                                     </div>
                                     <div class="tab-content pt-3">
                                         <div class="tab-pane active">
-                                            <form class="form" novalidate="">
+                                            <form class="form" method="post">
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="row">
@@ -149,7 +149,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col d-flex justify-content-end">
-                                                        <button class="btn btn-primary" type="submit">Save Changes</button>
+                                                        <button class="btn btn-primary" type="submit">Salva</button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -163,7 +163,6 @@
             </div>
         </div>
     </div>
-
 
 </main>
 
