@@ -5,4 +5,5 @@ import com.candidatoDB.pw2.entity.CandidaturaUser;
 
 public interface CandidaturaDAO {
 	List<CandidaturaUser> orderCandidature();
+	CandidaturaUser trovaCandidaturaPiùRecente(int id_user);
 }
