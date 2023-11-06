@@ -1,5 +1,7 @@
 package com.Filter;
 
+import com.candidatoDB.pw2.entity.Utente;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +18,9 @@ public class UserCheckFilter implements Filter{
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
 
+        Utente utente = (Utente) session.getAttribute("utente");
 
-        boolean isLogged = (session!=null && session.getAttribute("nome") !=null);
+        boolean isLogged = (session!=null && utente !=null);
         String loginURI = request.getContextPath()+"/login.jsp";
         System.out.println(loginURI);
         boolean isLoginRequest = request.getRequestURI().equals(loginURI);

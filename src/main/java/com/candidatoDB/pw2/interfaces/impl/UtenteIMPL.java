@@ -92,7 +92,7 @@ public class UtenteIMPL implements UtenteDAO {
 	public Utente findById(int id_user) {
 		Utente utente = new Utente();
 		Citta cittaUtente = new Citta();
-		String sql = "SELECT Utente.id_user, Utente.nome, Utente.cognome, Utente.codice_fiscale, Utente.email, Utente.data_nascita, Utente.indirizzo, Citta.nome, Citta.id_citta, Utente.cap, Utente.telefono, Utente.password, Utente.foto_profilo, Utente.genere from Utente inner join Citta on Citta.id_citta = Utente.id_citta where Utente.id_user=?";
+		String sql = "SELECT Utente.id_user, Utente.nome, Utente.cognome, Utente.codice_fiscale, Utente.email, Utente.data_nascita, Utente.indirizzo, Citta.nome, Citta.id_citta, Utente.cap, Utente.telefono, Utente.password, Utente.foto_profilo, Utente.genere, Utente.ruolo_admin from Utente inner join Citta on Citta.id_citta = Utente.id_citta where Utente.id_user=?";
 
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -116,6 +116,7 @@ public class UtenteIMPL implements UtenteDAO {
 				utente.setPassword(resultSet.getString(12));
 				utente.setFoto_profilo(resultSet.getString(13));
 				utente.setGenere(resultSet.getString(14));
+				utente.setRuolo_admin(resultSet.getString(15));
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());

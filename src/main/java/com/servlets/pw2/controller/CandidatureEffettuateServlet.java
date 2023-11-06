@@ -26,9 +26,9 @@ import com.candidatoDB.pw2.entity.CandidaturaUser;
 public class CandidatureEffettuateServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        /// Utente utenteInSessione = (Utente) session.getAttribute("utente");
+         Utente utenteInSessione = (Utente) session.getAttribute("utente");
 
-        int userId = (Integer) session.getAttribute("id");
+        int userId = utenteInSessione.getId_user();
         String dataCandidaturaParam = request.getParameter("data_candidatura");
 
         if (dataCandidaturaParam != null && !dataCandidaturaParam.isEmpty()) {

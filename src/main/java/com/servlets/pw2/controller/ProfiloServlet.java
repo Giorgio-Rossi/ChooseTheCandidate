@@ -20,14 +20,14 @@ public class ProfiloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        Integer id_user = (Integer) session.getAttribute("id");
+        //Integer id_user = (Integer) session.getAttribute("id");
 
 
-        UtenteIMPL utenteIMPL = new UtenteIMPL();
-        Utente utente = utenteIMPL.findById(id_user);
+        //UtenteIMPL utenteIMPL = new UtenteIMPL();
+        //Utente utente = utenteIMPL.findById(id_user);
 
-        req.setAttribute("utente", utente);
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher(profilo);
-        requestDispatcher.forward(req,resp);
+        //req.setAttribute("utente", utente);
+        //RequestDispatcher requestDispatcher = req.getRequestDispatcher(profilo);
+       // requestDispatcher.forward(req,resp);
     }
 }
