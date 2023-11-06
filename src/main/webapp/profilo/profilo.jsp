@@ -1,6 +1,7 @@
 <%@ page import="com.candidatoDB.pw2.entity.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% Utente utente = (Utente) session.getAttribute("utente");
+    System.out.println(utente);
 
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
 
@@ -150,7 +151,7 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Città di nascita</label>
-                                                                    <input class="form-control" type="text" placeholder=<%=utente.getId_citta().getNome()%> value=<%=utente.getId_citta().getNome()%> name="citta">
+                                                                    <input class="form-control" type="text" placeholder="" value="" name="citta">
                                                                 </div>
                                                             </div>
                                                         </div>
