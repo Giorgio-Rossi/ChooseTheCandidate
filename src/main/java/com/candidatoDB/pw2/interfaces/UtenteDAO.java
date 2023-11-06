@@ -2,10 +2,7 @@ package com.candidatoDB.pw2.interfaces;
 
 import java.util.List;
 
-import com.candidatoDB.pw2.entity.Utente;
-import com.candidatoDB.pw2.entity.UtenteQuiz;
-import com.candidatoDB.pw2.entity.Esperienza;
-import com.candidatoDB.pw2.entity.Quiz;
+import com.candidatoDB.pw2.entity.*;
 
 public interface UtenteDAO {
 
@@ -22,6 +19,8 @@ public interface UtenteDAO {
 	int findPunteggioById (int id_utente_quiz);
 	
 	void deleteEsperienza ( Esperienza esperienza);
+
+	Citta getUserCitta(Utente utente);
 	
 
 }

@@ -99,17 +99,17 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
 
 	@Override
-	public List<CandidaturaUser> findCandidatureUtente(int id_user, Date data_candidatura) {
+	public ArrayList<CandidaturaUser> findCandidatureUtente(int id_user, Date data_candidatura) {
 	     
-		Connection connection = null;
+			//Connection connection = null;
 	        PreparedStatement preparedStatement = null;
 	        ResultSet resultSet = null;
-	        List<CandidaturaUser> candidature = new ArrayList<>();
+	        ArrayList<CandidaturaUser> candidature = new ArrayList<>();
 
 	        try {
 	          
 	            String sql = "SELECT * FROM CandidaturaUser WHERE id_user = ? AND data_candidatura IS NOT NULL";
-	            preparedStatement = connection.prepareStatement(sql);
+	            preparedStatement = connection.getConnection().prepareStatement(sql);
 	            preparedStatement.setInt(1, id_user);
 
 	            resultSet = preparedStatement.executeQuery();
@@ -129,7 +129,7 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 	           
 	            DBUtil.close(resultSet);
 	            DBUtil.close(preparedStatement);
-	            DBUtil.close(connection);
+	           // DBUtil.close(connection);
 	        }
 
 	        return candidature;
@@ -137,16 +137,16 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
 
 	@Override
-	public List<CandidaturaUser> findCandidatureUtenteById(int id_user) {
-		Connection connection = null;
+	public ArrayList<CandidaturaUser> findCandidatureUtenteById(int id_user) {
+		//Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        List<CandidaturaUser> candidature = new ArrayList<>();
+        ArrayList<CandidaturaUser> candidature = new ArrayList<>();
 
         try {
           
             String sql = "SELECT * FROM CandidaturaUser WHERE id_user = ? ";
-            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement = connection.getConnection().prepareStatement(sql);
             preparedStatement.setInt(1, id_user);
 
             resultSet = preparedStatement.executeQuery();
@@ -166,7 +166,7 @@ public class CandidaturaIMPL implements CandidaturaDAO {
            
             DBUtil.close(resultSet);
             DBUtil.close(preparedStatement);
-            DBUtil.close(connection);
+           //DBUtil.close(connection);
         }
 
         return candidature;

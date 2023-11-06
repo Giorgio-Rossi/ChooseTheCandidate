@@ -4,6 +4,7 @@ package com.servlets.pw2.controller;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,51 +19,46 @@ import javax.servlet.http.HttpSession;
 import com.candidatoDB.pw2.entity.Utente;
 import com.candidatoDB.pw2.interfaces.CandidaturaDAO;
 import com.candidatoDB.pw2.interfaces.impl.CandidaturaIMPL;
-import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
 import com.candidatoDB.pw2.entity.CandidaturaUser;
 
-
-
 @WebServlet("/findCandidature")
+
 public class CandidatureEffettuateServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Utente utenteInSessione = (Utente) session.getAttribute("utente");
+        /// Utente utenteInSessione = (Utente) session.getAttribute("utente");
 
-        if (utenteInSessione != null) {
-            int userId = utenteInSessione.getId_user();
-            String dataCandidaturaParam = request.getParameter("data_candidatura");
+        int userId = (Integer) session.getAttribute("id");
+        String dataCandidaturaParam = request.getParameter("data_candidatura");
 
-            if (dataCandidaturaParam != null && !dataCandidaturaParam.isEmpty()) {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                Date dataCandidatura = null;
+        if (dataCandidaturaParam != null && !dataCandidaturaParam.isEmpty()) {
 
-                try {
-                    dataCandidatura = sdf.parse(dataCandidaturaParam);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date dataCandidatura = null;
 
-                CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
-                List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtente(userId, dataCandidatura);
-                request.setAttribute("candidature", candidature);
-            } else {
-                CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
-                List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtenteById(userId);
-                request.setAttribute("candidature", candidature);
+            try {
+                dataCandidatura = sdf.parse(dataCandidaturaParam);
+            } catch (ParseException e) {
+
+                e.printStackTrace(); //
             }
 
-         
-            UtenteIMPL utenteIMPL = new UtenteIMPL();
-            Utente utente = utenteIMPL.findById(userId);
+            CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
+            ArrayList<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtente(userId, dataCandidatura);
+            request.setAttribute("candidature", candidature);
 
-          
-            request.setAttribute("utente", utente);
+        } else {
 
-          
-            RequestDispatcher dispatcher = request.getRequestDispatcher("visualizzaCandidature.jsp");
-            dispatcher.forward(request, response);
+            CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
+            ArrayList<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtenteById(userId);
+            request.setAttribute("candidature", candidature);
+            System.out.println(candidature);
+
+            request.getRequestDispatcher("/visualizzaCandidature.jsp").forward(request, response);
+            ;
+
         }
     }
 }
+
 

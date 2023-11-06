@@ -160,7 +160,7 @@ public class UtenteIMPL implements UtenteDAO {
 		} finally {
 			DBUtil.close(resultSet);
 			DBUtil.close(statement);
-			DBUtil.close((Connection) connection);
+			//DBUtil.close((Connection) connection);
 		}
 		return esperienze;
 	}
@@ -190,10 +190,37 @@ public class UtenteIMPL implements UtenteDAO {
 			System.err.println(e.getMessage());
 		} finally {
 			DBUtil.close(statement);
-			DBUtil.close((Connection) connection);
+			//DBUtil.close((Connection) connection);
 		}
 
 		
 	}
 
+	@Override
+	public Citta getUserCitta(Utente utente) {
+		Citta cittaUtente = new Citta();
+		String sql = "SELECT Citta.nome, Citta.id_citta, Citta.regione from Citta inner join Utente on Citta.id_citta = Utente.id_citta where Utente.id_user=?";
+
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setInt(1, utente.getId_user());
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				cittaUtente.setNome(resultSet.getString(1));
+				cittaUtente.setId_citta(resultSet.getInt(2));
+				cittaUtente.setRegione(resultSet.getString(3));
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			//DBUtil.close((Connection) connection);
+		}
+
+		return cittaUtente;
+	}
 }

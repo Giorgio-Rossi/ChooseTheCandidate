@@ -1,6 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@page import="com.candidatoDB.pw2.entity.CandidaturaUser"%>
 <%@page import="com.candidatoDB.pw2.entity.Utente" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +19,9 @@
             <th>Posizione</th>
             <th>Data Candidatura</th>
         </tr>
-        <c:forEach var="candidatura" items="${candidature}">
+        <c:forEach items="${candidature}" var="candidatura">
             <tr>
                 <td>${candidatura.id_candidatura}</td>
-                <td>${candidatura.id_posizione}</td>
-                <td>${candidatura.data_candidatura}</td>
             </tr>
         </c:forEach>
     </table>
