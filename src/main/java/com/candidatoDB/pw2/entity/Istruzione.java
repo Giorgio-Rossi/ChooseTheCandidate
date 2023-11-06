@@ -1,9 +1,6 @@
 package com.candidatoDB.pw2.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import com.candidatoDB.pw2.entity.Citta;
 
 public class Istruzione {
 

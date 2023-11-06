@@ -9,8 +9,6 @@ import java.util.List;
 
 import com.candidatoDB.pw2.entity.Skill;
 import com.candidatoDB.pw2.interfaces.SkillDAO;
-import com.servlets.pw2.controller.DbOperations;
-
 
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;

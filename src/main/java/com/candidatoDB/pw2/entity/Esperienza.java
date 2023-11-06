@@ -1,7 +1,6 @@
 package com.candidatoDB.pw2.entity;
 
 import java.util.Date;
-import com.candidatoDB.pw2.entity.Utente;
 
 public class Esperienza {
 

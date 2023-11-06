@@ -1,8 +1,6 @@
 package com.candidatoDB.pw2.entity;
 
 import java.util.Date;
-import com.candidatoDB.pw2.entity.Citta;
-import com.candidatoDB.pw2.entity.CategoriaPosizione;
 
 public class Posizione {
 	private int id_posizione;
