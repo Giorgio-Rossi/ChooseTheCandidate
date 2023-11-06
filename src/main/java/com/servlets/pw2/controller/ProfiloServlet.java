@@ -9,7 +9,9 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Path;
 
 
@@ -22,13 +24,34 @@ public class ProfiloServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //TODO IMPLEMENTARE LA MODIFICA DEL PROFILO
-        String uploadPath = "src/main/webapp/img/fotoprofili";
+        Part part = req.getPart("foto_profilo");
+        String fileName = part.getSubmittedFileName();
+        String path = getServletContext().getRealPath("/" + "img/fotoprofili" + File.separator+ fileName);
 
-        //System.out.println(fileName);
-        for (Part part : req.getParts()) {
-            String fileName = part.getSubmittedFileName();
-            part.write(uploadPath + File.separator + fileName);
+        InputStream is = part.getInputStream();
+        boolean success = uploadFile(is, path);
+        if(success){
+            System.out.println("File caricato correttamente" + path);
+            req.getRequestDispatcher("/profilo.jsp").forward(req, resp);
+        }
+    }
+
+    public boolean uploadFile(InputStream is, String path){
+        boolean test = false;
+
+        try {
+            byte[] bytes = new byte[is.available()];
+            is.read();
+            FileOutputStream fileOutputStream = new FileOutputStream(path);
+            fileOutputStream.write(bytes);
+            fileOutputStream.flush();
+            fileOutputStream.close();
+
+            test=true;
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
+        return test;
     }
 }
