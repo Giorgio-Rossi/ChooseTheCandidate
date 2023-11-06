@@ -22,8 +22,8 @@
                 <a href="${pageContext.request.contextPath}/profiloUtente" class="list-group-item list-group-item-action py-2 ripple" aria-current="true"><i class="bi bi-person-circle" style="margin-right: 5px;font-size: 20px"></i><span>Profilo</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-file-earmark-person" style="margin-right: 5px;font-size: 20px"></i><span>Curriculum</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-search" style="margin-right: 5px;font-size: 20px"></i><span>Ricerca Posizioni</span></a>
-                <form action="${pageContext.request.contextPath}/findCandidature" method="GET">
-    <a href="visualizzaCandidature.jsp" class="list-group-item list-group-item-action py-2 ripple">
+                <form action="findCandidature" method="get">
+    <a href="${pageContext.request.contextPath}/findCandidature" class="list-group-item list-group-item-action py-2 ripple">
         <i class="bi bi-check2-circle" style="margin-right: 5px; font-size: 20px"></i>
         <span>Candidature Effettuate</span>
     </a>

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@page import="com.candidatoDB.pw2.entity.CandidaturaUser"%> %>
+<%@page import="com.candidatoDB.pw2.entity.CandidaturaUser"%>
+<%@page import="com.candidatoDB.pw2.entity.Utente" %>
 <!DOCTYPE html>
 <html>
 <head>
