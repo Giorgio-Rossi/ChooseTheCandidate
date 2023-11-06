@@ -151,7 +151,7 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Città di nascita</label>
-                                                                    <input class="form-control" type="text" placeholder="" value="" name="citta">
+                                                                    <input class="form-control" type="text" placeholder="<%=utente.getId_citta().getNome()%>" value="<%=utente.getId_citta().getNome()%>" name="citta">
                                                                 </div>
                                                             </div>
                                                         </div>
