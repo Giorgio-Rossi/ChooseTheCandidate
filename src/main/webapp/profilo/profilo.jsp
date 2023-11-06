@@ -1,6 +1,6 @@
 <%@ page import="com.candidatoDB.pw2.entity.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Utente utente = (Utente) request.getAttribute("utente");
+<% Utente utente = (Utente) session.getAttribute("utente");
 
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
 

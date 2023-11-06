@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+<<<<<<< HEAD
+=======
+import java.util.Arrays;
+import java.util.Objects;
+>>>>>>> 5dba4e51be9ef55bcfc133d91da2c84da004ad58
 
 @WebServlet(name = "login", value = "/login")
 public class Login extends HttpServlet {
@@ -24,20 +29,18 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        Utente utente;
         try{
-
-            String[] ruolo = dbOperations.Autenticazione(email, password);
-//TODO INSERIRE NELLA SESSIONE L'OGGETTO UTENTE
-            if(ruolo[0].equals("user")){
+            utente = dbOperations.Autenticazione(email, password);
+            System.out.println(utente);
+            if(Objects.equals(utente.getRuolo_admin(), "user")){
                 HttpSession session = req.getSession(true);
-                session.setAttribute("nome",ruolo[1]);
-                session.setAttribute("ruolo","user");
-                session.setAttribute("id", Integer.parseInt(ruolo[2]));
+                session.setAttribute("utente", utente);
+                System.out.println("SI");
                 resp.sendRedirect("home/homeuser.jsp");
-            }else if(ruolo[0].equals("admin")){
+            }else if(Objects.equals(utente.getRuolo_admin(), "admin")){
                 HttpSession session = req.getSession(true);
-                session.setAttribute("nome",ruolo[1]);
-                session.setAttribute("ruolo","admin");
+                session.setAttribute("admin", utente);
                 resp.sendRedirect("home/homeadmin.jsp");
             }else{
                 ErrorManager.setErrorMessage("Nome utente o password errati", req);

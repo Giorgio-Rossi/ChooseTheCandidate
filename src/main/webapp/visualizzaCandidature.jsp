@@ -3,6 +3,7 @@
 <%@page import="com.candidatoDB.pw2.entity.Utente" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%   Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente"); %>
 
 
 
@@ -12,7 +13,7 @@
     <title>Candidature effettuate</title>
 </head>
 <body>
-    <h1>Candidature effettuate da ${sessionScope.utente.nome} ${sessionScope.utente.cognome}</h1>
+    <h1>Candidature effettuate da <%=utenteLoggato.getNome() +" " +  utenteLoggato.getCognome()%></h1>
     <table border="1">
         <tr>
             <th>Candidatura</th>
