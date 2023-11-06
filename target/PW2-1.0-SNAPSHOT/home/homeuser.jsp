@@ -51,7 +51,11 @@
             </a>
             <h1 style="text-align:center;margin-top:10px">Ciao <%=request.getSession().getAttribute("nome")%></h1>
             <span>
+<<<<<<< HEAD
+            <h1><span style="float:right;font-family:Comic Sans MS">8 ORE DI FORMAZIONE SUL LAVORO &thinsp;</span></h1>
+=======
                 <a href="homeuser.jsp"><h1><span style="float:right;font-family:Comic Sans MS">JOBHUNTER &thinsp;</span></h1></a>
+>>>>>>> e02328e26e588e3081e1445a387790fccd075e78
             </span>
         </div>
     </nav>
