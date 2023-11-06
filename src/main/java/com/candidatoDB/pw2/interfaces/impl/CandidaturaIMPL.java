@@ -11,6 +11,7 @@ import java.util.List;
 import com.candidatoDB.pw2.entity.CandidaturaUser;
 import com.candidatoDB.pw2.interfaces.CandidaturaDAO;
 import com.servlets.pw2.controller.DBUtil;
+import com.servlets.pw2.controller.DbOperations;
 import com.servlets.pw2.controller.SQLServerConnection;
 
 
@@ -95,11 +96,86 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
 	        return Candidatura;
 	    }
-	
+
+
+	@Override
+	public List<CandidaturaUser> findCandidatureUtente(int id_user, Date data_candidatura) {
+	     
+		Connection connection = null;
+	        PreparedStatement preparedStatement = null;
+	        ResultSet resultSet = null;
+	        List<CandidaturaUser> candidature = new ArrayList<>();
+
+	        try {
+	          
+	            String sql = "SELECT * FROM CandidaturaUser WHERE id_user = ? AND data_candidatura IS NOT NULL";
+	            preparedStatement = connection.prepareStatement(sql);
+	            preparedStatement.setInt(1, id_user);
+
+	            resultSet = preparedStatement.executeQuery();
+
+	            while (resultSet.next()) {
+	            	 CandidaturaUser candidatura = new CandidaturaUser();
+	                candidatura.setId_candidatura(resultSet.getInt(1));
+	                candidatura.setId_posizione(resultSet.getInt(2));
+	                candidatura.setId_user(resultSet.getInt(3));
+	                candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate(4).getTime()));
+
+	                candidature.add(candidatura);
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	           
+	            DBUtil.close(resultSet);
+	            DBUtil.close(preparedStatement);
+	            DBUtil.close(connection);
+	        }
+
+	        return candidature;
+	    }
+
+
+	@Override
+	public List<CandidaturaUser> findCandidatureUtenteById(int id_user) {
+		Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        List<CandidaturaUser> candidature = new ArrayList<>();
+
+        try {
+          
+            String sql = "SELECT * FROM CandidaturaUser WHERE id_user = ? ";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id_user);
+
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+            	 CandidaturaUser candidatura = new CandidaturaUser();
+                candidatura.setId_candidatura(resultSet.getInt(1));
+                candidatura.setId_posizione(resultSet.getInt(2));
+                candidatura.setId_user(resultSet.getInt(3));
+                candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate(4).getTime()));
+
+                candidature.add(candidatura);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+           
+            DBUtil.close(resultSet);
+            DBUtil.close(preparedStatement);
+            DBUtil.close(connection);
+        }
+
+        return candidature;
 	}
+}
 	
 	
 	
+
 
 	
 	

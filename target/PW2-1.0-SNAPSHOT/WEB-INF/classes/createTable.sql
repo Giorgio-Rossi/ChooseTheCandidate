@@ -15,7 +15,7 @@ id_user int identity not null primary key,
 nome varchar(20) not null,
 cognome varchar(40) not null,
 codice_fiscale varchar(16),
-email varchar(30),
+email varchar(30) not null,
 data_nascita datetime,
 indirizzo varchar(50),
 id_citta int,
@@ -144,3 +144,9 @@ ALTER TABLE Skill
 
 ALTER TABLE Skill
     ADD CONSTRAINT FK_Skill_Quiz FOREIGN KEY (id_quiz) REFERENCES Quiz (id_quiz);
+
+ALTER TABLE Utente
+    ADD foto_profilo varchar(100);
+
+ALTER TABLE Utente
+    ADD    genere varchar(30)  check(genere in('uomo','donna','non specificare'));
