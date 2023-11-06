@@ -5,29 +5,30 @@ import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+
 
 @WebServlet("/profiloUtente")
+@MultipartConfig
 public class ProfiloServlet extends HttpServlet {
 
     String profilo  = "/profilo/profilo.jsp";
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        //Integer id_user = (Integer) session.getAttribute("id");
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //TODO IMPLEMENTARE LA MODIFICA DEL PROFILO
+        String uploadPath = "src/main/webapp/img/fotoprofili";
 
+        //System.out.println(fileName);
+        for (Part part : req.getParts()) {
+            String fileName = part.getSubmittedFileName();
+            part.write(uploadPath + File.separator + fileName);
+        }
 
-        //UtenteIMPL utenteIMPL = new UtenteIMPL();
-        //Utente utente = utenteIMPL.findById(id_user);
-
-        //req.setAttribute("utente", utente);
-        //RequestDispatcher requestDispatcher = req.getRequestDispatcher(profilo);
-       // requestDispatcher.forward(req,resp);
     }
 }

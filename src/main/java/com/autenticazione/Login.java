@@ -1,5 +1,6 @@
 package com.autenticazione;
 
+import com.candidatoDB.pw2.entity.Utente;
 import com.servlets.pw2.controller.DbOperations;
 import com.servlets.pw2.controller.ErrorManager;
 
@@ -10,8 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-<<<<<<< HEAD
-=======
+
 import java.util.Arrays;
 import java.util.Objects;
 

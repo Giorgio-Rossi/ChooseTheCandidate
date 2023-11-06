@@ -80,7 +80,7 @@
                                         </div>
                                         <div class="d-flex justify-content-center">
                                         <label for="fileUpload" class="file-upload btn btn-primary  rounded-pill shadow"><i class="bi bi-upload"></i> Cambia la foto profilo
-                                            <input id="fileUpload" type="file" accept="image/*" style="display: none">
+                                            <input id="fileUpload" type="file" accept="image/*" name="foto_profilo" form="modifica_profilo" style="display: none">
                                         </label>
                                         </div>
                                             <div class="text-center text-sm-right">
@@ -90,7 +90,7 @@
                                     <div class="tab-content pt-3">
                                         <div class="tab-pane active">
                                             <!-- inserire i dati dinamicamente-->
-                                            <form class="form" method="post">
+                                            <form class="form" method="post" action="${pageContext.request.contextPath}/profiloUtente" id="modifica_profilo"  enctype='multipart/form-data'>
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="row">
