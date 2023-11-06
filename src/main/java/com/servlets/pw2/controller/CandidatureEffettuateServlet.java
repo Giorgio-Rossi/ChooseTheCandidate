@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import com.candidatoDB.pw2.interfaces.impl.CandidaturaIMPL;
 import com.candidatoDB.pw2.entity.CandidaturaUser;
+import com.candidatoDB.pw2.entity.Utente;
 
 @WebServlet("/findCandidature")
 
