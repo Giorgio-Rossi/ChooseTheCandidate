@@ -19,11 +19,17 @@
             <th>Posizione</th>
             <th>Data Candidatura</th>
         </tr>
-        <c:forEach items="${candidature}" var="candidatura">
+        <% List<CandidaturaUser> candidaturaUsers = (List<CandidaturaUser>) request.getAttribute("candidature");
+            for(CandidaturaUser candidatura: candidaturaUsers){
+        %>
             <tr>
-                <td>${candidatura.id_candidatura}</td>
+                <td><%=candidatura.getId_candidatura()%></td>
+                <td><%=candidatura.getId_posizione()%></td>
+                <td><%=candidatura.getData_candidatura()%></td>
             </tr>
-        </c:forEach>
+        <%
+            }
+        %>
     </table>
 </body>
 </html>

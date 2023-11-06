@@ -99,12 +99,12 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
 
 	@Override
-	public ArrayList<CandidaturaUser> findCandidatureUtente(int id_user, Date data_candidatura) {
+	public List<CandidaturaUser> findCandidatureUtente(int id_user, Date data_candidatura) {
 	     
 			//Connection connection = null;
 	        PreparedStatement preparedStatement = null;
 	        ResultSet resultSet = null;
-	        ArrayList<CandidaturaUser> candidature = new ArrayList<>();
+	        List<CandidaturaUser> candidature = new ArrayList<>();
 
 	        try {
 	          
@@ -137,11 +137,11 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
 
 	@Override
-	public ArrayList<CandidaturaUser> findCandidatureUtenteById(int id_user) {
+	public List<CandidaturaUser> findCandidatureUtenteById(int id_user) {
 		//Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        ArrayList<CandidaturaUser> candidature = new ArrayList<>();
+        List<CandidaturaUser> candidature = new ArrayList<>();
 
         try {
           

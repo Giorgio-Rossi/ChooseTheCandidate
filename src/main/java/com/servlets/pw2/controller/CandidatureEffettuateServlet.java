@@ -44,13 +44,13 @@ public class CandidatureEffettuateServlet extends HttpServlet {
             }
 
             CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
-            ArrayList<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtente(userId, dataCandidatura);
+            List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtente(userId, dataCandidatura);
             request.setAttribute("candidature", candidature);
 
         } else {
 
             CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
-            ArrayList<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtenteById(userId);
+            List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtenteById(userId);
             request.setAttribute("candidature", candidature);
             System.out.println(candidature);
 
