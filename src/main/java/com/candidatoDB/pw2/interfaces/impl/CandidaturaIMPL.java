@@ -60,18 +60,17 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 	public CandidaturaUser trovaCandidaturaPiùRecente(int id_user) {
 	 
 	        CandidaturaUser Candidatura = null;
-	        Connection connection = null;
+	     //   Connection connection = null;
 	        PreparedStatement statement = null;
 	        ResultSet resultSet = null;
-	        String sql = "SELECT id_candidatura, id_poszione, id_user, data_candidatura " +
+	        String sql = "SELECT top 3 id_candidatura, id_posizione, id_user, data_candidatura " +
                     "FROM CandidaturaUser " +
                     "WHERE id_user = ? " +
-                    "ORDER BY data_candidatura DESC " +
-                    "LIMIT 1";
-	    
+                    "ORDER BY data_candidatura DESC ";
+                   
 	        try {
 	        
-	        	statement = connection.prepareStatement(sql);
+	            statement = connection.getConnection().prepareStatement(sql);
 
 	          
 	            statement.setInt(1, id_user);
@@ -90,7 +89,7 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 	        
 	        	DBUtil.close(resultSet);
 	    		DBUtil.close(statement);
-	    		DBUtil.close((Connection) connection);
+	    	//	DBUtil.close((Connection) connection);
 	        }
 
 	        return Candidatura;
