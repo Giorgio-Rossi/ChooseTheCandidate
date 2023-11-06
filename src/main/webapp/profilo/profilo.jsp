@@ -76,8 +76,15 @@
                                 <div class="e-profile">
                                     <div class="row justify-content-center">
                                         <div class="col-12 col-sm-auto mb-3">
+                                            <%if(utente.getFoto_profilo()!=null){
+                                            %>
+                                            <img src="../img/logoPag.png" alt="" height="150" class="rounded-3">
+                                            <%}else {
+                                             %>
                                             <i class="bi bi-person-circle" style="margin-right: 5px;font-size: 150px"></i>
-                                            <!--<img src="../img/logoPag.png" alt="" height="150" class="rounded-3">-->
+                                            <%
+                                                }
+                                            %>
                                         </div>
                                         <div class="d-flex justify-content-center">
                                         <label for="fileUpload" class="file-upload btn btn-primary  rounded-pill shadow"><i class="bi bi-upload"></i> Cambia la foto profilo
@@ -150,6 +157,7 @@
                                                             </div>
                                                             <div class="col">
                                                                 <div class="form-group">
+                                                                    <!-- gestire la citta con menu tendina -->
                                                                     <label>Città di nascita</label>
                                                                     <input class="form-control" type="text" placeholder="<%=utente.getId_citta().getNome()%>" value="<%=utente.getId_citta().getNome()%>" name="citta">
                                                                 </div>

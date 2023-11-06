@@ -21,7 +21,7 @@ public class EsperienzaIMPL implements EsperienzaDAO{
 		ResultSet resultSet = null;
 		Statement connection;
 		try {
-			statement = connection.getConnection().prepareStatement(sql, new String[] { "id" });
+			//statement = connection.getConnection().prepareStatement(sql, new String[] { "id" });
 			statement.setInt(1, esperienze.getId_esperienza());
 			statement.setInt(2, esperienze.getAnni());
 			statement.setString(3, esperienze.getDescrizione_attivita());
@@ -45,11 +45,10 @@ public class EsperienzaIMPL implements EsperienzaDAO{
 		} finally {
 			DBUtil.close(resultSet);
 			DBUtil.close(statement);
-			DBUtil.close((Connection) connection);
+			//DBUtil.close((Connection) connection);
 		}
 	}
-		
-	}
+
 
 	@Override
 	public void update(Esperienza esperienze) {
@@ -58,7 +57,7 @@ public class EsperienzaIMPL implements EsperienzaDAO{
 
 		Statement connection;
 		try {
-			statement = connection.getConnection().prepareStatement(sql, new String[] { "id" });
+			//statement = connection.getConnection().prepareStatement(sql, new String[] { "id" });
 			statement.setInt(1, esperienze.getId_esperienza());
 			statement.setInt(2, esperienze.getAnni());
 			statement.setString(3, esperienze.getDescrizione_attivita());
@@ -75,7 +74,7 @@ public class EsperienzaIMPL implements EsperienzaDAO{
 			System.err.println(e.getMessage());
 		} finally {
 			DBUtil.close(statement);
-			DBUtil.close(connection.getConnection());
+			//DBUtil.close(connection.getConnection());
 	}
 
 	}

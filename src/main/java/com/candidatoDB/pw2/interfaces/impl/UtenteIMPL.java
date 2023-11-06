@@ -114,9 +114,6 @@ public class UtenteIMPL implements UtenteDAO {
 					utente.setId_citta(getUserCitta(utente));
 					System.out.println("SI citta");
 				}
-				//cittaUtente.setNome(resultSet.getString(8));
-				//cittaUtente.setId_citta(resultSet.getInt(9));
-				//utente.setId_citta(cittaUtente);
 				utente.setCap(resultSet.getString(9));
 				utente.setTelefono(resultSet.getString(10));
 				utente.setPassword(resultSet.getString(11));
