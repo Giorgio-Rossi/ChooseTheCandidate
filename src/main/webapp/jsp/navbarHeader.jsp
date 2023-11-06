@@ -23,7 +23,11 @@
                 <a href="${pageContext.request.contextPath}/profilo/profilo.jsp" class="list-group-item list-group-item-action py-2 ripple" aria-current="true"><i class="bi bi-person-circle" style="margin-right: 5px;font-size: 20px"></i><span>Profilo</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-file-earmark-person" style="margin-right: 5px;font-size: 20px"></i><span>Curriculum</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-search" style="margin-right: 5px;font-size: 20px"></i><span>Ricerca Posizioni</span></a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-check2-circle" style="margin-right: 5px;font-size: 20px"></i><span>Candidature Effettuate</span></a>
+             
+                <a href="${pageContext.request.contextPath}/visualizzaCandidature.jsp" class="list-group-item list-group-item-action py-2 ripple">
+    <i class="bi bi-eye" style="margin-right: 5px; font-size: 20px"></i><span> Candidature effettuate</span>
+</a>
+              <!--    <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-check2-circle" style="margin-right: 5px;font-size: 20px"></i><span>Candidature Effettuate</span></a>  -->
                 <a href="${pageContext.request.contextPath}/logout" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-box-arrow-right" style="margin-right: 5px;font-size: 20px"></i><span>Logout</span></a>
             </div>
         </div>
