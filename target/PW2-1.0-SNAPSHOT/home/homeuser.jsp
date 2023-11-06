@@ -19,7 +19,7 @@
     <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse " style="background-color:#0072BC">
         <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-5" style="gap: 3rem">
-                <a href="${pageContext.request.contextPath}/profilo/profilo.jsp" class="list-group-item list-group-item-action py-2 ripple" aria-current="true"><i class="bi bi-person-circle" style="margin-right: 5px;font-size: 20px"></i><span>Profilo</span></a>
+                <a href="${pageContext.request.contextPath}/profiloUtente" class="list-group-item list-group-item-action py-2 ripple" aria-current="true"><i class="bi bi-person-circle" style="margin-right: 5px;font-size: 20px"></i><span>Profilo</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-file-earmark-person" style="margin-right: 5px;font-size: 20px"></i><span>Curriculum</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-search" style="margin-right: 5px;font-size: 20px"></i><span>Ricerca Posizioni</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-check2-circle" style="margin-right: 5px;font-size: 20px"></i><span>Candidature Effettuate</span></a>
@@ -51,11 +51,7 @@
             </a>
             <h1 style="text-align:center;margin-top:10px">Ciao <%=request.getSession().getAttribute("nome")%></h1>
             <span>
-<<<<<<< HEAD
-            <h1><span style="float:right;font-family:Comic Sans MS">8 ORE DI FORMAZIONE SUL LAVORO &thinsp;</span></h1>
-=======
                 <a href="homeuser.jsp"><h1><span style="float:right;font-family:Comic Sans MS">JOBHUNTER &thinsp;</span></h1></a>
->>>>>>> e02328e26e588e3081e1445a387790fccd075e78
             </span>
         </div>
     </nav>

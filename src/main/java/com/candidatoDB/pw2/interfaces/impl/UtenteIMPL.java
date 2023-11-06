@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.candidatoDB.pw2.entity.Citta;
 import com.candidatoDB.pw2.entity.Esperienza;
 import com.candidatoDB.pw2.entity.Quiz;
 import com.candidatoDB.pw2.entity.Utente;
@@ -38,7 +39,7 @@ public class UtenteIMPL implements UtenteDAO {
 			statement.setDate(6, new java.sql.Date(utente.getData_nascita().getTime()));
 			statement.setInt(7, utente.getId_user());
 			statement.setString(8, utente.getIndirizzo());
-			statement.setInt(9, utente.getId_citta());
+			statement.setInt(9, utente.getId_citta().getId_citta());
 			statement.setString(10, utente.getCap());
 			statement.setString(11, utente.getTelefono());
 			statement.setString(12, utente.getRuolo_admin());
@@ -70,7 +71,7 @@ public class UtenteIMPL implements UtenteDAO {
 			statement.setDate(6, new java.sql.Date(utente.getData_nascita().getTime()));
 			statement.setInt(7, utente.getId_user());
 			statement.setString(8, utente.getIndirizzo());
-			statement.setInt(9, utente.getId_citta());
+			statement.setInt(9, utente.getId_citta().getId_citta());
 			statement.setString(10, utente.getCap());
 			statement.setString(11, utente.getTelefono());
 			statement.setString(12, utente.getRuolo_admin());
@@ -79,7 +80,7 @@ public class UtenteIMPL implements UtenteDAO {
 			System.err.println(e.getMessage());
 		} finally {
 			DBUtil.close(statement);
-			DBUtil.close((Connection) connection);
+			DBUtil.close(connection.getConnection());
 		}
 
 	}
@@ -89,8 +90,41 @@ public class UtenteIMPL implements UtenteDAO {
 
 	@Override
 	public Utente findById(int id_user) {
-		// TODO Auto-generated method stub
-		return null;
+		Utente utente = new Utente();
+		Citta cittaUtente = new Citta();
+		String sql = "SELECT Utente.id_user, Utente.nome, Utente.cognome, Utente.codice_fiscale, Utente.email, Utente.data_nascita, Utente.indirizzo, Citta.nome, Citta.id_citta, Utente.cap, Utente.telefono, Utente.password, Utente.foto_profilo, Utente.genere from Utente inner join Citta on Citta.id_citta = Utente.id_citta where Utente.id_user=?";
+
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setInt(1, id_user);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				utente.setId_user(resultSet.getInt(1));
+				utente.setNome(resultSet.getString(2));
+				utente.setCognome(resultSet.getString(3));
+				utente.setCodice_fiscale(resultSet.getString(4));
+				utente.setEmail(resultSet.getString(5));
+				utente.setData_nascita(new java.sql.Date(resultSet.getDate(6).getTime()));
+				utente.setIndirizzo(resultSet.getString(7));
+				cittaUtente.setNome(resultSet.getString(8));
+				cittaUtente.setId_citta(resultSet.getInt(9));
+				utente.setId_citta(cittaUtente);
+				utente.setCap(resultSet.getString(10));
+				utente.setTelefono(resultSet.getString(11));
+				utente.setPassword(resultSet.getString(12));
+				utente.setFoto_profilo(resultSet.getString(13));
+				utente.setGenere(resultSet.getString(14));
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			//DBUtil.close(connection.getConnection());
+		}
+		return utente;
 	}
 
 	@Override

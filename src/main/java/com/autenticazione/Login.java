@@ -30,11 +30,12 @@ public class Login extends HttpServlet {
         try{
 
             String[] ruolo = dbOperations.Autenticazione(email, password);
-
+//TODO INSERIRE NELLA SESSIONE L'OGGETTO UTENTE
             if(ruolo[0].equals("user")){
                 HttpSession session = req.getSession(true);
                 session.setAttribute("nome",ruolo[1]);
                 session.setAttribute("ruolo","user");
+                session.setAttribute("id", Integer.parseInt(ruolo[2]));
                 resp.sendRedirect("home/homeuser.jsp");
             }else if(ruolo[0].equals("admin")){
                 HttpSession session = req.getSession(true);

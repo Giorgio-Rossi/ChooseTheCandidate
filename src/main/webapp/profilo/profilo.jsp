@@ -1,5 +1,8 @@
+<%@ page import="com.candidatoDB.pw2.entity.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%   response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+<% Utente utente = (Utente) request.getAttribute("utente");
+
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
 
 
 <html>
@@ -94,13 +97,13 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Nome</label>
-                                                                    <input class="form-control" type="text" name="nome" placeholder="Ciccio" value="Ciccio" required>
+                                                                    <input class="form-control" type="text" name="nome" placeholder=<%=utente.getNome()%> value=<%=utente.getNome()%> required>
                                                                 </div>
                                                             </div>
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Cognome</label>
-                                                                    <input class="form-control" type="text" name="cognome" placeholder="Bello" value="Bello" required>
+                                                                    <input class="form-control" type="text" name="cognome" placeholder=<%=utente.getCognome()%> value=<%=utente.getCognome()%> required>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
@@ -108,6 +111,7 @@
                                                                 <div class="form-group">
                                                                     <label>Genere</label>
                                                                     <select class="form-select" aria-label="Default select example" name="genere">
+                                                                        <option selected disabled hidden value=<%=utente.getGenere()%> ><%=utente.getGenere()%></option>
                                                                         <option value="uomo">Uomo</option>
                                                                         <option value="donna">Donna</option>
                                                                         <option value="non specificare">Preferisco non specificarlo</option>
@@ -117,7 +121,7 @@
                                                                 <div class="col">
                                                                     <div class="form-group">
                                                                         <label>Data di nascita</label>
-                                                                        <input class="form-control" type="date" name="data_nascita"  value="2000-08-30">
+                                                                        <input class="form-control" type="date" name="data_nascita"  value=<%=utente.getData_nascita()%>>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -126,13 +130,13 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Indirizzo di residenza</label>
-                                                                    <input class="form-control" type="text" placeholder="Via Roma 52" value="Via Roma 52" name="indirizzo">
+                                                                    <input class="form-control" type="text" placeholder=<%=utente.getIndirizzo()%> value=<%=utente.getIndirizzo()%> name="indirizzo">
                                                                 </div>
                                                             </div>
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Telefono</label>
-                                                                    <input class="form-control" type="tel" placeholder="4593458762" value="4593458762" name="telefono">
+                                                                    <input class="form-control" type="tel" placeholder=<%=utente.getTelefono()%> value=<%=utente.getTelefono()%> name="telefono">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -140,13 +144,13 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Codice Fiscale</label>
-                                                                    <input class="form-control" type="text" placeholder="FRNLNZ00M30H501T" value="FRNLNZ00M30H501T" name="codice_fiscale">
+                                                                    <input class="form-control" type="text" placeholder=<%=utente.getCodice_fiscale()%> value=<%=utente.getCodice_fiscale()%> name="codice_fiscale">
                                                                 </div>
                                                             </div>
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Città di nascita</label>
-                                                                    <input class="form-control" type="text" placeholder="Roma" value="Roma" name="citta">
+                                                                    <input class="form-control" type="text" placeholder=<%=utente.getId_citta().getNome()%> value=<%=utente.getId_citta().getNome()%> name="citta">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -159,7 +163,7 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Email</label>
-                                                                    <input class="form-control" type="email" placeholder="ciccio@gmail.com" value="ciccio@gmail.com" name="email" required>
+                                                                    <input class="form-control" type="email" placeholder=<%=utente.getEmail()%> value=<%=utente.getEmail()%> name="email" required>
                                                                 </div>
                                                             </div>
                                                         </div>

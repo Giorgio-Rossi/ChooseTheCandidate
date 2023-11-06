@@ -13,12 +13,16 @@ public class Utente {
 	private String email;
 	private Date data_nascita;
 	private String indirizzo;
-	private int id_citta ;	
+	private Citta id_citta ;
 	private String cap;
 	private String telefono;
 	private String ruolo_admin;
 	private String password;
 	private List<Esperienza> new_esperienza = new ArrayList<Esperienza> ();
+
+	private String genere;
+
+	private String foto_profilo;
 	
 	
 	
@@ -26,8 +30,8 @@ public class Utente {
 		super();
 	}
 	public Utente(int id_user, String nome, String cognome, String codice_fiscale, String email, Date data_nascita,
-			String indirizzo, int id_citta, String cap, String telefono, String ruolo_admin, String password,
-			List<Esperienza> new_esperienza) {
+			String indirizzo, Citta id_citta, String cap, String telefono, String ruolo_admin, String password,
+			List<Esperienza> new_esperienza, String foto_profilo, String genere) {
 		super();
 		this.id_user = id_user;
 		this.nome = nome;
@@ -42,6 +46,8 @@ public class Utente {
 		this.ruolo_admin = ruolo_admin;
 		this.password = password;
 		this.new_esperienza = new_esperienza;
+		this.foto_profilo = foto_profilo;
+		this.genere = genere;
 	}
 	public int getId_user() {
 		return id_user;
@@ -85,10 +91,10 @@ public class Utente {
 	public void setIndirizzo(String indirizzo) {
 		this.indirizzo = indirizzo;
 	}
-	public int getId_citta() {
+	public Citta getId_citta() {
 		return id_citta;
 	}
-	public void setId_citta(int id_citta) {
+	public void setId_citta(Citta id_citta) {
 		this.id_citta = id_citta;
 	}
 	public String getCap() {
@@ -121,6 +127,23 @@ public class Utente {
 	public void setNew_esperienza(List<Esperienza> new_esperienza) {
 		this.new_esperienza = new_esperienza;
 	}
+
+	public String getGenere() {
+		return genere;
+	}
+
+	public void setGenere(String genere) {
+		this.genere = genere;
+	}
+
+	public String getFoto_profilo() {
+		return foto_profilo;
+	}
+
+	public void setFoto_profilo(String foto_profilo) {
+		this.foto_profilo = foto_profilo;
+	}
+
 	@Override
 	public String toString() {
 		return "Utente [id_user=" + id_user + ", nome=" + nome + ", cognome=" + cognome + ", codice_fiscale="
