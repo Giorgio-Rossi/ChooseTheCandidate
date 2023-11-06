@@ -11,7 +11,7 @@
 <body>
     <h1>Candidatura più recente</h1>
     <%
-        List<CandidaturaUser> candidaturaUsers = (List<CandidaturaUser>) request.getAttribute("candidature");
+        List<CandidaturaUser> candidaturaUsers = (List<CandidaturaUser>) request.getAttribute("candidaturaPiuRecente");
         CandidaturaUser candidatura = null;
         
         if (candidaturaUsers != null && !candidaturaUsers.isEmpty()) {
@@ -19,13 +19,9 @@
             candidatura = candidaturaUsers.get(0); 
         }
     %>
-    <c:if test="${candidatura != null}">
+    
         <p>Data di candidatura: <%= candidatura.getData_candidatura()%></p>
         <p>Posizione: <%= candidatura.getId_posizione()%></p>
-   
-    </c:if>
-    <c:if test="${candidatura == null}">
-        <p>Nessuna candidatura recente trovata.</p>
-    </c:if>
+  
 </body>
 </html>
