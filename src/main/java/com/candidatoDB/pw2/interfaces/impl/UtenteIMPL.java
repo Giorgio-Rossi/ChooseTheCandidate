@@ -90,8 +90,8 @@ public class UtenteIMPL implements UtenteDAO {
 	@Override
 	public Utente findById(int id_user) {
 		Utente utente = new Utente();
-		//Citta cittaUtente = new Citta();
-		String sql = "SELECT Utente.id_user, Utente.nome, Utente.cognome, Utente.codice_fiscale, Utente.email, Utente.data_nascita, Utente.indirizzo, Utente.cap, Utente.telefono, Utente.password, Utente.foto_profilo, Utente.genere, Utente.ruolo_admin from Utente where Utente.id_user=?";
+		Citta cittaUtente = new Citta();
+		String sql = "SELECT Utente.id_user, Utente.nome, Utente.cognome, Utente.codice_fiscale, Utente.email, Utente.data_nascita, Utente.indirizzo, Utente.id_citta, Utente.cap, Utente.telefono, Utente.password, Utente.foto_profilo, Utente.genere, Utente.ruolo_admin from Utente where Utente.id_user=?";
 
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -107,15 +107,22 @@ public class UtenteIMPL implements UtenteDAO {
 				utente.setEmail(resultSet.getString(5));
 				utente.setData_nascita(new java.sql.Date(resultSet.getDate(6).getTime()));
 				utente.setIndirizzo(resultSet.getString(7));
+				if(resultSet.getString(8)==null){
+					System.out.println("No citta");
+					utente.setId_citta(cittaUtente);
+				}else {
+					utente.setId_citta(getUserCitta(utente));
+					System.out.println("SI citta");
+				}
 				//cittaUtente.setNome(resultSet.getString(8));
 				//cittaUtente.setId_citta(resultSet.getInt(9));
 				//utente.setId_citta(cittaUtente);
-				utente.setCap(resultSet.getString(8));
-				utente.setTelefono(resultSet.getString(9));
-				utente.setPassword(resultSet.getString(10));
-				utente.setFoto_profilo(resultSet.getString(11));
-				utente.setGenere(resultSet.getString(12));
-				utente.setRuolo_admin(resultSet.getString(13));
+				utente.setCap(resultSet.getString(9));
+				utente.setTelefono(resultSet.getString(10));
+				utente.setPassword(resultSet.getString(11));
+				utente.setFoto_profilo(resultSet.getString(12));
+				utente.setGenere(resultSet.getString(13));
+				utente.setRuolo_admin(resultSet.getString(14));
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
