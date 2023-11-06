@@ -9,4 +9,5 @@ public interface PosizioneDAO {
 
 	
 	List<Posizione> searchByCity (Citta citta);
+	List<Posizione> searchByRuolo(String ruolo);
 }
