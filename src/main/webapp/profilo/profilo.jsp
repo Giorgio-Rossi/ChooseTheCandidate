@@ -1,4 +1,5 @@
 <%@ page import="com.candidatoDB.pw2.entity.Utente" %>
+<%@ page import="com.servlets.pw2.controller.ErrorManager" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% Utente utente = (Utente) session.getAttribute("utente");
     System.out.println(utente.toString());
@@ -66,12 +67,31 @@
 <main style="margin-top: 58px">
 
     <div class="container mt-5">
+
         <div class="row flex-lg-nowrap">
             <div class="col">
                 <div class="row">
                     <div class="col mb-3">
                         <div class="card mt-4">
                             <div class="card-body">
+                                <%
+                                    if(!ErrorManager.getSUccessMessage((HttpServletRequest) request).isEmpty()){
+                                %>
+                                <div class="alert alert-success">
+                                    <%= ErrorManager.getSUccessMessage((HttpServletRequest) request)%>
+                                </div>
+                                <%
+                                    };
+                                %>
+                                <%
+                                    if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){
+                                %>
+                                <div class="alert alert-success">
+                                    <%= ErrorManager.getErrorMessage((HttpServletRequest) request)%>
+                                </div>
+                                <%
+                                    };
+                                %>
                                 <div class="e-profile">
                                     <div class="row justify-content-center">
                                         <div class="col-12 col-sm-auto mb-3">

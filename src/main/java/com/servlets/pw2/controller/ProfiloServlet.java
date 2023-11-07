@@ -81,6 +81,7 @@ public class ProfiloServlet extends HttpServlet {
         try {
             data_nascita = in.parse(param);
         } catch (ParseException e) {
+            ErrorManager.setErrorMessage("Qualcosa è andato storto",req);
             throw new RuntimeException(e);
         }
 
@@ -137,7 +138,7 @@ public class ProfiloServlet extends HttpServlet {
             utenteModificato.setPassword(utenteInSessione.getPassword());
         }
 
-        if (!req.getParameter("genere").isEmpty()) {
+        if (req.getParameter("genere")!=null) {
             utenteModificato.setGenere(req.getParameter("genere"));
         } else {
             utenteModificato.setGenere(utenteInSessione.getGenere());
@@ -155,6 +156,7 @@ public class ProfiloServlet extends HttpServlet {
                 System.out.println("File caricato correttamente" + path);
                 utenteModificato.setFoto_profilo("/"+ fileName);
             } catch (Exception e) {
+                ErrorManager.setErrorMessage("Qualcosa è andato storto",req);
                 e.printStackTrace();
             }
 
@@ -166,6 +168,7 @@ public class ProfiloServlet extends HttpServlet {
             utenteIMPL.update(utenteModificato);
             session.removeAttribute("utente");
             session.setAttribute("utente", utenteModificato);
+            ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
             req.getRequestDispatcher("/profilo/profilo.jsp").forward(req, resp);
         }
 
