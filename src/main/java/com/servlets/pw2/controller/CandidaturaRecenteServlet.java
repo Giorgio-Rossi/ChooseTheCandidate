@@ -31,6 +31,7 @@ public class CandidaturaRecenteServlet extends HttpServlet {
         }
 
         request.getRequestDispatcher("/candidaturaPiuRecente.jsp").forward(request, response);
+        System.out.println("sono qui");
 
     }
 }
