@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.candidatoDB.pw2.entity.CategoriaPosizione;
@@ -69,7 +68,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 //	@Override
 	public List<Posizione> searchByRuolo(String ruolo) {
-		List<Posizione> posizioni = new ArrayList<>();
+		List<Posizione> posizione = new ArrayList<>();
 
 		String sql = "SELECT * FROM Posizione WHERE ruolo =?";
 		PreparedStatement statement = null;
@@ -97,7 +96,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setStato(resultSet.getString(7));
 				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate(8).getTime()));
 				posizione.setRuolo(resultSet.getString(9));
-				posizioni.add(posizione);
+				posizione.add(posizione);
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -106,7 +105,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 			DBUtil.close(statement);
 			DBUtil.close((Connection) connection);
 		}
-		return posizioni;
+	//	return posizione;
 	}
 
 	@Override
