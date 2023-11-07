@@ -23,6 +23,7 @@ public class CandidaturaRecenteServlet extends HttpServlet {
 
         if (utente != null) {
             int userId = utente.getId_user();
+            session.setAttribute("userId", userId);
             CandidaturaIMPL candidaturaIMPL = new CandidaturaIMPL();
             CandidaturaUser candidaturaPiuRecente = candidaturaIMPL.trovaCandidaturaPiùRecente(userId);
 
@@ -32,6 +33,6 @@ public class CandidaturaRecenteServlet extends HttpServlet {
 
         request.getRequestDispatcher("/candidaturaPiuRecente.jsp").forward(request, response);
         System.out.println("sono qui");
-
     }
 }
+
