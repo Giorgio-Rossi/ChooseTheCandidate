@@ -66,7 +66,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 	}
 
-//	@Override
+	@Override
 	public List<Posizione> searchByRuolo(String ruolo) {
 		List<Posizione> posizioni = new ArrayList<>();
 
