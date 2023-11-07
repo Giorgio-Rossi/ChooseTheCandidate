@@ -11,15 +11,21 @@ import com.candidatoDB.pw2.entity.Skill;
 import com.candidatoDB.pw2.entity.Utente;
 import com.candidatoDB.pw2.interfaces.EsperienzaDAO;
 import com.servlets.pw2.controller.DBUtil;
+import com.servlets.pw2.controller.SQLServerConnection;
 
 public class EsperienzaIMPL implements EsperienzaDAO{
+
+	private SQLServerConnection connection = new SQLServerConnection();
+
+	public EsperienzaIMPL(){
+		connection.Connect();
+	}
 
 	@Override
 	public void save(Esperienza esperienze) {
 		String sql = "INSERT INTO Utente(id_esperienza,anni,descrizione_attivita,id_user,azienda,data_inizio,data_fine,ral,tipo_contratto,settore,posizione_lavorativa) VALUES(?,?,?,?,?,?,?,?,?,?,?))";
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
-		Statement connection;
 		try {
 			statement = connection.getConnection().prepareStatement(sql, new String[] { "id" });
 			statement.setInt(1, esperienze.getId_esperienza());

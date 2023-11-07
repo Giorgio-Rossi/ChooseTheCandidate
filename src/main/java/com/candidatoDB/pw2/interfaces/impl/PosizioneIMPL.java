@@ -68,7 +68,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 //	@Override
 	public List<Posizione> searchByRuolo(String ruolo) {
-		List<Posizione> posizione = new ArrayList<>();
+		List<Posizione> posizioni = new ArrayList<>();
 
 		String sql = "SELECT * FROM Posizione WHERE ruolo =?";
 		PreparedStatement statement = null;
@@ -105,7 +105,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 			DBUtil.close(statement);
 			DBUtil.close((Connection) connection);
 		}
-	//	return posizione;
+		return posizioni;
 	}
 
 	@Override
