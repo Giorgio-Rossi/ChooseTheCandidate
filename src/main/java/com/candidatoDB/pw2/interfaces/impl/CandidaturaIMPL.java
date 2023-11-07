@@ -63,7 +63,7 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 	     //   Connection connection = null;
 	        PreparedStatement statement = null;
 	        ResultSet resultSet = null;
-	        String sql = "SELECT top 3 id_candidatura, id_posizione, id_user, data_candidatura " +
+	        String sql = "SELECT top 3 id_candidatura_user, id_posizione, id_user, data_candidatura " +
                     "FROM CandidaturaUser " +
                     "WHERE id_user = ? " +
                     "ORDER BY data_candidatura DESC ";

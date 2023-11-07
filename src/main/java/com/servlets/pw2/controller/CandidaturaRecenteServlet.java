@@ -27,6 +27,7 @@ public class CandidaturaRecenteServlet extends HttpServlet {
             CandidaturaUser candidaturaPiuRecente = candidaturaIMPL.trovaCandidaturaPiùRecente(userId);
 
             request.setAttribute("candidaturaPiuRecente", candidaturaPiuRecente);
+            System.out.println(candidaturaPiuRecente);
         }
 
         request.getRequestDispatcher("/candidaturaPiuRecente.jsp").forward(request, response);
