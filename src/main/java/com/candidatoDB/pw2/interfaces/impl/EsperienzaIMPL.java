@@ -21,7 +21,7 @@ public class EsperienzaIMPL implements EsperienzaDAO{
 		ResultSet resultSet = null;
 		Statement connection;
 		try {
-			//statement = connection.getConnection().prepareStatement(sql, new String[] { "id" });
+			statement = connection.getConnection().prepareStatement(sql, new String[] { "id" });
 			statement.setInt(1, esperienze.getId_esperienza());
 			statement.setInt(2, esperienze.getAnni());
 			statement.setString(3, esperienze.getDescrizione_attivita());

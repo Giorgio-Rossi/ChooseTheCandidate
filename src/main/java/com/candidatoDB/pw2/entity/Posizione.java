@@ -130,6 +130,10 @@ public class Posizione {
 				+ descrizione + ", citta=" + citta + ", categoria=" + categoria + ", quiz=" + quiz + ", stato=" + stato
 				+ ", data_inserimento=" + data_inserimento + ", ruolo=" + ruolo + "]";
 	}
+
+
+    public void add(Posizione posizione) {
+    }
 	
 	
 	
