@@ -1,8 +1,6 @@
 package com.servlets.pw2.controller;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,21 +24,12 @@ public class CandidaturaRecenteServlet extends HttpServlet {
         if (utente != null) {
             int userId = utente.getId_user();
             CandidaturaIMPL candidaturaIMPL = new CandidaturaIMPL();
-            List<CandidaturaUser> candidaturaUsers = candidaturaIMPL.findCandidatureUtenteById(userId);
-
-  
-            CandidaturaUser candidaturaPiuRecente = null;
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-            for (CandidaturaUser candidatura : candidaturaUsers) {
-                if (candidaturaPiuRecente == null || candidatura.getData_candidatura().after(candidaturaPiuRecente.getData_candidatura())) {
-                    candidaturaPiuRecente = candidatura;
-                }
-            }
+            CandidaturaUser candidaturaPiuRecente = candidaturaIMPL.trovaCandidaturaPiùRecente(userId);
 
             request.setAttribute("candidaturaPiuRecente", candidaturaPiuRecente);
         }
 
-        request.getRequestDispatcher("/CandidaturaPiuRecente.jsp").forward(request, response);
+        request.getRequestDispatcher("/candidaturaPiuRecente.jsp").forward(request, response);
+
     }
 }
