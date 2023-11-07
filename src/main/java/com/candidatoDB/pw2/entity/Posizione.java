@@ -39,7 +39,7 @@ public class Posizione {
 	}
 
 
-	public void setId_poszione(int id_posizione) {
+	public void setId_posizione(int id_posizione) {
 		this.id_posizione = id_posizione;
 	}
 

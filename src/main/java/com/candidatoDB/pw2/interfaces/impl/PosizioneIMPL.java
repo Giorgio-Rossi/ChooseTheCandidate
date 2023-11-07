@@ -37,7 +37,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				Posizione posizione = new Posizione();
-				posizione.setId_poszione(resultSet.getInt(1));
+				posizione.setId_posizione(resultSet.getInt(1));
 				posizione.setN_ammissioni(resultSet.getInt(2));
 				posizione.setDescrizione(resultSet.getString(3));
 				citta = new Citta();
@@ -82,7 +82,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				Posizione posizione = new Posizione();
-				posizione.setId_poszione(resultSet.getInt(1));
+				posizione.setId_posizione(resultSet.getInt(1));
 				posizione.setN_ammissioni(resultSet.getInt(2));
 				posizione.setDescrizione(resultSet.getString(3));
 				Citta citta = new Citta();
@@ -123,7 +123,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 			resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Posizione posizione = new Posizione();
-        		posizione.setId_poszione(resultSet.getInt(1));
+        		posizione.setId_posizione(resultSet.getInt(1));
 				posizione.setN_ammissioni(resultSet.getInt(2));
 				posizione.setDescrizione(resultSet.getString(3));
 				Citta citta = new Citta();
@@ -151,4 +151,53 @@ public class PosizioneIMPL implements PosizioneDAO {
         return posizioni;
 }
 
-}
+	@Override
+	public List<Posizione> findPosizioniPiuRecenti() {
+		 List<Posizione> posizioni = new ArrayList<>();
+		    PreparedStatement statement = null;
+		    ResultSet resultSet = null;
+
+		    try {
+		        String sql = "SELECT * FROM Posizione ORDER BY data_inserimento";
+		    	statement = connection.getConnection().prepareStatement(sql);
+		        resultSet = statement.executeQuery();
+
+		        while (resultSet.next()) {
+		            Posizione posizione = new Posizione();
+		            posizione.setId_posizione(resultSet.getInt("id_posizione"));
+		            posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
+		            posizione.setDescrizione(resultSet.getString("descrizione"));
+		            
+		            
+		            Citta citta = new Citta(resultSet.getInt("id_citta"), resultSet.getString("regione"), resultSet.getString("nome"));
+		            posizione.setCitta(citta);
+
+		    
+		            CategoriaPosizione categoria = new CategoriaPosizione(resultSet.getInt("id_Categoria"), resultSet.getString("descrizione"));
+		            posizione.setCategoria(categoria);
+
+		            int idQuiz = resultSet.getInt("id_quiz");
+		            if (!resultSet.wasNull()) {
+		                Quiz quiz = new Quiz();
+		                quiz.setId_quiz(idQuiz);
+		                posizione.setQuiz(quiz);
+		            }
+
+		            posizione.setStato(resultSet.getString("stato"));
+		            posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
+		            posizione.setRuolo(resultSet.getString("ruolo"));
+		            posizioni.add(posizione);
+		        }
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    } finally {
+		        
+		        DBUtil.close(resultSet);
+		        DBUtil.close(statement);
+		    }
+
+		    return posizioni;
+		}
+	}
+
+	
