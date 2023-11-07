@@ -69,7 +69,6 @@ public class UtenteIMPL implements UtenteDAO {
 			if(utente.getId_citta()==null){
 				statement.setNull(7, Types.INTEGER);
 			}
-			//statement.setInt(9, utente.getId_citta().getId_citta());
 			statement.setString(8, utente.getCap());
 			statement.setString(9, utente.getTelefono());
 			statement.setString(10, utente.getRuolo_admin());

@@ -92,15 +92,17 @@ public class ProfiloServlet extends HttpServlet {
         }
 
 
-        if (utenteInSessione.getIndirizzo() != null && !utenteInSessione.getIndirizzo().equals(req.getParameter("indirizzo"))) {
+        if (!req.getParameter("indirizzo").isEmpty()) {
             utenteModificato.setIndirizzo(req.getParameter("indirizzo"));
         } else {
             utenteModificato.setIndirizzo(utenteInSessione.getIndirizzo());
         }
 
-        if (utenteInSessione.getCap() != null && !utenteInSessione.getCap().equals(req.getParameter("cap"))) {
+
+        if (!req.getParameter("cap").isEmpty()) {
             utenteModificato.setCap(req.getParameter("cap"));
         } else {
+            System.out.println("si non esiste");
             utenteModificato.setCap(utenteInSessione.getCap());
         }
 
@@ -113,12 +115,6 @@ public class ProfiloServlet extends HttpServlet {
             utenteModificato.setId_citta(utenteInSessione.getId_citta());
         }*/
 
-
-        if (utenteInSessione.getCap() != null && !utenteInSessione.getCap().equals(req.getParameter("cap"))) {
-            utenteModificato.setCap(req.getParameter("cap"));
-        } else {
-            utenteModificato.setCap(utenteInSessione.getCap());
-        }
 
 
         if (!utenteInSessione.getTelefono().equals(req.getParameter("telefono"))) {
@@ -141,19 +137,18 @@ public class ProfiloServlet extends HttpServlet {
             utenteModificato.setPassword(utenteInSessione.getPassword());
         }
 
-        if (utenteInSessione.getGenere() != null && !utenteInSessione.getGenere().equals(String.valueOf(req.getParameter("genere")))) {
+        if (!req.getParameter("genere").isEmpty()) {
             utenteModificato.setGenere(req.getParameter("genere"));
         } else {
             utenteModificato.setGenere(utenteInSessione.getGenere());
         }
 
 
-        if (req.getPart("foto_profilo") != null) {
-            Part part = req.getPart("foto_profilo");
-            String fileName = part.getSubmittedFileName();
-            String path = getServletContext().getRealPath("/" + "/img/fotoprofili" + File.separator + fileName);
+        Part part = req.getPart("foto_profilo");
+        String fileName = part.getSubmittedFileName();
 
-            //System.out.println(getServletContext().getRealPath("/img/fotoprofili"));
+        if (!fileName.isEmpty()) {
+            String path = getServletContext().getRealPath("/" + "/img/fotoprofili" + File.separator + fileName);
 
             try {
                 part.write(path);

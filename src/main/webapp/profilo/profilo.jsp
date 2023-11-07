@@ -26,7 +26,7 @@
                 <a href="${pageContext.request.contextPath}/profilo/profilo.jsp" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true"><i class="bi bi-person-circle" style="margin-right: 5px;font-size: 20px"></i><span>Profilo</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-file-earmark-person" style="margin-right: 5px;font-size: 20px"></i><span>Curriculum</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-search" style="margin-right: 5px;font-size: 20px"></i><span>Ricerca Posizioni</span></a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-check2-circle" style="margin-right: 5px;font-size: 20px"></i><span>Candidature Effettuate</span></a>
+                <a href="${pageContext.request.contextPath}/findCandidature" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-check2-circle" style="margin-right: 5px;font-size: 20px"></i><span>Candidature Effettuate</span></a>
                 <a href="${pageContext.request.contextPath}/logout" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-box-arrow-right" style="margin-right: 5px;font-size: 20px"></i><span>Logout</span></a>
             </div>
         </div>
@@ -119,7 +119,7 @@
                                                                     <label>Genere</label>
                                                                     <select class="form-select" aria-label="Default select example" name="genere">
                                                                         <%String genere = (utente.getGenere()!=null)?utente.getGenere():"";%>
-                                                                        <!--<option selected disabled hidden value=<%=genere%> ><%=genere%></option>-->
+                                                                        <option value="" disabled selected><%=genere%></option>
                                                                         <option value="uomo">Uomo</option>
                                                                         <option value="donna">Donna</option>
                                                                         <option value="non specificare">Preferisco non specificarlo</option>
@@ -139,14 +139,14 @@
                                                                 <div class="form-group">
                                                                     <label>Indirizzo di residenza</label>
                                                                     <%String indirizzo = (utente.getIndirizzo()!=null)?utente.getIndirizzo(): " ";%>
-                                                                    <input class="form-control" type="text" placeholder=<%=indirizzo%> value=<%=indirizzo%> name="indirizzo">
+                                                                    <input class="form-control" type="text" placeholder="<%=indirizzo%>" value="<%=indirizzo%>" name="indirizzo">
                                                                 </div>
                                                             </div>
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Cap</label>
                                                                     <%String cap = (utente.getCap()!=null)?utente.getCap():"";%>
-                                                                    <input class="form-control" type="text" placeholder=<%=cap%> value=<%=cap%> name="cap">
+                                                                    <input class="form-control" type="text" placeholder="<%=cap%>" value="<%=cap%>" name="cap">
                                                                 </div>
                                                             </div>
                                                             <div class="col">
