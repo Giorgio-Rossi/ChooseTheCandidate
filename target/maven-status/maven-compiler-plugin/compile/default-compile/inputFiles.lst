@@ -4,7 +4,6 @@ c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\entity\RisposteDomande
 c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\entity\QuizDomande.java
 c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\entity\Citta.java
 c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\entity\UtenteQuiz.java
-c:\Users\ROSGIR\git\PW2\src\main\java\com\servlets\pw2\controller\CandidaturaRecente.java
 c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\impl\UtenteIMPL.java
 c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\entity\Quiz.java
 c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\impl\SkillIMPL.java
@@ -20,6 +19,7 @@ c:\Users\ROSGIR\git\PW2\src\main\java\com\servlets\pw2\controller\DbOperations.j
 c:\Users\ROSGIR\git\PW2\src\main\java\com\Filter\UserCheckFilter.java
 c:\Users\ROSGIR\git\PW2\src\main\java\com\autenticazione\Login.java
 c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\entity\Utente.java
+c:\Users\ROSGIR\git\PW2\src\main\java\com\servlets\pw2\controller\CandidaturaRecenteServlet.java
 c:\Users\ROSGIR\git\PW2\src\main\java\com\servlets\pw2\controller\ProfiloServlet.java
 c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\entity\CandidaturaUser.java
 c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\entity\Posizione.java

@@ -146,11 +146,22 @@ public class Utente {
 
 	@Override
 	public String toString() {
-		return "Utente [id_user=" + id_user + ", nome=" + nome + ", cognome=" + cognome + ", codice_fiscale="
-				+ codice_fiscale + ", email=" + email + ", data_nascita=" + data_nascita + ", indirizzo=" + indirizzo
-				+ ", id_citta=" + id_citta + ", cap=" + cap + ", telefono=" + telefono + ", ruolo_admin=" + ruolo_admin
-				+ ", password=" + password + "]";
+		return "Utente{" +
+				"id_user=" + id_user +
+				", nome='" + nome + '\'' +
+				", cognome='" + cognome + '\'' +
+				", codice_fiscale='" + codice_fiscale + '\'' +
+				", email='" + email + '\'' +
+				", data_nascita=" + data_nascita +
+				", indirizzo='" + indirizzo + '\'' +
+				", id_citta=" + id_citta +
+				", cap='" + cap + '\'' +
+				", telefono='" + telefono + '\'' +
+				", ruolo_admin='" + ruolo_admin + '\'' +
+				", password='" + password + '\'' +
+				", new_esperienza=" + new_esperienza +
+				", genere='" + genere + '\'' +
+				", foto_profilo='" + foto_profilo + '\'' +
+				'}';
 	}
-	
-
 }

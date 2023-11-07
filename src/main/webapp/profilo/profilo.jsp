@@ -1,9 +1,8 @@
 <%@ page import="com.candidatoDB.pw2.entity.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% Utente utente = (Utente) session.getAttribute("utente");
-    System.out.println(utente);
-
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+    System.out.println(utente.toString());
+%>
 
 
 <html>
@@ -78,7 +77,7 @@
                                         <div class="col-12 col-sm-auto mb-3">
                                             <%if(utente.getFoto_profilo()!=null){
                                             %>
-                                            <img src="../img/logoPag.png" alt="" height="150" class="rounded-3">
+                                            <img src=<%=request.getContextPath()+"/img/fotoprofili"+utente.getFoto_profilo()%> alt="" height="150" class="rounded-3">
                                             <%}else {
                                              %>
                                             <i class="bi bi-person-circle" style="margin-right: 5px;font-size: 150px"></i>
@@ -119,7 +118,8 @@
                                                                 <div class="form-group">
                                                                     <label>Genere</label>
                                                                     <select class="form-select" aria-label="Default select example" name="genere">
-                                                                        <option selected disabled hidden value=<%=utente.getGenere()%> ><%=utente.getGenere()%></option>
+                                                                        <%String genere = (utente.getGenere()!=null)?utente.getGenere():"";%>
+                                                                        <!--<option selected disabled hidden value=<%=genere%> ><%=genere%></option>-->
                                                                         <option value="uomo">Uomo</option>
                                                                         <option value="donna">Donna</option>
                                                                         <option value="non specificare">Preferisco non specificarlo</option>
@@ -138,7 +138,15 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Indirizzo di residenza</label>
-                                                                    <input class="form-control" type="text" placeholder=<%=utente.getIndirizzo()%> value=<%=utente.getIndirizzo()%> name="indirizzo">
+                                                                    <%String indirizzo = (utente.getIndirizzo()!=null)?utente.getIndirizzo(): " ";%>
+                                                                    <input class="form-control" type="text" placeholder=<%=indirizzo%> value=<%=indirizzo%> name="indirizzo">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Cap</label>
+                                                                    <%String cap = (utente.getCap()!=null)?utente.getCap():"";%>
+                                                                    <input class="form-control" type="text" placeholder=<%=cap%> value=<%=cap%> name="cap">
                                                                 </div>
                                                             </div>
                                                             <div class="col">
@@ -159,7 +167,8 @@
                                                                 <div class="form-group">
                                                                     <!-- gestire la citta con menu tendina -->
                                                                     <label>Città di nascita</label>
-                                                                    <input class="form-control" type="text" placeholder="<%=utente.getId_citta().getNome()%>" value="<%=utente.getId_citta().getNome()%>" name="citta">
+                                                                    <%String citta = (utente.getId_citta() !=null)?utente.getId_citta().getNome() :"";%>
+                                                                    <input class="form-control" type="text" placeholder="<%=citta%>" value="<%=citta%>" name="citta">
                                                                 </div>
                                                             </div>
                                                         </div>
