@@ -97,12 +97,22 @@
                                 <%
                                     if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){
                                 %>
-                                <div class="alert alert-success">
+                                <div class="alert alert-danger">
                                     <%= ErrorManager.getErrorMessage((HttpServletRequest) request)%>
                                 </div>
                                 <%
                                     };
                                 %>
+                                <%
+                                    if(!ErrorManager.getOtherMessage((HttpServletRequest) request).isEmpty()){
+                                %>
+                                <div class="alert alert-warning">
+                                    <%= ErrorManager.getOtherMessage((HttpServletRequest) request)%>
+                                </div>
+                                <%
+                                    };
+                                %>
+
                                 <div class="e-profile">
                                     <div class="row justify-content-center">
                                         <div class="col-12 col-sm-auto mb-3">

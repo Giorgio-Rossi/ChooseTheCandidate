@@ -40,6 +40,8 @@ public class ProfiloServlet extends HttpServlet {
 
         Utente utenteModificato = new Utente();
 
+        boolean isModified = false;
+
         utenteModificato.setId_user(utenteInSessione.getId_user());
         utenteModificato.setRuolo_admin(utenteInSessione.getRuolo_admin());
 
@@ -52,6 +54,7 @@ public class ProfiloServlet extends HttpServlet {
 
         if (!utenteInSessione.getNome().equals(req.getParameter("nome"))) {
             utenteModificato.setNome(req.getParameter("nome"));
+            isModified = true;
         } else {
             utenteModificato.setNome(utenteInSessione.getNome());
         }
@@ -59,6 +62,7 @@ public class ProfiloServlet extends HttpServlet {
 
         if (!utenteInSessione.getCognome().equals(req.getParameter("cognome"))) {
             utenteModificato.setCognome(req.getParameter("cognome"));
+            isModified = true;
         } else {
             utenteModificato.setCognome(utenteInSessione.getCognome());
         }
@@ -66,6 +70,7 @@ public class ProfiloServlet extends HttpServlet {
 
         if (!utenteInSessione.getCodice_fiscale().equals(req.getParameter("codice_fiscale"))) {
             utenteModificato.setCodice_fiscale(req.getParameter("codice_fiscale"));
+            isModified = true;
         } else {
             utenteModificato.setCodice_fiscale(utenteInSessione.getCodice_fiscale());
         }
@@ -73,6 +78,7 @@ public class ProfiloServlet extends HttpServlet {
 
         if (!utenteInSessione.getEmail().equals(req.getParameter("email"))) {
             utenteModificato.setEmail(req.getParameter("email"));
+            isModified = true;
         } else {
             utenteModificato.setEmail(utenteInSessione.getEmail());
         }
@@ -89,9 +95,9 @@ public class ProfiloServlet extends HttpServlet {
             throw new RuntimeException(e);
         }
 
-        //TODO IMPLEMENTARE LE  VALIDAZIONI
         if (!(utenteInSessione.getData_nascita().compareTo(data_nascita) == 0)) {
             utenteModificato.setData_nascita(new java.sql.Date(data_nascita.getTime()));
+            isModified = true;
         } else {
             utenteModificato.setData_nascita(utenteInSessione.getData_nascita());
         }
@@ -99,6 +105,7 @@ public class ProfiloServlet extends HttpServlet {
 
         if (!req.getParameter("indirizzo").isEmpty()) {
             utenteModificato.setIndirizzo(req.getParameter("indirizzo"));
+
         } else {
             utenteModificato.setIndirizzo(utenteInSessione.getIndirizzo());
         }
@@ -124,6 +131,7 @@ public class ProfiloServlet extends HttpServlet {
                 Regione regione = cittaIMPL.getRegione(id_regione);
                 Citta citta = new Citta(id_citta, regione, nome_citta);
                 utenteModificato.setId_citta(citta);
+                isModified = true;
             } else {
                 utenteModificato.setId_citta(utenteInSessione.getId_citta());
             }
@@ -132,6 +140,7 @@ public class ProfiloServlet extends HttpServlet {
 
         if (!utenteInSessione.getTelefono().equals(req.getParameter("telefono"))) {
             utenteModificato.setTelefono(req.getParameter("telefono"));
+            isModified = true;
         } else {
             utenteModificato.setTelefono(utenteInSessione.getTelefono());
         }
@@ -142,6 +151,7 @@ public class ProfiloServlet extends HttpServlet {
             if (oldpsw.equals(utenteInSessione.getPassword())) {
                 if (newpasw.equals(confirmpsw)) {
                     utenteModificato.setPassword(newpasw);
+                    isModified = true;
                 }
             } else {
                 System.out.println("error");
@@ -152,6 +162,7 @@ public class ProfiloServlet extends HttpServlet {
 
         if (req.getParameter("genere")!=null) {
             utenteModificato.setGenere(req.getParameter("genere"));
+            isModified = true;
         } else {
             utenteModificato.setGenere(utenteInSessione.getGenere());
         }
@@ -167,6 +178,7 @@ public class ProfiloServlet extends HttpServlet {
                 part.write(path);
                 System.out.println("File caricato correttamente" + path);
                 utenteModificato.setFoto_profilo("/"+ fileName);
+                isModified = true;
             } catch (Exception e) {
                 ErrorManager.setErrorMessage("Qualcosa è andato storto",req);
                 e.printStackTrace();
@@ -180,7 +192,13 @@ public class ProfiloServlet extends HttpServlet {
             utenteIMPL.update(utenteModificato);
             session.removeAttribute("utente");
             session.setAttribute("utente", utenteModificato);
-            ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
+            if(isModified){
+                System.out.println("qui");
+                ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
+            } else {
+                System.out.println("quo");
+                ErrorManager.setOtherMessage("Non hai modificato nulla!",req);
+            }
             req.getRequestDispatcher("/profilo/profilo.jsp").forward(req, resp);
         }
 
