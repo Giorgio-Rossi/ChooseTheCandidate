@@ -3,7 +3,7 @@ package com.candidatoDB.pw2.entity;
 public class Citta {
 	
 	private int id_citta;
-	private String regione;
+	private Regione regione;
 	private String nome;
 		
 	
@@ -12,7 +12,7 @@ public class Citta {
 	}
 
 
-	public Citta(int id_citta, String regione, String nome) {
+	public Citta(int id_citta, Regione regione, String nome) {
 		super();
 		this.id_citta = id_citta;
 		this.regione = regione;
@@ -26,10 +26,10 @@ public class Citta {
 	public void setId_citta(int id_citta) {
 		this.id_citta = id_citta;
 	}
-	public String getRegione() {
+	public Regione getRegione() {
 		return regione;
 	}
-	public void setRegione(String regione) {
+	public void setRegione(Regione regione) {
 		this.regione = regione;
 	}
 	public String getNome() {
