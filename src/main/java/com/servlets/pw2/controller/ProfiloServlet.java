@@ -105,7 +105,6 @@ public class ProfiloServlet extends HttpServlet {
 
         if (!req.getParameter("indirizzo").isEmpty()) {
             utenteModificato.setIndirizzo(req.getParameter("indirizzo"));
-
         } else {
             utenteModificato.setIndirizzo(utenteInSessione.getIndirizzo());
         }
