@@ -6,6 +6,7 @@ import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 public class DbOperations {
     private SQLServerConnection connection = new SQLServerConnection();
@@ -17,7 +18,6 @@ public class DbOperations {
 
 
     public Utente Autenticazione(String email, String password){
-        String[] ris= new String[3];
         Utente utente = new Utente();
         Integer id_utente = null;
         try{
@@ -27,17 +27,10 @@ public class DbOperations {
             ResultSet resultSet = result.executeQuery();
 
             if(resultSet.next()){
-                ris[0]= resultSet.getString("ruolo_admin");
-                ris[1]= resultSet.getString("nome");
-                //ris[2]= resultSet.getString("id_user");
                 id_utente = resultSet.getInt("id_user");
             }else {
-                ris[0] = "";
-                ris[1] = "";
-                ris[2] = "";
                 return utente;
             }
-            System.out.println(id_utente);
             UtenteIMPL utenteIMPL = new UtenteIMPL();
             utente = utenteIMPL.findById(id_utente);
 
@@ -46,4 +39,28 @@ public class DbOperations {
         }
         return utente;
     }
+
+
+    public boolean ChechUser(Utente utente){
+        boolean exists = false;
+        try{
+            result = connection.getConnection().prepareStatement("SELECT * FROM Utente where email=? or codice_fiscale=? or telefono=?");
+            result.setString(1,utente.getEmail());
+            result.setString(2,utente.getCodice_fiscale());
+            result.setString(3,utente.getTelefono());
+            ResultSet resultSet = result.executeQuery();
+
+            if(resultSet.next()){
+               exists = true;
+            }else {
+                return exists;
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return exists;
+    }
+
+
 }

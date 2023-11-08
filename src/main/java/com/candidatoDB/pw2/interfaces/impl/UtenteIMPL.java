@@ -22,33 +22,32 @@ public class UtenteIMPL implements UtenteDAO {
 
 	@Override
 	public void save(Utente utente) {
-		String sql = "INSERT INTO Utente(id_user,nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap,telefono,ruolo_admin,password) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO Utente(nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap,telefono,password) VALUES(?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
-			statement = connection.getConnection().prepareStatement(sql, new String[] { "id" });
-			statement.setInt(1, utente.getId_user());
-			statement.setString(2, utente.getNome());
-			statement.setString(3, utente.getCognome());
-			statement.setString(4, utente.getCodice_fiscale());
-			statement.setString(5, utente.getEmail());
-			statement.setDate(6, new java.sql.Date(utente.getData_nascita().getTime()));
-			statement.setInt(7, utente.getId_user());
-			statement.setString(8, utente.getIndirizzo());
-			statement.setInt(9, utente.getId_citta().getId_citta());
-			statement.setString(10, utente.getCap());
-			statement.setString(11, utente.getTelefono());
-			statement.setString(12, utente.getRuolo_admin());
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setString(1, utente.getNome());
+			statement.setString(2, utente.getCognome());
+			statement.setString(3, utente.getCodice_fiscale());
+			statement.setString(4, utente.getEmail());
+			statement.setDate(5, new java.sql.Date(utente.getData_nascita().getTime()));
+			statement.setString(6, utente.getIndirizzo());
+			if(utente.getId_citta()==null){
+				statement.setNull(7, Types.INTEGER);
+			}
+			statement.setString(8, utente.getCap());
+			statement.setString(9, utente.getTelefono());
+			statement.setString(10, utente.getPassword());
 			statement.executeUpdate();
-			resultSet = statement.getGeneratedKeys();
-			if (resultSet.next())
-				utente.setId_user(resultSet.getInt(1));
+			//resultSet = statement.getGeneratedKeys();
+
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 		} finally {
-			DBUtil.close(resultSet);
+			//DBUtil.close(resultSet);
 			DBUtil.close(statement);
-			DBUtil.close((Connection) connection);
+			//DBUtil.close((Connection) connection);
 		}
 	}
 

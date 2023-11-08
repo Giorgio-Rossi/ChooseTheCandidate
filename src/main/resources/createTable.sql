@@ -150,3 +150,5 @@ ALTER TABLE Utente
 
 ALTER TABLE Utente
     ADD    genere varchar(30)  check(genere in('uomo','donna','non specificare'));
+
+alter table utente add CONSTRAINT DF_Utenti_ruolo_admin DEFAULT 'user' for ruolo_admin;

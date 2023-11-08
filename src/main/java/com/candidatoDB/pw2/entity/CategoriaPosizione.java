@@ -1,5 +1,7 @@
 package com.candidatoDB.pw2.entity;
 
+import java.util.Objects;
+
 public class CategoriaPosizione {
 	
 	private int id_categoria;
@@ -32,5 +34,20 @@ public class CategoriaPosizione {
 	public String toString() {
 		return "CategoriaPosizione [id_categoria=" + id_categoria + ", descrizione=" + descrizione + "]";
 	}
+	
+	@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CategoriaPosizione that = (CategoriaPosizione) o;
+
+        return id_categoria == that.id_categoria;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id_categoria);
+    }
 	
 }

@@ -1,3 +1,4 @@
+<%@ page import="com.servlets.pw2.controller.ErrorManager" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"
 
 %>
@@ -22,32 +23,43 @@
 	</div>
 	<div class="bottom">
 		<div class="formRegistra">
-			<form method="post" id="form1" action="${pageContext.request.contextPath}/registrazione" >
+			<form method="post" action="${pageContext.request.contextPath}/registrazione" >
 
 				<!-- <form method="get" id="form1" action="something.php">
                 </form>
                 <button type="submit" form="form1">Click me!</button> -->
 				<div class="formleft">
+					<%
+						if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){
+					%>
+					<div class="alert_alert-danger" role="alert">
+						<%= ErrorManager.getErrorMessage((HttpServletRequest) request)%>
+					</div>
+					<%
+						};
+					%>
 
-					<input type="text"  name="nome" placeholder="Nome"  required><br>
-					<input type="text"  name="data_nascita" placeholder="Data Nascita" onfocus="(this.type='date')" min="1900-01-01" max="2023-12-31" style="width:105%;" required><br>
-					<input type="text"  name="email" placeholder="Email"  required><br>
-					<input type="text"  name="password" placeholder="Password"  required><br>
+					<input type="text"  name="nome" id="nome" placeholder="Nome"  required><br>
+					<input type="text"  name="data_nascita" id="data_nascita" placeholder="Data Nascita" onfocus="(this.type='date')" min="1900-01-01" max="2023-12-31" style="width:105%;" required><br>	
+					<!--<input type="text"  name="data_nascita" placeholder="Data Nascita" pattern="[1920-2023]{4}[1-12]{2}[1-31]{2}" 
+					style="width:105%;" required><br>-->
+					<input type="text"  name="email" id="email" placeholder="Email"  required><br>
+					<input type="text"  name="password" id="password" placeholder="Password"  required><br>
 
 				</div>
 				<div class="bottomRegister">
 
-					<button type="submit" class="registrati" form="form1" >Conferma</button>
+					<button type="submit" class="registrati">Conferma</button>
 					<div class="linksLog" style="padding-top: 4%;">
 						<p>Sei già registrato? <a href="${pageContext.request.contextPath}/login.jsp"><b>Torna al login</b></a></p>
 					</div>
 				</div>
 				<div class="formright">
 
-					<input type="text"  name="cognome" placeholder="Cognome"  required><br>
-					<input type="text" name="codice_fiscale" placeholder="Codice Fiscale"  required><br>
-					<input type="tel" name="telefono" pattern="\+39 \(0\)[0-9]{3} [0-9]{7}" placeholder="Numero telefono"><br>
-					<input type="text" name="check_password" placeholder="Password"  required><br>
+					<input type="text" name="cognome" id="cognome" placeholder="Cognome"  required><br>
+					<input type="text" name="codice_fiscale" id="codice_fiscale" placeholder="Codice Fiscale"  required><br>
+					<input type="text" name="telefono" id="telefono" placeholder="Numero telefono"><br>
+					<input type="text" name="check_password" id="check_password" placeholder="Password"  required><br>
 
 				</div>
 			</form>

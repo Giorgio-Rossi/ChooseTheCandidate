@@ -25,6 +25,16 @@
 				<input type="password" name="password" required placeholder="Password"/><br>
 			</div>
 				<%
+				if(!ErrorManager.getSUccessMessage((HttpServletRequest) request).isEmpty()){
+				%>
+				<div class="alert_alert-success">
+					<%= ErrorManager.getSUccessMessage((HttpServletRequest) request)%>
+				</div>
+				<%
+				};
+				%>
+
+				<%
 				if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){
 				%>
 			<div class="alert_alert-danger" role="alert">
