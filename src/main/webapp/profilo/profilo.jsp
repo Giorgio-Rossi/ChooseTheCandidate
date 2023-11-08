@@ -184,7 +184,7 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Telefono</label>
-                                                                    <input class="form-control" type="tel" pattern="\+39 \(0\)[0-9]{3} [0-9]{7}" placeholder=<%=utente.getTelefono()%> value=<%=utente.getTelefono()%> name="telefono">
+                                                                    <input class="form-control" type="tel"  placeholder=<%=utente.getTelefono()%> value=<%=utente.getTelefono()%> name="telefono">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -192,14 +192,24 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Codice Fiscale</label>
-                                                                    <input class="form-control" type="text" pattern="^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$" placeholder=<%=utente.getCodice_fiscale()%> value=<%=utente.getCodice_fiscale()%> name="codice_fiscale">
+                                                                    <input class="form-control" type="text"  placeholder=<%=utente.getCodice_fiscale()%> value=<%=utente.getCodice_fiscale()%> name="codice_fiscale">
                                                                 </div>
                                                             </div>
                                                             <div class="col">
                                                                 <div class="form-group">
-                                                                    <%String citta = (utente.getId_citta() !=null)?utente.getId_citta().getNome() :"";%>
+                                                                    <%Citta citta = (utente.getId_citta() !=null)?utente.getId_citta() :null;
+                                                                    %>
                                                                     <label>Città di nascita</label>
                                                                     <select class="form-select" aria-label="Default select example" name="citta">
+
+                                                                        <%
+                                                                            if(citta!=null){
+
+                                                                        %>
+                                                                        <option value="<%=citta.getId_citta()+" "+citta.getRegione().getId_regione()+" "+citta.getNome()%>" selected><%=utente.getId_citta().getNome()%></option>
+                                                                        <%
+                                                                            };
+                                                                        %>
                                                                         <%
                                                                             for(Regione r : regioni) {
                                                                             %>
@@ -208,7 +218,7 @@
                                                                                     for(Citta c : cities){
                                                                                      if(c.getRegione().getNome().equals(r.getNome())){
                                                                                          %>
-                                                                                        <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                                        <option value="<%=c.getId_citta()+" "+r.getId_regione()+" "+c.getNome()%>"><%=c.getNome()%></option>
                                                                             <%
                                                                                      }
                                                                                     }

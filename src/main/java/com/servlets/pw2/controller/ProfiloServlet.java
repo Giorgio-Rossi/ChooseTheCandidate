@@ -1,7 +1,9 @@
 package com.servlets.pw2.controller;
 
 import com.candidatoDB.pw2.entity.Citta;
+import com.candidatoDB.pw2.entity.Regione;
 import com.candidatoDB.pw2.entity.Utente;
+import com.candidatoDB.pw2.interfaces.impl.CittaIMPL;
 import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
 
 import javax.servlet.RequestDispatcher;
@@ -111,13 +113,21 @@ public class ProfiloServlet extends HttpServlet {
 
 
         //TODO GESTIRE LE CITTA con tendina
-        /*
-        if(!utenteInSessione.getId_citta().getNome().equals(req.getParameter("id_citta"))){
-            utenteModificato.setNome(req.getParameter("id_citta"));
-        }else{
-            utenteModificato.setId_citta(utenteInSessione.getId_citta());
-        }*/
 
+        if(req.getParameter("citta")!=null){
+            Integer id_citta = Integer.valueOf(req.getParameter("citta").split(" ", 3)[0]);
+            Integer id_regione = Integer.valueOf(req.getParameter("citta").split(" ", 3)[1]);
+            String nome_citta = req.getParameter("citta").split(" ", 3)[2];
+
+            if ((utenteInSessione.getId_citta().getId_citta() != id_citta)) {
+                CittaIMPL cittaIMPL = new CittaIMPL();
+                Regione regione = cittaIMPL.getRegione(id_regione);
+                Citta citta = new Citta(id_citta, regione, nome_citta);
+                utenteModificato.setId_citta(citta);
+            } else {
+                utenteModificato.setId_citta(utenteInSessione.getId_citta());
+            }
+        }
 
 
         if (!utenteInSessione.getTelefono().equals(req.getParameter("telefono"))) {

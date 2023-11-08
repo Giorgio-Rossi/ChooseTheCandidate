@@ -40,11 +40,11 @@
 					%>
 
 					<input type="text"  name="nome" id="nome" placeholder="Nome"  required><br>
-					<input type="text"  name="data_nascita" id="data_nascita" placeholder="Data Nascita" onfocus="(this.type='date')" min="1900-01-01" max="2023-12-31" style="width:105%;" required><br>	
+					<input type="text"  name="data_nascita" id="data_nascita" placeholder="Data Nascita" onfocus="(this.type='date')" min="1930-01-01" max="2023-12-31" style="width:105%;" required><br>	
 					<!--<input type="text"  name="data_nascita" placeholder="Data Nascita" pattern="[1920-2023]{4}[1-12]{2}[1-31]{2}" 
 					style="width:105%;" required><br>-->
-					<input type="text"  name="email" id="email" placeholder="Email"  required><br>
-					<input type="text"  name="password" id="password" placeholder="Password"  required><br>
+					<input type="email"  name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" id="email" placeholder="Email"  required><br>
+					<input type="password"  name="password" id="password" placeholder="Password"  required><br>
 
 				</div>
 				<div class="bottomRegister">
@@ -57,9 +57,9 @@
 				<div class="formright">
 
 					<input type="text" name="cognome" id="cognome" placeholder="Cognome"  required><br>
-					<input type="text" name="codice_fiscale" id="codice_fiscale" placeholder="Codice Fiscale"  required><br>
-					<input type="text" name="telefono" id="telefono" placeholder="Numero telefono"><br>
-					<input type="text" name="check_password" id="check_password" placeholder="Password"  required><br>
+					<input type="text" name="codice_fiscale" pattern="^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$" id="codice_fiscale" placeholder="Codice Fiscale"  required><br>
+					<input type="tel" name="telefono" id="telefono" pattern="[0-9]{10}" placeholder="Numero telefono"><br>
+					<input type="password" name="check_password" id="check_password" placeholder="Password"  required><br>
 
 				</div>
 			</form>

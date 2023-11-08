@@ -66,7 +66,10 @@ public class UtenteIMPL implements UtenteDAO {
 			statement.setDate(5, new java.sql.Date(utente.getData_nascita().getTime()));
 			statement.setString(6, utente.getIndirizzo());
 			if(utente.getId_citta()==null){
+				System.out.println("è nulla");
 				statement.setNull(7, Types.INTEGER);
+			}else{
+				statement.setInt(7,utente.getId_citta().getId_citta());
 			}
 			statement.setString(8, utente.getCap());
 			statement.setString(9, utente.getTelefono());
@@ -204,7 +207,7 @@ public class UtenteIMPL implements UtenteDAO {
 	@Override
 	public Citta getUserCitta(Utente utente) {
 		Citta cittaUtente = new Citta();
-		String sql = "SELECT Citta.nome, Citta.id_citta, Citta.regione from Citta inner join Utente on Citta.id_citta = Utente.id_citta where Utente.id_user=?";
+		String sql = "SELECT Citta.nome, Citta.id_citta, Citta.id_regione from Citta inner join Utente on Citta.id_citta = Utente.id_citta where Utente.id_user=?";
 
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
