@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-@Override
-=======
 package com.candidatoDB.pw2.interfaces.impl;
 
 import java.sql.Connection;
@@ -155,7 +152,6 @@ public class PosizioneIMPL implements PosizioneDAO {
 }
 
 	@Override
->>>>>>> 5255905148bb1bcdd53a63fecc857181d8e97c81
 	public List<Posizione> findPosizioniPiuRecenti() {
 		
 		    List<Posizione> posizioni = new ArrayList<>();
@@ -174,7 +170,6 @@ public class PosizioneIMPL implements PosizioneDAO {
 		        resultSet = statement.executeQuery();
  
 		        while (resultSet.next()) {
-<<<<<<< HEAD
 		        	Posizione posizione = new Posizione();
 	        		posizione.setId_posizione(resultSet.getInt(1));
 					posizione.setN_ammissioni(resultSet.getInt(2));
@@ -200,24 +195,23 @@ public class PosizioneIMPL implements PosizioneDAO {
 		
  
 		       
-=======
-		            Posizione posizione = new Posizione();
+		            //Posizione posizione = new Posizione();
 		            posizione.setId_posizione(resultSet.getInt("id_posizione"));
 		            posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
 		            posizione.setDescrizione(resultSet.getString("descrizione"));
 
-		            Citta citta = new Citta();
+		            //Citta citta = new Citta();
 		            citta.setId_citta(resultSet.getInt("id_citta"));
 		            citta.setRegione(resultSet.getString("regione"));
 		            citta.setNome(resultSet.getString("nome"));
 		            posizione.setCitta(citta);
 
-		            CategoriaPosizione categoria = new CategoriaPosizione();
+		            //CategoriaPosizione categoria = new CategoriaPosizione();
 		            categoria.setId_categoria(resultSet.getInt("id_categoria"));
 		            categoria.setDescrizione(resultSet.getString("descrizione"));
 		            posizione.setCategoria(categoria);
 
-		            int idQuiz = resultSet.getInt("id_quiz");
+		            //int idQuiz = resultSet.getInt("id_quiz");
 		            if (!resultSet.wasNull()) {
 		                Quiz quiz = new Quiz();
 		                quiz.setId_quiz(idQuiz);
@@ -231,7 +225,6 @@ public class PosizioneIMPL implements PosizioneDAO {
 		            posizione.setRuolo(resultSet.getString("ruolo"));
 
 		            posizioni.add(posizione);
->>>>>>> 5255905148bb1bcdd53a63fecc857181d8e97c81
 		        }
 		    } catch (SQLException e) {
 		        e.printStackTrace();
@@ -243,9 +236,6 @@ public class PosizioneIMPL implements PosizioneDAO {
 		    }
  
 		    return posizioni;
-<<<<<<< HEAD
-		}
-=======
 		}
 
 	@Override
@@ -310,4 +300,4 @@ public class PosizioneIMPL implements PosizioneDAO {
 }
 
 	
->>>>>>> 5255905148bb1bcdd53a63fecc857181d8e97c81
+
