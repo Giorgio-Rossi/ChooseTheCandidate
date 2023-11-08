@@ -44,6 +44,25 @@ public class Citta {
 	}
 
 	
-	
-	 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Citta citta = (Citta) o;
+
+        if (nome != null ? !nome.equals(citta.nome) : citta.nome != null) return false;
+        if (regione != null ? !regione.equals(citta.regione) : citta.regione != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = nome != null ? nome.hashCode() : 0;
+        result = 31 * result + (regione != null ? regione.hashCode() : 0);
+        return result;
+    }
 }
+	 
+
