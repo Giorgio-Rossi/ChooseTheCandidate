@@ -21,7 +21,7 @@
 		<h3>Log in</h3>
 		<form  method="post" id="form1" action="${pageContext.request.contextPath}/login">
 			<div class="formLogin">
-				<input type="email" name="email" required placeholder="Email"/><br>
+				<input type="email" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required placeholder="Email"/><br>
 				<input type="password" name="password" required placeholder="Password"/><br>
 			</div>
 				<%

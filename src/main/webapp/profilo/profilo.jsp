@@ -173,13 +173,13 @@
                                                                 <div class="form-group">
                                                                     <label>Cap</label>
                                                                     <%String cap = (utente.getCap()!=null)?utente.getCap():"";%>
-                                                                    <input class="form-control" type="text" placeholder="<%=cap%>" value="<%=cap%>" name="cap">
+                                                                    <input class="form-control" type="text" pattern="[0-9]{5}" placeholder="<%=cap%>" value="<%=cap%>" name="cap">
                                                                 </div>
                                                             </div>
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Telefono</label>
-                                                                    <input class="form-control" type="tel" placeholder=<%=utente.getTelefono()%> value=<%=utente.getTelefono()%> name="telefono">
+                                                                    <input class="form-control" type="tel" pattern="\+39 \(0\)[0-9]{3} [0-9]{7}" placeholder=<%=utente.getTelefono()%> value=<%=utente.getTelefono()%> name="telefono">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -187,7 +187,7 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Codice Fiscale</label>
-                                                                    <input class="form-control" type="text" placeholder=<%=utente.getCodice_fiscale()%> value=<%=utente.getCodice_fiscale()%> name="codice_fiscale">
+                                                                    <input class="form-control" type="text" pattern="^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$" placeholder=<%=utente.getCodice_fiscale()%> value=<%=utente.getCodice_fiscale()%> name="codice_fiscale">
                                                                 </div>
                                                             </div>
                                                             <div class="col">
@@ -355,7 +355,7 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Email</label>
-                                                                    <input class="form-control" type="email" placeholder=<%=utente.getEmail()%> value=<%=utente.getEmail()%> name="email" required>
+                                                                    <input class="form-control" type="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" placeholder=<%=utente.getEmail()%> value=<%=utente.getEmail()%> name="email" required>
                                                                 </div>
                                                             </div>
                                                         </div>
