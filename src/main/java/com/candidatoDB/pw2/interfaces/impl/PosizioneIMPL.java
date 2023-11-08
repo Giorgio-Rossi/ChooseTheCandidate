@@ -26,7 +26,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 	public List<Posizione> searchByCity(Citta citta) {
 		List<Posizione> posizioni = new ArrayList<>();
 
-		String sql = "SELECT * FROM Posizione WHERE id_citta =?";
+		String sql = "SELECT * FROM Posizione p INNER JOIN Citta c ON p.id_citta = c.id_citta WHERE p.id_citta =?";
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
@@ -112,7 +112,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 	public List<Posizione> searchByCategoria(CategoriaPosizione categoria) {
         List<Posizione> posizioni = new ArrayList<>();
       
-        String sql = "SELECT * FROM Posizione WHERE id_Categoria = ?";
+        String sql = "SELECT * FROM Posizione p INNER JOIN CategoriaPosizione cp ON p.id_categoria = cp.id_categoria  WHERE cp.id_categoria = ?";
         PreparedStatement statement = null;
 		ResultSet resultSet = null;
         try {
