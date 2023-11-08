@@ -1,45 +1,46 @@
-<%@ page import="com.candidatoDB.pw2.entity.Posizione"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@page import="com.candidatoDB.pw2.entity.Citta"%>
-<%@page import="com.candidatoDB.pw2.entity.CategoriaPosizione"%>
-<%@page import="com.candidatoDB.pw2.entity.Quiz"%>
-<%@ page import="java.util.List"%>
-<%@ page import="java.util.ArrayList"%>
+<%@ page import="com.candidatoDB.pw2.entity.Posizione" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.candidatoDB.pw2.entity.Citta" %>
+<%@ page import="com.candidatoDB.pw2.entity.CategoriaPosizione" %>
+<%@ page import="com.candidatoDB.pw2.entity.Quiz" %>
+
 <html>
 <head>
-<title>Risultati Ricerca Posizioni</title>
+    <title>Risultati Ricerca Posizioni</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/homeuser.css">
 </head>
 <body>
-	<h1>Risultati della Ricerca delle Posizioni</h1>
+<div class="container">
+    <h1>Risultati della Ricerca delle Posizioni</h1>
 
-	<%
-	List<Posizione> risultatiRicerca = (List<Posizione>) request.getAttribute("risultatiRicerca");
-	if (risultatiRicerca != null && !risultatiRicerca.isEmpty()) {
-	%>
-	<table>
-		<tr>
-			<th>ID Posizione</th>
-			<th>Descrizione</th>
-			<!-- altre colonne  -->
-		</tr>
-		<%
-		for (Posizione posizione : risultatiRicerca) {
-		%>
-		<tr>
-			<td><%=posizione.getId_posizione()%></td>
-			<td><%=posizione.getDescrizione()%></td>
-		
-		</tr>
-		<%
-		}
-		%>
-	</table>
-	<%
-	} else {
-	%>
-	<p>Nessun risultato trovato.</p>
-	<%
-	}
-	%>
+    <%
+        List<Posizione> risultatiRicerca = (List<Posizione>) request.getAttribute("risultatiRicerca");
+
+        if (risultatiRicerca != null && !risultatiRicerca.isEmpty()) {
+    %>
+    <div class="results">
+        <%
+        for (Posizione posizione : risultatiRicerca) {
+        %>
+        <div class="result-item">
+            <h3><%= posizione.getDescrizione() %></h3>
+            <p>Ruolo: <%= posizione.getRuolo() %></p>
+            <p>Categoria: <%= posizione.getCategoria().getDescrizione() %></p>
+            <p>Città: <%= posizione.getCitta().getNome() %></p>
+        </div>
+        <%
+        }
+        %>
+    </div>
+    <%
+        } else {
+    %>
+    <p>Nessun risultato trovato.</p>
+    <%
+        }
+    %>
+</div>
+
 </body>
 </html>

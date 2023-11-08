@@ -1,5 +1,6 @@
 package com.servlets.pw2.controller;
 
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,7 @@ import com.candidatoDB.pw2.entity.Posizione;
 import com.candidatoDB.pw2.interfaces.impl.PosizioneIMPL;
 
 @WebServlet("/RicercaPosizioniServlet")
-public class RicercaPosizioniServelt extends HttpServlet {
+public class RicercaPosizioniServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -25,11 +26,17 @@ public class RicercaPosizioniServelt extends HttpServlet {
         String cittaId = request.getParameter("citta");
         String categoriaId = request.getParameter("categoria");
 
-        Citta citta = new Citta();
-        citta.setId_citta(Integer.parseInt(cittaId));
-
+        Citta citta = null;
         CategoriaPosizione categoria = new CategoriaPosizione();
-        categoria.setId_categoria(Integer.parseInt(categoriaId));
+
+        if (cittaId != null && !cittaId.isEmpty()) {
+            citta = new Citta();
+            citta.setId_citta(Integer.parseInt(cittaId));
+        }
+
+        if (categoriaId != null && !categoriaId.isEmpty()) {
+            categoria.setId_categoria(Integer.parseInt(categoriaId));
+        }
 
         PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
         List<Posizione> risultatiRicerca = posizioneIMPL.searchByFilters(ruolo, citta, categoria);
@@ -37,7 +44,6 @@ public class RicercaPosizioniServelt extends HttpServlet {
         if (risultatiRicerca != null && !risultatiRicerca.isEmpty()) {
             request.setAttribute("risultatiRicerca", risultatiRicerca);
         } else {
-            
             request.setAttribute("risultatiRicerca", new ArrayList<Posizione>());
         }
 
