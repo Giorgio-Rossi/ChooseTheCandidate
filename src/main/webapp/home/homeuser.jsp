@@ -43,7 +43,7 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 						class="list-group-item list-group-item-action py-2 ripple"><i
 						class="bi bi-file-earmark-person"
 						style="margin-right: 5px; font-size: 20px"></i><span>Curriculum</span></a>
-					<a href="${pageContext.request.contextPath}/risultatiRicerca.jsp"
+					<a href="${pageContext.request.contextPath}/ricercaPosizioni.jsp"
 						class="list-group-item list-group-item-action py-2 ripple"> <i
 						class="bi bi-search" style="margin-right: 5px; font-size: 20px"></i>
 						<span>Ricerca Posizioni</span>
