@@ -173,10 +173,9 @@ public class PosizioneIMPL implements PosizioneDAO {
  
 		        while (resultSet.next()) {
 
-		        
-		
- 
+
 		            Posizione posizione = new Posizione();
+
 		            posizione.setId_posizione(resultSet.getInt("id_posizione"));
 		            posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
 		            posizione.setDescrizione(resultSet.getString("descrizione"));
@@ -218,9 +217,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 		    }
  
 		    return posizioni;
-
-		}
-
+	}
 
 	@Override
 	public List<Posizione> searchByFilters(String ruolo, Citta citta, CategoriaPosizione categoria) {
@@ -282,4 +279,5 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 
 }
+
 
