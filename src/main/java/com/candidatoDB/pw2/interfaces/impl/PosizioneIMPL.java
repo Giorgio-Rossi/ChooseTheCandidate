@@ -182,7 +182,8 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 		            Citta citta = new Citta();
 		            citta.setId_citta(resultSet.getInt("id_citta"));
-		            citta.setRegione(resultSet.getString("regione"));
+					CittaIMPL cittaIMPL = new CittaIMPL();
+		            citta.setRegione(cittaIMPL.getRegione(resultSet.getInt("id_regione")));
 		            citta.setNome(resultSet.getString("nome"));
 		            posizione.setCitta(citta);
 

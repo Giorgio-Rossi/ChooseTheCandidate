@@ -216,7 +216,8 @@ public class UtenteIMPL implements UtenteDAO {
 			while (resultSet.next()) {
 				cittaUtente.setNome(resultSet.getString(1));
 				cittaUtente.setId_citta(resultSet.getInt(2));
-				cittaUtente.setRegione(resultSet.getString(3));
+				CittaIMPL cittaIMPL = new CittaIMPL();
+				cittaUtente.setRegione(cittaIMPL.getRegione(resultSet.getInt(3)));
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());

@@ -6,8 +6,9 @@ descrizione varchar(70)
  
 create table Citta(
 id_citta int identity not null primary key,
-regione varchar(70),
-nome varchar(50) not null
+id_regione int,
+nome varchar(50) not null,
+CONSTRAINT FK_citta_regione FOREIGN KEY (id_regione) REFERENCES Regione (id_regione)
 )
  
 create table Utente(
@@ -81,7 +82,7 @@ scelta1 varchar(150) not null,
 scelta2 varchar(150),
 scelta3 varchar(150),
 scelta4 varchar(150),
-scelta_corretta smallint check(scelta_corretta in('scelta1','scelta2','scelta3','scelta4')),
+scelta_corretta varchar(150) check(scelta_corretta in('scelta1','scelta2','scelta3','scelta4')),
 id_domanda int not null,
  
 CONSTRAINT FK_Risposte_Domanda FOREIGN KEY (id_domanda) REFERENCES Domanda (id_domanda),
@@ -149,6 +150,12 @@ ALTER TABLE Utente
     ADD foto_profilo varchar(100);
 
 ALTER TABLE Utente
-    ADD    genere varchar(30)  check(genere in('uomo','donna','non specificare'));
+    ADD  genere varchar(30)  check(genere in('uomo','donna','non specificare'));
 
 alter table utente add CONSTRAINT DF_Utenti_ruolo_admin DEFAULT 'user' for ruolo_admin;
+
+create table Regione(
+          id_regione int identity not null primary key,
+          nome varchar(50) not null,
+)
+
