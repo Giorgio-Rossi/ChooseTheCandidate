@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -212,33 +213,58 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 	@Override
 	public List<Posizione> searchByFilters(String ruolo, Citta citta, CategoriaPosizione categoria) {
-		List<Posizione> posizioni = new ArrayList<>();
+		  List<Posizione> posizioni = new ArrayList<>();
+		    String sql = "SELECT * FROM Posizione WHERE (ruolo = ? OR ? IS NULL OR ruolo = '') AND (id_citta = ? OR ? IS NULL) AND (id_categoria = ? OR ? IS NULL)";
 
-		String sql = "SELECT * FROM Posizione WHERE (ruolo = ? OR ? IS NULL) " + "AND (id_citta = ? OR ? IS NULL) "
-				+ "AND (id_categoria = ? OR ? IS NULL)";
-		PreparedStatement statement = null;
-		ResultSet resultSet = null;
+		    PreparedStatement statement = null;
+		    ResultSet resultSet = null;
 
-		try {
-			statement = connection.getConnection().prepareStatement(sql);
-			statement.setString(1, ruolo);
-			statement.setString(2, ruolo);
-			statement.setObject(3, citta);
-			statement.setObject(4, citta);
-			statement.setObject(5, categoria);
-			statement.setObject(6, categoria);
+		    try {
+		        connection.Connect();
+		        statement = connection.getConnection().prepareStatement(sql);
+		        statement.setString(1, ruolo);
+		        statement.setString(2, ruolo);
+		        if (citta != null) {
+		            statement.setInt(3, citta.getId_citta());
+		            statement.setInt(4, citta.getId_citta());
+		        } else {
+		            statement.setNull(3, Types.INTEGER);
+		            statement.setNull(4, Types.INTEGER);
+		        }
+		        if (categoria != null) {
+		            statement.setInt(5, categoria.getId_categoria());
+		            statement.setInt(6, categoria.getId_categoria());
+		        } else {
+		            statement.setNull(5, Types.INTEGER);
+		            statement.setNull(6, Types.INTEGER);
+		        }
 
-			resultSet = statement.executeQuery();
+		        resultSet = statement.executeQuery();
 
-		} catch (SQLException e) {
-			System.err.println(e.getMessage());
-		} finally {
-			DBUtil.close(resultSet);
-			DBUtil.close(statement);
-			// DBUtil.close((Connection) connection);
+		        while (resultSet.next()) {
+		            Posizione posizione = new Posizione();
+		            posizione.setId_posizione(resultSet.getInt(1));
+		            posizione.setN_ammissioni(resultSet.getInt(2));
+		            posizione.setDescrizione(resultSet.getString(3));
+		            Citta posizioneCitta = new Citta();
+		            posizioneCitta.setId_citta(resultSet.getInt(4));
+		            posizione.setCitta(posizioneCitta);
+		            CategoriaPosizione categoriaPosizione = new CategoriaPosizione();
+		            categoriaPosizione.setId_categoria(resultSet.getInt(5));
+		            posizione.setCategoria(categoriaPosizione);
+		           
+
+		            posizioni.add(posizione);
+		        }
+		    } catch (SQLException e) {
+		        System.err.println(e.getMessage());
+		    } finally {
+		        DBUtil.close(resultSet);
+		        DBUtil.close(statement);
+		     //   DBUtil.close((Connection) connection);
+		    }
+
+		    return posizioni;
 		}
-
-		return posizioni;
-	}
 
 }
