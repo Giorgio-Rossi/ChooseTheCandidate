@@ -215,7 +215,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 	@Override
 	public List<Posizione> searchByFilters(String ruolo, Citta citta, CategoriaPosizione categoria) {
-<<<<<<< HEAD
+
 		  List<Posizione> posizioni = new ArrayList<>();
 		    String sql = "SELECT * FROM Posizione WHERE (ruolo = ? OR ? IS NULL OR ruolo = '') AND (id_citta = ? OR ? IS NULL) AND (id_categoria = ? OR ? IS NULL)";
 
@@ -269,10 +269,8 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 		    return posizioni;
 		}
-=======
-		return null;
-	}
->>>>>>> branch 'master' of https://github.com/Lollof00/PW2.git
+
+
 
 }
 
