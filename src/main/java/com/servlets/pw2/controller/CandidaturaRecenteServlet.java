@@ -3,6 +3,7 @@ package com.servlets.pw2.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +14,7 @@ import com.candidatoDB.pw2.entity.CandidaturaUser;
 import com.candidatoDB.pw2.entity.Utente;
 import com.candidatoDB.pw2.interfaces.impl.CandidaturaIMPL;
 
-@WebServlet("/candidaturaRecente")
+@WebServlet( value="/candidaturaRecente")
 public class CandidaturaRecenteServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -31,8 +32,13 @@ public class CandidaturaRecenteServlet extends HttpServlet {
             System.out.println(candidaturaPiuRecente);
         }
 
+
+        request.getRequestDispatcher("jsp/candidaturaPiuRecente.jsp");
+
+
         request.getRequestDispatcher("/candidaturaPiuRecente.jsp").forward(request, response);
         System.out.println("sono qui");
+
     }
 }
 

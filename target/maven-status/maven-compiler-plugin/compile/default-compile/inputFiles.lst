@@ -1,3 +1,40 @@
+<<<<<<< HEAD
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\UtenteDAO.java
+c:\Users\balcla\git\PW2\src\main\java\com\logout\Logout.java
+c:\Users\balcla\git\PW2\src\main\java\com\autenticazione\Registrazione.java
+c:\Users\balcla\git\PW2\src\main\java\com\Filter\UserCheckFilter.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\entity\QuizDomande.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\entity\Esperienza.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\entity\Posizione.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\entity\RisposteDomande.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\SkillDAO.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\entity\Skill.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\entity\UsersSkills.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\impl\CandidaturaIMPL.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\entity\Istruzione.java
+c:\Users\balcla\git\PW2\src\main\java\com\servlets\pw2\controller\ProfiloServlet.java
+c:\Users\balcla\git\PW2\src\main\java\com\servlets\pw2\controller\ErrorManager.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\entity\CategoriaPosizione.java
+c:\Users\balcla\git\PW2\src\main\java\com\servlets\pw2\controller\SQLServerConnection.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\impl\UtenteIMPL.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\entity\CandidaturaUser.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\EsperienzaDAO.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\entity\Citta.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\entity\Domanda.java
+c:\Users\balcla\git\PW2\src\main\java\com\servlets\pw2\controller\CandidaturaRecenteServlet.java
+c:\Users\balcla\git\PW2\src\main\java\com\servlets\pw2\controller\DBUtil.java
+c:\Users\balcla\git\PW2\src\main\java\com\servlets\pw2\controller\DbOperations.java
+c:\Users\balcla\git\PW2\src\main\java\com\servlets\pw2\controller\CandidatureEffettuateServlet.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\CandidaturaDAO.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\entity\Quiz.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\entity\UtenteQuiz.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\impl\SkillIMPL.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\PosizioneDAO.java
+c:\Users\balcla\git\PW2\src\main\java\com\autenticazione\Login.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\entity\Utente.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\impl\PosizioneIMPL.java
+c:\Users\balcla\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\impl\EsperienzaIMPL.java
+=======
 c:\Users\ROSGIR\git\PW2\src\main\java\com\servlets\pw2\controller\DBUtil.java
 c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\PosizioneDAO.java
 c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\entity\RisposteDomande.java
@@ -33,3 +70,4 @@ c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\UtenteDAO.j
 c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\entity\Esperienza.java
 c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\impl\PosizioneIMPL.java
 c:\Users\ROSGIR\git\PW2\src\main\java\com\candidatoDB\pw2\interfaces\SkillDAO.java
+>>>>>>> 2ea47331ed52a79b6be9f35833a49ec1fa2b1c14
