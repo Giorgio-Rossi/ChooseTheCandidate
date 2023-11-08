@@ -1,30 +1,36 @@
-USE ProjectWork2
 create table CategoriaPosizione(
 id_Categoria int identity not null primary key,
 descrizione varchar(70)
-);
- 
+)
+
+create table Regione(
+id_regione int identity not null primary key,
+nome varchar(50) not null,
+)
+
 create table Citta(
 id_citta int identity not null primary key,
-regione varchar(70),
-nome varchar(50) not null
+id_regione int,
+nome varchar(50) not null,
+CONSTRAINT FK_citta_regione FOREIGN KEY (id_regione) REFERENCES Regione (id_regione)
 )
- 
+
+
 create table Utente(
 id_user int identity not null primary key,
-nome varchar(20) not null,
-cognome varchar(40) not null,
+nome varchar(50) not null,
+cognome varchar(50) not null,
 codice_fiscale varchar(16),
-email varchar(30) not null,
+email varchar(50) not null,
 data_nascita datetime,
-indirizzo varchar(50),
+indirizzo varchar(100),
 id_citta int,
 cap varchar(5),
-telefono varchar(9),
-ruolo_admin varchar(10) not null check(ruolo_admin in('user','admin')),
+telefono varchar(10),
+ruolo_admin varchar(50) not null check(ruolo_admin in('user','admin')) CONSTRAINT FK_DFUtenti_Admin default 'user',
 password varchar(70) not null,
 foto_profilo varchar(100),
-genere varchar(30)  check(genere in('uomo','donna','non specificare')),
+genere varchar(50)  check(genere in('uomo','donna','non specificare')),
 CONSTRAINT FK_utente_citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta)
 )
  
@@ -32,7 +38,7 @@ create table Istruzione(
 id_istruzione int identity not null primary key,
 grado varchar(50) not null,
 id_citta int not null,
-descrizione_istruzione varchar(100) not null,
+descrizione_istruzione varchar(1000) not null,
 data_inizio datetime,
 data_fine datetime,
 id_user int not null,
@@ -44,15 +50,15 @@ CONSTRAINT FK_utente_istruzione FOREIGN KEY (id_user) REFERENCES Utente (id_user
 create table Esperienza(
 id_esperienza int identity not null primary key,
 anni smallint,
-descrizione_attivita varchar(100),
+descrizione_attivita varchar(1000),
 id_user int not null,
-azienda varchar(50),
+azienda varchar(300),
 data_inizio datetime,
 data_fine datetime,
 ral int,
-tipo_contratto varchar(50),
-settore varchar(20),
-posizione_lavorativa varchar(30),
+tipo_contratto varchar(150),
+settore varchar(250),
+posizione_lavorativa varchar(100),
 CONSTRAINT FK_utente_esperienza FOREIGN KEY (id_user) REFERENCES Utente (id_user)
 )
  
@@ -79,11 +85,11 @@ CONSTRAINT FK_Domanda_QuizDomanda FOREIGN KEY (id_domanda) REFERENCES Domanda (i
  
 create table RisposteDomanda(
 id_risposta int identity not null primary key,
-scelta1 varchar(150) not null,
-scelta2 varchar(150),
-scelta3 varchar(150),
-scelta4 varchar(150),
-scelta_corretta smallint check(scelta_corretta in('scelta1','scelta2','scelta3','scelta4')),
+scelta1 varchar(500) not null,
+scelta2 varchar(500),
+scelta3 varchar(500),
+scelta4 varchar(500),
+scelta_corretta varchar(500) check(scelta_corretta in('scelta1','scelta2','scelta3','scelta4')),
 id_domanda int not null,
  
 CONSTRAINT FK_Risposte_Domanda FOREIGN KEY (id_domanda) REFERENCES Domanda (id_domanda),
@@ -101,8 +107,8 @@ CONSTRAINT FK_Utente_UtenteQuiz FOREIGN KEY (id_user) REFERENCES Utente (id_user
  
 create table Skill(
 id_skill int identity not null primary key,
-nome varchar(50),
-tipo_skill varchar(10) not null check(tipo_skill in('soft','hard')),
+nome varchar(150),
+tipo_skill varchar(100) not null check(tipo_skill in('soft','hard')),
 id_quiz int,
 CONSTRAINT FK_Skill_Quiz FOREIGN KEY (id_quiz) REFERENCES Quiz (id_quiz)
 )
@@ -121,13 +127,13 @@ CONSTRAINT FK_Utente_UserSkills FOREIGN KEY (id_user) REFERENCES Utente (id_user
 create table Posizione(
 id_posizione int identity not null primary key,
 n_ammissioni smallint,
-descrizione varchar(300),
+descrizione varchar(1500),
 id_citta int not null,
 id_Categoria int not null,
 id_quiz int,
-stato varchar(15) not null check(stato in('aperta','chiusa')),
+stato varchar(80) not null check(stato in('aperta','chiusa')),
 data_inserimento datetime,
-ruolo varchar(60),
+ruolo varchar(200),
  
 CONSTRAINT FK_Posizione_Citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta),
 CONSTRAINT FK_Posizione_Categoria FOREIGN KEY (id_Categoria) REFERENCES CategoriaPosizione (id_Categoria),
@@ -145,9 +151,74 @@ CONSTRAINT FK_User_CandidaturaUser FOREIGN KEY (id_user) REFERENCES Utente (id_u
 )
 
 
+/* DA ESEGUIRE */
+/*	STRUTTURA MODELLOO
+INSERT INTO Quiz VALUES ('Java', 8);
+
+ASSOCIO UN PUNTEGGIO ALLA DOMANDA
+INSERT INTO Domanda VALUES ('', 1);
+INSERT INTO Domanda VALUES ('', 1);
+INSERT INTO Domanda VALUES ('', 1);
+INSERT INTO Domanda VALUES ('', 1);
+INSERT INTO Domanda VALUES ('', 1);
+INSERT INTO Domanda VALUES ('', 1);
+INSERT INTO Domanda VALUES ('', 1);
+INSERT INTO Domanda VALUES ('', 1);
+
+ASSOCIO LE RISPOSTE ALLE DOMANDE ID 9 CORRISPONDE ALL ID DELLA PRIIMA DOMANDA DEL SECONDO QUIZ
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 9)
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 10);
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 11);
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 12);
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 13);
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 14);
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 15);
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 16);
+
+ASSOCIO LA DOMANDA AL QUIZ
+INSERT INTO QuizDomanda VALUES(9, 2);
+INSERT INTO QuizDomanda VALUES(10, 2);
+INSERT INTO QuizDomanda VALUES(11, 2);
+INSERT INTO QuizDomanda VALUES(12, 2);
+INSERT INTO QuizDomanda VALUES(13, 2);
+INSERT INTO QuizDomanda VALUES(14, 2);
+INSERT INTO QuizDomanda VALUES(15, 2);
+INSERT INTO QuizDomanda VALUES(16, 2);
+*/
+
+/* DA ESEGUIRE 
+INSERT INTO Quiz VALUES ('Java', 8);
+
+INSERT INTO Domanda VALUES ('', 1);
+INSERT INTO Domanda VALUES ('', 1);
+INSERT INTO Domanda VALUES ('', 1);
+INSERT INTO Domanda VALUES ('', 1);
+INSERT INTO Domanda VALUES ('', 1);
+INSERT INTO Domanda VALUES ('', 1);
+INSERT INTO Domanda VALUES ('', 1);
+INSERT INTO Domanda VALUES ('', 1);
+
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 9)
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 10);
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 11);
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 12);
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 13);
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 14);
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 15);
+INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 16);
+
+INSERT INTO QuizDomanda VALUES(9, 2);
+INSERT INTO QuizDomanda VALUES(10, 2);
+INSERT INTO QuizDomanda VALUES(11, 2);
+INSERT INTO QuizDomanda VALUES(12, 2);
+INSERT INTO QuizDomanda VALUES(13, 2);
+INSERT INTO QuizDomanda VALUES(14, 2);
+INSERT INTO QuizDomanda VALUES(15, 2);
+INSERT INTO QuizDomanda VALUES(16, 2);
+*/
 
 
-
+/*
 insert into Citta values ('Liguria','Genova');
 insert into Citta values ('Lombardia','Milano');
 insert into Citta values ('Lazio','Roma');
@@ -170,3 +241,162 @@ insert into Utente values ('Matteo','Salvo','CF1','matteosalvo@gmail.com','20000
 insert into Utente values ('Fiona','Giusti','CF2','fionagiusti@gmail.com','20030806','Via Roma 29','1','16177','349680856','user','fiona','try2','uomo');
 insert into Utente values ('Gianluca','Torre','CF3','gianlu@gmail.com','19800407','Via Milano 56','2','20321','387689806','user','torre','try2','uomo');
 insert into Utente values ('Marta','Lupu','CF4','mlupu@gmail.com','20030203','Via Rodi 70','2','16167','339880856','user','marta','try2','uomo');
+*/
+
+
+/*	Inserimento	quiz Python - Domande e Risposte	*/
+INSERT INTO Quiz VALUES ('Python', 8);
+
+INSERT INTO Domanda VALUES ('Che cos è Python', 1);
+INSERT INTO Domanda VALUES ('Qual è la principale caratteristica di Python che lo rende facile da leggere e scrivere?', 1);
+INSERT INTO Domanda VALUES ('Come si dichiara una variabile in Python?', 1);
+INSERT INTO Domanda VALUES ('Qual è il modo corretto per commentare il codice in Python?', 1);
+INSERT INTO Domanda VALUES ('Come si esegue un ciclo for in Python?', 1);
+INSERT INTO Domanda VALUES ('Qual è la differenza tra una lista e una tupla in Python?', 1);
+INSERT INTO Domanda VALUES ('Come si definisce una funzione in Python?', 1);
+INSERT INTO Domanda VALUES ('Come si effettua limport di un modulo in Python?', 1);
+
+INSERT INTO RisposteDomanda VALUES ('Un linguaggio di programmazione orientato agli oggetti', 'Un serpente velenoso', 'Un sistema operativo', 'Un framework di sviluppo web', 'scelta1', 1);
+INSERT INTO RisposteDomanda VALUES ('La sintassi chiara e leggibile.', 'L alta velocità di esecuzione.', 'La compatibilità con Java.', 'La tipizzazione statica.', 'scelta1', 2)
+INSERT INTO RisposteDomanda VALUES ('var nome_variabile = valore', 'Dim nome_variabile As Integer', 'nome_variabile = valore', 'nome_variabile = valore(tipo)', 'scelta3', 3);
+INSERT INTO RisposteDomanda VALUES ('//Questo è un commento', '#Questo è un commento ', '/*Questo è un commento*/', '-- Questo è un commento', 'scelta2', 4);
+INSERT INTO RisposteDomanda VALUES ('for i in range(10):', 'while i < 10:', 'repeat(10):', 'foreach i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]:', 'scelta1', 5);
+INSERT INTO RisposteDomanda VALUES ('Le liste sono immutabili, le tuple sono mutabili.', 'Le liste sono ordinate, le tuple sono non ordinate.', 'Le liste sono mutabili, le tuple sono immutabili.', 'Non ci sono differenze tra liste e tuple.', 'scelta3', 6);
+INSERT INTO RisposteDomanda VALUES ('function nome_funzione(parametri):', 'def nome_funzione(parametri):', 'define nome_funzione(parametri):', 'define nome_funzione(parametri):', 'scelta2', 7);
+INSERT INTO RisposteDomanda VALUES ('use modulo', 'require modulo', 'import modulo', 'include modulo', 'scelta3', 8);
+
+INSERT INTO QuizDomanda VALUES(1, 1);
+INSERT INTO QuizDomanda VALUES(2, 1);
+INSERT INTO QuizDomanda VALUES(3, 1);
+INSERT INTO QuizDomanda VALUES(4, 1);
+INSERT INTO QuizDomanda VALUES(5, 1);
+INSERT INTO QuizDomanda VALUES(6, 1);
+INSERT INTO QuizDomanda VALUES(7, 1);
+INSERT INTO QuizDomanda VALUES(8, 1);
+
+
+/*	Inserimento	quiz Java - Domande e Risposte	*/
+INSERT INTO Quiz VALUES ('Java', 8);
+
+INSERT INTO Domanda VALUES ('Qual è il principio fondamentale di Java che contribuisce a garantire la portabilità del codice?', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta l acronimo "JVM" in Java?', 1);
+INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per l ambiente di esecuzione in cui viene eseguito il codice Java?', 1);
+INSERT INTO Domanda VALUES (' Qual è il risultato dell istruzione "System.out.println(5 / 2);" in Java? ', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta il termine "thread" in Java?', 1);
+INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per la gestione delle eccezioni in Java?', 1);
+INSERT INTO Domanda VALUES ('Qual è il costrutto utilizzato per iterare attraverso una collezione di elementi in Java?', 1);
+INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per la capacità di una classe di ereditare da una sola classe base in Java?', 1);
+
+INSERT INTO RisposteDomanda VALUES ('JVM (Java Virtual Machine)', 'JRE (Java Runtime Environment)', 'JDK (Java Development Kit)', 'JAR (Java Archive)', 'scelta1', 9)
+INSERT INTO RisposteDomanda VALUES ('Java Version Manager', 'Java Virtual Machine', 'Java Variable Manager', 'Java View Model', 'scelta2', 10);
+INSERT INTO RisposteDomanda VALUES ('IDE (Integrated Development Environment)', 'JVM (Java Virtual Machine)', 'JAR (Java Archive)', 'JRE (Java Runtime Environment)', 'scelta2', 11);
+INSERT INTO RisposteDomanda VALUES ('2.5', '2', '2.0', '2 con troncamento a 2', 'scelta2', 12);
+INSERT INTO RisposteDomanda VALUES ('Un blocco di codice racchiuso tra parentesi graffe.', ' Un unità di esecuzione concorrente leggera all interno di un processo.', 'Un interfaccia grafica utente.', 'Un costruttore di classe.', 'scelta2', 13);
+INSERT INTO RisposteDomanda VALUES ('try/catch', 'if/else', 'switch/case', 'for/while', 'scelta1', 14);
+INSERT INTO RisposteDomanda VALUES ('foreach', 'for/in', 'while/loop', 'repeat/until', 'scelta1', 15);
+INSERT INTO RisposteDomanda VALUES ('Ereditarietà singola', 'Ereditarietà multipla', 'Ereditarietà multi-strato', 'Ereditarietà multi-diretta', 'scelta1', 16);
+
+INSERT INTO QuizDomanda VALUES(9, 2);
+INSERT INTO QuizDomanda VALUES(10, 2);
+INSERT INTO QuizDomanda VALUES(11, 2);
+INSERT INTO QuizDomanda VALUES(12, 2);
+INSERT INTO QuizDomanda VALUES(13, 2);
+INSERT INTO QuizDomanda VALUES(14, 2);
+INSERT INTO QuizDomanda VALUES(15, 2);
+INSERT INTO QuizDomanda VALUES(16, 2);
+
+
+/* DA ID SFASATI */
+/* Inserimento quiz C  */
+INSERT INTO Quiz VALUES ('C', 8);
+
+INSERT INTO Domanda VALUES ('Qual è il simbolo utilizzato per l operatore di assegnazione in C?', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta il termine "printf" in C?', 1);
+INSERT INTO Domanda VALUES ('Qual è la differenza tra un array e un puntatore in C?', 1);
+INSERT INTO Domanda VALUES ('Come si dichiara una variabile intera (int) chiamata "numero" in C?', 1);
+INSERT INTO Domanda VALUES ('Qual è l operatore utilizzato per accedere all indirizzo di una variabile in C?', 1);
+INSERT INTO Domanda VALUES ('Cosa fa l istruzione "sizeof" in C?', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta il termine "void" in una dichiarazione di funzione in C?', 1);
+INSERT INTO Domanda VALUES ('Qual è l operatore logico per l AND in C?', 1);
+
+INSERT INTO RisposteDomanda VALUES (':=', '=', '->', '==', 'scelta2', 17)
+INSERT INTO RisposteDomanda VALUES ('Una funzione per l input utente.', 'Una funzione per la stampa su schermo.', 'Una funzione per la somma di numeri.', 'Una costante predefinita.', 'scelta2', 18);
+INSERT INTO RisposteDomanda VALUES ('Gli array possono cambiare dimensione dinamicamente, i puntatori no.', 'Gli array possono essere utilizzati solo per dati interi, mentre i puntatori possono contenere qualsiasi tipo di dato.', ' Gli array sono sempre di dimensione fissa, mentre i puntatori possono essere riallocati dinamicamente.', 'Gli array e i puntatori sono concettualmente equivalenti in C.', 'scelta3', 19);
+INSERT INTO RisposteDomanda VALUES ('integer numero;', 'int numero;', 'declare numero as int;', 'numero int;', 'scelta3', 20);
+INSERT INTO RisposteDomanda VALUES ('&', '*', '->', '@', 'scelta1', 21);
+INSERT INTO RisposteDomanda VALUES ('Restituisce il valore di una variabile.', 'Restituisce la dimensione in byte di un tipo di dati o una variabile.', 'Calcola la somma di tutti gli elementi di un array.', 'Esegue una scansione di un file.', 'scelta2', 22);
+INSERT INTO RisposteDomanda VALUES ('Il tipo di ritorno della funzione.', 'L assenza di parametri per la funzione.', 'Una variabile globale.', 'La presenza di parametri opzionali.', 'scelta1', 23);
+INSERT INTO RisposteDomanda VALUES ('&&', '||', '&', '|', 'scelta1', 24);
+
+INSERT INTO QuizDomanda VALUES(17, 3);
+INSERT INTO QuizDomanda VALUES(18, 3);
+INSERT INTO QuizDomanda VALUES(19, 3);
+INSERT INTO QuizDomanda VALUES(20, 3);
+INSERT INTO QuizDomanda VALUES(21, 3);
+INSERT INTO QuizDomanda VALUES(22, 3);
+INSERT INTO QuizDomanda VALUES(23, 3);
+INSERT INTO QuizDomanda VALUES(24, 3);
+
+/* DA ID SFASATI */
+/* Inserimento quiz C++  Id_quiz 4*/
+INSERT INTO Quiz VALUES ('C++', 8);
+
+INSERT INTO Domanda VALUES ('Qual è la differenza principale tra C e C++?', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta il termine "polimorfismo" in C++?', 1);
+INSERT INTO Domanda VALUES ('Qual è l operatore utilizzato per la gestione delle eccezioni in C++?', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta l acronimo "STL" in C++?', 1);
+INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per indicare la creazione di una nuova classe basata su un altra classe esistente in C++?', 1);
+INSERT INTO Domanda VALUES ('Come si dichiara una variabile costante (const) in C++?', 1);
+INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per una funzione membro di una classe che viene chiamata automaticamente quando un oggetto di quella classe viene creato?', 1);
+INSERT INTO Domanda VALUES ('Qual è il risultato dell istruzione "cout << 5 / 2" in C++?', 1);
+
+INSERT INTO RisposteDomanda VALUES ('C++ è un linguaggio interpretato, mentre C è compilato.', 'C++ è un estensione di C che aggiunge il supporto agli oggetti.', 'C++ è noto per essere più veloce in termini di esecuzione rispetto a C.', 'C++ è completamente incompatibile con C.', 'scelta2', 25)
+INSERT INTO RisposteDomanda VALUES ('La capacità di avere molteplici definizioni di una stessa funzione nello stesso programma.', 'La capacità di una classe di ereditare da più di una classe base.', 'La capacità di una funzione di essere utilizzata in modo diverso a seconda del tipo degli oggetti su cui viene chiamata.', 'La capacità di utilizzare una variabile senza dichiararla.', 'scelta3', 26);
+INSERT INTO RisposteDomanda VALUES ('try/catch', 'if/else', 'switch/case', 'for/while', 'scelta1', 27);
+INSERT INTO RisposteDomanda VALUES ('Standard Text Library', 'Standard Template Library', 'Standard Time Library', 'Standard Type Library', 'scelta2', 28);
+INSERT INTO RisposteDomanda VALUES ('Clonazione', 'Ereditarietà', 'Polimorfismo', 'Astrazione', 'scelta2', 29);
+INSERT INTO RisposteDomanda VALUES ('constant int nome_variabile = valore;', 'int const nome_variabile = valore;', 'readonly int nome_variabile = valore;', 'constante nome_variabile = valore;', 'scelta2', 30);
+INSERT INTO RisposteDomanda VALUES ('Inizializzatore', 'Costruttore', 'Distruttore', 'Metodo', 'scelta2', 31);
+INSERT INTO RisposteDomanda VALUES ('2.5', '2', '2.0', '2.5 con troncamento a 2', 'scelta2', 32);
+
+INSERT INTO QuizDomanda VALUES(25, 4);
+INSERT INTO QuizDomanda VALUES(26, 4);
+INSERT INTO QuizDomanda VALUES(27, 4);
+INSERT INTO QuizDomanda VALUES(28, 4);
+INSERT INTO QuizDomanda VALUES(29, 4);
+INSERT INTO QuizDomanda VALUES(30, 4);
+INSERT INTO QuizDomanda VALUES(31, 4);
+INSERT INTO QuizDomanda VALUES(32, 4);
+
+
+
+
+/* Crezione quiz Javascript Id_quiz 5*/
+INSERT INTO Quiz VALUES ('Javascript', 8);
+
+INSERT INTO Domanda VALUES ('Qual è il tipo di dati primitivo per rappresentare numeri interi in JavaScript?', 1);
+INSERT INTO Domanda VALUES ('Come si dichiara una variabile in JavaScript?', 1);
+INSERT INTO Domanda VALUES ('Quale operatore è utilizzato per la concatenazione di stringhe in JavaScript?', 1);
+INSERT INTO Domanda VALUES ('Come si crea un array vuoto in JavaScript?', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta l acronimo "DOM" in JavaScript?', 1);
+INSERT INTO Domanda VALUES ('Qual è l output del seguente codice JavaScript?', 1);
+INSERT INTO Domanda VALUES ('Come si definisce una funzione in JavaScript?', 1);
+INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per la capacità di una funzione di richiamare se stessa in JavaScript? ```console.log(3 + 2 + "7");```', 1);
+
+INSERT INTO RisposteDomanda VALUES ('int', 'long', 'float', 'number', 'scelta4', 33)
+INSERT INTO RisposteDomanda VALUES ('declare var nome_variabile;', 'let nome_variabile;', 'variable nome_variabile;', 'var nome_variabile;', 'scelta4', 34);
+INSERT INTO RisposteDomanda VALUES ('+', '&', '||', ':', 'scelta1', 35);
+INSERT INTO RisposteDomanda VALUES ('emptyArray()', '[]', 'new Array()', 'array()', 'scelta2', 36);
+INSERT INTO RisposteDomanda VALUES ('Data Object Model', 'Document Object Model', '', 'Dynamic Object Model', 'Digital Object Model', 37);
+INSERT INTO RisposteDomanda VALUES ('57', '12', '32', '"57"', 'scelta4', 38);
+INSERT INTO RisposteDomanda VALUES ('function nome_funzione(parametri) {}', 'def nome_funzione(parametri) {}', 'create function nome_funzione(parametri) {}', 'func nome_funzione(parametri) {}', 'scelta1', 39);
+INSERT INTO RisposteDomanda VALUES ('Ricorsione', 'Chiamata multipla', 'Esecuzione parallela', '', '', 40);
+
+INSERT INTO QuizDomanda VALUES(33, 5);
+INSERT INTO QuizDomanda VALUES(34, 5);
+INSERT INTO QuizDomanda VALUES(35, 5);
+INSERT INTO QuizDomanda VALUES(36, 5);
+INSERT INTO QuizDomanda VALUES(37, 5);
+INSERT INTO QuizDomanda VALUES(38, 5);
+INSERT INTO QuizDomanda VALUES(39, 5);
+INSERT INTO QuizDomanda VALUES(40, 5);
