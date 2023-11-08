@@ -1,6 +1,5 @@
 package com.servlets.pw2.controller;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +38,16 @@ public class RicercaPosizioniServlet extends HttpServlet {
         }
 
         PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
-        List<Posizione> risultatiRicerca = posizioneIMPL.searchByFilters(ruolo, citta, categoria);
+
+        List<Posizione> risultatiRicerca = new ArrayList<>();
+        
+     
+        if (ruolo.isEmpty() && (cittaId == null || cittaId.isEmpty()) && (categoriaId == null || categoriaId.isEmpty())) {
+            risultatiRicerca = posizioneIMPL.findPosizioniPiuRecenti();
+        } else {
+     
+            risultatiRicerca = posizioneIMPL.searchByFilters(ruolo, citta, categoria);
+        }
 
         if (risultatiRicerca != null && !risultatiRicerca.isEmpty()) {
             request.setAttribute("risultatiRicerca", risultatiRicerca);
@@ -47,6 +55,6 @@ public class RicercaPosizioniServlet extends HttpServlet {
             request.setAttribute("risultatiRicerca", new ArrayList<Posizione>());
         }
 
-        request.getRequestDispatcher("/ricercaPosizioni.jsp").forward(request, response);
+        request.getRequestDispatcher("/risultatiRicerca.jsp").forward(request, response);
     }
 }

@@ -1,14 +1,12 @@
 package com.candidatoDB.pw2.interfaces.impl;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.candidatoDB.pw2.entity.Esperienza;
-import com.candidatoDB.pw2.entity.Skill;
-import com.candidatoDB.pw2.entity.Utente;
+
 import com.candidatoDB.pw2.interfaces.EsperienzaDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
