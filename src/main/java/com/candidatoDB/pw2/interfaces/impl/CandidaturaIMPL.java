@@ -82,6 +82,8 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 	                Candidatura.setId_posizione(resultSet.getInt(2));
 	                Candidatura.setId_user(resultSet.getInt(3));
 	                Candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate(4).getTime()));
+	                
+	                System.out.println("metodo Candidatura piu recente funziona");
 	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();

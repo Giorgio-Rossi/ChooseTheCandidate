@@ -39,7 +39,7 @@ public class Posizione {
 	}
 
 
-	public void setId_poszione(int id_posizione) {
+	public void setId_posizione(int id_posizione) {
 		this.id_posizione = id_posizione;
 	}
 
@@ -130,6 +130,10 @@ public class Posizione {
 				+ descrizione + ", citta=" + citta + ", categoria=" + categoria + ", quiz=" + quiz + ", stato=" + stato
 				+ ", data_inserimento=" + data_inserimento + ", ruolo=" + ruolo + "]";
 	}
+
+
+    public void add(Posizione posizione) {
+    }
 	
 	
 	

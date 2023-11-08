@@ -1,9 +1,9 @@
 <%@ page import="com.candidatoDB.pw2.entity.Utente" %>
+<%@ page import="com.servlets.pw2.controller.ErrorManager" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% Utente utente = (Utente) session.getAttribute("utente");
-    System.out.println(utente);
-
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+    System.out.println(utente.toString());
+%>
 
 
 <html>
@@ -27,7 +27,7 @@
                 <a href="${pageContext.request.contextPath}/profilo/profilo.jsp" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true"><i class="bi bi-person-circle" style="margin-right: 5px;font-size: 20px"></i><span>Profilo</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-file-earmark-person" style="margin-right: 5px;font-size: 20px"></i><span>Curriculum</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-search" style="margin-right: 5px;font-size: 20px"></i><span>Ricerca Posizioni</span></a>
-                <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-check2-circle" style="margin-right: 5px;font-size: 20px"></i><span>Candidature Effettuate</span></a>
+                <a href="${pageContext.request.contextPath}/findCandidature" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-check2-circle" style="margin-right: 5px;font-size: 20px"></i><span>Candidature Effettuate</span></a>
                 <a href="${pageContext.request.contextPath}/logout" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-box-arrow-right" style="margin-right: 5px;font-size: 20px"></i><span>Logout</span></a>
             </div>
         </div>
@@ -67,18 +67,37 @@
 <main style="margin-top: 58px">
 
     <div class="container mt-5">
+
         <div class="row flex-lg-nowrap">
             <div class="col">
                 <div class="row">
                     <div class="col mb-3">
                         <div class="card mt-4">
                             <div class="card-body">
+                                <%
+                                    if(!ErrorManager.getSUccessMessage((HttpServletRequest) request).isEmpty()){
+                                %>
+                                <div class="alert alert-success">
+                                    <%= ErrorManager.getSUccessMessage((HttpServletRequest) request)%>
+                                </div>
+                                <%
+                                    };
+                                %>
+                                <%
+                                    if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){
+                                %>
+                                <div class="alert alert-success">
+                                    <%= ErrorManager.getErrorMessage((HttpServletRequest) request)%>
+                                </div>
+                                <%
+                                    };
+                                %>
                                 <div class="e-profile">
                                     <div class="row justify-content-center">
                                         <div class="col-12 col-sm-auto mb-3">
                                             <%if(utente.getFoto_profilo()!=null){
                                             %>
-                                            <img src="../img/logoPag.png" alt="" height="150" class="rounded-3">
+                                            <img src=<%=request.getContextPath()+"/img/fotoprofili"+utente.getFoto_profilo()%> alt="" height="150" class="rounded-3">
                                             <%}else {
                                              %>
                                             <i class="bi bi-person-circle" style="margin-right: 5px;font-size: 150px"></i>
@@ -119,7 +138,8 @@
                                                                 <div class="form-group">
                                                                     <label>Genere</label>
                                                                     <select class="form-select" aria-label="Default select example" name="genere">
-                                                                        <option selected disabled hidden value=<%=utente.getGenere()%> ><%=utente.getGenere()%></option>
+                                                                        <%String genere = (utente.getGenere()!=null)?utente.getGenere():"";%>
+                                                                        <option value="" disabled selected><%=genere%></option>
                                                                         <option value="uomo">Uomo</option>
                                                                         <option value="donna">Donna</option>
                                                                         <option value="non specificare">Preferisco non specificarlo</option>
@@ -138,7 +158,15 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Indirizzo di residenza</label>
-                                                                    <input class="form-control" type="text" placeholder=<%=utente.getIndirizzo()%> value=<%=utente.getIndirizzo()%> name="indirizzo">
+                                                                    <%String indirizzo = (utente.getIndirizzo()!=null)?utente.getIndirizzo(): " ";%>
+                                                                    <input class="form-control" type="text" placeholder="<%=indirizzo%>" value="<%=indirizzo%>" name="indirizzo">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="form-group">
+                                                                    <label>Cap</label>
+                                                                    <%String cap = (utente.getCap()!=null)?utente.getCap():"";%>
+                                                                    <input class="form-control" type="text" placeholder="<%=cap%>" value="<%=cap%>" name="cap">
                                                                 </div>
                                                             </div>
                                                             <div class="col">
@@ -159,7 +187,8 @@
                                                                 <div class="form-group">
                                                                     <!-- gestire la citta con menu tendina -->
                                                                     <label>Città di nascita</label>
-                                                                    <input class="form-control" type="text" placeholder="<%=utente.getId_citta().getNome()%>" value="<%=utente.getId_citta().getNome()%>" name="citta">
+                                                                    <%String citta = (utente.getId_citta() !=null)?utente.getId_citta().getNome() :"";%>
+                                                                    <input class="form-control" type="text" placeholder="<%=citta%>" value="<%=citta%>" name="citta">
                                                                 </div>
                                                             </div>
                                                         </div>
