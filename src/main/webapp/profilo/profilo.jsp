@@ -1,8 +1,14 @@
 <%@ page import="com.candidatoDB.pw2.entity.Utente" %>
 <%@ page import="com.servlets.pw2.controller.ErrorManager" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.candidatoDB.pw2.entity.Citta" %>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.CittaIMPL" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% Utente utente = (Utente) session.getAttribute("utente");
     System.out.println(utente.toString());
+
+    ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
+    System.out.println(cities);
 %>
 
 
@@ -149,6 +155,7 @@
                                                                 <div class="col">
                                                                     <div class="form-group">
                                                                         <label>Data di nascita</label>
+                                                                        <%java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"); %>
                                                                         <input class="form-control" type="date" name="data_nascita"  value=<%=utente.getData_nascita()%>>
                                                                     </div>
                                                                 </div>
@@ -185,10 +192,18 @@
                                                             </div>
                                                             <div class="col">
                                                                 <div class="form-group">
-                                                                    <!-- gestire la citta con menu tendina -->
-                                                                    <label>Città di nascita</label>
                                                                     <%String citta = (utente.getId_citta() !=null)?utente.getId_citta().getNome() :"";%>
-                                                                    <input class="form-control" type="text" placeholder="<%=citta%>" value="<%=citta%>" name="citta">
+                                                                    <label>Città di nascita</label>
+                                                                    <select class="form-select" aria-label="Default select example" name="citta">
+                                                                        <% for(Citta c : cities){
+                                                                        %>
+                                                                            <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        <%
+                                                                            }
+                                                                        %>
+
+                                                                    </select>
+                                                                    <!--<input class="form-control" type="text" placeholder="<%=citta%>" value="<%=citta%>" name="citta">-->
                                                                 </div>
                                                             </div>
                                                         </div>

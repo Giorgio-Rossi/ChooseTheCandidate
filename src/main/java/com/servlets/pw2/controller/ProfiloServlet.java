@@ -75,6 +75,8 @@ public class ProfiloServlet extends HttpServlet {
             utenteModificato.setEmail(utenteInSessione.getEmail());
         }
 
+
+
         SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
         String param = req.getParameter("data_nascita");
         Date data_nascita;
@@ -87,7 +89,7 @@ public class ProfiloServlet extends HttpServlet {
 
         //TODO IMPLEMENTARE LE  VALIDAZIONI
         if (!(utenteInSessione.getData_nascita().compareTo(data_nascita) == 0)) {
-            utenteModificato.setData_nascita(data_nascita);
+            utenteModificato.setData_nascita(new java.sql.Date(data_nascita.getTime()));
         } else {
             utenteModificato.setData_nascita(utenteInSessione.getData_nascita());
         }
