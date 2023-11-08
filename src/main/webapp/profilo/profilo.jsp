@@ -196,14 +196,153 @@
                                                                     <label>Città di nascita</label>
                                                                     <select class="form-select" aria-label="Default select example" name="citta">
                                                                         <% for(Citta c : cities){
-                                                                        %>
-                                                                            <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                            switch (c.getRegione()){
+                                                                                case "Abruzzo":
+                                                                                    %>
+                                                                        <optgroup label="Abruzzo">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Basilicata":
+                                                                                    %>
+                                                                        <optgroup label="Basilicata">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Calabria":
+                                                                                    %>
+                                                                        <optgroup label="Calabria">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Campania":
+                                                                                    %>
+                                                                        <optgroup label="Campania">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Emilia-Romagna":
+                                                                                    %>
+                                                                        <optgroup label="Emilia-Romagna">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Friuli-Venezia Giulia":
+                                                                                     %>
+                                                                        <optgroup label="Friuli-Venezia Giulia">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Lazio":
+                                                                                    %>
+                                                                        <optgroup label="Lazio">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Liguria":
+                                                                                    %>
+                                                                        <optgroup label="Liguria">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Lombardia":
+                                                                                    %>
+                                                                        <optgroup label="Lombardia">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Marche":
+                                                                                    %>
+                                                                        <optgroup label="Marche">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Molise":
+                                                                                    %>
+                                                                        <optgroup label="Molise">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Piemonte":
+                                                                                     %>
+                                                                        <optgroup label="Piemonte">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Puglia":
+                                                                                    %>
+                                                                        <optgroup label="Puglia">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Sardegna":
+                                                                                   %>
+                                                                        <optgroup label="Sardegna">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Sicilia":
+                                                                                    %>
+                                                                        <optgroup label="Sicilia">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Toscana":
+                                                                                   %>
+                                                                        <optgroup label="Toscana">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Trentino-Alto Adige":
+                                                                                    %>
+                                                                        <optgroup label="Trentino-Alto Adige">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Umbria":
+                                                                                    %>
+                                                                        <optgroup label="Umbria">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Valle d'Aosta":
+                                                                                     %>
+                                                                        <optgroup label="Valle d'Aosta">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                case "Veneto":
+                                                                                    %>
+                                                                        <optgroup label="Veneto">
+                                                                                    <option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+                                                                        </optgroup>
+                                                                                <%
+                                                                                    break;
+                                                                                }
+                                                                            %>
                                                                         <%
                                                                             }
                                                                         %>
-
                                                                     </select>
-                                                                    <!--<input class="form-control" type="text" placeholder="<%=citta%>" value="<%=citta%>" name="citta">-->
                                                                 </div>
                                                             </div>
                                                         </div>

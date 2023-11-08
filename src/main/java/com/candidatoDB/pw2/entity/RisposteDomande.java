@@ -2,10 +2,10 @@ package com.candidatoDB.pw2.entity;
 
 public class RisposteDomande {
 	private int id_risposta;;
-	private String scelta1;
-	private String scelta2;
-	private String scelta3;
-	private String scelta4;
+	private String scelta1; // a 
+	private String scelta2; // b
+	private String scelta3; // c
+	private String scelta4; // d
 	private int scelta_corretta;
 	
 	private int id_domanda;

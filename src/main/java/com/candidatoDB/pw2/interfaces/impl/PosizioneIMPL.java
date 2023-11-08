@@ -1,3 +1,4 @@
+
 package com.candidatoDB.pw2.interfaces.impl;
 
 import java.sql.Connection;
@@ -152,12 +153,13 @@ public class PosizioneIMPL implements PosizioneDAO {
 }
 
 	@Override
+
 	public List<Posizione> findPosizioniPiuRecenti() {
 		
 		    List<Posizione> posizioni = new ArrayList<>();
 		    PreparedStatement statement = null;
 		    ResultSet resultSet = null;
-
+ 
 		    try {
 	
 		        String sql = "SELECT p.*, c.id_citta, c.regione, c.nome, cp.id_categoria, cp.descrizione, q.id_quiz, q.descrizione, q.n_domande " +
@@ -168,8 +170,12 @@ public class PosizioneIMPL implements PosizioneDAO {
 		                     "ORDER BY p.data_inserimento DESC";
 		        statement = connection.getConnection().prepareStatement(sql);
 		        resultSet = statement.executeQuery();
-
+ 
 		        while (resultSet.next()) {
+
+		        
+		
+ 
 		            Posizione posizione = new Posizione();
 		            posizione.setId_posizione(resultSet.getInt("id_posizione"));
 		            posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
@@ -200,6 +206,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 		            posizione.setRuolo(resultSet.getString("ruolo"));
 
 		            posizioni.add(posizione);
+
 		        }
 		    } catch (SQLException e) {
 		        e.printStackTrace();
@@ -209,9 +216,11 @@ public class PosizioneIMPL implements PosizioneDAO {
 		        DBUtil.close(statement);
 		       // DBUtil.close((Connection) connection);
 		    }
-
+ 
 		    return posizioni;
+
 		}
+
 
 	@Override
 	public List<Posizione> searchByFilters(String ruolo, Citta citta, CategoriaPosizione categoria) {
@@ -274,4 +283,3 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 }
 
-	
