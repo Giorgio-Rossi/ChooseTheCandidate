@@ -1,6 +1,7 @@
 package com.candidatoDB.pw2.interfaces.impl;
 
 import com.candidatoDB.pw2.entity.Citta;
+import com.candidatoDB.pw2.entity.Regione;
 import com.candidatoDB.pw2.interfaces.CittaDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
@@ -20,7 +21,7 @@ public class CittaIMPL implements CittaDAO {
     @Override
     public ArrayList<Citta> getAllCitta() {
         ArrayList<Citta> cities = new ArrayList<>();
-        String sql = "SELECT Citta.id_citta, Citta.regione, Citta.nome from Citta order by Citta.regione";
+        String sql = "SELECT Citta.id_citta, Citta.id_regione, Citta.nome from Citta";
 
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -30,7 +31,7 @@ public class CittaIMPL implements CittaDAO {
             while (resultSet.next()) {
                Citta citta = new Citta();
                citta.setId_citta(resultSet.getInt(1));
-               citta.setRegione(resultSet.getString(2));
+               citta.setRegione(getRegione(resultSet.getInt(2)));
                citta.setNome(resultSet.getString(3));
                cities.add(citta);
             }
@@ -42,5 +43,29 @@ public class CittaIMPL implements CittaDAO {
             //DBUtil.close(connection.getConnection());
         }
         return cities;
+    }
+
+    public Regione getRegione(int id_regione){
+        Regione regione = new Regione();
+        String sql = "SELECT Regione.id_regione, Regione.nome  from Regione inner join Citta on Regione.id_regione = ? ";
+
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.getConnection().prepareStatement(sql);
+            statement.setInt(1,id_regione);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                regione.setId_regione(resultSet.getInt(1));
+                regione.setNome(resultSet.getString(2));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            DBUtil.close(resultSet);
+            DBUtil.close(statement);
+            //DBUtil.close(connection.getConnection());
+        }
+        return regione;
     }
 }
