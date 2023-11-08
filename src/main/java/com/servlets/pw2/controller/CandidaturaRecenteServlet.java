@@ -33,7 +33,6 @@ public class CandidaturaRecenteServlet extends HttpServlet {
         }
 
 
-        request.getRequestDispatcher("jsp/candidaturaPiuRecente.jsp");
 
 
         request.getRequestDispatcher("/candidaturaPiuRecente.jsp").forward(request, response);

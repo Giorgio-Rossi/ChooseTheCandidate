@@ -40,13 +40,19 @@ public class RicercaPosizioniServlet extends HttpServlet {
         PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 
         List<Posizione> risultatiRicerca = new ArrayList<>();
-        
-     
+
+       
         if (ruolo.isEmpty() && (cittaId == null || cittaId.isEmpty()) && (categoriaId == null || categoriaId.isEmpty())) {
             risultatiRicerca = posizioneIMPL.findPosizioniPiuRecenti();
+        } else if (!categoriaId.isEmpty()) {
+            
+            risultatiRicerca = posizioneIMPL.searchByCategoria(categoria);
+        } else if (!cittaId.isEmpty()) {
+           
+            risultatiRicerca = posizioneIMPL.searchByCity(citta);
         } else {
-     
-            risultatiRicerca = posizioneIMPL.searchByFilters(ruolo, citta, categoria);
+           
+            risultatiRicerca = posizioneIMPL.searchByRuolo(ruolo);
         }
 
         if (risultatiRicerca != null && !risultatiRicerca.isEmpty()) {
