@@ -1,6 +1,6 @@
 create table CategoriaPosizione(
 id_Categoria int identity not null primary key,
-descrizione varchar(70)
+nome_categoria varchar(70)
 )
 
 create table Regione(
@@ -150,19 +150,6 @@ CONSTRAINT FK_Posizione_CandidaturaUser FOREIGN KEY (id_posizione) REFERENCES Po
 CONSTRAINT FK_User_CandidaturaUser FOREIGN KEY (id_user) REFERENCES Utente (id_user),
 )
 
-/*	Inserimento degli utenti	*/
-INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('admin', 'admin', null,'admin@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Giorgio', 'Rossi', null, 'giorgiorossi@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)VALUES ('Nicolo', 'Drovandi', null,'nicolodrovandi@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Lorenzo', 'Franco', null,'lorenzofranco@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Luca', 'Sanguinetti', null, 'lucasanguinetti@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)VALUES ('Claudio', 'Balzani', null,'claudiobalzani@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Biagio', 'Ricci', null,'biagioricci@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-insert into Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) values ('Matteo','Salvo','CF1','matteosalvo@gmail.com','20000203','Via Marconi 2','1','17900','347689876','user','salvini');
-insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Fiona','Giusti','CF2','fionagiusti@gmail.com','20030806','Via Roma 29','1','16177','349680856','user','fiona');
-insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Gianluca','Torre','CF3','gianlu@gmail.com','19800407','Via Milano 56','2','20321','387689806','user','torre');
-insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Marta','Lupu','CF4','mlupu@gmail.com','20030203','Via Rodi 70','2','16167','339880856','user','marta');
-
 /*	Inserimento delle Regione	*/
 INSERT INTO Regione (nome) values('Abbruzzo');
 INSERT INTO Regione (nome) values('Basilicata');
@@ -195,6 +182,24 @@ insert into Citta (id_regione,nome) values ('20','Venezia');
 insert into Citta (id_regione,nome) values ('16','Firenze');
 insert into Citta (id_regione,nome) values ('5','Bologna');
 
+
+/*	Insert CategoriaPosizione	*/
+insert into CategoriaPosizione ( nome_categoria) values ( 'bella desc');
+insert into CategoriaPosizione ( nome_categoria) values ( ' desc 2');
+
+/*	Inserimento degli utenti	*/
+INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('admin', 'admin', null,'admin@gmail.com', null, null, null, null, null, 'admin', 'admin' );
+INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Giorgio', 'Rossi', null, 'giorgiorossi@gmail.com', null, null, null, null, null, 'admin', 'admin' );
+INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)VALUES ('Nicolo', 'Drovandi', null,'nicolodrovandi@gmail.com', null, null, null, null, null, 'admin', 'admin' );
+INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Lorenzo', 'Franco', null,'lorenzofranco@gmail.com', null, null, null, null, null, 'admin', 'admin' );
+INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Luca', 'Sanguinetti', null, 'lucasanguinetti@gmail.com', null, null, null, null, null, 'admin', 'admin' );
+INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)VALUES ('Claudio', 'Balzani', null,'claudiobalzani@gmail.com', null, null, null, null, null, 'admin', 'admin' );
+INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Biagio', 'Ricci', null,'biagioricci@gmail.com', null, null, null, null, null, 'admin', 'admin' );
+insert into Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) values ('Matteo','Salvo','CF1','matteosalvo@gmail.com','20000203','Via Marconi 2','1','17900','347689876','user','salvini');
+insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Fiona','Giusti','CF2','fionagiusti@gmail.com','20030806','Via Roma 29','1','16177','349680856','user','fiona');
+insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Gianluca','Torre','CF3','gianlu@gmail.com','19800407','Via Milano 56','2','20321','387689806','user','torre');
+insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Marta','Lupu','CF4','mlupu@gmail.com','20030203','Via Rodi 70','2','16167','339880856','user','marta');
+
 /*	Inserimento delle posizioni	*/
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','ciao','1','1',NULL,'aperta','20231101','Sistemista');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','hola','1','2',NULL,'aperta','20231102','Web Developer');
@@ -210,10 +215,6 @@ insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('
 insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('2','11','20231105');
 insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('3','11','20231106');
 insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('4','11','20231107');
-
-/*	Insert CategoriaPosizione	*/
-insert into CategoriaPosizione ( nome_categoria) values ( 'bella desc');
-insert into CategoriaPosizione ( nome_categoria) values ( ' desc 2');
 
 /*	Inserimento	quiz Python - Domande e Risposte	*/
 INSERT INTO Quiz VALUES ('Python', 8);
@@ -355,7 +356,7 @@ INSERT INTO RisposteDomanda VALUES ('int', 'long', 'float', 'number', 'scelta4',
 INSERT INTO RisposteDomanda VALUES ('declare var nome_variabile;', 'let nome_variabile;', 'variable nome_variabile;', 'var nome_variabile;', 'scelta4', 34);
 INSERT INTO RisposteDomanda VALUES ('+', '&', '||', ':', 'scelta1', 35);
 INSERT INTO RisposteDomanda VALUES ('emptyArray()', '[]', 'new Array()', 'array()', 'scelta2', 36);
-INSERT INTO RisposteDomanda VALUES ('Data Object Model', 'Document Object Model', '', 'Dynamic Object Model', 'Digital Object Model', 37);
+INSERT INTO RisposteDomanda VALUES ('Data Object Model', 'Document Object Model', 'Digital Object Model', 'Dynamic Object Model', 'scelta1', 37);
 INSERT INTO RisposteDomanda VALUES ('57', '12', '32', '"57"', 'scelta4', 38);
 INSERT INTO RisposteDomanda VALUES ('function nome_funzione(parametri) {}', 'def nome_funzione(parametri) {}', 'create function nome_funzione(parametri) {}', 'func nome_funzione(parametri) {}', 'scelta1', 39);
 INSERT INTO RisposteDomanda VALUES ('Ricorsione', 'Chiamata multipla', 'Esecuzione parallela', 'Iterazione', 'scelta1', 40);
@@ -407,28 +408,7 @@ INSERT INTO QuizDomanda VALUES(48, 6);
 INSERT INTO QuizDomanda VALUES(49, 6);
 INSERT INTO QuizDomanda VALUES(50, 6);
 
-	/*	Soft Skill	*/
-/*
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 9);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 10);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 11);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 12);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 13);
-
-INSERT INTO QuizDomanda VALUES(9, 2);
-INSERT INTO QuizDomanda VALUES(10, 2);
-INSERT INTO QuizDomanda VALUES(11, 2);
-INSERT INTO QuizDomanda VALUES(12, 2);
-INSERT INTO QuizDomanda VALUES(13, 2);
-*/
-
-/* Crezione quiz HTML, CSS Id_quiz 7*/
+/* Crezione quiz Comunicazione efficace Id_quiz 7*/
 INSERT INTO Quiz VALUES ('Comunicazione efficace', 5);
 
 INSERT INTO Domanda VALUES ('Come ti comporti quando devi spiegare un concetto complesso a qualcuno che non ne ha familiarità?', 1);
@@ -493,8 +473,6 @@ INSERT INTO QuizDomanda VALUES(62, 9);
 INSERT INTO QuizDomanda VALUES(63, 9);
 INSERT INTO QuizDomanda VALUES(64, 9);
 INSERT INTO QuizDomanda VALUES(65, 9);
-
-
 
 /* Quiz Gestione dello stress Id_quiz 10*/
 INSERT INTO Quiz VALUES ('Gestione dello stress', 5);
