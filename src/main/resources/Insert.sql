@@ -12,6 +12,9 @@ insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id
 insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Gianluca','Torre','CF3','gianlu@gmail.com','19800407','Via Milano 56','2','20321','387689806','user','torre');
 insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Marta','Lupu','CF4','mlupu@gmail.com','20030203','Via Rodi 70','2','16167','339880856','user','marta');
 
+/*	Insert CategoriaPosizione	*/
+insert into CategoriaPosizione ( nome_categoria) values ( 'bella desc');
+insert into CategoriaPosizione ( nome_categoria) values ( ' desc 2');
 
 /*	Inserimento delle Regione	*/
 INSERT INTO Regione (nome) values('Abbruzzo');
@@ -60,10 +63,6 @@ insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('
 insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('2','11','20231105');
 insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('3','11','20231106');
 insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('4','11','20231107');
-
-/*	Insert CategoriaPosizione	*/
-insert into CategoriaPosizione ( nome_categoria) values ( 'bella desc');
-insert into CategoriaPosizione ( nome_categoria) values ( ' desc 2');
 
 /*	Inserimento	quiz Python - Domande e Risposte	*/
 INSERT INTO Quiz VALUES ('Python', 8);
