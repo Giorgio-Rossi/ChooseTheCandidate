@@ -13,6 +13,7 @@ import com.candidatoDB.pw2.entity.CategoriaPosizione;
 import com.candidatoDB.pw2.entity.Citta;
 import com.candidatoDB.pw2.entity.Posizione;
 import com.candidatoDB.pw2.entity.Quiz;
+import com.candidatoDB.pw2.entity.Regione;
 import com.candidatoDB.pw2.interfaces.PosizioneDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
@@ -162,7 +163,7 @@ public class PosizioneIMPL implements PosizioneDAO {
  
 		    try {
 	
-		        String sql = "SELECT p.*, c.id_citta, c.regione, c.nome, cp.id_categoria, cp.descrizione, q.id_quiz, q.descrizione, q.n_domande " +
+		        String sql = "SELECT p.*, c.id_citta, c.nome, cp.id_categoria, cp.descrizione, q.id_quiz, q.descrizione, q.n_domande " +
 		                     "FROM Posizione p " +
 		                     "INNER JOIN Citta c ON p.id_citta = c.id_citta " +
 		                     "INNER JOIN CategoriaPosizione cp ON p.id_categoria = cp.id_categoria " +
@@ -182,8 +183,10 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 		            Citta citta = new Citta();
 		            citta.setId_citta(resultSet.getInt("id_citta"));
-					CittaIMPL cittaIMPL = new CittaIMPL();
-		            citta.setRegione(cittaIMPL.getRegione(resultSet.getInt("id_regione")));
+				//	CittaIMPL cittaIMPL = new CittaIMPL();
+		           
+		         //   citta.setRegione(cittaIMPL.getRegione(resultSet.getInt("id_regione")));
+		          
 		            citta.setNome(resultSet.getString("nome"));
 		            posizione.setCitta(citta);
 
