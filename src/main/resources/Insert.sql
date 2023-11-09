@@ -5,18 +5,11 @@ INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_
 INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Luca', 'Sanguinetti', null, 'lucasanguinetti@gmail.com', null, null, null, null, null, 'admin', 'admin' );
 INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)VALUES ('Claudio', 'Balzani', null,'claudiobalzani@gmail.com', null, null, null, null, null, 'admin', 'admin' );
 INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Biagio', 'Ricci', null,'biagioricci@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-
 insert into Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) values ('Matteo','Salvo','CF1','matteosalvo@gmail.com','20000203','Via Marconi 2','1','17900','347689876','user','salvini');
 insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Fiona','Giusti','CF2','fionagiusti@gmail.com','20030806','Via Roma 29','1','16177','349680856','user','fiona');
 insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Gianluca','Torre','CF3','gianlu@gmail.com','19800407','Via Milano 56','2','20321','387689806','user','torre');
 insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Marta','Lupu','CF4','mlupu@gmail.com','20030203','Via Rodi 70','2','16167','339880856','user','marta');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','ciao','1','1',NULL,'aperta','20231101','Sistemista');
 
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','hola','1','2',NULL,'aperta','20231102','Web Developer');
-
-
-insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('1','10','20231101');
-insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('2','10','20231102');
 
 
 
@@ -50,7 +43,6 @@ insert into Citta (id_regione,nome) values ('9','Lodi');
 insert into Citta (id_regione,nome) values ('12','Torino');
 insert into Citta (id_regione,nome) values ('20','Venezia');
 insert into Citta (id_regione,nome) values ('16','Firenze');
-<<<<<<< HEAD
 insert into Citta (id_regione,nome) values ('5','Bologna');
 
 
@@ -77,7 +69,6 @@ insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('
 
 insert into CategoriaPosizione ( nome_categoria) values ( 'bella desc');
 insert into CategoriaPosizione ( nome_categoria) values ( ' desc 2');
-
 
 
 
@@ -308,6 +299,5 @@ INSERT INTO QuizDomanda VALUES(37, 5);
 INSERT INTO QuizDomanda VALUES(38, 5);
 INSERT INTO QuizDomanda VALUES(39, 5);
 INSERT INTO QuizDomanda VALUES(40, 5);
-=======
-insert into Citta (id_regione,nome) values ('5','Bologna');
->>>>>>> branch 'master' of https://github.com/Lollof00/PW2.git
+
+

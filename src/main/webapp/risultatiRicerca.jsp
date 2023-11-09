@@ -26,7 +26,7 @@
         <div class="result-item">
             <h3><%= posizione.getDescrizione() %></h3>
             <p>Ruolo: <%= posizione.getRuolo() %></p>
-            <p>Categoria: <%= posizione.getCategoria().getDescrizione() %></p>
+            <p>Categoria: <%= posizione.getCategoria().getNome_categoria() %></p>
             <p>Città: <%= posizione.getCitta().getNome() %></p>
         </div>
         <%

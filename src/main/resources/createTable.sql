@@ -1,7 +1,6 @@
 
 create table CategoriaPosizione(
 id_Categoria int identity not null primary key,
-<<<<<<< HEAD
 nome_categoria varchar(70)
 );
 
@@ -10,11 +9,6 @@ id_regione int identity not null primary key,
 nome varchar(50) not null,
 )
 
-=======
-descrizione varchar(70)
-);
- 
->>>>>>> branch 'master' of https://github.com/Lollof00/PW2.git
 create table Citta(
 id_citta int identity not null primary key,
 id_regione int,
@@ -165,8 +159,5 @@ ALTER TABLE Utente
 
 alter table utente add CONSTRAINT DF_Utenti_ruolo_admin DEFAULT 'user' for ruolo_admin;
 
-create table Regione(
-          id_regione int identity not null primary key,
-          nome varchar(50) not null,
-)
+
 
