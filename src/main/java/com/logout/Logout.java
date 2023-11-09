@@ -16,18 +16,16 @@ import java.io.IOException;
 public class Logout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        Utente utente = (Utente) session.getAttribute("utente");
+             HttpSession session = req.getSession(false);
 
-        if(utente.getRuolo_admin().equals("user")){
-            req.getSession().invalidate();
-            resp.sendRedirect("login.jsp");
+             Utente utente = (Utente) session.getAttribute("utente");
+
+             req.getSession().invalidate();
             resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             resp.setHeader("Pragma", "no-cache");
-            resp.setDateHeader("Expires", 0);
-        }else {
-            req.getSession().invalidate();
+            resp.setHeader("Expires", "0");
+            resp.setDateHeader("Expires", -1);
             resp.sendRedirect("login.jsp");
-        }
+
     }
 }

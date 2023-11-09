@@ -11,8 +11,8 @@
 
     ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
     ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
-    //System.out.println(regioni);
-    //System.out.println(cities);
+
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 %>
 
@@ -35,7 +35,7 @@
     <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse " style="background-color:#0072BC">
         <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-5" style="gap: 3rem">
-                <a href="${pageContext.request.contextPath}/profilo/profilo.jsp" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true"><i class="bi bi-person-circle" style="margin-right: 5px;font-size: 20px"></i><span>Profilo</span></a>
+                <a href="${pageContext.request.contextPath}/home/profilo.jsp" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true"><i class="bi bi-person-circle" style="margin-right: 5px;font-size: 20px"></i><span>Profilo</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-file-earmark-person" style="margin-right: 5px;font-size: 20px"></i><span>Curriculum</span></a>
                 <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-search" style="margin-right: 5px;font-size: 20px"></i><span>Ricerca Posizioni</span></a>
                 <a href="${pageContext.request.contextPath}/findCandidature" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-check2-circle" style="margin-right: 5px;font-size: 20px"></i><span>Candidature Effettuate</span></a>
@@ -57,7 +57,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <a class="navbar-brand" href="../home/homeuser.jsp">
+            <a class="navbar-brand" href="homeuser.jsp">
                 <img
                         src="${pageContext.request.contextPath}/img/logoPagina.png"
                         height="50"
@@ -66,7 +66,7 @@
                 />
             </a>
             <span>
-                <a href="../home/homeuser.jsp"><h1><span style="float:right;font-family:Comic Sans MS">JOBHUNTER &thinsp;</span></h1></a>
+                <a href="homeuser.jsp"><h1><span style="float:right;font-family:Comic Sans MS">JOBHUNTER &thinsp;</span></h1></a>
             </span>
         </div>
     </nav>
@@ -137,7 +137,6 @@
                                     </div>
                                     <div class="tab-content pt-3">
                                         <div class="tab-pane active">
-                                            <!-- inserire i dati dinamicamente-->
                                             <form class="form" method="post" action="${pageContext.request.contextPath}/profiloUtente" id="modifica_profilo"  enctype='multipart/form-data'>
                                                 <div class="row">
                                                     <div class="col">
@@ -207,7 +206,8 @@
                                                             </div>
                                                             <div class="col">
                                                                 <div class="form-group">
-                                                                    <%Citta citta = (utente.getId_citta() !=null)?utente.getId_citta() :null;
+                                                                    <%Citta citta = (utente.getId_citta() !=null)?utente.getId_citta() : null;
+
                                                                     %>
                                                                     <label>Città di nascita</label>
                                                                     <select class="form-select" aria-label="Default select example" name="citta">
@@ -217,6 +217,10 @@
 
                                                                         %>
                                                                         <option value="<%=citta.getId_citta()+" "+citta.getRegione().getId_regione()+" "+citta.getNome()%>" selected><%=utente.getId_citta().getNome()%></option>
+                                                                        <%
+                                                                            }else{
+                                                                        %>
+                                                                             <option selected style="display: none" value="">Seleziona una città</option>
                                                                         <%
                                                                             };
                                                                         %>

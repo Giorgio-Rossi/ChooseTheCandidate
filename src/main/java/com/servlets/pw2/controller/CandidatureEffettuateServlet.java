@@ -51,7 +51,7 @@ public class CandidatureEffettuateServlet extends HttpServlet {
             request.setAttribute("candidature", candidature);
             System.out.println(candidature);
 
-            request.getRequestDispatcher("/visualizzaCandidature.jsp").forward(request, response);
+            request.getRequestDispatcher("/home/visualizzaCandidature.jsp").forward(request, response);
             ;
 
         }

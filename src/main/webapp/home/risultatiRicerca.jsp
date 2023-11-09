@@ -5,6 +5,11 @@
 <%@ page import="com.candidatoDB.pw2.entity.CategoriaPosizione" %>
 <%@ page import="com.candidatoDB.pw2.entity.Quiz" %>
 
+<%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+
+%>
+
 <html>
 <head>
     <title>Risultati Ricerca Posizioni</title>

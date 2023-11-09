@@ -5,6 +5,11 @@
 <%@page import="com.candidatoDB.pw2.entity.Quiz" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+
+<%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+
+%>
 <!DOCTYPE html>
 <html>
 <head>

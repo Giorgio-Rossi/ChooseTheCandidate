@@ -49,8 +49,6 @@ public class ProfiloServlet extends HttpServlet {
         String newpasw = req.getParameter("newpsw");
         String confirmpsw = req.getParameter("confirmpsw");
 
-        System.out.println(oldpsw + newpasw + confirmpsw);
-
 
         if (!utenteInSessione.getNome().equals(req.getParameter("nome"))) {
             utenteModificato.setNome(req.getParameter("nome"));
@@ -113,31 +111,33 @@ public class ProfiloServlet extends HttpServlet {
         if (!req.getParameter("cap").isEmpty()) {
             utenteModificato.setCap(req.getParameter("cap"));
         } else {
-            System.out.println("si non esiste");
             utenteModificato.setCap(utenteInSessione.getCap());
         }
 
 
-        //TODO GESTIRE LE CITTA con tendina
 
-        if(req.getParameter("citta")!=null){
+
+        if(!req.getParameter("citta").isEmpty()){
+            System.out.println(req.getParameter("citta"));
             Integer id_citta = Integer.valueOf(req.getParameter("citta").split(" ", 3)[0]);
             Integer id_regione = Integer.valueOf(req.getParameter("citta").split(" ", 3)[1]);
             String nome_citta = req.getParameter("citta").split(" ", 3)[2];
 
-            if ((utenteInSessione.getId_citta().getId_citta() != id_citta)) {
-                CittaIMPL cittaIMPL = new CittaIMPL();
-                Regione regione = cittaIMPL.getRegione(id_regione);
-                Citta citta = new Citta(id_citta, regione, nome_citta);
-                utenteModificato.setId_citta(citta);
-                isModified = true;
-            } else {
-                utenteModificato.setId_citta(utenteInSessione.getId_citta());
-            }
+            Citta citta_utente_sessione = utenteInSessione.getId_citta();
+
+            CittaIMPL cittaIMPL = new CittaIMPL();
+            Regione regione = cittaIMPL.getRegione(id_regione);
+            Citta citta = new Citta(id_citta, regione, nome_citta);
+            utenteModificato.setId_citta(citta);
+            isModified = true;
+
+
+        }else {
+            utenteModificato.setId_citta(utenteInSessione.getId_citta());
         }
 
 
-        if (!utenteInSessione.getTelefono().equals(req.getParameter("telefono"))) {
+        if (!req.getParameter("telefono").isEmpty()) {
             utenteModificato.setTelefono(req.getParameter("telefono"));
             isModified = true;
         } else {
@@ -146,7 +146,6 @@ public class ProfiloServlet extends HttpServlet {
 
 
         if (!Objects.equals(newpasw, "")) {
-            System.out.println("Not null");
             if (oldpsw.equals(utenteInSessione.getPassword())) {
                 if (newpasw.equals(confirmpsw)) {
                     utenteModificato.setPassword(newpasw);
@@ -192,13 +191,11 @@ public class ProfiloServlet extends HttpServlet {
             session.removeAttribute("utente");
             session.setAttribute("utente", utenteModificato);
             if(isModified){
-                System.out.println("qui");
                 ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
             } else {
-                System.out.println("quo");
                 ErrorManager.setOtherMessage("Non hai modificato nulla!",req);
             }
-            req.getRequestDispatcher("/profilo/profilo.jsp").forward(req, resp);
+            req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
         }
 
     }

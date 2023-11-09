@@ -20,6 +20,7 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/card.css" />
 </head>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -35,7 +36,7 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 			style="background-color: #0072BC">
 			<div class="position-sticky">
 				<div class="list-group list-group-flush mx-3 mt-5" style="gap: 3rem">
-					<a href="${pageContext.request.contextPath}/profilo/profilo.jsp"
+					<a href="${pageContext.request.contextPath}/home/profilo.jsp"
 						class="list-group-item list-group-item-action py-2 ripple"
 						aria-current="true"><i class="bi bi-person-circle"
 						style="margin-right: 5px; font-size: 20px"></i><span>Profilo</span></a>
@@ -43,7 +44,7 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 						class="list-group-item list-group-item-action py-2 ripple"><i
 						class="bi bi-file-earmark-person"
 						style="margin-right: 5px; font-size: 20px"></i><span>Curriculum</span></a>
-					<a href="${pageContext.request.contextPath}/ricercaPosizioni.jsp"
+					<a href="${pageContext.request.contextPath}/home/ricercaPosizioni.jsp"
 						class="list-group-item list-group-item-action py-2 ripple"> <i
 						class="bi bi-search" style="margin-right: 5px; font-size: 20px"></i>
 						<span>Ricerca Posizioni</span>
@@ -53,7 +54,8 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 					<a href="${pageContext.request.contextPath}/findCandidature"
 						class="list-group-item list-group-item-action py-2 ripple"><i
 						class="bi bi-search" style="margin-right: 5px; font-size: 20px"></i><span>Candidature
-							effettuate</span></a> <a href="${pageContext.request.contextPath}/logout"
+							effettuate</span></a>
+					<a href="${pageContext.request.contextPath}/logout"
 						class="list-group-item list-group-item-action py-2 ripple"><i
 						class="bi bi-box-arrow-right"
 						style="margin-right: 5px; font-size: 20px"></i><span>Logout</span></a>
@@ -121,64 +123,94 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 d-flex align-items-stretch"
-						style="padding-top: 50px">
-						<div class="card shadow-lg p-3 mb-5 bg-body rounded"
-							style="width: 18rem;">
-							<i class="bi bi-person"
-								style="font-size: 10rem; text-align: center"></i>
-							<div class="card-body">
-								<h5 class="card-title" style="text-align: center">
-									<a class="btn btn-info" href="../login.jsp">Completa il
-										profilo</a>
-								</h5>
+					<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+						<div class="slide slide1">
+							<div class="content">
+								<div class="icon">
+									<i class="bi bi-person"
+									   style="font-size: 10rem;text-align: center"><h1 style="font-size: 1rem">Completa il profilo</h1></i>
+								</div>
+							</div>
+						</div>
+						<div class="slide slide2">
+							<div class="content">
+								<h3>
+									Hello there!
+								</h3>
+								<p>Trust yourself and keep going.</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 d-flex align-items-stretch"
-						style="padding-top: 50px">
-						<div class="card shadow-lg p-3 mb-5 bg-body rounded"
-							style="width: 18rem;">
-							<i class="bi bi-award"
-								style="font-size: 10rem; text-align: center"></i>
-							<div class="card-body">
-								<h5 class="card-title" style="text-align: center">
-									<a class="btn btn-info" href="../login.jsp">Miglior
-										Candidatura</a>
-								</h5>
+					<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+						<div class="slide slide1">
+							<div class="content">
+								<div class="icon">
+									<i class="bi bi-award"
+									   style="font-size: 10rem;text-align: center"><h1 style="font-size: 1rem">Miglior Candidatura</h1></i>
+								</div>
+							</div>
+						</div>
+						<div class="slide slide2">
+							<div class="content">
+								<h3>
+									Hello there!
+								</h3>
+								<p>Trust yourself and keep going.</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 d-flex align-items-stretch"
-						style="padding-top: 50px">
-						<div class="card shadow-lg p-3 mb-5 bg-body rounded"
-							style="width: 18rem;">
-							<i class="bi bi-receipt-cutoff"
-								style="font-size: 10rem; text-align: center"></i>
-							<div class="card-body">
-								<h5 class="card-title" style="text-align: center">
-									<a class="btn btn-info"
-										href="${pageContext.request.contextPath}/candidaturaRecente">Candidatura
-										più recente</a>
-								</h5>
+
+					<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+						<div class="slide slide1">
+							<div class="content">
+								<div class="icon">
+									<i class="bi bi-receipt-cutoff"
+									   style="font-size: 9rem;text-align: center"><h1 style="font-size: 1rem">Candidatura più recente</h1></i>
+								</div>
+							</div>
+						</div>
+						<div class="slide slide2">
+							<div class="content">
+								<h3>
+									Hello there!
+								</h3>
+								<p>Trust yourself and keep going.</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 d-flex align-items-stretch"
-						style="padding-top: 50px">
-						<div class="card shadow-lg p-3 mb-5 bg-body rounded"
-							style="width: 18rem;">
-							<i class="bi bi-calendar"
-								style="font-size: 10rem; text-align: center"></i>
-							<div class="card-body">
-								<h5 class="card-title" style="text-align: center">
-									<a class="btn btn-info"
-										href="${pageContext.request.contextPath}/posizioniPiuRecenti">Annunci
-										Recenti</a>
-								</h5>
+
+					<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+						<div class="slide slide1">
+							<div class="content">
+								<div class="icon">
+									<i class="bi bi-calendar"
+									   style="font-size: 10rem;text-align: center"><h1 style="font-size: 1rem">Annunci Recenti</h1></i>
+								</div>
+							</div>
+						</div>
+						<div class="slide slide2">
+							<div class="row">
+								<table class=" table-borderless">
+									<tbody>
+									<tr>
+										<td colspan="2">Mark</td>
+										<td><h6 class="mb-2"><span class="badge bg-warning"><i class="bi bi-exclamation-circle" style="font-size: 1rem"></i></span></h6></td>
+									</tr>
+									<tr>
+										<td colspan="2">Jacob</td>
+										<td><h6 class="mb-2"><span class="badge bg-warning"><i class="bi bi-exclamation-circle" style="font-size: 1rem"></i></span></h6></td>
+									</tr>
+									<tr>
+										<td colspan="2">Codice Fiscale</td>
+										<td><h6 class="mb-2"><span class="badge bg-warning"><i class="bi bi-exclamation-circle" style="font-size: 1rem"></i></span></h6></td>
+									</tr>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
+
+
 				</div>
 			</div>
 		</div>

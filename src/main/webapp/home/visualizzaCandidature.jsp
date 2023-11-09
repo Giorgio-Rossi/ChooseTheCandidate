@@ -3,7 +3,10 @@
 <%@page import="com.candidatoDB.pw2.entity.Utente" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<%   Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente"); %>
+<%   Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+
+%>
 
 
 

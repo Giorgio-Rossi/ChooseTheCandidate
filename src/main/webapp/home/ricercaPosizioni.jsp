@@ -18,7 +18,7 @@
 <div class="container">
     <h1>Ricerca Posizioni</h1>
 
-    <form action="RicercaPosizioniServlet" method="post">
+    <form action="${pageContext.request.contextPath}/RicercaPosizioniServlet" method="post">
         <div class="form-group">
             <label for="ruolo">Ruolo:</label>
             <select name="ruolo" id="ruolo">
