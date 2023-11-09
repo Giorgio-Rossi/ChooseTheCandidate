@@ -1,7 +1,7 @@
 create table CategoriaPosizione(
 id_Categoria int identity not null primary key,
-descrizione varchar(70)
-)
+nome_categoria varchar(70)
+);
 
 create table Regione(
 id_regione int identity not null primary key,
