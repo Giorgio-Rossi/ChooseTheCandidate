@@ -23,4 +23,6 @@ public interface PosizioneDAO {
 
 	List<Posizione> searchByFilters(String ruolo, Citta citta, CategoriaPosizione categoria);
 
+	
 }
+
