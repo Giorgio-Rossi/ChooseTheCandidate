@@ -9,7 +9,7 @@
 			style="background-color: #0072BC">
 			<div class="position-sticky">
 				<div class="list-group list-group-flush mx-3 mt-5" style="gap: 3rem">
-					<a href="${pageContext.request.contextPath}/profilo/profilo.jsp"
+					<a href="${pageContext.request.contextPath}/home/profilo.jsp"
 						class="list-group-item list-group-item-action py-2 ripple"
 						aria-current="true"><i class="bi bi-person-circle"
 						style="margin-right: 5px; font-size: 20px"></i><span>Profilo</span></a>
@@ -24,7 +24,8 @@
 					</a>
 
 					<!--    <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-search" style="margin-right: 5px;font-size: 20px"></i><span>Ricerca Posizioni</span></a>  -->
-					<a href="${pageContext.request.contextPath}/findCandidature"
+					<a
+						href="${pageContext.request.contextPath}/candidaturePiuRecente.jsp"
 						class="list-group-item list-group-item-action py-2 ripple"><i
 						class="bi bi-search" style="margin-right: 5px; font-size: 20px"></i><span>Candidature
 							effettuate</span></a> <a href="${pageContext.request.contextPath}/logout"
@@ -45,17 +46,18 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
-				<a class="navbar-brand" href="${pageContext.request.contextPath}/home/homeuser.jsp"> <img
+				<a class="navbar-brand"
+					href="${pageContext.request.contextPath}/home/homeuser.jsp"> <img
 					src="${pageContext.request.contextPath}/img/logoPagina.png"
 					height="50" alt="" loading="lazy" />
 				</a>
 				<h1 style="text-align: center; margin-top: 10px">
 
-				<span> <a href="homeuser.jsp"><h1>
-							<span style="float: right; font-family: Comic Sans MS">JOBHUNTER
-								&thinsp;</span>
-						</h1></a>
-				</span>
+					<span> <a href="homeuser.jsp"><h1>
+								<span style="float: right; font-family: Comic Sans MS">JOBHUNTER
+									&thinsp;</span>
+							</h1></a>
+					</span>
 			</div>
 		</nav>
 
