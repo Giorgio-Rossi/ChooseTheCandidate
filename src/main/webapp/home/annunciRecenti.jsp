@@ -55,7 +55,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 						<td><%=posizione.getN_ammissioni()%></td>
 						<td><%=posizione.getDescrizione()%></td>
 						<td><%=posizione.getCitta().getNome()%></td>
-						<td><%=posizione.getCategoria().getDescrizione()%></td>
+						<td><%=posizione.getCategoria().getNome_categoria()%></td>
 						<td><%=posizione.getStato()%></td>
 						<td><%=posizione.getData_inserimento()%></td>
 						<td><%=posizione.getRuolo()%></td>

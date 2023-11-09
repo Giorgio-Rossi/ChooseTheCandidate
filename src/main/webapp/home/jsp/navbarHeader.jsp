@@ -10,25 +10,25 @@
 			<div class="position-sticky">
 				<div class="list-group list-group-flush mx-3 mt-5" style="gap: 3rem">
 					<a href="${pageContext.request.contextPath}/home/profilo.jsp"
-						class="list-group-item list-group-item-action py-2 ripple"
+						class="list-group-item list-group-item-action py-2 ripple active"
 						aria-current="true"><i class="bi bi-person-circle"
 						style="margin-right: 5px; font-size: 20px"></i><span>Profilo</span></a>
+						
+						<!-- INSERIRE UN IF DENTRO AL CLASS PER ANDARE A SCRIVERE ACTIVE -->
+						
 					<a href="#"
 						class="list-group-item list-group-item-action py-2 ripple"><i
 						class="bi bi-file-earmark-person"
 						style="margin-right: 5px; font-size: 20px"></i><span>Curriculum</span></a>
-					<a href="${pageContext.request.contextPath}/ricercaPosizioni.jsp"
-						class="list-group-item list-group-item-action py-2 ripple"> <i
-						class="bi bi-search" style="margin-right: 5px; font-size: 20px"></i>
-						<span>Ricerca Posizioni</span>
-					</a>
-
-					<!--    <a href="#" class="list-group-item list-group-item-action py-2 ripple"><i class="bi bi-search" style="margin-right: 5px;font-size: 20px"></i><span>Ricerca Posizioni</span></a>  -->
-					<a
-						href="${pageContext.request.contextPath}/candidaturePiuRecente.jsp"
+					<a href="${pageContext.request.contextPath}/home/ricercaPosizioni.jsp"
 						class="list-group-item list-group-item-action py-2 ripple"><i
-						class="bi bi-search" style="margin-right: 5px; font-size: 20px"></i><span>Candidature
-							effettuate</span></a> <a href="${pageContext.request.contextPath}/logout"
+						class="bi bi-search" style="margin-right: 5px; font-size: 20px"></i><span>Ricerca
+							Posizioni</span></a> <a
+						href="${pageContext.request.contextPath}/home/candidaturaPiuRecente.jsp"
+						class="list-group-item list-group-item-action py-2 ripple"><i
+						class="bi bi-check2-circle"
+						style="margin-right: 5px; font-size: 20px"></i><span>Candidature
+							Effettuate</span></a> <a href="${pageContext.request.contextPath}/logout"
 						class="list-group-item list-group-item-action py-2 ripple"><i
 						class="bi bi-box-arrow-right"
 						style="margin-right: 5px; font-size: 20px"></i><span>Logout</span></a>
@@ -46,18 +46,14 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
-				<a class="navbar-brand"
-					href="${pageContext.request.contextPath}/home/homeuser.jsp"> <img
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/home/homeuser.jsp"> <img
 					src="${pageContext.request.contextPath}/img/logoPagina.png"
 					height="50" alt="" loading="lazy" />
-				</a>
-				<h1 style="text-align: center; margin-top: 10px">
-
-					<span> <a href="homeuser.jsp"><h1>
-								<span style="float: right; font-family: Comic Sans MS">JOBHUNTER
-									&thinsp;</span>
-							</h1></a>
-					</span>
+				</a> <span> <a href="/home/homeuser.jsp"><h1>
+							<span style="float: right; font-family: Comic Sans MS">JOBHUNTER
+								&thinsp;</span>
+						</h1></a>
+				</span>
 			</div>
 		</nav>
 
