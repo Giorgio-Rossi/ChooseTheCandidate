@@ -1,3 +1,5 @@
+
+/*	Inserimento degli utenti	*/
 INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('admin', 'admin', null,'admin@gmail.com', null, null, null, null, null, 'admin', 'admin' );
 INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Giorgio', 'Rossi', null, 'giorgiorossi@gmail.com', null, null, null, null, null, 'admin', 'admin' );
 INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)VALUES ('Nicolo', 'Drovandi', null,'nicolodrovandi@gmail.com', null, null, null, null, null, 'admin', 'admin' );
@@ -5,40 +7,38 @@ INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_
 INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Luca', 'Sanguinetti', null, 'lucasanguinetti@gmail.com', null, null, null, null, null, 'admin', 'admin' );
 INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)VALUES ('Claudio', 'Balzani', null,'claudiobalzani@gmail.com', null, null, null, null, null, 'admin', 'admin' );
 INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Biagio', 'Ricci', null,'biagioricci@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-
 insert into Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) values ('Matteo','Salvo','CF1','matteosalvo@gmail.com','20000203','Via Marconi 2','1','17900','347689876','user','salvini');
 insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Fiona','Giusti','CF2','fionagiusti@gmail.com','20030806','Via Roma 29','1','16177','349680856','user','fiona');
 insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Gianluca','Torre','CF3','gianlu@gmail.com','19800407','Via Milano 56','2','20321','387689806','user','torre');
 insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Marta','Lupu','CF4','mlupu@gmail.com','20030203','Via Rodi 70','2','16167','339880856','user','marta');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','ciao','1','1',NULL,'aperta','20231101','Sistemista');
 
+/*	Insert CategoriaPosizione	*/
+insert into CategoriaPosizione ( nome_categoria) values ( 'bella desc');
+insert into CategoriaPosizione ( nome_categoria) values ( ' desc 2');
 
-
-
-
-
+/*	Inserimento delle Regione	*/
 INSERT INTO Regione (nome) values('Abbruzzo');
- INSERT INTO Regione (nome) values('Basilicata');
- INSERT INTO Regione (nome) values('Calabria');
- INSERT INTO Regione (nome) values('Campania');
- INSERT INTO Regione (nome) values('Emilia-Romagna');
- INSERT INTO Regione (nome) values('Friuli-Venezia-Giulia');
- INSERT INTO Regione (nome) values('Lazio');
- INSERT INTO Regione (nome) values('Liguria');
- INSERT INTO Regione (nome) values('Lombardia');
- INSERT INTO Regione (nome) values('Marche');
- INSERT INTO Regione (nome) values('Molise');
- INSERT INTO Regione (nome) values('Piemonte');
- INSERT INTO Regione (nome) values('Puglia');
- INSERT INTO Regione (nome) values('Sardegna');
- INSERT INTO Regione (nome) values('Sicilia');
- INSERT INTO Regione (nome) values('Toscana');
- INSERT INTO Regione (nome) values('Trentino-Alto-Adige');
- INSERT INTO Regione (nome) values('Umbria');
- INSERT INTO Regione (nome) values('Valle D Aosta');
- INSERT INTO Regione (nome) values('Veneto');
+INSERT INTO Regione (nome) values('Basilicata');
+INSERT INTO Regione (nome) values('Calabria');
+INSERT INTO Regione (nome) values('Campania');
+INSERT INTO Regione (nome) values('Emilia-Romagna');
+INSERT INTO Regione (nome) values('Friuli-Venezia-Giulia');
+INSERT INTO Regione (nome) values('Lazio');
+INSERT INTO Regione (nome) values('Liguria');
+INSERT INTO Regione (nome) values('Lombardia');
+INSERT INTO Regione (nome) values('Marche');
+INSERT INTO Regione (nome) values('Molise');
+INSERT INTO Regione (nome) values('Piemonte');
+INSERT INTO Regione (nome) values('Puglia');
+INSERT INTO Regione (nome) values('Sardegna');
+INSERT INTO Regione (nome) values('Sicilia');
+INSERT INTO Regione (nome) values('Toscana');
+INSERT INTO Regione (nome) values('Trentino-Alto-Adige');
+INSERT INTO Regione (nome) values('Umbria');
+INSERT INTO Regione (nome) values('Valle D Aosta');
+INSERT INTO Regione (nome) values('Veneto');
 
-
+/*	Inserimento delle Citta	*/
 insert into Citta (id_regione,nome) values ('8','Genova');
 insert into Citta (id_regione,nome) values ('7','Roma');
 insert into Citta (id_regione,nome) values ('4','Napoli');
@@ -48,102 +48,21 @@ insert into Citta (id_regione,nome) values ('20','Venezia');
 insert into Citta (id_regione,nome) values ('16','Firenze');
 insert into Citta (id_regione,nome) values ('5','Bologna');
 
-
-
-
-
+/*	Inserimento delle posizioni	*/
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','ciao','1','1',NULL,'aperta','20231101','Sistemista');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','hola','1','2',NULL,'aperta','20231102','Web Developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo uno sviluppatore Java','2','2',NULL,'aperta','20231107','Java Developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo uno sviluppatore Front End','2','2',NULL,'aperta','20231102','Front-End Developer');
 
+/*	Inserimento delle Candidature degli utenti	*/
 insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('1','10','20231101');
 insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('2','10','20231102');
 insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('3','10','20231101');
 insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('4','10','20231102');
-
-
 insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('1','11','20231103');
 insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('2','11','20231105');
 insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('3','11','20231106');
 insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('4','11','20231107');
-
-
-
-insert into CategoriaPosizione ( descrizione) values ( 'bella desc');
-insert into CategoriaPosizione ( descrizione) values ( ' desc 2');
-
-
-
-/* DA ESEGUIRE */
-/*	STRUTTURA MODELLOO
-INSERT INTO Quiz VALUES ('Java', 8);
-
-ASSOCIO UN PUNTEGGIO ALLA DOMANDA
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-
-ASSOCIO LE RISPOSTE ALLE DOMANDE ID 9 CORRISPONDE ALL ID DELLA PRIIMA DOMANDA DEL SECONDO QUIZ
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 9)
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 10);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 11);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 12);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 13);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 14);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 15);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 16);
-
-ASSOCIO LA DOMANDA AL QUIZ
-INSERT INTO QuizDomanda VALUES(9, 2);
-INSERT INTO QuizDomanda VALUES(10, 2);
-INSERT INTO QuizDomanda VALUES(11, 2);
-INSERT INTO QuizDomanda VALUES(12, 2);
-INSERT INTO QuizDomanda VALUES(13, 2);
-INSERT INTO QuizDomanda VALUES(14, 2);
-INSERT INTO QuizDomanda VALUES(15, 2);
-INSERT INTO QuizDomanda VALUES(16, 2);
-*/
-
-/* DA ESEGUIRE 
-INSERT INTO Quiz VALUES ('Java', 8);
-
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-INSERT INTO Domanda VALUES ('', 1);
-
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 9)
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 10);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 11);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 12);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 13);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 14);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 15);
-INSERT INTO RisposteDomanda VALUES ('', '', '', '', '', 16);
-
-INSERT INTO QuizDomanda VALUES(9, 2);
-INSERT INTO QuizDomanda VALUES(10, 2);
-INSERT INTO QuizDomanda VALUES(11, 2);
-INSERT INTO QuizDomanda VALUES(12, 2);
-INSERT INTO QuizDomanda VALUES(13, 2);
-INSERT INTO QuizDomanda VALUES(14, 2);
-INSERT INTO QuizDomanda VALUES(15, 2);
-INSERT INTO QuizDomanda VALUES(16, 2);
-*/
-
-
-
-
 
 /*	Inserimento	quiz Python - Domande e Risposte	*/
 INSERT INTO Quiz VALUES ('Python', 8);
@@ -207,7 +126,6 @@ INSERT INTO QuizDomanda VALUES(15, 2);
 INSERT INTO QuizDomanda VALUES(16, 2);
 
 
-/* DA ID SFASATI */
 /* Inserimento quiz C  */
 INSERT INTO Quiz VALUES ('C', 8);
 
@@ -238,7 +156,7 @@ INSERT INTO QuizDomanda VALUES(22, 3);
 INSERT INTO QuizDomanda VALUES(23, 3);
 INSERT INTO QuizDomanda VALUES(24, 3);
 
-/* DA ID SFASATI */
+
 /* Inserimento quiz C++  Id_quiz 4*/
 INSERT INTO Quiz VALUES ('C++', 8);
 
@@ -270,8 +188,6 @@ INSERT INTO QuizDomanda VALUES(31, 4);
 INSERT INTO QuizDomanda VALUES(32, 4);
 
 
-
-
 /* Crezione quiz Javascript Id_quiz 5*/
 INSERT INTO Quiz VALUES ('Javascript', 8);
 
@@ -288,10 +204,10 @@ INSERT INTO RisposteDomanda VALUES ('int', 'long', 'float', 'number', 'scelta4',
 INSERT INTO RisposteDomanda VALUES ('declare var nome_variabile;', 'let nome_variabile;', 'variable nome_variabile;', 'var nome_variabile;', 'scelta4', 34);
 INSERT INTO RisposteDomanda VALUES ('+', '&', '||', ':', 'scelta1', 35);
 INSERT INTO RisposteDomanda VALUES ('emptyArray()', '[]', 'new Array()', 'array()', 'scelta2', 36);
-INSERT INTO RisposteDomanda VALUES ('Data Object Model', 'Document Object Model', '', 'Dynamic Object Model', 'Digital Object Model', 37);
+INSERT INTO RisposteDomanda VALUES ('Data Object Model', 'Document Object Model', 'Digital Object Model', 'Dynamic Object Model', 'scelta1', 37);
 INSERT INTO RisposteDomanda VALUES ('57', '12', '32', '"57"', 'scelta4', 38);
 INSERT INTO RisposteDomanda VALUES ('function nome_funzione(parametri) {}', 'def nome_funzione(parametri) {}', 'create function nome_funzione(parametri) {}', 'func nome_funzione(parametri) {}', 'scelta1', 39);
-INSERT INTO RisposteDomanda VALUES ('Ricorsione', 'Chiamata multipla', 'Esecuzione parallela', '', '', 40);
+INSERT INTO RisposteDomanda VALUES ('Ricorsione', 'Chiamata multipla', 'Esecuzione parallela', 'Iterazione', 'scelta1', 40);
 
 INSERT INTO QuizDomanda VALUES(33, 5);
 INSERT INTO QuizDomanda VALUES(34, 5);
@@ -301,3 +217,151 @@ INSERT INTO QuizDomanda VALUES(37, 5);
 INSERT INTO QuizDomanda VALUES(38, 5);
 INSERT INTO QuizDomanda VALUES(39, 5);
 INSERT INTO QuizDomanda VALUES(40, 5);
+
+
+/* Crezione quiz HTML, CSS Id_quiz 6*/
+INSERT INTO Quiz VALUES ('HTML, CSS', 10);
+
+INSERT INTO Domanda VALUES ('Qual è il linguaggio utilizzato per definire la struttura di una pagina web? ', 1);
+INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per il tipo di tag HTML che non richiede una tag di chiusura?', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta l acronimo "CSS" in relazione alla progettazione web?', 1);
+INSERT INTO Domanda VALUES ('Qual è il selettore in CSS che seleziona tutti gli elementi di un determinato tipo?', 1);
+INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per il modello di formattazione che consente di posizionare elementi HTML in modo relativo agli altri?', 1);
+INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per l attributo HTML che definisce lo stile CSS direttamente nell elemento?', 1);
+INSERT INTO Domanda VALUES ('Qual è l elemento HTML utilizzato per collegare un file CSS esterno a una pagina HTML?', 1);
+INSERT INTO Domanda VALUES ('Qual è il selettore CSS per selezionare tutti gli elementi con una determinata classe?', 1);
+INSERT INTO Domanda VALUES ('Quale dei seguenti è un elemento HTML per creare una lista numerata?', 1);
+INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per l attributo HTML che definisce il colore del testo?', 1);
+
+INSERT INTO RisposteDomanda VALUES ('HTML', 'CSS', 'JavaScript', 'XML', 'scelta1', 41);
+INSERT INTO RisposteDomanda VALUES ('Tag autonomi', 'Tag comuni', 'Tag principali', 'Tag essenziali', 'scelta1', 42);
+INSERT INTO RisposteDomanda VALUES ('Cascading Style Sheet', 'Creative Styling System', 'Computer Style Specification', 'Complex Styling Syntax', 'scelta1', 43);
+INSERT INTO RisposteDomanda VALUES ('*', '#', '.', ':', 'scelta1', 44);
+INSERT INTO RisposteDomanda VALUES ('Layout di griglia', 'Box Model', 'Posizionamento statico', 'Modello di posizionamento', 'scelta1', 45);
+INSERT INTO RisposteDomanda VALUES ('Style', 'Class', 'Id', 'Link', 'scelta1', 46);
+INSERT INTO RisposteDomanda VALUES ('<link>', '<style>', '<script>', '<css>', 'scelta1', 47);
+INSERT INTO RisposteDomanda VALUES ('.', '#', '*', ':', 'scelta1', 48);
+INSERT INTO RisposteDomanda VALUES ('<ul>', '<li>', '<ol>', '<dl>', 'scelta3', 49);
+INSERT INTO RisposteDomanda VALUES ('color', 'text-color', 'font-color', 'style', 'scelta1', 50);
+
+
+INSERT INTO QuizDomanda VALUES(41, 6);
+INSERT INTO QuizDomanda VALUES(42, 6);
+INSERT INTO QuizDomanda VALUES(43, 6);
+INSERT INTO QuizDomanda VALUES(44, 6);
+INSERT INTO QuizDomanda VALUES(45, 6);
+INSERT INTO QuizDomanda VALUES(46, 6);
+INSERT INTO QuizDomanda VALUES(47, 6);
+INSERT INTO QuizDomanda VALUES(48, 6);
+INSERT INTO QuizDomanda VALUES(49, 6);
+INSERT INTO QuizDomanda VALUES(50, 6);
+
+/* Crezione quiz Comunicazione efficace Id_quiz 7*/
+INSERT INTO Quiz VALUES ('Comunicazione efficace', 5);
+
+INSERT INTO Domanda VALUES ('Come ti comporti quando devi spiegare un concetto complesso a qualcuno che non ne ha familiarità?', 1);
+INSERT INTO Domanda VALUES ('Come rispondi quando qualcuno ti interrompe durante una conversazione?', 1);
+INSERT INTO Domanda VALUES ('Come gestisci una situazione in cui devi dare feedback negativo a un collega?', 1);
+INSERT INTO Domanda VALUES ('Quando parli in pubblico, come prepari il tuo discorso?', 1);
+INSERT INTO Domanda VALUES ('Come ti comporti quando hai una divergenza di opinioni con un collega durante una riunione?', 1);
+
+INSERT INTO RisposteDomanda VALUES ('Non ho mai lavorato in un team', 'Ho lavorato in un team, ma non ho fatto molto', 'Ho lavorato come parte di un team e ho contribuito con le mie competenze', 'Non ricordo nessuna esperienza di lavoro di squadra', 'scelta3', 51)
+INSERT INTO RisposteDomanda VALUES ('Cerco di imporre la mia opinione a tutti i costi', 'Evito il confronto e non dico niente', 'Discuto apertamente e cerco un compromesso', ' Non so come gestire le divergenze', 'scelta3', 52);
+INSERT INTO RisposteDomanda VALUES ('Non ho mai aiutato un collega', 'Non ho mai avuto occasioni di aiutare un collega', 'Ho offerto supporto e aiuto in situazioni simili', 'Non ricordo di aver aiutato nessuno', 'scelta3', 53);
+INSERT INTO RisposteDomanda VALUES ('Non condivido mai le mie opinioni', 'Lo faccio in modo aggressivo e dominante', 'Condivido apertamente e ascolto le opinioni degli altri', 'Non so come comunicare le mie idee', 'scelta3', 54);
+INSERT INTO RisposteDomanda VALUES ('Non ho un ruolo ideale', 'Voglio sempre essere il capo', 'Mi piace adattarmi al ruolo necessario per il successo del team', 'Non ho mai pensato a un ruolo ideale', 'scelta3', 55);
+
+INSERT INTO QuizDomanda VALUES(51, 7);
+INSERT INTO QuizDomanda VALUES(52, 7);
+INSERT INTO QuizDomanda VALUES(53, 7);
+INSERT INTO QuizDomanda VALUES(54, 7);
+INSERT INTO QuizDomanda VALUES(55, 7);
+
+
+/* Quiz Lavoro di squadra Id_quiz 8 */
+INSERT INTO Quiz VALUES ('Lavoro di squadra', 5);
+
+INSERT INTO Domanda VALUES ('Descrivi un esperienza recente in cui hai lavorato in un team. Qual è stato il tuo ruolo e come hai contribuito al successo del progetto?', 1);
+INSERT INTO Domanda VALUES ('Come gestisci le divergenze di opinione con i membri del tuo team durante un progetto? ', 1);
+INSERT INTO Domanda VALUES ('Puoi raccontare un esempio in cui hai aiutato un collega a superare una sfida o un ostacolo sul lavoro?', 1);
+INSERT INTO Domanda VALUES ('Come comunichi le tue idee e opinioni all interno del tuo team?', 1);
+INSERT INTO Domanda VALUES ('Qual è il tuo ruolo ideale in un team e perché?', 1);
+
+INSERT INTO RisposteDomanda VALUES ('Non ho mai lavorato in un team', 'Ho lavorato in un team, ma non ho fatto molto', 'Ho lavorato come parte di un team e ho contribuito con le mie competenze', 'Non ricordo nessuna esperienza di lavoro di squadra', 'scelta3', 56);
+INSERT INTO RisposteDomanda VALUES ('Cerco di imporre la mia opinione a tutti i costi', 'Evito il confronto e non dico niente', 'Discuto apertamente e cerco un compromesso', 'Non so come gestire le divergenze', 'scelta3', 57);
+INSERT INTO RisposteDomanda VALUES ('Non ho mai aiutato un collega', 'Non ho mai avuto occasioni di aiutare un collega', 'Ho offerto supporto e aiuto in situazioni simili', 'Non ricordo di aver aiutato nessuno', 'scelta3', 58);
+INSERT INTO RisposteDomanda VALUES ('Non condivido mai le mie opinioni', 'Lo faccio in modo aggressivo e dominante', 'Condivido apertamente e ascolto le opinioni degli altri ', 'Non so come comunicare le mie idee', 'scelta3', 59);
+INSERT INTO RisposteDomanda VALUES ('Non ho un ruolo ideale', 'Voglio sempre essere il capo', 'Mi piace adattarmi al ruolo necessario per il successo del team', 'Non ho mai pensato a un ruolo ideale', 'scelta3', 60);
+
+INSERT INTO QuizDomanda VALUES(56, 8);
+INSERT INTO QuizDomanda VALUES(57, 8);
+INSERT INTO QuizDomanda VALUES(58, 8);
+INSERT INTO QuizDomanda VALUES(59, 8);
+INSERT INTO QuizDomanda VALUES(60, 8);
+
+
+/* Quiz Leadership Id_quiz 9 */
+INSERT INTO Quiz VALUES ('Leadership', 5);
+
+INSERT INTO Domanda VALUES ('Puoi raccontare un esempio in cui hai guidato un gruppo o una squadra verso il raggiungimento di un obiettivo? Qual è stato il risultato?', 1);
+INSERT INTO Domanda VALUES ('Come ispiri e motivi gli altri a dare il massimo nel loro lavoro o nei progetti?', 1);
+INSERT INTO Domanda VALUES ('Come prendi decisioni importanti quando sei alla guida di un progetto o di un team?', 1);
+INSERT INTO Domanda VALUES ('Come gestisci le situazioni di conflitto all interno del tuo gruppo o team?', 1);
+INSERT INTO Domanda VALUES ('Quali sono le tue strategie per comunicare la visione e gli obiettivi a lungo termine al tuo team?', 1);
+
+INSERT INTO RisposteDomanda VALUES ('Non ho mai guidato un gruppo', 'Ho guidato un gruppo, ma senza successo', 'Non ricordo nessun esempio del genere', 'Ho guidato un gruppo e abbiamo raggiunto l obiettivo con successo', 'scelta4', 61);
+INSERT INTO RisposteDomanda VALUES ('Non mi interesso di motivare gli altri', 'Cerco di controllare e dire agli altri cosa fare', ' Offro supporto, incoraggiamento e riconoscimento', 'Non so come motivare gli altri', 'scelta3', 62);
+INSERT INTO RisposteDomanda VALUES ('Decido da solo senza coinvolgere gli altri', 'Cerco il consenso senza prendere una decisione definitiva', 'Coinvolgo il team nella discussione e prendiamo una decisione collettiva', 'Non so come prendere decisioni importanti', 'scelta3', 63);
+INSERT INTO RisposteDomanda VALUES ('Evito il conflitto e spero che si risolva da solo', 'Impongo la mia decisione senza ascoltare gli altri', 'Promuovo una discussione aperta e cerco di raggiungere un compromesso', 'Non so come gestire il conflitto', 'scelta3', 64);
+INSERT INTO RisposteDomanda VALUES ('Non ho una visione o obiettivi a lungo termine', 'Non condivido la mia visione con il team', 'Comunico chiaramente la visione e coinvolgo il team nella sua realizzazione', 'Non ho mai dovuto comunicare una visione', 'scelta3', 65);
+
+INSERT INTO QuizDomanda VALUES(61, 9);
+INSERT INTO QuizDomanda VALUES(62, 9);
+INSERT INTO QuizDomanda VALUES(63, 9);
+INSERT INTO QuizDomanda VALUES(64, 9);
+INSERT INTO QuizDomanda VALUES(65, 9);
+
+
+
+/* Quiz Gestione dello stress Id_quiz 10*/
+INSERT INTO Quiz VALUES ('Gestione dello stress', 5);
+
+INSERT INTO Domanda VALUES ('Come reagisci quando ti trovi sotto una pressione estrema al lavoro o a scuola?', 1);
+INSERT INTO Domanda VALUES ('Quali sono le tue strategie per affrontare situazioni stressanti nella tua vita quotidiana?', 1);
+INSERT INTO Domanda VALUES ('Come gestisci scadenze strette e molteplici compiti da completare contemporaneamente?', 1);
+INSERT INTO Domanda VALUES ('Cosa fai quando ricevi una critica o un feedback negativo da parte di un superiore o di un collega?', 1);
+INSERT INTO Domanda VALUES ('Quali attività o hobby pratici per rilassarti e ricaricare le energie dopo una giornata stressante? ', 1);
+
+INSERT INTO RisposteDomanda VALUES ('Perdo il controllo e mi arrabbio', 'Cerco di sfogare lo stress su altre persone', 'Respiro profondamente e cerco di affrontare la situazione in modo razionale', 'Non so come reagire sotto pressione', 'scelta3', 66);
+INSERT INTO RisposteDomanda VALUES ('Non ho strategie, cerco solo di sopravvivere', 'Mi faccio prendere dal panico', 'Esercito la meditazione, faccio attività fisica o pratico il rilassamento', ' Non so come affrontare lo stress', 'scelta3', 67);
+INSERT INTO RisposteDomanda VALUES ('Lascio tutto all ultimo minuto e spero per il meglio', 'Sono costantemente sopraffatto e non riesco a gestirlo', 'Pianifico e organizzo il mio lavoro, concentrandomi sulle priorità', 'Non so come gestire scadenze strette', 'scelta3', 68);
+INSERT INTO RisposteDomanda VALUES ('Mi sento ferito e arrabbiato', 'Ignoro il feedback e faccio finta di niente', 'Accetto il feedback in modo costruttivo e cerco di imparare dalle critiche', 'Non so come reagire al feedback negativo', 'scelta3', 69);
+INSERT INTO RisposteDomanda VALUES ('Non ho attività di rilassamento', 'Non riesco a rilassarmi', 'Pratico hobby, faccio esercizio fisico o leggo per rilassarmi', 'Non ho bisogno di rilassarmi', 'scelta3', 70);
+
+INSERT INTO QuizDomanda VALUES(66, 10);
+INSERT INTO QuizDomanda VALUES(67, 10);
+INSERT INTO QuizDomanda VALUES(68, 10);
+INSERT INTO QuizDomanda VALUES(69, 10);
+INSERT INTO QuizDomanda VALUES(70, 10);
+
+
+/* Quiz Risoluzione dei problemi Id_quiz 11 */
+INSERT INTO Quiz VALUES ('Risoluzione dei problemi', 5);
+
+INSERT INTO Domanda VALUES ('Puoi raccontare un esempio di un problema complesso che hai affrontato e risolto con successo?', 1);
+INSERT INTO Domanda VALUES ('Come affronti una situazione in cui incontri una difficoltà o un ostacolo in un progetto o nel lavoro?', 1);
+INSERT INTO Domanda VALUES ('Quali sono le tue strategie per raccogliere informazioni e dati necessari per risolvere un problema?', 1);
+INSERT INTO Domanda VALUES ('Come coinvolgi gli altri nella risoluzione di un problema complesso?', 1);
+INSERT INTO Domanda VALUES ('Quali sono i passaggi che segui per analizzare e scomporre un problema in sotto-problemi più gestibili?', 1);
+
+INSERT INTO RisposteDomanda VALUES ('Non ho mai affrontato problemi complessi', 'Ho affrontato problemi, ma non sono riuscito a risolverli', 'Ho analizzato il problema, sviluppato soluzioni e risolto con successo', 'Non ricordo situazioni del genere', 'scelta3', 71);
+INSERT INTO RisposteDomanda VALUES ('Mi arrendo e chiedo aiuto a qualcun altro', 'Cerco di ignorare il problema e sperare che svanisca', 'Identifico la causa del problema e cerco soluzioni per superarlo', 'Non so come affrontare le difficoltà', 'scelta3', 72);
+INSERT INTO RisposteDomanda VALUES ('Non raccolgo mai informazioni', 'Ricerco solo informazioni di base', 'Ricerco, analizzo e valuto attentamente le informazioni', 'Non so come raccogliere informazioni', 'scelta3', 73);
+INSERT INTO RisposteDomanda VALUES ('Non coinvolgo nessuno, preferisco lavorare da solo', 'Coinvolgo gli altri, ma non ascolto le loro opinioni', 'Faccio brainstorming e collaboro con il team per trovare soluzioni', 'Non so come coinvolgere gli altri', 'scelta3', 74);
+INSERT INTO RisposteDomanda VALUES ('Non scompongo il problema', 'Scompongo il problema in modo casuale', 'Identifico le parti del problema e le analizzo in dettaglio', 'Non so come scomporre un problema', 'scelta3', 75);
+
+INSERT INTO QuizDomanda VALUES(71, 11);
+INSERT INTO QuizDomanda VALUES(72, 11);
+INSERT INTO QuizDomanda VALUES(73, 11);
+INSERT INTO QuizDomanda VALUES(74, 11);
+INSERT INTO QuizDomanda VALUES(75, 11);
