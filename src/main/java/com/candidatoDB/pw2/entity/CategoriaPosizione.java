@@ -5,17 +5,17 @@ import java.util.Objects;
 public class CategoriaPosizione {
 	
 	private int id_categoria;
-	private String descrizione;
+	private String nome_categoria;
 	
 	
 	public CategoriaPosizione() {
 		super();
 	}
 	
-	public CategoriaPosizione(int id_categoria, String descrizione) {
+	public CategoriaPosizione(int id_categoria, String nome_categoria) {
 		super();
 		this.id_categoria = id_categoria;
-		this.descrizione = descrizione;
+		this.nome_categoria = nome_categoria;
 	}
 	public int getId_categoria() {
 		return id_categoria;
@@ -23,16 +23,16 @@ public class CategoriaPosizione {
 	public void setId_categoria(int id_categoria) {
 		this.id_categoria = id_categoria;
 	}
-	public String getDescrizione() {
-		return descrizione;
+	public String getNome_categoria() {
+		return nome_categoria;
 	}
-	public void setDescrizione(String descrizione) {
-		this.descrizione = descrizione;
+	public void setNome_categoria(String nome_categoria) {
+		this.nome_categoria = nome_categoria;
 	}
 
 	@Override
 	public String toString() {
-		return "CategoriaPosizione [id_categoria=" + id_categoria + ", descrizione=" + descrizione + "]";
+		return "CategoriaPosizione [id_categoria=" + id_categoria + ", nome_categoria=" + nome_categoria + "]";
 	}
 	
 	@Override

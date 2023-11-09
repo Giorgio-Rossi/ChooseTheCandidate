@@ -62,6 +62,6 @@ public class RicercaPosizioniServlet extends HttpServlet {
             request.setAttribute("risultatiRicerca", new ArrayList<Posizione>());
         }
 
-        request.getRequestDispatcher("/risultatiRicerca.jsp").forward(request, response);
+        request.getRequestDispatcher("/home/risultatiRicerca.jsp").forward(request, response);
     }
 }

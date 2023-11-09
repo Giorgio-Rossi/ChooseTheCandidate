@@ -32,7 +32,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
-			String sql = "SELECT * FROM Posizione p INNER JOIN Citta c ON p.id_citta = c.id_citta WHERE p.id_citta =?";
+			String sql = "SELECT * FROM Posizione p  INNER JOIN Citta c ON p.id_citta = c.id_citta INNER JOIN CategoriaPosizione cp ON cp.id_Categoria = p.id_Categoria WHERE p.id_citta = ?";
 			System.out.println(sql);
 			connection.Connect();
 			statement = connection.getConnection().prepareStatement(sql);
@@ -43,31 +43,38 @@ public class PosizioneIMPL implements PosizioneDAO {
 			System.out.println("mi sono fermato");
 			while (resultSet.next()) {
 				Posizione posizione = new Posizione();
-				posizione.setId_posizione(resultSet.getInt(1));
-				posizione.setN_ammissioni(resultSet.getInt(2));
-				posizione.setDescrizione(resultSet.getString(3));
-				citta = new Citta();
-				citta.setId_citta(resultSet.getInt(4));
+
+				posizione.setId_posizione(resultSet.getInt("id_posizione"));
+				posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
+				posizione.setDescrizione(resultSet.getString("descrizione"));
+
+				 citta = new Citta();
+				citta.setId_citta(resultSet.getInt("id_citta"));
+				// CittaIMPL cittaIMPL = new CittaIMPL();
+
+				// citta.setRegione(cittaIMPL.getRegione(resultSet.getInt("id_regione")));
+
+				citta.setNome(resultSet.getString("nome"));
 				posizione.setCitta(citta);
-				CategoriaPosizione categoriaPosizione = new CategoriaPosizione();
-				categoriaPosizione.setId_categoria(resultSet.getInt(5));
-				posizione.setCategoria(categoriaPosizione);
-				Quiz quiz = new Quiz();
-				quiz.setId_quiz(resultSet.getInt(6));
-				posizione.setQuiz(quiz);
-				posizione.setStato(resultSet.getString(7));
-				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate(8).getTime()));
-				posizione.setRuolo(resultSet.getString(9));
+
+				CategoriaPosizione categoria = new CategoriaPosizione();
+				categoria.setId_categoria(resultSet.getInt("id_categoria"));
+				categoria.setNome_categoria(resultSet.getString("nome_categoria"));
+				posizione.setCategoria(categoria);
+
+				posizione.setStato(resultSet.getString("stato"));
+				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
+				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
-				System.out.println("ho concluso il metodo");
+				System.out.println("Funziono");
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 		} finally {
 			DBUtil.close(resultSet);
 			DBUtil.close(statement);
-			DBUtil.close((Connection) connection);
+			// DBUtil.close((Connection) connection);
 		}
 
 		return posizioni;
@@ -81,7 +88,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 		ResultSet resultSet = null;
 
 		try {
-			String sql = "SELECT * FROM Posizione WHERE ruolo =?";
+			String sql = "SELECT * FROM Posizione p INNER JOIN CategoriaPosizione cp ON p.id_categoria = cp.id_categoria  INNER JOIN Citta c ON c.id_citta = p.id_citta  WHERE p.ruolo =?";
 			System.out.println(sql);
 			connection.Connect();
 			statement = connection.getConnection().prepareStatement(sql);
@@ -91,30 +98,38 @@ public class PosizioneIMPL implements PosizioneDAO {
 			System.out.println("sono bloccato");
 			while (resultSet.next()) {
 				Posizione posizione = new Posizione();
-				posizione.setId_posizione(resultSet.getInt(1));
-				posizione.setN_ammissioni(resultSet.getInt(2));
-				posizione.setDescrizione(resultSet.getString(3));
+
+				posizione.setId_posizione(resultSet.getInt("id_posizione"));
+				posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
+				posizione.setDescrizione(resultSet.getString("descrizione"));
+
 				Citta citta = new Citta();
-				citta.setId_citta(resultSet.getInt(4));
+				citta.setId_citta(resultSet.getInt("id_citta"));
+				// CittaIMPL cittaIMPL = new CittaIMPL();
+
+				// citta.setRegione(cittaIMPL.getRegione(resultSet.getInt("id_regione")));
+
+				citta.setNome(resultSet.getString("nome"));
 				posizione.setCitta(citta);
-				CategoriaPosizione categoriaPosizione = new CategoriaPosizione();
-				categoriaPosizione.setId_categoria(resultSet.getInt(5));
-				posizione.setCategoria(categoriaPosizione);
-				Quiz quiz = new Quiz();
-				quiz.setId_quiz(resultSet.getInt(6));
-				posizione.setQuiz(quiz);
-				posizione.setStato(resultSet.getString(7));
-				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate(8).getTime()));
-				posizione.setRuolo(resultSet.getString(9));
-				posizione.add(posizione);
-				System.out.println("ho concluso il metodo");
+
+				CategoriaPosizione categoria = new CategoriaPosizione();
+				categoria.setId_categoria(resultSet.getInt("id_categoria"));
+				categoria.setNome_categoria(resultSet.getString("nome_categoria"));
+				posizione.setCategoria(categoria);
+
+				posizione.setStato(resultSet.getString("stato"));
+				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
+				posizione.setRuolo(resultSet.getString("ruolo"));
+
+				posizioni.add(posizione);
+			
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 		} finally {
 			DBUtil.close(resultSet);
 			DBUtil.close(statement);
-			DBUtil.close((Connection) connection);
+			// DBUtil.close((Connection) connection);
 		}
 		return posizioni;
 	}
@@ -126,7 +141,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
-			String sql = "SELECT * FROM Posizione p INNER JOIN CategoriaPosizione cp ON p.id_categoria = cp.id_categoria  WHERE cp.id_categoria = ?";
+			String sql = "SELECT * FROM Posizione p INNER JOIN CategoriaPosizione cp ON p.id_categoria = cp.id_categoria  INNER JOIN Citta c ON c.id_citta = p.id_citta WHERE cp.id_categoria = ?";
 			connection.Connect();
 			statement = connection.getConnection().prepareStatement(sql);
 
@@ -135,30 +150,38 @@ public class PosizioneIMPL implements PosizioneDAO {
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				Posizione posizione = new Posizione();
-				posizione.setId_posizione(resultSet.getInt(1));
-				posizione.setN_ammissioni(resultSet.getInt(2));
-				posizione.setDescrizione(resultSet.getString(3));
+
+				posizione.setId_posizione(resultSet.getInt("id_posizione"));
+				posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
+				posizione.setDescrizione(resultSet.getString("descrizione"));
+
 				Citta citta = new Citta();
-				citta.setId_citta(resultSet.getInt(4));
+				citta.setId_citta(resultSet.getInt("id_citta"));
+				// CittaIMPL cittaIMPL = new CittaIMPL();
+
+				// citta.setRegione(cittaIMPL.getRegione(resultSet.getInt("id_regione")));
+
+				citta.setNome(resultSet.getString("nome"));
 				posizione.setCitta(citta);
-				categoria = new CategoriaPosizione();
-				categoria.setId_categoria(resultSet.getInt(5));
+
+				 categoria = new CategoriaPosizione();
+				categoria.setId_categoria(resultSet.getInt("id_categoria"));
+				categoria.setNome_categoria(resultSet.getString("nome_categoria"));
 				posizione.setCategoria(categoria);
-				Quiz quiz = new Quiz();
-				quiz.setId_quiz(resultSet.getInt(6));
-				posizione.setQuiz(quiz);
-				posizione.setStato(resultSet.getString(7));
-				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate(8).getTime()));
-				posizione.setRuolo(resultSet.getString(9));
+
+				posizione.setStato(resultSet.getString("stato"));
+				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
+				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
+				System.out.println("Funziono");
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 		} finally {
 			DBUtil.close(resultSet);
 			DBUtil.close(statement);
-			DBUtil.close((Connection) connection);
+			// DBUtil.close((Connection) connection);
 		}
 		return posizioni;
 	}
@@ -173,7 +196,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 		try {
 
-			String sql = "SELECT p.*, c.id_citta, c.nome, cp.id_categoria, cp.descrizione, q.id_quiz, q.descrizione, q.n_domande "
+			String sql = "SELECT p.*, c.id_citta, c.nome, cp.id_categoria, cp.nome_categoria, q.id_quiz, q.descrizione, q.n_domande "
 					+ "FROM Posizione p " + "INNER JOIN Citta c ON p.id_citta = c.id_citta "
 					+ "INNER JOIN CategoriaPosizione cp ON p.id_categoria = cp.id_categoria "
 					+ "LEFT JOIN Quiz q ON p.id_quiz = q.id_quiz " + "ORDER BY p.data_inserimento DESC";
@@ -200,7 +223,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 				CategoriaPosizione categoria = new CategoriaPosizione();
 				categoria.setId_categoria(resultSet.getInt("id_categoria"));
-				categoria.setDescrizione(resultSet.getString("descrizione"));
+				categoria.setNome_categoria(resultSet.getString("nome_categoria"));
 				posizione.setCategoria(categoria);
 
 				int idQuiz = resultSet.getInt("id_quiz");
@@ -217,7 +240,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
-System.out.println("Funziono");
+				System.out.println("Funziono");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
