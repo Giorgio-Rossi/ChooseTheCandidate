@@ -75,6 +75,8 @@ insert into CategoriaPosizione ( nome_categoria) values ( ' desc 2');
 
 
 
+
+
 /* DA ESEGUIRE */
 /*	STRUTTURA MODELLOO
 INSERT INTO Quiz VALUES ('Java', 8);
