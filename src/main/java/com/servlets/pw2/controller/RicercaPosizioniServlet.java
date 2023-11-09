@@ -65,12 +65,14 @@ public class RicercaPosizioniServlet extends HttpServlet {
 			risultatiRicerca = posizioneIMPL.searchByRuolo(ruolo);
 		}
 
+		System.out.println(risultatiRicerca);
+
 		if (risultatiRicerca != null && !risultatiRicerca.isEmpty()) {
 			request.setAttribute("risultatiRicerca", risultatiRicerca);
 		} else {
 			request.setAttribute("risultatiRicerca", new ArrayList<Posizione>());
 		}
 
-		request.getRequestDispatcher("/home/risultatiRicerca.jsp").forward(request, response);
+		request.getRequestDispatcher("/home/ricercaPosizioni.jsp").forward(request, response);
 	}
 }

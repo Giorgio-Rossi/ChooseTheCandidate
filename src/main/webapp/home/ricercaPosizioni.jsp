@@ -11,7 +11,13 @@
 <%
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
-	ArrayList<Posizione> posizioni = posizioneIMPL.getAllPosizioni();
+	ArrayList<Posizione> posizioni = new ArrayList<>();
+	if(request.getAttribute("risultatiRicerca")==null){
+		 posizioni = posizioneIMPL.getAllPosizioni();
+	}else{
+		posizioni = (ArrayList<Posizione>) request.getAttribute("risultatiRicerca");
+	}
+
 	System.out.println(posizioni);
 %>
 
@@ -71,7 +77,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 					<option value="">Tutte</option>
 					<option value="1">Genova</option>
 					<option value="2">Milano</option>
-					<option value="3">Roma</option>
+					<option value="13">Roma</option>
 					<option value="4">Napoli</option>
 					<option value="5">Lodi</option>
 					<option value="6">Torino</option>
