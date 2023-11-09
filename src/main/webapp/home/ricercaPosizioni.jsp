@@ -4,10 +4,14 @@
 <%@ page import="com.candidatoDB.pw2.entity.Citta"%>
 <%@ page import="com.candidatoDB.pw2.entity.CategoriaPosizione"%>
 <%@ page import="com.candidatoDB.pw2.entity.Quiz"%>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.PosizioneIMPL" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page isELIgnored="false"%>
 
 <%
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+	ArrayList<Posizione> posizioni = posizioneIMPL.getAllPosizioni();
 %>
 
 <html>
@@ -22,12 +26,26 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	rel="stylesheet"
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous" />
-<link rel="stylesheet"
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<link rel="stylesheet"
+		  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+	<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/homeuser.css" />
+
+
+	<link rel="stylesheet" type="text/css" media="screen" href="../css/ricerca_posizioni.css" />
+
+
 </head>
+<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
 
-
-<body>
+<body style="background-color: #d4d4d4">
 
 
 	<jsp:include page="jsp/navbarHeader.jsp" />
@@ -77,5 +95,51 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 		</form>
 
 	</div>
+
+	<main style="margin-top: 58px">
+		<div class="container pt-3">
+			<div class="container">
+				<div class="row">
+
+					<%
+						for(Posizione p : posizioni){
+					%>
+
+							<div class="card col-lg-4 col-md-6 col-12 mt-4 pt-2 d-flex  align-items-stretch" style=" background-color: #d4d4d4; border: none">
+								<div class="slide slide1 ">
+									<div class="content  shadow">
+
+											<div class="card-body p-4 bg-light">
+												<span class="badge rounded-pill bg-primary float-md-end mb-3 mb-sm-0"><%=p.getCategoria().getNome_categoria()%></span>
+												<h5><%=p.getRuolo()%></h5>
+												<div class="mt-3">
+													<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i><%=p.getData_inserimento()%></span>
+													<span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i><%=p.getCitta().getNome()%></span>
+												</div>
+
+												<div class="mt-3">
+													<a href="#" class="btn btn-primary">Candidati</a>
+												</div>
+											</div>
+
+									</div>
+								</div>
+								<div class="slide slide2">
+									<div class="content">
+										<p><%=p.getDescrizione()%>></p>
+									</div>
+								</div>
+							</div>
+
+					<%
+						};
+					%>
+
+				</div>
+			</div>
+		</div>
+	</main>
+
+
 </body>
 </html>
