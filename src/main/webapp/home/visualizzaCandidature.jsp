@@ -16,7 +16,8 @@
     <title>Candidature effettuate</title>
 </head>
 <body>
-    <h1>Candidature effettuate da <%=utenteLoggato.getNome() +" " +  utenteLoggato.getCognome()%></h1>
+	<jsp:include page="jsp/navbarHeader.jsp" />
+	<h1>Candidature effettuate da <%=utenteLoggato.getNome() +" " +  utenteLoggato.getCognome()%></h1>
     <table border="1">
         <tr>
             <th>Candidatura</th>

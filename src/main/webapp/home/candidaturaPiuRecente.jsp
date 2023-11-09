@@ -5,9 +5,9 @@
 <%@ page import="com.candidatoDB.pw2.entity.Utente"%>
 
 <%
-	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
-	Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
+Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 %>
 
 <!DOCTYPE html>
@@ -16,6 +16,9 @@
 <meta charset="UTF-8">
 <title>Candidatura più recente</title>
 </head>
+
+<jsp:include page="jsp/navbarHeader.jsp" />
+
 <body>
 	<h1>Candidatura più recente</h1>
 
