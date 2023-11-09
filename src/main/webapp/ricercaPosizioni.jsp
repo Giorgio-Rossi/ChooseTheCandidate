@@ -58,30 +58,6 @@
         <button type="submit" class="btn btn-primary">Cerca</button>
     </form>
 
-    <h2>Risultati Ricerca:</h2>
 
-    <div class="results">
-        <%
-            List<Posizione> risultatiRicerca = (List<Posizione>) request.getAttribute("risultatiRicerca");
-
-            if (risultatiRicerca != null && !risultatiRicerca.isEmpty()) {
-                for (Posizione posizione : risultatiRicerca) {
-        %>
-            <div class="result-item">
-                <h3><%= posizione.getDescrizione() %></h3>
-                <p>Ruolo: <%= posizione.getRuolo() %></p>
-                <p>Categoria: <%= posizione.getCategoria().getDescrizione() %></p>
-                <p>Città: <%= posizione.getCitta().getNome() %></p>
-            </div>
-        <%
-                }
-            } else {
-        %>
-            <p>Nessun risultato trovato.</p>
-        <%
-            }
-        %>
-    </div>
-</div>
 </body>
 </html>
