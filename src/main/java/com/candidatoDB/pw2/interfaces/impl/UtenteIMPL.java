@@ -108,7 +108,9 @@ public class UtenteIMPL implements UtenteDAO {
 				utente.setCognome(resultSet.getString(3));
 				utente.setCodice_fiscale(resultSet.getString(4));
 				utente.setEmail(resultSet.getString(5));
-				utente.setData_nascita(new java.sql.Date(resultSet.getDate(6).getTime()));
+				if(resultSet.getDate(6) != null){
+					utente.setData_nascita(new java.sql.Date(resultSet.getDate(6).getTime()));
+				}
 				utente.setIndirizzo(resultSet.getString(7));
 				if(resultSet.getString(8)==null){
 					System.out.println("No citta");
@@ -200,7 +202,6 @@ public class UtenteIMPL implements UtenteDAO {
 			//DBUtil.close((Connection) connection);
 		}
 
-		
 	}
 
 	@Override
@@ -230,5 +231,61 @@ public class UtenteIMPL implements UtenteDAO {
 		}
 
 		return cittaUtente;
+	}
+
+
+	public ArrayList<String> getEmptyParameters(Utente utente){
+		ArrayList<String> campi_vuoti = new ArrayList<>();
+		String sql = "SELECT codice_fiscale, data_nascita, indirizzo, cap, telefono, genere, foto_profilo, id_citta  from Utente where id_user=?";
+
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setInt(1, utente.getId_user());
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				if(resultSet.getString(1)==null){
+					campi_vuoti.add("Codice Fiscale");
+				}
+
+				if(resultSet.getString(2)==null){
+					campi_vuoti.add("Data di nascita");
+				}
+
+				if(resultSet.getString(3)==null){
+					campi_vuoti.add("Indirizzo");
+				}
+
+				if(resultSet.getString(4)==null){
+					campi_vuoti.add("Cap");
+				}
+
+				if(resultSet.getString(5)==null){
+					campi_vuoti.add("Telefono");
+				}
+
+				if(resultSet.getString(6)==null){
+					campi_vuoti.add("Genere");
+				}
+
+				if(resultSet.getString(7)==null){
+					campi_vuoti.add("Foto profilo");
+				}
+
+				if(resultSet.getString(8)==null){
+					campi_vuoti.add("Citta di nascita");
+				}
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			//DBUtil.close((Connection) connection);
+		}
+
+		return campi_vuoti;
 	}
 }

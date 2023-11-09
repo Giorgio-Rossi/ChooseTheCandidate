@@ -70,7 +70,8 @@ insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('
 
 
 
-
+insert into CategoriaPosizione ( descrizione) values ( 'bella desc');
+insert into CategoriaPosizione ( descrizione) values ( ' desc 2');
 
 
 

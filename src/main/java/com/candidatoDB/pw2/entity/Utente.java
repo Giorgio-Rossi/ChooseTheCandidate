@@ -1,5 +1,6 @@
 package com.candidatoDB.pw2.entity;
 
+import java.lang.reflect.Field;
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
@@ -144,6 +145,27 @@ public class Utente {
 		this.foto_profilo = foto_profilo;
 	}
 
+
+	public ArrayList<String> getEmptyParameter(){
+		ArrayList<String> campi_vuoti = new ArrayList<>();
+		Field[] fields = this.getClass().getDeclaredFields();
+
+		for (Field field : fields) {
+			field.setAccessible(true);
+			String name = field.getName();
+			Object value = null;
+			try {
+				value = field.get(this);
+			} catch (IllegalAccessException e) {
+				throw new RuntimeException(e);
+			}
+			if (value == null) {
+				campi_vuoti.add(name);
+			}
+		}
+		return campi_vuoti;
+	}
+
 	@Override
 	public String toString() {
 		return "Utente{" +
@@ -164,4 +186,5 @@ public class Utente {
 				", foto_profilo='" + foto_profilo + '\'' +
 				'}';
 	}
+
 }

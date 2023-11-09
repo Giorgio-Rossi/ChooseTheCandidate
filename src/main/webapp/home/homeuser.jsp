@@ -1,9 +1,17 @@
 <%@ page import="com.candidatoDB.pw2.entity.Utente"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.stream.Stream" %>
+<%@ page import="java.util.Objects" %>
+<%@ page import="java.lang.reflect.Field" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteIMPL" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <%
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+UtenteIMPL utenteIMPL = new UtenteIMPL();
 Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
+ArrayList<String> campi_vuoti = utenteIMPL.getEmptyParameters(utenteLoggato);
 %>
 
 <html>
@@ -133,11 +141,21 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 							</div>
 						</div>
 						<div class="slide slide2">
-							<div class="content">
-								<h3>
-									Hello there!
-								</h3>
-								<p>Trust yourself and keep going.</p>
+							<div class="row">
+								<table class=" table-borderless">
+									<tbody>
+									<%
+										for(String campo : campi_vuoti){
+									%>
+									<tr>
+										<td colspan="2"><%=campo%></td>
+										<td><h6 class="mb-2"><span class="badge bg-warning"><i class="bi bi-exclamation-circle" style="font-size: 1rem"></i></span></h6></td>
+									</tr>
+									<%
+										};
+									%>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -189,24 +207,7 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 							</div>
 						</div>
 						<div class="slide slide2">
-							<div class="row">
-								<table class=" table-borderless">
-									<tbody>
-									<tr>
-										<td colspan="2">Mark</td>
-										<td><h6 class="mb-2"><span class="badge bg-warning"><i class="bi bi-exclamation-circle" style="font-size: 1rem"></i></span></h6></td>
-									</tr>
-									<tr>
-										<td colspan="2">Jacob</td>
-										<td><h6 class="mb-2"><span class="badge bg-warning"><i class="bi bi-exclamation-circle" style="font-size: 1rem"></i></span></h6></td>
-									</tr>
-									<tr>
-										<td colspan="2">Codice Fiscale</td>
-										<td><h6 class="mb-2"><span class="badge bg-warning"><i class="bi bi-exclamation-circle" style="font-size: 1rem"></i></span></h6></td>
-									</tr>
-									</tbody>
-								</table>
-							</div>
+
 						</div>
 					</div>
 
