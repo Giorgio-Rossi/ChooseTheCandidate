@@ -1,7 +1,6 @@
 
 package com.candidatoDB.pw2.interfaces.impl;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +12,6 @@ import com.candidatoDB.pw2.entity.CategoriaPosizione;
 import com.candidatoDB.pw2.entity.Citta;
 import com.candidatoDB.pw2.entity.Posizione;
 import com.candidatoDB.pw2.entity.Quiz;
-import com.candidatoDB.pw2.entity.Regione;
 import com.candidatoDB.pw2.interfaces.PosizioneDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
@@ -307,6 +305,165 @@ public class PosizioneIMPL implements PosizioneDAO {
 			// DBUtil.close((Connection) connection);
 		}
 
+		return posizioni;
+	}
+
+	@Override
+	public List<Posizione> searchByCategoriaAndRuolo(CategoriaPosizione categoriaPosizione, String ruolo) {
+		List<Posizione> posizioni = new ArrayList<>();
+//		Posizione posizione = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			String sql = "SELECT * FROM Posizione p INNER JOIN CategoriaPosizione cp ON p.id_categoria = cp.id_categoria  INNER JOIN Citta c ON c.id_citta = p.id_citta WHERE cp.id_categoria = ? and p.ruolo = ?";
+			connection.Connect();
+			statement = connection.getConnection().prepareStatement(sql);
+
+			statement.setInt(1, categoriaPosizione.getId_categoria());
+			statement.setString(2, ruolo);   
+
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				Posizione posizione = new Posizione();
+
+				posizione.setId_posizione(resultSet.getInt("id_posizione"));
+				posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
+				posizione.setDescrizione(resultSet.getString("descrizione"));
+
+				Citta citta = new Citta();
+				citta.setId_citta(resultSet.getInt("id_citta"));
+				// CittaIMPL cittaIMPL = new CittaIMPL();
+
+				// citta.setRegione(cittaIMPL.getRegione(resultSet.getInt("id_regione")));
+
+				citta.setNome(resultSet.getString("nome"));
+				posizione.setCitta(citta);
+
+				 categoriaPosizione = new CategoriaPosizione();
+				categoriaPosizione.setId_categoria(resultSet.getInt("id_categoria"));
+				categoriaPosizione.setNome_categoria(resultSet.getString("nome_categoria"));
+				posizione.setCategoria(categoriaPosizione);
+
+				posizione.setStato(resultSet.getString("stato"));
+				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
+				posizione.setRuolo(resultSet.getString("ruolo"));
+
+				posizioni.add(posizione);
+				System.out.println("Funziono");
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			// DBUtil.close((Connection) connection);
+		}
+		return posizioni;
+	}
+
+	@Override
+	public List<Posizione> searchByCittaAndRuolo(Citta citta, String ruolo) {
+		List<Posizione> posizioni = new ArrayList<>();
+//		Posizione posizione = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			String sql = "SELECT * FROM Posizione p INNER JOIN CategoriaPosizione cp ON p.id_categoria = cp.id_categoria  INNER JOIN Citta c ON c.id_citta = p.id_citta WHERE p.id_citta = ? and p.ruolo = ?";
+			connection.Connect();
+			statement = connection.getConnection().prepareStatement(sql);
+
+			statement.setInt(1, citta.getId_citta());
+			statement.setString(2, ruolo);   
+
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				Posizione posizione = new Posizione();
+
+				posizione.setId_posizione(resultSet.getInt("id_posizione"));
+				posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
+				posizione.setDescrizione(resultSet.getString("descrizione"));
+
+				 citta = new Citta();
+				citta.setId_citta(resultSet.getInt("id_citta"));
+				// CittaIMPL cittaIMPL = new CittaIMPL();
+
+				// citta.setRegione(cittaIMPL.getRegione(resultSet.getInt("id_regione")));
+
+				citta.setNome(resultSet.getString("nome"));
+				posizione.setCitta(citta);
+
+				CategoriaPosizione categoriaPosizione = new CategoriaPosizione();
+				categoriaPosizione.setId_categoria(resultSet.getInt("id_categoria"));
+				categoriaPosizione.setNome_categoria(resultSet.getString("nome_categoria"));
+				posizione.setCategoria(categoriaPosizione);
+
+				posizione.setStato(resultSet.getString("stato"));
+				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
+				posizione.setRuolo(resultSet.getString("ruolo"));
+
+				posizioni.add(posizione);
+				System.out.println("Funziono");
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			// DBUtil.close((Connection) connection);
+		}
+		return posizioni;
+	}
+
+	@Override
+	public List<Posizione> searchByCittaAndCategoria(Citta citta, CategoriaPosizione categoriaPosizione) {
+		List<Posizione> posizioni = new ArrayList<>();
+//		Posizione posizione = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			String sql = "SELECT * FROM Posizione p INNER JOIN CategoriaPosizione cp ON p.id_Categoria = cp.id_Categoria  INNER JOIN Citta c ON c.id_citta = p.id_citta WHERE c.id_citta = ? and cp.id_Categoria = ?";
+			connection.Connect();
+			statement = connection.getConnection().prepareStatement(sql);
+
+			statement.setInt(1, citta.getId_citta());
+			statement.setInt(2, categoriaPosizione.getId_categoria());   
+
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				Posizione posizione = new Posizione();
+
+				posizione.setId_posizione(resultSet.getInt("id_posizione"));
+				posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
+				posizione.setDescrizione(resultSet.getString("descrizione"));
+
+				 citta = new Citta();
+				citta.setId_citta(resultSet.getInt("id_citta"));
+				// CittaIMPL cittaIMPL = new CittaIMPL();
+
+				// citta.setRegione(cittaIMPL.getRegione(resultSet.getInt("id_regione")));
+
+				citta.setNome(resultSet.getString("nome"));
+				posizione.setCitta(citta);
+
+				 categoriaPosizione = new CategoriaPosizione();
+				categoriaPosizione.setId_categoria(resultSet.getInt("id_categoria"));
+				categoriaPosizione.setNome_categoria(resultSet.getString("nome_categoria"));
+				posizione.setCategoria(categoriaPosizione);
+
+				posizione.setStato(resultSet.getString("stato"));
+				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
+				posizione.setRuolo(resultSet.getString("ruolo"));
+
+				posizioni.add(posizione);
+				System.out.println("Funziono");
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			// DBUtil.close((Connection) connection);
+		}
 		return posizioni;
 	}
 
