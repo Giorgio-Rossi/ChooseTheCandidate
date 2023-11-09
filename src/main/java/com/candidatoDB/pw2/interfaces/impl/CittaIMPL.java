@@ -68,4 +68,31 @@ public class CittaIMPL implements CittaDAO {
         }
         return regione;
     }
+
+    public Citta getCittaById(int id_citta) {
+        String sql = "SELECT * from Citta where id_citta=?";
+        Citta citta = new Citta();
+
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.getConnection().prepareStatement(sql);
+            statement.setInt(1, id_citta);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                citta.setId_citta(resultSet.getInt(1));
+                citta.setNome(resultSet.getString(2));
+                citta.setRegione(getRegione(resultSet.getInt(3)));
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            DBUtil.close(resultSet);
+            DBUtil.close(statement);
+            //DBUtil.close(connection.getConnection());
+        }
+        return citta;
+    }
+
+
 }

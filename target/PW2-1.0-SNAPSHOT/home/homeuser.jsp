@@ -5,6 +5,9 @@
 <%@ page import="java.lang.reflect.Field" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteIMPL" %>
+<%@ page import="com.candidatoDB.pw2.entity.CandidaturaUser" %>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.CandidaturaIMPL" %>
+<%@ page import="com.candidatoDB.pw2.entity.Posizione" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <%
@@ -12,6 +15,13 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 UtenteIMPL utenteIMPL = new UtenteIMPL();
 Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 ArrayList<String> campi_vuoti = utenteIMPL.getEmptyParameters(utenteLoggato);
+	CandidaturaIMPL candidaturaIMPL = new CandidaturaIMPL();
+	CandidaturaUser candidaturaRecente = candidaturaIMPL.trovaCandidaturaPiùRecente(utenteLoggato.getId_user());
+	System.out.println(candidaturaRecente);
+
+	Posizione posizioneRecente = candidaturaIMPL.getPosizionebyCandidaturaId(candidaturaRecente);
+	System.out.println(posizioneRecente);
+
 %>
 
 <html>
@@ -200,11 +210,23 @@ ArrayList<String> campi_vuoti = utenteIMPL.getEmptyParameters(utenteLoggato);
 							</div>
 						</div>
 						<div class="slide slide2">
-							<div class="content">
-								<h3>
-									Hello there!
-								</h3>
-								<p>Trust yourself and keep going.</p>
+							<div class="card-body p-4">
+								<%
+									if(posizioneRecente.getStato().equals("aperta")){
+								%>
+								<span class="badge rounded-pill bg-success float-md-end mb-3 mb-sm-0"><%=posizioneRecente.getStato()%></span>
+								<%
+									}else{
+								%>
+								<span class="badge rounded-pill bg-danger float-md-end mb-3 mb-sm-0"><%=posizioneRecente.getStato()%></span>
+								<%
+									};
+								%>
+								<h5><%=posizioneRecente.getRuolo()%></h5>
+								<div class="mt-3">
+									<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i><%=candidaturaRecente.getData_candidatura()%></span>
+									<span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i><%=posizioneRecente.getCitta().getNome()%></span>
+								</div>
 							</div>
 						</div>
 					</div>

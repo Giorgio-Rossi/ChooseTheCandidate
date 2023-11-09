@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.candidatoDB.pw2.entity.CandidaturaUser;
+import com.candidatoDB.pw2.entity.Posizione;
 import com.candidatoDB.pw2.interfaces.CandidaturaDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
@@ -170,6 +171,51 @@ public class CandidaturaIMPL implements CandidaturaDAO {
         }
 
         return candidature;
+	}
+
+
+	public Posizione getPosizionebyCandidaturaId(CandidaturaUser candidaturaUser){
+		Posizione posizione = new Posizione();
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+
+			String sql = "SELECT * FROM Posizione WHERE id_posizione = ? ";
+			preparedStatement = connection.getConnection().prepareStatement(sql);
+			preparedStatement.setInt(1, candidaturaUser.getId_posizione());
+
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				posizione.setId_posizione(resultSet.getInt(1));
+				posizione.setN_ammissioni(resultSet.getInt(2));
+				posizione.setDescrizione(resultSet.getString(3));
+
+				CittaIMPL cittaIMPL = new CittaIMPL();
+				posizione.setCitta(cittaIMPL.getCittaById(resultSet.getInt(4)));
+
+				CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
+				posizione.setCategoria(categoriaPosizioneIMPL.getCategoriaPosizioneById(resultSet.getInt(5)));
+
+				QuizIMPL quizIMPL = new QuizIMPL();
+				posizione.setQuiz(quizIMPL.getQuizById(6));
+
+				posizione.setStato(resultSet.getString(7));
+				posizione.setData_inserimento(resultSet.getDate(8));
+				posizione.setRuolo(resultSet.getString(9));
+
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+
+			DBUtil.close(resultSet);
+			DBUtil.close(preparedStatement);
+			//DBUtil.close(connection);
+		}
+
+		return posizione;
 	}
 }
 	
