@@ -467,4 +467,48 @@ public class PosizioneIMPL implements PosizioneDAO {
 		return posizioni;
 	}
 
+	public ArrayList<Posizione> getAllPosizioni(){
+		ArrayList<Posizione> posizioni = new ArrayList<>();
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+
+			String sql = "SELECT * FROM Posizione";
+			preparedStatement = connection.getConnection().prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				Posizione posizione = new Posizione();
+				posizione.setId_posizione(resultSet.getInt(1));
+				posizione.setN_ammissioni(resultSet.getInt(2));
+				posizione.setDescrizione(resultSet.getString(3));
+
+				CittaIMPL cittaIMPL = new CittaIMPL();
+				posizione.setCitta(cittaIMPL.getCittaById(resultSet.getInt(4)));
+
+				CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
+				posizione.setCategoria(categoriaPosizioneIMPL.getCategoriaPosizioneById(resultSet.getInt(5)));
+
+				QuizIMPL quizIMPL = new QuizIMPL();
+				posizione.setQuiz(quizIMPL.getQuizById(6));
+
+				posizione.setStato(resultSet.getString(7));
+				posizione.setData_inserimento(resultSet.getDate(8));
+				posizione.setRuolo(resultSet.getString(9));
+
+				posizioni.add(posizione);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+
+			DBUtil.close(resultSet);
+			DBUtil.close(preparedStatement);
+			//DBUtil.close(connection);
+		}
+
+		return posizioni;
+	}
+
 }

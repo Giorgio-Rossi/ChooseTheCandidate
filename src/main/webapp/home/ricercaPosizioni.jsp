@@ -12,6 +12,7 @@
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 	ArrayList<Posizione> posizioni = posizioneIMPL.getAllPosizioni();
+	System.out.println(posizioni);
 %>
 
 <html>
@@ -126,7 +127,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 								</div>
 								<div class="slide slide2">
 									<div class="content">
-										<p><%=p.getDescrizione()%>></p>
+										<p><%=p.getDescrizione()%></p>
 									</div>
 								</div>
 							</div>
