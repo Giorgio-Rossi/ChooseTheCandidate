@@ -144,6 +144,18 @@ ArrayList<String> campi_vuoti = utenteIMPL.getEmptyParameters(utenteLoggato);
 							<div class="row">
 								<table class=" table-borderless">
 									<tbody>
+									<% if(campi_vuoti.isEmpty()){
+									%>
+									<div class="alert alert-success  align-items-center border border-0" role="alert">
+										<div>
+											<i class="bi bi-check-circle-fill">Complimenti hai completato il profilo</i>
+										</div>
+									</div>
+
+									<%
+										};
+									%>
+
 									<%
 										for(String campo : campi_vuoti){
 									%>
