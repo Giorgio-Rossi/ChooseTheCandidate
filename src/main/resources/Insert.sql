@@ -205,7 +205,7 @@ INSERT INTO RisposteDomanda VALUES ('int', 'long', 'float', 'number', 'scelta4',
 INSERT INTO RisposteDomanda VALUES ('declare var nome_variabile;', 'let nome_variabile;', 'variable nome_variabile;', 'var nome_variabile;', 'scelta4', 34);
 INSERT INTO RisposteDomanda VALUES ('+', '&', '||', ':', 'scelta1', 35);
 INSERT INTO RisposteDomanda VALUES ('emptyArray()', '[]', 'new Array()', 'array()', 'scelta2', 36);
-INSERT INTO RisposteDomanda VALUES ('Data Object Model', 'Document Object Model', '', 'Dynamic Object Model', 'Digital Object Model', 37);
+INSERT INTO RisposteDomanda VALUES ('Data Object Model', 'Document Object Model', 'Digital Object Model', 'Dynamic Object Model', 'scelta1', 37);
 INSERT INTO RisposteDomanda VALUES ('57', '12', '32', '"57"', 'scelta4', 38);
 INSERT INTO RisposteDomanda VALUES ('function nome_funzione(parametri) {}', 'def nome_funzione(parametri) {}', 'create function nome_funzione(parametri) {}', 'func nome_funzione(parametri) {}', 'scelta1', 39);
 INSERT INTO RisposteDomanda VALUES ('Ricorsione', 'Chiamata multipla', 'Esecuzione parallela', 'Iterazione', 'scelta1', 40);
@@ -257,7 +257,7 @@ INSERT INTO QuizDomanda VALUES(48, 6);
 INSERT INTO QuizDomanda VALUES(49, 6);
 INSERT INTO QuizDomanda VALUES(50, 6);
 
-/* Crezione quiz HTML, CSS Id_quiz 7*/
+/* Crezione quiz Comunicazione efficace Id_quiz 7*/
 INSERT INTO Quiz VALUES ('Comunicazione efficace', 5);
 
 INSERT INTO Domanda VALUES ('Come ti comporti quando devi spiegare un concetto complesso a qualcuno che non ne ha familiarità?', 1);
