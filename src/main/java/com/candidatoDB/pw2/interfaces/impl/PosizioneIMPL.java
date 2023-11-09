@@ -33,12 +33,14 @@ public class PosizioneIMPL implements PosizioneDAO {
 		ResultSet resultSet = null;
 		try {
 			String sql = "SELECT * FROM Posizione p INNER JOIN Citta c ON p.id_citta = c.id_citta WHERE p.id_citta =?";
+			System.out.println(sql);
 			connection.Connect();
 			statement = connection.getConnection().prepareStatement(sql);
 
 			statement.setInt(1, citta.getId_citta());
 
 			resultSet = statement.executeQuery();
+			System.out.println("mi sono fermato");
 			while (resultSet.next()) {
 				Posizione posizione = new Posizione();
 				posizione.setId_posizione(resultSet.getInt(1));
@@ -58,6 +60,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setRuolo(resultSet.getString(9));
 
 				posizioni.add(posizione);
+				System.out.println("ho concluso il metodo");
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -79,11 +82,13 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 		try {
 			String sql = "SELECT * FROM Posizione WHERE ruolo =?";
+			System.out.println(sql);
 			connection.Connect();
 			statement = connection.getConnection().prepareStatement(sql);
 			statement.setString(1, ruolo);
 
 			resultSet = statement.executeQuery();
+			System.out.println("sono bloccato");
 			while (resultSet.next()) {
 				Posizione posizione = new Posizione();
 				posizione.setId_posizione(resultSet.getInt(1));
@@ -102,6 +107,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate(8).getTime()));
 				posizione.setRuolo(resultSet.getString(9));
 				posizione.add(posizione);
+				System.out.println("ho concluso il metodo");
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -171,6 +177,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 					+ "FROM Posizione p " + "INNER JOIN Citta c ON p.id_citta = c.id_citta "
 					+ "INNER JOIN CategoriaPosizione cp ON p.id_categoria = cp.id_categoria "
 					+ "LEFT JOIN Quiz q ON p.id_quiz = q.id_quiz " + "ORDER BY p.data_inserimento DESC";
+			System.out.println(sql);
 			statement = connection.getConnection().prepareStatement(sql);
 			resultSet = statement.executeQuery();
 
@@ -210,7 +217,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
-
+System.out.println("Funziono");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
