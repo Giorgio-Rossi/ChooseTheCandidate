@@ -11,14 +11,12 @@ public class Citta {
 		super();
 	}
 
-
 	public Citta(int id_citta, Regione regione, String nome) {
 		super();
 		this.id_citta = id_citta;
 		this.regione = regione;
 		this.nome = nome;
 	}
-	
 		
 	public int getId_citta() {
 		return id_citta;

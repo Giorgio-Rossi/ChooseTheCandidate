@@ -1,6 +1,5 @@
 package com.candidatoDB.pw2.entity;
 
-import java.util.Date;
 
 public class Regione {
 

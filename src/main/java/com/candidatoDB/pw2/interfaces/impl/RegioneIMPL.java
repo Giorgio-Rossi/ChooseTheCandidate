@@ -1,6 +1,5 @@
 package com.candidatoDB.pw2.interfaces.impl;
 
-import com.candidatoDB.pw2.entity.Citta;
 import com.candidatoDB.pw2.entity.Regione;
 import com.candidatoDB.pw2.interfaces.RegioneDAO;
 import com.servlets.pw2.controller.DBUtil;

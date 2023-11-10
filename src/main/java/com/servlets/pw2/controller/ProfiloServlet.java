@@ -6,16 +6,12 @@ import com.candidatoDB.pw2.entity.Utente;
 import com.candidatoDB.pw2.interfaces.impl.CittaIMPL;
 import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Path;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;

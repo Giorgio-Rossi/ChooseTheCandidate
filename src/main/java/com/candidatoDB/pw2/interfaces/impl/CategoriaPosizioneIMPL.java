@@ -1,7 +1,6 @@
 package com.candidatoDB.pw2.interfaces.impl;
 
 import com.candidatoDB.pw2.entity.CategoriaPosizione;
-import com.candidatoDB.pw2.entity.Citta;
 import com.candidatoDB.pw2.interfaces.CategoriaPosizioneDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;

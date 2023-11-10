@@ -6,7 +6,6 @@ import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
 
 public class DbOperations {
     private SQLServerConnection connection = new SQLServerConnection();

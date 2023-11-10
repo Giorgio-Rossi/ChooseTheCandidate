@@ -1,6 +1,5 @@
 package com.candidatoDB.pw2.interfaces.impl;
 
-import com.candidatoDB.pw2.entity.CategoriaPosizione;
 import com.candidatoDB.pw2.entity.Quiz;
 import com.candidatoDB.pw2.interfaces.QuizDAO;
 import com.servlets.pw2.controller.DBUtil;
