@@ -201,14 +201,16 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
             List<Posizione> posizioniPiuRecenti = (List<Posizione>) request.getAttribute("posizioniPiuRecenti");
             if (posizioniPiuRecenti != null && !posizioniPiuRecenti.isEmpty()) {
                 for (Posizione posizione : posizioniPiuRecenti) { 
-        %>
+      
                     <div class="mb-3">
                         <span class="text-muted d-block"><strong>Categoria:</strong> <%=posizione.getCategoria().getNome_categoria()%></span>
                         <span class="text-muted d-block"><strong>Stato:</strong> <%=posizione.getStato()%></span>
                         <span class="text-muted d-block"><strong>Ruolo:</strong> <%=posizione.getRuolo()%></span>
                     </div>
-        <%
+       
                 }
+				%>
+		<%
             } else {
         %>
             <div class="alert alert-info" role="alert">

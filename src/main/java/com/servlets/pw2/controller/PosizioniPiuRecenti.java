@@ -44,7 +44,7 @@ public class PosizioniPiuRecenti extends HttpServlet {
 
             request.setAttribute("posizioniPiuRecenti", posizioniFiltrate);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("homeuser.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/home/homeuser.jsp");
             dispatcher.forward(request, response);
         } else {
             response.sendRedirect("login.jsp");
