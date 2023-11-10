@@ -517,7 +517,8 @@ public class PosizioneIMPL implements PosizioneDAO {
 	    ResultSet resultSet = null;
 
 	    try {
-	        String sql = "SELECT TOP 3 * FROM Posizione p INNER JOIN Citta c ON p.id_citta = c.id_citta INNER JOIN CategoriaPosizione cp ON cp.id_Categoria = p.id_Categoria WHERE p.id_citta = ? ORDER BY p.data_inserimento DESC";
+	    	String sql = "SELECT TOP 3 * FROM Posizione p INNER JOIN Citta c ON p.id_citta = c.id_citta INNER JOIN CategoriaPosizione cp ON cp.id_Categoria = p.id_Categoria WHERE p.id_citta = ? ORDER BY p.data_inserimento DESC";
+
 System.out.println(sql);
 	        connection.Connect();
 	        statement = connection.getConnection().prepareStatement(sql);
