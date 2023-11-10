@@ -18,9 +18,11 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
  ArrayList<String> campi_vuoti = utenteIMPL.getEmptyParameters(utenteLoggato);
 	CandidaturaIMPL candidaturaIMPL = new CandidaturaIMPL();
  	CandidaturaUser candidaturaRecente = candidaturaIMPL.trovaCandidaturaPiùRecente(utenteLoggato.getId_user());
-// 	System.out.println(candidaturaRecente);
-
- 	Posizione posizioneRecente = candidaturaIMPL.getPosizionebyCandidaturaId(candidaturaRecente);
+	Posizione posizioneRecente = null;
+	System.out.println(candidaturaRecente);
+	if(candidaturaRecente!=null) {
+		posizioneRecente = candidaturaIMPL.getPosizionebyCandidaturaId(candidaturaRecente);
+	}
 // 	System.out.println(posizioneRecente);
 
 %>
@@ -153,7 +155,8 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 						<div class="slide slide2">
 							<div class="card-body p-4">
 								<%
-									if(posizioneRecente.getStato().equals("aperta")){
+									if(posizioneRecente!=null){
+										if(posizioneRecente.getStato().equals("aperta")){
 								%>
 								<span class="badge rounded-pill bg-success float-md-end mb-3 mb-sm-0"><%=posizioneRecente.getStato()%></span>
 								<%
@@ -168,6 +171,18 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 									<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i><%=candidaturaRecente.getData_candidatura()%></span>
 									<span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i><%=posizioneRecente.getCitta().getNome()%></span>
 								</div>
+								<%
+									}else {
+								%>
+									<div class="alert alert-primary  align-items-center border border-0" role="alert">
+										<div>
+											<i class="bi bi-info-circle-fill m-1"></i> Non hai effettuato nessuna candidatura</i>
+										</div>
+									</div>
+								<%
+									};
+								%>
+
 							</div>
 						</div>
 					</div>

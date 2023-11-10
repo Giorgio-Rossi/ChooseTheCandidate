@@ -1,7 +1,8 @@
+
 create table CategoriaPosizione(
 id_Categoria int identity not null primary key,
-descrizione varchar(70)
-)
+nome_categoria varchar(70)
+);
 
 create table Regione(
 id_regione int identity not null primary key,
@@ -14,23 +15,20 @@ id_regione int,
 nome varchar(50) not null,
 CONSTRAINT FK_citta_regione FOREIGN KEY (id_regione) REFERENCES Regione (id_regione)
 )
-
-
+ 
 create table Utente(
 id_user int identity not null primary key,
-nome varchar(50) not null,
-cognome varchar(50) not null,
+nome varchar(20) not null,
+cognome varchar(40) not null,
 codice_fiscale varchar(16),
-email varchar(50) not null,
+email varchar(30) not null,
 data_nascita datetime,
-indirizzo varchar(100),
+indirizzo varchar(50),
 id_citta int,
 cap varchar(5),
-telefono varchar(10),
-ruolo_admin varchar(50) not null check(ruolo_admin in('user','admin')) CONSTRAINT FK_DFUtenti_Admin default 'user',
+telefono varchar(9),
+ruolo_admin varchar(10) not null check(ruolo_admin in('user','admin')),
 password varchar(70) not null,
-foto_profilo varchar(100),
-genere varchar(50)  check(genere in('uomo','donna','non specificare')),
 CONSTRAINT FK_utente_citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta)
 )
  
@@ -38,7 +36,7 @@ create table Istruzione(
 id_istruzione int identity not null primary key,
 grado varchar(50) not null,
 id_citta int not null,
-descrizione_istruzione varchar(1000) not null,
+descrizione_istruzione varchar(100) not null,
 data_inizio datetime,
 data_fine datetime,
 id_user int not null,
@@ -50,15 +48,15 @@ CONSTRAINT FK_utente_istruzione FOREIGN KEY (id_user) REFERENCES Utente (id_user
 create table Esperienza(
 id_esperienza int identity not null primary key,
 anni smallint,
-descrizione_attivita varchar(1000),
+descrizione_attivita varchar(100),
 id_user int not null,
-azienda varchar(300),
+azienda varchar(50),
 data_inizio datetime,
 data_fine datetime,
 ral int,
-tipo_contratto varchar(150),
-settore varchar(250),
-posizione_lavorativa varchar(100),
+tipo_contratto varchar(50),
+settore varchar(20),
+posizione_lavorativa varchar(30),
 CONSTRAINT FK_utente_esperienza FOREIGN KEY (id_user) REFERENCES Utente (id_user)
 )
  
@@ -85,11 +83,11 @@ CONSTRAINT FK_Domanda_QuizDomanda FOREIGN KEY (id_domanda) REFERENCES Domanda (i
  
 create table RisposteDomanda(
 id_risposta int identity not null primary key,
-scelta1 varchar(500) not null,
-scelta2 varchar(500),
-scelta3 varchar(500),
-scelta4 varchar(500),
-scelta_corretta varchar(500) check(scelta_corretta in('scelta1','scelta2','scelta3','scelta4')),
+scelta1 varchar(150) not null,
+scelta2 varchar(150),
+scelta3 varchar(150),
+scelta4 varchar(150),
+scelta_corretta varchar(150) check(scelta_corretta in('scelta1','scelta2','scelta3','scelta4')),
 id_domanda int not null,
  
 CONSTRAINT FK_Risposte_Domanda FOREIGN KEY (id_domanda) REFERENCES Domanda (id_domanda),
@@ -107,10 +105,8 @@ CONSTRAINT FK_Utente_UtenteQuiz FOREIGN KEY (id_user) REFERENCES Utente (id_user
  
 create table Skill(
 id_skill int identity not null primary key,
-nome varchar(150),
-tipo_skill varchar(100) not null check(tipo_skill in('soft','hard')),
-id_quiz int,
-CONSTRAINT FK_Skill_Quiz FOREIGN KEY (id_quiz) REFERENCES Quiz (id_quiz)
+nome varchar(50),
+tipo_skill varchar(10) not null check(tipo_skill in('soft','hard')),
 )
  
 create table UserSkills(
@@ -118,7 +114,6 @@ id_user_skills int identity not null primary key,
 id_user int not null,
 id_skill int not null,
 verificata bit,
-
  
 CONSTRAINT FK_Skill_UserSkills FOREIGN KEY (id_skill) REFERENCES Skill (id_skill),
 CONSTRAINT FK_Utente_UserSkills FOREIGN KEY (id_user) REFERENCES Utente (id_user)
@@ -127,13 +122,13 @@ CONSTRAINT FK_Utente_UserSkills FOREIGN KEY (id_user) REFERENCES Utente (id_user
 create table Posizione(
 id_posizione int identity not null primary key,
 n_ammissioni smallint,
-descrizione varchar(1500),
+descrizione varchar(300),
 id_citta int not null,
 id_Categoria int not null,
 id_quiz int,
-stato varchar(80) not null check(stato in('aperta','chiusa')),
+stato varchar(15) not null check(stato in('aperta','chiusa')),
 data_inserimento datetime,
-ruolo varchar(200),
+ruolo varchar(60),
  
 CONSTRAINT FK_Posizione_Citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta),
 CONSTRAINT FK_Posizione_Categoria FOREIGN KEY (id_Categoria) REFERENCES CategoriaPosizione (id_Categoria),
@@ -149,9 +144,6 @@ data_candidatura datetime,
 CONSTRAINT FK_Posizione_CandidaturaUser FOREIGN KEY (id_posizione) REFERENCES Posizione (id_posizione),
 CONSTRAINT FK_User_CandidaturaUser FOREIGN KEY (id_user) REFERENCES Utente (id_user),
 )
-
-
--- sezione alter table 
 
 ALTER TABLE Skill
     ADD id_quiz int;

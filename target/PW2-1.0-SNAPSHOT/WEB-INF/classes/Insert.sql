@@ -13,8 +13,12 @@ insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id
 insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Marta','Lupu','CF4','mlupu@gmail.com','20030203','Via Rodi 70','2','16167','339880856','user','marta');
 
 /*	Insert CategoriaPosizione	*/
+
+
 insert into CategoriaPosizione ( nome_categoria) values ( 'bella desc');
 insert into CategoriaPosizione ( nome_categoria) values ( ' desc 2');
+insert into CategoriaPosizione ( nome_categoria) values ( 'Sviluppo Web');
+insert into CategoriaPosizione ( nome_categoria) values ( 'Testing web');
 
 /*	Inserimento delle Regione	*/
 INSERT INTO Regione (nome) values('Abbruzzo');
@@ -47,6 +51,48 @@ insert into Citta (id_regione,nome) values ('12','Torino');
 insert into Citta (id_regione,nome) values ('20','Venezia');
 insert into Citta (id_regione,nome) values ('16','Firenze');
 insert into Citta (id_regione,nome) values ('5','Bologna');
+
+insert into Citta (id_regione,nome) values ('1','Aquila');
+insert into Citta (id_regione,nome) values ('1','Pescara');
+insert into Citta (id_regione,nome) values ('2','Potenza');
+insert into Citta (id_regione,nome) values ('2','Matera');
+insert into Citta (id_regione,nome) values ('3','Reggio Calabria');
+insert into Citta (id_regione,nome) values ('3','Catanzaro');
+insert into Citta (id_regione,nome) values ('4','Avellino');
+insert into Citta (id_regione,nome) values ('4','Salerno');
+insert into Citta (id_regione,nome) values ('5','Reggio Emilia');
+insert into Citta (id_regione,nome) values ('6','Udine');
+insert into Citta (id_regione,nome) values ('6','Trieste');
+insert into Citta (id_regione,nome) values ('7','Latina');
+insert into Citta (id_regione,nome) values ('7','Viterbo');
+insert into Citta (id_regione,nome) values ('8','Savona');
+insert into Citta (id_regione,nome) values ('8','La Spezia');
+insert into Citta (id_regione,nome) values ('9','Bergamo');
+insert into Citta (id_regione,nome) values ('9','Brescia');
+insert into Citta (id_regione,nome) values ('10','Ancona');
+insert into Citta (id_regione,nome) values ('10','Ascoli');
+insert into Citta (id_regione,nome) values ('11','Campobasso');
+insert into Citta (id_regione,nome) values ('11','Isernia');
+insert into Citta (id_regione,nome) values ('12','Asti');
+insert into Citta (id_regione,nome) values ('12','Novare');
+insert into Citta (id_regione,nome) values ('13','Bari');
+insert into Citta (id_regione,nome) values ('13','Lecce');
+insert into Citta (id_regione,nome) values ('14','Cagliari');
+insert into Citta (id_regione,nome) values ('14','Alghero');
+insert into Citta (id_regione,nome) values ('15','Palermo');
+insert into Citta (id_regione,nome) values ('15','Catania');
+insert into Citta (id_regione,nome) values ('16','Pisa');
+insert into Citta (id_regione,nome) values ('16','Lucca');
+insert into Citta (id_regione,nome) values ('17','Bolzano');
+insert into Citta (id_regione,nome) values ('17','Trento');
+insert into Citta (id_regione,nome) values ('18','Perugia');
+insert into Citta (id_regione,nome) values ('18','Assisi');
+insert into Citta (id_regione,nome) values ('19','Aosta');
+insert into Citta (id_regione,nome) values ('19','Champoluc');
+insert into Citta (id_regione,nome) values ('20','Verona');
+insert into Citta (id_regione,nome) values ('20','Vicenza');
+
+
 
 /*	Inserimento delle posizioni	*/
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','ciao','1','1',NULL,'aperta','20231101','Sistemista');
