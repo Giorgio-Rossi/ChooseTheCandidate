@@ -23,6 +23,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 		connection.Connect();
 	}
 
+	
 	@Override
 	public List<Posizione> searchByCity(Citta citta) {
 		List<Posizione> posizioni = new ArrayList<>();
