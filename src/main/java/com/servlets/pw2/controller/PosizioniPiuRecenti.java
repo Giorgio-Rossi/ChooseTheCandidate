@@ -25,6 +25,7 @@ public class PosizioniPiuRecenti extends HttpServlet {
        
         Utente loginUser = (Utente) request.getSession().getAttribute("loginUser");
 
+        
         if (loginUser != null) {
        
             int cittaId = loginUser.getId_citta().getId_citta();
