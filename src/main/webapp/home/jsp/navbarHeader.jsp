@@ -28,7 +28,7 @@
 						class="list-group-item list-group-item-action py-2 ripple"><i
 						class="bi bi-check2-circle"
 						style="margin-right: 5px; font-size: 20px"></i><span>Candidature
-							Effettuate</span></a> <a href="${pageContext.request.contextPath}/logout"
+							Effettuate</span></a> <a href="${pageContext.request.contextPath}home/visualizzaCandidature.jsp"
 						class="list-group-item list-group-item-action py-2 ripple"><i
 						class="bi bi-box-arrow-right"
 						style="margin-right: 5px; font-size: 20px"></i><span>Logout</span></a>

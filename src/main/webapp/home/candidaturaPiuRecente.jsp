@@ -26,7 +26,8 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 	CandidaturaIMPL candidaturaIMPL = new CandidaturaIMPL();
 	%>
 	<%
-	int userId = (int) request.getSession().getAttribute("userId");
+	Integer userIdObj = (Integer) request.getSession().getAttribute("userId");
+	int userId = (userIdObj != null) ? userIdObj.intValue() : 0;
 	%>
 	<%
 	CandidaturaUser candidaturaPiuRecente = candidaturaIMPL.trovaCandidaturaPiùRecente(userId);

@@ -1,4 +1,3 @@
-
 package com.servlets.pw2.controller;
 
 import java.io.IOException;
@@ -19,42 +18,46 @@ import com.candidatoDB.pw2.entity.CandidaturaUser;
 import com.candidatoDB.pw2.entity.Utente;
 
 @WebServlet("/findCandidature")
-
 public class CandidatureEffettuateServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      
         HttpSession session = request.getSession();
-         Utente utenteInSessione = (Utente) session.getAttribute("utente");
+        Utente utenteInSessione = (Utente) session.getAttribute("utente");
 
         int userId = utenteInSessione.getId_user();
+
+  
         String dataCandidaturaParam = request.getParameter("data_candidatura");
 
+      
         if (dataCandidaturaParam != null && !dataCandidaturaParam.isEmpty()) {
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Date dataCandidatura = null;
-
             try {
-                dataCandidatura = sdf.parse(dataCandidaturaParam);
+             
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date dataCandidatura = sdf.parse(dataCandidaturaParam);
+
+           
+                CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
+                List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtente(userId, dataCandidatura);
+
+              
+                request.setAttribute("findCandidature", candidature);
             } catch (ParseException e) {
-
-                e.printStackTrace(); //
+                e.printStackTrace();
             }
-
-            CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
-            List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtente(userId, dataCandidatura);
-            request.setAttribute("candidature", candidature);
-
         } else {
-
+          
             CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
             List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtenteById(userId);
-            request.setAttribute("candidature", candidature);
-            System.out.println(candidature);
 
-            request.getRequestDispatcher("/home/visualizzaCandidature.jsp").forward(request, response);
-            ;
-
+          
+            request.setAttribute("findCandidature", candidature);
         }
+
+      
+        request.getRequestDispatcher("visualizzaCandidature.jsp").forward(request, response);
     }
 }
 
