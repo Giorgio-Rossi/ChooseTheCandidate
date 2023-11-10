@@ -511,6 +511,29 @@ public class PosizioneIMPL implements PosizioneDAO {
 		return posizioni;
 	}
 
+	@Override
+	public ArrayList<String> getAllRuoli() {
+		ArrayList<String> ruoli = new ArrayList<>();
+		String sql = "SELECT ruolo from Posizione";
+
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				ruoli.add(resultSet.getString(1));
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			//DBUtil.close(connection.getConnection());
+		}
+		return ruoli;
+	}
+
 	public List<Posizione> topTreAnnunci(Citta citta) {
 	    List<Posizione> posizioni = new ArrayList<>();
 	    PreparedStatement statement = null;

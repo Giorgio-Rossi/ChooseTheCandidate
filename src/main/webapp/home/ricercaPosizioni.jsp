@@ -19,6 +19,8 @@
 		posizioni = (ArrayList<Posizione>) request.getAttribute("risultatiRicerca");
 	}
 
+	ArrayList<String> ruoli = posizioneIMPL.getAllRuoli();
+
 	CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
 	ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAllCategoriePosizioni();
 
@@ -81,9 +83,9 @@
 								<option disabled selected>Ruolo</option>
 								<option value="">Tutti</option>
 								<%
-									for(Posizione pos : posizioni){
+									for(String r : ruoli){
 								%>
-								<option value="<%=pos.getRuolo()%>"><%=pos.getRuolo()%></option>
+								<option value="<%=r%>"><%=r%></option>
 								<%
 									};
 								%>
