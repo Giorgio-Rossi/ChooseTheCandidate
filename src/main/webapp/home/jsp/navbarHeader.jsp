@@ -49,7 +49,7 @@
 				<a class="navbar-brand" href="${pageContext.request.contextPath}/home/homeuser.jsp"> <img
 					src="${pageContext.request.contextPath}/img/logoPagina.png"
 					height="50" alt="" loading="lazy" />
-				</a> <span> <a href="/home/homeuser.jsp"><h1>
+				</a> <span> <a href="${pageContext.request.contextPath}/home/homeuser.jsp"><h1>
 							<span style="float: right; font-family: Comic Sans MS">JOBHUNTER
 								&thinsp;</span>
 						</h1></a>
