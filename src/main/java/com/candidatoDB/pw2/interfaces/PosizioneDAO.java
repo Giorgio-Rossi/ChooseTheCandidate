@@ -22,6 +22,8 @@ public interface PosizioneDAO {
 	List<Posizione> findPosizioniPiuRecenti();
 
 	List<Posizione> searchByFilters(String ruolo, Citta citta, CategoriaPosizione categoria);
+	
+	List<Posizione> topTreAnnunci (Citta citta);
 
 	
 }
