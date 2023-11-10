@@ -109,7 +109,7 @@
         %>
 
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success">Invia</button>
 
     </form>
 
