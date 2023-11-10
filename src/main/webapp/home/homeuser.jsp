@@ -176,7 +176,7 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 								%>
 									<div class="alert alert-primary  align-items-center border border-0" role="alert">
 										<div>
-											<i class="bi bi-info-circle-fill m-1"></i> Non hai effettuato nessuna candidatura</i>
+											<i class="bi bi-info-circle-fill m-1"></i> Non hai effettuato nessuna candidatura
 										</div>
 									</div>
 								<%

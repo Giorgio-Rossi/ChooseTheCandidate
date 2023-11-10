@@ -73,6 +73,7 @@ public class RicercaPosizioniServlet extends HttpServlet {
 		if (risultatiRicerca != null && !risultatiRicerca.isEmpty()) {
 			request.setAttribute("risultatiRicerca", risultatiRicerca);
 		} else {
+			ErrorManager.setOtherMessage("Non ho trovato posizioni sulla base dei criteri inseriti",request);
 			request.setAttribute("risultatiRicerca", new ArrayList<Posizione>());
 		}
 

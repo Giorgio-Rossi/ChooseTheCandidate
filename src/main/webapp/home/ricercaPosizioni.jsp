@@ -3,6 +3,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.candidatoDB.pw2.entity.*" %>
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.*" %>
+<%@ page import="com.servlets.pw2.controller.ErrorManager" %>
 <%@ page isELIgnored="false"%>
 
 <%
@@ -68,7 +69,7 @@
 		<h1>Ricerca Posizioni</h1>
 
 		<nav class="navbar navbar-expand-lg navbar-light bg-light rounded justify-content-center">
-			<a class="navbar-brand" href="#">Navbar</a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/home/ricercaPosizioni.jsp">Ricerca Posizioni</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -79,8 +80,13 @@
 							<select class="form-select" name="ruolo" aria-label="Default select example">
 								<option disabled selected>Ruolo</option>
 								<option value="">Tutti</option>
-								<option value="Sistemista">Sistemista</option>
-								<option value="Web Developer">Web Developer</option>
+								<%
+									for(Posizione pos : posizioni){
+								%>
+								<option value="<%=pos.getRuolo()%>"><%=pos.getRuolo()%></option>
+								<%
+									};
+								%>
 							</select>
 
 							<!--
@@ -93,6 +99,7 @@
 						<div class="form-group" aria-labelledby="navbarDropdown">
 							<select class="form-select" name="citta" aria-label="Default select example">
 								<option disabled selected>Città</option>
+								<option value="">Tutte</option>
 								<%
 									for(Regione r : regioni) {
 								%>
@@ -131,7 +138,7 @@
 							<option value="Web Developer">Web Developer</option>
 							</select>-->
 						</div>
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
 				</div>
 			</form>
 		</nav>
@@ -179,6 +186,19 @@
 			<div class="container">
 				<div class="row">
 
+					<%
+						if(posizioni.isEmpty()){
+							%>
+					<%
+						if(!ErrorManager.getOtherMessage((HttpServletRequest) request).isEmpty()){
+					%>
+					<div class="alert alert-warning">
+						<i class="bi bi-exclamation-diamond-fill m-1"></i><%= ErrorManager.getOtherMessage((HttpServletRequest) request)%>
+					</div>
+					<%
+							}
+						};
+					%>
 					<%
 						for(Posizione p : posizioni){
 					%>
