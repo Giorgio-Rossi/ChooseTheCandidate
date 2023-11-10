@@ -17,7 +17,7 @@ UtenteIMPL utenteIMPL = new UtenteIMPL();
 Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
  ArrayList<String> campi_vuoti = utenteIMPL.getEmptyParameters(utenteLoggato);
 	CandidaturaIMPL candidaturaIMPL = new CandidaturaIMPL();
- 	CandidaturaUser candidaturaRecente = candidaturaIMPL.trovaCandidaturaPiùRecente(utenteLoggato.getId_user());
+ 	CandidaturaUser candidaturaRecente = candidaturaIMPL.trovaCandidaturaPiuRecente(utenteLoggato.getId_user());
 	Posizione posizioneRecente = null;
 	System.out.println(candidaturaRecente);
 	if(candidaturaRecente!=null) {
@@ -186,8 +186,7 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 							</div>
 						</div>
 					</div>
-
-			<div class="card col-lg-4 d-flex align-items-stretch" style="background-color: #d4d4d4; border: none">
+<div class="card col-lg-4 d-flex align-items-stretch" style="background-color: #d4d4d4; border: none">
     <div class="slide slide1">
         <div class="content">
             <div class="icon">
@@ -195,6 +194,7 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
             </div>
         </div>
     </div>
+<<<<<<< HEAD
    <div class="slide slide2">
     <div class="card-body p-4">
         <%
@@ -219,10 +219,34 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
         <%
             }
         %>
+=======
+    <div class="slide slide2">
+        <div class="card-body p-4">
+            <%
+                List<Posizione> posizioniPiuRecenti = (List<Posizione>) request.getAttribute("posizioniPiuRecenti");
+                if (posizioniPiuRecenti != null && !posizioniPiuRecenti.isEmpty()) {
+                    for (Posizione posizione : posizioniPiuRecenti) { 
+            %>
+                        <div class="mb-3">
+                            <span class="text-muted d-block"><strong>Categoria:</strong> <%=posizione.getCategoria().getNome_categoria()%></span>
+                            <span class="text-muted d-block"><strong>Stato:</strong> <%=posizione.getStato()%></span>
+                            <span class="text-muted d-block"><strong>Ruolo:</strong> <%=posizione.getRuolo()%></span>
+                        </div>
+            <%
+                    }
+                } else {
+            %>
+                <div class="alert alert-info" role="alert">
+                    <i class="bi bi-info-circle-fill m-1"></i> Nessun annuncio recente disponibile
+                </div>
+            <%
+                }
+            %>
+        </div>
+>>>>>>> 322d9a77464512b0cc7dd5a81cbb96923bb054b6
     </div>
 </div>
-   
-			
+
 
 
 				</div>

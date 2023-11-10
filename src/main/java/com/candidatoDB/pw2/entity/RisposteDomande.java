@@ -6,7 +6,7 @@ public class RisposteDomande {
 	private String scelta2; // b
 	private String scelta3; // c
 	private String scelta4; // d
-	private int scelta_corretta;
+	private String scelta_corretta;
 	
 	private int id_domanda;
 		
@@ -15,7 +15,7 @@ public class RisposteDomande {
 	}
 
 	public RisposteDomande(int id_risposta, String scelta1, String scelta2, String scelta3, String scelta4,
-			int scelta_corretta, int id_domanda) {
+			String scelta_corretta, int id_domanda) {
 		super();
 		this.id_risposta = id_risposta;
 		this.scelta1 = scelta1;
@@ -66,11 +66,11 @@ public class RisposteDomande {
 		this.scelta4 = scelta4;
 	}
 
-	public int getScelta_corretta() {
+	public String getScelta_corretta() {
 		return scelta_corretta;
 	}
 
-	public void setScelta_corretta(int scelta_corretta) {
+	public void setScelta_corretta(String scelta_corretta) {
 		this.scelta_corretta = scelta_corretta;
 	}
 

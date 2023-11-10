@@ -23,6 +23,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 		connection.Connect();
 	}
 
+	
 	@Override
 	public List<Posizione> searchByCity(Citta citta) {
 		List<Posizione> posizioni = new ArrayList<>();
@@ -490,7 +491,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setCategoria(categoriaPosizioneIMPL.getCategoriaPosizioneById(resultSet.getInt(5)));
 
 				QuizIMPL quizIMPL = new QuizIMPL();
-				posizione.setQuiz(quizIMPL.getQuizById(6));
+				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt(6)));
 
 				posizione.setStato(resultSet.getString(7));
 				posizione.setData_inserimento(resultSet.getDate(8));
@@ -540,7 +541,8 @@ public class PosizioneIMPL implements PosizioneDAO {
 	    ResultSet resultSet = null;
 
 	    try {
-	        String sql = "SELECT TOP 3 * FROM Posizione p INNER JOIN Citta c ON p.id_citta = c.id_citta INNER JOIN CategoriaPosizione cp ON cp.id_Categoria = p.id_Categoria WHERE p.id_citta = ? ORDER BY p.data_inserimento DESC";
+	    	String sql = "SELECT TOP 3 * FROM Posizione p INNER JOIN Citta c ON p.id_citta = c.id_citta INNER JOIN CategoriaPosizione cp ON cp.id_Categoria = p.id_Categoria WHERE p.id_citta = ? ORDER BY p.data_inserimento DESC";
+
 System.out.println(sql);
 	        connection.Connect();
 	        statement = connection.getConnection().prepareStatement(sql);
@@ -550,26 +552,25 @@ System.out.println(sql);
 	        resultSet = statement.executeQuery();
 
 	        while (resultSet.next()) {
-	            Posizione posizione = new Posizione();
+	        	Posizione posizione = new Posizione();
+				posizione.setId_posizione(resultSet.getInt(1));
+				posizione.setN_ammissioni(resultSet.getInt(2));
+				posizione.setDescrizione(resultSet.getString(3));
 
-	            posizione.setId_posizione(resultSet.getInt("id_posizione"));
-	            posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
-	            posizione.setDescrizione(resultSet.getString("descrizione"));
+				CittaIMPL cittaIMPL = new CittaIMPL();
+				posizione.setCitta(cittaIMPL.getCittaById(resultSet.getInt(4)));
 
-	            Citta posizioneCitta = new Citta();
-	            posizioneCitta.setId_citta(resultSet.getInt("id_citta"));
-	            posizione.setCitta(posizioneCitta);
+				CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
+				posizione.setCategoria(categoriaPosizioneIMPL.getCategoriaPosizioneById(resultSet.getInt(5)));
 
-	            CategoriaPosizione categoriaPosizione = new CategoriaPosizione();
-	            categoriaPosizione.setId_categoria(resultSet.getInt("id_categoria"));
-	            posizione.setCategoria(categoriaPosizione);
+				QuizIMPL quizIMPL = new QuizIMPL();
+				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt(6)));
 
-	            posizione.setStato(resultSet.getString("stato"));
-	            posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
-	            posizione.setRuolo(resultSet.getString("ruolo"));
+				posizione.setStato(resultSet.getString(7));
+				posizione.setData_inserimento(resultSet.getDate(8));
+				posizione.setRuolo(resultSet.getString(9));
 
-
-	            posizioni.add(posizione);
+				posizioni.add(posizione);
 	        }
 	    } catch (SQLException e) {
 	        System.err.println(e.getMessage());

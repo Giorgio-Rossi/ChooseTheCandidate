@@ -1,0 +1,19 @@
+Subject: [PATCH] aggiunta la pagina quiz e creata la prima patch
+---
+Index: src/main/webapp/home/quiz.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/home/quiz.jsp b/src/main/webapp/home/quiz.jsp
+--- a/src/main/webapp/home/quiz.jsp	(revision 70ebbd58cf14656ec78e34265c0f2d7cc7ed6010)
++++ b/src/main/webapp/home/quiz.jsp	(date 1699629973715)
+@@ -109,7 +109,7 @@
+         %>
+ 
+ 
+-        <button type="submit" class="btn btn-primary">Submit</button>
++        <button type="submit" class="btn btn-success">Submit</button>
+ 
+     </form>
+ 

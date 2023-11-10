@@ -91,12 +91,6 @@
 								%>
 							</select>
 
-							<!--
-							<label for="ruolo">Ruolo:</label> <select class="form-select" name="ruolo" id="ruolo">
-							<option class="dropdown-item" value="">Tutti</option>
-							<option value="Sistemista">Sistemista</option>
-							<option value="Web Developer">Web Developer</option>
-							</select>-->
 						</div>
 						<div class="form-group" aria-labelledby="navbarDropdown">
 							<select class="form-select" name="citta" aria-label="Default select example">
@@ -132,52 +126,11 @@
 								%>
 
 							</select>
-
-							<!--
-							<label for="ruolo">Ruolo:</label> <select class="form-select" name="ruolo" id="ruolo">
-							<option class="dropdown-item" value="">Tutti</option>
-							<option value="Sistemista">Sistemista</option>
-							<option value="Web Developer">Web Developer</option>
-							</select>-->
 						</div>
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
 				</div>
 			</form>
 		</nav>
-
-
-
-			<div class="form-group">
-				<!--<label for="citta">Città:</label> <select name="citta" id="citta">
-					<option value="">Tutte</option>
-					<option value="1">Genova</option>
-					<option value="2">Milano</option>
-					<option value="13">Roma</option>
-					<option value="4">Napoli</option>
-					<option value="5">Lodi</option>
-					<option value="6">Torino</option>
-					<option value="7">Venezia</option>
-					<option value="8">Firenze</option>
-					<option value="9">Bologna</option>
-				</select>-->
-			</div>
-
-
-			<div class="form-group">
-				<!--<label for="categoria">Categoria Posizione:</label> <select
-					name="categoria" id="categoria">
-					<option value="">Tutte</option>
-					<option value="1">bella desc</option>
-					<option value="2">desc 2</option>
-				</select>-->
-			</div>
-
-
-
-
-
-
-
 
 
 	<main style="margin-top: 58px">
@@ -218,7 +171,9 @@
 												</div>
 
 												<div class="mt-3">
-													<a href="#" class="btn btn-primary">Candidati</a>
+													<form action="${pageContext.request.contextPath}/EffettuaCandidatura" method="post">
+														<button type="submit" class="btn btn-primary" name="id_quiz" value="<%=p.getQuiz().getId_quiz()%>">Candidati</button>
+													</form>
 												</div>
 											</div>
 

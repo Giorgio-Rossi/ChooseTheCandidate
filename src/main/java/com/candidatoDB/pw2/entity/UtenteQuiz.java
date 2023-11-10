@@ -6,14 +6,14 @@ import java.util.List;
 public class UtenteQuiz {
 
 	private int id_utente_quiz;
-	private List<Quiz> id_quiz = new ArrayList<Quiz>();
+	private int id_quiz;
 	private int id_user;
 	private int punteggio;
 	
 	public UtenteQuiz() {
 		super();
 	}
-	public UtenteQuiz(int id_utente_quiz, List<Quiz> id_quiz, int id_user, int punteggio) {
+	public UtenteQuiz(int id_utente_quiz, int id_quiz, int id_user, int punteggio) {
 		super();
 		this.id_utente_quiz = id_utente_quiz;
 		this.id_quiz = id_quiz;
@@ -26,10 +26,10 @@ public class UtenteQuiz {
 	public void setId_utente_quiz(int id_utente_quiz) {
 		this.id_utente_quiz = id_utente_quiz;
 	}
-	public List<Quiz> getId_quiz() {
+	public int getId_quiz() {
 		return id_quiz;
 	}
-	public void setId_quiz(List<Quiz> id_quiz) {
+	public void setId_quiz(int id_quiz) {
 		this.id_quiz = id_quiz;
 	}
 	public int getId_user() {

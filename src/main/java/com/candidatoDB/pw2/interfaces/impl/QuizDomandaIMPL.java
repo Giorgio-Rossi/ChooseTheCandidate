@@ -1,36 +1,39 @@
 package com.candidatoDB.pw2.interfaces.impl;
 
-import com.candidatoDB.pw2.entity.Quiz;
-import com.candidatoDB.pw2.interfaces.QuizDAO;
+import com.candidatoDB.pw2.entity.CategoriaPosizione;
+import com.candidatoDB.pw2.entity.Domanda;
+import com.candidatoDB.pw2.interfaces.QuizDomandaDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-public class QuizIMPL implements QuizDAO {
+public class QuizDomandaIMPL implements QuizDomandaDAO {
 
     private SQLServerConnection connection = new SQLServerConnection();
 
-    public QuizIMPL() {
+    public QuizDomandaIMPL() {
         connection.Connect();
     }
+
     @Override
-    public Quiz getQuizById(int id_quiz) {
-        Quiz quiz = new Quiz();
-        String sql = "SELECT * from Quiz where id_quiz=?";
+    public ArrayList<Domanda> getDomandeByIdQuiz(int id_quiz) {
+        ArrayList<Domanda> domande_quiz = new ArrayList<>();
+        DomandaIMPL domandaIMPL = new DomandaIMPL();
+        String sql = "SELECT id_domanda from QuizDomanda where id_quiz=?";
 
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
             statement = connection.getConnection().prepareStatement(sql);
             statement.setInt(1, id_quiz);
+
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                quiz.setId_quiz(resultSet.getInt(1));
-                quiz.setDescrizione(resultSet.getString(2));
-                quiz.setN_domande(resultSet.getInt(3));
+                domande_quiz.add(domandaIMPL.getDomandaById(resultSet.getInt(1)));
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -39,6 +42,7 @@ public class QuizIMPL implements QuizDAO {
             DBUtil.close(statement);
             //DBUtil.close(connection.getConnection());
         }
-        return quiz;
+        return domande_quiz;
     }
 }
+

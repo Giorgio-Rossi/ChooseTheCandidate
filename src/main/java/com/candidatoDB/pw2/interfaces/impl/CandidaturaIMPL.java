@@ -58,7 +58,7 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
 
 	@Override
-	public CandidaturaUser trovaCandidaturaPiùRecente(int id_user) {
+	public CandidaturaUser trovaCandidaturaPiuRecente(int id_user) {
 	 
 	        CandidaturaUser Candidatura = null;
 	     //   Connection connection = null;

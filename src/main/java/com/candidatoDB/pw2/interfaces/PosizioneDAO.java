@@ -29,5 +29,7 @@ public interface PosizioneDAO {
 	ArrayList<Posizione> getAllPosizioni();
 
 	ArrayList<String> getAllRuoli();
+	
+	
 }
 
