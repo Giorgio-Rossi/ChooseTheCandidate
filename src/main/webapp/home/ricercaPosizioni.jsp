@@ -79,14 +79,32 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 				<label for="citta">Città:</label> <select name="citta" id="citta">
 					<option value="">Tutte</option>
 					<option value="1">Genova</option>
-					<option value="2">Milano</option>
-					<option value="13">Roma</option>
-					<option value="4">Napoli</option>
-					<option value="5">Lodi</option>
-					<option value="6">Torino</option>
-					<option value="7">Venezia</option>
-					<option value="8">Firenze</option>
-					<option value="9">Bologna</option>
+					<option value="56">Milano</option>
+					<option value="2">Roma</option>
+					<option value="3">Napoli</option>
+					<option value="4">Lodi</option>
+					<option value="5">Torino</option>
+					<option value="6">Venezia</option>
+					<option value="7">Firenze</option>
+					<option value="8">Bologna</option>
+					<option value="17">Aquila</option>
+					<option value="18">Pescara</option>
+					<option value="19">Potenza</option>
+					<option value="20">Matera</option>
+					<option value="21">Reggio Calabria</option>
+					<option value="22">Catanzaro</option>
+					<option value="23">Avellino</option>
+					<option value="24">Salerno</option>
+					<option value="25">Reggio Emilia</option>
+					<option value="26">Udine</option>
+					<option value="27">Trieste</option>
+					<option value="28">Latina</option>
+					<option value="29">Viterbo</option>
+					<option value="30">Savona</option>
+					<option value="31">La Spezia</option>
+					<option value="32">Bergamo</option>
+					<option value="33">Brescia</option>
+					<option value="34">Ancona</option>
 				</select>
 			</div>
 
