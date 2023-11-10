@@ -19,7 +19,7 @@ public class QuizIMPL implements QuizDAO {
     @Override
     public Quiz getQuizById(int id_quiz) {
         Quiz quiz = new Quiz();
-        String sql = "SELECT * from CategoriaPosizione where id_Categoria=?";
+        String sql = "SELECT * from Quiz where id_quiz=?";
 
         PreparedStatement statement = null;
         ResultSet resultSet = null;

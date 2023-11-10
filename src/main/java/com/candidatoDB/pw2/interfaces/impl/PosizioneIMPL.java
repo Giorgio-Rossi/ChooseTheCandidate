@@ -491,7 +491,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setCategoria(categoriaPosizioneIMPL.getCategoriaPosizioneById(resultSet.getInt(5)));
 
 				QuizIMPL quizIMPL = new QuizIMPL();
-				posizione.setQuiz(quizIMPL.getQuizById(6));
+				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt(6)));
 
 				posizione.setStato(resultSet.getString(7));
 				posizione.setData_inserimento(resultSet.getDate(8));
