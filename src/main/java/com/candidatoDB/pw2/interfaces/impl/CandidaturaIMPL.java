@@ -109,7 +109,7 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
 	        try {
 	          
-	            String sql = "SELECT * FROM CandidaturaUser WHERE id_user = ? AND data_candidatura IS NOT NULL";
+	            String sql = "SELECT * FROM CandidaturaUser WHERE id_user = ? ";
 	            preparedStatement = connection.getConnection().prepareStatement(sql);
 	            preparedStatement.setInt(1, id_user);
 
@@ -117,10 +117,10 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
 	            while (resultSet.next()) {
 	            	 CandidaturaUser candidatura = new CandidaturaUser();
-	                candidatura.setId_candidatura(resultSet.getInt(1));
-	                candidatura.setId_posizione(resultSet.getInt(2));
-	                candidatura.setId_user(resultSet.getInt(3));
-	                candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate(4).getTime()));
+	                candidatura.setId_candidatura(resultSet.getInt("id_candidatura"));
+	                candidatura.setId_posizione(resultSet.getInt("id_posizione"));
+	                candidatura.setId_user(resultSet.getInt("id_user"));
+	                candidatura.setData_candidatura(new java.sql.Timestamp(resultSet.getDate("data_candidatura").getTime()));
 
 	                candidature.add(candidatura);
 	            }
