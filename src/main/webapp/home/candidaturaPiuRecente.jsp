@@ -30,7 +30,7 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 	int userId = (userIdObj != null) ? userIdObj.intValue() : 0;
 	%>
 	<%
-	CandidaturaUser candidaturaPiuRecente = candidaturaIMPL.trovaCandidaturaPiùRecente(userId);
+	CandidaturaUser candidaturaPiuRecente = candidaturaIMPL.trovaCandidaturaPiuRecente(userId);
 	%>
 
 

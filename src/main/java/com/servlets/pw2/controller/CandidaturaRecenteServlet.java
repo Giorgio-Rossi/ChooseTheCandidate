@@ -25,7 +25,7 @@ public class CandidaturaRecenteServlet extends HttpServlet {
             int userId = utente.getId_user();
             session.setAttribute("userId", userId);
             CandidaturaIMPL candidaturaIMPL = new CandidaturaIMPL();
-            CandidaturaUser candidaturaPiuRecente = candidaturaIMPL.trovaCandidaturaPiùRecente(userId);
+            CandidaturaUser candidaturaPiuRecente = candidaturaIMPL.trovaCandidaturaPiuRecente(userId);
 
             request.setAttribute("candidaturaPiuRecente", candidaturaPiuRecente);
             System.out.println(candidaturaPiuRecente);

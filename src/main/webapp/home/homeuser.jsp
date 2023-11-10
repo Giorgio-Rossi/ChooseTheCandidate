@@ -17,7 +17,7 @@ UtenteIMPL utenteIMPL = new UtenteIMPL();
 Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
  ArrayList<String> campi_vuoti = utenteIMPL.getEmptyParameters(utenteLoggato);
 	CandidaturaIMPL candidaturaIMPL = new CandidaturaIMPL();
- 	CandidaturaUser candidaturaRecente = candidaturaIMPL.trovaCandidaturaPiùRecente(utenteLoggato.getId_user());
+ 	CandidaturaUser candidaturaRecente = candidaturaIMPL.trovaCandidaturaPiuRecente(utenteLoggato.getId_user());
 	Posizione posizioneRecente = null;
 	System.out.println(candidaturaRecente);
 	if(candidaturaRecente!=null) {
