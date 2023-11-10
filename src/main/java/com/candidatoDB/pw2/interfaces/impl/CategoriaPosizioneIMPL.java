@@ -8,6 +8,7 @@ import com.servlets.pw2.controller.SQLServerConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class CategoriaPosizioneIMPL implements CategoriaPosizioneDAO {
 
@@ -40,5 +41,33 @@ public class CategoriaPosizioneIMPL implements CategoriaPosizioneDAO {
         }
         return categoriaPosizione;
         }
+
+    @Override
+    public ArrayList<CategoriaPosizione> getAllCategoriePosizioni() {
+        ArrayList<CategoriaPosizione> categorie_posizioni = new ArrayList<>();
+        String sql = "SELECT * from CategoriaPosizione";
+
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.getConnection().prepareStatement(sql);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                CategoriaPosizione categoriaPosizione = new CategoriaPosizione();
+                categoriaPosizione.setId_categoria(resultSet.getInt(1));
+                categoriaPosizione.setNome_categoria(resultSet.getString(2));
+
+                categorie_posizioni.add(categoriaPosizione);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            DBUtil.close(resultSet);
+            DBUtil.close(statement);
+            //DBUtil.close(connection.getConnection());
+        }
+        return categorie_posizioni;
     }
+
+}
 
