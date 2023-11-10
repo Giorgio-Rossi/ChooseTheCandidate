@@ -1,5 +1,6 @@
 <%@ page import="com.candidatoDB.pw2.entity.Utente"%>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <%@ page import="java.util.stream.Stream" %>
 <%@ page import="java.util.Objects" %>
 <%@ page import="java.lang.reflect.Field" %>
@@ -171,19 +172,50 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 						</div>
 					</div>
 
-					<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
-						<div class="slide slide1">
-							<div class="content">
-								<div class="icon">
-									<i class="bi bi-calendar"
-									   style="font-size: 10rem;text-align: center"><h1 style="font-size: 1rem">Annunci Recenti</h1></i>
-								</div>
-							</div>
-						</div>
-						<div class="slide slide2">
-
-						</div>
-					</div>
+			<div class="card col-lg-4 d-flex align-items-stretch" style="background-color: #d4d4d4; border: none">
+    <div class="slide slide1">
+        <div class="content">
+            <div class="icon">
+                <i class="bi bi-calendar" style="font-size: 10rem; text-align: center"><h1 style="font-size: 1rem">Annunci Recenti</h1></i>
+            </div>
+        </div>
+    </div>
+    <div class="slide slide2">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Categoria</th>
+                    <th>Stato</th>
+                    <th>Ruolo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% 
+                    List<Posizione> posizioniPiuRecenti = (List<Posizione>) request.getAttribute("posizioniPiuRecenti");
+                    if (posizioniPiuRecenti != null && !posizioniPiuRecenti.isEmpty()) {
+                        for (Posizione posizione : posizioniPiuRecenti) { 
+                %>
+                            <tr>
+                                <td><%=posizione.getCategoria().getNome_categoria()%></td>
+                                <td><%=posizione.getStato()%></td>
+                                <td><%=posizione.getRuolo()%></td>
+                            </tr>
+                <% 
+                        }
+                    } else {
+                %>
+                        <!-- Gestisci il caso in cui non ci siano annunci recenti -->
+                        <tr>
+                            <td colspan="3">Nessun annuncio recente disponibile</td>
+                        </tr>
+                <% 
+                    }
+                %>
+            </tbody>
+        </table>
+    </div>
+</div>
+			
 
 
 				</div>
@@ -197,6 +229,3 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 
 </body>
 </html>
-
-
-
