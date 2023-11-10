@@ -176,7 +176,7 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 								%>
 									<div class="alert alert-primary  align-items-center border border-0" role="alert">
 										<div>
-											<i class="bi bi-info-circle-fill m-1"></i> Non hai effettuato nessuna candidatura</i>
+											<i class="bi bi-info-circle-fill m-1"></i> Non hai effettuato nessuna candidatura
 										</div>
 									</div>
 								<%
@@ -195,41 +195,31 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
             </div>
         </div>
     </div>
-    <div class="slide slide2">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>Categoria</th>
-                    <th>Stato</th>
-                    <th>Ruolo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% 
-                    List<Posizione> posizioniPiuRecenti = (List<Posizione>) request.getAttribute("posizioniPiuRecenti");
-                    if (posizioniPiuRecenti != null && !posizioniPiuRecenti.isEmpty()) {
-                        for (Posizione posizione : posizioniPiuRecenti) { 
-                %>
-                            <tr>
-                                <td><%=posizione.getCategoria().getNome_categoria()%></td>
-                                <td><%=posizione.getStato()%></td>
-                                <td><%=posizione.getRuolo()%></td>
-                            </tr>
-                <% 
-                        }
-                    } else {
-                %>
-                        <!-- Gestisci il caso in cui non ci siano annunci recenti -->
-                        <tr>
-                            <td colspan="3">Nessun annuncio recente disponibile</td>
-                        </tr>
-                <% 
-                    }
-                %>
-            </tbody>
-        </table>
+   <div class="slide slide2">
+    <div class="card-body p-4">
+        <%
+            List<Posizione> posizioniPiuRecenti = (List<Posizione>) request.getAttribute("posizioniPiuRecenti");
+            if (posizioniPiuRecenti != null && !posizioniPiuRecenti.isEmpty()) {
+                for (Posizione posizione : posizioniPiuRecenti) { 
+        %>
+                    <div class="mb-3">
+                        <span class="text-muted d-block"><strong>Categoria:</strong> <%=posizione.getCategoria().getNome_categoria()%></span>
+                        <span class="text-muted d-block"><strong>Stato:</strong> <%=posizione.getStato()%></span>
+                        <span class="text-muted d-block"><strong>Ruolo:</strong> <%=posizione.getRuolo()%></span>
+                    </div>
+        <%
+                }
+            } else {
+        %>
+            <div class="alert alert-info" role="alert">
+                <i class="bi bi-info-circle-fill m-1"></i> Nessun annuncio recente disponibile
+            </div>
+        <%
+            }
+        %>
     </div>
 </div>
+   
 			
 
 

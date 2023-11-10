@@ -22,9 +22,11 @@ public class RicercaPosizioniServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String ruolo = request.getParameter("ruolo");
-		String cittaId = request.getParameter("citta");
-		String categoriaId = request.getParameter("categoria");
+		String ruolo =  request.getParameter("ruolo") == null ? "" :  request.getParameter("ruolo");
+		String cittaId = request.getParameter("citta") == null ? "" :  request.getParameter("citta");
+		String categoriaId = request.getParameter("categoria") == null ? "" :  request.getParameter("categoria");
+
+		System.out.println(ruolo+ " " +cittaId+ " " +categoriaId);
 
 		Citta citta = null;
 		CategoriaPosizione categoria = new CategoriaPosizione();
@@ -41,6 +43,7 @@ public class RicercaPosizioniServlet extends HttpServlet {
 		PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 
 		List<Posizione> risultatiRicerca = new ArrayList<>();
+
 
 		if (ruolo.isEmpty() && (cittaId == null || cittaId.isEmpty())
 				&& (categoriaId == null || categoriaId.isEmpty())) {
@@ -70,6 +73,7 @@ public class RicercaPosizioniServlet extends HttpServlet {
 		if (risultatiRicerca != null && !risultatiRicerca.isEmpty()) {
 			request.setAttribute("risultatiRicerca", risultatiRicerca);
 		} else {
+			ErrorManager.setOtherMessage("Non ho trovato posizioni sulla base dei criteri inseriti",request);
 			request.setAttribute("risultatiRicerca", new ArrayList<Posizione>());
 		}
 

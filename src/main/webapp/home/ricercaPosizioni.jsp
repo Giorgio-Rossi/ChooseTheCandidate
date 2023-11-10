@@ -1,22 +1,28 @@
-<%@ page import="com.candidatoDB.pw2.entity.Posizione"%>
 <%@ page contentType="text/html; charset=UTF-8" language="java"%>
 <%@ page import="java.util.List"%>
-<%@ page import="com.candidatoDB.pw2.entity.Citta"%>
-<%@ page import="com.candidatoDB.pw2.entity.CategoriaPosizione"%>
-<%@ page import="com.candidatoDB.pw2.entity.Quiz"%>
-<%@ page import="com.candidatoDB.pw2.interfaces.impl.PosizioneIMPL" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.candidatoDB.pw2.entity.*" %>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.*" %>
+<%@ page import="com.servlets.pw2.controller.ErrorManager" %>
 <%@ page isELIgnored="false"%>
 
 <%
-response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 	ArrayList<Posizione> posizioni = new ArrayList<>();
+
+	ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
+	ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
+
 	if(request.getAttribute("risultatiRicerca")==null){
 		 posizioni = posizioneIMPL.getAllPosizioni();
 	}else{
 		posizioni = (ArrayList<Posizione>) request.getAttribute("risultatiRicerca");
 	}
+
+	ArrayList<String> ruoli = posizioneIMPL.getAllRuoli();
+
+	CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
+	ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAllCategoriePosizioni();
 
 	System.out.println(posizioni);
 %>
@@ -43,7 +49,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	href="${pageContext.request.contextPath}/css/homeuser.css" />
 
 
-	<link rel="stylesheet" type="text/css" media="screen" href="../css/ricerca_posizioni.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/css/ricerca_posizioni.css" />
 
 
 </head>
@@ -55,84 +61,146 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <body style="background-color: #d4d4d4">
 
 
+
+
+
 	<jsp:include page="jsp/navbarHeader.jsp" />
 
-	<div
-		style="display: flex; justify-content: center; align-items: center; padding-top: 10%; flex-direction: column">
+
+
 		<h1>Ricerca Posizioni</h1>
 
-		<form
-			action="${pageContext.request.contextPath}/RicercaPosizioniServlet"
-			method="post">
-			<div class="form-group">
-				<label for="ruolo">Ruolo:</label> <select name="ruolo" id="ruolo">
-					<option value="">Tutti</option>
-					<option value="Sistemista">Sistemista</option>
-					<option value="Web Developer">Web Developer</option>
-					<option value="Java Developer">Java Developer</option>
-					<option value="Front-End Developer">Front-End Developer</option>
-					<option value="Back-End Developer">Back-End Developer</option>
-				</select>
-			</div>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light rounded justify-content-center">
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/home/ricercaPosizioni.jsp">Ricerca Posizioni</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<form class="form-inline" action="${pageContext.request.contextPath}/RicercaPosizioniServlet"
+				  method="post">
+			<div class="collapse navbar-collapse justify-content-center mt-4 p-2" id="navbarSupportedContent">
+						<div class="form-group" aria-labelledby="navbarDropdown">
+							<select class="form-select" name="ruolo" aria-label="Default select example">
+								<option disabled selected>Ruolo</option>
+								<option value="">Tutti</option>
+								<%
+									for(String r : ruoli){
+								%>
+								<option value="<%=r%>"><%=r%></option>
+								<%
+									};
+								%>
+							</select>
+
+							<!--
+							<label for="ruolo">Ruolo:</label> <select class="form-select" name="ruolo" id="ruolo">
+							<option class="dropdown-item" value="">Tutti</option>
+							<option value="Sistemista">Sistemista</option>
+							<option value="Web Developer">Web Developer</option>
+							</select>-->
+						</div>
+						<div class="form-group" aria-labelledby="navbarDropdown">
+							<select class="form-select" name="citta" aria-label="Default select example">
+								<option disabled selected>Città</option>
+								<option value="">Tutte</option>
+								<%
+									for(Regione r : regioni) {
+								%>
+								<optgroup label="<%=r.getNome()%>">
+										<%
+                                             for(Citta c : cities){
+												 if(c.getRegione().getNome().equals(r.getNome())){
+													 %>
+									<option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+										<%
+												 }
+											 }
+									}
+									%>
+							</select>
+
+						</div>
+						<div class="form-group" aria-labelledby="navbarDropdown">
+							<select class="form-select" name="categoria" aria-label="Default select example">
+								<option disabled selected>Categoria</option>
+								<option value="">Tutte</option>
+								<%
+									for(CategoriaPosizione cat : categorie_posizioni){
+								%>
+									<option value="<%=cat.getId_categoria()%>"><%=cat.getNome_categoria()%></option>
+								<%
+									};
+								%>
+
+							</select>
+
+							<!--
+							<label for="ruolo">Ruolo:</label> <select class="form-select" name="ruolo" id="ruolo">
+							<option class="dropdown-item" value="">Tutti</option>
+							<option value="Sistemista">Sistemista</option>
+							<option value="Web Developer">Web Developer</option>
+							</select>-->
+						</div>
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
+				</div>
+			</form>
+		</nav>
+
+
 
 			<div class="form-group">
-				<label for="citta">Città:</label> <select name="citta" id="citta">
+				<!--<label for="citta">Città:</label> <select name="citta" id="citta">
 					<option value="">Tutte</option>
 					<option value="1">Genova</option>
-					<option value="56">Milano</option>
-					<option value="2">Roma</option>
-					<option value="3">Napoli</option>
-					<option value="4">Lodi</option>
-					<option value="5">Torino</option>
-					<option value="6">Venezia</option>
-					<option value="7">Firenze</option>
-					<option value="8">Bologna</option>
-					<option value="17">Aquila</option>
-					<option value="18">Pescara</option>
-					<option value="19">Potenza</option>
-					<option value="20">Matera</option>
-					<option value="21">Reggio Calabria</option>
-					<option value="22">Catanzaro</option>
-					<option value="23">Avellino</option>
-					<option value="24">Salerno</option>
-					<option value="25">Reggio Emilia</option>
-					<option value="26">Udine</option>
-					<option value="27">Trieste</option>
-					<option value="28">Latina</option>
-					<option value="29">Viterbo</option>
-					<option value="30">Savona</option>
-					<option value="31">La Spezia</option>
-					<option value="32">Bergamo</option>
-					<option value="33">Brescia</option>
-					<option value="34">Ancona</option>
-				</select>
+					<option value="2">Milano</option>
+					<option value="13">Roma</option>
+					<option value="4">Napoli</option>
+					<option value="5">Lodi</option>
+					<option value="6">Torino</option>
+					<option value="7">Venezia</option>
+					<option value="8">Firenze</option>
+					<option value="9">Bologna</option>
+				</select>-->
 			</div>
 
 
 			<div class="form-group">
-				<label for="categoria">Categoria Posizione:</label> <select
+				<!--<label for="categoria">Categoria Posizione:</label> <select
 					name="categoria" id="categoria">
 					<option value="">Tutte</option>
 					<option value="1">bella desc</option>
 					<option value="2">desc 2</option>
-					<option value="3">Sviluppo Web</option>
-					<option value="4">Testing Web</option>
-
-				</select>
+				</select>-->
 			</div>
 
 
-			<button type="submit" class="btn btn-primary">Cerca</button>
-		</form>
 
-	</div>
+
+
+
+
+
 
 	<main style="margin-top: 58px">
 		<div class="container pt-3">
+
+
+
 			<div class="container">
 				<div class="row">
 
-
+					<%
+						if(posizioni.isEmpty()){
+							%>
+					<%
+						if(!ErrorManager.getOtherMessage((HttpServletRequest) request).isEmpty()){
+					%>
+					<div class="alert alert-warning">
+						<i class="bi bi-exclamation-diamond-fill m-1"></i><%= ErrorManager.getOtherMessage((HttpServletRequest) request)%>
+					</div>
+					<%
+							}
+						};
+					%>
 					<%
 						for(Posizione p : posizioni){
 					%>

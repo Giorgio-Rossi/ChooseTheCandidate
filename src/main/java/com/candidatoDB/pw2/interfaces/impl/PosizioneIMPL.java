@@ -511,4 +511,75 @@ public class PosizioneIMPL implements PosizioneDAO {
 		return posizioni;
 	}
 
+	@Override
+	public ArrayList<String> getAllRuoli() {
+		ArrayList<String> ruoli = new ArrayList<>();
+		String sql = "SELECT ruolo from Posizione";
+
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				ruoli.add(resultSet.getString(1));
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			//DBUtil.close(connection.getConnection());
+		}
+		return ruoli;
+	}
+
+	public List<Posizione> topTreAnnunci(Citta citta) {
+	    List<Posizione> posizioni = new ArrayList<>();
+	    PreparedStatement statement = null;
+	    ResultSet resultSet = null;
+
+	    try {
+	        String sql = "SELECT TOP 3 * FROM Posizione p INNER JOIN Citta c ON p.id_citta = c.id_citta INNER JOIN CategoriaPosizione cp ON cp.id_Categoria = p.id_Categoria WHERE p.id_citta = ? ORDER BY p.data_inserimento DESC";
+System.out.println(sql);
+	        connection.Connect();
+	        statement = connection.getConnection().prepareStatement(sql);
+
+	        statement.setInt(1, citta.getId_citta());
+
+	        resultSet = statement.executeQuery();
+
+	        while (resultSet.next()) {
+	            Posizione posizione = new Posizione();
+
+	            posizione.setId_posizione(resultSet.getInt("id_posizione"));
+	            posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
+	            posizione.setDescrizione(resultSet.getString("descrizione"));
+
+	            Citta posizioneCitta = new Citta();
+	            posizioneCitta.setId_citta(resultSet.getInt("id_citta"));
+	            posizione.setCitta(posizioneCitta);
+
+	            CategoriaPosizione categoriaPosizione = new CategoriaPosizione();
+	            categoriaPosizione.setId_categoria(resultSet.getInt("id_categoria"));
+	            posizione.setCategoria(categoriaPosizione);
+
+	            posizione.setStato(resultSet.getString("stato"));
+	            posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
+	            posizione.setRuolo(resultSet.getString("ruolo"));
+
+
+	            posizioni.add(posizione);
+	        }
+	    } catch (SQLException e) {
+	        System.err.println(e.getMessage());
+	    } finally {
+	        DBUtil.close(resultSet);
+	        DBUtil.close(statement);
+	    }
+
+	    return posizioni;
+	}
+
+
 }
