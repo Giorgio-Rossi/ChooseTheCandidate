@@ -69,6 +69,9 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 					<option value="">Tutti</option>
 					<option value="Sistemista">Sistemista</option>
 					<option value="Web Developer">Web Developer</option>
+					<option value="Java Developer">Java Developer</option>
+					<option value="Front-End Developer">Front-End Developer</option>
+					<option value="Back-End Developer">Back-End Developer</option>
 				</select>
 			</div>
 
@@ -94,6 +97,9 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 					<option value="">Tutte</option>
 					<option value="1">bella desc</option>
 					<option value="2">desc 2</option>
+					<option value="3">Sviluppo Web</option>
+					<option value="4">Testing Web</option>
+
 				</select>
 			</div>
 
