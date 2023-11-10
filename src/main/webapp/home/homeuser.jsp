@@ -186,8 +186,7 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
 							</div>
 						</div>
 					</div>
-
-			<div class="card col-lg-4 d-flex align-items-stretch" style="background-color: #d4d4d4; border: none">
+<div class="card col-lg-4 d-flex align-items-stretch" style="background-color: #d4d4d4; border: none">
     <div class="slide slide1">
         <div class="content">
             <div class="icon">
@@ -195,32 +194,32 @@ Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
             </div>
         </div>
     </div>
-   <div class="slide slide2">
-    <div class="card-body p-4">
-        <%
-            List<Posizione> posizioniPiuRecenti = (List<Posizione>) request.getAttribute("posizioniPiuRecenti");
-            if (posizioniPiuRecenti != null && !posizioniPiuRecenti.isEmpty()) {
-                for (Posizione posizione : posizioniPiuRecenti) { 
-        %>
-                    <div class="mb-3">
-                        <span class="text-muted d-block"><strong>Categoria:</strong> <%=posizione.getCategoria().getNome_categoria()%></span>
-                        <span class="text-muted d-block"><strong>Stato:</strong> <%=posizione.getStato()%></span>
-                        <span class="text-muted d-block"><strong>Ruolo:</strong> <%=posizione.getRuolo()%></span>
-                    </div>
-        <%
+    <div class="slide slide2">
+        <div class="card-body p-4">
+            <%
+                List<Posizione> posizioniPiuRecenti = (List<Posizione>) request.getAttribute("posizioniPiuRecenti");
+                if (posizioniPiuRecenti != null && !posizioniPiuRecenti.isEmpty()) {
+                    for (Posizione posizione : posizioniPiuRecenti) { 
+            %>
+                        <div class="mb-3">
+                            <span class="text-muted d-block"><strong>Categoria:</strong> <%=posizione.getCategoria().getNome_categoria()%></span>
+                            <span class="text-muted d-block"><strong>Stato:</strong> <%=posizione.getStato()%></span>
+                            <span class="text-muted d-block"><strong>Ruolo:</strong> <%=posizione.getRuolo()%></span>
+                        </div>
+            <%
+                    }
+                } else {
+            %>
+                <div class="alert alert-info" role="alert">
+                    <i class="bi bi-info-circle-fill m-1"></i> Nessun annuncio recente disponibile
+                </div>
+            <%
                 }
-            } else {
-        %>
-            <div class="alert alert-info" role="alert">
-                <i class="bi bi-info-circle-fill m-1"></i> Nessun annuncio recente disponibile
-            </div>
-        <%
-            }
-        %>
+            %>
+        </div>
     </div>
 </div>
-   
-			
+
 
 
 				</div>

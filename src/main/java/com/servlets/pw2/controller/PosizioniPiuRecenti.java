@@ -34,7 +34,6 @@ public class PosizioniPiuRecenti extends HttpServlet {
             PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
             List<Posizione> posizioniPiuRecenti = posizioneIMPL.topTreAnnunci(citta);
 
-       
             List<Posizione> posizioniFiltrate = new ArrayList<>();
             for (Posizione posizione : posizioniPiuRecenti) {
                 if (posizione.getCitta().getId_citta() == userCityId) {
@@ -51,3 +50,4 @@ public class PosizioniPiuRecenti extends HttpServlet {
         }
     }
 }
+
