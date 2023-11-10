@@ -32,7 +32,7 @@
 <body>
 
 <%
-    HashMap<Domanda, ArrayList<RisposteDomande>> risposte = (HashMap<Domanda, ArrayList<RisposteDomande>>) request.getAttribute("quiz");
+    HashMap<Domanda, ArrayList<RisposteDomande>> risposte = (HashMap<Domanda, ArrayList<RisposteDomande>>) session.getAttribute("quiz");
     System.out.println(risposte);
 %>
 
@@ -40,10 +40,10 @@
 <div class="container-fluid">
 
     <div class="jumbotron">
-        <h3><%=request.getAttribute("nome_quiz")%></h3>
+        <h3><%=session.getAttribute("nome_quiz")%></h3>
     </div>
 
-    <form>
+    <form method="post" action="${pageContext.request.contextPath}/RisulatatoQuiz">
 
         <%
             int i=1;
@@ -66,29 +66,29 @@
                             %>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="q1" id="1" value="r1">
-                                        <label class="form-check-label" for="1">
+                                        <input class="form-check-input" type="radio" name="<%=entry.getKey().getTesto()%>" id="<%=risposteDomande.getScelta1()%>" value="<%=risposteDomande.getScelta1()%>">
+                                        <label class="form-check-label" for="<%=risposteDomande.getScelta1()%>">
                                            <%=risposteDomande.getScelta1()%>
                                         </label>
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="q1" id="2" value="r1">
-                                        <label class="form-check-label" for="2">
+                                        <input class="form-check-input" type="radio" name="<%=entry.getKey().getTesto()%>" id="<%=risposteDomande.getScelta2()%>" value="<%=risposteDomande.getScelta2()%>">
+                                        <label class="form-check-label" for="<%=risposteDomande.getScelta2()%>">
                                             <%=risposteDomande.getScelta2()%>
                                         </label>
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="q1" id="3" value="r1">
-                                        <label class="form-check-label" for="3">
+                                        <input class="form-check-input" type="radio" name="<%=entry.getKey().getTesto()%>" id="<%=risposteDomande.getScelta3()%>" value="<%=risposteDomande.getScelta3()%>">
+                                        <label class="form-check-label" for="<%=risposteDomande.getScelta3()%>">
                                             <%=risposteDomande.getScelta3()%>
                                         </label>
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="q1" id="4" value="r1">
-                                        <label class="form-check-label" for="4">
+                                        <input class="form-check-input" type="radio" name="<%=entry.getKey().getTesto()%>" id="<%=risposteDomande.getScelta4()%>" value="<%=risposteDomande.getScelta4()%>">
+                                        <label class="form-check-label" for="<%=risposteDomande.getScelta4()%>">
                                             <%=risposteDomande.getScelta4()%>
                                         </label>
                             </div>

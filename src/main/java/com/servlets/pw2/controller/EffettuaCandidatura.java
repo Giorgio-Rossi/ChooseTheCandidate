@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +24,8 @@ public class EffettuaCandidatura extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+
         Integer id_quiz = Integer.valueOf(req.getParameter("id_quiz"));
 
         QuizIMPL quizIMPL = new QuizIMPL();
@@ -39,8 +42,8 @@ public class EffettuaCandidatura extends HttpServlet {
             risposte.put(d,risposteDomandaIMPL.getRisposteDomandaByIdDomanda(d.getId_domanda()));
         }
 
-        req.setAttribute("quiz",risposte);
-        req.setAttribute("nome_quiz",nome_quiz);
+        session.setAttribute("quiz",risposte);
+        session.setAttribute("nome_quiz",nome_quiz);
 
         req.getRequestDispatcher("/home/quiz.jsp").forward(req, resp);
 

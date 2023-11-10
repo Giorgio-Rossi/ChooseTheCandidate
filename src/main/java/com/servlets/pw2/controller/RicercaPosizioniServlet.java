@@ -47,7 +47,7 @@ public class RicercaPosizioniServlet extends HttpServlet {
 
 		if (ruolo.isEmpty() && (cittaId == null || cittaId.isEmpty())
 				&& (categoriaId == null || categoriaId.isEmpty())) {
-			risultatiRicerca = posizioneIMPL.findPosizioniPiuRecenti();
+			risultatiRicerca = posizioneIMPL.getAllPosizioni();
 		} else if (!categoriaId.isEmpty()) {
 
 			risultatiRicerca = posizioneIMPL.searchByCategoria(categoria);

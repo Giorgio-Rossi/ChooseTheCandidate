@@ -16,6 +16,8 @@ import com.candidatoDB.pw2.interfaces.PosizioneDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
 
+//TODO AGGIUNGERE LA CREAZIONE DEI QUIZ NEI METODI DI FILTRI
+
 public class PosizioneIMPL implements PosizioneDAO {
 	private SQLServerConnection connection = new SQLServerConnection();
 
@@ -60,6 +62,10 @@ public class PosizioneIMPL implements PosizioneDAO {
 				categoria.setId_categoria(resultSet.getInt("id_categoria"));
 				categoria.setNome_categoria(resultSet.getString("nome_categoria"));
 				posizione.setCategoria(categoria);
+
+
+				QuizIMPL quizIMPL = new QuizIMPL();
+				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
 				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
@@ -116,6 +122,9 @@ public class PosizioneIMPL implements PosizioneDAO {
 				categoria.setNome_categoria(resultSet.getString("nome_categoria"));
 				posizione.setCategoria(categoria);
 
+				QuizIMPL quizIMPL = new QuizIMPL();
+				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
+
 				posizione.setStato(resultSet.getString("stato"));
 				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
 				posizione.setRuolo(resultSet.getString("ruolo"));
@@ -168,6 +177,9 @@ public class PosizioneIMPL implements PosizioneDAO {
 				categoria.setNome_categoria(resultSet.getString("nome_categoria"));
 				posizione.setCategoria(categoria);
 
+				QuizIMPL quizIMPL = new QuizIMPL();
+				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
+
 				posizione.setStato(resultSet.getString("stato"));
 				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
 				posizione.setRuolo(resultSet.getString("ruolo"));
@@ -199,7 +211,6 @@ public class PosizioneIMPL implements PosizioneDAO {
 					+ "FROM Posizione p " + "INNER JOIN Citta c ON p.id_citta = c.id_citta "
 					+ "INNER JOIN CategoriaPosizione cp ON p.id_categoria = cp.id_categoria "
 					+ "LEFT JOIN Quiz q ON p.id_quiz = q.id_quiz " + "ORDER BY p.data_inserimento DESC";
-			System.out.println(sql);
 			statement = connection.getConnection().prepareStatement(sql);
 			resultSet = statement.executeQuery();
 
@@ -296,6 +307,9 @@ public class PosizioneIMPL implements PosizioneDAO {
 				categoriaPosizione.setId_categoria(resultSet.getInt(5));
 				posizione.setCategoria(categoriaPosizione);
 
+				QuizIMPL quizIMPL = new QuizIMPL();
+				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
+
 				posizioni.add(posizione);
 			}
 		} catch (SQLException e) {
@@ -344,6 +358,9 @@ public class PosizioneIMPL implements PosizioneDAO {
 				categoriaPosizione.setId_categoria(resultSet.getInt("id_categoria"));
 				categoriaPosizione.setNome_categoria(resultSet.getString("nome_categoria"));
 				posizione.setCategoria(categoriaPosizione);
+
+				QuizIMPL quizIMPL = new QuizIMPL();
+				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
 				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
@@ -398,6 +415,9 @@ public class PosizioneIMPL implements PosizioneDAO {
 				categoriaPosizione.setNome_categoria(resultSet.getString("nome_categoria"));
 				posizione.setCategoria(categoriaPosizione);
 
+				QuizIMPL quizIMPL = new QuizIMPL();
+				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
+
 				posizione.setStato(resultSet.getString("stato"));
 				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
 				posizione.setRuolo(resultSet.getString("ruolo"));
@@ -450,6 +470,9 @@ public class PosizioneIMPL implements PosizioneDAO {
 				categoriaPosizione.setId_categoria(resultSet.getInt("id_categoria"));
 				categoriaPosizione.setNome_categoria(resultSet.getString("nome_categoria"));
 				posizione.setCategoria(categoriaPosizione);
+
+				QuizIMPL quizIMPL = new QuizIMPL();
+				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
 				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
