@@ -114,6 +114,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 			<div class="container">
 				<div class="row">
 
+
 					<%
 						for(Posizione p : posizioni){
 					%>
