@@ -1,5 +1,6 @@
 package com.candidatoDB.pw2.interfaces;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.candidatoDB.pw2.entity.CategoriaPosizione;
@@ -25,6 +26,8 @@ public interface PosizioneDAO {
 	
 	List<Posizione> topTreAnnunci (Citta citta);
 
-	
+	ArrayList<Posizione> getAllPosizioni();
+
+	ArrayList<String> getAllRuoli();
 }
 
