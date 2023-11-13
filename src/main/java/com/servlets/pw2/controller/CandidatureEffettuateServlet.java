@@ -1,9 +1,6 @@
 package com.servlets.pw2.controller;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.candidatoDB.pw2.interfaces.impl.CandidaturaIMPL;
 import com.candidatoDB.pw2.entity.CandidaturaUser;
 import com.candidatoDB.pw2.entity.Utente;
+import com.candidatoDB.pw2.interfaces.impl.CandidaturaIMPL;
 
 @WebServlet("/findCandidature")
 public class CandidatureEffettuateServlet extends HttpServlet {
@@ -23,11 +20,12 @@ public class CandidatureEffettuateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
-        HttpSession session = request.getSession();
-        Utente utenteInSessione = (Utente) session.getAttribute("utente");
+		  HttpSession session = request.getSession();
+	        Utente utente = (Utente) session.getAttribute("utente");
 
-        int userId = utenteInSessione.getId_user();
-
+	        if (utente != null) {
+	            int userId = utente.getId_user();
+	            session.setAttribute("userId", userId);
   
 //        String dataCandidaturaParam = request.getParameter("data_candidatura");
 //
@@ -48,19 +46,22 @@ public class CandidatureEffettuateServlet extends HttpServlet {
 //                e.printStackTrace();
 //            }
 //        } else {
-          
+     
             CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
             List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtenteById(userId);
 
           
             request.setAttribute("findCandidature", candidature);
+            
+            System.out.println("Le candidature sono queste : " + candidature);
        
-
+	        }
       
         request.getRequestDispatcher("visualizzaCandidature.jsp").forward(request, response);
+        
     }
 	
-}
+	}
 //}
 
 

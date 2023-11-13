@@ -34,8 +34,8 @@
                 	    System.out.println("Data Candidatura: " + candidatura.getData_candidatura());
         %>
         <tr>
-            <td><%=candidatura.getId_posizione()%></td>
-            <td><%=candidatura.getData_candidatura()%></td>
+          <td><%=candidatura.getId_posizione()%></td>
+        <td><%=dateFormat.format(candidatura.getData_candidatura())%></td>
      
         </tr>
         <%

@@ -30,6 +30,8 @@ public interface PosizioneDAO {
 
 	ArrayList<String> getAllRuoli();
 	
+	Posizione getPosizioneById(int id_posizione);
+	
 	
 }
 
