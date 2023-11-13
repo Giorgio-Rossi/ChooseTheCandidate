@@ -23,16 +23,13 @@
 
 </head>
 
-<script type="text/javascript">
-    window.history.forward(1);
-</script>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+
 
 <body>
 
@@ -121,24 +118,6 @@
 
     </form>
 
-
-
-
-
-
-    <h3>Risultati</h3>
-
-    <div class="card">
-        <div class="card-body">
-            <p id="result">Nessun risultato</p>
-
-            <div class="progress mb-2">
-                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-
-            <button type="button" class="btn btn-success">Update</button>
-        </div>
-    </div>
 
 </div>
 

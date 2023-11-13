@@ -7,6 +7,8 @@
 <%@ page isELIgnored="false"%>
 
 <%
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+
 	PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 	ArrayList<Posizione> posizioni = new ArrayList<>();
 

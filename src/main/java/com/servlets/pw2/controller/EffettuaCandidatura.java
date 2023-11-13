@@ -49,4 +49,5 @@ public class EffettuaCandidatura extends HttpServlet {
         req.getRequestDispatcher("/home/quiz.jsp").forward(req, resp);
 
     }
+
 }

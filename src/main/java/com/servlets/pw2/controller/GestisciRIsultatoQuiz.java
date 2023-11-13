@@ -2,6 +2,9 @@ package com.servlets.pw2.controller;
 
 import com.candidatoDB.pw2.entity.Domanda;
 import com.candidatoDB.pw2.entity.RisposteDomande;
+import com.candidatoDB.pw2.entity.Utente;
+import com.candidatoDB.pw2.entity.UtenteQuiz;
+import com.candidatoDB.pw2.interfaces.impl.UtenteQuizIMPL;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,35 +26,55 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
-        String id_quiz = (String) session.getAttribute("id_quiz");
+        Integer id_quiz = (Integer) session.getAttribute("id_quiz");
 
-        HashMap<Domanda, ArrayList<RisposteDomande>> risposte = (HashMap<Domanda, ArrayList<RisposteDomande>>) session.getAttribute("quiz");
+        Utente utente = (Utente) session.getAttribute("utente");
 
-        //HashMap<String,Integer> rispsota_punteggio = new HashMap<>();
+        UtenteQuizIMPL utenteQuizIMPL = new UtenteQuizIMPL();
 
-        Integer punteggio_quiz = 0;
+        System.out.println(utenteQuizIMPL.getUtenteQuizById(id_quiz, utente));
 
-        System.out.println(risposte);
+        if(utenteQuizIMPL.getUtenteQuizById(id_quiz, utente) == null) {
 
-        int i=0;
-        for(Map.Entry<Domanda,ArrayList<RisposteDomande>> entry : risposte.entrySet() ){
+            UtenteQuiz utenteQuiz = new UtenteQuiz();
 
-            String rispsota = (req.getParameter(String.valueOf(i++)));
+            HashMap<Domanda, ArrayList<RisposteDomande>> risposte = (HashMap<Domanda, ArrayList<RisposteDomande>>) session.getAttribute("quiz");
+
+            Integer punteggio_quiz = 0;
+
+            int i = 0;
+            for (Map.Entry<Domanda, ArrayList<RisposteDomande>> entry : risposte.entrySet()) {
+
+                String rispsota = (req.getParameter(String.valueOf(i++)));
 
 
-            if(rispsota!=null){
-                for (RisposteDomande r : entry.getValue()){
-                    System.out.println(entry.getKey().getTesto());
-                    if(r.checkSceltaCorretta(rispsota)){
-                        System.out.println("coretto");
-                        punteggio_quiz+= entry.getKey().getPunteggio();
+                if (rispsota != null) {
+                    for (RisposteDomande r : entry.getValue()) {
+                        if (r.checkSceltaCorretta(rispsota)) {
+                            System.out.println("coretto");
+                            punteggio_quiz += entry.getKey().getPunteggio();
+                        }
                     }
                 }
             }
+
+            utenteQuiz.setId_quiz(id_quiz);
+            utenteQuiz.setId_user(utente.getId_user());
+            utenteQuiz.setPunteggio(punteggio_quiz);
+
+            utenteQuizIMPL.Save(utenteQuiz);
+
+            session.setAttribute("candidatura_fatta", true);
+
+            session.removeAttribute("quiz");
+            session.removeAttribute("nome_quiz");
+
+            resp.sendRedirect(req.getContextPath()+"/home/homeuser.jsp");
+
+        } else{
+            session.setAttribute("candidatura_fatta", false);
+            req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
         }
-
-
-        System.out.println(punteggio_quiz);
     }
 }
 

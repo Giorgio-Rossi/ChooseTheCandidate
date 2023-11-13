@@ -23,7 +23,7 @@
 	if(candidaturaRecente!=null) {
 		posizioneRecente = candidaturaIMPL.getPosizionebyCandidaturaId(candidaturaRecente);
 	}
-// 	System.out.println(posizioneRecente);
+
 
 %>
 
@@ -41,12 +41,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet"
 		  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="../css/card.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/css/card.css" />
+
 </head>
 <script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
 		crossorigin="anonymous"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+
 <link rel="stylesheet"
 	  href="${pageContext.request.contextPath}/css/homeuser.css">
 
@@ -228,6 +231,59 @@
 		</div>
 	</div>
 </main>
+
+
+
+<div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-body text-center p-lg-4">
+				<i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+				<h4 class="text-success mt-3">Candidatura inviata correttamente!</h4>
+				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
+				<button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-body text-center p-lg-4">
+				<i class="bi bi-x-circle-fill" style="font-size: 5rem"></i>
+				<h4 class="text-danger mt-3">Hai già effettuato il quiz per questa candidatura!</h4>
+				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
+				<button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<%
+
+	boolean success = (boolean) session.getAttribute("candidatura_fatta");
+
+	if(success){
+%>
+<script>
+	var myModal = new bootstrap.Modal(document.getElementById('statusSuccessModal'))
+	myModal.show()
+	<% session.removeAttribute("candidatura_fatta");%>
+</script>
+<%
+	} else{
+%>
+<script>
+	var myModal = new bootstrap.Modal(document.getElementById('errorModal'))
+	myModal.show()
+	<% session.removeAttribute("candidatura_fatta");%>
+</script>
+<%
+	};
+%>
+
 
 
 
