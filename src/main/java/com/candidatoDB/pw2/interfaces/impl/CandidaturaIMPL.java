@@ -143,10 +143,11 @@ public class CandidaturaIMPL implements CandidaturaDAO {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         List<CandidaturaUser> candidature = new ArrayList<>();
+       
 
         try {
           
-            String sql = "SELECT * FROM CandidaturaUser WHERE id_user = ? ";
+            String sql = " SELECT p.id_posizione , cu.data_candidatura , p.descrizione FROM  CandidaturaUser cu INNER JOIN Utente u ON cu.id_user = u.id_user INNER JOIN Posizione p ON cu.id_posizione = p.id_posizione WHERE u.id_user = ? ";
             preparedStatement = connection.getConnection().prepareStatement(sql);
             preparedStatement.setInt(1, id_user);
 
@@ -154,8 +155,8 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
             while (resultSet.next()) {
             	 CandidaturaUser candidatura = new CandidaturaUser();
-                candidatura.setId_candidatura(resultSet.getInt(1));
-                candidatura.setId_posizione(resultSet.getInt(2));
+                candidatura.setId_candidatura(resultSet.getInt("id_candidatura_user"));
+				candidatura.setId_posizione(resultSet.getInt("id_posizione"));
                 candidatura.setId_user(resultSet.getInt(3));
                 candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate(4).getTime()));
 

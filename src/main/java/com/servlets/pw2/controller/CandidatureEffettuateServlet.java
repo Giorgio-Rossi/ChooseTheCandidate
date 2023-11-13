@@ -29,36 +29,38 @@ public class CandidatureEffettuateServlet extends HttpServlet {
         int userId = utenteInSessione.getId_user();
 
   
-        String dataCandidaturaParam = request.getParameter("data_candidatura");
-
-      
-        if (dataCandidaturaParam != null && !dataCandidaturaParam.isEmpty()) {
-            try {
-             
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                Date dataCandidatura = sdf.parse(dataCandidaturaParam);
-
-           
-                CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
-                List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtente(userId, dataCandidatura);
-
-              
-                request.setAttribute("findCandidature", candidature);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        } else {
+//        String dataCandidaturaParam = request.getParameter("data_candidatura");
+//
+//      
+//        if (dataCandidaturaParam != null && !dataCandidaturaParam.isEmpty()) {
+//            try {
+//             
+//                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//                Date dataCandidatura = sdf.parse(dataCandidaturaParam);
+//
+//           
+//                CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
+//                List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtente(userId, dataCandidatura);
+//
+//              
+//                request.setAttribute("findCandidature", candidature);
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//        } else {
           
             CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
             List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtenteById(userId);
 
           
             request.setAttribute("findCandidature", candidature);
-        }
+       
 
       
         request.getRequestDispatcher("visualizzaCandidature.jsp").forward(request, response);
     }
+	
 }
+//}
 
 

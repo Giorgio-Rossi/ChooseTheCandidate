@@ -22,21 +22,21 @@
 
     <table border="1">
         <tr>
-            <th>Candidatura</th>
+           
             <th>Posizione</th>
             <th>Data Candidatura</th>
         </tr>
         <%
             if (candidaturaUsers != null) {
                 for (CandidaturaUser candidatura : candidaturaUsers) {
-                	   System.out.println("ID Candidatura: " + candidatura.getId_candidatura());
+                	
                 	    System.out.println("ID Posizione: " + candidatura.getId_posizione());
                 	    System.out.println("Data Candidatura: " + candidatura.getData_candidatura());
         %>
         <tr>
-            <td><%=candidatura.getId_candidatura()%></td>
             <td><%=candidatura.getId_posizione()%></td>
-            <td><%=dateFormat.format(candidatura.getData_candidatura())%></td>
+            <td><%=candidatura.getData_candidatura()%></td>
+     
         </tr>
         <%
                 }
