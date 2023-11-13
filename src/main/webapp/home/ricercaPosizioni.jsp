@@ -12,6 +12,14 @@
 	PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 	ArrayList<Posizione> posizioni = new ArrayList<>();
 
+	UtenteQuizIMPL utenteQuizIMPL = new UtenteQuizIMPL();
+	Utente utente = (Utente) session.getAttribute("utente");
+
+	CandidaturaIMPL candidaturaIMPL = new CandidaturaIMPL();
+	List<CandidaturaUser> candidaturaUsers = candidaturaIMPL.findCandidatureUtenteById(utente.getId_user());
+
+	System.out.println(candidaturaUsers);
+
 	ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
 	ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
 
@@ -26,7 +34,7 @@
 	CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
 	ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAllCategoriePosizioni();
 
-	System.out.println(posizioni);
+	//System.out.println(posizioni);
 %>
 
 <html>
@@ -173,9 +181,21 @@
 												</div>
 
 												<div class="mt-3">
+													<%
+														System.out.println(utenteQuizIMPL.getUtenteQuizById(p.getQuiz().getId_quiz(), utente));
+														if(true){
+													%>
 													<form action="${pageContext.request.contextPath}/EffettuaCandidatura" method="post">
-														<button type="submit" class="btn btn-primary" name="id_quiz" value="<%=p.getQuiz().getId_quiz()%>">Candidati</button>
+														<button type="submit" class="btn btn-primary" name="id_quiz" value="<%=p.getQuiz().getId_quiz()+" "+p.getId_posizione()%>">Candidati</button>
 													</form>
+
+													<%
+														}else{
+													%>
+													<button type="submit" class="btn btn-primary" disabled name="id_quiz">Candidatura già inviata</button>
+													<%
+														};
+													%>
 												</div>
 											</div>
 

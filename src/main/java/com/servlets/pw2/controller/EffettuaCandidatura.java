@@ -1,5 +1,6 @@
 package com.servlets.pw2.controller;
 
+import com.candidatoDB.pw2.entity.CandidaturaUser;
 import com.candidatoDB.pw2.entity.Domanda;
 import com.candidatoDB.pw2.entity.Quiz;
 import com.candidatoDB.pw2.entity.RisposteDomande;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 @WebServlet("/EffettuaCandidatura")
@@ -26,7 +28,11 @@ public class EffettuaCandidatura extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
-        Integer id_quiz = Integer.valueOf(req.getParameter("id_quiz"));
+        int id_quiz = Integer.parseInt((req.getParameter("id_quiz").split(" "))[0]);
+        int id_posizione = Integer.parseInt((req.getParameter("id_quiz").split(" "))[1]);
+
+
+
 
         QuizIMPL quizIMPL = new QuizIMPL();
         String nome_quiz = String.valueOf(quizIMPL.getQuizById(id_quiz).getDescrizione());
@@ -45,6 +51,7 @@ public class EffettuaCandidatura extends HttpServlet {
         session.setAttribute("quiz",risposte);
         session.setAttribute("nome_quiz",nome_quiz);
         session.setAttribute("id_quiz",id_quiz);
+        session.setAttribute("id_posizione",id_posizione);
 
         req.getRequestDispatcher("/home/quiz.jsp").forward(req, resp);
 

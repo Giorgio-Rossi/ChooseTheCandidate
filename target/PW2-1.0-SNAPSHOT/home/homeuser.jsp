@@ -262,8 +262,8 @@
 
 
 <%
-
-	boolean success = (boolean) session.getAttribute("candidatura_fatta");
+	//System.out.println(session.getAttribute("candidatura_fatta"));
+	boolean success =  session.getAttribute("candidatura_fatta") == null ?  null : (boolean) session.getAttribute("candidatura_fatta");
 
 	if(success){
 %>
