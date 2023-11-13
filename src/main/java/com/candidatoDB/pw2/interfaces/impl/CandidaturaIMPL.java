@@ -95,43 +95,7 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 	    }
 
 
-	@Override
-	public List<CandidaturaUser> findCandidatureUtente(int id_user, Date data_candidatura) {
-	     
-			//Connection connection = null;
-	        PreparedStatement preparedStatement = null;
-	        ResultSet resultSet = null;
-	        List<CandidaturaUser> candidature = new ArrayList<>();
-
-	        try {
-	          
-	            String sql = "SELECT * FROM CandidaturaUser WHERE id_user = ? ";
-	            preparedStatement = connection.getConnection().prepareStatement(sql);
-	            preparedStatement.setInt(1, id_user);
-
-	            resultSet = preparedStatement.executeQuery();
-
-	            while (resultSet.next()) {
-	            	 CandidaturaUser candidatura = new CandidaturaUser();
-	                candidatura.setId_candidatura(resultSet.getInt("id_candidatura"));
-	                candidatura.setId_posizione(resultSet.getInt("id_posizione"));
-	                candidatura.setId_user(resultSet.getInt("id_user"));
-	                candidatura.setData_candidatura(new java.sql.Timestamp(resultSet.getDate("data_candidatura").getTime()));
-
-	                candidature.add(candidatura);
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        } finally {
-	           
-	            DBUtil.close(resultSet);
-	            DBUtil.close(preparedStatement);
-	           // DBUtil.close(connection);
-	        }
-
-	        return candidature;
-	    }
-
+	
 
 	@Override
 	public List<CandidaturaUser> findCandidatureUtenteById(int id_user) {
