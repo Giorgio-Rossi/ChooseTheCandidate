@@ -99,13 +99,17 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
 	@Override
 	public List<CandidaturaUser> findCandidatureUtenteById(int id_user) {
-	
+
 	    PreparedStatement preparedStatement = null;
 	    ResultSet resultSet = null;
 	    List<CandidaturaUser> candidature = new ArrayList<>();
 
 	    try {
-	        String sql = "SELECT * FROM CandidaturaUser cu INNER JOIN Utente u ON cu.id_user = u.id_user INNER JOIN Posizione p ON cu.id_posizione = p.id_posizione WHERE u.id_user = ?";
+	        String sql = "SELECT cu.id_candidatura_user, cu.id_posizione, cu.id_user, cu.data_candidatura " +
+	                     "FROM CandidaturaUser cu " +
+	                     "INNER JOIN Utente u ON cu.id_user = u.id_user " +
+	                     "INNER JOIN Posizione p ON cu.id_posizione = p.id_posizione " +
+	                     "WHERE u.id_user = ?";
 	        preparedStatement = connection.getConnection().prepareStatement(sql);
 	        preparedStatement.setInt(1, id_user);
 
@@ -115,9 +119,8 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
 	        while (resultSet.next()) {
 	            CandidaturaUser candidatura = new CandidaturaUser();
-	            candidatura.setId_candidatura(resultSet.getInt("id_candidatura"));
+	            candidatura.setId_candidatura(resultSet.getInt("id_candidatura_user"));
 	            candidatura.setId_posizione(resultSet.getInt("id_posizione"));
-
 	            candidatura.setId_user(resultSet.getInt("id_user"));
 
 	            java.sql.Timestamp dataCandidatura = resultSet.getTimestamp("data_candidatura");
@@ -139,6 +142,7 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
 	    return candidature;
 	}
+
 
 
 

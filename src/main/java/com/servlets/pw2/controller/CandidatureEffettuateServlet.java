@@ -18,50 +18,33 @@ import com.candidatoDB.pw2.interfaces.impl.CandidaturaIMPL;
 public class CandidatureEffettuateServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      
-		  HttpSession session = request.getSession();
-	        Utente utente = (Utente) session.getAttribute("utente");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-	        if (utente != null) {
-	            int userId = utente.getId_user();
-	            session.setAttribute("userId", userId);
-  
-//        String dataCandidaturaParam = request.getParameter("data_candidatura");
-//
-//      
-//        if (dataCandidaturaParam != null && !dataCandidaturaParam.isEmpty()) {
-//            try {
-//             
-//                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//                Date dataCandidatura = sdf.parse(dataCandidaturaParam);
-//
-//           
-//                CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
-//                List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtente(userId, dataCandidatura);
-//
-//              
-//                request.setAttribute("findCandidature", candidature);
-//            } catch (ParseException e) {
-//                e.printStackTrace();
-//            }
-//        } else {
-     
+        HttpSession session = request.getSession();
+        Utente utente = (Utente) session.getAttribute("utente");
+
+      
+        if (utente != null) {
+            int userId = utente.getId_user();
+
             CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
             List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtenteById(userId);
 
-          
+           
             request.setAttribute("findCandidature", candidature);
-            
-            System.out.println("Le candidature sono queste : " + candidature);
-       
-	        }
-      
-        request.getRequestDispatcher("visualizzaCandidature.jsp").forward(request, response);
-        
+
+            System.out.println("Le candidature sono queste: " + candidature);
+        } else {
+     
+            response.sendRedirect(request.getContextPath() + "/login.jsp");
+            return; 
+        }
+
+    
+        request.getRequestDispatcher("/visualizzaCandidature.jsp").forward(request, response);
     }
-	
-	}
-//}
+}
+
 
 
