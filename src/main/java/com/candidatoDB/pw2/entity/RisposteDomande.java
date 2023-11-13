@@ -74,6 +74,17 @@ public class RisposteDomande {
 		this.scelta_corretta = scelta_corretta;
 	}
 
+	public Boolean checkSceltaCorretta(String possibile_corretta){
+		boolean controllo = false;
+
+		if(this.scelta_corretta.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)")[1].equals(possibile_corretta)){
+			controllo = true;
+		}
+
+
+		return controllo;
+	}
+
 	public int getId_domanda() {
 		return id_domanda;
 	}

@@ -4,6 +4,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Map" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Quiz</title>
@@ -21,6 +22,10 @@
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
 
 </head>
+
+<script type="text/javascript">
+    window.history.forward(1);
+</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -46,6 +51,7 @@
     <form method="post" action="${pageContext.request.contextPath}/RisulatatoQuiz">
 
         <%
+            int ndomanda = 0;
             int i=1;
             for(Map.Entry<Domanda,ArrayList<RisposteDomande>> entry : risposte.entrySet()){
         %>
@@ -62,32 +68,33 @@
                             <p><%=entry.getKey().getTesto()%></p>
 
                             <%
+                                int value = 1;
                                 for(RisposteDomande risposteDomande : entry.getValue()){
                             %>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="<%=entry.getKey().getTesto()%>" id="<%=risposteDomande.getScelta1()%>" value="<%=risposteDomande.getScelta1()%>">
+                                        <input class="form-check-input" type="radio" name="<%=ndomanda%>" id="<%=entry.getKey().getTesto()%>" value="<%=value++%>">
                                         <label class="form-check-label" for="<%=risposteDomande.getScelta1()%>">
                                            <%=risposteDomande.getScelta1()%>
                                         </label>
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="<%=entry.getKey().getTesto()%>" id="<%=risposteDomande.getScelta2()%>" value="<%=risposteDomande.getScelta2()%>">
+                                        <input class="form-check-input" type="radio" name="<%=ndomanda%>" id="<%=entry.getKey().getTesto()%>" value="<%=value++%>">
                                         <label class="form-check-label" for="<%=risposteDomande.getScelta2()%>">
                                             <%=risposteDomande.getScelta2()%>
                                         </label>
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="<%=entry.getKey().getTesto()%>" id="<%=risposteDomande.getScelta3()%>" value="<%=risposteDomande.getScelta3()%>">
+                                        <input class="form-check-input" type="radio" name="<%=ndomanda%>" id="<%=entry.getKey().getTesto()%>" value="<%=value++%>">
                                         <label class="form-check-label" for="<%=risposteDomande.getScelta3()%>">
                                             <%=risposteDomande.getScelta3()%>
                                         </label>
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="<%=entry.getKey().getTesto()%>" id="<%=risposteDomande.getScelta4()%>" value="<%=risposteDomande.getScelta4()%>">
+                                        <input class="form-check-input" type="radio" name="<%=ndomanda%>" id="<%=entry.getKey().getTesto()%>" value="<%=value++%>">
                                         <label class="form-check-label" for="<%=risposteDomande.getScelta4()%>">
                                             <%=risposteDomande.getScelta4()%>
                                         </label>
@@ -104,6 +111,7 @@
                 </div>
 
         <%
+                    ndomanda++;
                 i++;
             };
         %>

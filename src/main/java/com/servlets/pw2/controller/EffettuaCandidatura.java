@@ -44,6 +44,7 @@ public class EffettuaCandidatura extends HttpServlet {
 
         session.setAttribute("quiz",risposte);
         session.setAttribute("nome_quiz",nome_quiz);
+        session.setAttribute("id_quiz",id_quiz);
 
         req.getRequestDispatcher("/home/quiz.jsp").forward(req, resp);
 
