@@ -83,8 +83,8 @@ public class Esperienza {
 	public int getRal() {
 		return ral;
 	}
-	public void setRal(int ral) {
-		this.ral = ral;
+	public void setRal(int Int) {
+		this.ral = Int;
 	}
 	public String getTipo_contratto() {
 		return tipo_contratto;
@@ -111,6 +111,13 @@ public class Esperienza {
 				+ ", data_fine=" + data_fine + ", ral=" + ral + ", tipo_contratto=" + tipo_contratto + ", settore="
 				+ settore + ", posizione_lavorativa=" + posizione_lavorativa + "]";
 	}
+	/*
+	public void setRal(String parameter) {
+		// TODO Auto-generated method stub
+		
+	}
+	*/
+
 	
 
 	

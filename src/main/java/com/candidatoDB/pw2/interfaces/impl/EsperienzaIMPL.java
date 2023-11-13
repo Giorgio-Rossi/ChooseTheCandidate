@@ -39,8 +39,6 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 			statement.setString(10, esperienze.getSettore());
 			statement.setString(11, esperienze.getPosizione_lavorativa());
 
-
-
 			statement.executeUpdate();
 			resultSet = statement.getGeneratedKeys();
 			if (resultSet.next())

@@ -20,11 +20,13 @@ public class Utente {
 	private String ruolo_admin;
 	private String password;
 	private List<Esperienza> new_esperienza = new ArrayList<Esperienza> ();
+	
 
 	private String genere;
 
 	private String foto_profilo;
-	
+
+	private String cv;
 	
 	
 	public Utente() {
@@ -32,7 +34,7 @@ public class Utente {
 	}
 	public Utente(int id_user, String nome, String cognome, String codice_fiscale, String email, Date data_nascita,
 			String indirizzo, Citta id_citta, String cap, String telefono, String ruolo_admin, String password,
-			List<Esperienza> new_esperienza, String foto_profilo, String genere) {
+			List<Esperienza> new_esperienza, String foto_profilo, String genere, String cv) {
 		super();
 		this.id_user = id_user;
 		this.nome = nome;
@@ -49,7 +51,9 @@ public class Utente {
 		this.new_esperienza = new_esperienza;
 		this.foto_profilo = foto_profilo;
 		this.genere = genere;
+		this.cv = cv;
 	}
+
 	public int getId_user() {
 		return id_user;
 	}
@@ -145,6 +149,13 @@ public class Utente {
 		this.foto_profilo = foto_profilo;
 	}
 
+	
+	public String getCV() {
+		return cv;
+	}
+	public void setCV(String cv) {
+		this.cv = cv;
+	}
 
 	public ArrayList<String> getEmptyParameter(){
 		ArrayList<String> campi_vuoti = new ArrayList<>();
@@ -184,6 +195,7 @@ public class Utente {
 				", new_esperienza=" + new_esperienza +
 				", genere='" + genere + '\'' +
 				", foto_profilo='" + foto_profilo + '\'' +
+				", cv='" + cv + '\'' +
 				'}';
 	}
 

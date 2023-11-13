@@ -159,5 +159,8 @@ ALTER TABLE Utente
 
 alter table utente add CONSTRAINT DF_Utenti_ruolo_admin DEFAULT 'user' for ruolo_admin;
 
+ALTER TABLE Utente
+    ADD CV varchar(100);
+
 
 

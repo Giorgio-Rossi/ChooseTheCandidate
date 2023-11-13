@@ -54,8 +54,8 @@ public class UtenteIMPL implements UtenteDAO {
 	@Override
 	public void update(Utente utente) {
 		String sql = "UPDATE Utente SET nome=?,cognome=?,codice_fiscale=?,email=?,data_nascita=?,indirizzo=?,id_citta=?,cap=?,telefono=?,ruolo_admin=?,password=?, foto_profilo=?, genere=?  WHERE id_user=?";
-
 		PreparedStatement statement = null;
+		
 		try {
 			statement = connection.getConnection().prepareStatement(sql);
 			//statement.setInt(1, utente.getId_user());

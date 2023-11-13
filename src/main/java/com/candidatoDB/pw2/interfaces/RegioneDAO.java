@@ -7,4 +7,6 @@ import java.util.ArrayList;
 public interface RegioneDAO {
 
     ArrayList<Regione> getAllRegioni();
+    
+    Regione FindByID(int id_regione);
 }
