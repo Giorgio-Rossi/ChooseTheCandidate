@@ -14,7 +14,7 @@ public interface PosizioneDAO {
 
 	List<Posizione> searchByCategoria(CategoriaPosizione categoriaPosizione);
 
-	List<Posizione> searchByCategoriaAndRuolo(CategoriaPosizione categoriaPosizione, String ruolo);
+	List<Posizione> searchByCategoriaAndRuolo(String ruolo,CategoriaPosizione categoriaPosizione);
 
 	List<Posizione> searchByCittaAndRuolo(Citta citta, String ruolo);
 

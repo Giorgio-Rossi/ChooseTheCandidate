@@ -324,7 +324,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 	}
 
 	@Override
-	public List<Posizione> searchByCategoriaAndRuolo(CategoriaPosizione categoriaPosizione, String ruolo) {
+	public List<Posizione> searchByCategoriaAndRuolo( String ruolo ,CategoriaPosizione categoriaPosizione) {
 		List<Posizione> posizioni = new ArrayList<>();
 //		Posizione posizione = null;
 		PreparedStatement statement = null;
