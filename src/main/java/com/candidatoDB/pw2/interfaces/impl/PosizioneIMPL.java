@@ -58,7 +58,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(new java.sql.Timestamp(resultSet.getDate("data_inserimento").getTime()));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				System.out.println("Funziono");
@@ -114,7 +114,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(new java.sql.Timestamp(resultSet.getDate("data_inserimento").getTime()));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
@@ -172,7 +172,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(new java.sql.Timestamp(resultSet.getDate("data_inserimento").getTime()));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
@@ -227,7 +227,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(new java.sql.Timestamp(resultSet.getDate("data_inserimento").getTime()));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
@@ -292,7 +292,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				}
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(new java.sql.Timestamp(resultSet.getDate("data_inserimento").getTime()));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
@@ -409,7 +409,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(new java.sql.Timestamp(resultSet.getDate("data_inserimento").getTime()));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
@@ -465,7 +465,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(new java.sql.Timestamp(resultSet.getDate("data_inserimento").getTime()));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
@@ -521,7 +521,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(new java.sql.Timestamp(resultSet.getDate("data_inserimento").getTime()));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
@@ -563,7 +563,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt(6)));
 
 				posizione.setStato(resultSet.getString(7));
-				posizione.setData_inserimento(new java.sql.Timestamp(resultSet.getDate(8).getTime()));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate(8).getTime()));
 				posizione.setRuolo(resultSet.getString(9));
 
 				posizioni.add(posizione);
@@ -636,7 +636,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt(6)));
 
 				posizione.setStato(resultSet.getString(7));
-				posizione.setData_inserimento(new java.sql.Timestamp(resultSet.getDate(8).getTime()));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate(8).getTime()));
 				posizione.setRuolo(resultSet.getString(9));
 
 				posizioni.add(posizione);
