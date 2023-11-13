@@ -25,36 +25,32 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
 	@Override
 	public List<CandidaturaUser> orderCandidature() {
+	    List<CandidaturaUser> candidature = new ArrayList<>();
+	    PreparedStatement statement = null;
+	    ResultSet resultSet = null;
+	    String sql = "SELECT id_candidatura_user, id_posizione, id_user, data_candidatura FROM CandidaturaUser ORDER BY data_candidatura DESC";
 
-		        List<CandidaturaUser> candidature = new ArrayList<>();
-		        PreparedStatement statement = null;
-				ResultSet resultSet = null;
-		        String sql = "SELECT * FROM CandidaturaUser ORDER BY data_candidatura DESC";
-		        try {
-		           
-		    
-		        
-		        	statement = connection.getConnection().prepareStatement(sql);
+	    try {
+	        statement = connection.getConnection().prepareStatement(sql);
+	        resultSet = statement.executeQuery();
 
-		             resultSet = statement.executeQuery();
-		            while (resultSet.next()) {
-		                CandidaturaUser candidatura = new CandidaturaUser();
-		                candidatura.setId_candidatura(resultSet.getInt(1));
-						candidatura.setId_posizione(resultSet.getInt(2));
-						candidatura.setId_user(resultSet.getInt(3));
-						candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate(4).getTime()));    
-		                candidature.add(candidatura);
-		            }
-		          
-	} catch (SQLException e) {
-		System.err.println(e.getMessage());
-	} finally {
-		DBUtil.close(resultSet);
-		DBUtil.close(statement);
-		DBUtil.close((Connection) connection);
+	        while (resultSet.next()) {
+	            CandidaturaUser candidatura = new CandidaturaUser();
+	            candidatura.setId_candidatura(resultSet.getInt("id_candidatura"));
+	            candidatura.setId_posizione(resultSet.getInt("id_posizione"));
+	            candidatura.setId_user(resultSet.getInt("id_user"));
+	            candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate("data_candidatura").getTime()));
+	            candidature.add(candidatura);
+	        }
+	    } catch (SQLException e) {
+	        System.err.println(e.getMessage());
+	    } finally {
+	        DBUtil.close(resultSet);
+	        DBUtil.close(statement);
+	    }
+	    return candidature;
 	}
-	return candidature;
-}
+
 
 
 	@Override
