@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.candidatoDB.pw2.entity.CategoriaPosizione;
@@ -25,7 +26,53 @@ public class PosizioneIMPL implements PosizioneDAO {
 		connection.Connect();
 	}
 
-	
+	@Override
+	public Posizione getPosizioneById(int id_posizione) {
+		Posizione posizione = new Posizione();
+		String sql = "SELECT * from Posizione where id_posizione = ?";
+
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setInt(1, id_posizione);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+
+				posizione.setId_posizione(resultSet.getInt("id_posizione"));
+				posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
+				posizione.setDescrizione(resultSet.getString("descrizione"));
+
+				Citta citta = new Citta();
+				citta.setId_citta(resultSet.getInt("id_citta"));
+
+				citta.setNome(resultSet.getString("nome"));
+				posizione.setCitta(citta);
+
+				CategoriaPosizione categoriaPosizione = new CategoriaPosizione();
+				categoriaPosizione.setId_categoria(resultSet.getInt("id_categoria"));
+				categoriaPosizione.setNome_categoria(resultSet.getString("nome_categoria"));
+				posizione.setCategoria(categoriaPosizione);
+
+				QuizIMPL quizIMPL = new QuizIMPL();
+				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
+
+				posizione.setStato(resultSet.getString("stato"));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
+				posizione.setRuolo(resultSet.getString("ruolo"));
+
+				System.out.println("Funziono");
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			// DBUtil.close(connection.getConnection());
+		}
+		return posizione;
+	}
+
 	@Override
 	public List<Posizione> searchByCity(Citta citta) {
 		List<Posizione> posizioni = new ArrayList<>();
@@ -49,7 +96,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
 				posizione.setDescrizione(resultSet.getString("descrizione"));
 
-				 citta = new Citta();
+				citta = new Citta();
 				citta.setId_citta(resultSet.getInt("id_citta"));
 				// CittaIMPL cittaIMPL = new CittaIMPL();
 
@@ -63,12 +110,11 @@ public class PosizioneIMPL implements PosizioneDAO {
 				categoria.setNome_categoria(resultSet.getString("nome_categoria"));
 				posizione.setCategoria(categoria);
 
-
 				QuizIMPL quizIMPL = new QuizIMPL();
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
@@ -126,11 +172,11 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
-			
+
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -172,7 +218,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				citta.setNome(resultSet.getString("nome"));
 				posizione.setCitta(citta);
 
-				 categoria = new CategoriaPosizione();
+				categoria = new CategoriaPosizione();
 				categoria.setId_categoria(resultSet.getInt("id_categoria"));
 				categoria.setNome_categoria(resultSet.getString("nome_categoria"));
 				posizione.setCategoria(categoria);
@@ -181,7 +227,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
@@ -246,7 +292,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				}
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
@@ -324,7 +370,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 	}
 
 	@Override
-	public List<Posizione> searchByCategoriaAndRuolo(CategoriaPosizione categoriaPosizione, String ruolo) {
+	public List<Posizione> searchByCategoriaAndRuolo(String ruolo, CategoriaPosizione categoriaPosizione) {
 		List<Posizione> posizioni = new ArrayList<>();
 //		Posizione posizione = null;
 		PreparedStatement statement = null;
@@ -335,7 +381,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 			statement = connection.getConnection().prepareStatement(sql);
 
 			statement.setInt(1, categoriaPosizione.getId_categoria());
-			statement.setString(2, ruolo);   
+			statement.setString(2, ruolo);
 
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
@@ -354,7 +400,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				citta.setNome(resultSet.getString("nome"));
 				posizione.setCitta(citta);
 
-				 categoriaPosizione = new CategoriaPosizione();
+				categoriaPosizione = new CategoriaPosizione();
 				categoriaPosizione.setId_categoria(resultSet.getInt("id_categoria"));
 				categoriaPosizione.setNome_categoria(resultSet.getString("nome_categoria"));
 				posizione.setCategoria(categoriaPosizione);
@@ -363,7 +409,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
@@ -391,7 +437,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 			statement = connection.getConnection().prepareStatement(sql);
 
 			statement.setInt(1, citta.getId_citta());
-			statement.setString(2, ruolo);   
+			statement.setString(2, ruolo);
 
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
@@ -401,7 +447,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
 				posizione.setDescrizione(resultSet.getString("descrizione"));
 
-				 citta = new Citta();
+				citta = new Citta();
 				citta.setId_citta(resultSet.getInt("id_citta"));
 				// CittaIMPL cittaIMPL = new CittaIMPL();
 
@@ -419,7 +465,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
@@ -447,7 +493,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 			statement = connection.getConnection().prepareStatement(sql);
 
 			statement.setInt(1, citta.getId_citta());
-			statement.setInt(2, categoriaPosizione.getId_categoria());   
+			statement.setInt(2, categoriaPosizione.getId_categoria());
 
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
@@ -457,7 +503,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setN_ammissioni(resultSet.getInt("n_ammissioni"));
 				posizione.setDescrizione(resultSet.getString("descrizione"));
 
-				 citta = new Citta();
+				citta = new Citta();
 				citta.setId_citta(resultSet.getInt("id_citta"));
 				// CittaIMPL cittaIMPL = new CittaIMPL();
 
@@ -466,7 +512,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				citta.setNome(resultSet.getString("nome"));
 				posizione.setCitta(citta);
 
-				 categoriaPosizione = new CategoriaPosizione();
+				categoriaPosizione = new CategoriaPosizione();
 				categoriaPosizione.setId_categoria(resultSet.getInt("id_categoria"));
 				categoriaPosizione.setNome_categoria(resultSet.getString("nome_categoria"));
 				posizione.setCategoria(categoriaPosizione);
@@ -475,7 +521,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));
 
 				posizione.setStato(resultSet.getString("stato"));
-				posizione.setData_inserimento(resultSet.getDate("data_inserimento"));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
 				posizione.setRuolo(resultSet.getString("ruolo"));
 
 				posizioni.add(posizione);
@@ -491,7 +537,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 		return posizioni;
 	}
 
-	public ArrayList<Posizione> getAllPosizioni(){
+	public ArrayList<Posizione> getAllPosizioni() {
 		ArrayList<Posizione> posizioni = new ArrayList<>();
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -517,7 +563,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt(6)));
 
 				posizione.setStato(resultSet.getString(7));
-				posizione.setData_inserimento(resultSet.getDate(8));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate(8).getTime()));
 				posizione.setRuolo(resultSet.getString(9));
 
 				posizioni.add(posizione);
@@ -529,7 +575,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 			DBUtil.close(resultSet);
 			DBUtil.close(preparedStatement);
-			//DBUtil.close(connection);
+			// DBUtil.close(connection);
 		}
 
 		return posizioni;
@@ -553,29 +599,29 @@ public class PosizioneIMPL implements PosizioneDAO {
 		} finally {
 			DBUtil.close(resultSet);
 			DBUtil.close(statement);
-			//DBUtil.close(connection.getConnection());
+			// DBUtil.close(connection.getConnection());
 		}
 		return ruoli;
 	}
 
 	public List<Posizione> topTreAnnunci(Citta citta) {
-	    List<Posizione> posizioni = new ArrayList<>();
-	    PreparedStatement statement = null;
-	    ResultSet resultSet = null;
+		List<Posizione> posizioni = new ArrayList<>();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
 
-	    try {
-	    	String sql = "SELECT TOP 3 * FROM Posizione p INNER JOIN Citta c ON p.id_citta = c.id_citta INNER JOIN CategoriaPosizione cp ON cp.id_Categoria = p.id_Categoria WHERE p.id_citta = ? ORDER BY p.data_inserimento DESC";
+		try {
+			String sql = "SELECT TOP 3 * FROM Posizione p INNER JOIN Citta c ON p.id_citta = c.id_citta INNER JOIN CategoriaPosizione cp ON cp.id_Categoria = p.id_Categoria WHERE p.id_citta = ? ORDER BY p.data_inserimento DESC";
 
-System.out.println(sql);
-	        connection.Connect();
-	        statement = connection.getConnection().prepareStatement(sql);
+			System.out.println(sql);
+			connection.Connect();
+			statement = connection.getConnection().prepareStatement(sql);
 
-	        statement.setInt(1, citta.getId_citta());
+			statement.setInt(1, citta.getId_citta());
 
-	        resultSet = statement.executeQuery();
+			resultSet = statement.executeQuery();
 
-	        while (resultSet.next()) {
-	        	Posizione posizione = new Posizione();
+			while (resultSet.next()) {
+				Posizione posizione = new Posizione();
 				posizione.setId_posizione(resultSet.getInt(1));
 				posizione.setN_ammissioni(resultSet.getInt(2));
 				posizione.setDescrizione(resultSet.getString(3));
@@ -590,20 +636,19 @@ System.out.println(sql);
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt(6)));
 
 				posizione.setStato(resultSet.getString(7));
-				posizione.setData_inserimento(resultSet.getDate(8));
+				posizione.setData_inserimento(new java.sql.Date(resultSet.getDate(8).getTime()));
 				posizione.setRuolo(resultSet.getString(9));
 
 				posizioni.add(posizione);
-	        }
-	    } catch (SQLException e) {
-	        System.err.println(e.getMessage());
-	    } finally {
-	        DBUtil.close(resultSet);
-	        DBUtil.close(statement);
-	    }
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+		}
 
-	    return posizioni;
+		return posizioni;
 	}
-
 
 }

@@ -59,7 +59,7 @@ public class RicercaPosizioniServlet extends HttpServlet {
 			risultatiRicerca = posizioneIMPL.searchByCittaAndRuolo(citta, ruolo);
 		} else if (!categoriaId.isBlank() && !ruolo.isBlank()) {
 
-			risultatiRicerca = posizioneIMPL.searchByCategoriaAndRuolo(categoria, ruolo);
+			risultatiRicerca = posizioneIMPL.searchByCategoriaAndRuolo(ruolo, categoria);
 		} else if (!cittaId.isEmpty() && !categoriaId.isBlank()) {
 
 			risultatiRicerca = posizioneIMPL.searchByCittaAndCategoria(citta, categoria);
