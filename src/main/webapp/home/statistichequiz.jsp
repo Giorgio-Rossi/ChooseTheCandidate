@@ -1,3 +1,9 @@
+<%@ page import="com.candidatoDB.pw2.entity.UtenteQuiz" %>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteQuizIMPL" %>
+<%@ page import="com.candidatoDB.pw2.entity.Utente" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.QuizIMPL" %>
+<%@ page import="com.candidatoDB.pw2.entity.Quiz" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -21,95 +27,53 @@
           href="${pageContext.request.contextPath}/css/homeuser.css" />
 
     <link rel="stylesheet"
-    href="${pageContext.request.contextPath}/css/statistichequiz.css" />
+          href="${pageContext.request.contextPath}/css/statistichequiz.css" />
 
 
     <link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/css/ricerca_posizioni.css" />
 
-
 </head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
+
+
+
 <body style="background-color: #d4d4d4">
+
+<%
+    Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
+
+    UtenteQuizIMPL utenteQuizIMPL = new UtenteQuizIMPL();
+    QuizIMPL quizIMPL = new QuizIMPL();
+    ArrayList<Quiz> allUserQuizzes = utenteQuizIMPL.getAllUtenteQuizByUser(utenteLoggato.getId_user());
+
+%>
 
 
     <jsp:include page="jsp/navbarHeader.jsp" />
 
-<main style="margin-top: 58px">
+<main style="margin-top: 70px">
     <div class="container pt-3">
         <div class="container">
             <div class="row">
 
-            <div class="col-lg-4 d-flex align-items-stretch">
+                <%
+                    for(Quiz quiz: allUserQuizzes){
+                        UtenteQuiz utenteQuiz = utenteQuizIMPL.getUtenteQuizById(quiz.getId_quiz(),utenteLoggato);
+                        Double punteggioOttenuto = (double) utenteQuiz.getPunteggio();
+                        Integer punteggioTotale = quizIMPL.getPunteggioTotaleById(quiz.getId_quiz());
+                        Double percentuale = (punteggioOttenuto/punteggioTotale) * 100;
+                %>
+                <div class="col-xl-3 col-lg-6 mb-4">
                 <div class="bg-white rounded-lg p-5 shadow">
-                    <h2 class="h6 font-weight-bold text-center mb-4">Overall progress</h2>
+                    <h2 class="h6 font-weight-bold text-center mb-4"><%=quiz.getDescrizione()%></h2>
 
-                    <!-- Progress bar 1 -->
-                    <div class="progress mx-auto" data-value='80'>
-          <span class="progress-left">
-                        <span class="progress-bar border-primary"></span>
-          </span>
-                        <span class="progress-right">
-                        <span class="progress-bar border-primary"></span>
-          </span>
-                        <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                            <div class="h2 font-weight-bold">80<sup class="small">%</sup></div>
-                        </div>
-                    </div>
-                    <!-- END -->
-
-                    <!-- Demo info -->
-                    <div class="row text-center mt-4">
-                        <div class="col-6 border-right">
-                            <div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Last week</span>
-                        </div>
-                        <div class="col-6">
-                            <div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Last month</span>
-                        </div>
-                    </div>
-                    <!-- END -->
-                </div>
-            </div>
-
-            <div class="col-lg-4 d-flex align-items-stretch">
-                <div class="bg-white rounded-lg p-5 shadow">
-                    <h2 class="h6 font-weight-bold text-center mb-4">Work hours</h2>
-
-                    <!-- Progress bar 2 -->
-                    <div class="progress mx-auto" data-value='25'>
-          <span class="progress-left">
-                        <span class="progress-bar border-danger"></span>
-          </span>
-                        <span class="progress-right">
-                        <span class="progress-bar border-danger"></span>
-          </span>
-                        <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                            <div class="h2 font-weight-bold">25<sup class="small">%</sup></div>
-                        </div>
-                    </div>
-                    <!-- END -->
-
-                    <!-- Demo info-->
-                    <div class="row text-center mt-4">
-                        <div class="col-6 border-right">
-                            <div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Last week</span>
-                        </div>
-                        <div class="col-6">
-                            <div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Last month</span>
-                        </div>
-                    </div>
-                    <!-- END -->
-                </div>
-            </div>
-
-            <div class="col-lg-4 d-flex align-items-stretch">
-                <div class="bg-white rounded-lg p-5 shadow">
-                    <h2 class="h6 font-weight-bold text-center mb-4">Server time</h2>
-
-                    <!-- Progress bar 3 -->
-                    <div class="progress mx-auto" data-value='76'>
+                    <div class="progress mx-auto" data-value='<%=percentuale%>'>
           <span class="progress-left">
                         <span class="progress-bar border-success"></span>
           </span>
@@ -117,12 +81,11 @@
                         <span class="progress-bar border-success"></span>
           </span>
                         <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                            <div class="h2 font-weight-bold">76<sup class="small">%</sup></div>
+                            <div class="h2 font-weight-bold"><%=percentuale%><sup class="small">%</sup></div>
                         </div>
                     </div>
-                    <!-- END -->
 
-                    <!-- Demo info -->
+
                     <div class="row text-center mt-4">
                         <div class="col-6 border-right">
                             <div class="h4 font-weight-bold mb-0">28%</div><span class="small text-gray">Last week</span>
@@ -131,14 +94,48 @@
                             <div class="h4 font-weight-bold mb-0">60%</div><span class="small text-gray">Last month</span>
                         </div>
                     </div>
-                    <!-- END -->
+
                 </div>
             </div>
+
+                <%
+                    };
+                %>
 
             </div>
         </div>
     </div>
 </main>
+
+<script>
+    $(function() {
+
+        $(".progress").each(function() {
+
+            var value = $(this).attr('data-value');
+            var left = $(this).find('.progress-left .progress-bar');
+            var right = $(this).find('.progress-right .progress-bar');
+
+            if (value > 0) {
+                if (value <= 50) {
+                    right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+                } else {
+                    right.css('transform', 'rotate(180deg)')
+                    left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
+                }
+            }
+
+        })
+
+        function percentageToDegrees(percentage) {
+
+            return percentage / 100 * 360
+
+        }
+
+    });
+
+</script>
 
 </body>
 </html>

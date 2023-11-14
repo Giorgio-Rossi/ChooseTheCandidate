@@ -4,6 +4,8 @@ import com.candidatoDB.pw2.entity.Quiz;
 
 public interface QuizDAO {
 
-    public Quiz getQuizById(int id_quiz);
+    Quiz getQuizById(int id_quiz);
+
+    Integer getPunteggioTotaleById(int id_quiz);
 
 }

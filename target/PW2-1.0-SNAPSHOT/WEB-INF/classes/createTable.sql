@@ -22,13 +22,15 @@ nome varchar(20) not null,
 cognome varchar(40) not null,
 codice_fiscale varchar(16),
 email varchar(30) not null,
-data_nascita datetime,
+data_nascita date,
 indirizzo varchar(50),
 id_citta int,
 cap varchar(5),
 telefono varchar(9),
 ruolo_admin varchar(10) not null check(ruolo_admin in('user','admin')),
-password varchar(70) not null,
+password varchar(70) not null,2
+foto_profilo varchar(100),
+ADD CV varchar(100),
 CONSTRAINT FK_utente_citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta)
 )
  
@@ -37,8 +39,8 @@ id_istruzione int identity not null primary key,
 grado varchar(50) not null,
 id_citta int not null,
 descrizione_istruzione varchar(100) not null,
-data_inizio datetime,
-data_fine datetime,
+data_inizio date,
+data_fine date,
 id_user int not null,
 valutazione smallint,
 CONSTRAINT FK_istruzione_citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta),
@@ -51,8 +53,8 @@ anni smallint,
 descrizione_attivita varchar(100),
 id_user int not null,
 azienda varchar(50),
-data_inizio datetime,
-data_fine datetime,
+data_inizio date,
+data_fine date,
 ral int,
 tipo_contratto varchar(50),
 settore varchar(20),
@@ -105,6 +107,7 @@ CONSTRAINT FK_Utente_UtenteQuiz FOREIGN KEY (id_user) REFERENCES Utente (id_user
  
 create table Skill(
 id_skill int identity not null primary key,
+id_quiz int,
 nome varchar(50),
 tipo_skill varchar(10) not null check(tipo_skill in('soft','hard')),
 )
@@ -114,7 +117,7 @@ id_user_skills int identity not null primary key,
 id_user int not null,
 id_skill int not null,
 verificata bit,
- 
+CONSTRAINT FK_Skill_Quiz FOREIGN KEY (id_quiz) REFERENCES Quiz (id_quiz),
 CONSTRAINT FK_Skill_UserSkills FOREIGN KEY (id_skill) REFERENCES Skill (id_skill),
 CONSTRAINT FK_Utente_UserSkills FOREIGN KEY (id_user) REFERENCES Utente (id_user)
 )
@@ -127,7 +130,7 @@ id_citta int not null,
 id_Categoria int not null,
 id_quiz int,
 stato varchar(15) not null check(stato in('aperta','chiusa')),
-data_inserimento datetime,
+data_inserimento date,
 ruolo varchar(60),
  
 CONSTRAINT FK_Posizione_Citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta),
@@ -157,10 +160,13 @@ ALTER TABLE Utente
 ALTER TABLE Utente
     ADD  genere varchar(30)  check(genere in('uomo','donna','non specificare'));
 
-alter table utente add CONSTRAINT DF_Utenti_ruolo_admin DEFAULT 'user' for ruolo_admin;
-
 ALTER TABLE Utente
     ADD CV varchar(100);
 
-
+alter table Utente ALTER COLUMN data_nascita date
+alter table istruzione ALTER COLUMN data_inizio date
+alter table istruzione ALTER COLUMN data_fine date
+alter table esperienza ALTER COLUMN data_inizio date
+alter table esperienza ALTER COLUMN data_fine date
+alter table posizione ALTER COLUMN data_inserimento date
 

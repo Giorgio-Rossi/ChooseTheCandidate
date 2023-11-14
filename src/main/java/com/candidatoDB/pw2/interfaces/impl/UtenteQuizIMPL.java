@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
 
 public class UtenteQuizIMPL implements UtenteQuizDAO {
 
@@ -74,5 +75,69 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
             //DBUtil.close(connection.getConnection());
         }
         return utenteQuiz;
+    }
+
+    public UtenteQuiz getUtenteQuizById(Utente utente) {
+        UtenteQuiz utenteQuiz = null;
+        String sql = "SELECT * from UtenteQuiz where id_user=?";
+
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.getConnection().prepareStatement(sql);
+            statement.setInt(1, utente.getId_user());
+
+            resultSet = statement.executeQuery();
+
+            if(!resultSet.isBeforeFirst()){
+                return null;
+            }else {
+                utenteQuiz = new UtenteQuiz();
+
+                while (resultSet.next()) {
+                    utenteQuiz.setId_quiz(resultSet.getInt("id_quiz"));
+                    utenteQuiz.setId_user(resultSet.getInt("id_user"));
+                    utenteQuiz.setPunteggio(resultSet.getInt("punteggio"));
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            DBUtil.close(resultSet);
+            DBUtil.close(statement);
+            //DBUtil.close(connection.getConnection());
+        }
+        return utenteQuiz;
+    }
+
+    @Override
+    public ArrayList<Quiz> getAllUtenteQuizByUser(int id_user) {
+        ArrayList<Quiz> allUtenteQuizzes = new ArrayList<>();
+        String sql = "SELECT * from UtenteQuiz uq inner join Quiz q on uq.id_quiz = q.id_quiz where uq.id_user = ?";
+
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.getConnection().prepareStatement(sql);
+            statement.setInt(1, id_user);
+
+            resultSet = statement.executeQuery();
+
+                while (resultSet.next()) {
+                    QuizIMPL quizIMPL = new QuizIMPL();
+
+                    Quiz quiz = quizIMPL.getQuizById(resultSet.getInt("id_quiz"));
+
+                    allUtenteQuizzes.add(quiz);
+                }
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            DBUtil.close(resultSet);
+            DBUtil.close(statement);
+            //DBUtil.close(connection.getConnection());
+        }
+        return allUtenteQuizzes;
     }
 }
