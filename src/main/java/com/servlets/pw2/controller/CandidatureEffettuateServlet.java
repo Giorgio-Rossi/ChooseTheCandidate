@@ -34,6 +34,7 @@ public class CandidatureEffettuateServlet extends HttpServlet {
             session.setAttribute("userId", userId);
             utente.setId_user(userId);
         }
+        
 
         CandidaturaIMPL candidaturaDAO = new CandidaturaIMPL();
         List<CandidaturaUser> candidatureUtente = candidaturaDAO.findCandidatureUtenteById(utente.getId_user());
