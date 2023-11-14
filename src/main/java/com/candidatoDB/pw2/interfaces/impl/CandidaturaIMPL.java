@@ -129,6 +129,7 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 	    } finally {
 	        DBUtil.close(resultSet);
 	        DBUtil.close(preparedStatement);
+	        
 	    }
 
 	    return candidature;
