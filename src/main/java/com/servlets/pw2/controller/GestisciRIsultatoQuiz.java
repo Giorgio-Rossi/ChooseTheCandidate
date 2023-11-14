@@ -2,6 +2,8 @@ package com.servlets.pw2.controller;
 
 import com.candidatoDB.pw2.entity.*;
 import com.candidatoDB.pw2.interfaces.impl.CandidaturaUserIMPL;
+import com.candidatoDB.pw2.interfaces.impl.PosizioneIMPL;
+import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
 import com.candidatoDB.pw2.interfaces.impl.UtenteQuizIMPL;
 
 import javax.servlet.ServletException;
@@ -71,9 +73,11 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
             utenteQuizIMPL.Save(utenteQuiz);
 
             int id_posizione = (int) session.getAttribute("id_posizione");
-            candidaturaUser.setId_user(utente.getId_user());
+            UtenteIMPL utenteIMPL = new UtenteIMPL();
+            PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+            candidaturaUser.setUtente(utenteIMPL.findById(utente.getId_user()));
             candidaturaUser.setData_candidatura(new Date(System.currentTimeMillis()));
-            candidaturaUser.setId_posizione(id_posizione);
+            candidaturaUser.setPosizione(posizioneIMPL.getPosizioneById(id_posizione));
 
             candidaturaUserIMPL.Save(candidaturaUser);
 

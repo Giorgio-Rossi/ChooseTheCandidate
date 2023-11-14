@@ -21,7 +21,7 @@
 	Posizione posizioneRecente = null;
 	System.out.println(candidaturaRecente);
 	if(candidaturaRecente!=null) {
-		posizioneRecente = candidaturaIMPL.getPosizionebyCandidaturaId(candidaturaRecente);
+		posizioneRecente = candidaturaIMPL.getPosizioneByCandidaturaId(candidaturaRecente);
 	}
 
 
@@ -68,7 +68,7 @@
 						<div class="content">
 							<div class="icon" style="background-color:white">
 								<i class="bi bi-card-list"
-								   style="font-size: 10rem;text-align: center"><h1 class="btn btn-info m-1"style="font-size: 1rem">Statistiche Quiz</h1></i>
+								   style="font-size: 10rem;text-align: center"><a href="statistichequiz.jsp" class="btn btn-info m-0"style="font-size: 1rem">Statistiche Quiz</a></i>
 							</div>
 						</div>
 					</div>
@@ -107,7 +107,7 @@
 						<div class="content">
 							<div class="icon" style="background-color:white">
 								<i class="bi bi-person"
-								   style="font-size: 10rem;text-align: center"><h1 class="btn btn-info"style="font-size: 1rem">Completa il profilo</h1></i>
+								   style="font-size: 10rem;text-align: center"><a href="profilo.jsp" class="btn btn-info m-0"style="font-size: 1rem">Completa il profilo</a></i>
 							</div>
 						</div>
 					</div>
