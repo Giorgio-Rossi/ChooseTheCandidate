@@ -52,6 +52,8 @@
     if (candidatureList != null && !candidatureList.isEmpty()) {
         for (CandidaturaUser candidatura : candidatureList) {
     %>
+    
+    
         <tr>
             <td><%=candidatura.getId_posizione()%></td>
             <td><%=candidatura.getData_candidatura()%></td>
