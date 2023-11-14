@@ -1,3 +1,4 @@
+<%@page import="com.candidatoDB.pw2.interfaces.impl.PosizioneIMPL"%>
 <%@ page import="com.candidatoDB.pw2.entity.Utente"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
@@ -23,7 +24,8 @@
 	if(candidaturaRecente!=null) {
 		posizioneRecente = candidaturaIMPL.getPosizioneByCandidaturaId(candidaturaRecente);
 	}
-
+PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.getId_citta());
 
 %>
 
@@ -214,30 +216,29 @@
 							</div>
 						</div>
 					</div>
-					<div class="slide slide2" style="background-color:#0072BC">
-						<div class="card-body p-4">
-							<%
-								List<Posizione> posizioniPiuRecenti = (List<Posizione>) request.getAttribute("posizioniPiuRecenti");
-								if (posizioniPiuRecenti != null && !posizioniPiuRecenti.isEmpty()) {
-									for (Posizione posizione : posizioniPiuRecenti) {
-							%>
-							<div class="mb-3">
-								<span class="text-muted d-block"><strong>Categoria:</strong> <%=posizione.getCategoria().getNome_categoria()%></span>
-								<span class="text-muted d-block"><strong>Stato:</strong> <%=posizione.getStato()%></span>
-								<span class="text-muted d-block"><strong>Ruolo:</strong> <%=posizione.getRuolo()%></span>
-							</div>
-							<%
-								}
-							} else {
-							%>
-							<div class="alert alert-info" role="alert">
-								<i class="bi bi-info-circle-fill m-1"></i> Nessun annuncio recente disponibile
-							</div>
-							<%
-								}
-							%>
-						</div>
-					</div>
+		<div class="slide slide2" style="background-color:#0072BC">
+    <div class="card-body p-4">
+        <%
+            if (!posizioniRecenti.isEmpty()) {
+                for (Posizione posizione : posizioniRecenti) {
+        %>
+        <div class="mb-3">
+            <span class="text-muted d-block"><strong>Categoria:</strong> <%=posizione.getCategoria() != null ? posizione.getCategoria().getNome_categoria() : ""%></span>
+            <span class="text-muted d-block"><strong>Stato:</strong> <%=posizione.getStato() != null ? posizione.getStato() : ""%></span>
+            <span class="text-muted d-block"><strong>Ruolo:</strong> <%=posizione.getRuolo() != null ? posizione.getRuolo() : ""%></span>
+        </div>
+        <%
+                }
+            } else {
+        %>
+        <div class="alert alert-info" role="alert">
+            <i class="bi bi-info-circle-fill m-1"></i> Nessun annuncio recente disponibile
+        </div>
+        <%
+            }
+        %>
+    </div>
+</div>
 
 
 
