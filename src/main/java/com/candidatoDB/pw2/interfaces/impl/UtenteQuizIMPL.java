@@ -22,13 +22,14 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
     }
     @Override
     public void Save(UtenteQuiz utenteQuiz) {
-        String sql = "INSERT INTO UtenteQuiz(id_quiz, id_user, punteggio) VALUES(?,?,?)";
+        String sql = "INSERT INTO UtenteQuiz(id_quiz, id_user, punteggio, data_inserimento) VALUES(?,?,?,?)";
         PreparedStatement statement = null;
         try {
             statement = connection.getConnection().prepareStatement(sql);
             statement.setInt(1, utenteQuiz.getId_quiz());
             statement.setInt(2, utenteQuiz.getId_user());
             statement.setInt(3, utenteQuiz.getPunteggio());
+            statement.setDate(4, utenteQuiz.getData_inserimento());
 
             statement.executeUpdate();
             //resultSet = statement.getGeneratedKeys();
@@ -65,6 +66,7 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
                     utenteQuiz.setId_quiz(resultSet.getInt("id_quiz"));
                     utenteQuiz.setId_user(resultSet.getInt("id_user"));
                     utenteQuiz.setPunteggio(resultSet.getInt("punteggio"));
+                    utenteQuiz.setData_inserimento(resultSet.getDate("data_inserimento"));
                 }
             }
         } catch (SQLException e) {
@@ -98,6 +100,8 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
                     utenteQuiz.setId_quiz(resultSet.getInt("id_quiz"));
                     utenteQuiz.setId_user(resultSet.getInt("id_user"));
                     utenteQuiz.setPunteggio(resultSet.getInt("punteggio"));
+                    utenteQuiz.setData_inserimento(resultSet.getDate("data_inserimento"));
+
                 }
             }
         } catch (SQLException e) {

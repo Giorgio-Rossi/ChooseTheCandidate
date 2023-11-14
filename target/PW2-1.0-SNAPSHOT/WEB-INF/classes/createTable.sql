@@ -117,7 +117,6 @@ id_user_skills int identity not null primary key,
 id_user int not null,
 id_skill int not null,
 verificata bit,
-CONSTRAINT FK_Skill_Quiz FOREIGN KEY (id_quiz) REFERENCES Quiz (id_quiz),
 CONSTRAINT FK_Skill_UserSkills FOREIGN KEY (id_skill) REFERENCES Skill (id_skill),
 CONSTRAINT FK_Utente_UserSkills FOREIGN KEY (id_user) REFERENCES Utente (id_user)
 )
@@ -163,10 +162,10 @@ ALTER TABLE Utente
 ALTER TABLE Utente
     ADD CV varchar(100);
 
-alter table Utente ALTER COLUMN data_nascita date
-alter table istruzione ALTER COLUMN data_inizio date
-alter table istruzione ALTER COLUMN data_fine date
-alter table esperienza ALTER COLUMN data_inizio date
-alter table esperienza ALTER COLUMN data_fine date
-alter table posizione ALTER COLUMN data_inserimento date
+alter table dbo.Utente ALTER COLUMN data_nascita date
+alter table dbo.istruzione ALTER COLUMN data_inizio date
+alter table dbo.istruzione ALTER COLUMN data_fine date
+alter table dbo.esperienza ALTER COLUMN data_inizio date
+alter table dbo.esperienza ALTER COLUMN data_fine date
+alter table dbo.posizione ALTER COLUMN data_inserimento date
 

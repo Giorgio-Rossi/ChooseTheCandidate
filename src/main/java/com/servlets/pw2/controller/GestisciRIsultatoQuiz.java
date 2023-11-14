@@ -69,6 +69,7 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
             utenteQuiz.setId_quiz(id_quiz);
             utenteQuiz.setId_user(utente.getId_user());
             utenteQuiz.setPunteggio(punteggio_quiz);
+            utenteQuiz.setData_inserimento(new Date(System.currentTimeMillis()));
 
             utenteQuizIMPL.Save(utenteQuiz);
 
