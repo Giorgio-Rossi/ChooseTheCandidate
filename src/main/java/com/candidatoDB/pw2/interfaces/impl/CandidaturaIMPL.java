@@ -14,7 +14,6 @@ import com.candidatoDB.pw2.interfaces.CandidaturaDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
 
-
 public class CandidaturaIMPL implements CandidaturaDAO {
 	private SQLServerConnection connection = new SQLServerConnection();
 
@@ -22,146 +21,129 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 		connection.Connect();
 	}
 
-
 	@Override
 	public List<CandidaturaUser> orderCandidature() {
-	    List<CandidaturaUser> candidature = new ArrayList<>();
-	    PreparedStatement statement = null;
-	    ResultSet resultSet = null;
-	    String sql = "SELECT id_candidatura_user, id_posizione, id_user, data_candidatura FROM CandidaturaUser ORDER BY data_candidatura DESC";
+		List<CandidaturaUser> candidature = new ArrayList<>();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		String sql = "SELECT id_candidatura_user, id_posizione, id_user, data_candidatura FROM CandidaturaUser ORDER BY data_candidatura DESC";
 
-	    try {
-	        statement = connection.getConnection().prepareStatement(sql);
-	        resultSet = statement.executeQuery();
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			resultSet = statement.executeQuery();
 
-	        while (resultSet.next()) {
-	            CandidaturaUser candidatura = new CandidaturaUser();
-	            candidatura.setId_candidatura(resultSet.getInt("id_candidatura"));
-	            candidatura.setId_posizione(resultSet.getInt("id_posizione"));
-	            candidatura.setId_user(resultSet.getInt("id_user"));
-	            candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate("data_candidatura").getTime()));
-	            candidature.add(candidatura);
-	        }
-	    } catch (SQLException e) {
-	        System.err.println(e.getMessage());
-	    } finally {
-	        DBUtil.close(resultSet);
-	        DBUtil.close(statement);
-	    }
-	    return candidature;
+			while (resultSet.next()) {
+				CandidaturaUser candidatura = new CandidaturaUser();
+				candidatura.setId_candidatura(resultSet.getInt("id_candidatura_user"));
+				PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+				candidatura.setPosizione(posizioneIMPL.getPosizioneById(resultSet.getInt("id_posizione")));
+				UtenteIMPL utenteIMPL = new UtenteIMPL();
+				candidatura.setUtente(utenteIMPL.findById(resultSet.getInt("id_user")));
+
+				candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate("data_candidatura").getTime()));
+				candidature.add(candidatura);
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+		}
+		return candidature;
 	}
-
-
 
 	@Override
 	public CandidaturaUser trovaCandidaturaPiuRecente(int id_user) {
-	 
-	        CandidaturaUser Candidatura = null;
-	     //   Connection connection = null;
-	        PreparedStatement statement = null;
-	        ResultSet resultSet = null;
-	        String sql = "SELECT top 3 id_candidatura_user, id_posizione, id_user, data_candidatura " +
-                    "FROM CandidaturaUser " +
-                    "WHERE id_user = ? " +
-                    "ORDER BY data_candidatura DESC ";
-                   
-	        try {
-	        
-	            statement = connection.getConnection().prepareStatement(sql);
 
-	          
-	            statement.setInt(1, id_user);
-	            resultSet = statement.executeQuery();
+		CandidaturaUser candidatura = null;
+		// Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		String sql = "SELECT top 3 id_candidatura_user, id_posizione, id_user, data_candidatura "
+				+ "FROM CandidaturaUser " + "WHERE id_user = ? " + "ORDER BY data_candidatura DESC ";
 
-	            if (resultSet.next()) {
-	                Candidatura = new CandidaturaUser();
-	                Candidatura.setId_candidatura(resultSet.getInt(1));
-	                Candidatura.setId_posizione(resultSet.getInt(2));
-	                Candidatura.setId_user(resultSet.getInt(3));
-	                Candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate(4).getTime()));
-	                
-	                System.out.println("metodo Candidatura piu recente funziona");
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        } finally {
-	        
-	        	DBUtil.close(resultSet);
-	    		DBUtil.close(statement);
-	    	//	DBUtil.close((Connection) connection);
-	        }
+		try {
 
-	        return Candidatura;
-	    }
+			statement = connection.getConnection().prepareStatement(sql);
 
+			statement.setInt(1, id_user);
+			resultSet = statement.executeQuery();
 
-	
+			if (resultSet.next()) {
+				candidatura = new CandidaturaUser();
+				candidatura.setId_candidatura(resultSet.getInt("id_candidatura_user"));
+				PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+				candidatura.setPosizione(posizioneIMPL.getPosizioneById(resultSet.getInt("id_posizione")));
+				UtenteIMPL utenteIMPL = new UtenteIMPL();
+				candidatura.setUtente(utenteIMPL.findById(resultSet.getInt("id_user")));
+
+				candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate("data_candidatura").getTime()));
+
+				System.out.println("metodo Candidatura piu recente funziona");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			// DBUtil.close((Connection) connection);
+		}
+
+		return candidatura;
+	}
 
 	@Override
 	public List<CandidaturaUser> findCandidatureUtenteById(int id_user) {
-
-	    PreparedStatement preparedStatement = null;
-	    ResultSet resultSet = null;
-	    List<CandidaturaUser> candidature = new ArrayList<>();
-	    String sql = "SELECT cu.id_candidatura_user, cu.id_posizione, cu.id_user, cu.data_candidatura " +
-                "FROM CandidaturaUser cu " +
-                "INNER JOIN Utente u ON cu.id_user = u.id_user " +
-                "INNER JOIN Posizione p ON cu.id_posizione = p.id_posizione " +
-                "WHERE u.id_user = ?";
-
-	    try {
-	        preparedStatement = connection.getConnection().prepareStatement(sql);
-	        preparedStatement.setInt(1, id_user);
-
-	        resultSet = preparedStatement.executeQuery();
-
-	        System.out.println("Query " + sql + " funzionante");
-
-	        while (resultSet.next()) {
-	            CandidaturaUser candidatura = new CandidaturaUser();
-	            candidatura.setId_candidatura(resultSet.getInt("id_candidatura_user"));
-	            candidatura.setId_posizione(resultSet.getInt("id_posizione"));
-	            candidatura.setId_user(resultSet.getInt("id_user"));
-	            candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate("data_candidatura").getTime()));
-	          
-
-	            candidature.add(candidatura);
-
-	            System.out.println("Aggiunta " + candidatura);
-	        }
-
-	        if (candidature.isEmpty()) {
-	            System.out.println("Nessuna candidatura trovata per l'utente con ID: " + id_user);
-	        }
-
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    } finally {
-	        DBUtil.close(resultSet);
-	        DBUtil.close(preparedStatement);
-	        // DBUtil.close(connection);
-	    }
-
-
-	    return candidature;
-	}
-
-
-
-
-	public Posizione getPosizionebyCandidaturaId(CandidaturaUser candidaturaUser){
-		Posizione posizione = new Posizione();
+		List<CandidaturaUser> candidature = new ArrayList<>();
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
+		String sql = "SELECT id_candidatura_user, id_posizione, id_user, data_candidatura FROM CandidaturaUser WHERE id_user = ?";
+
 		try {
-
-			String sql = "SELECT * FROM Posizione WHERE id_posizione = ? ";
 			preparedStatement = connection.getConnection().prepareStatement(sql);
-			preparedStatement.setInt(1, candidaturaUser.getId_posizione());
-
+			preparedStatement.setInt(1, id_user);
 			resultSet = preparedStatement.executeQuery();
 
 			while (resultSet.next()) {
+				CandidaturaUser candidatura = new CandidaturaUser();
+				candidatura.setId_candidatura(resultSet.getInt("id_candidatura_user"));
+				PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+				candidatura.setPosizione(posizioneIMPL.getPosizioneById(resultSet.getInt("id_posizione")));
+				UtenteIMPL utenteIMPL = new UtenteIMPL();
+				candidatura.setUtente(utenteIMPL.findById(resultSet.getInt("id_user")));
+
+				candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate("data_candidatura").getTime()));
+				candidature.add(candidatura);
+			}
+
+			System.out.println("Query " + sql + " eseguita correttamente");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(preparedStatement);
+		}
+
+		return candidature;
+	}
+
+	
+
+	public Posizione getPosizioneByCandidaturaId(CandidaturaUser candidaturaUser) {
+		Posizione posizione = new Posizione();
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+
+		try {
+			String sql = "SELECT * FROM Posizione WHERE id_posizione = ? ";
+			preparedStatement = connection.getConnection().prepareStatement(sql);
+			preparedStatement.setInt(1, candidaturaUser.getPosizione().getId_posizione()); 
+
+			resultSet = preparedStatement.executeQuery();
+
+			if (resultSet.next()) {
 				posizione.setId_posizione(resultSet.getInt(1));
 				posizione.setN_ammissioni(resultSet.getInt(2));
 				posizione.setDescrizione(resultSet.getString(3));
@@ -178,27 +160,15 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 				posizione.setStato(resultSet.getString(7));
 				posizione.setData_inserimento(resultSet.getDate(8));
 				posizione.setRuolo(resultSet.getString(9));
-
-
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-
 			DBUtil.close(resultSet);
 			DBUtil.close(preparedStatement);
-			//DBUtil.close(connection);
 		}
 
 		return posizione;
 	}
+
 }
-	
-	
-	
-
-
-	
-	
-	
-

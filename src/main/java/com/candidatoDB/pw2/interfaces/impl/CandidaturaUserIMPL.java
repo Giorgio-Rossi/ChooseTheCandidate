@@ -24,13 +24,13 @@ public class CandidaturaUserIMPL implements CandidaturaUserDAO {
         String sql = "INSERT INTO CandidaturaUser(id_posizione, id_user, data_candidatura) VALUES(?,?,?)";
         PreparedStatement statement = null;
         try {
-            statement = connection.getConnection().prepareStatement(sql);
-            statement.setInt(1, candidaturaUser.getId_posizione());
-            statement.setInt(2, candidaturaUser.getId_user());
-            statement.setDate(3, (Date) candidaturaUser.getData_candidatura());
+        	 statement = connection.getConnection().prepareStatement(sql);
+             statement.setInt(1, candidaturaUser.getPosizione().getId_posizione());
+             statement.setInt(2, candidaturaUser.getUtente().getId_user()); 
+             statement.setDate(3, new java.sql.Date(candidaturaUser.getData_candidatura().getTime()));
 
             statement.executeUpdate();
-            //resultSet = statement.getGeneratedKeys();
+          ;
 
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -64,9 +64,15 @@ public class CandidaturaUserIMPL implements CandidaturaUserDAO {
                 candidaturaUser = new CandidaturaUser();
 
                 while (resultSet.next()) {
-                    candidaturaUser.setId_candidatura(resultSet.getInt(1));
-                    candidaturaUser.setId_posizione(resultSet.getInt(2));
-                    candidaturaUser.setData_candidatura(resultSet.getDate(3));
+                	CandidaturaUser candidatura = new CandidaturaUser();
+    				candidatura.setId_candidatura(resultSet.getInt(1));
+    				PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+    				candidatura.setPosizione(posizioneIMPL.getPosizioneById(resultSet.getInt(2)));
+    				UtenteIMPL utenteIMPL = new UtenteIMPL();
+    				candidatura.setUtente(utenteIMPL.findById(resultSet.getInt(3)));
+
+    				candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate(4).getTime()));
+    				
                 }
             }
         } catch (SQLException e) {

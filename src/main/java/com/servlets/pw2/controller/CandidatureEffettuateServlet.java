@@ -3,6 +3,7 @@ package com.servlets.pw2.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,27 +14,31 @@ import javax.servlet.http.HttpSession;
 import com.candidatoDB.pw2.entity.CandidaturaUser;
 import com.candidatoDB.pw2.entity.Utente;
 import com.candidatoDB.pw2.interfaces.impl.CandidaturaIMPL;
+import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
 
-@WebServlet("/findCandidature")
+@WebServlet("/candidatureUtente")
 public class CandidatureEffettuateServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Utente utente = (Utente) session.getAttribute("utente");
+        
+  
+        if (request.getParameter("id_utente") != null) {
+            int userId = Integer.parseInt(request.getParameter("id_utente"));
+            UtenteIMPL utenteId = new UtenteIMPL();
+            utenteId.findById(userId);
+            session.setAttribute("userId", userId);
+            utente.setId_user(userId);
+        }
 
-		HttpSession session = request.getSession();
-		Utente utente = (Utente) session.getAttribute("utente");
+        CandidaturaIMPL candidaturaDAO = new CandidaturaIMPL();
+        List<CandidaturaUser> candidatureUtente = candidaturaDAO.findCandidatureUtenteById(utente.getId_user());
 
-		int userId = utente.getId_user();
-
-		CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
-		List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtenteById(userId);
-
-		request.setAttribute("findCandidature", candidature);
-
-		System.out.println("Le candidature sono queste: " + candidature);
-
-		request.getRequestDispatcher("/visualizzaCandidature.jsp").forward(request, response);
-
-	}
+        request.setAttribute("candidatureUtente", candidatureUtente);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/home/visualizzaCandidature.jsp");
+        dispatcher.forward(request, response);
+    }
 }
