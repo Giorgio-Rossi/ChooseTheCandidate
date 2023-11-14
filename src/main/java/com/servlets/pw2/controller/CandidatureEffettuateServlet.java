@@ -22,10 +22,11 @@ public class CandidatureEffettuateServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    	
+    	
         HttpSession session = request.getSession();
         Utente utente = (Utente) session.getAttribute("utente");
         
-  
         if (request.getParameter("id_utente") != null) {
             int userId = Integer.parseInt(request.getParameter("id_utente"));
             UtenteIMPL utenteId = new UtenteIMPL();
@@ -36,7 +37,7 @@ public class CandidatureEffettuateServlet extends HttpServlet {
 
         CandidaturaIMPL candidaturaDAO = new CandidaturaIMPL();
         List<CandidaturaUser> candidatureUtente = candidaturaDAO.findCandidatureUtenteById(utente.getId_user());
-
+        
         request.setAttribute("candidatureUtente", candidatureUtente);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/home/visualizzaCandidature.jsp");
         dispatcher.forward(request, response);
