@@ -7,10 +7,10 @@
 <%@ page import="java.util.ArrayList"%>
 <%
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-	UtenteIMPL utenteIMPL = new UtenteIMPL();
 	Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
-	ArrayList<String> campi_vuoti = utenteIMPL.getEmptyParameters(utenteLoggato);
+
 	CandidaturaIMPL candidatureIMPL = new CandidaturaIMPL();
+
 	List<CandidaturaUser> candidature = candidatureIMPL.findCandidatureUtenteById(utenteLoggato.getId_user());
 	
 	System.out.println(candidature);
@@ -21,48 +21,82 @@
 <head>
     <title>Candidature effettuate</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-          crossorigin="anonymous"/>
+    <link rel="icon" type="image/x-icon"
+          href="${pageContext.request.contextPath}/img/logoPag.png"
+          style="border-radius: 10px" />
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/homeuser.css" />
+
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/visualizzacandidature.css" />
+
 </head>
+
+
 
 <body>
 <%@ include file="jsp/navbarHeader.jsp"%>
-<h1>Candidature effettuate</h1>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th scope="col">Posizione</th>
-        <th scope="col">Data Candidatura</th>
-    </tr>
-    </thead>
-    <tbody>
+<main style="margin-top: 150px">
+<div class="container">
+
     <%
-    List<CandidaturaUser> candidatureList = (List<CandidaturaUser>) request.getAttribute("candidatureUtente");
-
-    if (candidatureList != null && !candidatureList.isEmpty()) {
-        for (CandidaturaUser candidatura : candidatureList) {
+        for(CandidaturaUser candidaturaUser : candidature){
     %>
-        <tr>
-            <td><%=candidatura.getPosizione().getId_posizione()%></td>
-            <td><%=candidatura.getData_candidatura()%></td>
-        </tr>
+
+    <div class="card mb-3 shadow-lg">
+        <div class="card-body">
+            <div class="d-flex flex-column flex-lg-row">
+                <span class="avatar avatar-text rounded-3 me-4 mb-2">FD</span>
+                <div class="row flex-fill">
+                    <div class="col-sm-5">
+                        <h4 class="h5"><%=candidaturaUser.getPosizione().getRuolo()%></h4>
+                        <span class="badge bg-primary m-1"><%=candidaturaUser.getPosizione().getCitta().getNome()%></span><span class="badge bg-success"><i class="bi bi-calendar-check-fill mt-2"> <%=candidaturaUser.getData_candidatura()%></i></span>
+                    </div>
+                    <div class="col-sm-4 py-2">
+                        <span class="badge bg-info"><%=candidaturaUser.getPosizione().getCategoria().getNome_categoria()%></span>
+                        <span class="badge bg-info">Ammissioni massime: <%=candidaturaUser.getPosizione().getN_ammissioni()%></span>
+                    </div>
+                    <%
+                        if(candidaturaUser.getPosizione().getStato().equals("aperta")){
+                    %>
+                    <div class="col-sm-3 text-lg-end">
+                        <span class="badge bg-success"><%=candidaturaUser.getPosizione().getStato().toUpperCase()%></span>
+                    </div>
+                    <%
+                         }else{
+                    %>
+                    <div class="col-sm-3 text-lg-end">
+                        <span class="badge bg-danger"><%=candidaturaUser.getPosizione().getStato().toUpperCase()%></span>
+                    </div>
+                    <%
+                        };
+                    %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <%
         }
-    } else {
     %>
-        <tr>
-            <td colspan="2">Nessuna candidatura disponibile</td>
-        </tr>
-    <%
-    }
-    %>
-    </tbody>
-</table>
+
+
+</div>
+</main>
 
 </body>
 </html>

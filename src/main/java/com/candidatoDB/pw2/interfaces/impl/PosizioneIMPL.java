@@ -44,15 +44,19 @@ public class PosizioneIMPL implements PosizioneDAO {
 				posizione.setDescrizione(resultSet.getString("descrizione"));
 
 				Citta citta = new Citta();
-				citta.setId_citta(resultSet.getInt("id_citta"));
+				CittaIMPL cittaIMPL = new CittaIMPL();
+				posizione.setCitta(cittaIMPL.getCittaById(resultSet.getInt("id_citta")));
+				/*citta.setId_citta(resultSet.getInt("id_citta"));
 
 				citta.setNome(resultSet.getString("nome"));
-				posizione.setCitta(citta);
+				posizione.setCitta(citta);*/
 
 				CategoriaPosizione categoriaPosizione = new CategoriaPosizione();
-				categoriaPosizione.setId_categoria(resultSet.getInt("id_categoria"));
+				CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
+				posizione.setCategoria(categoriaPosizioneIMPL.getCategoriaPosizioneById(resultSet.getInt("id_categoria")));
+				/*categoriaPosizione.setId_categoria(resultSet.getInt("id_categoria"));
 				categoriaPosizione.setNome_categoria(resultSet.getString("nome_categoria"));
-				posizione.setCategoria(categoriaPosizione);
+				posizione.setCategoria(categoriaPosizione);*/
 
 				QuizIMPL quizIMPL = new QuizIMPL();
 				posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt("id_quiz")));

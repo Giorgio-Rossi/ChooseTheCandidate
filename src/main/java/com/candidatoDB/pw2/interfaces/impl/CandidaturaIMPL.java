@@ -115,10 +115,10 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 	            candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate("data_candidatura").getTime()));
 	            candidature.add(candidatura);
 
-	            for (CandidaturaUser candidaturaUser : candidature) {
+	            /*for (CandidaturaUser candidaturaUser : candidature) {
 	                System.out.println(candidaturaUser);
 				}
-	            System.out.println("Query " + sql + " eseguita correttamente");
+	            System.out.println("Query " + sql + " eseguita correttamente");*/
 	        }
 
 	     
