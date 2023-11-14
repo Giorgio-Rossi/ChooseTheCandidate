@@ -222,13 +222,11 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
             if (!posizioniRecenti.isEmpty()) {
                 for (Posizione posizione : posizioniRecenti) {
         %>
-        <div class="mb-3">
-            <span class="text-muted d-block"><strong>Categoria:</strong> <%=posizione.getCategoria() != null ? posizione.getCategoria().getNome_categoria() : ""%></span>
+        <div class="mb-2">
             <span class="text-muted d-block"><strong>Stato:</strong> <%=posizione.getStato() != null ? posizione.getStato() : ""%></span>
             <span class="text-muted d-block"><strong>Ruolo:</strong> <%=posizione.getRuolo() != null ? posizione.getRuolo() : ""%></span>
         </div>
         <%
-        
                 }
             } else {
         %>
