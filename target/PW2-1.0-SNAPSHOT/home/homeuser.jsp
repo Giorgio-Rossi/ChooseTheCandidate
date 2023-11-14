@@ -61,32 +61,47 @@
 	<div class="container pt-3">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4 d-flex align-items-stretch "
-					 style="padding-top: 50px;">
-					<div class="card shadow-lg p-3 mb-5 bg-body rounded"
-						 style="width: 18rem;">
-						<i class="bi bi-card-list"
-						   style="font-size: 10rem; text-align: center"></i>
-						<div class="card-body">
-							<h5 class="card-title" style="text-align: center">
-								<a class="btn btn-info" href="../login.jsp">Statistiche Quiz</a>
-							</h5>
+
+
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+					<div class="slide slide1">
+						<div class="content">
+							<div class="icon" style="background-color:white">
+								<i class="bi bi-card-list"
+								   style="font-size: 10rem;text-align: center"><h1 class="btn btn-info m-1"style="font-size: 1rem">Statistiche Quiz</h1></i>
+							</div>
+						</div>
+					</div>
+					<div class="slide slide2" style="background-color:#0072BC">
+						<div class="content">
+							<h3>
+								Hello there!
+							</h3>
+							<p>Trust yourself and keep going.</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 d-flex align-items-stretch"
-					 style="padding-top: 50px">
-					<div class="card shadow-lg p-3 mb-5 bg-body rounded"
-						 style="width: 18rem;">
-						<i class="bi bi-clipboard-data"
-						   style="font-size: 10rem; text-align: center"></i>
-						<div class="card-body">
-							<h5 class="card-title" style="text-align: center">
-								<a class="btn btn-info" href="../login.jsp">Skills Verificate</a>
-							</h5>
+
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+					<div class="slide slide1">
+						<div class="content">
+							<div class="icon" style="background-color:white">
+								<i class="bi bi-clipboard-data"
+								   style="font-size: 10rem;text-align: center"><h1 class="btn btn-info m-1"style="font-size: 1rem">Skills Verificate</h1></i>
+							</div>
+						</div>
+					</div>
+					<div class="slide slide2" style="background-color:#0072BC">
+						<div class="content">
+							<h3>
+								Hello there!
+							</h3>
+							<p>Trust yourself and keep going.</p>
 						</div>
 					</div>
 				</div>
+
+
 				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
 					<div class="slide slide1">
 						<div class="content">
@@ -127,16 +142,17 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
 					<div class="slide slide1">
 						<div class="content">
-							<div class="icon">
+							<div class="icon" style="background-color:white">
 								<i class="bi bi-award"
 								   style="font-size: 10rem;text-align: center"><h1 style="font-size: 1rem">Miglior Candidatura</h1></i>
 							</div>
 						</div>
 					</div>
-					<div class="slide slide2">
+					<div class="slide slide2" style="background-color:#0072BC">
 						<div class="content">
 							<h3>
 								Hello there!
@@ -149,13 +165,13 @@
 				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
 					<div class="slide slide1">
 						<div class="content">
-							<div class="icon">
+							<div class="icon" style="background-color:white">
 								<i class="bi bi-receipt-cutoff"
 								   style="font-size: 9rem;text-align: center"><h1 style="font-size: 1rem">Candidatura più recente</h1></i>
 							</div>
 						</div>
 					</div>
-					<div class="slide slide2">
+					<div class="slide slide2" style="background-color:#0072BC">
 						<div class="card-body p-4">
 							<%
 								if(posizioneRecente!=null){
@@ -193,12 +209,12 @@
 				<div class="card col-lg-4 d-flex align-items-stretch" style="background-color: #d4d4d4; border: none">
 					<div class="slide slide1">
 						<div class="content">
-							<div class="icon">
+							<div class="icon" style="background-color:white">
 								<i class="bi bi-calendar" style="font-size: 10rem; text-align: center"><h1 style="font-size: 1rem">Annunci Recenti</h1></i>
 							</div>
 						</div>
 					</div>
-					<div class="slide slide2">
+					<div class="slide slide2" style="background-color:#0072BC">
 						<div class="card-body p-4">
 							<%
 								List<Posizione> posizioniPiuRecenti = (List<Posizione>) request.getAttribute("posizioniPiuRecenti");
@@ -263,9 +279,9 @@
 
 <%
 	//System.out.println(session.getAttribute("candidatura_fatta"));
-	boolean success =  session.getAttribute("candidatura_fatta") == null ?  null : (boolean) session.getAttribute("candidatura_fatta");
+	String success =  session.getAttribute("candidatura_fatta") == null ?  null : session.getAttribute("candidatura_fatta").toString();
 
-	if(success){
+	if(success != null && Boolean.parseBoolean(success)){
 %>
 <script>
 	var myModal = new bootstrap.Modal(document.getElementById('statusSuccessModal'))
@@ -273,7 +289,7 @@
 	<% session.removeAttribute("candidatura_fatta");%>
 </script>
 <%
-	} else{
+	} else if(success!=null){
 %>
 <script>
 	var myModal = new bootstrap.Modal(document.getElementById('errorModal'))

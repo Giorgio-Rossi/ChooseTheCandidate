@@ -1,10 +1,8 @@
 package com.servlets.pw2.controller;
 
-import java.io.IOException;
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import com.candidatoDB.pw2.entity.*;
+import com.candidatoDB.pw2.interfaces.impl.CandidaturaUserIMPL;
+import com.candidatoDB.pw2.interfaces.impl.UtenteQuizIMPL;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,91 +10,86 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.candidatoDB.pw2.entity.CandidaturaUser;
-import com.candidatoDB.pw2.entity.Domanda;
-import com.candidatoDB.pw2.entity.Posizione;
-import com.candidatoDB.pw2.entity.RisposteDomande;
-import com.candidatoDB.pw2.entity.Utente;
-import com.candidatoDB.pw2.entity.UtenteQuiz;
-import com.candidatoDB.pw2.interfaces.impl.CandidaturaUserIMPL;
-import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
-import com.candidatoDB.pw2.interfaces.impl.UtenteQuizIMPL;
+import java.io.IOException;
+import java.sql.Date;
+import java.sql.SQLData;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet("/RisulatatoQuiz")
 
 public class GestisciRIsultatoQuiz extends HttpServlet {
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session = req.getSession();
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
 
-		Integer id_quiz = (Integer) session.getAttribute("id_quiz");
+        session.setAttribute("candidatura_fatta", null);
 
-		Utente utente = (Utente) session.getAttribute("utente");
+        Integer id_quiz = (Integer) session.getAttribute("id_quiz");
 
-		int id_posizione = (int) session.getAttribute("id_posizione");
+        Utente utente = (Utente) session.getAttribute("utente");
 
-		CandidaturaUser candidaturaUser = new CandidaturaUser();
+        CandidaturaUser candidaturaUser = new CandidaturaUser();
 
-		CandidaturaUserIMPL candidaturaUserIMPL = new CandidaturaUserIMPL();
+        CandidaturaUserIMPL candidaturaUserIMPL = new CandidaturaUserIMPL();
 
-		UtenteQuizIMPL utenteQuizIMPL = new UtenteQuizIMPL();
+        UtenteQuizIMPL utenteQuizIMPL = new UtenteQuizIMPL();
 
-		System.out.println(utenteQuizIMPL.getUtenteQuizById(id_quiz, utente));
+        System.out.println(utenteQuizIMPL.getUtenteQuizById(id_quiz, utente));
 
-		if (utenteQuizIMPL.getUtenteQuizById(id_quiz, utente) == null) {
+        if(utenteQuizIMPL.getUtenteQuizById(id_quiz, utente) == null) {
 
-			UtenteQuiz utenteQuiz = new UtenteQuiz();
+            UtenteQuiz utenteQuiz = new UtenteQuiz();
 
-			HashMap<Domanda, ArrayList<RisposteDomande>> risposte = (HashMap<Domanda, ArrayList<RisposteDomande>>) session
-					.getAttribute("quiz");
+            HashMap<Domanda, ArrayList<RisposteDomande>> risposte = (HashMap<Domanda, ArrayList<RisposteDomande>>) session.getAttribute("quiz");
 
-			Integer punteggio_quiz = 0;
+            Integer punteggio_quiz = 0;
 
-			int i = 0;
-			for (Map.Entry<Domanda, ArrayList<RisposteDomande>> entry : risposte.entrySet()) {
+            int i = 0;
+            for (Map.Entry<Domanda, ArrayList<RisposteDomande>> entry : risposte.entrySet()) {
 
-				String rispsota = (req.getParameter(String.valueOf(i++)));
+                String rispsota = (req.getParameter(String.valueOf(i++)));
 
-				if (rispsota != null) {
-					for (RisposteDomande r : entry.getValue()) {
-						if (r.checkSceltaCorretta(rispsota)) {
-							System.out.println("coretto");
-							punteggio_quiz += entry.getKey().getPunteggio();
-						}
-					}
-				}
-			}
 
-			utenteQuiz.setId_quiz(id_quiz);
-			utenteQuiz.setId_user(utente.getId_user());
-			utenteQuiz.setPunteggio(punteggio_quiz);
+                if (rispsota != null) {
+                    for (RisposteDomande r : entry.getValue()) {
+                        if (r.checkSceltaCorretta(rispsota)) {
+                            System.out.println("coretto");
+                            punteggio_quiz += entry.getKey().getPunteggio();
+                        }
+                    }
+                }
+            }
 
-			utenteQuizIMPL.Save(utenteQuiz);
-			UtenteIMPL utenteIMPL = new UtenteIMPL();
-			candidaturaUser.setUtente(utenteIMPL.findById(utente.getId_user()));
+            utenteQuiz.setId_quiz(id_quiz);
+            utenteQuiz.setId_user(utente.getId_user());
+            utenteQuiz.setPunteggio(punteggio_quiz);
 
-			candidaturaUser.setData_candidatura(new Date(System.currentTimeMillis()));
-			Posizione posizione = new Posizione();
-			posizione.setId_posizione(id_posizione);
-			candidaturaUser.setPosizione(posizione);
+            utenteQuizIMPL.Save(utenteQuiz);
 
-			candidaturaUserIMPL.Save(candidaturaUser);
+            int id_posizione = (int) session.getAttribute("id_posizione");
+            candidaturaUser.setId_user(utente.getId_user());
+            candidaturaUser.setData_candidatura(new Date(System.currentTimeMillis()));
+            candidaturaUser.setId_posizione(id_posizione);
 
-			session.setAttribute("candidatura_fatta", true);
+            candidaturaUserIMPL.Save(candidaturaUser);
 
-			session.removeAttribute("quiz");
-			session.removeAttribute("nome_quiz");
-			session.removeAttribute("id_posizione");
+            session.setAttribute("candidatura_fatta", "true");
 
-			resp.sendRedirect(req.getContextPath() + "/home/homeuser.jsp");
+            session.removeAttribute("quiz");
+            session.removeAttribute("nome_quiz");
+            session.removeAttribute("id_posizione");
 
-		} else {
-			session.setAttribute("candidatura_fatta", false);
-			req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
-		}
-	}
+            resp.sendRedirect(req.getContextPath()+"/home/homeuser.jsp");
+
+        } else{
+            session.setAttribute("candidatura_fatta", "false");
+            req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
+        }
+    }
 }
 
 //todo se la candidatura è già stata inviata allora disabilitare il bottone candidati
