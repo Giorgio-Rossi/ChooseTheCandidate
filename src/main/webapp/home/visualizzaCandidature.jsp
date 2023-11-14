@@ -14,6 +14,8 @@
 	List<CandidaturaUser> candidature = candidatureIMPL.findCandidatureUtenteById(utenteLoggato.getId_user());
 	
 	System.out.println(candidature);
+
+
 %>
 
 <!DOCTYPE html>
@@ -46,7 +48,7 @@
 
 
 
-<body>
+<body style="background-color: #d4d4d4">
 <%@ include file="jsp/navbarHeader.jsp"%>
 
 <main style="margin-top: 150px">
@@ -59,7 +61,13 @@
     <div class="card mb-3 shadow-lg">
         <div class="card-body">
             <div class="d-flex flex-column flex-lg-row">
-                <span class="avatar avatar-text rounded-3 me-4 mb-2">FD</span>
+                <%
+                    String initials = "";
+                    for (String s : candidaturaUser.getPosizione().getRuolo().split(" ")) {
+                        initials+=s.charAt(0);
+                    }
+                %>
+                <span class="avatar avatar-text rounded-3 me-4 mb-2"><%=initials%></span>
                 <div class="row flex-fill">
                     <div class="col-sm-5">
                         <h4 class="h5"><%=candidaturaUser.getPosizione().getRuolo()%></h4>
