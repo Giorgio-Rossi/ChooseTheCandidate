@@ -10,15 +10,17 @@
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 	PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
-	ArrayList<Posizione> posizioni = new ArrayList<>();
+	ArrayList<Posizione> posizioni;
 
 	UtenteQuizIMPL utenteQuizIMPL = new UtenteQuizIMPL();
 	Utente utente = (Utente) session.getAttribute("utente");
 
-	CandidaturaIMPL candidaturaIMPL = new CandidaturaIMPL();
-	List<CandidaturaUser> candidaturaUsers = candidaturaIMPL.findCandidatureUtenteById(utente.getId_user());
+	//CandidaturaIMPL candidaturaIMPL = new CandidaturaIMPL();
+	//List<CandidaturaUser> candidaturaUsers = candidaturaIMPL.findCandidatureUtenteById(utente.getId_user());
 
-	System.out.println(candidaturaUsers);
+	//System.out.println(candidaturaUsers);
+
+	CandidaturaUserIMPL candidaturaUserIMPL = new CandidaturaUserIMPL();
 
 	ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
 	ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
@@ -182,8 +184,8 @@
 
 												<div class="mt-3">
 													<%
-														System.out.println(utenteQuizIMPL.getUtenteQuizById(p.getQuiz().getId_quiz(), utente));
-														if(true){
+														//System.out.println(utenteQuizIMPL.getUtenteQuizById(p.getQuiz().getId_quiz(), utente));
+														if(candidaturaUserIMPL.getCandidaturaUserById(p.getId_posizione(),utente.getId_user())==null){
 													%>
 													<form action="${pageContext.request.contextPath}/EffettuaCandidatura" method="post">
 														<button type="submit" class="btn btn-primary" name="id_quiz" value="<%=p.getQuiz().getId_quiz()+" "+p.getId_posizione()%>">Candidati</button>
@@ -192,7 +194,7 @@
 													<%
 														}else{
 													%>
-													<button type="submit" class="btn btn-primary" disabled name="id_quiz">Candidatura già inviata</button>
+													<button type="submit" class="btn btn-warning" disabled name="id_quiz">Candidatura già inviata</button>
 													<%
 														};
 													%>
