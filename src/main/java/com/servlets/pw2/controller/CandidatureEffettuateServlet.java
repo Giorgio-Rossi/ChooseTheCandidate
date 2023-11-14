@@ -16,35 +16,24 @@ import com.candidatoDB.pw2.interfaces.impl.CandidaturaIMPL;
 
 @WebServlet("/findCandidature")
 public class CandidatureEffettuateServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        HttpSession session = request.getSession();
-        Utente utente = (Utente) session.getAttribute("utente");
+		HttpSession session = request.getSession();
+		Utente utente = (Utente) session.getAttribute("utente");
 
-      
-        if (utente != null) {
-            int userId = utente.getId_user();
+		int userId = utente.getId_user();
 
-            CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
-            List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtenteById(userId);
+		CandidaturaIMPL candidaturaUserIMPL = new CandidaturaIMPL();
+		List<CandidaturaUser> candidature = candidaturaUserIMPL.findCandidatureUtenteById(userId);
 
-           
-            request.setAttribute("findCandidature", candidature);
+		request.setAttribute("findCandidature", candidature);
 
-            System.out.println("Le candidature sono queste: " + candidature);
-        } else {
-     
-            response.sendRedirect(request.getContextPath() + "/login.jsp");
-            return; 
-        }
+		System.out.println("Le candidature sono queste: " + candidature);
 
-    
-        request.getRequestDispatcher("/visualizzaCandidature.jsp").forward(request, response);
-    }
+		request.getRequestDispatcher("/visualizzaCandidature.jsp").forward(request, response);
+
+	}
 }
-
-
-

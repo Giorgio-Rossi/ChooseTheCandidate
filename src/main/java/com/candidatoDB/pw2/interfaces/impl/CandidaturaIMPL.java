@@ -103,13 +103,13 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 	    PreparedStatement preparedStatement = null;
 	    ResultSet resultSet = null;
 	    List<CandidaturaUser> candidature = new ArrayList<>();
+	    String sql = "SELECT cu.id_candidatura_user, cu.id_posizione, cu.id_user, cu.data_candidatura " +
+                "FROM CandidaturaUser cu " +
+                "INNER JOIN Utente u ON cu.id_user = u.id_user " +
+                "INNER JOIN Posizione p ON cu.id_posizione = p.id_posizione " +
+                "WHERE u.id_user = ?";
 
 	    try {
-	        String sql = "SELECT cu.id_candidatura_user, cu.id_posizione, cu.id_user, cu.data_candidatura " +
-	                     "FROM CandidaturaUser cu " +
-	                     "INNER JOIN Utente u ON cu.id_user = u.id_user " +
-	                     "INNER JOIN Posizione p ON cu.id_posizione = p.id_posizione " +
-	                     "WHERE u.id_user = ?";
 	        preparedStatement = connection.getConnection().prepareStatement(sql);
 	        preparedStatement.setInt(1, id_user);
 
@@ -122,16 +122,18 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 	            candidatura.setId_candidatura(resultSet.getInt("id_candidatura_user"));
 	            candidatura.setId_posizione(resultSet.getInt("id_posizione"));
 	            candidatura.setId_user(resultSet.getInt("id_user"));
-
-	            java.sql.Timestamp dataCandidatura = resultSet.getTimestamp("data_candidatura");
-	            if (dataCandidatura != null) {
-	                candidatura.setData_candidatura(dataCandidatura);
-	            }
+	            candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate("data_candidatura").getTime()));
+	          
 
 	            candidature.add(candidatura);
 
 	            System.out.println("Aggiunta " + candidatura);
 	        }
+
+	        if (candidature.isEmpty()) {
+	            System.out.println("Nessuna candidatura trovata per l'utente con ID: " + id_user);
+	        }
+
 	    } catch (SQLException e) {
 	        e.printStackTrace();
 	    } finally {
@@ -139,6 +141,7 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 	        DBUtil.close(preparedStatement);
 	        // DBUtil.close(connection);
 	    }
+
 
 	    return candidature;
 	}
