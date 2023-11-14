@@ -26,11 +26,11 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
+        session.setAttribute("candidatura_fatta", null);
+
         Integer id_quiz = (Integer) session.getAttribute("id_quiz");
 
         Utente utente = (Utente) session.getAttribute("utente");
-
-        int id_posizione = (int) session.getAttribute("id_posizione");
 
         CandidaturaUser candidaturaUser = new CandidaturaUser();
 
@@ -70,13 +70,14 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
 
             utenteQuizIMPL.Save(utenteQuiz);
 
+            int id_posizione = (int) session.getAttribute("id_posizione");
             candidaturaUser.setId_user(utente.getId_user());
             candidaturaUser.setData_candidatura(new Date(System.currentTimeMillis()));
             candidaturaUser.setId_posizione(id_posizione);
 
             candidaturaUserIMPL.Save(candidaturaUser);
 
-            session.setAttribute("candidatura_fatta", true);
+            session.setAttribute("candidatura_fatta", "true");
 
             session.removeAttribute("quiz");
             session.removeAttribute("nome_quiz");
@@ -85,7 +86,7 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
             resp.sendRedirect(req.getContextPath()+"/home/homeuser.jsp");
 
         } else{
-            session.setAttribute("candidatura_fatta", false);
+            session.setAttribute("candidatura_fatta", "false");
             req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
         }
     }
