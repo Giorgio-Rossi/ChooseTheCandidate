@@ -169,3 +169,6 @@ alter table dbo.esperienza ALTER COLUMN data_inizio date
 alter table dbo.esperienza ALTER COLUMN data_fine date
 alter table dbo.posizione ALTER COLUMN data_inserimento date
 
+alter table UtenteQuiz
+    add data_inserimento date;
+
