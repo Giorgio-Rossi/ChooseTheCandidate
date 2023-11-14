@@ -95,39 +95,45 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
 	@Override
 	public List<CandidaturaUser> findCandidatureUtenteById(int id_user) {
-		List<CandidaturaUser> candidature = new ArrayList<>();
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-		String sql = "SELECT id_candidatura_user, id_posizione, id_user, data_candidatura FROM CandidaturaUser WHERE id_user = ?";
+	    List<CandidaturaUser> candidature = new ArrayList<>();
+	    PreparedStatement preparedStatement = null;
+	    ResultSet resultSet = null;
+	    String sql = "SELECT * FROM CandidaturaUser WHERE id_user = ?";
 
-		try {
-			preparedStatement = connection.getConnection().prepareStatement(sql);
-			preparedStatement.setInt(1, id_user);
-			resultSet = preparedStatement.executeQuery();
+	    try {
+	        preparedStatement = connection.getConnection().prepareStatement(sql);
+	        preparedStatement.setInt(1, id_user);
+	        resultSet = preparedStatement.executeQuery();
 
-			while (resultSet.next()) {
-				CandidaturaUser candidatura = new CandidaturaUser();
-				candidatura.setId_candidatura(resultSet.getInt("id_candidatura_user"));
-				PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
-				candidatura.setPosizione(posizioneIMPL.getPosizioneById(resultSet.getInt("id_posizione")));
-				UtenteIMPL utenteIMPL = new UtenteIMPL();
-				candidatura.setUtente(utenteIMPL.findById(resultSet.getInt("id_user")));
+	        while (resultSet.next()) {
+	            CandidaturaUser candidatura = new CandidaturaUser();
+	            candidatura.setId_candidatura(resultSet.getInt("id_candidatura_user"));
+	            PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+	            candidatura.setPosizione(posizioneIMPL.getPosizioneById(resultSet.getInt("id_posizione")));
+	            UtenteIMPL utenteIMPL = new UtenteIMPL();
+	            candidatura.setUtente(utenteIMPL.findById(resultSet.getInt("id_user")));
+	            candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate("data_candidatura").getTime()));
+	            candidature.add(candidatura);
 
-				candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate("data_candidatura").getTime()));
-				candidature.add(candidatura);
-			}
+	            for (CandidaturaUser candidaturaUser : candidature) {
+	                System.out.println(candidaturaUser);
+				}
+	            System.out.println("Query " + sql + " eseguita correttamente");
+	        }
 
-			System.out.println("Query " + sql + " eseguita correttamente");
+	     
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			DBUtil.close(resultSet);
-			DBUtil.close(preparedStatement);
-		}
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        System.err.println("Errore durante l'esecuzione della query: " + e.getMessage());
+	    } finally {
+	        DBUtil.close(resultSet);
+	        DBUtil.close(preparedStatement);
+	    }
 
-		return candidature;
+	    return candidature;
 	}
+
 
 	
 
