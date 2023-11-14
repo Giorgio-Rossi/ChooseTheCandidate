@@ -1,6 +1,25 @@
+<%@page import="com.candidatoDB.pw2.interfaces.impl.CandidaturaIMPL"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="com.candidatoDB.pw2.entity.CandidaturaUser"%>
 <%@ page import="java.util.List"%>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteIMPL"%>
+<%@ page import="com.candidatoDB.pw2.entity.Utente"%>
+<%@ page import="java.util.ArrayList"%>
+<%
+	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+	UtenteIMPL utenteIMPL = new UtenteIMPL();
+	Utente utenteLoggato = (Utente) request.getSession().getAttribute("utente");
+	ArrayList<String> campi_vuoti = utenteIMPL.getEmptyParameters(utenteLoggato);
+	CandidaturaIMPL candidatureIMPL = new CandidaturaIMPL();
+	List<CandidaturaUser> candidature = candidatureIMPL.findCandidatureUtenteById(utenteLoggato.getId_user()));
+	
+	System.out.println(candidature);
+
+	}
+
+
+%>
+
 
 <!DOCTYPE html>
 <html>
