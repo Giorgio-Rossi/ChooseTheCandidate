@@ -91,4 +91,4 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
     }
 }
 
-//todo reinderizzare alla home con un modale di successo, se la candidatura è già stata inviata allora disabilitare il bottone candidati
+//todo se la candidatura è già stata inviata allora disabilitare il bottone candidati
