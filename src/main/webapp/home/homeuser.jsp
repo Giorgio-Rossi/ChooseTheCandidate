@@ -228,6 +228,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
             <span class="text-muted d-block"><strong>Ruolo:</strong> <%=posizione.getRuolo() != null ? posizione.getRuolo() : ""%></span>
         </div>
         <%
+        
                 }
             } else {
         %>
