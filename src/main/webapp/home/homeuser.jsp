@@ -303,6 +303,60 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 
 
 
+<div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-body text-center p-lg-4">
+				<i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+				<h4 class="text-success mt-3">Candidatura inviata correttamente!</h4>
+				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
+				<button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-body text-center p-lg-4">
+				<i class="bi bi-x-circle-fill" style="font-size: 5rem"></i>
+				<h4 class="text-danger mt-3">Hai già effettuato il quiz per questa candidatura!</h4>
+				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
+				<button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-body text-center p-lg-4">
+				<i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+				<h4 class="text-success mt-3">Candidatura inviata correttamente!</h4>
+				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
+				<button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-body text-center p-lg-4">
+				<i class="bi bi-x-circle-fill" style="font-size: 5rem"></i>
+				<h4 class="text-danger mt-3">Hai già effettuato il quiz per questa candidatura!</h4>
+				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
+				<button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 </body>
