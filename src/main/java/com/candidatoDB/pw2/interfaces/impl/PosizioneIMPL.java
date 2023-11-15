@@ -654,5 +654,30 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 		return posizioni;
 	}
+	
+	//-------------------------------ADMIN---------------------------------
+	
+	public void nuovaPosizione(Posizione posizione) {
+		String sql = "INSERT INTO Posizione(ruolo,id_categoria,id_citta,n_ammissioni,id_quiz,descrizione,stato,data_inserimento) VALUES(?,?,?,?,?,?,?,?)";
+		PreparedStatement statement = null;
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setString(1, posizione.getRuolo());
+			statement.setObject(2, posizione.getCategoria());
+			statement.setObject(3, posizione.getCitta());
+			statement.setInt(4, posizione.getN_ammissioni());
+			statement.setObject(5, posizione.getQuiz());
+			statement.setString(6, posizione.getDescrizione());
+			statement.setString(7, posizione.getStato());
+			statement.setDate(8, new java.sql.Date(posizione.getData_inserimento().getTime()));
+			statement.executeUpdate();
+
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(statement);
+		}
+	
+	}
 
 }
