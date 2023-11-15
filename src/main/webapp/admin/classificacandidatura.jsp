@@ -69,6 +69,11 @@
                             <div class="col border-right">
                                 <div class="h4 font-weight-bold mb-0"><i class="bi bi-1-circle-fill"></i></div>
                             </div>
+
+                            <div class="col-sm border-right">
+                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i> Scarica Curriculum</a>
+                            </div>
+
                         </div>
 
                         <div class="d-flex justify-content-center">
@@ -103,6 +108,11 @@
                             <div class="col border-right">
                                 <div class="h4 font-weight-bold mb-0"><i class="bi bi-1-circle-fill"></i></div>
                             </div>
+
+                            <div class="col-sm border-right">
+                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i> Scarica Curriculum</a>
+                            </div>
+
                         </div>
 
                         <div class="d-flex justify-content-center">
@@ -137,6 +147,11 @@
                             <div class="col border-right">
                                 <div class="h4 font-weight-bold mb-0"><i class="bi bi-1-circle-fill"></i></div>
                             </div>
+
+                            <div class="col-sm border-right">
+                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i> Scarica Curriculum</a>
+                            </div>
+
                         </div>
 
                         <div class="d-flex justify-content-center">
@@ -182,7 +197,15 @@
                             <div class="align-items-center row">
                                 <div class="col-auto">
                                     <div class="candidate-list-images">
+                                        <%if(utente.getFoto_profilo()!=null){
+                                        %>
                                         <img src=<%=request.getContextPath()+"/img/fotoprofili"+utente.getFoto_profilo()%> alt="" class="avatar-md img-thumbnail rounded-circle" />
+                                        <%}else {
+                                        %>
+                                        <i class="bi bi-person-circle avatar-md img-thumbnail rounded-circle"></i>
+                                        <%
+                                            }
+                                        %>
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
@@ -197,16 +220,17 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
-                                        <span class="badge bg-soft-secondary fs-14 mt-1">Leader</span><span class="badge bg-soft-secondary fs-14 mt-1">Manager</span><span class="badge bg-soft-secondary fs-14 mt-1">Developer</span>
-                                    </div>
+
+                                <div class="col border-right">
+                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3">5</strong>
+                                </div>
+                                <div class="col border-right">
+                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3">85</strong>
                                 </div>
 
                                 <div class="col">
                                     <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
-                                        <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i> Scarica Curriculum
-                                        </a>
+                                        <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i> Scarica Curriculum</a>
                                     </div>
                                 </div>
                             </div>

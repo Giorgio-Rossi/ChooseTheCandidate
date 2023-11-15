@@ -26,10 +26,10 @@ Esperienza esperienza = (Esperienza) session.getAttribute("esperienza");
 EsperienzaIMPL esperienzeUtente = new EsperienzaIMPL();
 List<Esperienza> esperienze = esperienzeUtente.getAllExperience(IdUtente.getId_user());
 
-<<<<<<< HEAD
+
 IstruzioneIMPL istruzioneUtente = new IstruzioneIMPL();
 List<Istruzione> istruzioni = istruzioneUtente.getAllInstruction(IdUtente.getId_user());
-=======
+
 	EsperienzaIMPL esperienzeUtente = new EsperienzaIMPL();
 	List<Esperienza> esperienze = esperienzeUtente.getAllExperience(IdUtente.getId_user());
   
@@ -47,7 +47,7 @@ List<Istruzione> istruzioni = istruzioneUtente.getAllInstruction(IdUtente.getId_
    
    
     //ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
->>>>>>> branch 'master' of https://github.com/Lollof00/PW2.git
+
 
 for (Esperienza test : esperienze) {
 	System.out.println(test + "");
@@ -132,14 +132,13 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 									;
 									%>
 
-<<<<<<< HEAD
-=======
-    <%
+							
+									<%
         for(Esperienza espe : esperienze){
     %>
->>>>>>> branch 'master' of https://github.com/Lollof00/PW2.git
+									>>>>>>> branch 'master' of https://github.com/Lollof00/PW2.git
 
-<<<<<<< HEAD
+									<<<<<<< HEAD
 									<div class="e-experience">
 										<div class="row justify-content-center">
 											<div class="col-12 col-sm-auto mb-3">
@@ -159,143 +158,149 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 												%>
 											</div>
 										</div>
-=======
-    <div class="card mb-3 shadow-lg">
-        <div class="card-body">
-            <div class="d-flex flex-column flex-lg-row">
-                <%
+										=======
+										<div class="card mb-3 shadow-lg">
+											<div class="card-body">
+												<div class="d-flex flex-column flex-lg-row">
+													<%
                     String initials = "";
                     for (String s : espe.getPosizione_lavorativa().split(" ")) {
                         initials+=s.charAt(0);
                     }
                 %>
-                <span class="avatar avatar-text rounded-3 me-4 mb-2"><%=initials%></span>
-                <div class="row flex-fill">
-                    <div class="col-sm-5">
-                        <h4 class="h5"><%=espe.getSettore()%></h4>
-                        <span class="badge bg-primary m-1"><%=espe.getAzienda()%></span><span class="badge bg-success"><i class="bi bi-calendar-check-fill mt-2"> <%=espe.getTipo_contratto()%></i></span>
-                    </div>
-                    <div class="col-sm-4 py-2">
-                        <span class="badge bg-info"><%=espe.getData_inizio()%></span>
-                        <span class="badge bg-info"><%=espe.getData_fine()%></span>
-                    </div>
-                    <%
+													<span class="avatar avatar-text rounded-3 me-4 mb-2"><%=initials%></span>
+													<div class="row flex-fill">
+														<div class="col-sm-5">
+															<h4 class="h5"><%=espe.getSettore()%></h4>
+															<span class="badge bg-primary m-1"><%=espe.getAzienda()%></span><span
+																class="badge bg-success"><i
+																class="bi bi-calendar-check-fill mt-2"> <%=espe.getTipo_contratto()%></i></span>
+														</div>
+														<div class="col-sm-4 py-2">
+															<span class="badge bg-info"><%=espe.getData_inizio()%></span>
+															<span class="badge bg-info"><%=espe.getData_fine()%></span>
+														</div>
+														<%
                         if(espe.getUtente()!= null) {
                     %>
-                    <div class="col-sm-3 text-lg-end">
-                        <span class="badge bg-success"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
-                    </div>
-                    <%
+														<div class="col-sm-3 text-lg-end">
+															<span class="badge bg-success"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
+														</div>
+														<%
                          }else{
                     %>
-                    <div class="col-sm-3 text-lg-end">
-                        <span class="badge bg-danger"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
-                    </div>
-                    <%
+														<div class="col-sm-3 text-lg-end">
+															<span class="badge bg-danger"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
+														</div>
+														<%
                         };
                     %>
->>>>>>> branch 'master' of https://github.com/Lollof00/PW2.git
+														>>>>>>> branch 'master' of
+														https://github.com/Lollof00/PW2.git
 
-										<div class="d-flex justify-content-center">
-											<label for="fileUpload"
-												class="file-upload btn btn-primary  rounded-pill shadow"><i
-												class="bi bi-upload"></i> Cambia il Cv <input
-												id="fileUpload" type="file" accept="image/*" name="cv"
-												form="modifica_curriculum" style="display: none"> </label>
-										</div>
+														<div class="d-flex justify-content-center">
+															<label for="fileUpload"
+																class="file-upload btn btn-primary  rounded-pill shadow"><i
+																class="bi bi-upload"></i> Cambia il Cv <input
+																id="fileUpload" type="file" accept="image/*" name="cv"
+																form="modifica_curriculum" style="display: none">
+															</label>
+														</div>
 
-<<<<<<< HEAD
+														<<<<<<< HEAD
 
 
-										<div class="tab-content pt-3">
-											<div class="tab-pane active">
-												<form class="form-curriculum" method="post"
-													action="${pageContext.request.contextPath}/curriculumUtente" id="modifica_curriculum" enctype='multipart/form-data'>
-													<div class="row">
-														<div class="col">
-															<div class="row">
-																<div class="col">
-																	<div class="form-group">
-																		<div class="container">
+														<div class="tab-content pt-3">
+															<div class="tab-pane active">
+																<form class="form-curriculum" method="post"
+																	action="${pageContext.request.contextPath}/curriculumUtente"
+																	id="modifica_curriculum" enctype='multipart/form-data'>
+																	<div class="row">
+																		<div class="col">
+																			<div class="row">
+																				<div class="col">
+																					<div class="form-group">
+																						<div class="container">
 
-																			<%
+																							<%
 																			for (Esperienza espe : esperienze) {
 																			%>
 
-																			<div class="card mb-3 shadow-lg">
-																				<div class="card-body">
-																					<div class="d-flex flex-column flex-lg-row">
-																						<%
+																							<div class="card mb-3 shadow-lg">
+																								<div class="card-body">
+																									<div class="d-flex flex-column flex-lg-row">
+																										<%
 																						String initials = "";
 																						for (String s : espe.getPosizione_lavorativa().split(" ")) {
 																							initials += s.charAt(0);
 																						}
 																						%>
-																						<span
-																							class="avatar avatar-text rounded-3 me-4 mb-2"><%=initials%></span>
-																						<div class="row flex-fill">
-																							<div class="col-sm-5">
-																								<h4 class="h5"><%=espe.getSettore()%></h4>
-																								<span class="badge bg-primary m-1"><%=espe.getAzienda()%></span><span
-																									class="badge bg-success"><i
-																									class="bi bi-calendar-check-fill mt-2"> <%=espe.getTipo_contratto()%></i></span>
-																							</div>
-																							<div class="col-sm-4 py-2">
-																								<span class="badge bg-info"><%=espe.getData_inizio()%></span>
-																								<span class="badge bg-info"><%=espe.getData_fine()%></span>
-																							</div>
-																							<%
+																										<span
+																											class="avatar avatar-text rounded-3 me-4 mb-2"><%=initials%></span>
+																										<div class="row flex-fill">
+																											<div class="col-sm-5">
+																												<h4 class="h5"><%=espe.getSettore()%></h4>
+																												<span class="badge bg-primary m-1"><%=espe.getAzienda()%></span><span
+																													class="badge bg-success"><i
+																													class="bi bi-calendar-check-fill mt-2">
+																														<%=espe.getTipo_contratto()%></i></span>
+																											</div>
+																											<div class="col-sm-4 py-2">
+																												<span class="badge bg-info"><%=espe.getData_inizio()%></span>
+																												<span class="badge bg-info"><%=espe.getData_fine()%></span>
+																											</div>
+																											<%
 																							if (espe.getUtente() != null) {
 																							%>
-																							<div class="col-sm-3 text-lg-end">
-																								<span class="badge bg-success"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
-																							</div>
-																							<%
+																											<div class="col-sm-3 text-lg-end">
+																												<span class="badge bg-success"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
+																											</div>
+																											<%
 																							} else {
 																							%>
-																							<div class="col-sm-3 text-lg-end">
-																								<span class="badge bg-danger"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
-																							</div>
-																							<%
+																											<div class="col-sm-3 text-lg-end">
+																												<span class="badge bg-danger"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
+																											</div>
+																											<%
 																							}
 																							;
 																							%>
-																								</div>
-																							
-																									</div>
-																								
-																									
-																								</div>
-																						</div>
-																						</form>
-																					</div>
-																				</div>
-																			</div>
-																			</div>
-																			</div>
-																			</div>
-																			</div>
-																			
+																										</div>
 
-																			<%
+																									</div>
+
+
+																								</div>
+																							</div>
+																</form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+									<%
 																			}
 																			%>
 
-																		</div>
-																	</div>
-														</div>
+								</div>
+							</div>
+						</div>
 </body>
 =======
-    <%
+<%
         }
     %>
-    
-         </div>
-                </div>
-		</div>
-		          </div>
-                  </div>
-                  </div>
-            </body>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
 >>>>>>> branch 'master' of https://github.com/Lollof00/PW2.git
 </html>
