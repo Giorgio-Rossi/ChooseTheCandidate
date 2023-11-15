@@ -65,7 +65,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 			<div class="row">
 
 
-				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
 					<div class="slide slide1">
 						<div class="content">
 							<div class="icon" style="background-color:white">
@@ -84,7 +84,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 					</div>
 				</div>
 
-				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
 					<div class="slide slide1">
 						<div class="content">
 							<div class="icon" style="background-color:white">
@@ -104,7 +104,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 				</div>
 
 
-				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
 					<div class="slide slide1">
 						<div class="content">
 							<div class="icon" style="background-color:white">
@@ -145,7 +145,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 					</div>
 				</div>
 
-				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
 					<div class="slide slide1">
 						<div class="content">
 							<div class="icon" style="background-color:white">
@@ -164,7 +164,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 					</div>
 				</div>
 
-				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
 					<div class="slide slide1">
 						<div class="content">
 							<div class="icon" style="background-color:white">
@@ -208,7 +208,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 					</div>
 				</div>
 
-				<div class="card col-lg-4 d-flex align-items-stretch" style="background-color: #d4d4d4; border: none">
+				<div class="card col-lg-4 d-flex align-items-stretch" style="background-color: rgba(0,0,0,0); border: none">
 					<div class="slide slide1">
 						<div class="content">
 							<div class="icon" style="background-color:white">
