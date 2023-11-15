@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.candidatoDB.pw2.entity.CandidaturaUser;
+import com.candidatoDB.pw2.entity.Citta;
 import com.candidatoDB.pw2.entity.Posizione;
 import com.candidatoDB.pw2.interfaces.CandidaturaDAO;
 import com.servlets.pw2.controller.DBUtil;
@@ -140,6 +141,7 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 
 	public Posizione getPosizioneByCandidaturaId(CandidaturaUser candidaturaUser) {
 		Posizione posizione = new Posizione();
+		Citta citta = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
 
@@ -154,8 +156,7 @@ public class CandidaturaIMPL implements CandidaturaDAO {
 				posizione.setId_posizione(resultSet.getInt(1));
 				posizione.setN_ammissioni(resultSet.getInt(2));
 				posizione.setDescrizione(resultSet.getString(3));
-
-				CittaIMPL cittaIMPL = new CittaIMPL();
+CittaIMPL cittaIMPL = new CittaIMPL();
 				posizione.setCitta(cittaIMPL.getCittaById(resultSet.getInt(4)));
 
 				CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
