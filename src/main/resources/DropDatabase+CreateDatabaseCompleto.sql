@@ -107,7 +107,7 @@ create table UtenteQuiz(
 id_utente_quiz int identity not null primary key,
 id_quiz int not null,
 id_user int not null,
-punteggio smallint not null,
+punteggio float not null,
  
 CONSTRAINT FK_Quiz_UtenteQuiz FOREIGN KEY (id_quiz) REFERENCES Quiz (id_quiz),
 CONSTRAINT FK_Utente_UtenteQuiz FOREIGN KEY (id_user) REFERENCES Utente (id_user)

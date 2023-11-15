@@ -70,7 +70,7 @@
 		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
 		crossorigin="anonymous"></script>
 
-<body style="background-color: #d4d4d4">
+<body style="background-color: #d4d4d4;" >
 
 
 
@@ -80,9 +80,16 @@
 
 
 
-		<h1>Ricerca Posizioni</h1>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light " style="position: fixed;
+			  top:85px;
+			  left:22%;
+			  right:70px;
+			  width: 70%;
+			  z-index:2;
 
-		<nav class="navbar navbar-expand-lg navbar-light bg-light rounded justify-content-center">
+			  justify-content:center;
+			  border-top:2px solid #0072bc;
+			  border-bottom:2px solid #0072bc;">
 			<a class="navbar-brand" href="${pageContext.request.contextPath}/home/ricercaPosizioni.jsp">Ricerca Posizioni</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -145,7 +152,7 @@
 		</nav>
 
 
-	<main style="margin-top: 58px">
+	<main  style="margin-top:10%">
 		<div class="container pt-3">
 
 
