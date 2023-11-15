@@ -41,7 +41,7 @@ public class SkillIMPL implements SkillDAO {
 		} finally {
 			DBUtil.close(resultSet);
 			DBUtil.close(statement);
-			DBUtil.close((Connection) connection);
+			//DBUtil.close((Connection) connection);
 		}
 
 	}
@@ -62,7 +62,7 @@ public class SkillIMPL implements SkillDAO {
 			System.err.println(e.getMessage());
 		} finally {
 			DBUtil.close(statement);
-			DBUtil.close((Connection) connection);
+			//DBUtil.close((Connection) connection);
 		}
 
 	}
@@ -81,7 +81,7 @@ public class SkillIMPL implements SkillDAO {
 			System.err.println(e.getMessage());
 		} finally {
 			DBUtil.close(statement);
-			DBUtil.close((Connection) connection);
+			//DBUtil.close((Connection) connection);
 		}
 
 	}
@@ -112,7 +112,7 @@ public class SkillIMPL implements SkillDAO {
 		} finally {
 			DBUtil.close(resultSet);
 			DBUtil.close(statement);
-			DBUtil.close((Connection) connection);
+			//DBUtil.close((Connection) connection);
 		}
 		return skills;
 	}
@@ -142,7 +142,7 @@ public class SkillIMPL implements SkillDAO {
 		} finally {
 			DBUtil.close(resultSet);
 			DBUtil.close(statement);
-			DBUtil.close((Connection) connection);
+			//DBUtil.close((Connection) connection);
 		}
 		return skill;
 	}

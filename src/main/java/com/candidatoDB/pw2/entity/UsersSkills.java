@@ -8,7 +8,8 @@ public class UsersSkills {
 
 	private int id_user_skills;
 	private int id_user;
-	private List<Skill> id_skills = new ArrayList<Skill>();
+
+	private int id_skill;
 	private boolean verificata;
 
 	
@@ -16,11 +17,11 @@ public class UsersSkills {
 		super();
 	}
 	
-	public UsersSkills(int id_user_skills, int id_user, List<Skill> id_skills, boolean verificata) {
+	public UsersSkills(int id_user_skills, int id_user, int id_skill, boolean verificata) {
 		super();
 		this.id_user_skills = id_user_skills;
 		this.id_user = id_user;
-		this.id_skills = id_skills;
+		this.id_skill = id_skill;
 		this.verificata = verificata;
 	}
 	public int getId_user_skills() {
@@ -35,11 +36,11 @@ public class UsersSkills {
 	public void setId_user(int id_user) {
 		this.id_user = id_user;
 	}
-	public List<Skill> getId_skills() {
-		return id_skills;
+	public int getId_skills() {
+		return id_skill;
 	}
-	public void setId_skills(List<Skill> id_skills) {
-		this.id_skills = id_skills;
+	public void setId_skill(int id_skill) {
+		this.id_skill = id_skill;
 	}
 	public boolean isVerificata() {
 		return verificata;
@@ -51,7 +52,7 @@ public class UsersSkills {
 
 	@Override
 	public String toString() {
-		return "UsersSkills [id_user_skills=" + id_user_skills + ", id_user=" + id_user + ", id_skills=" + id_skills
+		return "UsersSkills [id_user_skills=" + id_user_skills + ", id_user=" + id_user + ", id_skills=" + id_skill
 				+ ", verificata=" + verificata + "]";
 	}
 	

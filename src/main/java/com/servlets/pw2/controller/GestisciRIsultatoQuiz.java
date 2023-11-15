@@ -1,10 +1,7 @@
 package com.servlets.pw2.controller;
 
 import com.candidatoDB.pw2.entity.*;
-import com.candidatoDB.pw2.interfaces.impl.CandidaturaUserIMPL;
-import com.candidatoDB.pw2.interfaces.impl.PosizioneIMPL;
-import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
-import com.candidatoDB.pw2.interfaces.impl.UtenteQuizIMPL;
+import com.candidatoDB.pw2.interfaces.impl.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -65,10 +62,15 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
                     }
                 }
             }
+            QuizIMPL quizIMPL = new QuizIMPL();
+            Double punteggioOttenuto = (double) punteggio_quiz;
+            Integer punteggioTotale = quizIMPL.getPunteggioTotaleById(id_quiz);
+            Double percentuale = (punteggioOttenuto/punteggioTotale) * 100;
+
 
             utenteQuiz.setId_quiz(id_quiz);
             utenteQuiz.setId_user(utente.getId_user());
-            utenteQuiz.setPunteggio(punteggio_quiz);
+            utenteQuiz.setPunteggio(percentuale);
             utenteQuiz.setData_inserimento(new Date(System.currentTimeMillis()));
 
             utenteQuizIMPL.Save(utenteQuiz);

@@ -9,14 +9,14 @@ public class UtenteQuiz {
 	private int id_utente_quiz;
 	private int id_quiz;
 	private int id_user;
-	private int punteggio;
+	private double punteggio;
 
 	private Date data_inserimento;
 	
 	public UtenteQuiz() {
 		super();
 	}
-	public UtenteQuiz(int id_utente_quiz, int id_quiz, int id_user, int punteggio,  Date data_inserimento) {
+	public UtenteQuiz(int id_utente_quiz, int id_quiz, int id_user, double punteggio,  Date data_inserimento) {
 		super();
 		this.id_utente_quiz = id_utente_quiz;
 		this.id_quiz = id_quiz;
@@ -42,10 +42,10 @@ public class UtenteQuiz {
 	public void setId_user(int id_user) {
 		this.id_user = id_user;
 	}
-	public int getPunteggio() {
+	public double getPunteggio() {
 		return punteggio;
 	}
-	public void setPunteggio(int punteggio) {
+	public void setPunteggio(double punteggio) {
 		this.punteggio = punteggio;
 	}
 

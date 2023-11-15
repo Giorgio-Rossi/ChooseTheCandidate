@@ -24,7 +24,7 @@ public class GestionePosizioni extends HttpServlet {
 		posizioneImpl = new PosizioneIMPL();
     }
 	
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	/*protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String ruolo = req.getParameter("ruolo");
         int id_categoria = req.getp("id_categoria");
         
@@ -67,6 +67,6 @@ public class GestionePosizioni extends HttpServlet {
 	
 	public GestionePosizioni() {
 		// TODO Auto-generated constructor stub
-	}
+	}*/
 
 }

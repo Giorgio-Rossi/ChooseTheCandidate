@@ -28,7 +28,7 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
             statement = connection.getConnection().prepareStatement(sql);
             statement.setInt(1, utenteQuiz.getId_quiz());
             statement.setInt(2, utenteQuiz.getId_user());
-            statement.setInt(3, utenteQuiz.getPunteggio());
+            statement.setDouble(3, utenteQuiz.getPunteggio());
             statement.setDate(4, utenteQuiz.getData_inserimento());
 
             statement.executeUpdate();

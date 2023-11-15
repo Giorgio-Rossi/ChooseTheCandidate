@@ -65,16 +65,12 @@
                 <%
                     for(Quiz quiz: allUserQuizzes){
                         UtenteQuiz utenteQuiz = utenteQuizIMPL.getUtenteQuizById(quiz.getId_quiz(),utenteLoggato);
-                        System.out.println(utenteQuiz);
-                        Double punteggioOttenuto = (double) utenteQuiz.getPunteggio();
-                        Integer punteggioTotale = quizIMPL.getPunteggioTotaleById(quiz.getId_quiz());
-                        Double percentuale = (punteggioOttenuto/punteggioTotale) * 100;
                 %>
                 <div class="col-xl-3 col-lg-6 mb-4">
                 <div class="bg-white rounded-lg p-5 shadow">
                     <h1 class="h6 font-weight-bold text-center mb-4"><%=quiz.getDescrizione()%></h1>
 
-                    <div class="progress mx-auto" data-value='<%=percentuale%>'>
+                    <div class="progress mx-auto" data-value='<%=utenteQuiz.getPunteggio()%>'>
           <span class="progress-left">
                         <span class="progress-bar border-success"></span>
           </span>
@@ -82,7 +78,7 @@
                         <span class="progress-bar border-success"></span>
           </span>
                         <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-                            <div class="h2 font-weight-bold"><%=percentuale%><sup class="small">%</sup></div>
+                            <div class="h2 font-weight-bold"><%=utenteQuiz.getPunteggio()%><sup class="small">%</sup></div>
                         </div>
                     </div>
 

@@ -1,6 +1,12 @@
 <%@ page import="com.candidatoDB.pw2.entity.Utente" %>
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteIMPL" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteQuizIMPL" %>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.PosizioneIMPL" %>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteSkillsIMPL" %>
+<%@ page import="java.util.Comparator" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="com.candidatoDB.pw2.entity.UtenteQuiz" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -49,7 +55,7 @@
 
     ArrayList<Utente> all_user_posizione = utenteIMPL.getAllUserByIdCandidatura(Integer.parseInt(id_posizione));
 
-    System.out.println(all_user_posizione);
+
 %>
 
 <body style="background-color: #d4d4d4">
@@ -71,7 +77,7 @@
                             </div>
 
                             <div class="col-sm border-right">
-                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i> Scarica Curriculum</a>
+                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
                             </div>
 
                         </div>
@@ -94,7 +100,7 @@
                                 <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3">5</strong>
                             </div>
                             <div class="col-6 border-right">
-                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3">85</strong>
+                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3">35</strong>
                             </div>
                         </div>
 
@@ -110,7 +116,7 @@
                             </div>
 
                             <div class="col-sm border-right">
-                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i> Scarica Curriculum</a>
+                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
                             </div>
 
                         </div>
@@ -149,7 +155,7 @@
                             </div>
 
                             <div class="col-sm border-right">
-                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i> Scarica Curriculum</a>
+                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
                             </div>
 
                         </div>
@@ -189,7 +195,9 @@
     <div class="container">
 
                     <%
+                        HashMap<Utente, Double> utenti_punteggio = new HashMap<>();
                         for(Utente utente : all_user_posizione){
+                            utenti_punteggio.put(utente, new UtenteQuizIMPL().getUtenteQuizById(new PosizioneIMPL().getPosizioneById(Integer.parseInt(id_posizione)).getQuiz().getId_quiz(),utente).getPunteggio());
                     %>
 
                     <div class="candidate-list-box card mt-4">
@@ -222,15 +230,15 @@
                                 </div>
 
                                 <div class="col border-right">
-                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3">5</strong>
+                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3"><%= new UtenteSkillsIMPL().getAllUserSkillVerifiedOrNot(utente,true).size()%></strong>
                                 </div>
                                 <div class="col border-right">
-                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3">85</strong>
+                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3"><%=new UtenteQuizIMPL().getUtenteQuizById(new PosizioneIMPL().getPosizioneById(Integer.parseInt(id_posizione)).getQuiz().getId_quiz(),utente).getPunteggio()%>%</strong>
                                 </div>
 
                                 <div class="col">
                                     <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
-                                        <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i> Scarica Curriculum</a>
+                                        <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
                                     </div>
                                 </div>
                             </div>

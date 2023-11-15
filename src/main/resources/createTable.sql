@@ -179,4 +179,6 @@ ALTER TABLE Istruzione ALTER COLUMN descrizione_istruzione varchar(700) not null
 ALTER TABLE Utente ALTER COLUMN CV varchar(700); 
 ALTER TABLE Posizione ALTER COLUMN descrizione varchar(700);
 ALTER TABLE Quiz ALTER COLUMN descrizione varchar(700);
+ALTER TABLE UtenteQuiz ALTER COLUMN punteggio float
+
 
