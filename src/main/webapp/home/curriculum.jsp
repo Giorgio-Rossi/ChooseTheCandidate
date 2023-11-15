@@ -1,5 +1,6 @@
 <%@ page import="com.servlets.pw2.controller.ErrorManager" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <%@ page import="com.candidatoDB.pw2.entity.Utente" %>
 <%@ page import="com.candidatoDB.pw2.entity.Citta" %>
 <%@ page import="com.candidatoDB.pw2.entity.Regione" %>
@@ -12,24 +13,37 @@
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.CittaIMPL" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% 
+<% Utente utente = (Utente) session.getAttribute("utente");
 UtenteIMPL utenteIMPL = new UtenteIMPL();
-Utente utente = (Utente) session.getAttribute("utente");
+
+
+Utente IdUtente = utenteIMPL.findById(utente.getId_user());
+
+
 Esperienza esperienza = (Esperienza) session.getAttribute("esperienza");
 
 
-	ArrayList<Esperienza> esperienzeUtente = new EsperienzaIMPL().getAllExperience();
+	EsperienzaIMPL esperienzeUtente = new EsperienzaIMPL();
+	List<Esperienza> esperienze = esperienzeUtente.getAllExperience(IdUtente.getId_user());
   
-	ArrayList<Istruzione> istruzioneUtente = new IstruzioneIMPL().getAllInstruction();
+	IstruzioneIMPL istruzioneUtente = new IstruzioneIMPL();
+	List<Istruzione> istruzioni = istruzioneUtente.getAllInstruction(IdUtente.getId_user());
+		
    
-
-    System.out.println(utente.toString());
-
+	for(Esperienza test : esperienze){
+		System.out.println(test + "");
+	}
+	
+	for(Istruzione test2 : istruzioni){
+		System.out.println(test2 + "");
+	}
+   
    
     //ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
 
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 %>
+
 
 
 <html>
@@ -112,45 +126,63 @@ Esperienza esperienza = (Esperienza) session.getAttribute("esperienza");
                                         
                              
                                                    
-							    <div class="tab-content pt-3">
-                                        <div class="tab-pane active">
-                                            <form class="form" method="post" action="${pageContext.request.contextPath}/curriculumUtente" id="modifica_curriculum"  enctype='multipart/form-data'>
-                                                <div class="row">
-                                                            <div class="col">
-                                                                <div class="form-group">
-                                                                    <label>Posizione lavorativa</label>
-                                                                    
-                                                                	<%
-																		if(esperienza!=null){
-																	%>
-																	<span class="badge rounded-pill bg-success float-md-end mb-3 mb-sm-0"><%=esperienza.getPosizione_lavorativa()%></span>
-																	<%
-																	}else{
+							<main style="margin-top: 150px">
+<div class="container">
 
-																		%>
-																		<span class="badge rounded-pill bg-danger float-md-end mb-3 mb-sm-0"><%=esperienza.getPosizione_lavorativa()%></span>
-																		<input class="form-control" type="text" name="esperienza" placeholder=<%= esperienza.getPosizione_lavorativa() %> value=<%= esperienza.getPosizione_lavorativa()%> >>
-																		<%
-																			};
-																		%>
-																		
-																		
-                                                                </div>
-                                                            </div>
-													
-                   								</div>
-                   							</form>
-                   						</div>
-                   					</div>
-                   					
-                   							</div>
-                  
+    <%
+        for(Esperienza espe : esperienze){
+    %>
+
+    <div class="card mb-3 shadow-lg">
+        <div class="card-body">
+            <div class="d-flex flex-column flex-lg-row">
+                <%
+                    String initials = "";
+                    for (String s : espe.getPosizione_lavorativa().split(" ")) {
+                        initials+=s.charAt(0);
+                    }
+                %>
+                <span class="avatar avatar-text rounded-3 me-4 mb-2"><%=initials%></span>
+                <div class="row flex-fill">
+                    <div class="col-sm-5">
+                        <h4 class="h5"><%=espe.getSettore()%></h4>
+                        <span class="badge bg-primary m-1"><%=espe.getAzienda()%></span><span class="badge bg-success"><i class="bi bi-calendar-check-fill mt-2"> <%=espe.getTipo_contratto()%></i></span>
+                    </div>
+                    <div class="col-sm-4 py-2">
+                        <span class="badge bg-info"><%=espe.getData_inizio()%></span>
+                        <span class="badge bg-info"><%=espe.getData_fine()%></span>
+                    </div>
+                    <%
+                        if(espe.getUtente()!= null) {
+                    %>
+                    <div class="col-sm-3 text-lg-end">
+                        <span class="badge bg-success"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
+                    </div>
+                    <%
+                         }else{
+                    %>
+                    <div class="col-sm-3 text-lg-end">
+                        <span class="badge bg-danger"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
+                    </div>
+                    <%
+                        };
+                    %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%
+        }
+    %>
+    
+         </div>
+                </div>
+		</div>
+		
+		          </div>
                   </div>
                   </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-            
+            </body>
 </html>

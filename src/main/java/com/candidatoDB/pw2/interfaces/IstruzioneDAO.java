@@ -10,7 +10,7 @@ public interface IstruzioneDAO {
 
 	void update(Istruzione istruzioni);
 	
-	List<Istruzione> getAllInstruction();
+	List<Istruzione> getAllInstruction(int id_user);
 
 	void deleteIstruzioneUtente(Istruzione istruzione);
 }

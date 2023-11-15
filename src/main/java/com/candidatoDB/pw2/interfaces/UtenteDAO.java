@@ -1,5 +1,6 @@
 package com.candidatoDB.pw2.interfaces;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.candidatoDB.pw2.entity.*;
@@ -21,6 +22,10 @@ public interface UtenteDAO {
 	void deleteEsperienza ( Esperienza esperienza);
 
 	Citta getUserCitta(Utente utente);
-	
+
+	ArrayList<Utente> getTop3UserByIdCandidatura(int id_posizione);
+
+	//TODO METODO TEMPORANEO
+	ArrayList<Utente> getAllUserByIdCandidatura(int id_posizione);
 
 }

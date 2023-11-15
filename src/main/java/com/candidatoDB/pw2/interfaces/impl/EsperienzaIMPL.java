@@ -88,7 +88,7 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 		
 	}
 	
-	public ArrayList<Esperienza> getAllExperience() {
+	public List<Esperienza> getAllExperience(int id_user) {
 		ArrayList<Esperienza> esperienze1 = new ArrayList<Esperienza>();
 		String sql = "SELECT * FROM Esperienza where id_user=?";
 				
@@ -97,6 +97,7 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 		
 		try {
 			statement = connection.getConnection().prepareStatement(sql);
+			statement.setInt(1, id_user);
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				Esperienza esperienza = new Esperienza();

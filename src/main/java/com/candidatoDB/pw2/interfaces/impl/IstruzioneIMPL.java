@@ -76,14 +76,16 @@ public class IstruzioneIMPL implements IstruzioneDAO {
 	}
 
 	@Override
-	public ArrayList<Istruzione> getAllInstruction() {
+	public List<Istruzione> getAllInstruction(int id_user) {
 		ArrayList<Istruzione> istruzione1 = new ArrayList<Istruzione>();
 		String sql = "SELECT * FROM Istruzione where id_user=?";
 				
 		PreparedStatement statement = null;
+		
 		ResultSet resultSet = null;
 		try {
 			statement = connection.getConnection().prepareStatement(sql);
+			statement.setInt(1, id_user);
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				Istruzione istruzione = new Istruzione();
