@@ -12,8 +12,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.candidatoDB.pw2.entity.Posizione;
 import com.candidatoDB.pw2.entity.Utente;
+import com.candidatoDB.pw2.entity.Citta;
+import com.candidatoDB.pw2.entity.CategoriaPosizione;
+import com.candidatoDB.pw2.entity.Quiz;
+import com.candidatoDB.pw2.entity.Regione;
 import com.candidatoDB.pw2.interfaces.impl.PosizioneIMPL;
 import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
+import com.candidatoDB.pw2.interfaces.impl.CittaIMPL;
+import com.candidatoDB.pw2.interfaces.impl.CategoriaPosizioneIMPL;
+import com.candidatoDB.pw2.interfaces.impl.QuizIMPL;
 
 @WebServlet(name = "gestionePosizioni", value = "/gestionePosizioni")
 public class GestionePosizioni extends HttpServlet {
@@ -24,36 +31,45 @@ public class GestionePosizioni extends HttpServlet {
 		posizioneImpl = new PosizioneIMPL();
     }
 	
-	/*protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String ruolo = req.getParameter("ruolo");
-        int id_categoria = req.getp("id_categoria");
-        
-        double d = Double.parseDouble(aString);
-        
-        String password = req.getParameter("password");
-        String cognome = req.getParameter("cognome");
-        String telefono = req.getParameter("telefono");
-        String codF = req.getParameter("codice_fiscale");
-
+        int n_ammissioni = Integer.parseInt(req.getParameter("n_ammissioni"));
+        int id_quiz = Integer.parseInt(req.getParameter("id_quiz"));
+        String descrizione = req.getParameter("descrizione");
+        String stato = req.getParameter("stato");
         SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
-        String param = req.getParameter("data_nascita");
-        Date data_nascita;
-
+        String param = req.getParameter("data_inserimento");
+        Date data_inserimento;
         try {
-            data_nascita = in.parse(param);
+            data_inserimento = in.parse(param);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-        Utente utente = new Utente();
-        utente.setNome(nome);
-        utente.setCognome(cognome);
-        utente.setEmail(email);
-        utente.setTelefono(telefono);
-        utente.setCodice_fiscale(codF);
-        utente.setData_nascita(new java.sql.Date(data_nascita.getTime()));
-        utente.setPassword(password);
+        
+        Posizione posizione = new Posizione();
+        posizione.setRuolo(ruolo);
+        posizione.setN_ammissioni(n_ammissioni);
+        posizione.setDescrizione(descrizione);
+        posizione.setStato(stato);
+        posizione.setData_inserimento(new java.sql.Date(data_inserimento.getTime()));
 
-        if(!dbOperationsr.ChechUser(utente)) {
+        Integer id_citta = Integer.valueOf(req.getParameter("citta").split(" ", 3)[0]);
+        Integer id_regione = Integer.valueOf(req.getParameter("citta").split(" ", 3)[1]);
+        String nome_citta = req.getParameter("citta").split(" ", 3)[2];
+
+        CittaIMPL cittaIMPL = new CittaIMPL();
+        Regione regione = cittaIMPL.getRegione(id_regione);
+        Citta citta = new Citta(id_citta, regione, nome_citta);
+        posizione.setCitta(citta);
+        
+        Integer id_categoria = Integer.valueOf(req.getParameter("categoria").split(" ", 3)[0]);
+        String nome_categoria = req.getParameter("categoria").split(" ", 3)[2];
+
+        CategoriaPosizione Cat = new CategoriaPosizione(id_categoria, nome_categoria);
+        posizione.setCategoria(Cat);
+	}
+        
+       /* if(!dbOperationsr.ChechUser(utente)) {
             UtenteIMPL utenteIMPL = new UtenteIMPL();
             utenteIMPL.save(utente);
             ErrorManager.setSuccessMessage("Registrazione effettuata, fai il login!",req);
@@ -64,9 +80,9 @@ public class GestionePosizioni extends HttpServlet {
         }
 
     }
-	
+	*/
 	public GestionePosizioni() {
 		// TODO Auto-generated constructor stub
-	}*/
+	}
 
 }

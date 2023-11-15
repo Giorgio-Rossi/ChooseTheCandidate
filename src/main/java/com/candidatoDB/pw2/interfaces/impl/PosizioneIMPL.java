@@ -663,10 +663,10 @@ public class PosizioneIMPL implements PosizioneDAO {
 		try {
 			statement = connection.getConnection().prepareStatement(sql);
 			statement.setString(1, posizione.getRuolo());
-			statement.setObject(2, posizione.getCategoria());
-			statement.setObject(3, posizione.getCitta());
+			statement.setInt(2, posizione.getCategoria().getId_categoria());
+			statement.setInt(3, posizione.getCitta().getId_citta());
 			statement.setInt(4, posizione.getN_ammissioni());
-			statement.setObject(5, posizione.getQuiz());
+			statement.setInt(5, posizione.getQuiz().getId_quiz());
 			statement.setString(6, posizione.getDescrizione());
 			statement.setString(7, posizione.getStato());
 			statement.setDate(8, new java.sql.Date(posizione.getData_inserimento().getTime()));
