@@ -64,9 +64,8 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 		String sql = "UPDATE Esperienza SET id_esperienza=?,anni=?,descrizione_attivita=?,id_user=?,azienda=?,data_inizio=?,data_fine=?,ral=?,tipo_contratto=?,settore=?,posizione_lavorativa=?";
 		PreparedStatement statement = null;
 
-		Statement connection;
 		try {
-			//statement = connection.getConnection().prepareStatement(sql, new String[] { "id" });
+			statement = connection.getConnection().prepareStatement(sql, new String[] { "id" });
 			statement.setInt(1, esperienze.getId_esperienza());
 			statement.setInt(2, esperienze.getAnni());
 			statement.setString(3, esperienze.getDescrizione_attivita());
