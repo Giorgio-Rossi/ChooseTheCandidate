@@ -2,6 +2,8 @@ package com.servlets.pw2.controller;
 
 import com.candidatoDB.pw2.entity.*;
 import com.candidatoDB.pw2.interfaces.impl.CandidaturaUserIMPL;
+import com.candidatoDB.pw2.interfaces.impl.PosizioneIMPL;
+import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
 import com.candidatoDB.pw2.interfaces.impl.UtenteQuizIMPL;
 
 import javax.servlet.ServletException;
@@ -26,11 +28,11 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
+        session.setAttribute("candidatura_fatta", null);
+
         Integer id_quiz = (Integer) session.getAttribute("id_quiz");
 
         Utente utente = (Utente) session.getAttribute("utente");
-
-        int id_posizione = (int) session.getAttribute("id_posizione");
 
         CandidaturaUser candidaturaUser = new CandidaturaUser();
 
@@ -67,16 +69,20 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
             utenteQuiz.setId_quiz(id_quiz);
             utenteQuiz.setId_user(utente.getId_user());
             utenteQuiz.setPunteggio(punteggio_quiz);
+            utenteQuiz.setData_inserimento(new Date(System.currentTimeMillis()));
 
             utenteQuizIMPL.Save(utenteQuiz);
 
-            candidaturaUser.setId_user(utente.getId_user());
+            int id_posizione = (int) session.getAttribute("id_posizione");
+            UtenteIMPL utenteIMPL = new UtenteIMPL();
+            PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+            candidaturaUser.setUtente(utenteIMPL.findById(utente.getId_user()));
             candidaturaUser.setData_candidatura(new Date(System.currentTimeMillis()));
-            candidaturaUser.setId_posizione(id_posizione);
+            candidaturaUser.setPosizione(posizioneIMPL.getPosizioneById(id_posizione));
 
             candidaturaUserIMPL.Save(candidaturaUser);
 
-            session.setAttribute("candidatura_fatta", true);
+            session.setAttribute("candidatura_fatta", "true");
 
             session.removeAttribute("quiz");
             session.removeAttribute("nome_quiz");
@@ -85,10 +91,10 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
             resp.sendRedirect(req.getContextPath()+"/home/homeuser.jsp");
 
         } else{
-            session.setAttribute("candidatura_fatta", false);
+            session.setAttribute("candidatura_fatta", "false");
             req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
         }
     }
 }
 
-//todo reinderizzare alla home con un modale di successo, se la candidatura è già stata inviata allora disabilitare il bottone candidati
+//todo se la candidatura è già stata inviata allora disabilitare il bottone candidati

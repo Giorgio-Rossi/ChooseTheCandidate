@@ -1,0 +1,717 @@
+Subject: [PATCH] Quiz completato
+---
+Index: src/main/java/com/servlets/pw2/controller/GestisciRIsultatoQuiz.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/servlets/pw2/controller/GestisciRIsultatoQuiz.java b/src/main/java/com/servlets/pw2/controller/GestisciRIsultatoQuiz.java
+--- a/src/main/java/com/servlets/pw2/controller/GestisciRIsultatoQuiz.java	(revision d3526a3cafaf8acd30ae416932d616733cf33c87)
++++ b/src/main/java/com/servlets/pw2/controller/GestisciRIsultatoQuiz.java	(date 1699889791333)
+@@ -2,6 +2,9 @@
+ 
+ import com.candidatoDB.pw2.entity.Domanda;
+ import com.candidatoDB.pw2.entity.RisposteDomande;
++import com.candidatoDB.pw2.entity.Utente;
++import com.candidatoDB.pw2.entity.UtenteQuiz;
++import com.candidatoDB.pw2.interfaces.impl.UtenteQuizIMPL;
+ 
+ import javax.servlet.ServletException;
+ import javax.servlet.annotation.WebServlet;
+@@ -23,35 +26,55 @@
+     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+         HttpSession session = req.getSession();
+ 
+-        String id_quiz = (String) session.getAttribute("id_quiz");
++        Integer id_quiz = (Integer) session.getAttribute("id_quiz");
++
++        Utente utente = (Utente) session.getAttribute("utente");
++
++        UtenteQuizIMPL utenteQuizIMPL = new UtenteQuizIMPL();
++
++        System.out.println(utenteQuizIMPL.getUtenteQuizById(id_quiz, utente));
++
++        if(utenteQuizIMPL.getUtenteQuizById(id_quiz, utente) == null) {
++
++            UtenteQuiz utenteQuiz = new UtenteQuiz();
+ 
+-        HashMap<Domanda, ArrayList<RisposteDomande>> risposte = (HashMap<Domanda, ArrayList<RisposteDomande>>) session.getAttribute("quiz");
++            HashMap<Domanda, ArrayList<RisposteDomande>> risposte = (HashMap<Domanda, ArrayList<RisposteDomande>>) session.getAttribute("quiz");
+ 
+-        //HashMap<String,Integer> rispsota_punteggio = new HashMap<>();
+-
+-        Integer punteggio_quiz = 0;
++            Integer punteggio_quiz = 0;
+ 
+-        System.out.println(risposte);
+-
+-        int i=0;
+-        for(Map.Entry<Domanda,ArrayList<RisposteDomande>> entry : risposte.entrySet() ){
++            int i = 0;
++            for (Map.Entry<Domanda, ArrayList<RisposteDomande>> entry : risposte.entrySet()) {
+ 
+-            String rispsota = (req.getParameter(String.valueOf(i++)));
++                String rispsota = (req.getParameter(String.valueOf(i++)));
+ 
+ 
+-            if(rispsota!=null){
+-                for (RisposteDomande r : entry.getValue()){
+-                    System.out.println(entry.getKey().getTesto());
+-                    if(r.checkSceltaCorretta(rispsota)){
+-                        System.out.println("coretto");
+-                        punteggio_quiz+= entry.getKey().getPunteggio();
+-                    }
+-                }
+-            }
+-        }
++                if (rispsota != null) {
++                    for (RisposteDomande r : entry.getValue()) {
++                        if (r.checkSceltaCorretta(rispsota)) {
++                            System.out.println("coretto");
++                            punteggio_quiz += entry.getKey().getPunteggio();
++                        }
++                    }
++                }
++            }
+ 
++            utenteQuiz.setId_quiz(id_quiz);
++            utenteQuiz.setId_user(utente.getId_user());
++            utenteQuiz.setPunteggio(punteggio_quiz);
++
++            utenteQuizIMPL.Save(utenteQuiz);
++
++            session.setAttribute("candidatura_fatta", true);
++
++            session.removeAttribute("quiz");
++            session.removeAttribute("nome_quiz");
+ 
+-        System.out.println(punteggio_quiz);
++            resp.sendRedirect(req.getContextPath()+"/home/homeuser.jsp");
++
++        } else{
++            session.setAttribute("candidatura_fatta", false);
++            req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
++        }
+     }
+ }
+ 
+Index: src/main/java/com/candidatoDB/pw2/interfaces/UtenteQuizDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/candidatoDB/pw2/interfaces/UtenteQuizDAO.java b/src/main/java/com/candidatoDB/pw2/interfaces/UtenteQuizDAO.java
+--- a/src/main/java/com/candidatoDB/pw2/interfaces/UtenteQuizDAO.java	(revision d3526a3cafaf8acd30ae416932d616733cf33c87)
++++ b/src/main/java/com/candidatoDB/pw2/interfaces/UtenteQuizDAO.java	(date 1699886036431)
+@@ -1,6 +1,12 @@
+ package com.candidatoDB.pw2.interfaces;
+ 
++import com.candidatoDB.pw2.entity.Quiz;
++import com.candidatoDB.pw2.entity.Utente;
++import com.candidatoDB.pw2.entity.UtenteQuiz;
++
+ public interface UtenteQuizDAO {
+ 
+-    void Save(int id_utente_quiz, int id_quiz, int id_user, int punteggio);
++    void Save(UtenteQuiz utenteQuiz);
++
++    UtenteQuiz getUtenteQuizById(int id_quiz, Utente utente);
+ }
+Index: src/main/webapp/home/homeuser.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/home/homeuser.jsp b/src/main/webapp/home/homeuser.jsp
+--- a/src/main/webapp/home/homeuser.jsp	(revision d3526a3cafaf8acd30ae416932d616733cf33c87)
++++ b/src/main/webapp/home/homeuser.jsp	(date 1699889043824)
+@@ -23,7 +23,7 @@
+ 	if(candidaturaRecente!=null) {
+ 		posizioneRecente = candidaturaIMPL.getPosizionebyCandidaturaId(candidaturaRecente);
+ 	}
+-// 	System.out.println(posizioneRecente);
++
+ 
+ %>
+ 
+@@ -41,12 +41,15 @@
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet"
+ 		  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+-	<link rel="stylesheet" type="text/css" media="screen" href="../css/card.css" />
++	<link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/css/card.css" />
++
+ </head>
+ <script
+ 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+ 		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+ 		crossorigin="anonymous"></script>
++<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
++
+ <link rel="stylesheet"
+ 	  href="${pageContext.request.contextPath}/css/homeuser.css">
+ 
+@@ -231,6 +234,59 @@
+ 
+ 
+ 
++<div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
++	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
++		<div class="modal-content">
++			<div class="modal-body text-center p-lg-4">
++				<i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
++				<h4 class="text-success mt-3">Candidatura inviata correttamente!</h4>
++				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
++				<button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
++			</div>
++		</div>
++	</div>
++</div>
++
++<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
++	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
++		<div class="modal-content">
++			<div class="modal-body text-center p-lg-4">
++				<i class="bi bi-x-circle-fill" style="font-size: 5rem"></i>
++				<h4 class="text-danger mt-3">Hai già effettuato il quiz per questa candidatura!</h4>
++				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
++				<button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
++			</div>
++		</div>
++	</div>
++</div>
++
++
++<%
++
++	boolean success = (boolean) session.getAttribute("candidatura_fatta");
++
++	if(success){
++%>
++<script>
++	var myModal = new bootstrap.Modal(document.getElementById('statusSuccessModal'))
++	myModal.show()
++	<% session.removeAttribute("candidatura_fatta");%>
++</script>
++<%
++	} else{
++%>
++<script>
++	var myModal = new bootstrap.Modal(document.getElementById('errorModal'))
++	myModal.show()
++	<% session.removeAttribute("candidatura_fatta");%>
++</script>
++<%
++	};
++%>
++
++
++
++
+ 
+ 
+ </body>
+Index: src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java b/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java
+--- a/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java	(revision d3526a3cafaf8acd30ae416932d616733cf33c87)
++++ b/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java	(date 1699890669742)
+@@ -1,10 +1,78 @@
+ package com.candidatoDB.pw2.interfaces.impl;
+ 
++import com.candidatoDB.pw2.entity.Quiz;
++import com.candidatoDB.pw2.entity.Utente;
++import com.candidatoDB.pw2.entity.UtenteQuiz;
+ import com.candidatoDB.pw2.interfaces.UtenteQuizDAO;
++import com.servlets.pw2.controller.DBUtil;
++import com.servlets.pw2.controller.SQLServerConnection;
++
++import java.sql.PreparedStatement;
++import java.sql.ResultSet;
++import java.sql.SQLException;
++import java.sql.Types;
+ 
+ public class UtenteQuizIMPL implements UtenteQuizDAO {
++
++    private SQLServerConnection connection = new SQLServerConnection();
++
++    public UtenteQuizIMPL() {
++        connection.Connect();
++    }
+     @Override
+-    public void Save(int id_utente_quiz, int id_quiz, int id_user, int punteggio) {
++    public void Save(UtenteQuiz utenteQuiz) {
++        String sql = "INSERT INTO UtenteQuiz(id_quiz, id_user, punteggio) VALUES(?,?,?)";
++        PreparedStatement statement = null;
++        try {
++            statement = connection.getConnection().prepareStatement(sql);
++            statement.setInt(1, utenteQuiz.getId_quiz());
++            statement.setInt(2, utenteQuiz.getId_user());
++            statement.setInt(3, utenteQuiz.getPunteggio());
++
++            statement.executeUpdate();
++            //resultSet = statement.getGeneratedKeys();
++
++        } catch (SQLException e) {
++            System.err.println(e.getMessage());
++        } finally {
++            //DBUtil.close(resultSet);
++            DBUtil.close(statement);
++            //DBUtil.close((Connection) connection);
++        }
++    }
++
++    @Override
++    public UtenteQuiz getUtenteQuizById(int id_quiz, Utente utente) {
++        UtenteQuiz utenteQuiz = null;
++        String sql = "SELECT * from UtenteQuiz where id_quiz=? and id_user=?";
++
++        PreparedStatement statement = null;
++        ResultSet resultSet = null;
++        try {
++            statement = connection.getConnection().prepareStatement(sql);
++            statement.setInt(1, id_quiz);
++            statement.setInt(2, utente.getId_user());
+ 
++            resultSet = statement.executeQuery();
++
++            if(!resultSet.isBeforeFirst()){
++                return null;
++            }else {
++                utenteQuiz = new UtenteQuiz();
++
++                while (resultSet.next()) {
++                    utenteQuiz.setId_quiz(resultSet.getInt("id_quiz"));
++                    utenteQuiz.setId_user(resultSet.getInt("id_user"));
++                    utenteQuiz.setPunteggio(resultSet.getInt("punteggio"));
++                }
++            }
++        } catch (SQLException e) {
++            System.err.println(e.getMessage());
++        } finally {
++            DBUtil.close(resultSet);
++            DBUtil.close(statement);
++            //DBUtil.close(connection.getConnection());
++        }
++        return utenteQuiz;
+     }
+ }
+Index: target/PW2-1.0-SNAPSHOT/home/homeuser.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/PW2-1.0-SNAPSHOT/home/homeuser.jsp b/target/PW2-1.0-SNAPSHOT/home/homeuser.jsp
+--- a/target/PW2-1.0-SNAPSHOT/home/homeuser.jsp	(revision d3526a3cafaf8acd30ae416932d616733cf33c87)
++++ b/target/PW2-1.0-SNAPSHOT/home/homeuser.jsp	(date 1699889043824)
+@@ -23,7 +23,7 @@
+ 	if(candidaturaRecente!=null) {
+ 		posizioneRecente = candidaturaIMPL.getPosizionebyCandidaturaId(candidaturaRecente);
+ 	}
+-// 	System.out.println(posizioneRecente);
++
+ 
+ %>
+ 
+@@ -41,12 +41,15 @@
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet"
+ 		  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+-	<link rel="stylesheet" type="text/css" media="screen" href="../css/card.css" />
++	<link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/css/card.css" />
++
+ </head>
+ <script
+ 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+ 		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+ 		crossorigin="anonymous"></script>
++<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
++
+ <link rel="stylesheet"
+ 	  href="${pageContext.request.contextPath}/css/homeuser.css">
+ 
+@@ -231,6 +234,59 @@
+ 
+ 
+ 
++<div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
++	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
++		<div class="modal-content">
++			<div class="modal-body text-center p-lg-4">
++				<i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
++				<h4 class="text-success mt-3">Candidatura inviata correttamente!</h4>
++				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
++				<button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
++			</div>
++		</div>
++	</div>
++</div>
++
++<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
++	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
++		<div class="modal-content">
++			<div class="modal-body text-center p-lg-4">
++				<i class="bi bi-x-circle-fill" style="font-size: 5rem"></i>
++				<h4 class="text-danger mt-3">Hai già effettuato il quiz per questa candidatura!</h4>
++				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
++				<button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
++			</div>
++		</div>
++	</div>
++</div>
++
++
++<%
++
++	boolean success = (boolean) session.getAttribute("candidatura_fatta");
++
++	if(success){
++%>
++<script>
++	var myModal = new bootstrap.Modal(document.getElementById('statusSuccessModal'))
++	myModal.show()
++	<% session.removeAttribute("candidatura_fatta");%>
++</script>
++<%
++	} else{
++%>
++<script>
++	var myModal = new bootstrap.Modal(document.getElementById('errorModal'))
++	myModal.show()
++	<% session.removeAttribute("candidatura_fatta");%>
++</script>
++<%
++	};
++%>
++
++
++
++
+ 
+ 
+ </body>
+Index: src/main/webapp/home/ricercaPosizioni.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/home/ricercaPosizioni.jsp b/src/main/webapp/home/ricercaPosizioni.jsp
+--- a/src/main/webapp/home/ricercaPosizioni.jsp	(revision d3526a3cafaf8acd30ae416932d616733cf33c87)
++++ b/src/main/webapp/home/ricercaPosizioni.jsp	(date 1699885435887)
+@@ -7,6 +7,8 @@
+ <%@ page isELIgnored="false"%>
+ 
+ <%
++	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
++
+ 	PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+ 	ArrayList<Posizione> posizioni = new ArrayList<>();
+ 
+Index: src/main/webapp/home/quiz.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/home/quiz.jsp b/src/main/webapp/home/quiz.jsp
+--- a/src/main/webapp/home/quiz.jsp	(revision d3526a3cafaf8acd30ae416932d616733cf33c87)
++++ b/src/main/webapp/home/quiz.jsp	(date 1699886962044)
+@@ -23,10 +23,6 @@
+ 
+ </head>
+ 
+-<script type="text/javascript">
+-    window.history.forward(1);
+-</script>
+-
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+ 
+ <script
+@@ -34,6 +30,7 @@
+         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+         crossorigin="anonymous"></script>
+ 
++
+ <body>
+ 
+ <%
+@@ -122,24 +119,6 @@
+     </form>
+ 
+ 
+-
+-
+-
+-
+-    <h3>Risultati</h3>
+-
+-    <div class="card">
+-        <div class="card-body">
+-            <p id="result">Nessun risultato</p>
+-
+-            <div class="progress mb-2">
+-                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+-            </div>
+-
+-            <button type="button" class="btn btn-success">Update</button>
+-        </div>
+-    </div>
+-
+ </div>
+ 
+ 
+Index: src/main/java/com/servlets/pw2/controller/EffettuaCandidatura.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/servlets/pw2/controller/EffettuaCandidatura.java b/src/main/java/com/servlets/pw2/controller/EffettuaCandidatura.java
+--- a/src/main/java/com/servlets/pw2/controller/EffettuaCandidatura.java	(revision d3526a3cafaf8acd30ae416932d616733cf33c87)
++++ b/src/main/java/com/servlets/pw2/controller/EffettuaCandidatura.java	(date 1699882474264)
+@@ -49,4 +49,5 @@
+         req.getRequestDispatcher("/home/quiz.jsp").forward(req, resp);
+ 
+     }
++
+ }
+diff --git a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/interfaces/impl/CandidaturaIMPL.class b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/interfaces/impl/CandidaturaIMPL.class
+index 7dd32e274db1a54dd4589052fe82f77791f83e0c..55a4f54a8fafe64042fbccb011e296962af30c77
+GIT binary patch
+literal 7195
+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
+
+diff --git a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/interfaces/PosizioneDAO.class b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/interfaces/PosizioneDAO.class
+index f26bd2ab1d788ffd3ea3c35b44c37728c0093f4f..c8dc72bbe7612eef209760ffc9059c160c56bc2e
+GIT binary patch
+literal 2204
+zc$~$R-A>d%6vxjXuzW1;E(!>Kp(1ueViRLx;u=j?LPF96!gA@&FdgcUIzy&Y&FUlg
+z47>;zK7bEJIK|zex|Ou-8uzNd>CE|`|2bznKhI8o0KhA7DlkT1gQ-t0qcRWyHEOf%
+z9)Ee^3Te1Lq>RVzu8PH1p(Nk*b}BGVpngO@Q#YbAbaxJpI5PyQF{he+Y<J%a(<SiI
+z@$-UmY4Ej+dkk$g{fjV(5s~YQ*t7^tcSI<uNi-+$;Tj>{Ty@0SXuU<LxqiZXiHa0~
+zHOIen)iGMgFfT*Dz_t=uG;G<Z;i1xk67a4z-rsl`C?`!ZY>W~fmIpj|GU!#clT)tY
+z-F+K<)DnIdGNW!XUbhMiY@r#GBMEe^4)z>nrjZp%X6TN7|Mw~->albvWYAv{yCT`+
+zEZs<8-pNV+^}u2Yty;hKTOz_QZcHF4JKZDd!O8#7E%U`T>UdvsPs&6x>_si)#)~4`
+zC+ypAjqtRl-JZ91`EN?7&;C+N|Ldr<@wa#b6->|8@vM#3?rsMJn$C8!m^gu%j!HD+
+zI3Rc}HnO+z^Hgq<0D&8j{;GI6PrxK{1!)YXkf&kB@+@){<}BYtu0h>$19={9S-y?D
+t0E?EFkng~<<rU<+aL@96<OhG~KZI4wkB}c{_zChFJjG`M>lZ7}&H;^_z#9Mn
+
+diff --git a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/interfaces/impl/PosizioneIMPL.class b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/interfaces/impl/PosizioneIMPL.class
+index 8d746936fed35110e2ca4e8b6cde2697405d6e1f..3d5f5870e03f8a84ac67dc3be9ca074eb867217a
+GIT binary patch
+literal 16798
+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
+
+diff --git a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/entity/RisposteDomande.class b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/entity/RisposteDomande.class
+index d06e4230c688d704971b2d3c772e848f851ce2d5..1ca7eefa4b01d3b1d5a5d2b6f6ae523bbc5b7393
+GIT binary patch
+literal 3306
+zc$~FX>r&fB7(I)Pjg5fBT*9ryA%xh5;KrtD8)9fNrE$Y0#grsmLS=aa3PN%$L5G<>
+zNc#@`(aywaC)4Qz^qD%Hek-ZAk>yN&v_I@UyZc?vcXq$E|NQ&y9{@hai!eGEQi^e!
+zR%E@bmSxLWSx#5J%cQw(sn$h$OEoKoY4H`~lni(nL53?Y<#Rc$$@)=xv-FZH7DKmM
+zKCC*XG6O3xgiVEOmVB2Xw$`vOT2)m)TBvVl>L^=B^9+3sI#i5mm0KcYloFI}4m1fp
+zP<7Q>WC$dZI}E|RQRYzu5R=f0K5}1Eb-r<STH@7hxukKy!BAvvN3N=3?k)zcW7TAs
+zU3>rfiTPoo&|1)cwNgm#M8Gg2p%Wp2#w3K%CC~>FA`ZGPA?lzT61p99Q-b86TM~K@
+zV(2~MR-yS+NGv*+UemK2OcaEOQ8F+7dt?KNq~D=M%_f_{M61c=K$&KbO!H2*c_-Vv
+zGvB;JlURMH=`zGjpT&OVm@6mFa=yNL+mB__(z0P_T-F!5@F|I%SbC7#Ur8pGa{J}v
+z_x7x8&sLIAEFc%ggG<-n2`FI^OAMW6MN_RdDfe2}M8wY}EF(`hn!h@eHPfT2(_IV6
+z-6+1mmtm|jTy3E);UPr7oy*!8-+aL^l-TvFkYuA1H`S7=@g~_KilJLoL(>fE+g*m9
+zq9rRQ>vF|yk{;(8)qAhUygcu+45ywLy(n7}ir8kjb}FCnyrC<y^+dIf3DH&4Evm2b
+z|8|e>tt}d7RfVsrqMQLwL(d5ZI#W`~GOemyS?AWVQ8uG^hP^OIkf}yURX;aQxEt9i
+zZ&g+-qk19g-e>rs`Se_CC*VU$rg3v>%`i^RD(|l5lH>M8h5MNA`COCM5P4bCimJsI
+z`a*cxg+m6-Q-6G~>E+I`*|_^`H(;g#vkf@kfc48HmKx7=jvX*a1zqRWye69_H^V5=
+z^YmT<g;8dhc(*Bajbn@(^y~%b`q8hMcsB`kh*#4dBkmY=$8L9&+_A^Dk5L5r>7ef`
+zG|SS+XzWb=imSiaX8rUXr4eKnB*Othl4FEH4ACe8Tyq2bPL?A4tO$@At6?}bTf=DT
+zP7UL!kzfrIsgcea;;E5P4U?(Ca1B$9JkvxPgo2bMLeYCEem}(?!7#4V_brTK24gmd
+zEhmr5K_DRjvyqUX!$v}cfQ^I<K^qAnI&CDR2-!%85hm|x+;%HT*QI!k;h*XhofH$k
+zG9-|6ofpYk5D3{4c!iuKpPP1sA;+p-M93|I{+dvstwctD_7Iu&B{GXUEktJM7`#MM
+z<TKNTh|o|Zp7SL#?j<tkOC;@2WZX+6Lq6FyL?SMc4}FPDc!}KeC34rF$b^^3eezjo
+zLnP`F$@mh9dx<Ri63O}#iF=7GlTW@4k#3jByf2YSFOgMWA|Lq^ne-C*ihLfmAtJd%
+z?$JMLC)O*n5&bq6$O$U3Pu}2uFf;Q8pZ$o=U~c?3tO$AmJ3-8D$PIFNObNcGu;18;
+z;!cQqqA?;N5_QlM@Ca)(t~<s3g&~oC!?$UtyiNPeSBFjirk(QYa6mrK+vw2aHtpm3
+zfjqSdQ>%;DLo}}F8F5|3O%cinf^Vs2G)~KrqeKi9dhf~@C){8>>E;WNNWx<WPiPcb
+R4(Rh7-`Y$WWb)=1`3EZ~a3}x(
+

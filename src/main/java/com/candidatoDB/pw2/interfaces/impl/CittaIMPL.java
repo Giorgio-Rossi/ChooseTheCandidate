@@ -1,6 +1,8 @@
 package com.candidatoDB.pw2.interfaces.impl;
 
+import com.candidatoDB.pw2.entity.CategoriaPosizione;
 import com.candidatoDB.pw2.entity.Citta;
+import com.candidatoDB.pw2.entity.Posizione;
 import com.candidatoDB.pw2.entity.Regione;
 import com.candidatoDB.pw2.interfaces.CittaDAO;
 import com.servlets.pw2.controller.DBUtil;
@@ -93,6 +95,38 @@ public class CittaIMPL implements CittaDAO {
         }
         return citta;
     }
+	@Override
+	public Citta findByNome(String nome) {
+		Citta citta = new Citta();
+		String sql = "SELECT * from Citta where nome = ?";
+
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setString(1, nome);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+
+				citta.setId_citta(resultSet.getInt("id_citta"));
+				RegioneIMPL regioneIMPL = new RegioneIMPL();
+						citta.setRegione(regioneIMPL.FindByID(resultSet.getInt("id_regione")));
+				citta.setNome(resultSet.getString("nome"));
+
+				
+System.out.println(citta);
+				System.out.println("Funziono");
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			// DBUtil.close(connection.getConnection());
+		}
+		return citta;
 
 
+}
+	
 }

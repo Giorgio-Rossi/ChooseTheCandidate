@@ -1,3 +1,4 @@
+<%@page import="com.candidatoDB.pw2.interfaces.impl.PosizioneIMPL"%>
 <%@ page import="com.candidatoDB.pw2.entity.Utente"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
@@ -21,9 +22,10 @@
 	Posizione posizioneRecente = null;
 	System.out.println(candidaturaRecente);
 	if(candidaturaRecente!=null) {
-		posizioneRecente = candidaturaIMPL.getPosizionebyCandidaturaId(candidaturaRecente);
+		posizioneRecente = candidaturaIMPL.getPosizioneByCandidaturaId(candidaturaRecente);
 	}
-
+PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.getId_citta());
 
 %>
 
@@ -61,38 +63,53 @@
 	<div class="container pt-3">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4 d-flex align-items-stretch "
-					 style="padding-top: 50px;">
-					<div class="card shadow-lg p-3 mb-5 bg-body rounded"
-						 style="width: 18rem;">
-						<i class="bi bi-card-list"
-						   style="font-size: 10rem; text-align: center"></i>
-						<div class="card-body">
-							<h5 class="card-title" style="text-align: center">
-								<a class="btn btn-info" href="../login.jsp">Statistiche Quiz</a>
-							</h5>
+
+
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+					<div class="slide slide1">
+						<div class="content">
+							<div class="icon" style="background-color:white">
+								<i class="bi bi-card-list"
+								   style="font-size: 10rem;text-align: center"><a href="statistichequiz.jsp" class="btn btn-info m-0"style="font-size: 1rem">Statistiche Quiz</a></i>
+							</div>
+						</div>
+					</div>
+					<div class="slide slide2" style="background-color:#0072BC">
+						<div class="content">
+							<h3>
+								Hello there!
+							</h3>
+							<p>Trust yourself and keep going.</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 d-flex align-items-stretch"
-					 style="padding-top: 50px">
-					<div class="card shadow-lg p-3 mb-5 bg-body rounded"
-						 style="width: 18rem;">
-						<i class="bi bi-clipboard-data"
-						   style="font-size: 10rem; text-align: center"></i>
-						<div class="card-body">
-							<h5 class="card-title" style="text-align: center">
-								<a class="btn btn-info" href="../login.jsp">Skills Verificate</a>
-							</h5>
+
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+					<div class="slide slide1">
+						<div class="content">
+							<div class="icon" style="background-color:white">
+								<i class="bi bi-clipboard-data"
+								   style="font-size: 10rem;text-align: center"><h1 class="btn btn-info m-1"style="font-size: 1rem">Skills Verificate</h1></i>
+							</div>
+						</div>
+					</div>
+					<div class="slide slide2" style="background-color:#0072BC">
+						<div class="content">
+							<h3>
+								Hello there!
+							</h3>
+							<p>Trust yourself and keep going.</p>
 						</div>
 					</div>
 				</div>
+
+
 				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
 					<div class="slide slide1">
 						<div class="content">
 							<div class="icon" style="background-color:white">
 								<i class="bi bi-person"
-								   style="font-size: 10rem;text-align: center"><h1 class="btn btn-info"style="font-size: 1rem">Completa il profilo</h1></i>
+								   style="font-size: 10rem;text-align: center"><a href="profilo.jsp" class="btn btn-info m-0"style="font-size: 1rem">Completa il profilo</a></i>
 							</div>
 						</div>
 					</div>
@@ -127,16 +144,17 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
 					<div class="slide slide1">
 						<div class="content">
-							<div class="icon">
+							<div class="icon" style="background-color:white">
 								<i class="bi bi-award"
 								   style="font-size: 10rem;text-align: center"><h1 style="font-size: 1rem">Miglior Candidatura</h1></i>
 							</div>
 						</div>
 					</div>
-					<div class="slide slide2">
+					<div class="slide slide2" style="background-color:#0072BC">
 						<div class="content">
 							<h3>
 								Hello there!
@@ -149,13 +167,13 @@
 				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
 					<div class="slide slide1">
 						<div class="content">
-							<div class="icon">
+							<div class="icon" style="background-color:white">
 								<i class="bi bi-receipt-cutoff"
 								   style="font-size: 9rem;text-align: center"><h1 style="font-size: 1rem">Candidatura più recente</h1></i>
 							</div>
 						</div>
 					</div>
-					<div class="slide slide2">
+					<div class="slide slide2" style="background-color:#0072BC">
 						<div class="card-body p-4">
 							<%
 								if(posizioneRecente!=null){
@@ -193,35 +211,35 @@
 				<div class="card col-lg-4 d-flex align-items-stretch" style="background-color: #d4d4d4; border: none">
 					<div class="slide slide1">
 						<div class="content">
-							<div class="icon">
+							<div class="icon" style="background-color:white">
 								<i class="bi bi-calendar" style="font-size: 10rem; text-align: center"><h1 style="font-size: 1rem">Annunci Recenti</h1></i>
 							</div>
 						</div>
 					</div>
-					<div class="slide slide2">
-						<div class="card-body p-4">
-							<%
-								List<Posizione> posizioniPiuRecenti = (List<Posizione>) request.getAttribute("posizioniPiuRecenti");
-								if (posizioniPiuRecenti != null && !posizioniPiuRecenti.isEmpty()) {
-									for (Posizione posizione : posizioniPiuRecenti) {
-							%>
-							<div class="mb-3">
-								<span class="text-muted d-block"><strong>Categoria:</strong> <%=posizione.getCategoria().getNome_categoria()%></span>
-								<span class="text-muted d-block"><strong>Stato:</strong> <%=posizione.getStato()%></span>
-								<span class="text-muted d-block"><strong>Ruolo:</strong> <%=posizione.getRuolo()%></span>
-							</div>
-							<%
-								}
-							} else {
-							%>
-							<div class="alert alert-info" role="alert">
-								<i class="bi bi-info-circle-fill m-1"></i> Nessun annuncio recente disponibile
-							</div>
-							<%
-								}
-							%>
-						</div>
-					</div>
+		<div class="slide slide2" style="background-color:#0072BC">
+    <div class="card-body p-4">
+        <%
+            if (!posizioniRecenti.isEmpty()) {
+                for (Posizione posizione : posizioniRecenti) {
+        %>
+        <div class="mb-3">
+            <span class="text-muted d-block"><strong>Categoria:</strong> <%=posizione.getCategoria() != null ? posizione.getCategoria().getNome_categoria() : ""%></span>
+            <span class="text-muted d-block"><strong>Stato:</strong> <%=posizione.getStato() != null ? posizione.getStato() : ""%></span>
+            <span class="text-muted d-block"><strong>Ruolo:</strong> <%=posizione.getRuolo() != null ? posizione.getRuolo() : ""%></span>
+        </div>
+        <%
+        
+                }
+            } else {
+        %>
+        <div class="alert alert-info" role="alert">
+            <i class="bi bi-info-circle-fill m-1"></i> Nessun annuncio recente disponibile
+        </div>
+        <%
+            }
+        %>
+    </div>
+</div>
 
 
 
@@ -263,9 +281,9 @@
 
 <%
 	//System.out.println(session.getAttribute("candidatura_fatta"));
-	boolean success =  session.getAttribute("candidatura_fatta") == null ?  null : (boolean) session.getAttribute("candidatura_fatta");
+	String success =  session.getAttribute("candidatura_fatta") == null ?  null : session.getAttribute("candidatura_fatta").toString();
 
-	if(success){
+	if(success != null && Boolean.parseBoolean(success)){
 %>
 <script>
 	var myModal = new bootstrap.Modal(document.getElementById('statusSuccessModal'))
@@ -273,7 +291,7 @@
 	<% session.removeAttribute("candidatura_fatta");%>
 </script>
 <%
-	} else{
+	} else if(success!=null){
 %>
 <script>
 	var myModal = new bootstrap.Modal(document.getElementById('errorModal'))

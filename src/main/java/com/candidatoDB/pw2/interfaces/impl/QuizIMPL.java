@@ -41,4 +41,28 @@ public class QuizIMPL implements QuizDAO {
         }
         return quiz;
     }
+
+    @Override
+    public Integer getPunteggioTotaleById(int id_quiz) {
+        Integer punteggio_totale = null;
+        String sql = "SELECT sum(d.punteggio) from Domanda d inner join QuizDomanda qd on d.id_domanda = qd.id_domanda inner join Quiz q on qd.id_quiz = q.id_quiz where q.id_quiz = ?";
+
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.getConnection().prepareStatement(sql);
+            statement.setInt(1, id_quiz);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                punteggio_totale = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            DBUtil.close(resultSet);
+            DBUtil.close(statement);
+            //DBUtil.close(connection.getConnection());
+        }
+        return punteggio_totale;
+    }
 }
