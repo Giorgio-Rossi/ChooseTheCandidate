@@ -174,8 +174,9 @@
                                 </div>
 
                                 <div class="mt-3 d-flex justify-content-center">
-                                    <form action="classificacandidatura.jsp" method="post">
-                                        <button type="submit" class="btn btn-success" name="id_quiz" value="">Visualizza Candidati</button>
+                                    <form action="classificacandidatura.jsp" method="get">
+                                        <input type="hidden" name="id_posizione" value="<%=p.getId_posizione()%>" />
+                                        <button type="submit" class="btn btn-success">Visualizza Candidati</button>
                                     </form>
                                 </div>
                             </div>
