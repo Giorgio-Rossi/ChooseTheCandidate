@@ -176,6 +176,7 @@ Esperienza esperienza = (Esperienza) session.getAttribute("esperienza");
     <%
         }
     %>
+    
          </div>
                 </div>
 		</div>
