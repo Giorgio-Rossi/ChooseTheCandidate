@@ -164,6 +164,7 @@
                                                                     <input class="form-control" type="text"  placeholder="<%=utente.getCodice_fiscale()%>" value="<%=utente.getCodice_fiscale()%>" name="codice_fiscale">
                                                                 </div>
                                                             </div>
+                                                            
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <%Citta citta = (utente.getId_citta() !=null)?utente.getId_citta() : null;
