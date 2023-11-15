@@ -16,6 +16,7 @@
 <% Utente utente = (Utente) session.getAttribute("utente");
 UtenteIMPL utenteIMPL = new UtenteIMPL();
 
+
 Utente IdUtente = utenteIMPL.findById(utente.getId_user());
 
 
