@@ -233,6 +233,40 @@ public class UtenteIMPL implements UtenteDAO {
 		return cittaUtente;
 	}
 
+	@Override
+	public ArrayList<Utente> getTop3UserByIdCandidatura(int id_posizione) {
+		return null;
+	}
+
+	@Override
+	public ArrayList<Utente> getAllUserByIdCandidatura(int id_posizione) {
+		ArrayList<Utente> utenti_by_posizione = new ArrayList<>();
+		String sql = "SELECT * from CandidaturaUser cu inner join Utente u on cu.id_user = u.id_user inner join Posizione p on cu.id_posizione = p.id_posizione where p.id_posizione=?;";
+
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setInt(1, id_posizione);
+			resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+				UtenteIMPL utenteIMPL = new UtenteIMPL();
+
+				Utente utente = utenteIMPL.findById(resultSet.getInt("id_user"));
+
+				utenti_by_posizione.add(utente);
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			//DBUtil.close((Connection) connection);
+		}
+		return utenti_by_posizione;
+	}
+
 
 	public ArrayList<String> getEmptyParameters(Utente utente){
 		ArrayList<String> campi_vuoti = new ArrayList<>();

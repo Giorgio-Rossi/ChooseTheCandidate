@@ -2,6 +2,7 @@ package com.candidatoDB.pw2.interfaces.impl;
 
 import com.candidatoDB.pw2.entity.CandidaturaUser;
 import com.candidatoDB.pw2.entity.Domanda;
+import com.candidatoDB.pw2.entity.Utente;
 import com.candidatoDB.pw2.interfaces.CandidaturaUserDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
@@ -10,6 +11,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CandidaturaUserIMPL implements CandidaturaUserDAO {
@@ -84,5 +86,6 @@ public class CandidaturaUserIMPL implements CandidaturaUserDAO {
         }
         return candidaturaUser;
     }
+
 }
 

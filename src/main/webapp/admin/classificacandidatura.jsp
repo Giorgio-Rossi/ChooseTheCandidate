@@ -1,4 +1,6 @@
 <%@ page import="com.candidatoDB.pw2.entity.Utente" %>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteIMPL" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -40,6 +42,14 @@
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
     Utente utente_loggato_admin = (Utente) request.getSession().getAttribute("admin");
+
+    UtenteIMPL utenteIMPL = new UtenteIMPL();
+
+    String id_posizione = request.getParameter("id_posizione");
+
+    ArrayList<Utente> all_user_posizione = utenteIMPL.getAllUserByIdCandidatura(Integer.parseInt(id_posizione));
+
+    System.out.println(all_user_posizione);
 %>
 
 <body style="background-color: #d4d4d4">
@@ -163,24 +173,27 @@
 
     <div class="container">
 
+                    <%
+                        for(Utente utente : all_user_posizione){
+                    %>
 
                     <div class="candidate-list-box card mt-4">
                         <div class="py-0 card-body">
                             <div class="align-items-center row">
                                 <div class="col-auto">
                                     <div class="candidate-list-images">
-                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-md img-thumbnail rounded-circle" />
+                                        <img src=<%=request.getContextPath()+"/img/fotoprofili"+utente.getFoto_profilo()%> alt="" class="avatar-md img-thumbnail rounded-circle" />
                                     </div>
                                 </div>
                                 <div class="col-lg-5">
                                     <div class="candidate-list-content mt-3 mt-lg-0">
                                         <h5 class="fs-19 mb-0">
-                                            Charles Dickens
+                                           <%=utente.getNome()%> <%=utente.getCognome()%>
                                         </h5>
-                                        <p class="text-muted mb-2">Project Manager</p>
+                                        <p class="text-muted mb-2"><i class="bi bi-calendar-check-fill m-1"></i> <%=utente.getData_nascita()%></p>
                                         <ul class="list-inline mb-0 text-muted">
-                                            <li class="list-inline-item"><i class="mdi mdi-map-marker"></i> Oakridge Lane Richardson</li>
-                                            <li class="list-inline-item"><i class="mdi mdi-wallet"></i> $650 / hours</li>
+                                            <li class="list-inline-item"><i class="bi bi-geo-alt-fill m-1"></i><%=utente.getId_citta().getNome()%></li>
+                                            <li class="list-inline-item"><i class="bi bi-envelope-fill m-1"></i><%=utente.getEmail()%></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -189,65 +202,21 @@
                                         <span class="badge bg-soft-secondary fs-14 mt-1">Leader</span><span class="badge bg-soft-secondary fs-14 mt-1">Manager</span><span class="badge bg-soft-secondary fs-14 mt-1">Developer</span>
                                     </div>
                                 </div>
+
+                                <div class="col">
+                                    <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
+                                        <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i> Scarica Curriculum
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="candidate-list-box card mt-4">
-                                    <div class="py-0 card-body">
-                                        <div class="align-items-center row">
-                                            <div class="col-auto">
-                                                <div class="candidate-list-images">
-                                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-md img-thumbnail rounded-circle" />
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-5">
-                                                <div class="candidate-list-content mt-3 mt-lg-0">
-                                                    <h5 class="fs-19 mb-0">
-                                                        Charles Dickens
-                                                    </h5>
-                                                    <p class="text-muted mb-2">Project Manager</p>
-                                                    <ul class="list-inline mb-0 text-muted">
-                                                        <li class="list-inline-item"><i class="mdi mdi-map-marker"></i> Oakridge Lane Richardson</li>
-                                                        <li class="list-inline-item"><i class="mdi mdi-wallet"></i> $650 / hours</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
-                                                    <span class="badge bg-soft-secondary fs-14 mt-1">Leader</span><span class="badge bg-soft-secondary fs-14 mt-1">Manager</span><span class="badge bg-soft-secondary fs-14 mt-1">Developer</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                    <div class="candidate-list-box card mt-4">
-                                    <div class="py-0 card-body">
-                                        <div class="align-items-center row">
-                                            <div class="col-auto">
-                                                <div class="candidate-list-images">
-                                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-md img-thumbnail rounded-circle" />
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-5">
-                                                <div class="candidate-list-content mt-3 mt-lg-0">
-                                                    <h5 class="fs-19 mb-0">
-                                                        Charles Dickens
-                                                    </h5>
-                                                    <p class="text-muted mb-2">Project Manager</p>
-                                                    <ul class="list-inline mb-0 text-muted">
-                                                        <li class="list-inline-item"><i class="mdi mdi-map-marker"></i> Oakridge Lane Richardson</li>
-                                                        <li class="list-inline-item"><i class="mdi mdi-wallet"></i> $650 / hours</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
-                                                    <span class="badge bg-soft-secondary fs-14 mt-1">Leader</span><span class="badge bg-soft-secondary fs-14 mt-1">Manager</span><span class="badge bg-soft-secondary fs-14 mt-1">Developer</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                    </div>
+
+                    <%
+                        };
+                    %>
+
 
     </div>
 </main>
