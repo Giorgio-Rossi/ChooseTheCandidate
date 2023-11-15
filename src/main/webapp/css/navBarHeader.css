@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+
+.barralatarelae {
+	background: rgba(0, 114, 188, 1);
+	background: -moz-linear-gradient(top, rgba(0, 114, 188, 1) 0%, rgba(0, 114, 188, 1) 31%, rgba(43, 128, 181, 1) 51%, rgba(50, 126, 173, 1) 71%, rgba(111, 148, 171, 1) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0, 114, 188, 1)), color-stop(31%, rgba(0, 114, 188, 1)), color-stop(51%, rgba(43, 128, 181, 1)), color-stop(71%, rgba(50, 126, 173, 1)), color-stop(100%, rgba(111, 148, 171, 1)));
+	background: -webkit-linear-gradient(top, rgba(0, 114, 188, 1) 0%, rgba(0, 114, 188, 1) 31%, rgba(43, 128, 181, 1) 51%, rgba(50, 126, 173, 1) 71%, rgba(111, 148, 171, 1) 100%);
+	background: -o-linear-gradient(top, rgba(0, 114, 188, 1) 0%, rgba(0, 114, 188, 1) 31%, rgba(43, 128, 181, 1) 51%, rgba(50, 126, 173, 1) 71%, rgba(111, 148, 171, 1) 100%);
+	background: -ms-linear-gradient(top, rgba(0, 114, 188, 1) 0%, rgba(0, 114, 188, 1) 31%, rgba(43, 128, 181, 1) 51%, rgba(50, 126, 173, 1) 71%, rgba(111, 148, 171, 1) 100%);
+	background: linear-gradient(to bottom, rgba(0, 114, 188, 1) 0%, rgba(0, 114, 188, 1) 31%, rgba(43, 128, 181, 1) 51%, rgba(50, 126, 173, 1) 71%, rgba(111, 148, 171, 1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0072bc', endColorstr='#6f94ab', GradientType=0);
+}

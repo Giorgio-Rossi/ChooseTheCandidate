@@ -72,32 +72,29 @@
 
 <body style="background-color: #d4d4d4;" >
 
-
-
-
-
 	<jsp:include page="jsp/navbarHeader.jsp" />
 
-
-
-		<nav class="navbar navbar-expand-lg navbar-light bg-light " style="position: fixed;
+		<nav class="navbar navbar-expand-lg  bg-light" 
+		style="position: fixed;
+		align-items:center;
+		display:flex;
 			  top:85px;
-			  left:22%;
-			  right:70px;
+			  left:21.25%;
+			height:10%;
 			  width: 70%;
 			  z-index:2;
-
-			  justify-content:center;
-			  border-top:2px solid #0072bc;
-			  border-bottom:2px solid #0072bc;">
+				border-radius:20px;
+			  justify-content:space-around;
+			  border:3px solid #0072bc;">
+			 
 			<a class="navbar-brand" href="${pageContext.request.contextPath}/home/ricercaPosizioni.jsp">Ricerca Posizioni</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<form class="form-inline" action="${pageContext.request.contextPath}/RicercaPosizioniServlet"
+			<form class="form-inline " action="${pageContext.request.contextPath}/RicercaPosizioniServlet"
 				  method="post">
-			<div class="collapse navbar-collapse justify-content-center mt-4 p-2" id="navbarSupportedContent">
-						<div class="form-group" aria-labelledby="navbarDropdown">
+			<div class="collapse navbar-collapse  mt-4 p-2 " id="navbarSupportedContent">
+						<div class="form-group " aria-labelledby="navbarDropdown" style="margin-right:10px">
 							<select class="form-select" name="ruolo" aria-label="Default select example">
 								<option disabled selected>Ruolo</option>
 								<option value="">Tutti</option>
@@ -111,7 +108,7 @@
 							</select>
 
 						</div>
-						<div class="form-group" aria-labelledby="navbarDropdown">
+						<div class="form-group " aria-labelledby="navbarDropdown" style="margin-right:10px">
 							<select class="form-select" name="citta" aria-label="Default select example">
 								<option disabled selected>Città</option>
 								<option value="">Tutte</option>
@@ -132,7 +129,7 @@
 							</select>
 
 						</div>
-						<div class="form-group" aria-labelledby="navbarDropdown">
+						<div class="form-group " aria-labelledby="navbarDropdown" style="margin-right:10px">
 							<select class="form-select" name="categoria" aria-label="Default select example">
 								<option disabled selected>Categoria</option>
 								<option value="">Tutte</option>
@@ -177,7 +174,7 @@
 						for(Posizione p : posizioni){
 					%>
 
-							<div class="card col-lg-4 col-md-6 col-12 mt-4 pt-2 d-flex  align-items-stretch" style=" background-color: #d4d4d4; border: none">
+							<div class="card col-lg-4 col-md-6 col-12 mt-4 pt-2 d-flex  align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
 								<div class="slide slide1 ">
 									<div class="content  shadow">
 

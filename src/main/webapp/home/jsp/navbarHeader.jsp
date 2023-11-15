@@ -5,11 +5,12 @@ String Uri = request.getRequestURI().toString();
 <html>
 <head>
 <title>Home</title>
+<link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/css/navBarHeader.css" />
 </head>
 <body>
 	<header>
-		<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse "
-			style="background-color: #0072BC">
+		<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse  barralatarelae">
+
 			<div class="position-sticky">
 				<div class="list-group list-group-flush mx-3 mt-5" style="gap: 3rem">
 					<!-- INSERITO UN IF DENTRO AL CLASS PER ANDARE A SCRIVERE ACTIVE -->
@@ -26,10 +27,11 @@ String Uri = request.getRequestURI().toString();
 
 
 					<a href="${pageContext.request.contextPath}/home/curriculum.jsp" 
-						class="list-group-item list-group-item-action py-2 ripple"
+						class="list-group-item list-group-item-action py-2 ripple
 						<%
-						String Path1 = request.getContextPath() + "/home/curriculum.jsp"; %>
-						<% if (Uri.equals(Path1)){ %>active<% }; %>"><i 
+						String Path5 = request.getContextPath() + "/home/curriculum.jsp"; %>
+						<% if (Uri.equals(Path5)){ %>active<% }; %>">
+						<i 
 						class="bi bi-person-circle" style="margin-right: 5px; font-size: 20px"></i><span>Curriculum</span></a>
 						
 

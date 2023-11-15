@@ -1,123 +1,124 @@
 .container .card .icon {
 
-    /*width: 100%;*/
+	/*width: 100%;*/
 
-    height: 100%;
+	height: 100%;
 
-    background: #2c73df;
+	background: #2c73df;
 
 }
 
-.container .card .icon  {
+.container .card .icon {
 
-    position: absolute;
+	position: absolute;
 
-    top: 50%;
+	top: 50%;
 
-    left: 50%;
+	left: 50%;
 
-    transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 
-    font-size: 80px;
+	font-size: 80px;
 
 }
 
 .container .card .slide {
 
-   /* width: 300px;*/
+	/* width: 300px;*/
 
-    height: 200px;
+	height: 200px;
 
-    transition: 0.5s;
+	transition: 0.5s;
 
 }
 
 .container .card .slide.slide1 {
 
-    justify-content: center;
+	justify-content: center;
 
-    align-items: center;
+	align-items: center;
 
-    z-index: 1;
+	z-index: 1;
 
-    transition: .7s;
+	transition: .7s;
 
-    transform: translateY(100px);
+	transform: translateY(100px);
 
 }
 
-.container .card:hover .slide.slide1{
+.container .card:hover .slide.slide1 {
 
-    transform: translateY(0px);
+	transform: translateY(0px);
 
 }
 
 .container .card .slide.slide2 {
 
-    justify-content: center;
+	justify-content: center;
 
-    align-items: center;
+	align-items: center;
 
-    padding: 20px;
+	padding: 20px;
 
-    box-sizing: border-box;
+	box-sizing: border-box;
 
-    transition: .8s;
+	transition: .8s;
 
-    transform: translateY(-100px);
+	transform: translateY(-100px);
 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-
-}
-
-.container .card:hover .slide.slide2{
-
-    transform: translateY(0);
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 
 }
 
-.container .card .slide.slide2::after{
+.container .card:hover .slide.slide2 {
 
-    content: "";
+	transform: translateY(0);
 
-    position: absolute;
+}
 
-    width: 30px;
+.container .card .slide.slide2::after {
 
-    height: 4px;
+	content: "";
 
-    bottom: 15px;
+	position: absolute;
 
-    left: 50%;
+	width: 30px;
 
-    transform: translateX(-50%);
+	height: 4px;
 
-    background: #2c73df;
+	bottom: 15px;
+
+	left: 50%;
+
+	transform: translateX(-50%);
+
+	background: #2c73df;
 
 }
 
 .container .card .slide.slide2 .content {
 
-    margin: 0;
+	margin: 0;
 
-    padding: 0;
+	padding: 0;
 
-    text-align: center;
+	text-align: center;
 
-    color: #414141;
+	color: #414141;
+
+}
+
+.container .card .slide.slide2 .content {
+
+	margin: 0 0 10px 0;
+
+	padding: 3px;
+
+	font-size: 15px;
+
+	text-align: center;
+
+	color: #414141;
 
 }
 
-.container .card .slide.slide2 .content{
-
-    margin: 0 0 10px 0;
-
-    padding: 3px;
-
-    font-size: 15px;
-
-    text-align: center;
-
-    color: #414141;
-
-}
