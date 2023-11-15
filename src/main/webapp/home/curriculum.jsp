@@ -170,6 +170,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 															</div>
 															<%
 															if (espe.getUtente() != null) {
+																
 															%>
 															<div class="col-sm-3 text-lg-end">
 																<span class="badge bg-success"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
