@@ -1,6 +1,9 @@
 package com.candidatoDB.pw2.interfaces.impl;
 
 import com.candidatoDB.pw2.entity.Esperienza;
+import com.candidatoDB.pw2.entity.Posizione;
+import com.candidatoDB.pw2.entity.Utente;
+import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
 import com.candidatoDB.pw2.interfaces.EsperienzaDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
@@ -9,6 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 
@@ -22,7 +28,7 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 
 	@Override
 	public void save(Esperienza esperienze) {
-		String sql = "INSERT INTO Utente(id_esperienza,anni,descrizione_attivita,id_user,azienda,data_inizio,data_fine,ral,tipo_contratto,settore,posizione_lavorativa) VALUES(?,?,?,?,?,?,?,?,?,?,?))";
+		String sql = "INSERT INTO Esperienza(id_esperienza,anni,descrizione_attivita,id_user,azienda,data_inizio,data_fine,ral,tipo_contratto,settore,posizione_lavorativa) VALUES(?,?,?,?,?,?,?,?,?,?,?))";
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
@@ -55,7 +61,7 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 
 	@Override
 	public void update(Esperienza esperienze) {
-		String sql = "UPDATE Utente SET id_esperienza=?,anni=?,descrizione_attivita=?,id_user=?,azienda=?,data_inizio=?,data_fine=?,ral=?,tipo_contratto=?,settore=?,posizione_lavorativa=?";
+		String sql = "UPDATE Esperienza SET id_esperienza=?,anni=?,descrizione_attivita=?,id_user=?,azienda=?,data_inizio=?,data_fine=?,ral=?,tipo_contratto=?,settore=?,posizione_lavorativa=?";
 		PreparedStatement statement = null;
 
 		Statement connection;
@@ -78,10 +84,71 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 		} finally {
 			DBUtil.close(statement);
 			//DBUtil.close(connection.getConnection());
+	}	
+		
+	}
+	
+	public ArrayList<Esperienza> getAllExperience() {
+		ArrayList<Esperienza> esperienze1 = new ArrayList<Esperienza>();
+		String sql = "SELECT * FROM Esperienza where id_user=?";
+				
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				Esperienza esperienza = new Esperienza();
+
+				esperienza.setId_esperienza(resultSet.getInt(1));
+				esperienza.setAnni(resultSet.getInt(2));
+				esperienza.setDescrizione_attivita(resultSet.getString(3));
+				
+				UtenteIMPL utenteIMPL = new UtenteIMPL();
+				esperienza.setUtente(utenteIMPL.findById(resultSet.getInt(4)));
+				esperienza.setAzienda(resultSet.getString(5));
+				
+				esperienza.setData_inizio(new java.sql.Date(resultSet.getDate(6).getTime()));
+				esperienza.setData_fine(new java.sql.Date(resultSet.getDate(7).getTime()));
+				esperienza.setRal(resultSet.getInt(8));
+				esperienza.setTipo_contratto(resultSet.getString(9));
+				esperienza.setSettore(resultSet.getString(10));
+				esperienza.setPosizione_lavorativa(resultSet.getString(11));
+				
+				esperienze1.add(esperienza);
+
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			// DBUtil.close(connection);
+		}
+		return esperienze1;
 	}
 
-	}
+		@Override
+		public void deleteEsperienzaUtente(Esperienza esperienza) {
+			String sql = "DELETE Esperienza WHERE id_user = ?";
+			PreparedStatement statement = null;
+			try {
+			
+				statement = connection.getConnection().prepareStatement(sql);
+				statement.setInt(1, esperienza.getId_esperienza());
+				statement.executeUpdate();
+			} catch (SQLException e) {
+				System.err.println(e.getMessage());
+			} finally {
+				DBUtil.close(statement);
+				//DBUtil.close((Connection) connection);
+			}
 
+		}
+		
 
 }
 

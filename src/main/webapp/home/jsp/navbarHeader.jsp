@@ -25,12 +25,13 @@ String Uri = request.getRequestURI().toString();
 					</a>
 
 
-					<!-- INSERIRE UN IF DENTRO AL CLASS PER ANDARE A SCRIVERE ACTIVE -->
-
-					<a href="#"
-						class="list-group-item list-group-item-action py-2 ripple"><i
-						class="bi bi-file-earmark-person"
-						style="margin-right: 5px; font-size: 20px"></i><span>Curriculum</span></a>
+					<a href="${pageContext.request.contextPath}/home/curriculum.jsp" 
+						class="list-group-item list-group-item-action py-2 ripple"
+						<%
+						String Path1 = request.getContextPath() + "/home/curriculum.jsp"; %>
+						<% if (Uri.equals(Path1)){ %>active<% }; %>"><i 
+						class="bi bi-person-circle" style="margin-right: 5px; font-size: 20px"></i><span>Curriculum</span></a>
+						
 
 					<!-- INSERIRE UN IF DENTRO AL CLASS PER ANDARE A SCRIVERE ACTIVE -->
 					<a
@@ -40,8 +41,7 @@ String Uri = request.getRequestURI().toString();
 						 String Path2 = request.getContextPath() + "/home/ricercaPosizioni.jsp"; %>
 						<%
 						if (Uri.equals(Path2)){ %>active<% }; %>"><i
-						class="bi bi-search" style="margin-right: 5px; font-size: 20px"></i><span>Ricerca
-							Posizioni</span></a>
+						class="bi bi-search" style="margin-right: 5px; font-size: 20px"></i><span>Ricerca Posizioni</span></a>
 
 					<!-- INSERITO UN IF DENTRO AL CLASS PER ANDARE A SCRIVERE ACTIVE -->
 					<a
