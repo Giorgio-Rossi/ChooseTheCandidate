@@ -1,3 +1,4 @@
+use master
 drop database ProjectWork2
 go
 create database ProjectWork2
@@ -18,34 +19,34 @@ nome varchar(50) not null,
 create table Citta(
 id_citta int identity not null primary key,
 id_regione int,
-nome varchar(50) not null,
+nome varchar(100) not null,
 CONSTRAINT FK_citta_regione FOREIGN KEY (id_regione) REFERENCES Regione (id_regione)
 )
  
 create table Utente(
 id_user int identity not null primary key,
-nome varchar(20) not null,
-cognome varchar(40) not null,
+nome varchar(50) not null,
+cognome varchar(50) not null,
 codice_fiscale varchar(16),
-email varchar(30) not null,
+email varchar(50) not null,
 data_nascita date,
-indirizzo varchar(50),
+indirizzo varchar(200),
 id_citta int,
 cap varchar(5),
-telefono varchar(9),
-ruolo_admin varchar(10) not null check(ruolo_admin in('user','admin')),
-password varchar(70) not null,
+telefono varchar(10),
+ruolo_admin varchar(10) not null check(ruolo_admin in('user','admin'))  CONSTRAINT FK_DFUtenti_Admin default 'user',
+password varchar(200) not null,
 foto_profilo varchar(100),
-CV varchar(100),
+CV varchar(600),
 genere varchar(30)  check(genere in('uomo','donna','non specificare')),
 CONSTRAINT FK_utente_citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta)
 )
  
 create table Istruzione(
 id_istruzione int identity not null primary key,
-grado varchar(50) not null,
+grado varchar(500) not null,
 id_citta int not null,
-descrizione_istruzione varchar(100) not null,
+descrizione_istruzione varchar(1000) not null,
 data_inizio date,
 data_fine date,
 id_user int not null,
@@ -57,27 +58,27 @@ CONSTRAINT FK_utente_istruzione FOREIGN KEY (id_user) REFERENCES Utente (id_user
 create table Esperienza(
 id_esperienza int identity not null primary key,
 anni smallint,
-descrizione_attivita varchar(100),
+descrizione_attivita varchar(1000),
 id_user int not null,
-azienda varchar(50),
+azienda varchar(500),
 data_inizio date,
 data_fine date,
 ral int,
-tipo_contratto varchar(50),
-settore varchar(20),
-posizione_lavorativa varchar(30),
+tipo_contratto varchar(500),
+settore varchar(500),
+posizione_lavorativa varchar(500),
 CONSTRAINT FK_utente_esperienza FOREIGN KEY (id_user) REFERENCES Utente (id_user)
 )
  
 create table Quiz(
 id_quiz int identity not null primary key,
-descrizione varchar(50),
+descrizione varchar(500),
 n_domande smallint
 )
  
 create table Domanda(
 id_domanda int identity not null primary key,
-testo varchar(150),
+testo varchar(500),
 punteggio smallint
 )
  
@@ -92,11 +93,11 @@ CONSTRAINT FK_Domanda_QuizDomanda FOREIGN KEY (id_domanda) REFERENCES Domanda (i
  
 create table RisposteDomanda(
 id_risposta int identity not null primary key,
-scelta1 varchar(150) not null,
-scelta2 varchar(150),
-scelta3 varchar(150),
-scelta4 varchar(150),
-scelta_corretta varchar(150) check(scelta_corretta in('scelta1','scelta2','scelta3','scelta4')),
+scelta1 varchar(500) not null,
+scelta2 varchar(500),
+scelta3 varchar(500),
+scelta4 varchar(500),
+scelta_corretta varchar(500) check(scelta_corretta in('scelta1','scelta2','scelta3','scelta4')),
 id_domanda int not null,
  
 CONSTRAINT FK_Risposte_Domanda FOREIGN KEY (id_domanda) REFERENCES Domanda (id_domanda),
@@ -115,8 +116,8 @@ CONSTRAINT FK_Utente_UtenteQuiz FOREIGN KEY (id_user) REFERENCES Utente (id_user
 create table Skill(
 id_skill int identity not null primary key,
 id_quiz int,
-nome varchar(50),
-tipo_skill varchar(10) not null check(tipo_skill in('soft','hard')),
+nome varchar(500),
+tipo_skill varchar(500) not null check(tipo_skill in('soft','hard')),
 CONSTRAINT FK_Skill_Quiz FOREIGN KEY (id_quiz) REFERENCES Quiz (id_quiz)
 )
  
@@ -132,13 +133,13 @@ CONSTRAINT FK_Utente_UserSkills FOREIGN KEY (id_user) REFERENCES Utente (id_user
 create table Posizione(
 id_posizione int identity not null primary key,
 n_ammissioni smallint,
-descrizione varchar(300),
+descrizione varchar(1000),
 id_citta int not null,
 id_Categoria int not null,
 id_quiz int,
-stato varchar(15) not null check(stato in('aperta','chiusa')),
+stato varchar(500) not null check(stato in('aperta','chiusa')),
 data_inserimento date,
-ruolo varchar(60),
+ruolo varchar(500),
  
 CONSTRAINT FK_Posizione_Citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta),
 CONSTRAINT FK_Posizione_Categoria FOREIGN KEY (id_Categoria) REFERENCES CategoriaPosizione (id_Categoria),
