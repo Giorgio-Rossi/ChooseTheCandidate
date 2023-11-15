@@ -55,22 +55,22 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 <link rel="stylesheet"
 	  href="${pageContext.request.contextPath}/css/homeuser.css">
 
-<body style="background-color: #d4d4d4">
+<body style="background-color: #d4d4d4;heigth:100vh!important;">
 
 <jsp:include page="jsp/navbarHeader.jsp" />
 
-<main style="margin-top: 58px">
+<main style="margin-top: 69px">
 	<div class="container pt-3">
 		<div class="container">
 			<div class="row">
 
 
-				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
-					<div class="slide slide1">
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none ">
+					<div class="slide slide1" style="width:300px1;;height:235px;">
 						<div class="content">
-							<div class="icon" style="background-color:white">
+							<div class="icon" style="background-color:white;">
 								<i class="bi bi-card-list"
-								   style="font-size: 10rem;text-align: center"><a href="statistichequiz.jsp" class="btn btn-info m-0"style="font-size: 1rem">Statistiche Quiz</a></i>
+								   style="font-size: 10rem;text-align: center"><a href="statistichequiz.jsp" class="btn btn-info m-0"style="font-size: 1rem;">Statistiche Quiz</a></i>
 							</div>
 						</div>
 					</div>
@@ -85,7 +85,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 				</div>
 
 				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
-					<div class="slide slide1">
+					<div class="slide slide1"  style="width:300px;height:235px;" >
 						<div class="content">
 							<div class="icon" style="background-color:white">
 								<i class="bi bi-clipboard-data"
@@ -105,7 +105,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 
 
 				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
-					<div class="slide slide1">
+					<div class="slide slide1"  style="width:300px;height:235px;">
 						<div class="content">
 							<div class="icon" style="background-color:white">
 								<i class="bi bi-person"
@@ -146,11 +146,11 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 				</div>
 
 				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
-					<div class="slide slide1">
+					<div class="slide slide1"  style="width:300px;height:235px;">
 						<div class="content">
 							<div class="icon" style="background-color:white">
 								<i class="bi bi-award"
-								   style="font-size: 10rem;text-align: center"><h1 style="font-size: 1rem">Miglior Candidatura</h1></i>
+								   style="font-size: 10rem;text-align: center"><h1 class="btn btn-info m-1"style="font-size: 1rem">Miglior Candidatura</h1></i>
 							</div>
 						</div>
 					</div>
@@ -165,11 +165,11 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 				</div>
 
 				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
-					<div class="slide slide1">
+					<div class="slide slide1"  style="width:300px;height:235px;">
 						<div class="content">
 							<div class="icon" style="background-color:white">
 								<i class="bi bi-receipt-cutoff"
-								   style="font-size: 9rem;text-align: center"><h1 style="font-size: 1rem">Candidatura più recente</h1></i>
+								   style="font-size: 9rem;text-align: center"><h1 class="btn btn-info m-1"style="font-size: 1rem">Candidatura più recente</h1></i>
 							</div>
 						</div>
 					</div>
@@ -209,10 +209,10 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 				</div>
 
 				<div class="card col-lg-4 d-flex align-items-stretch" style="background-color: rgba(0,0,0,0); border: none">
-					<div class="slide slide1">
+					<div class="slide slide1"  style="width:300px;height:235px;">
 						<div class="content">
 							<div class="icon" style="background-color:white">
-								<i class="bi bi-calendar" style="font-size: 10rem; text-align: center"><h1 style="font-size: 1rem">Annunci Recenti</h1></i>
+								<i class="bi bi-calendar" style="font-size: 10rem; text-align: center;"><h1 class="btn btn-info m-1"style="font-size: 1rem;">Annunci Recenti</h1></i>
 							</div>
 						</div>
 					</div>
