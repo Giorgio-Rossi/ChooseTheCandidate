@@ -23,17 +23,17 @@ Esperienza esperienza = (Esperienza) session.getAttribute("esperienza");
 
 
 	EsperienzaIMPL esperienzeUtente = new EsperienzaIMPL();
-	List<Esperienza> prova = esperienzeUtente.getAllExperience(IdUtente.getId_user());
+	List<Esperienza> esperienze = esperienzeUtente.getAllExperience(IdUtente.getId_user());
   
-	List<Istruzione> istruzioneUtente = new IstruzioneIMPL();
-	List<Esperienza> prova2 = istruzioneUtente.getAllExperience(IdUtente.getId_user());
+	IstruzioneIMPL istruzioneUtente = new IstruzioneIMPL();
+	List<Istruzione> istruzioni = istruzioneUtente.getAllInstruction(IdUtente.getId_user());
 		
    
-	for(Esperienza test : esperienzeUtente){
+	for(Esperienza test : esperienze){
 		System.out.println(test + "");
 	}
 	
-	for(Istruzione test2 : istruzioneUtente){
+	for(Istruzione test2 : istruzioni){
 		System.out.println(test2 + "");
 	}
    
@@ -129,7 +129,7 @@ Esperienza esperienza = (Esperienza) session.getAttribute("esperienza");
 <div class="container">
 
     <%
-        for(CandidaturaUser candidaturaUser : candidature){
+        for(Esperienza espe : esperienze){
     %>
 
     <div class="card mb-3 shadow-lg">
@@ -137,31 +137,31 @@ Esperienza esperienza = (Esperienza) session.getAttribute("esperienza");
             <div class="d-flex flex-column flex-lg-row">
                 <%
                     String initials = "";
-                    for (String s : candidaturaUser.getPosizione().getRuolo().split(" ")) {
+                    for (String s : espe.getPosizione_lavorativa().split(" ")) {
                         initials+=s.charAt(0);
                     }
                 %>
                 <span class="avatar avatar-text rounded-3 me-4 mb-2"><%=initials%></span>
                 <div class="row flex-fill">
                     <div class="col-sm-5">
-                        <h4 class="h5"><%=candidaturaUser.getPosizione().getRuolo()%></h4>
-                        <span class="badge bg-primary m-1"><%=candidaturaUser.getPosizione().getCitta().getNome()%></span><span class="badge bg-success"><i class="bi bi-calendar-check-fill mt-2"> <%=candidaturaUser.getData_candidatura()%></i></span>
+                        <h4 class="h5"><%=espe.getSettore()%></h4>
+                        <span class="badge bg-primary m-1"><%=espe.getAzienda()%></span><span class="badge bg-success"><i class="bi bi-calendar-check-fill mt-2"> <%=espe.getTipo_contratto()%></i></span>
                     </div>
                     <div class="col-sm-4 py-2">
-                        <span class="badge bg-info"><%=candidaturaUser.getPosizione().getCategoria().getNome_categoria()%></span>
-                        <span class="badge bg-info">Ammissioni massime: <%=candidaturaUser.getPosizione().getN_ammissioni()%></span>
+                        <span class="badge bg-info"><%=espe.getData_inizio()%></span>
+                        <span class="badge bg-info"><%=espe.getData_fine()%></span>
                     </div>
                     <%
-                        if(candidaturaUser.getPosizione().getStato().equals("aperta")){
+                        if(espe.getUtente()!= null) {
                     %>
                     <div class="col-sm-3 text-lg-end">
-                        <span class="badge bg-success"><%=candidaturaUser.getPosizione().getStato().toUpperCase()%></span>
+                        <span class="badge bg-success"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
                     </div>
                     <%
                          }else{
                     %>
                     <div class="col-sm-3 text-lg-end">
-                        <span class="badge bg-danger"><%=candidaturaUser.getPosizione().getStato().toUpperCase()%></span>
+                        <span class="badge bg-danger"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
                     </div>
                     <%
                         };
