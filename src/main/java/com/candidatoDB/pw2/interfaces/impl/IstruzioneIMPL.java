@@ -78,7 +78,7 @@ public class IstruzioneIMPL implements IstruzioneDAO {
 	@Override
 	public List<Istruzione> getAllInstruction(int id_user) {
 		ArrayList<Istruzione> istruzione1 = new ArrayList<Istruzione>();
-		String sql = "SELECT * FROM Istruzione where id_user=?";
+		String sql = "SELECT * FROM Istruzione i inner join Citta c  on i.id_citta = c.id_citta where i.id_user = ?";
 				
 		PreparedStatement statement = null;
 		
