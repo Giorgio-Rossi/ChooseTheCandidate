@@ -65,7 +65,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 			<div class="row">
 
 
-				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
 					<div class="slide slide1">
 						<div class="content">
 							<div class="icon" style="background-color:white">
@@ -84,7 +84,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 					</div>
 				</div>
 
-				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
 					<div class="slide slide1">
 						<div class="content">
 							<div class="icon" style="background-color:white">
@@ -104,7 +104,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 				</div>
 
 
-				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
 					<div class="slide slide1">
 						<div class="content">
 							<div class="icon" style="background-color:white">
@@ -145,7 +145,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 					</div>
 				</div>
 
-				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
 					<div class="slide slide1">
 						<div class="content">
 							<div class="icon" style="background-color:white">
@@ -164,7 +164,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 					</div>
 				</div>
 
-				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: #d4d4d4; border: none">
+				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
 					<div class="slide slide1">
 						<div class="content">
 							<div class="icon" style="background-color:white">
@@ -208,7 +208,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 					</div>
 				</div>
 
-				<div class="card col-lg-4 d-flex align-items-stretch" style="background-color: #d4d4d4; border: none">
+				<div class="card col-lg-4 d-flex align-items-stretch" style="background-color: rgba(0,0,0,0); border: none">
 					<div class="slide slide1">
 						<div class="content">
 							<div class="icon" style="background-color:white">
@@ -222,13 +222,11 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
             if (!posizioniRecenti.isEmpty()) {
                 for (Posizione posizione : posizioniRecenti) {
         %>
-        <div class="mb-3">
-            <span class="text-muted d-block"><strong>Categoria:</strong> <%=posizione.getCategoria() != null ? posizione.getCategoria().getNome_categoria() : ""%></span>
+        <div class="mb-2">
             <span class="text-muted d-block"><strong>Stato:</strong> <%=posizione.getStato() != null ? posizione.getStato() : ""%></span>
             <span class="text-muted d-block"><strong>Ruolo:</strong> <%=posizione.getRuolo() != null ? posizione.getRuolo() : ""%></span>
         </div>
         <%
-        
                 }
             } else {
         %>
@@ -305,6 +303,60 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 
 
 
+<div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-body text-center p-lg-4">
+				<i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+				<h4 class="text-success mt-3">Candidatura inviata correttamente!</h4>
+				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
+				<button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-body text-center p-lg-4">
+				<i class="bi bi-x-circle-fill" style="font-size: 5rem"></i>
+				<h4 class="text-danger mt-3">Hai già effettuato il quiz per questa candidatura!</h4>
+				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
+				<button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-body text-center p-lg-4">
+				<i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+				<h4 class="text-success mt-3">Candidatura inviata correttamente!</h4>
+				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
+				<button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-body text-center p-lg-4">
+				<i class="bi bi-x-circle-fill" style="font-size: 5rem"></i>
+				<h4 class="text-danger mt-3">Hai già effettuato il quiz per questa candidatura!</h4>
+				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
+				<button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 </body>

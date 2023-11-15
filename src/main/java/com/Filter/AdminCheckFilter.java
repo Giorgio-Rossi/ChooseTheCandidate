@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter("/home/*")
-public class UserCheckFilter implements Filter{
+@WebFilter("/admin/*")
+public class AdminCheckFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain filterChain) throws IOException, ServletException {
@@ -18,18 +18,17 @@ public class UserCheckFilter implements Filter{
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
 
-        Utente utente = (Utente) session.getAttribute("utente");
+        Utente utente = (Utente) session.getAttribute("admin");
 
         boolean isLogged = (session!=null && utente !=null);
         String loginURI = request.getContextPath()+"/login.jsp";
+        System.out.println(loginURI);
         boolean isLoginRequest = request.getRequestURI().equals(loginURI);
 
-
-        if (isLogged || isLoginRequest) {
+        if ((isLogged || isLoginRequest) && utente.getRuolo_admin().equals("admin")) {
             filterChain.doFilter(request, response);
         } else {
             response.sendRedirect(loginURI);
         }
     }
 }
-
