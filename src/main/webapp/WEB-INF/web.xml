@@ -23,4 +23,13 @@
         <filter-name>UserCheckFilter</filter-name>
         <url-pattern>/home/*</url-pattern>
     </filter-mapping>
+
+    <filter>
+        <filter-name>AdminCheckFilter</filter-name>
+        <filter-class>com.Filter.AdminCheckFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminCheckFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
 </web-app>

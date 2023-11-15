@@ -35,12 +35,11 @@ public class Login extends HttpServlet {
             if(Objects.equals(utente.getRuolo_admin(), "user")){
                 HttpSession session = req.getSession(true);
                 session.setAttribute("utente", utente);
-                System.out.println("SI");
                 resp.sendRedirect("home/homeuser.jsp");
             }else if(Objects.equals(utente.getRuolo_admin(), "admin")){
                 HttpSession session = req.getSession(true);
                 session.setAttribute("admin", utente);
-                resp.sendRedirect("home/homeadmin.jsp");
+                resp.sendRedirect("admin/candidature.jsp");
             }else{
                 ErrorManager.setErrorMessage("Nome utente o password errati", req);
                 req.getRequestDispatcher("login.jsp").forward(req,resp);
