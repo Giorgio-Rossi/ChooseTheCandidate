@@ -51,6 +51,13 @@ public class CurriculumServlet extends HttpServlet {
         } else {
             EsperienzaModificata.setPosizione_lavorativa(utenteInSessioneEsperienza.getPosizione_lavorativa());
         }
+        
+
+        if (!req.getParameter("posizione").isEmpty()) {
+            EsperienzaModificata.setPosizione_lavorativa(req.getParameter("posizione"));
+        } else {
+            EsperienzaModificata.setPosizione_lavorativa(utenteInSessioneEsperienza.getPosizione_lavorativa());
+        }
         // Azienda
         if (!utenteInSessioneEsperienza.getAzienda().equals(req.getParameter("azienda"))) {
             utenteInSessioneEsperienza.setAzienda(req.getParameter("azienda"));
@@ -162,7 +169,7 @@ public class CurriculumServlet extends HttpServlet {
             IstruzioneModificata.setGrado(utenteInSessioneIstruzione.getDescrizione_istruzione());
         }
         
-
+     // Data inizio
         String param3 = req.getParameter("data_inizio");
         try {
             data_inizio = in.parse(param3);
@@ -178,6 +185,7 @@ public class CurriculumServlet extends HttpServlet {
             IstruzioneModificata.setData_inizio(utenteInSessioneIstruzione.getData_inizio());
         }
 
+     // Data fine
         String param4 = req.getParameter("data_fine");
          try {
             data_fine = in.parse(param4);
@@ -217,7 +225,7 @@ public class CurriculumServlet extends HttpServlet {
 
         /*  CV */
  
-       Part part = req.getPart("cv");
+        Part part = req.getPart("cv");
         String fileName = part.getSubmittedFileName();
 
         if (!fileName.isEmpty()) {
