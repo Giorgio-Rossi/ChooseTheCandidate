@@ -27,8 +27,6 @@ List<Esperienza> esperienze = esperienzeUtente.getAllExperience(IdUtente.getId_u
 IstruzioneIMPL istruzioneUtente = new IstruzioneIMPL();
 List<Istruzione> istruzioni = istruzioneUtente.getAllInstruction(IdUtente.getId_user());
 
-
-
 for (Esperienza test : esperienze) {
 	System.out.println(test + "");
 }
@@ -140,110 +138,158 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 												id="fileUpload" type="file" accept="image/*" name="cv"
 												form="modifica_curriculum" style="display: none"> </label>
 										</div>
+										<form class="form" method="post"
+											action="${pageContext.request.contextPath}/curriculumUtente"
+											enctype='multipart/form-data'>
+											<div class="container">
 
-										<div class="container">
+												<%
+												for (Esperienza espe : esperienze) {
+												%>
 
-											<%
-											for (Esperienza espe : esperienze) {
-											%>
-
-											<div class="card mb-3 shadow-lg">
-												<div class="card-body">
-													<div class="d-flex flex-column flex-lg-row">
-														<%
-														String initials = "";
-														for (String s : espe.getPosizione_lavorativa().split(" ")) {
-															initials += s.charAt(0);
-														}
-														%>
-														<span class="avatar avatar-text rounded-3 me-4 mb-2"><%=initials%></span>
-														<div class="row flex-fill">
-															<div class="col-sm-5">
-																<h4 class="h5"><%=espe.getSettore()%></h4>
-																<span class="badge bg-primary m-1"><%=espe.getAzienda()%></span><span
-																	class="badge bg-success"><i
-																	class="bi bi-calendar-check-fill mt-2"> <%=espe.getTipo_contratto()%></i></span>
-															</div>
-															<div class="col-sm-4 py-2">
-																<span class="badge bg-info"><%=espe.getData_inizio()%></span>
-																<span class="badge bg-info"><%=espe.getData_fine()%></span>
-															</div>
+												<div class="card mb-3 shadow-lg">
+													<div class="card-body">
+														<div class="d-flex flex-column flex-lg-row">
 															<%
-															if (espe.getUtente() != null) {
-																
-															%>
-															<div class="col-sm-3 text-lg-end">
-																<span class="badge bg-success"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
-															</div>
-															<%
-															} else {
-															%>
-															<div class="col-sm-3 text-lg-end">
-																<span class="badge bg-danger"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
-															</div>
-															<%
+															String initials = "";
+															for (String s : espe.getPosizione_lavorativa().split(" ")) {
+																initials += s.charAt(0);
 															}
-															;
 															%>
+															<span class="avatar avatar-text rounded-3 me-4 mb-2"><%=initials%></span>
+															<div class="row flex-fill">
+																<div class="col-sm-5">
+																	<h4 class="h5"><%=espe.getSettore()%></h4>
+																	<span class="badge bg-primary m-1"><%=espe.getAzienda()%></span><span
+																		class="badge bg-success"><i
+																		class="bi bi-calendar-check-fill mt-2"> <%=espe.getTipo_contratto()%></i></span>
+																</div>
+																<div class="col-sm-4 py-2">
+																	<span class="badge bg-info"><%=espe.getData_inizio()%></span>
+																	<span class="badge bg-info"><%=espe.getData_fine()%></span>
+																</div>
+																<%
+																if (espe.getUtente() != null) {
+																%>
+																<div class="col-sm-3 text-lg-end">
+																	<span class="badge bg-success"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
+																</div>
+																<%
+																} else {
+																%>
+																<div class="col-sm-3 text-lg-end">
+																	<span class="badge bg-danger"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
+																</div>
+																<%
+																}
+																;
+																%>
 
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
 
-											<%
-											}
-											%>
+												<%
+												}
+												%>
 
-										</div>
 
-										<div class="container">
 
-											<%
-											for (Istruzione istru : istruzioni) {
-											%>
+												<div class="container">
 
-											<div class="card mb-3 shadow-lg">
-												<div class="card-body">
-													<div class="d-flex flex-column flex-lg-row">
-														<%
-														String initials = "";
-														for (String s : istru.getDescrizione_istruzione().split(" ")) {
-															initials += s.charAt(0);
-														}
-														%>
-														<span class="avatar avatar-text rounded-3 me-4 mb-2"><%=initials%></span>
-														<div class="row flex-fill">
-															<div class="col-sm-5">
-																<h4 class="h5"><%=istru.getGrado()%></h4>
-																<span class="badge bg-primary m-1"><%=istru.getValutazione()%></span><span
-																	class="badge bg-success"><i
-																	class="bi bi-calendar-check-fill mt-2"> <%=istru%></i></span>
+													<%
+													for (Istruzione istru : istruzioni) {
+													%>
+
+													<div class="tab-content pt-3">
+														<div class="tab-pane active">
+															<div class="row">
+																<div class="col">
+																	<div class="row">
+																		<div class="col">
+																			<div class="form-group">
+																				<label>Descrizione istruzione</label> <input
+																					class="form-control" type="text" name="nome"
+																					placeholder=<%=istru.getDescrizione_istruzione()%>
+																					value=<%=istru.getDescrizione_istruzione()%>
+																					required>
+																			</div>
+																		</div>
+																		<div class="col">
+																			<div class="form-group">
+																				<label>Descrizione istruzione</label> <input
+																					class="form-control" type="text" name="nome"
+																					placeholder=<%=istru.getDescrizione_istruzione()%>
+																					value=<%=istru.getDescrizione_istruzione()%>
+																					required>
+																			</div>
+																		</div>
+																		<div class="col">
+																			<div class="form-group">
+																				<label>Descrizione istruzione</label> <input
+																					class="form-control" type="text" name="nome"
+																					placeholder=<%=istru.getDescrizione_istruzione()%>
+																					value=<%=istru.getDescrizione_istruzione()%>
+																					required>
+																			</div>
+																		</div>
+																		<div class="col">
+																			<div class="form-group">
+																				<label>Descrizione istruzione</label> <input
+																					class="form-control" type="text" name="nome"
+																					placeholder=<%=istru.getDescrizione_istruzione()%>
+																					value=<%=istru.getDescrizione_istruzione()%>
+																					required>
+																			</div>
+																		</div>
+																		<div class="col">
+																			<div class="form-group">
+																				<label>Descrizione istruzione</label> <input
+																					class="form-control" type="text" name="nome"
+																					placeholder=<%=istru.getDescrizione_istruzione()%>
+																					value=<%=istru.getDescrizione_istruzione()%>
+																					required>
+																			</div>
+																		</div>
+																		<div class="col">
+																			<div class="form-group">
+																				<label>Descrizione istruzione</label> <input
+																					class="form-control" type="text" name="nome"
+																					placeholder=<%=istru.getDescrizione_istruzione()%>
+																					value=<%=istru.getDescrizione_istruzione()%>
+																					required>
+																			</div>
+																		</div>
+
+
+
+																	</div>
+
+																	<%
+																	;
+																	%>
+
+																</div>
 															</div>
-															<div class="col-sm-4 py-2">
-																<span class="badge bg-info"><%=istru.getData_inizio()%></span>
-																<span class="badge bg-info"><%=istru.getData_fine()%></span>
-															</div>
-
-															<%
-															;
-															%>
-
 														</div>
 													</div>
-												</div>
-											</div>
 
-											<%
-											}
-											%>
-
-										</div>
+													<%
+													}
+													%>
+													<div class="row">
+														<div class="col d-flex justify-content-end">
+															<button class="btn btn-primary" type="submit">Salva</button>
+														</div>
+										</form>
 									</div>
 								</div>
 
 							</div>
 						</div>
 					</div>
+				</div>
+			</div>
 </body>
 </html>
