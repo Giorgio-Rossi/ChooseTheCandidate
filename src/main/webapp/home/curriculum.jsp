@@ -234,7 +234,10 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 															<%
 													}
 													%>
-
+<div class="row">
+																<div class="col d-flex justify-content-end">
+																	<button class="btn btn-primary" type="submit">Aggiungi esperienza</button>
+																</div>
 
 
 															<div class="container">
@@ -301,6 +304,12 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																				<%
 																	;
 																	%>
+																	
+																	<div class="row">
+																<div class="col d-flex justify-content-end">
+																	<button class="btn btn-primary" type="submit">Aggiungi istruzione</button>
+																</div>
+																	
 																			</div>
 																		</div>
 																	</div>
@@ -314,6 +323,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																<div class="col d-flex justify-content-end">
 																	<button class="btn btn-primary" type="submit">Salva</button>
 																</div>
+																
 										</form>
 									</div>
 								</div>
