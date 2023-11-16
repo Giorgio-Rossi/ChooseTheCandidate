@@ -170,14 +170,14 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																<div class="col">
 																	<div class="form-group">
 																		<label>Grado</label>
-																		<input class="form-control" type="text" name="grado_istruzione"  value=<%=istruzione.getGrado()%> required>
+																		<input class="form-control" type="text" name="grado_istruzione"  value=<%=istruzione.getGrado()%>>
 																	</div>
 																</div>
 																<div class="row">
 																	<div class="col">
 																		<div class="form-group">
 																			<label>Valutazione</label>
-																			<input class="form-control" type="text" name="valutazione_istruzione"  value=<%=istruzione.getValutazione()%> required>
+																			<input class="form-control" type="text" name="valutazione_istruzione"  value=<%=istruzione.getValutazione()%> >
 																		</div>
 																	</div>
 																</div>
@@ -280,20 +280,20 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 															<div class="col">
 																<div class="form-group">
 																	<label>Anni</label>
-																	<input class="form-control" type="text" name="anni_esperienza"  value=<%=esperienza.getAnni()%> required>
+																	<input class="form-control" type="text" name="anni_esperienza"  value=<%=esperienza.getAnni()%> >
 																</div>
 															</div>
 															<div class="row">
 																<div class="col">
 																	<div class="form-group">
 																		<label>Azienda</label>
-																		<input class="form-control" type="text" name="azienda"  value=<%=esperienza.getAzienda()%> required>
+																		<input class="form-control" type="text" name="azienda"  value=<%=esperienza.getAzienda()%> >
 																	</div>
 																</div>
 																<div class="col">
 																	<div class="form-group">
 																		<label>Tipo Contratto</label>
-																		<input class="form-control" type="text" name="tipo_contratto"  value=<%=esperienza.getTipo_contratto()%> required>
+																		<input class="form-control" type="text" name="tipo_contratto"  value=<%=esperienza.getTipo_contratto()%> >
 																	</div>
 																</div>
 															</div>
@@ -301,19 +301,19 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																<div class="col">
 																	<div class="form-group">
 																		<label>Posizione Lavorativa</label>
-																		<input class="form-control" type="text" name="posizione_lavorativa"  value=<%=esperienza.getPosizione_lavorativa()%> required>
+																		<input class="form-control" type="text" name="posizione_lavorativa"  value=<%=esperienza.getPosizione_lavorativa()%> >
 																	</div>
 																</div>
 																<div class="col">
 																	<div class="form-group">
 																		<label>Settore</label>
-																		<input class="form-control" type="text" name="settore"  value=<%=esperienza.getSettore()%> required>
+																		<input class="form-control" type="text" name="settore"  value=<%=esperienza.getSettore()%> >
 																	</div>
 																</div>
 																<div class="col">
 																	<div class="form-group">
 																		<label>RAL</label>
-																		<input class="form-control" type="text" name="ral"  value=<%=esperienza.getRal()%> required>
+																		<input class="form-control" type="text" name="ral"  value=<%=esperienza.getRal()%> >
 																	</div>
 																</div>
 

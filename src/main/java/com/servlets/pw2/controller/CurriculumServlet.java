@@ -201,7 +201,8 @@ public class CurriculumServlet extends HttpServlet {
             IstruzioneModificata.setData_fine(utenteInSessioneIstruzione.getData_fine());
         }
            
-         
+
+
         /*  ID USER */
          if(!req.getParameter("id_user").isEmpty()){
          Integer id_user = Integer.valueOf(req.getParameter("id_user").split(" ", 3)[0]);
