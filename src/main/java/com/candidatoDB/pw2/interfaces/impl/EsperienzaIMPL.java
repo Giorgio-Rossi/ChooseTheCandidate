@@ -28,7 +28,7 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 
 	@Override
 	public void save(Esperienza esperienze) {
-		String sql = "INSERT INTO Esperienza(id_esperienza,anni,descrizione_attivita,id_user,azienda,data_inizio,data_fine,ral,tipo_contratto,settore,posizione_lavorativa) VALUES(?,?,?,?,?,?,?,?,?,?,?))";
+		String sql = "INSERT INTO Esperienza(id_esperienza,anni,descrizione_attivita,id_user,azienda,data_inizio,data_fine,ral,tipo_contratto,settore,posizione_lavorativa,id_citta) VALUES(?,?,?,?,?,?,?,?,?,?,?,?))";
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
@@ -44,6 +44,7 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 			statement.setString(9, esperienze.getTipo_contratto());
 			statement.setString(10, esperienze.getSettore());
 			statement.setString(11, esperienze.getPosizione_lavorativa());
+			statement.setInt(12,esperienze.getId_citta().getId_citta());
 
 			statement.executeUpdate();
 			resultSet = statement.getGeneratedKeys();
@@ -61,7 +62,7 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 
 	@Override
 	public void update(Esperienza esperienze) {
-		String sql = "UPDATE Esperienza SET id_esperienza=?,anni=?,descrizione_attivita=?,id_user=?,azienda=?,data_inizio=?,data_fine=?,ral=?,tipo_contratto=?,settore=?,posizione_lavorativa=?";
+		String sql = "UPDATE Esperienza SET id_esperienza=?,anni=?,descrizione_attivita=?,id_user=?,azienda=?,data_inizio=?,data_fine=?,ral=?,tipo_contratto=?,settore=?,posizione_lavorativa=?, id_citta=?";
 		PreparedStatement statement = null;
 
 		try {
@@ -77,6 +78,7 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 			statement.setString(9, esperienze.getTipo_contratto());
 			statement.setString(10, esperienze.getSettore());
 			statement.setString(11, esperienze.getPosizione_lavorativa());
+			statement.setInt(12, esperienze.getId_citta().getId_citta());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -115,6 +117,8 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 				esperienza.setTipo_contratto(resultSet.getString(9));
 				esperienza.setSettore(resultSet.getString(10));
 				esperienza.setPosizione_lavorativa(resultSet.getString(11));
+
+				esperienza.setId_citta(new CittaIMPL().getCittaById(resultSet.getInt(12)));
 				
 				esperienze1.add(esperienza);
 

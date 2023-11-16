@@ -16,6 +16,8 @@ public class Esperienza {
 	private String settore;
 	private String posizione_lavorativa;
 
+	private Citta id_citta;
+
 	
 	
 	
@@ -24,7 +26,7 @@ public class Esperienza {
 	}
 	public Esperienza(int id_esperienza, int anni, String descrizione_attivita, Utente utente, String azienda,
 			Date data_inizio, Date data_fine, int ral, String tipo_contratto, String settore,
-			String posizione_lavorativa) {
+			String posizione_lavorativa, Citta id_citta) {
 		super();
 		this.id_esperienza = id_esperienza;
 		this.anni = anni;
@@ -37,6 +39,7 @@ public class Esperienza {
 		this.tipo_contratto = tipo_contratto;
 		this.settore = settore;
 		this.posizione_lavorativa = posizione_lavorativa;
+		this.id_citta = id_citta;
 	}
 	public int getId_esperienza() {
 		return id_esperienza;
@@ -104,6 +107,15 @@ public class Esperienza {
 	public void setPosizione_lavorativa(String posizione_lavorativa) {
 		this.posizione_lavorativa = posizione_lavorativa;
 	}
+
+	public void setId_citta(Citta id_citta) {
+		this.id_citta = id_citta;
+	}
+
+	public Citta getId_citta() {
+		return id_citta;
+	}
+
 	@Override
 	public String toString() {
 		return "Esperienza [id_esperienza=" + id_esperienza + ", anni=" + anni + ", descrizione_attivita="
