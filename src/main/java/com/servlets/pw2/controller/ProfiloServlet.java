@@ -119,7 +119,7 @@ public class ProfiloServlet extends HttpServlet {
             Integer id_regione = Integer.valueOf(req.getParameter("citta").split(" ", 3)[1]);
             String nome_citta = req.getParameter("citta").split(" ", 3)[2];
 
-            Citta citta_utente_sessione = utenteInSessione.getId_citta();
+            //Citta citta_utente_sessione = utenteInSessione.getId_citta();
 
             CittaIMPL cittaIMPL = new CittaIMPL();
             Regione regione = cittaIMPL.getRegione(id_regione);
