@@ -31,7 +31,7 @@ public class CurriculumServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
-        Utente utenteModificato = new Utente();
+        //Utente utenteModificato = new Utente();
         Utente utenteInSessione = (Utente) session.getAttribute("utente");
         IstruzioneIMPL istruzioneIMPL = new IstruzioneIMPL();
         ArrayList<Istruzione> istruzioni_utente_loggato = (ArrayList<Istruzione>) istruzioneIMPL.getAllInstruction(utenteInSessione.getId_user());
@@ -119,8 +119,9 @@ public class CurriculumServlet extends HttpServlet {
                 update_istruzione.setId_citta(istruzione.getId_citta());
             }
 
-            System.out.println(update_istruzione);
+            //System.out.println(update_istruzione);
 
+            //TODO NON SALVA LE MODIFICHE
             istruzioneIMPL.update(update_istruzione);
 
             if(isModified){
