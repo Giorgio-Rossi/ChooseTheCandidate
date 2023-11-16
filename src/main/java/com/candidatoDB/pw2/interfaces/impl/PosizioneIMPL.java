@@ -656,7 +656,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 	}
 	
 	//-------------------------------ADMIN---------------------------------
-	
+	@Override
 	public void nuovaPosizione(Posizione posizione) {
 		String sql = "INSERT INTO Posizione(ruolo,id_categoria,id_citta,n_ammissioni,id_quiz,descrizione,stato,data_inserimento) VALUES(?,?,?,?,?,?,?,?)";
 		PreparedStatement statement = null;
@@ -679,5 +679,4 @@ public class PosizioneIMPL implements PosizioneDAO {
 		}
 	
 	}
-
 }

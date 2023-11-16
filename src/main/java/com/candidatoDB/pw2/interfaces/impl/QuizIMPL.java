@@ -65,4 +65,28 @@ public class QuizIMPL implements QuizDAO {
         }
         return punteggio_totale;
     }
+    //----------------------admin----------------------
+    
+    @Override
+    public Integer getNdomandeById (int id_quiz) {
+    	Integer nDomande = null;
+    	String sql = "SELECT count(d.id_domanda) from Quiz q inner join QuizDomanda qd on q.id_quiz = qd.id_quiz where q.id_quiz = ?";
+    	PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.getConnection().prepareStatement(sql);
+            statement.setInt(1, id_quiz);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                nDomande = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            DBUtil.close(resultSet);
+            DBUtil.close(statement);
+            //DBUtil.close(connection.getConnection());
+        }
+    	return nDomande;
+    }
 }
