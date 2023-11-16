@@ -68,7 +68,7 @@
 
 <body style="background-color: #d4d4d4">
 
-<jsp:include page="/home/jsp/navbarHeaderAdmin.jsp" />
+<jsp:include page="/admin/jspA/navbarHeaderAdmin.jsp" />
 
 
 <h1>Candidature</h1>
