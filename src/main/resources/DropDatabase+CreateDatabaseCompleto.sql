@@ -563,9 +563,9 @@ INSERT INTO QuizDomanda VALUES(75, 11);
 
 /*	Inserimento delle posizioni	*/
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','ciao','1','1','1','aperta','20231101','Sistemista');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','hola','1','2',NULL,'aperta','20231102','Web Developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo uno sviluppatore Java','2','2',NULL,'aperta','20231107','Java Developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo uno sviluppatore Front End','2','2',NULL,'aperta','20231102','Front-End Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','hola','1','2','2','aperta','20231102','Web Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo uno sviluppatore Java','2','2','2','aperta','20231107','Java Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo uno sviluppatore Front End','2','2','2','aperta','20231102','Front-End Developer');
 
 
 /*	Inserimento delle Candidature degli utenti	*/
