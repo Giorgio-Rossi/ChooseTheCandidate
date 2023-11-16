@@ -25,7 +25,7 @@
 		posizioneRecente = candidaturaIMPL.getPosizioneByCandidaturaId(candidaturaRecente);
 	}
 PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
-List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.getId_citta());
+
 
 %>
 
@@ -219,6 +219,9 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
 		<div class="slide slide2" style="background-color:#0072BC">
     <div class="card-body p-4">
         <%
+        if(utenteLoggato.getId_citta()!=null){
+        	List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.getId_citta());
+        
             if (!posizioniRecenti.isEmpty()) {
                 for (Posizione posizione : posizioniRecenti) {
         %>
@@ -228,6 +231,7 @@ List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.get
         </div>
         <%
                 }
+            }
             } else {
         %>
         <div class="alert alert-info" role="alert">
