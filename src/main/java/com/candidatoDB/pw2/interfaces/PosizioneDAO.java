@@ -32,6 +32,8 @@ public interface PosizioneDAO {
 	
 	Posizione getPosizioneById(int id_posizione);
 	
+	void nuovaPosizione(Posizione posizione);
+	
 	
 }
 

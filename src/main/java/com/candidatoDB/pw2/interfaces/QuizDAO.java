@@ -8,4 +8,5 @@ public interface QuizDAO {
 
     Integer getPunteggioTotaleById(int id_quiz);
 
+    Integer getNdomandeById (int id_quiz);
 }
