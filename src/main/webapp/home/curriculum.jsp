@@ -144,144 +144,176 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 											<div class="container">
 
 												<%
-												for (Esperienza espe : esperienze) {
-												%>
+													for (Esperienza espe : esperienze) {
+													%>
 
-												<div class="card mb-3 shadow-lg">
-													<div class="card-body">
-														<div class="d-flex flex-column flex-lg-row">
-															<%
-															String initials = "";
-															for (String s : espe.getPosizione_lavorativa().split(" ")) {
-																initials += s.charAt(0);
-															}
-															%>
-															<span class="avatar avatar-text rounded-3 me-4 mb-2"><%=initials%></span>
-															<div class="row flex-fill">
-																<div class="col-sm-5">
-																	<h4 class="h5"><%=espe.getSettore()%></h4>
-																	<span class="badge bg-primary m-1"><%=espe.getAzienda()%></span><span
-																		class="badge bg-success"><i
-																		class="bi bi-calendar-check-fill mt-2"> <%=espe.getTipo_contratto()%></i></span>
-																</div>
-																<div class="col-sm-4 py-2">
-																	<span class="badge bg-info"><%=espe.getData_inizio()%></span>
-																	<span class="badge bg-info"><%=espe.getData_fine()%></span>
-																</div>
-																<%
-																if (espe.getUtente() != null) {
-																%>
-																<div class="col-sm-3 text-lg-end">
-																	<span class="badge bg-success"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
-																</div>
-																<%
-																} else {
-																%>
-																<div class="col-sm-3 text-lg-end">
-																	<span class="badge bg-danger"><%=espe.getDescrizione_attivita().toUpperCase()%></span>
-																</div>
-																<%
-																}
-																;
-																%>
+												<div class="tab-content pt-3">
+													<div class="tab-pane active">
+														<div class="row">
+															<div class="col">
+																<div class="row">
+																	<div class="col">
+																		<div class="form-group">
+																			<label>Descrizione attività</label> <input
+																				class="form-control" type="" name="descAttivita"
+																				placeholder=<%=espe.getDescrizione_attivita()%>
+																				value=<%=espe.getDescrizione_attivita()%> required>
+																		</div>
+																	</div>
+																	<div class="col">
+																		<div class="form-group">
+																			<label>Azienda</label> <input class="form-control"
+																				type="text" name="azienda"
+																				placeholder=<%=espe.getAzienda()%>
+																				value=<%=espe.getAzienda()%> required>
+																		</div>
+																	</div>
+																	<div class="col">
+																		<div class="form-group">
+																			<label>Data inizio</label> <input
+																				class="form-control" type="date" name="dataInizio"
+																				placeholder=<%=espe.getData_inizio()%>
+																				value=<%=espe.getData_inizio()%> required>
+																		</div>
+																	</div>
+																	<div class="col">
+																		<div class="form-group">
+																			<label>Data fine</label> <input class="form-control"
+																				type="date" name="dataFine"
+																				placeholder=<%=espe.getData_fine()%>
+																				value=<%=espe.getData_fine()%> required>
+																		</div>
+																	</div>
+																	<div class="col">
+																		<div class="form-group">
+																			<label>Anni</label> <input class="form-control"
+																				type="number" name="anni"
+																				placeholder=<%=espe.getAnni()%>
+																				value=<%=espe.getAnni()%> required>
+																		</div>
+																	</div>
+																	<div class="col">
+																		<div class="form-group">
+																			<label>Settore</label> <input class="form-control"
+																				type="text" name="settore"
+																				placeholder=<%=espe.getSettore()%>
+																				value=<%=espe.getSettore()%> required>
+																		</div>
+																	</div>
+																	<div class="col">
+																		<div class="form-group">
+																			<label>Contratto</label> <input class="form-control"
+																				type="text" name="contratto"
+																				placeholder=<%=espe.getTipo_contratto()%>
+																				value=<%=espe.getTipo_contratto()%> required>
+																		</div>
+																	</div>
+																	<div class="col">
+																		<div class="form-group">
+																			<label>RAL</label> <input class="form-control"
+																				type="number" name="contratto"
+																				placeholder=<%=espe.getRal()%>
+																				value=<%=espe.getRal()%> required>
+																		</div>
+																	</div>
 
+
+
+																</div>
+
+																<%
+																	;
+																	%>
 															</div>
-														</div>
-													</div>
-												</div>
+																</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
 
-												<%
-												}
-												%>
+															<%
+													}
+													%>
 
 
 
-												<div class="container">
+															<div class="container">
 
-													<%
+																<%
 													for (Istruzione istru : istruzioni) {
 													%>
 
-													<div class="tab-content pt-3">
-														<div class="tab-pane active">
-															<div class="row">
-																<div class="col">
-																	<div class="row">
-																		<div class="col">
-																			<div class="form-group">
-																				<label>Descrizione istruzione</label> <input
-																					class="form-control" type="text" name="nome"
-																					placeholder=<%=istru.getDescrizione_istruzione()%>
-																					value=<%=istru.getDescrizione_istruzione()%>
-																					required>
-																			</div>
-																		</div>
-																		<div class="col">
-																			<div class="form-group">
-																				<label>Descrizione istruzione</label> <input
-																					class="form-control" type="text" name="nome"
-																					placeholder=<%=istru.getDescrizione_istruzione()%>
-																					value=<%=istru.getDescrizione_istruzione()%>
-																					required>
-																			</div>
-																		</div>
-																		<div class="col">
-																			<div class="form-group">
-																				<label>Descrizione istruzione</label> <input
-																					class="form-control" type="text" name="nome"
-																					placeholder=<%=istru.getDescrizione_istruzione()%>
-																					value=<%=istru.getDescrizione_istruzione()%>
-																					required>
-																			</div>
-																		</div>
-																		<div class="col">
-																			<div class="form-group">
-																				<label>Descrizione istruzione</label> <input
-																					class="form-control" type="text" name="nome"
-																					placeholder=<%=istru.getDescrizione_istruzione()%>
-																					value=<%=istru.getDescrizione_istruzione()%>
-																					required>
-																			</div>
-																		</div>
-																		<div class="col">
-																			<div class="form-group">
-																				<label>Descrizione istruzione</label> <input
-																					class="form-control" type="text" name="nome"
-																					placeholder=<%=istru.getDescrizione_istruzione()%>
-																					value=<%=istru.getDescrizione_istruzione()%>
-																					required>
-																			</div>
-																		</div>
-																		<div class="col">
-																			<div class="form-group">
-																				<label>Descrizione istruzione</label> <input
-																					class="form-control" type="text" name="nome"
-																					placeholder=<%=istru.getDescrizione_istruzione()%>
-																					value=<%=istru.getDescrizione_istruzione()%>
-																					required>
-																			</div>
-																		</div>
+																<div class="tab-content pt-3">
+																	<div class="tab-pane active">
+																		<div class="row">
+																			<div class="col">
+																				<div class="row">
+																					<div class="col">
+																						<div class="form-group">
+																							<label>Descrizione istruzione</label> <input
+																								class="form-control" type="text"
+																								name="descIstruzione"
+																								placeholder=<%=istru.getDescrizione_istruzione()%>
+																								value=<%=istru.getDescrizione_istruzione()%>
+																								required>
+																						</div>
+																					</div>
+																					<div class="col">
+																						<div class="form-group">
+																							<label>Grado istruzione</label> <input
+																								class="form-control" type="text" name="grado"
+																								placeholder=<%=istru.getGrado()%>
+																								value=<%=istru.getGrado()%> required>
+																						</div>
+																					</div>
+																					<div class="col">
+																						<div class="form-group">
+																							<label>Data inizio</label> <input
+																								class="form-control" type="date"
+																								name="dataInizio"
+																								placeholder=<%=istru.getData_inizio()%>
+																								value=<%=istru.getData_inizio()%> required>
+																						</div>
+																					</div>
+																					<div class="col">
+																						<div class="form-group">
+																							<label>Data fine</label> <input
+																								class="form-control" type="date" name="dataFine"
+																								placeholder=<%=istru.getData_fine()%>
+																								value=<%=istru.getData_fine()%> required>
+																						</div>
+																					</div>
+																					<div class="col">
+																						<div class="form-group">
+																							<label>Valutazione finale</label> <input
+																								class="form-control" type="text"
+																								name="valutazione"
+																								placeholder=<%=istru.getValutazione()%>
+																								value=<%=istru.getValutazione()%> required>
+																						</div>
+																					</div>
 
 
 
-																	</div>
 
-																	<%
+																				</div>
+
+																				<%
 																	;
 																	%>
-
+																			</div>
+																		</div>
+																	</div>
 																</div>
 															</div>
-														</div>
-													</div>
 
-													<%
+															<%
 													}
 													%>
-													<div class="row">
-														<div class="col d-flex justify-content-end">
-															<button class="btn btn-primary" type="submit">Salva</button>
-														</div>
+															<div class="row">
+																<div class="col d-flex justify-content-end">
+																	<button class="btn btn-primary" type="submit">Salva</button>
+																</div>
 										</form>
 									</div>
 								</div>
