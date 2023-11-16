@@ -32,7 +32,7 @@ String Uri = request.getRequestURI().toString();
 						String Path5 = request.getContextPath() + "/home/curriculum.jsp"; %>
 						<% if (Uri.equals(Path5)){ %>active<% }; %>">
 						<i 
-						class="bi bi-person-circle" style="margin-right: 5px; font-size: 20px"></i><span>Curriculum</span></a>
+						class="bi bi-file-earmark-person-fill" style="margin-right: 5px; font-size: 20px"></i><span>Curriculum</span></a>
 						
 
 					<!-- INSERIRE UN IF DENTRO AL CLASS PER ANDARE A SCRIVERE ACTIVE -->

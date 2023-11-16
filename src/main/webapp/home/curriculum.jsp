@@ -133,7 +133,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 												<%
 												} else {
 												%>
-												<i class="bi bi-person-circle"
+												<i class="bi bi-file-earmark-person-fill"
 												   style="margin-right: 5px; font-size: 150px"></i>
 												<%
 													}
@@ -146,7 +146,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 											</div>
 
 													<div class="col d-flex justify-content-end">
-														<button class="btn btn-primary" type="submit" form="modifica_istruzione">Salva</button>
+														<button class="btn btn-success" type="submit" form="modifica_istruzione">Salva</button>
 													</div>
 											</div>
 											<div class="mb-2"><strong>Istruzioni</strong></div>
@@ -160,24 +160,25 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 													<div class="row">
 														<div class="col">
 															<div class="row">
+																<input type="hidden" id="custId" name="id_istruzione" value="<%=istruzione.getId_istruzione()%>">
 
 																<div class="col">
 																	<div class="form-group">
 																		<label for="descrizione_istruzione" class="form-label">Descrizione Istruzione</label>
-																		<textarea class="form-control" id="descrizione_istruzione" rows="3" name="descrizione_istruzione"><%=istruzione.getDescrizione_istruzione()%></textarea>
+																		<textarea class="form-control" id="descrizione_istruzione" rows="3" name="descrizione_istruzione <%=istruzione.getId_istruzione()%>"><%=istruzione.getDescrizione_istruzione()%></textarea>
 																	</div>
 																</div>
 																<div class="col">
 																	<div class="form-group">
 																		<label>Grado</label>
-																		<input class="form-control" type="text" name="grado_istruzione"  value=<%=istruzione.getGrado()%>>
+																		<input class="form-control" type="text" name="grado_istruzione <%=istruzione.getId_istruzione()%>"  value=<%=istruzione.getGrado()%>>
 																	</div>
 																</div>
-																<div class="row">
+																<div class="row row-cols-3">
 																	<div class="col">
 																		<div class="form-group">
 																			<label>Valutazione</label>
-																			<input class="form-control" type="text" name="valutazione_istruzione"  value=<%=istruzione.getValutazione()%> >
+																			<input class="form-control" type="text" name="valutazione_istruzione <%=istruzione.getId_istruzione()%>"  value=<%=istruzione.getValutazione()%> >
 																		</div>
 																	</div>
 																</div>
@@ -187,14 +188,14 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																	<div class="form-group">
 																		<label>Data inizio</label>
 																		<%java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"); %>
-																		<input class="form-control" type="date" name="inizio_istruzione"  value=<%=istruzione.getData_inizio()%>>
+																		<input class="form-control" type="date" name="inizio_istruzione <%=istruzione.getId_istruzione()%>"  value=<%=istruzione.getData_inizio()%>>
 																	</div>
 																</div>
 																<div class="col">
 																	<div class="form-group">
 																		<label>Data fine (se prevista)</label>
 																		<%java.text.DateFormat df2 = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"); %>
-																		<input class="form-control" type="date" name="fine_istruzione"  value=<%=istruzione.getData_fine()%>>
+																		<input class="form-control" type="date" name="fine_istruzione <%=istruzione.getId_istruzione()%>"  value=<%=istruzione.getData_fine()%>>
 																	</div>
 																</div>
 															</div>
@@ -204,8 +205,8 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																		<%Citta citta = (new CittaIMPL().getCittaById(istruzione.getId_citta()) !=null)? new CittaIMPL().getCittaById(istruzione.getId_citta()) : null;
 
 																		%>
-																		<label>Città di nascita</label>
-																		<select class="form-select" aria-label="Default select example" name="citta">
+																		<label>Sede</label>
+																		<select class="form-select" aria-label="Default select example" name="sede_istruzione <%=istruzione.getId_istruzione()%>">
 
 																			<%
 																				if(citta!=null){
@@ -227,7 +228,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
                                                                                     for(Citta c : cities){
                                                                                      if(c.getRegione().getNome().equals(r.getNome())){
                                                                                          %>
-																				<option value="<%=c.getId_citta()+" "+r.getId_regione()+" "+c.getNome()%>"><%=c.getNome()%></option>
+																				<option value="<%=c.getId_citta()+" "+r.getId_regione()+" "+c.getNome()+" "+istruzione.getId_istruzione()%>" name="sede_istruzione <%=istruzione.getId_istruzione()%>"><%=c.getNome()%></option>
 																					<%
                                                                                      }
                                                                                     }
@@ -242,11 +243,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 														</div>
 													</div>
 
-													<div class="row">
-														<div class="col d-flex justify-content-end">
-															<button class="btn btn-primary" onclick="CloneIstruzione()" id="duplica_istruzione">Aggiungi Istruzione</button>
-														</div>
-													</div>
+
 
 
 												<%
@@ -342,7 +339,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																	<%Citta citta = (esperienza.getId_citta() !=null)? esperienza.getId_citta() : null;
 																		System.out.println(citta);
 																	%>
-																	<label>Città di nascita</label>
+																	<label>Sede</label>
 																	<select class="form-select" aria-label="Default select example" name="citta">
 
 																		<%
@@ -381,11 +378,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 												</div>
 
 
-											<div class="row">
-												<div class="col d-flex justify-content-end">
-													<button class="btn btn-primary" onclick="CloneEsperienza()" id="duplica_esperienza">Aggiungi Esperienza</button>
-												</div>
-											</div>
+
 
 
 											<%
@@ -396,6 +389,19 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 										</div>
 
 									</form>
+
+									<div class="row">
+										<div class="col d-flex justify-content-end">
+											<button class="btn btn-primary" onclick="CloneEsperienza()" id="duplica_esperienza">Aggiungi Esperienza</button>
+										</div>
+									</div>
+
+									<div class="row mt-1">
+										<div class="col d-flex justify-content-end">
+											<button class="btn btn-primary" onclick="CloneIstruzione()" id="duplica_istruzione">Aggiungi Istruzione</button>
+										</div>
+									</div>
+
 								</div>
 							</div>
 						</div>

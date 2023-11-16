@@ -114,7 +114,7 @@ public class ProfiloServlet extends HttpServlet {
 
 
         if(!req.getParameter("citta").isEmpty()){
-            System.out.println(req.getParameter("citta"));
+            //System.out.println(req.getParameter("citta"));
             Integer id_citta = Integer.valueOf(req.getParameter("citta").split(" ", 3)[0]);
             Integer id_regione = Integer.valueOf(req.getParameter("citta").split(" ", 3)[1]);
             String nome_citta = req.getParameter("citta").split(" ", 3)[2];

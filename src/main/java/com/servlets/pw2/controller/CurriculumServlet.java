@@ -20,10 +20,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @WebServlet("/curriculumUtente")
 @MultipartConfig
@@ -32,10 +29,119 @@ public class CurriculumServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        
+
         HttpSession session = req.getSession();
         Utente utenteModificato = new Utente();
         Utente utenteInSessione = (Utente) session.getAttribute("utente");
+        IstruzioneIMPL istruzioneIMPL = new IstruzioneIMPL();
+        ArrayList<Istruzione> istruzioni_utente_loggato = (ArrayList<Istruzione>) istruzioneIMPL.getAllInstruction(utenteInSessione.getId_user());
+        boolean isModified = false;
+
+
+        // TODO GESTIRE IL CAMBIO INFORMAZIONI DI ISTRUZIONI GIA PRESENTI
+        for (Istruzione istruzione : istruzioni_utente_loggato){
+
+            Istruzione update_istruzione = new Istruzione();
+
+            String string_descrizione_parameter = "descrizione_istruzione" + " " + istruzione.getId_istruzione();
+            String string_grado_parameter = "grado_istruzione" + " " + istruzione.getId_istruzione();
+            String string_valutazione_parameter = "valutazione_istruzione" + " " + istruzione.getId_istruzione();
+            String string_inizio_parameter = "inizio_istruzione" + " " + istruzione.getId_istruzione();
+            String string_fine_parameter = "fine_istruzione" + " " + istruzione.getId_istruzione();
+            String string_sede_parameter = "sede_istruzione" + " " + istruzione.getId_istruzione();
+
+
+            String descrizione_istruzione = req.getParameter(string_descrizione_parameter);
+            String grado_istruzione = req.getParameter(string_grado_parameter);
+            String valutazione_istruzione = req.getParameter(string_valutazione_parameter);
+            String inizo_istruzione = req.getParameter(string_inizio_parameter);
+            String fine_istruzione = req.getParameter(string_fine_parameter);
+            String sede_istruzione = req.getParameter(string_sede_parameter);
+
+
+            if (!istruzione.getDescrizione_istruzione().equals(descrizione_istruzione)) {
+                update_istruzione.setDescrizione_istruzione(descrizione_istruzione);
+                isModified = true;
+            } else {
+                update_istruzione.setDescrizione_istruzione(istruzione.getDescrizione_istruzione());
+            }
+
+            if (!istruzione.getGrado().equals(grado_istruzione)) {
+                update_istruzione.setGrado(grado_istruzione);
+                isModified = true;
+            } else {
+                update_istruzione.setGrado(istruzione.getGrado());
+            }
+
+            if (istruzione.getValutazione() != Integer.parseInt(valutazione_istruzione)) {
+                update_istruzione.setValutazione(Integer.parseInt(valutazione_istruzione));
+                isModified = true;
+            } else {
+                update_istruzione.setValutazione(istruzione.getValutazione());
+            }
+
+
+            SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+            Date data_inizio;
+            Date data_fine;
+            try {
+                data_inizio = in.parse(inizo_istruzione);
+                data_fine = in.parse(fine_istruzione);
+            } catch (ParseException e) {
+                ErrorManager.setErrorMessage("Qualcosa è andato storto",req);
+                throw new RuntimeException(e);
+            }
+
+
+            if (istruzione.getData_inizio().compareTo(data_inizio) == 0) {
+                update_istruzione.setData_inizio(new java.sql.Date(data_inizio.getTime()));
+                isModified = true;
+            } else {
+                update_istruzione.setData_inizio(istruzione.getData_inizio());
+            }
+
+            if (istruzione.getData_fine().compareTo(data_fine) == 0) {
+                update_istruzione.setData_fine(new java.sql.Date(data_fine.getTime()));
+                isModified = true;
+            } else {
+                update_istruzione.setData_fine(istruzione.getData_fine());
+            }
+
+            Integer id_citta_istruzione = Integer.valueOf(sede_istruzione.split(" ", 4)[0]);
+            Integer id_regione_istruzione = Integer.valueOf(sede_istruzione.split(" ", 4)[1]);
+            String nome_citta_istruzione = sede_istruzione.split(" ", 4)[2];
+
+
+            if (istruzione.getId_citta() != id_citta_istruzione) {
+                update_istruzione.setId_citta(id_citta_istruzione);
+                isModified = true;
+            } else {
+                update_istruzione.setId_citta(istruzione.getId_citta());
+            }
+
+            System.out.println(update_istruzione);
+
+            istruzioneIMPL.update(update_istruzione);
+
+            if(isModified){
+                ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
+            } else {
+                ErrorManager.setOtherMessage("Non hai modificato nulla!",req);
+            }
+            req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
+         }
+
+
+        String[] id_istruzioni = req.getParameterValues("id_istruzione");
+
+        //TODO GESTISCI AGGIUNTA NUOVE ISTRUZIONE
+        if(Arrays.asList(id_istruzioni).contains("")){
+            //System.out.println("SI ");
+        }
+
+
+
+        /*
         Esperienza utenteInSessioneEsperienza = (Esperienza) session.getAttribute("esperienza");
 
         //  ESPERIENZA LAVORATIVA
@@ -134,7 +240,10 @@ public class CurriculumServlet extends HttpServlet {
         } else {
             EsperienzaModificata.setDescrizione_attivita(utenteInSessioneEsperienza.getDescrizione_attivita());
         }
-        
+
+
+
+
         //      ISTRUZIONE
         
         Istruzione utenteInSessioneIstruzione = (Istruzione) session.getAttribute("istruzione");
@@ -148,7 +257,7 @@ public class CurriculumServlet extends HttpServlet {
             IstruzioneModificata.setGrado(utenteInSessioneIstruzione.getGrado());
         }
 
-        /* ID citta */
+        // ID citta
          Integer id_citta = Integer.valueOf(req.getParameter("citta").split(" ", 3)[0]);
             Integer id_regione = Integer.valueOf(req.getParameter("citta").split(" ", 3)[1]);
             String nome_citta = req.getParameter("citta").split(" ", 3)[2];
@@ -203,7 +312,7 @@ public class CurriculumServlet extends HttpServlet {
            
 
 
-        /*  ID USER */
+        // ID USER
          if(!req.getParameter("id_user").isEmpty()){
          Integer id_user = Integer.valueOf(req.getParameter("id_user").split(" ", 3)[0]);
   
@@ -214,7 +323,7 @@ public class CurriculumServlet extends HttpServlet {
              IstruzioneModificata.setId_user(IstruzioneModificata.getId_user());
          }
 
-       /*	Valutazione */
+      // 	Valutazione
          if(!req.getParameter("valutazione").isEmpty()){
           Integer valutazione = Integer.valueOf(req.getParameter("valutazione").split(" ", 3)[0]);
           IstruzioneModificata.setValutazione(valutazione);
@@ -224,7 +333,7 @@ public class CurriculumServlet extends HttpServlet {
          }
       
 
-        /*  CV */
+       // CV
  
         Part part = req.getPart("cv");
         String fileName = part.getSubmittedFileName();
@@ -265,5 +374,7 @@ public class CurriculumServlet extends HttpServlet {
             }
             req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
         }
+        */
 
     }
+}
