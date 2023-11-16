@@ -118,8 +118,11 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 				esperienza.setSettore(resultSet.getString(10));
 				esperienza.setPosizione_lavorativa(resultSet.getString(11));
 
-
+				if(resultSet.getString(12)==null){
+					System.out.println("No citta");
+				}else {
 					esperienza.setId_citta(new CittaIMPL().getCittaById(resultSet.getInt(12)));
+				}
 
 
 				esperienze1.add(esperienza);

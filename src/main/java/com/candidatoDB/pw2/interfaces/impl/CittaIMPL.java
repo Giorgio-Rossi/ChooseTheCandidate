@@ -112,10 +112,6 @@ public class CittaIMPL implements CittaDAO {
 				RegioneIMPL regioneIMPL = new RegioneIMPL();
 				citta.setRegione(regioneIMPL.FindByID(resultSet.getInt("id_regione")));
 				citta.setNome(resultSet.getString("nome"));
-
-				
-System.out.println(citta);
-				System.out.println("Funziono");
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
