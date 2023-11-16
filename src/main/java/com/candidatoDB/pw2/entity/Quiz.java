@@ -21,6 +21,13 @@ public class Quiz {
 		this.n_domande = n_domande;
 		this.id_domanda = id_domanda;
 	}
+	
+	public Quiz(int id_quiz, String descrizione, int n_domande) {
+		super();
+		this.id_quiz = id_quiz;
+		this.descrizione = descrizione;
+		this.n_domande = n_domande;
+	}
 
 	public int getId_quiz() {
 		return id_quiz;
