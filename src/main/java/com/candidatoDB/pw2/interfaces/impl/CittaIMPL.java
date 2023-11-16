@@ -33,8 +33,9 @@ public class CittaIMPL implements CittaDAO {
             while (resultSet.next()) {
                Citta citta = new Citta();
                citta.setId_citta(resultSet.getInt(1));
-               citta.setRegione(getRegione(resultSet.getInt(2)));
-               citta.setNome(resultSet.getString(3));
+               citta.setNome(resultSet.getString(2));
+               citta.setRegione(getRegione(resultSet.getInt(3)));
+               
                cities.add(citta);
             }
         } catch (SQLException e) {
