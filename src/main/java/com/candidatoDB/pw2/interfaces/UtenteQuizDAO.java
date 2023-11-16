@@ -6,6 +6,10 @@ import com.candidatoDB.pw2.entity.UtenteQuiz;
 
 import java.util.ArrayList;
 
+import com.candidatoDB.pw2.entity.Quiz;
+import com.candidatoDB.pw2.entity.Utente;
+import com.candidatoDB.pw2.entity.UtenteQuiz;
+
 public interface UtenteQuizDAO {
 
     void Save(UtenteQuiz utenteQuiz);

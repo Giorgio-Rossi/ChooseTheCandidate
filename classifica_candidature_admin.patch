@@ -1,0 +1,870 @@
+Subject: [PATCH] classifica candidature admin
+---
+Index: src/main/java/com/servlets/pw2/controller/GestionePosizioni.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/servlets/pw2/controller/GestionePosizioni.java b/src/main/java/com/servlets/pw2/controller/GestionePosizioni.java
+--- a/src/main/java/com/servlets/pw2/controller/GestionePosizioni.java	(revision 03fde501e0c3e1d9863f638cc0ceea85a62e77c4)
++++ b/src/main/java/com/servlets/pw2/controller/GestionePosizioni.java	(date 1700066965857)
+@@ -24,7 +24,7 @@
+ 		posizioneImpl = new PosizioneIMPL();
+     }
+ 	
+-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
++	/*protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+         String ruolo = req.getParameter("ruolo");
+         int id_categoria = req.getp("id_categoria");
+         
+@@ -67,6 +67,6 @@
+ 	
+ 	public GestionePosizioni() {
+ 		// TODO Auto-generated constructor stub
+-	}
++	}*/
+ 
+ }
+Index: src/main/java/com/servlets/pw2/controller/GestisciRIsultatoQuiz.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/servlets/pw2/controller/GestisciRIsultatoQuiz.java b/src/main/java/com/servlets/pw2/controller/GestisciRIsultatoQuiz.java
+--- a/src/main/java/com/servlets/pw2/controller/GestisciRIsultatoQuiz.java	(revision 03fde501e0c3e1d9863f638cc0ceea85a62e77c4)
++++ b/src/main/java/com/servlets/pw2/controller/GestisciRIsultatoQuiz.java	(date 1700066887149)
+@@ -1,10 +1,7 @@
+ package com.servlets.pw2.controller;
+ 
+ import com.candidatoDB.pw2.entity.*;
+-import com.candidatoDB.pw2.interfaces.impl.CandidaturaUserIMPL;
+-import com.candidatoDB.pw2.interfaces.impl.PosizioneIMPL;
+-import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
+-import com.candidatoDB.pw2.interfaces.impl.UtenteQuizIMPL;
++import com.candidatoDB.pw2.interfaces.impl.*;
+ 
+ import javax.servlet.ServletException;
+ import javax.servlet.annotation.WebServlet;
+@@ -65,10 +62,15 @@
+                     }
+                 }
+             }
++            QuizIMPL quizIMPL = new QuizIMPL();
++            Double punteggioOttenuto = (double) punteggio_quiz;
++            Integer punteggioTotale = quizIMPL.getPunteggioTotaleById(id_quiz);
++            Double percentuale = (punteggioOttenuto/punteggioTotale) * 100;
++
+ 
+             utenteQuiz.setId_quiz(id_quiz);
+             utenteQuiz.setId_user(utente.getId_user());
+-            utenteQuiz.setPunteggio(punteggio_quiz);
++            utenteQuiz.setPunteggio(percentuale);
+             utenteQuiz.setData_inserimento(new Date(System.currentTimeMillis()));
+ 
+             utenteQuizIMPL.Save(utenteQuiz);
+Index: src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteSkillsIMPL.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteSkillsIMPL.java b/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteSkillsIMPL.java
+new file mode 100644
+--- /dev/null	(date 1700066887163)
++++ b/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteSkillsIMPL.java	(date 1700066887163)
+@@ -0,0 +1,51 @@
++package com.candidatoDB.pw2.interfaces.impl;
++
++import com.candidatoDB.pw2.entity.Quiz;
++import com.candidatoDB.pw2.entity.Skill;
++import com.candidatoDB.pw2.entity.Utente;
++import com.candidatoDB.pw2.interfaces.UtenteSkillsDAO;
++import com.servlets.pw2.controller.DBUtil;
++import com.servlets.pw2.controller.SQLServerConnection;
++
++import java.sql.PreparedStatement;
++import java.sql.ResultSet;
++import java.sql.SQLException;
++import java.util.ArrayList;
++
++public class UtenteSkillsIMPL implements UtenteSkillsDAO {
++
++    private SQLServerConnection connection = new SQLServerConnection();
++
++    public UtenteSkillsIMPL() {
++        connection.Connect();
++    }
++    @Override
++    public ArrayList<Skill> getAllUserSkillVerifiedOrNot(Utente utente, boolean verificata) {
++        ArrayList<Skill> allUserSkills = new ArrayList<>();
++        String sql = "SELECT * from UserSkills us where us.id_user = ? and us.verificata =?";
++
++        PreparedStatement statement = null;
++        ResultSet resultSet = null;
++        try {
++            statement = connection.getConnection().prepareStatement(sql);
++            statement.setInt(1, utente.getId_user());
++            statement.setBoolean(2,verificata);
++
++            resultSet = statement.executeQuery();
++
++            while (resultSet.next()) {
++
++                allUserSkills.add(new SkillIMPL().findById(resultSet.getInt("id_skill")));
++
++            }
++
++        } catch (SQLException e) {
++            System.err.println(e.getMessage());
++        } finally {
++            DBUtil.close(resultSet);
++            DBUtil.close(statement);
++            //DBUtil.close(connection.getConnection());
++        }
++        return allUserSkills;
++    }
++}
+Index: src/main/java/com/candidatoDB/pw2/interfaces/UtenteSkillsDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/candidatoDB/pw2/interfaces/UtenteSkillsDAO.java b/src/main/java/com/candidatoDB/pw2/interfaces/UtenteSkillsDAO.java
+new file mode 100644
+--- /dev/null	(date 1700066887152)
++++ b/src/main/java/com/candidatoDB/pw2/interfaces/UtenteSkillsDAO.java	(date 1700066887152)
+@@ -0,0 +1,11 @@
++package com.candidatoDB.pw2.interfaces;
++
++import com.candidatoDB.pw2.entity.Skill;
++import com.candidatoDB.pw2.entity.Utente;
++
++import java.util.ArrayList;
++
++public interface UtenteSkillsDAO {
++
++    ArrayList<Skill> getAllUserSkillVerifiedOrNot(Utente utente, boolean verificata);
++}
+Index: src/main/java/com/candidatoDB/pw2/entity/UtenteQuiz.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/candidatoDB/pw2/entity/UtenteQuiz.java b/src/main/java/com/candidatoDB/pw2/entity/UtenteQuiz.java
+--- a/src/main/java/com/candidatoDB/pw2/entity/UtenteQuiz.java	(revision 03fde501e0c3e1d9863f638cc0ceea85a62e77c4)
++++ b/src/main/java/com/candidatoDB/pw2/entity/UtenteQuiz.java	(date 1700066887132)
+@@ -9,14 +9,14 @@
+ 	private int id_utente_quiz;
+ 	private int id_quiz;
+ 	private int id_user;
+-	private int punteggio;
++	private double punteggio;
+ 
+ 	private Date data_inserimento;
+ 	
+ 	public UtenteQuiz() {
+ 		super();
+ 	}
+-	public UtenteQuiz(int id_utente_quiz, int id_quiz, int id_user, int punteggio,  Date data_inserimento) {
++	public UtenteQuiz(int id_utente_quiz, int id_quiz, int id_user, double punteggio,  Date data_inserimento) {
+ 		super();
+ 		this.id_utente_quiz = id_utente_quiz;
+ 		this.id_quiz = id_quiz;
+@@ -42,10 +42,10 @@
+ 	public void setId_user(int id_user) {
+ 		this.id_user = id_user;
+ 	}
+-	public int getPunteggio() {
++	public double getPunteggio() {
+ 		return punteggio;
+ 	}
+-	public void setPunteggio(int punteggio) {
++	public void setPunteggio(double punteggio) {
+ 		this.punteggio = punteggio;
+ 	}
+ 
+Index: src/main/webapp/home/statistichequiz.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/home/statistichequiz.jsp b/src/main/webapp/home/statistichequiz.jsp
+--- a/src/main/webapp/home/statistichequiz.jsp	(revision 03fde501e0c3e1d9863f638cc0ceea85a62e77c4)
++++ b/src/main/webapp/home/statistichequiz.jsp	(date 1700066887156)
+@@ -65,16 +65,12 @@
+                 <%
+                     for(Quiz quiz: allUserQuizzes){
+                         UtenteQuiz utenteQuiz = utenteQuizIMPL.getUtenteQuizById(quiz.getId_quiz(),utenteLoggato);
+-                        System.out.println(utenteQuiz);
+-                        Double punteggioOttenuto = (double) utenteQuiz.getPunteggio();
+-                        Integer punteggioTotale = quizIMPL.getPunteggioTotaleById(quiz.getId_quiz());
+-                        Double percentuale = (punteggioOttenuto/punteggioTotale) * 100;
+                 %>
+                 <div class="col-xl-3 col-lg-6 mb-4">
+                 <div class="bg-white rounded-lg p-5 shadow">
+                     <h1 class="h6 font-weight-bold text-center mb-4"><%=quiz.getDescrizione()%></h1>
+ 
+-                    <div class="progress mx-auto" data-value='<%=percentuale%>'>
++                    <div class="progress mx-auto" data-value='<%=utenteQuiz.getPunteggio()%>'>
+           <span class="progress-left">
+                         <span class="progress-bar border-success"></span>
+           </span>
+@@ -82,7 +78,7 @@
+                         <span class="progress-bar border-success"></span>
+           </span>
+                         <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+-                            <div class="h2 font-weight-bold"><%=percentuale%><sup class="small">%</sup></div>
++                            <div class="h2 font-weight-bold"><%=utenteQuiz.getPunteggio()%><sup class="small">%</sup></div>
+                         </div>
+                     </div>
+ 
+Index: src/main/java/com/servlets/pw2/controller/SQLServerConnection.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/servlets/pw2/controller/SQLServerConnection.java b/src/main/java/com/servlets/pw2/controller/SQLServerConnection.java
+--- a/src/main/java/com/servlets/pw2/controller/SQLServerConnection.java	(revision 03fde501e0c3e1d9863f638cc0ceea85a62e77c4)
++++ b/src/main/java/com/servlets/pw2/controller/SQLServerConnection.java	(date 1700066887161)
+@@ -14,7 +14,7 @@
+                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                 connection = DriverManager.getConnection(dburl, user, password);
+                 if (connection != null) {
+-                    System.out.println("Connessione al database riuscita!");
++                    //System.out.println("Connessione al database riuscita!");
+                 }
+             } catch (SQLException e) {
+                 System.err.println("Errore durante la connessione al database: " + e.getMessage());
+Index: src/main/java/com/candidatoDB/pw2/entity/UsersSkills.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/candidatoDB/pw2/entity/UsersSkills.java b/src/main/java/com/candidatoDB/pw2/entity/UsersSkills.java
+--- a/src/main/java/com/candidatoDB/pw2/entity/UsersSkills.java	(revision 03fde501e0c3e1d9863f638cc0ceea85a62e77c4)
++++ b/src/main/java/com/candidatoDB/pw2/entity/UsersSkills.java	(date 1700066887158)
+@@ -8,7 +8,8 @@
+ 
+ 	private int id_user_skills;
+ 	private int id_user;
+-	private List<Skill> id_skills = new ArrayList<Skill>();
++
++	private int id_skill;
+ 	private boolean verificata;
+ 
+ 	
+@@ -16,11 +17,11 @@
+ 		super();
+ 	}
+ 	
+-	public UsersSkills(int id_user_skills, int id_user, List<Skill> id_skills, boolean verificata) {
++	public UsersSkills(int id_user_skills, int id_user, int id_skill, boolean verificata) {
+ 		super();
+ 		this.id_user_skills = id_user_skills;
+ 		this.id_user = id_user;
+-		this.id_skills = id_skills;
++		this.id_skill = id_skill;
+ 		this.verificata = verificata;
+ 	}
+ 	public int getId_user_skills() {
+@@ -35,11 +36,11 @@
+ 	public void setId_user(int id_user) {
+ 		this.id_user = id_user;
+ 	}
+-	public List<Skill> getId_skills() {
+-		return id_skills;
++	public int getId_skills() {
++		return id_skill;
+ 	}
+-	public void setId_skills(List<Skill> id_skills) {
+-		this.id_skills = id_skills;
++	public void setId_skill(int id_skill) {
++		this.id_skill = id_skill;
+ 	}
+ 	public boolean isVerificata() {
+ 		return verificata;
+@@ -51,7 +52,7 @@
+ 
+ 	@Override
+ 	public String toString() {
+-		return "UsersSkills [id_user_skills=" + id_user_skills + ", id_user=" + id_user + ", id_skills=" + id_skills
++		return "UsersSkills [id_user_skills=" + id_user_skills + ", id_user=" + id_user + ", id_skills=" + id_skill
+ 				+ ", verificata=" + verificata + "]";
+ 	}
+ 	
+Index: target/PW2-1.0-SNAPSHOT/WEB-INF/classes/createTable.sql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/createTable.sql b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/createTable.sql
+--- a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/createTable.sql	(revision 03fde501e0c3e1d9863f638cc0ceea85a62e77c4)
++++ b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/createTable.sql	(date 1700067015878)
+@@ -171,4 +171,14 @@
+ 
+ alter table UtenteQuiz
+     add data_inserimento date;
++    
++    
++    -- ------------------ nuove alter
++ALTER TABLE Esperienza ALTER COLUMN descrizione_attivita varchar(700);
++ALTER TABLE Istruzione ALTER COLUMN descrizione_istruzione varchar(700) not null;
++ALTER TABLE Utente ALTER COLUMN CV varchar(700); 
++ALTER TABLE Posizione ALTER COLUMN descrizione varchar(700);
++ALTER TABLE Quiz ALTER COLUMN descrizione varchar(700);
++ALTER TABLE UtenteQuiz ALTER COLUMN punteggio float
+ 
++
+Index: src/main/webapp/admin/classificacandidatura.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/admin/classificacandidatura.jsp b/src/main/webapp/admin/classificacandidatura.jsp
+--- a/src/main/webapp/admin/classificacandidatura.jsp	(revision 03fde501e0c3e1d9863f638cc0ceea85a62e77c4)
++++ b/src/main/webapp/admin/classificacandidatura.jsp	(date 1700066887126)
+@@ -1,6 +1,12 @@
+ <%@ page import="com.candidatoDB.pw2.entity.Utente" %>
+ <%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteIMPL" %>
+ <%@ page import="java.util.ArrayList" %>
++<%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteQuizIMPL" %>
++<%@ page import="com.candidatoDB.pw2.interfaces.impl.PosizioneIMPL" %>
++<%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteSkillsIMPL" %>
++<%@ page import="java.util.Comparator" %>
++<%@ page import="java.util.HashMap" %>
++<%@ page import="com.candidatoDB.pw2.entity.UtenteQuiz" %>
+ <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+ <html>
+ <head>
+@@ -49,7 +55,7 @@
+ 
+     ArrayList<Utente> all_user_posizione = utenteIMPL.getAllUserByIdCandidatura(Integer.parseInt(id_posizione));
+ 
+-    System.out.println(all_user_posizione);
++
+ %>
+ 
+ <body style="background-color: #d4d4d4">
+@@ -71,7 +77,7 @@
+                             </div>
+ 
+                             <div class="col-sm border-right">
+-                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i> Scarica Curriculum</a>
++                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
+                             </div>
+ 
+                         </div>
+@@ -94,7 +100,7 @@
+                                 <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3">5</strong>
+                             </div>
+                             <div class="col-6 border-right">
+-                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3">85</strong>
++                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3">35</strong>
+                             </div>
+                         </div>
+ 
+@@ -110,7 +116,7 @@
+                             </div>
+ 
+                             <div class="col-sm border-right">
+-                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i> Scarica Curriculum</a>
++                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
+                             </div>
+ 
+                         </div>
+@@ -149,7 +155,7 @@
+                             </div>
+ 
+                             <div class="col-sm border-right">
+-                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i> Scarica Curriculum</a>
++                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
+                             </div>
+ 
+                         </div>
+@@ -189,7 +195,9 @@
+     <div class="container">
+ 
+                     <%
++                        HashMap<Utente, Double> utenti_punteggio = new HashMap<>();
+                         for(Utente utente : all_user_posizione){
++                            utenti_punteggio.put(utente, new UtenteQuizIMPL().getUtenteQuizById(new PosizioneIMPL().getPosizioneById(Integer.parseInt(id_posizione)).getQuiz().getId_quiz(),utente).getPunteggio());
+                     %>
+ 
+                     <div class="candidate-list-box card mt-4">
+@@ -222,15 +230,15 @@
+                                 </div>
+ 
+                                 <div class="col border-right">
+-                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3">5</strong>
++                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3"><%= new UtenteSkillsIMPL().getAllUserSkillVerifiedOrNot(utente,true).size()%></strong>
+                                 </div>
+                                 <div class="col border-right">
+-                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3">85</strong>
++                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3"><%=new UtenteQuizIMPL().getUtenteQuizById(new PosizioneIMPL().getPosizioneById(Integer.parseInt(id_posizione)).getQuiz().getId_quiz(),utente).getPunteggio()%>%</strong>
+                                 </div>
+ 
+                                 <div class="col">
+                                     <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
+-                                        <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i> Scarica Curriculum</a>
++                                        <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
+                                     </div>
+                                 </div>
+                             </div>
+Index: src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java b/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java
+--- a/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java	(revision 03fde501e0c3e1d9863f638cc0ceea85a62e77c4)
++++ b/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java	(date 1700066887129)
+@@ -28,7 +28,7 @@
+             statement = connection.getConnection().prepareStatement(sql);
+             statement.setInt(1, utenteQuiz.getId_quiz());
+             statement.setInt(2, utenteQuiz.getId_user());
+-            statement.setInt(3, utenteQuiz.getPunteggio());
++            statement.setDouble(3, utenteQuiz.getPunteggio());
+             statement.setDate(4, utenteQuiz.getData_inserimento());
+ 
+             statement.executeUpdate();
+Index: src/main/resources/createTable.sql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/createTable.sql b/src/main/resources/createTable.sql
+--- a/src/main/resources/createTable.sql	(revision 03fde501e0c3e1d9863f638cc0ceea85a62e77c4)
++++ b/src/main/resources/createTable.sql	(date 1700067015878)
+@@ -179,4 +179,6 @@
+ ALTER TABLE Utente ALTER COLUMN CV varchar(700); 
+ ALTER TABLE Posizione ALTER COLUMN descrizione varchar(700);
+ ALTER TABLE Quiz ALTER COLUMN descrizione varchar(700);
++ALTER TABLE UtenteQuiz ALTER COLUMN punteggio float
++
+ 
+Index: src/main/java/com/candidatoDB/pw2/interfaces/impl/SkillIMPL.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/candidatoDB/pw2/interfaces/impl/SkillIMPL.java b/src/main/java/com/candidatoDB/pw2/interfaces/impl/SkillIMPL.java
+--- a/src/main/java/com/candidatoDB/pw2/interfaces/impl/SkillIMPL.java	(revision 03fde501e0c3e1d9863f638cc0ceea85a62e77c4)
++++ b/src/main/java/com/candidatoDB/pw2/interfaces/impl/SkillIMPL.java	(date 1700066887135)
+@@ -41,7 +41,7 @@
+ 		} finally {
+ 			DBUtil.close(resultSet);
+ 			DBUtil.close(statement);
+-			DBUtil.close((Connection) connection);
++			//DBUtil.close((Connection) connection);
+ 		}
+ 
+ 	}
+@@ -62,7 +62,7 @@
+ 			System.err.println(e.getMessage());
+ 		} finally {
+ 			DBUtil.close(statement);
+-			DBUtil.close((Connection) connection);
++			//DBUtil.close((Connection) connection);
+ 		}
+ 
+ 	}
+@@ -81,7 +81,7 @@
+ 			System.err.println(e.getMessage());
+ 		} finally {
+ 			DBUtil.close(statement);
+-			DBUtil.close((Connection) connection);
++			//DBUtil.close((Connection) connection);
+ 		}
+ 
+ 	}
+@@ -112,7 +112,7 @@
+ 		} finally {
+ 			DBUtil.close(resultSet);
+ 			DBUtil.close(statement);
+-			DBUtil.close((Connection) connection);
++			//DBUtil.close((Connection) connection);
+ 		}
+ 		return skills;
+ 	}
+@@ -142,7 +142,7 @@
+ 		} finally {
+ 			DBUtil.close(resultSet);
+ 			DBUtil.close(statement);
+-			DBUtil.close((Connection) connection);
++			//DBUtil.close((Connection) connection);
+ 		}
+ 		return skill;
+ 	}
+diff --git a/target/classes/com/candidatoDB/pw2/interfaces/impl/UtenteIMPL.class b/target/classes/com/candidatoDB/pw2/interfaces/impl/UtenteIMPL.class
+index e5561f7a180e45aebed09697c20492102e679eed..7d977861af8372df7d9e432628a6e4f63e930ae9
+GIT binary patch
+literal 10891
+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
+
+diff --git a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/servlets/pw2/controller/SQLServerConnection.class b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/servlets/pw2/controller/SQLServerConnection.class
+index 893f2e1d7449e1337125bb33240f21571bf0fea7..95d2539114ed7b43c0db1d7741d888e0a0a82bd0
+GIT binary patch
+literal 2164
+zc$}40ZC4vb6n>@zHl&MSc&{y{2rX|W1z*|{s7e4^4HOy#Ykiw+23Xka#Mudmzr=sg
+zuhK%>Q_s<Fe$fBq@y@b_x13tDCp$ZH?|tUEckaFO=ie`X18@_Y30y#fg_w;-G%>Vo
+z@g1J=xWAFPU)&OoW@wsneOKRMXc!t^jU&#G+bR{E$>0Ys5Nb!L$xLQ^;%52=J>%ID
+z*SyFBvB=9}dPzxxu_o2_L{|8Y+N<d4bxwBKW+ZUYf^DM(Z!lyWS<V<ZPv{_1*`1&T
+zUn}W(LS+ie`9io;PWnFKxzcB7EETKDV@T$YDHpVI{f%rKZ44IzZuUspXg3?gs)Qa#
+zCqwg3Rma&BTDwNxZKKD?;}sqRyHb_nxWq6<bkb$lQ8JM0I$d)$Z9Grc_{=Jo-U(dB
+z6$^bf-bRX{^_Wl2BTxowT`Cg~hQXopY=`q_46+II;~fhFHU@Exp(~UVhs@D_3*6@$
+zLNT;#2z@dn3w6+6XC-1_b~uI$PiV--Fh&>>&WUY0>#AEABT-F4F`E0)5fvkAMj9Cl
+zH*Ab!;#7_m_5v-+lv+Zm8n7!fOT<ePJHg8ojZwUB;{$w1Jjmk(5d`EvL&wnYd0&#0
+z*0*fj#w0^`nQsfC=y1K}>P`9zH1{=~$hH4ChiEB*DNI|qW8))y%+Owk9-VH*%sdmA
+zdZ??0|BQ{CDX-SbktKJwR}^=Ig*k@Qne$(idR|ujQZ0TKK4rLcto5MkYqu<F@&x8_
+z&lK=y3_T|~tZXW|%Zr{M8dL%~S)#DD=3QSbR?9`9R*cM)kaW1W%9U&8(PB(*x)iDL
+z{Qs=XEJY-mF)#w^&eu%}((6B)`R6<*rIs*S3%nBX>K>|}u2jNPju*A6L_t=SBj#OW
+z(Nl+I+CWe$&Pb^Pt$1ZY=uKG)TAT1Ffv@q6g>Ow3eaA3xOw#pt<hF>8_9(IDxud1p
+zWBB=G;3LH&(7W6(c_J9dOSxUGyt*P!8LsSAL>=`<`Lj*>RPII)IqrD{R}1Qf<mlL(
+zQc{Ujsj8>~M9Sl-u%v^4f+14eOa0rpCsT~UzDF_@o{0!7l&EvPmU9-?8TwwWN;k@p
+zGOohhK0pj{(`I0PbQ^?Ydo=chV+_pPPxStrW(#D+XzU(&4mOgs4$(Z4Y(2!ABgu|K
+zbnTPq0`l}uk|9918%#4xpbZzv7_g7bv55OLGAz}g|3X7ZDVOYhfw$I14hZ^yfDh31
+z0#~2n`V(CL0}YQckbi=AN1x%nmvoEb8M5^K$z!zSf5rU6(dW4P`+f-2M_!JG<1Ne*
+zxS^FM8X&)#&`SQbk*tTb+NtYzP>1ZKR@Xz?U6g*^m_ctyIYqYpq_d0%MD;c~w2VUN
+zMlNz=C3Gy-H)COR)xvBuNeA&o<XD<Uqa7m$eyIhhDO|gJA}Fy4EsoV%P_Bd$ppj7k
+i_QQxB8^?**S_t?h9)@#<ujv0hiZn~mmji(f^!@|EK`r(G
+
+diff --git a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/interfaces/impl/EsperienzaIMPL.class b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/interfaces/impl/EsperienzaIMPL.class
+index 39f8d3d273b28f2ca078c5142884186e984369f0..f86cff16ea136f6fcb635b00080d3b0b9beca32c
+GIT binary patch
+literal 5695
+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
+
+diff --git a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/interfaces/impl/SkillIMPL.class b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/interfaces/impl/SkillIMPL.class
+index fbef9f19857edc77123e08309ec8e2bc7026e841..ea8b73457e0bf01b99f5913b32aed919c5de4335
+GIT binary patch
+literal 4492
+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
+Wgj<G+yabs$K<4Jt<6jhaU;Y=y0U@XW
+
+diff --git a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/interfaces/impl/UtenteIMPL.class b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/interfaces/impl/UtenteIMPL.class
+index e5561f7a180e45aebed09697c20492102e679eed..7d977861af8372df7d9e432628a6e4f63e930ae9
+GIT binary patch
+literal 10891
+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
+
+diff --git a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/entity/UtenteQuiz.class b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/entity/UtenteQuiz.class
+index e66db370f26487846704153c634955aaf66cd8da..8c56031d4d5630e5c415d61e3dbe3ba5a1cd8bbb
+GIT binary patch
+literal 2210
+zc$|$^-EJC36#fPXYm>FH!NGRoI3%&-1-qt6n*I?J*H9-&v`OT|y@)Dn4J*7c-X-ji
+z%6*Pr^dTy>m5M6mq7TrAs(Q}s7UE^8a>34-Gv|Esoxc%(|MTuI0H5JW3NgerBy?Ot
+zQef`2`PM9TOs8FXdi>gIN`d4<+p%RuAZ`>6r!j?T4JjR$p$n`x-Lq2DbXs=Hlx}UW
+z)cxUJ$#SGE&r2^Q3D)zz{iDFF-8$;4{m~nx5OqeH)sbcxjgDE*x_KR$|8#xN>alJ?
+z#}(uRrn`NDXt!;b5Ndp~q+=OZi8tME9@!2#*k^PP8KfI37Vk}`R5PVj&QQQBI<8|?
+zVDZd6wW_YuH05`;JR!-GrXxLpC8J)i*9whM9u8#BcG_iuMAdCsjB7jAxBatYtM|e@
+z?vN(aaGPf5(Cpc~50nXcViVp*<AYK}@HusJh;-plV7_h1dMJNXi#nZn<0lED&Q2-c
+z$=9X4_cs9?rD}NMZ*)3&Hp(#FQ6r^yL76aW44)-!Z7k&(BZ7Xm9c4Oi6hgKFQ_}U5
+zEwErjmLPTD_Ipih-{uUbN9o&UTk3*6*Oi{^ncZ(JdE&ObbQ0wh9%4sBg-icPU~L3z
+zJ8#`nD?s<VVc%>@w|6e^v(Xqc^g*9cEjyOC)^Od^ez!bMbCTnW^R5+P{;Cn4xpH9~
+zqH1<J2R5Z?3SSBAjzZ7Bx;R@qVk;kvQy_A2SsV_}j`*JHT6Y|)SM8XdXL%Z^((4}-
+zu!ens)&Do8N5eP9O`6dd4c;aC(u+Y-j7MIrnP8>SRx1rMtuqk(6w&tv?e5bm*uVHE
+z#P7;1Pv4XRokxN|Zjz+?M!1FBv@*b20Pqvy&}hvwK=IlDT5)B7nd0>U=88*+0kXyA
+z<N%8!>{VsIK-gC>P1I(wh%A<f-ZCLxRrghhAYlggv2;1$kXPZwl*9qXmBb+?l*B=D
+zaO=1eFf0v2`~%uALmEk?T!{>C14iInA#1)YsX_}U=mz=Z6++Ip8WK(hgarzbL}tQ7
+zZbcF)MiZF{6ImypI}?bc10tJ|MCQUoj7TC|(M0CLL^jE1YXXr>K;$EA4~fKvM6$nz
+zh-^m^DdFQGk+`aUvbaHA7AA6+eC|yk!rj6|?vh0~sLcz#>SH}1tWPIkalbLveS8v;
+z-NoNRL46S!)B}R|op(vgXE|<G?h`H%XXhQR0b#VtduX`;El&SB*y?k-3-me&d`Z7u
+O?5S`Bs`wg@vHUNYP>%=z
+
+diff --git a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/entity/UsersSkills.class b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/entity/UsersSkills.class
+index 35513b02778e626c37d0e765d7f565377479dcac..b5c2a62daad60072e780634c4ad04b88efaae1fd
+GIT binary patch
+literal 1911
+zc$|%s-A>d%6vzJqWeZDzWs$E1`4X`#$SR<yD@eo;H(B)pToa5jWp{*u(vo(-aOY$A
+z5MF2^G2y}o@S%)n+RCn_7;fg{%$fiBoilTO{XY8%U<s>fG@)6CW}pQrhRmLIY!z(F
+z*(to*-s4rtka{c}Ay*ih&FM-TTG6H>ZJ-?n!&KEhC{!({CTf;+pFJ%cew;6GM+$jT
+zc<pn~-`E$n?K5<W+WR9iy!RsmD=Dc?16@i-kB*hC+dx*?TFDl8E8{f-z35{|A9GK9
+z5LHWBq_LHyBnAu&BFE5wVD0lY*P*jFLhjPamzE<b)__?mmA0nK_1re3C!C!kgSO_@
+zI73%iIQ-?&!8Z3ct!<ku*|J-;?26?HwU3ON+!dr}mampJ>FZ(W3Pbk}m!(({sG=o0
+z@h_feW=UO2*Duk=Z`c^&$zT6=zrLkI;a3{!L}9iVI>@Ebs+j>-t8~L^FkCYeYn0w_
+zkGv{h7perAhWzG~Gnt;cuJom69lqdl*RA<oDJ-P1h<iHjtH)Vln5^px=h)rnk$m`G
+z>sD2|-U-8JvwXoZ6n#$Bwz)r9cHRA>!{SBG%Pwx79P$MBx8?XxFHT>SShH+<Lr7k1
+z#Y2W?4Y`lK{r5*Nv)Qr85-scY`k!59@91?(j>Ek*+wy(x>v+s?^GZqUpe7vozbmzC
+z=!|jdnkH%wjYjHKS~aO&3+8MzQ%lj@4yKx)#v$4*(9CFV$^QWR7Pt-5m=46cNiK`)
+zv@${`j9`>zB`_8Vd?L>lnsZ7ZKXeK`KYWUg{Pk00^1a$Adg`h<3Jb!}2&4`D=)?ee
+z=*Lh)2T>M7r6`J8wMUV2K{8FjN~O~rtW-i8osVN8qA8rG^Bww^^T4UVIGmWu4NOLt
+zSIAq1NCj!ci!mA`trYq~uXD^)gh?-(2+|P;nMeegN(SkOgWRM$Q<s2rMIg5lK{9a=
+zGZDm02Fb)hX6VlBB_P=dWE%Mdke)cmTq4K}$tQsH#6j-To%u^Z)E`lSZ&Qp=Yc=>Y
+y<g5OOdLC671$9PW5?^CvOATawk!~|3qrC1=WKiQViq7x=j{+iwB9`$4gMR>UVOur;
+
