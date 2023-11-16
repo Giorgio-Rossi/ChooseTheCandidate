@@ -60,7 +60,7 @@
 
 <body style="background-color: #d4d4d4">
 
-<jsp:include page="/home/jsp/navbarHeaderAdmin.jsp" />
+<jsp:include page="jspA/navbarHeaderAdmin.jsp" />
 
 
 <main style="margin-top: 150px">
