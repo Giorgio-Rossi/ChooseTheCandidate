@@ -118,6 +118,9 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 										};
 									%>
 
+									<form class="form" method="post" action="${pageContext.request.contextPath}/curriculumUtente" id="modifica_istruzione"  enctype='multipart/form-data'>
+
+
 									<div class="e-profile">
 										<div class="row justify-content-center">
 											<div class="col-12 col-sm-auto mb-3">
@@ -146,6 +149,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 														<button class="btn btn-primary" type="submit" form="modifica_istruzione">Salva</button>
 													</div>
 											</div>
+											<div class="mb-2"><strong>Istruzioni</strong></div>
 											<div class="tab-content pt-3" id="appendi_istruzione">
 												<div class="tab-pane active">
 
@@ -153,11 +157,10 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 													for(Istruzione istruzione : istruzioni){
 												%>
 
-												<form class="form" method="post" action="${pageContext.request.contextPath}/curriculumUtente" id="modifica_istruzione"  enctype='multipart/form-data'>
 													<div class="row">
 														<div class="col">
 															<div class="row">
-																<div class="mb-2"><strong>Istruzioni</strong></div>
+
 																<div class="col">
 																	<div class="form-group">
 																		<label for="descrizione_istruzione" class="form-label">Descrizione Istruzione</label>
@@ -239,7 +242,6 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 														</div>
 													</div>
 
-												</form>
 													<div class="row">
 														<div class="col d-flex justify-content-end">
 															<button class="btn btn-primary" onclick="CloneIstruzione()" id="duplica_istruzione">Aggiungi Istruzione</button>
@@ -254,18 +256,21 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 											</div>
 										</div>
 
+									<div class="mb-2"><strong>Esperienze</strong></div>
+
+
 									<div class="tab-content pt-3" id="appendi_esperienza">
+
 										<div class="tab-pane active">
 
 											<%
 												for(Esperienza esperienza : esperienze){
 											%>
 
-											<form class="form" method="post" action="${pageContext.request.contextPath}/curriculumUtente" id="modifica_esperienza"  enctype='multipart/form-data'>
 												<div class="row">
 													<div class="col">
 														<div class="row">
-															<div class="mb-2"><strong>Esperienze</strong></div>
+
 															<div class="col">
 																<div class="form-group">
 																	<label for="descrizione_istruzione" class="form-label">Descrizione Esperienza</label>
@@ -375,7 +380,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 													</div>
 												</div>
 
-											</form>
+
 											<div class="row">
 												<div class="col d-flex justify-content-end">
 													<button class="btn btn-primary" onclick="CloneEsperienza()" id="duplica_esperienza">Aggiungi Esperienza</button>
@@ -388,18 +393,9 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 											%>
 
 										</div>
-
-
-
-
-
-
-
-
-
-
-
 										</div>
+
+									</form>
 								</div>
 							</div>
 						</div>
@@ -417,9 +413,8 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	<script>
 
 		function CloneIstruzione() {
-			const node = document.getElementById("modifica_istruzione");
 
-			var $clone = $('#modifica_istruzione').clone();
+			var $clone = $('#appendi_istruzione').clone();
 			$clone.find('input, textarea, select').val('');
 			$clone.appendTo('#appendi_istruzione');
 
@@ -429,9 +424,8 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 		}
 
 		function CloneEsperienza() {
-			const node = document.getElementById("modifica_esperienza");
 
-			var $clone = $('#modifica_esperienza').clone();
+			var $clone = $('#appendi_esperienza').clone();
 			$clone.find('input, textarea, select').val('');
 			$clone.appendTo('#appendi_esperienza');
 
