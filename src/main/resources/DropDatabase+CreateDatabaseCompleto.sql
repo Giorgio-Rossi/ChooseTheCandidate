@@ -108,6 +108,7 @@ id_utente_quiz int identity not null primary key,
 id_quiz int not null,
 id_user int not null,
 punteggio float not null,
+data_inserimento date,
  
 CONSTRAINT FK_Quiz_UtenteQuiz FOREIGN KEY (id_quiz) REFERENCES Quiz (id_quiz),
 CONSTRAINT FK_Utente_UtenteQuiz FOREIGN KEY (id_user) REFERENCES Utente (id_user)
@@ -568,12 +569,4 @@ INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,st
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo uno sviluppatore Front End','2','2','2','aperta','20231102','Front-End Developer');
 
 
-/*	Inserimento delle Candidature degli utenti	*/
-insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('1','10','20231101');
-insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('2','10','20231102');
-insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('3','10','20231101');
-insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('4','10','20231102');
-insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('1','11','20231103');
-insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('2','11','20231105');
-insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('3','11','20231106');
-insert into CandidaturaUser (id_posizione, id_user , data_candidatura) values ('4','11','20231107');
+
