@@ -52,7 +52,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 <head>
 <title>Curriculum</title>
-<!--  <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/img/logoPag.png" style="border-radius: 10px"> -->
+	<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/img/logoPag.png" style="border-radius: 10px">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -145,9 +145,9 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 													<div class="col d-flex justify-content-end">
 														<button class="btn btn-primary" type="submit" form="modifica_istruzione">Salva</button>
 													</div>
-										</div>
-										<div class="tab-content pt-3" id="appendi_istruzione">
-											<div class="tab-pane active">
+											</div>
+											<div class="tab-content pt-3" id="appendi_istruzione">
+												<div class="tab-pane active">
 
 												<%
 													for(Istruzione istruzione : istruzioni){
@@ -242,7 +242,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 												</form>
 													<div class="row">
 														<div class="col d-flex justify-content-end">
-															<button class="btn btn-primary" onclick="CloneForm()" id="duplica_istruzione">Aggiungi Istruzione</button>
+															<button class="btn btn-primary" onclick="CloneIstruzione()" id="duplica_istruzione">Aggiungi Istruzione</button>
 														</div>
 													</div>
 
@@ -250,145 +250,163 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 												<%
 													};
 												%>
+												</div>
+											</div>
+										</div>
 
+									<div class="tab-content pt-3" id="appendi_esperienza">
+										<div class="tab-pane active">
 
-													<div class="tab-content pt-3" id="appendi_esperienza">
-														<div class="tab-pane active">
+											<%
+												for(Esperienza esperienza : esperienze){
+											%>
 
-																<%
-													for(Esperienza esperienza : esperienze){
-																%>
+											<form class="form" method="post" action="${pageContext.request.contextPath}/curriculumUtente" id="modifica_esperienza"  enctype='multipart/form-data'>
+												<div class="row">
+													<div class="col">
+														<div class="row">
+															<div class="mb-2"><strong>Esperienze</strong></div>
+															<div class="col">
+																<div class="form-group">
+																	<label for="descrizione_istruzione" class="form-label">Descrizione Esperienza</label>
+																	<textarea class="form-control" id="descrizione_esperienza" rows="3" name="descrizione_esperienza"><%=esperienza.getDescrizione_attivita()%></textarea>
+																</div>
+															</div>
+															<div class="col">
+																<div class="form-group">
+																	<label>Anni</label>
+																	<input class="form-control" type="text" name="anni_esperienza"  value=<%=esperienza.getAnni()%> required>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col">
+																	<div class="form-group">
+																		<label>Azienda</label>
+																		<input class="form-control" type="text" name="azienda"  value=<%=esperienza.getAzienda()%> required>
+																	</div>
+																</div>
+																<div class="col">
+																	<div class="form-group">
+																		<label>Tipo Contratto</label>
+																		<input class="form-control" type="text" name="tipo_contratto"  value=<%=esperienza.getTipo_contratto()%> required>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col">
+																	<div class="form-group">
+																		<label>Posizione Lavorativa</label>
+																		<input class="form-control" type="text" name="posizione_lavorativa"  value=<%=esperienza.getPosizione_lavorativa()%> required>
+																	</div>
+																</div>
+																<div class="col">
+																	<div class="form-group">
+																		<label>Settore</label>
+																		<input class="form-control" type="text" name="settore"  value=<%=esperienza.getSettore()%> required>
+																	</div>
+																</div>
+																<div class="col">
+																	<div class="form-group">
+																		<label>RAL</label>
+																		<input class="form-control" type="text" name="ral"  value=<%=esperienza.getRal()%> required>
+																	</div>
+																</div>
 
-															<form class="form" method="post" action="${pageContext.request.contextPath}/curriculumUtente" id="modifica_esperienza"  enctype='multipart/form-data'>
-																<div class="row">
-																	<div class="col">
-																		<div class="row">
-																			<div class="mb-2"><strong>Esperienze</strong></div>
-																			<div class="col">
-																				<div class="form-group">
-																					<label for="descrizione_istruzione" class="form-label">Descrizione Esperienza</label>
-																					<textarea class="form-control" id="descrizione_esperienza" rows="3" name="descrizione_esperienza"><%=esperienza.getDescrizione_attivita()%></textarea>
-																				</div>
-																			</div>
-																			<div class="col">
-																				<div class="form-group">
-																					<label>Anni</label>
-																					<input class="form-control" type="text" name="anni_esperienza"  value=<%=esperienza.getAnni()%> required>
-																				</div>
-																			</div>
-																			<div class="row">
-																				<div class="col">
-																					<div class="form-group">
-																						<label>Azienda</label>
-																						<input class="form-control" type="text" name="azienda"  value=<%=esperienza.getAzienda()%> required>
-																					</div>
-																				</div>
-																				<div class="col">
-																					<div class="form-group">
-																						<label>Tipo Contratto</label>
-																						<input class="form-control" type="text" name="tipo_contratto"  value=<%=esperienza.getTipo_contratto()%> required>
-																					</div>
-																				</div>
-																			</div>
-																			<div class="row">
-																				<div class="col">
-																					<div class="form-group">
-																						<label>Posizione Lavorativa</label>
-																						<input class="form-control" type="text" name="posizione_lavorativa"  value=<%=esperienza.getPosizione_lavorativa()%> required>
-																					</div>
-																				</div>
-																				<div class="col">
-																					<div class="form-group">
-																						<label>Settore</label>
-																						<input class="form-control" type="text" name="settore"  value=<%=esperienza.getSettore()%> required>
-																					</div>
-																				</div>
-																				<div class="col">
-																					<div class="form-group">
-																						<label>RAL</label>
-																						<input class="form-control" type="text" name="ral"  value=<%=esperienza.getRal()%> required>
-																					</div>
-																				</div>
+															</div>
 
-																			</div>
+														</div>
+														<div class="row">
+															<div class="col">
+																<div class="form-group">
+																	<label>Data inizio</label>
+																	<%java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"); %>
+																	<input class="form-control" type="date" name="inizio_istruzione"  value=<%=esperienza.getData_inizio()%>>
+																</div>
+															</div>
+															<div class="col">
+																<div class="form-group">
+																	<label>Data fine (se prevista)</label>
+																	<%java.text.DateFormat df2 = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"); %>
+																	<input class="form-control" type="date" name="fine_istruzione"  value=<%=esperienza.getData_fine()%>>
+																</div>
+															</div>
+														</div>
+														<div class="row row-cols-3">
+															<div class="col">
+																<div class="form-group">
+																	<%Citta citta = (esperienza.getId_citta() !=null)? esperienza.getId_citta() : null;
+																		System.out.println(citta);
+																	%>
+																	<label>Città di nascita</label>
+																	<select class="form-select" aria-label="Default select example" name="citta">
 
-																		</div>
-																		<div class="row">
-																			<div class="col">
-																				<div class="form-group">
-																					<label>Data inizio</label>
-																					<%java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"); %>
-																					<input class="form-control" type="date" name="inizio_istruzione"  value=<%=esperienza.getData_inizio()%>>
-																				</div>
-																			</div>
-																			<div class="col">
-																				<div class="form-group">
-																					<label>Data fine (se prevista)</label>
-																					<%java.text.DateFormat df2 = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"); %>
-																					<input class="form-control" type="date" name="fine_istruzione"  value=<%=esperienza.getData_fine()%>>
-																				</div>
-																			</div>
-																		</div>
-																		<div class="row row-cols-3">
-																			<div class="col">
-																				<div class="form-group">
-																					<%Citta citta = (esperienza.getId_citta() !=null)? esperienza.getId_citta() : null;
-																						System.out.println(citta);
-																					%>
-																					<label>Città di nascita</label>
-																					<select class="form-select" aria-label="Default select example" name="citta">
+																		<%
+																			if(citta!=null){
 
-																						<%
-																							if(citta!=null){
-
-																						%>
-																						<option value="<%=citta.getId_citta()+" "+citta.getRegione().getId_regione()+" "+citta.getNome()%>" selected><%=citta.getNome()%></option>
-																						<%
-																						}else{
-																						%>
-																						<option selected style="display: none" value="">Seleziona una città</option>
-																						<%
-																							};
-																						%>
-																						<%
-																							for(Regione r : regioni) {
-																						%>
-																						<optgroup label="<%=r.getNome()%>">
-																								<%
+																		%>
+																		<option value="<%=citta.getId_citta()+" "+citta.getRegione().getId_regione()+" "+citta.getNome()%>" selected><%=citta.getNome()%></option>
+																		<%
+																		}else{
+																		%>
+																		<option selected style="display: none" value="">Seleziona una città</option>
+																		<%
+																			};
+																		%>
+																		<%
+																			for(Regione r : regioni) {
+																		%>
+																		<optgroup label="<%=r.getNome()%>">
+																				<%
                                                                                     for(Citta c : cities){
                                                                                      if(c.getRegione().getNome().equals(r.getNome())){
                                                                                          %>
-																							<option value="<%=c.getId_citta()+" "+r.getId_regione()+" "+c.getNome()%>"><%=c.getNome()%></option>
-																								<%
+																			<option value="<%=c.getId_citta()+" "+r.getId_regione()+" "+c.getNome()%>"><%=c.getNome()%></option>
+																				<%
                                                                                      }
                                                                                     }
                                                                             }
                                                                         %>
 
 
-																					</select>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-
-															</form>
-															<div class="row">
-																<div class="col d-flex justify-content-end">
-																	<button class="btn btn-primary" onclick="CloneForm()" id="duplica_esperienza">Aggiungi Esperienza</button>
+																	</select>
 																</div>
 															</div>
+														</div>
+													</div>
+												</div>
+
+											</form>
+											<div class="row">
+												<div class="col d-flex justify-content-end">
+													<button class="btn btn-primary" onclick="CloneEsperienza()" id="duplica_esperienza">Aggiungi Esperienza</button>
+												</div>
+											</div>
 
 
-																<%
-													};
-												%>
+											<%
+												};
+											%>
+
+										</div>
 
 
 
 
 
+
+
+
+
+
+
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
 
@@ -398,7 +416,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 	<script>
 
-		function CloneForm() {
+		function CloneIstruzione() {
 			const node = document.getElementById("modifica_istruzione");
 
 			var $clone = $('#modifica_istruzione').clone();
@@ -407,6 +425,18 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 
 			document.getElementById('duplica_istruzione').style.visibility='hidden';
+
+		}
+
+		function CloneEsperienza() {
+			const node = document.getElementById("modifica_esperienza");
+
+			var $clone = $('#modifica_esperienza').clone();
+			$clone.find('input, textarea, select').val('');
+			$clone.appendTo('#appendi_esperienza');
+
+
+			document.getElementById('duplica_esperienza').style.visibility='hidden';
 
 		}
 
