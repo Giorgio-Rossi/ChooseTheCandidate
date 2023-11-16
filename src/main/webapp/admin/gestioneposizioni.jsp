@@ -144,63 +144,47 @@
 		</nav>
 
 
-	<main  style="margin-top:10%">
-		<div class="container pt-3">
+	<main style="margin-top: 150px">
+<div class="container">
+
+    <%
+        for(Posizione posizione : posizioni){
+    %>
+
+    <div class="card mb-3 shadow-lg">
+        <div class="card-body">
+            <div class="d-flex flex-column flex-lg-row">
+                <%
+                    String initials = "";
+                    for (String s : posizione.getRuolo().split(" ")) {
+                        initials+=s.charAt(0);
+                    }
+                %>
+                <span class="avatar avatar-text rounded-3 me-4 mb-2"><%=initials%></span>
+                <div class="row flex-fill">
+                    <div class="col-sm-5">
+                        <h4 class="h5"><%=posizione.getRuolo()%></h4>
+                        <span class="badge bg-primary m-1"><%=posizione.getCitta().getNome()%></span><span class="badge bg-success"><i class="bi bi-calendar-check-fill mt-2"> <%=posizione.getData_inserimento()%></i></span>
+                    </div>
+                    <div class="col-sm-4 py-2">
+                        <span class="badge bg-info"><%=posizione.getCategoria().getNome_categoria()%></span>
+                        <span class="badge bg-info">Ammissioni massime: <%=posizione.getN_ammissioni()%></span>
+                    </div>
+                    <div class="col-sm-3 text-lg-end">
+                        <span class="badge bg-success"><%=posizione.getStato()%></span>
+                    </div>                             
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%
+        }
+    %>
 
 
-
-			<div class="container">
-				<div class="row">
-
-					<%
-						if(posizioni.isEmpty()){
-							%>
-					<%
-						if(!ErrorManager.getOtherMessage((HttpServletRequest) request).isEmpty()){
-					%>
-					<div class="alert alert-warning">
-						<i class="bi bi-exclamation-diamond-fill m-1"></i><%= ErrorManager.getOtherMessage((HttpServletRequest) request)%>
-					</div>
-					<%
-							}
-						};
-					%>
-					<%
-						for(Posizione p : posizioni){
-					%>
-
-							<div class="card col-lg-4 col-md-6 col-12 mt-4 pt-2 d-flex  align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
-								<div class="slide slide1 ">
-									<div class="content  shadow">
-
-											<div class="card-body p-4 bg-light">
-												<span class="badge rounded-pill bg-primary float-md-end mb-3 mb-sm-0"><%=p.getCategoria().getNome_categoria()%></span>
-												<h5><%=p.getRuolo()%></h5>
-												<div class="mt-3">
-													<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i><%=p.getData_inserimento()%></span>
-													<span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i><%=p.getCitta().getNome()%></span>
-												</div>
-
-										
-											</div>
-
-									</div>
-								</div>
-								<div class="slide slide2">
-									<div class="content">
-										<p><%=p.getDescrizione()%></p>
-									</div>
-								</div>
-							</div>
-
-					<%
-						};
-					%>
-
-				</div>
-			</div>
-		</div>
-	</main>
+</div>
+</main>
 
 
 </body>
