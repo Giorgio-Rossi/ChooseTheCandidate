@@ -18,8 +18,8 @@ nome varchar(50) not null,
 
 create table Citta(
 id_citta int identity not null primary key,
-id_regione int,
 nome varchar(100) not null,
+id_regione int,
 CONSTRAINT FK_citta_regione FOREIGN KEY (id_regione) REFERENCES Regione (id_regione)
 )
  
@@ -190,54 +190,54 @@ INSERT INTO Regione (nome) values('Valle D Aosta');
 INSERT INTO Regione (nome) values('Veneto');
 
 /*	Inserimento delle Citta	*/
-insert into Citta (id_regione,nome) values ('8','Genova');
-insert into Citta (id_regione,nome) values ('7','Roma');
-insert into Citta (id_regione,nome) values ('4','Napoli');
-insert into Citta (id_regione,nome) values ('9','Lodi');
-insert into Citta (id_regione,nome) values ('12','Torino');
-insert into Citta (id_regione,nome) values ('20','Venezia');
-insert into Citta (id_regione,nome) values ('16','Firenze');
-insert into Citta (id_regione,nome) values ('5','Bologna');
+insert into Citta (nome,id_regione) values ('Genova','8');
+insert into Citta (nome,id_regione) values ('Roma','7');
+insert into Citta (nome,id_regione) values ('Napoli','4');
+insert into Citta (nome,id_regione) values ('Lodi','9');
+insert into Citta (nome,id_regione) values ('Torino','12');
+insert into Citta (nome,id_regione) values ('Venezia','20');
+insert into Citta (nome,id_regione) values ('Firenze','16');
+insert into Citta (nome,id_regione) values ('Bologna','5');
 
-insert into Citta (id_regione,nome) values ('1','Aquila');
-insert into Citta (id_regione,nome) values ('1','Pescara');
-insert into Citta (id_regione,nome) values ('2','Potenza');
-insert into Citta (id_regione,nome) values ('2','Matera');
-insert into Citta (id_regione,nome) values ('3','Reggio Calabria');
-insert into Citta (id_regione,nome) values ('3','Catanzaro');
-insert into Citta (id_regione,nome) values ('4','Avellino');
-insert into Citta (id_regione,nome) values ('4','Salerno');
-insert into Citta (id_regione,nome) values ('5','Reggio Emilia');
-insert into Citta (id_regione,nome) values ('6','Udine');
-insert into Citta (id_regione,nome) values ('6','Trieste');
-insert into Citta (id_regione,nome) values ('7','Latina');
-insert into Citta (id_regione,nome) values ('7','Viterbo');
-insert into Citta (id_regione,nome) values ('8','Savona');
-insert into Citta (id_regione,nome) values ('8','La Spezia');
-insert into Citta (id_regione,nome) values ('9','Bergamo');
-insert into Citta (id_regione,nome) values ('9','Brescia');
-insert into Citta (id_regione,nome) values ('10','Ancona');
-insert into Citta (id_regione,nome) values ('10','Ascoli');
-insert into Citta (id_regione,nome) values ('11','Campobasso');
-insert into Citta (id_regione,nome) values ('11','Isernia');
-insert into Citta (id_regione,nome) values ('12','Asti');
-insert into Citta (id_regione,nome) values ('12','Novare');
-insert into Citta (id_regione,nome) values ('13','Bari');
-insert into Citta (id_regione,nome) values ('13','Lecce');
-insert into Citta (id_regione,nome) values ('14','Cagliari');
-insert into Citta (id_regione,nome) values ('14','Alghero');
-insert into Citta (id_regione,nome) values ('15','Palermo');
-insert into Citta (id_regione,nome) values ('15','Catania');
-insert into Citta (id_regione,nome) values ('16','Pisa');
-insert into Citta (id_regione,nome) values ('16','Lucca');
-insert into Citta (id_regione,nome) values ('17','Bolzano');
-insert into Citta (id_regione,nome) values ('17','Trento');
-insert into Citta (id_regione,nome) values ('18','Perugia');
-insert into Citta (id_regione,nome) values ('18','Assisi');
-insert into Citta (id_regione,nome) values ('19','Aosta');
-insert into Citta (id_regione,nome) values ('19','Champoluc');
-insert into Citta (id_regione,nome) values ('20','Verona');
-insert into Citta (id_regione,nome) values ('20','Vicenza');
+insert into Citta (nome,id_regione) values ('Aquila','1');
+insert into Citta (nome,id_regione) values ('Pescara','1');
+insert into Citta (nome,id_regione) values ('Potenza','2');
+insert into Citta (nome,id_regione) values ('Matera','2');
+insert into Citta (nome,id_regione) values ('Reggio Calabria','3');
+insert into Citta (nome,id_regione) values ('Catanzaro','3');
+insert into Citta (nome,id_regione) values ('Avellino','4');
+insert into Citta (nome,id_regione) values ('Salerno','4');
+insert into Citta (nome,id_regione) values ('Reggio Emilia','5');
+insert into Citta (nome,id_regione) values ('Udine','6');
+insert into Citta (nome,id_regione) values ('Trieste','6');
+insert into Citta (nome,id_regione) values ('Latina','7');
+insert into Citta (nome,id_regione) values ('Viterbo','7');
+insert into Citta (nome,id_regione) values ('Savona','8');
+insert into Citta (nome,id_regione) values ('La Spezia','8');
+insert into Citta (nome,id_regione) values ('Bergamo','9');
+insert into Citta (nome,id_regione) values ('Brescia','9');
+insert into Citta (nome,id_regione) values ('Ancona','10');
+insert into Citta (nome,id_regione) values ('Ascoli','10');
+insert into Citta (nome,id_regione) values ('Campobasso','11');
+insert into Citta (nome,id_regione) values ('Isernia','11');
+insert into Citta (nome,id_regione) values ('Asti','12');
+insert into Citta (nome,id_regione) values ('Novare','12');
+insert into Citta (nome,id_regione) values ('Bari','13');
+insert into Citta (nome,id_regione) values ('Lecce','13');
+insert into Citta (nome,id_regione) values ('Cagliari','14');
+insert into Citta (nome,id_regione) values ('Alghero','14');
+insert into Citta (nome,id_regione) values ('Palermo','15');
+insert into Citta (nome,id_regione) values ('Catania','15');
+insert into Citta (nome,id_regione) values ('Pisa','16');
+insert into Citta (nome,id_regione) values ('Lucca','16');
+insert into Citta (nome,id_regione) values ('Bolzano','17');
+insert into Citta (nome,id_regione) values ('Trento','17');
+insert into Citta (nome,id_regione) values ('Perugia','18');
+insert into Citta (nome,id_regione) values ('Assisi','18');
+insert into Citta (nome,id_regione) values ('Aosta','19');
+insert into Citta (nome,id_regione) values ('Champoluc','19');
+insert into Citta (nome,id_regione) values ('Verona','20');
+insert into Citta (nome,id_regione) values ('Vicenza','20');
 
 /*	Inserimento degli utenti	*/
 INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('admin', 'admin', null,'admin@gmail.com', null, null, null, null, null, 'admin', 'admin' );
