@@ -174,7 +174,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																		<input class="form-control" type="text" name="grado_istruzione <%=istruzione.getId_istruzione()%>"  value=<%=istruzione.getGrado()%>>
 																	</div>
 																</div>
-																<div class="row row-cols-3">
+																<div class="row row-cols-5">
 																	<div class="col">
 																		<div class="form-group">
 																			<label>Valutazione</label>
@@ -390,15 +390,15 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 									</form>
 
-									<div class="row">
+									<div class="row mb-1">
 										<div class="col d-flex justify-content-end">
-											<button class="btn btn-primary" onclick="CloneEsperienza()" id="duplica_esperienza">Aggiungi Esperienza</button>
+											<button class="btn btn-primary" onclick="CloneIstruzione()" id="duplica_istruzione">Aggiungi Istruzione</button>
 										</div>
 									</div>
 
-									<div class="row mt-1">
+									<div class="row">
 										<div class="col d-flex justify-content-end">
-											<button class="btn btn-primary" onclick="CloneIstruzione()" id="duplica_istruzione">Aggiungi Istruzione</button>
+											<button class="btn btn-primary" onclick="CloneEsperienza()" id="duplica_esperienza">Aggiungi Esperienza</button>
 										</div>
 									</div>
 
@@ -422,6 +422,8 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 			var $clone = $('#appendi_istruzione').clone();
 			$clone.find('input, textarea, select').val('');
+			$clone.find('input, textarea, select').attr('name', 'nuova_istruzione');
+			$clone.find('input, textarea, select').attr('value', ' ');
 			$clone.appendTo('#appendi_istruzione');
 
 

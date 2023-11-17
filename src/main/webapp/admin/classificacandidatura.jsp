@@ -223,7 +223,13 @@
                                         </h5>
                                         <p class="text-muted mb-2"><i class="bi bi-calendar-check-fill m-1"></i> <%=utente.getData_nascita()%></p>
                                         <ul class="list-inline mb-0 text-muted">
+                                            <%
+                                                if(utente.getId_citta()!=null){
+                                            %>
                                             <li class="list-inline-item"><i class="bi bi-geo-alt-fill m-1"></i><%=utente.getId_citta().getNome()%></li>
+                                            <%
+                                                };
+                                            %>
                                             <li class="list-inline-item"><i class="bi bi-envelope-fill m-1"></i><%=utente.getEmail()%></li>
                                         </ul>
                                     </div>
