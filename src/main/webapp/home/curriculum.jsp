@@ -32,7 +32,7 @@ ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
 ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
 
 
-
+/*
 for (Esperienza test : esperienze) {
 	System.out.println(test + "");
 }
@@ -40,6 +40,7 @@ for (Esperienza test : esperienze) {
 for (Istruzione test2 : istruzioni) {
 	System.out.println(test2 + "");
 }
+*/
 
 //ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
 
@@ -171,14 +172,14 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																<div class="col">
 																	<div class="form-group">
 																		<label>Grado</label>
-																		<input class="form-control" type="text" name="grado_istruzione <%=istruzione.getId_istruzione()%>"  value=<%=istruzione.getGrado()%>>
+																		<input class="form-control" type="text"  id="grado_istruzione" name="grado_istruzione <%=istruzione.getId_istruzione()%>"  value=<%=istruzione.getGrado()%>>
 																	</div>
 																</div>
 																<div class="row row-cols-5">
 																	<div class="col">
 																		<div class="form-group">
 																			<label>Valutazione</label>
-																			<input class="form-control" type="text" name="valutazione_istruzione <%=istruzione.getId_istruzione()%>"  value=<%=istruzione.getValutazione()%> >
+																			<input class="form-control" type="text"  id="valutazione_istruzione" name="valutazione_istruzione <%=istruzione.getId_istruzione()%>"  value=<%=istruzione.getValutazione()%> >
 																		</div>
 																	</div>
 																</div>
@@ -188,14 +189,14 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																	<div class="form-group">
 																		<label>Data inizio</label>
 																		<%java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"); %>
-																		<input class="form-control" type="date" name="inizio_istruzione <%=istruzione.getId_istruzione()%>"  value=<%=istruzione.getData_inizio()%>>
+																		<input class="form-control"  id="inizio_istruzione" type="date" name="inizio_istruzione <%=istruzione.getId_istruzione()%>"  value=<%=istruzione.getData_inizio()%>>
 																	</div>
 																</div>
 																<div class="col">
 																	<div class="form-group">
 																		<label>Data fine (se prevista)</label>
 																		<%java.text.DateFormat df2 = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"); %>
-																		<input class="form-control" type="date" name="fine_istruzione <%=istruzione.getId_istruzione()%>"  value=<%=istruzione.getData_fine()%>>
+																		<input class="form-control" id="fine_istruzione" type="date" name="fine_istruzione <%=istruzione.getId_istruzione()%>"  value=<%=istruzione.getData_fine()%>>
 																	</div>
 																</div>
 															</div>
@@ -206,7 +207,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 																		%>
 																		<label>Sede</label>
-																		<select class="form-select" aria-label="Default select example" name="sede_istruzione <%=istruzione.getId_istruzione()%>">
+																		<select class="form-select" id="sede_istruzione" aria-label="Default select example" name="sede_istruzione <%=istruzione.getId_istruzione()%>">
 
 																			<%
 																				if(citta!=null){
@@ -422,13 +423,20 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 			var $clone = $('#appendi_istruzione').clone();
 			$clone.find('input, textarea, select').val('');
-			$clone.find('input, textarea, select').attr('name', 'nuova_istruzione');
+
+
+			$clone.find('#descrizione_istruzione').attr('name','descrizione_istruzione nuova')
+			$clone.find('#grado_istruzione').attr('name','grado_istruzione nuova')
+			$clone.find('#valutazione_istruzione').attr('name','valutazione_istruzione nuova')
+			$clone.find('#inizio_istruzione').attr('name','inizio_istruzione nuova')
+			$clone.find('#fine_istruzione').attr('name','fine_istruzione nuova')
+			$clone.find('#sede_istruzione').attr('name','sede_istruzione nuova')
+
+
 			$clone.find('input, textarea, select').attr('value', ' ');
 			$clone.appendTo('#appendi_istruzione');
 
-
 			document.getElementById('duplica_istruzione').style.visibility='hidden';
-
 		}
 
 		function CloneEsperienza() {
