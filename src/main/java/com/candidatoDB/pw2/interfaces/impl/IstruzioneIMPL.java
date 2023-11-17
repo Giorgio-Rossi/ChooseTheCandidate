@@ -24,28 +24,25 @@ public class IstruzioneIMPL implements IstruzioneDAO {
 
     @Override
     public void save(Istruzione istruzioni){
-        String sql = "INSERT INTO Istruzione(id_istruzione,grado,id_citta,descrizione_istruzione,data_inizio,data_fine,id_user,valutazione) VALUES(?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Istruzione(grado,id_citta,descrizione_istruzione,data_inizio,data_fine,id_user,valutazione) VALUES(?,?,?,?,?,?,?)";
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
-			statement = connection.getConnection().prepareStatement(sql, new String[] { "id" });
-			statement.setInt(1, istruzioni.getId_istruzione());
-			statement.setString(2, istruzioni.getGrado());
-			statement.setInt(3, istruzioni.getId_citta());
-			statement.setString(4, istruzioni.getDescrizione_istruzione());
-			statement.setDate(6, new java.sql.Date(istruzioni.getData_inizio().getTime()));
-			statement.setDate(6, new java.sql.Date(istruzioni.getData_fine().getTime()));
-			statement.setInt(5, istruzioni.getId_user());
-            statement.setInt(8, istruzioni.getValutazione());
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setString(1, istruzioni.getGrado());
+			statement.setInt(2, istruzioni.getId_citta());
+			statement.setString(3, istruzioni.getDescrizione_istruzione());
+			statement.setDate(4, new java.sql.Date(istruzioni.getData_inizio().getTime()));
+			statement.setDate(5, new java.sql.Date(istruzioni.getData_fine().getTime()));
+			statement.setInt(6, istruzioni.getId_user());
+            statement.setInt(7, istruzioni.getValutazione());
 
 			statement.executeUpdate();
-			resultSet = statement.getGeneratedKeys();
-			if (resultSet.next())
-				istruzioni.setId_istruzione(resultSet.getInt(1));
+
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 		} finally {
-			DBUtil.close(resultSet);
+			//DBUtil.close(resultSet);
 			DBUtil.close(statement);
 			//DBUtil.close((Connection) connection);
 		}

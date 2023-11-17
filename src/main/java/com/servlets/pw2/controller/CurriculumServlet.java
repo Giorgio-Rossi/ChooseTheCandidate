@@ -31,7 +31,6 @@ public class CurriculumServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
-        //Utente utenteModificato = new Utente();
         Utente utenteInSessione = (Utente) session.getAttribute("utente");
         IstruzioneIMPL istruzioneIMPL = new IstruzioneIMPL();
         ArrayList<Istruzione> istruzioni_utente_loggato = (ArrayList<Istruzione>) istruzioneIMPL.getAllInstruction(utenteInSessione.getId_user());
@@ -42,6 +41,10 @@ public class CurriculumServlet extends HttpServlet {
         for (Istruzione istruzione : istruzioni_utente_loggato){
 
             Istruzione update_istruzione = new Istruzione();
+
+            update_istruzione.setId_istruzione(istruzione.getId_istruzione());
+            update_istruzione.setId_user(utenteInSessione.getId_user());
+
 
             String string_descrizione_parameter = "descrizione_istruzione" + " " + istruzione.getId_istruzione();
             String string_grado_parameter = "grado_istruzione" + " " + istruzione.getId_istruzione();
@@ -93,14 +96,14 @@ public class CurriculumServlet extends HttpServlet {
             }
 
 
-            if (istruzione.getData_inizio().compareTo(data_inizio) == 0) {
+            if (istruzione.getData_inizio().compareTo(data_inizio) != 0) {
                 update_istruzione.setData_inizio(new java.sql.Date(data_inizio.getTime()));
                 isModified = true;
             } else {
                 update_istruzione.setData_inizio(istruzione.getData_inizio());
             }
 
-            if (istruzione.getData_fine().compareTo(data_fine) == 0) {
+            if (istruzione.getData_fine().compareTo(data_fine) != 0) {
                 update_istruzione.setData_fine(new java.sql.Date(data_fine.getTime()));
                 isModified = true;
             } else {
@@ -119,26 +122,101 @@ public class CurriculumServlet extends HttpServlet {
                 update_istruzione.setId_citta(istruzione.getId_citta());
             }
 
-            //System.out.println(update_istruzione);
-
-            //TODO NON SALVA LE MODIFICHE
             istruzioneIMPL.update(update_istruzione);
 
-            if(isModified){
-                ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
-            } else {
-                ErrorManager.setOtherMessage("Non hai modificato nulla!",req);
-            }
-            req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
          }
 
 
         String[] id_istruzioni = req.getParameterValues("id_istruzione");
 
-        //TODO GESTISCI AGGIUNTA NUOVE ISTRUZIONE
-        if(Arrays.asList(id_istruzioni).contains("")){
-            //System.out.println("SI ");
+        //TODO GESTISCI AGGIUNTA NUOVA ISTRUZIONE
+        if(Arrays.asList(id_istruzioni).contains(" ")){
+            Istruzione nuova_istruzione = new Istruzione();
+
+            nuova_istruzione.setId_user(utenteInSessione.getId_user());
+
+
+            String string_descrizione_parameter = "descrizione_istruzione nuova";
+            String string_grado_parameter = "grado_istruzione nuova";
+            String string_valutazione_parameter = "valutazione_istruzione nuova";
+            String string_inizio_parameter = "inizio_istruzione nuova";
+            String string_fine_parameter = "fine_istruzione nuova";
+            String string_sede_parameter = "sede_istruzione nuova";
+
+
+            String descrizione_istruzione_nuova = req.getParameter(string_descrizione_parameter);
+            String grado_istruzione_nuova = req.getParameter(string_grado_parameter);
+            String valutazione_istruzione_nuova = req.getParameter(string_valutazione_parameter);
+            String inizo_istruzione_nuova = req.getParameter(string_inizio_parameter);
+            String fine_istruzione_nuova = req.getParameter(string_fine_parameter);
+            String sede_istruzione_nuova = req.getParameter(string_sede_parameter);
+
+
+            if(!descrizione_istruzione_nuova.isEmpty()){
+                nuova_istruzione.setDescrizione_istruzione(descrizione_istruzione_nuova);
+            }
+
+            if(!grado_istruzione_nuova.isEmpty()){
+                nuova_istruzione.setGrado(grado_istruzione_nuova);
+            }
+
+
+            if(!valutazione_istruzione_nuova.isEmpty()){
+                nuova_istruzione.setValutazione(Integer.parseInt(valutazione_istruzione_nuova));
+            }
+
+            if(!inizo_istruzione_nuova.isEmpty()) {
+
+                SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+                Date data_inizio_nuova;
+                try {
+                    data_inizio_nuova = in.parse(inizo_istruzione_nuova);
+                } catch (ParseException e) {
+                    ErrorManager.setErrorMessage("Qualcosa è andato storto", req);
+                    throw new RuntimeException(e);
+                }
+                nuova_istruzione.setData_inizio(new java.sql.Date(data_inizio_nuova.getTime()));
+            }
+
+            if(!fine_istruzione_nuova.isEmpty()) {
+
+                SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+                Date data_fine_nuova;
+                try {
+                    data_fine_nuova = in.parse(fine_istruzione_nuova);
+                } catch (ParseException e) {
+                    ErrorManager.setErrorMessage("Qualcosa è andato storto", req);
+                    throw new RuntimeException(e);
+                }
+                nuova_istruzione.setData_fine(new java.sql.Date(data_fine_nuova.getTime()));
+            }
+
+            if(sede_istruzione_nuova != null) {
+
+                Integer id_citta_istruzione = Integer.valueOf(sede_istruzione_nuova.split(" ", 4)[0]);
+                Integer id_regione_istruzione = Integer.valueOf(sede_istruzione_nuova.split(" ", 4)[1]);
+                String nome_citta_istruzione = sede_istruzione_nuova.split(" ", 4)[2];
+
+                nuova_istruzione.setId_citta(id_citta_istruzione);
+            }
+
+            System.out.println(nuova_istruzione);
+
+            istruzioneIMPL.save(nuova_istruzione);
+
+
+            ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
+
+
         }
+
+
+        if(isModified){
+            ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
+        } else {
+            ErrorManager.setOtherMessage("Non hai modificato nulla!",req);
+        }
+        req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
 
 
 
