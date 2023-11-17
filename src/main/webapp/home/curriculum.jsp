@@ -149,14 +149,14 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 													</div>
 											</div>
 											<div class="mb-2"><strong>Istruzioni</strong></div>
-											<div class="tab-content pt-3" id="appendi_istruzione">
+											<div class="tab-content pt-3">
 												<div class="tab-pane active">
 
 												<%
 													for(Istruzione istruzione : istruzioni){
 												%>
 
-													<div class="row">
+													<div class="row" id="appendi_istruzione">
 														<div class="col">
 															<div class="row">
 																<input type="hidden" id="custId" name="id_istruzione" value="<%=istruzione.getId_istruzione()%>">
@@ -255,7 +255,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 									<div class="mb-2"><strong>Esperienze</strong></div>
 
 
-									<div class="tab-content pt-3" id="appendi_esperienza">
+									<div class="tab-content pt-3">
 
 										<div class="tab-pane active">
 
@@ -263,9 +263,9 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 												for(Esperienza esperienza : esperienze){
 											%>
 
-												<div class="row">
+												<div class="row" id="appendi_esperienza">
 													<div class="col">
-														<div class="row">
+														<div class="row" >
 															<input type="hidden" id="custId2" name="id_esperienza" value="<%=esperienza.getId_esperienza()%>">
 
 															<div class="col">
