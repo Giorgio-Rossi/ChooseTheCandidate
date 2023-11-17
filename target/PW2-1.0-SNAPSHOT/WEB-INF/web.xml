@@ -5,6 +5,17 @@
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
 
+<!-- mappatura errori -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/ExceptionHandler</location>
+    </error-page>
+
+    <error-page>
+        <exception-type>javax.servlet.ServletException</exception-type>
+        <location>/ExceptionHandler</location>
+    </error-page>
+
     <!-- mappatura servlets -->
     <servlet>
         <servlet-name>login</servlet-name>
