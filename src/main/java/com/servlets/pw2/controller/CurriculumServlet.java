@@ -32,12 +32,21 @@ public class CurriculumServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
         Utente utenteInSessione = (Utente) session.getAttribute("utente");
+
         IstruzioneIMPL istruzioneIMPL = new IstruzioneIMPL();
+        EsperienzaIMPL esperienzaIMPL = new EsperienzaIMPL();
+        CittaIMPL cittaIMPL = new CittaIMPL();
+        UtenteIMPL utenteIMPL = new UtenteIMPL();
+
         ArrayList<Istruzione> istruzioni_utente_loggato = (ArrayList<Istruzione>) istruzioneIMPL.getAllInstruction(utenteInSessione.getId_user());
+        ArrayList<Esperienza> esperienze_utente_loggato = (ArrayList<Esperienza>) esperienzaIMPL.getAllExperience(utenteInSessione.getId_user());
+
+
         boolean isModified = false;
 
+        //ISTRUZIONI
 
-        // TODO GESTIRE IL CAMBIO INFORMAZIONI DI ISTRUZIONI GIA PRESENTI
+        // TODO GESTIRE VALIDAZIONI
         for (Istruzione istruzione : istruzioni_utente_loggato){
 
             Istruzione update_istruzione = new Istruzione();
@@ -129,11 +138,12 @@ public class CurriculumServlet extends HttpServlet {
 
         String[] id_istruzioni = req.getParameterValues("id_istruzione");
 
-        //TODO GESTISCI AGGIUNTA NUOVA ISTRUZIONE
+
+        //TODO GESTIRE VALIDAZIONI
         if(Arrays.asList(id_istruzioni).contains(" ")){
             Istruzione nuova_istruzione = new Istruzione();
 
-            nuova_istruzione.setId_user(utenteInSessione.getId_user());
+
 
 
             String string_descrizione_parameter = "descrizione_istruzione nuova";
@@ -202,13 +212,153 @@ public class CurriculumServlet extends HttpServlet {
 
             System.out.println(nuova_istruzione);
 
-            istruzioneIMPL.save(nuova_istruzione);
+            if(nuova_istruzione.isValid()){
+                nuova_istruzione.setId_user(utenteInSessione.getId_user());
+                istruzioneIMPL.save(nuova_istruzione);
+            }else{
+                ErrorManager.setOtherMessage("Non hai modificato nulla!",req);
+            }
+
 
 
             ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
 
+        }
+
+
+        //ESPERIENZE
+        for (Esperienza esperienza : esperienze_utente_loggato){
+
+            Esperienza update_esperienza = new Esperienza();
+
+            update_esperienza.setId_esperienza(esperienza.getId_esperienza());
+            update_esperienza.setUtente(utenteInSessione);
+
+
+            String string_descrizione_parameter = "descrizione_esperienza" + " " + esperienza.getId_esperienza();
+            String string_anni_parameter = "anni_esperienza" + " " + esperienza.getId_esperienza();
+            String string_azienda_parameter = "azienda_esperienza" + " " + esperienza.getId_esperienza();
+            String string_contratto_parameter = "contratto_esperienza" + " " + esperienza.getId_esperienza();
+            String string_posizione_parameter = "posizione_esperienza" + " " + esperienza.getId_esperienza();
+            String string_settore_parameter = "settore_esperienza" + " " + esperienza.getId_esperienza();
+            String string_ral_parameter = "ral_esperienza" + " " + esperienza.getId_esperienza();
+            String string_inizio_parameter = "inizio_esperienza" + " " + esperienza.getId_esperienza();
+            String string_fine_parameter = "fine_esperienza" + " " + esperienza.getId_esperienza();
+            String string_sede_parameter = "sede_esperienza" + " " + esperienza.getId_esperienza();
+
+
+
+
+            String descrizione_esperienza = req.getParameter(string_descrizione_parameter);
+            String anni_esperienza = req.getParameter(string_anni_parameter);
+            String azienda_esperienza = req.getParameter(string_azienda_parameter);
+            String contratto_esperienza = req.getParameter(string_contratto_parameter);
+            String posizione_esperienza = req.getParameter(string_posizione_parameter);
+            String settore_esperienza = req.getParameter(string_settore_parameter);
+            String ral_esperienza = req.getParameter(string_ral_parameter);
+            String inizio_esperienza = req.getParameter(string_inizio_parameter);
+            String fine_esperienza = req.getParameter(string_fine_parameter);
+            String sede_esperienza = req.getParameter(string_sede_parameter);
+
+
+            if (!esperienza.getDescrizione_attivita().equals(descrizione_esperienza)) {
+                update_esperienza.setDescrizione_attivita(descrizione_esperienza);
+                isModified = true;
+            } else {
+                update_esperienza.setDescrizione_attivita(esperienza.getDescrizione_attivita());
+            }
+
+            if (esperienza.getAnni() != Integer.parseInt(anni_esperienza)) {
+                update_esperienza.setAnni(Integer.parseInt(anni_esperienza));
+                isModified = true;
+            } else {
+                update_esperienza.setAnni(esperienza.getAnni());
+            }
+
+            if (esperienza.getAzienda().equals(azienda_esperienza)) {
+                update_esperienza.setAzienda(azienda_esperienza);
+                isModified = true;
+            } else {
+                update_esperienza.setAzienda(esperienza.getAzienda());
+            }
+
+
+            SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+            Date data_inizio;
+            Date data_fine;
+            try {
+                data_inizio = in.parse(inizio_esperienza);
+                data_fine = in.parse(fine_esperienza);
+            } catch (ParseException e) {
+                ErrorManager.setErrorMessage("Qualcosa è andato storto",req);
+                throw new RuntimeException(e);
+            }
+
+
+            if (esperienza.getData_inizio().compareTo(data_inizio) != 0) {
+                update_esperienza.setData_inizio(new java.sql.Date(data_inizio.getTime()));
+                isModified = true;
+            } else {
+                update_esperienza.setData_inizio(esperienza.getData_inizio());
+            }
+
+            if (esperienza.getData_fine().compareTo(data_fine) != 0) {
+                update_esperienza.setData_fine(new java.sql.Date(data_fine.getTime()));
+                isModified = true;
+            } else {
+                update_esperienza.setData_fine(esperienza.getData_fine());
+            }
+
+            if(!sede_esperienza.isEmpty()) {
+
+                Integer id_citta_esperienza = Integer.valueOf(sede_esperienza.split(" ", 4)[0]);
+                Integer id_regione_esperienza = Integer.valueOf(sede_esperienza.split(" ", 4)[1]);
+                String nome_citta_esperienza = sede_esperienza.split(" ", 4)[2];
+
+
+                if (esperienza.getId_citta() == null) {
+                    update_esperienza.setId_citta(cittaIMPL.getCittaById(id_citta_esperienza));
+                    isModified = true;
+                } else {
+                    update_esperienza.setId_citta(esperienza.getId_citta());
+                }
+            }
+
+            if (!esperienza.getTipo_contratto().equals(contratto_esperienza)) {
+                update_esperienza.setTipo_contratto(contratto_esperienza);
+                isModified = true;
+            } else {
+                update_esperienza.setTipo_contratto(esperienza.getTipo_contratto());
+            }
+
+            if (!esperienza.getPosizione_lavorativa().equals(posizione_esperienza)) {
+                update_esperienza.setPosizione_lavorativa(posizione_esperienza);
+                isModified = true;
+            } else {
+                update_esperienza.setPosizione_lavorativa(esperienza.getPosizione_lavorativa());
+            }
+
+            if (!esperienza.getSettore().equals(settore_esperienza)) {
+                update_esperienza.setSettore(settore_esperienza);
+                isModified = true;
+            } else {
+                update_esperienza.setSettore(esperienza.getSettore());
+            }
+
+            if (esperienza.getRal() != Integer.parseInt(ral_esperienza)) {
+                update_esperienza.setRal(Integer.parseInt(ral_esperienza));
+                isModified = true;
+            } else {
+                update_esperienza.setRal(esperienza.getRal());
+            }
+
+            esperienzaIMPL.update(update_esperienza);
 
         }
+
+
+        String[] id_esperienze = req.getParameterValues("id_esperienza");
+
 
 
         if(isModified){
@@ -220,197 +370,9 @@ public class CurriculumServlet extends HttpServlet {
 
 
 
-        /*
-        Esperienza utenteInSessioneEsperienza = (Esperienza) session.getAttribute("esperienza");
-
-        //  ESPERIENZA LAVORATIVA
-
-        Esperienza EsperienzaModificata = new Esperienza();
-
-        boolean isModified = false;
-
-        // Posizione lavorativa
-        if (!utenteInSessioneEsperienza.getPosizione_lavorativa().equals(req.getParameter("posizione"))) {
-            utenteInSessioneEsperienza.setPosizione_lavorativa(req.getParameter("posizione"));
-            isModified = true;
-        } else {
-            EsperienzaModificata.setPosizione_lavorativa(utenteInSessioneEsperienza.getPosizione_lavorativa());
-        }
-        
-
-        if (!req.getParameter("posizione").isEmpty()) {
-            EsperienzaModificata.setPosizione_lavorativa(req.getParameter("posizione"));
-        } else {
-            EsperienzaModificata.setPosizione_lavorativa(utenteInSessioneEsperienza.getPosizione_lavorativa());
-        }
-        // Azienda
-        if (!utenteInSessioneEsperienza.getAzienda().equals(req.getParameter("azienda"))) {
-            utenteInSessioneEsperienza.setAzienda(req.getParameter("azienda"));
-            isModified = true;
-        } else {
-            EsperienzaModificata.setPosizione_lavorativa(utenteInSessioneEsperienza.getAzienda());
-        }
-
-        // DATE
-        SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
-        String param1 = req.getParameter("data_inizio");
-        Date data_inizio;
-        Date data_fine;
-        
-        // Data inizio
-        try {
-            data_inizio = in.parse(param1);
-        } catch (ParseException e) {
-            ErrorManager.setErrorMessage("Qualcosa è andato storto",req);
-            throw new RuntimeException(e);
-        }
-
-        if (!(utenteInSessioneEsperienza.getData_inizio().compareTo(data_inizio) == 0)){
-            utenteInSessioneEsperienza.setData_inizio(new java.sql.Date(data_inizio.getTime()));
-            isModified = true;
-        } else {
-            EsperienzaModificata.setData_inizio(utenteInSessioneEsperienza.getData_inizio());
-        }
-
-        // Data Fine
-        String param2 = req.getParameter("data_fine");
-        try {
-            data_fine = in.parse(param2);
-        } catch (ParseException e) {
-            ErrorManager.setErrorMessage("Qualcosa è andato storto",req);
-            throw new RuntimeException(e);
-        }
-
-         if (!(utenteInSessioneEsperienza.getData_fine().compareTo(data_fine) == 0)){
-            utenteInSessioneEsperienza.setData_fine(new java.sql.Date(data_fine.getTime()));
-            isModified = true;
-        } else {
-            EsperienzaModificata.setData_fine(utenteInSessioneEsperienza.getData_fine());
-        }
-         
-         // RAL
-         if(!req.getParameter("ral").isEmpty()){
-             Integer ral = Integer.valueOf(req.getParameter("ral").split(" ", 3)[0]);
-             EsperienzaModificata.setRal(ral);
-             isModified = true;
-            }else {
-                EsperienzaModificata.setRal(EsperienzaModificata.getRal());
-            }   
-    
-         // Tipo contratto
-        if (!utenteInSessioneEsperienza.getTipo_contratto().equals(req.getParameter("tipo_contratto"))) {
-            utenteInSessioneEsperienza.setTipo_contratto(req.getParameter("tipo_contratto"));
-            isModified = true;
-        } else {
-            EsperienzaModificata.setTipo_contratto(utenteInSessioneEsperienza.getTipo_contratto());
-        }
-
-        // Settore
-       if (!utenteInSessioneEsperienza.getSettore().equals(req.getParameter("settore"))) {
-            utenteInSessioneEsperienza.setSettore(req.getParameter("settore"));
-            isModified = true;
-        } else {
-            EsperienzaModificata.setSettore(utenteInSessioneEsperienza.getSettore());
-        }
-       		// Descrizione attività
-        if (!utenteInSessioneEsperienza.getDescrizione_attivita().equals(req.getParameter("descrizione_attivita"))) {
-            utenteInSessioneEsperienza.setDescrizione_attivita(req.getParameter("descrizione_attivita"));
-            isModified = true;
-        } else {
-            EsperienzaModificata.setDescrizione_attivita(utenteInSessioneEsperienza.getDescrizione_attivita());
-        }
 
 
 
-
-        //      ISTRUZIONE
-        
-        Istruzione utenteInSessioneIstruzione = (Istruzione) session.getAttribute("istruzione");
-
-        Istruzione IstruzioneModificata = new Istruzione();
-        // Grado
-        if (!utenteInSessioneIstruzione.getGrado().equals(req.getParameter("grado"))) {
-            utenteInSessioneIstruzione.setGrado(req.getParameter("grado"));
-            isModified = true;
-        } else {
-            IstruzioneModificata.setGrado(utenteInSessioneIstruzione.getGrado());
-        }
-
-        // ID citta
-         Integer id_citta = Integer.valueOf(req.getParameter("citta").split(" ", 3)[0]);
-            Integer id_regione = Integer.valueOf(req.getParameter("citta").split(" ", 3)[1]);
-            String nome_citta = req.getParameter("citta").split(" ", 3)[2];
-
-            Citta citta_utente_sessione = utenteInSessione.getId_citta();
-
-            IstruzioneIMPL IstruzioneIMPL = new IstruzioneIMPL();
-            Regione regione = new Regione();
-            Citta citta = new Citta(id_citta, regione, nome_citta);
-            IstruzioneModificata.setId_citta(id_citta);
-            isModified = true;
-
-            // Descrizione
-        if (!utenteInSessioneIstruzione.getDescrizione_istruzione().equals(req.getParameter("descrizione_istruzione"))) {
-            utenteInSessioneIstruzione.setDescrizione_istruzione(req.getParameter("descrizione_istruzione"));
-            isModified = true;
-        } else {
-            IstruzioneModificata.setGrado(utenteInSessioneIstruzione.getDescrizione_istruzione());
-        }
-        
-     // Data inizio
-        String param3 = req.getParameter("data_inizio");
-        try {
-            data_inizio = in.parse(param3);
-        } catch (ParseException e) {
-            ErrorManager.setErrorMessage("Qualcosa è andato storto",req);
-            throw new RuntimeException(e);
-        }
-
-        if (!(utenteInSessioneIstruzione.getData_inizio().compareTo(data_inizio) == 0)){
-            utenteInSessioneIstruzione.setData_inizio(new java.sql.Date(data_inizio.getTime()));
-            isModified = true;
-        } else {
-            IstruzioneModificata.setData_inizio(utenteInSessioneIstruzione.getData_inizio());
-        }
-
-     // Data fine
-        String param4 = req.getParameter("data_fine");
-         try {
-            data_fine = in.parse(param4);
-        } catch (ParseException e) {
-            ErrorManager.setErrorMessage("Qualcosa è andato storto",req);
-            throw new RuntimeException(e);
-        }
-
-         if (!(utenteInSessioneIstruzione.getData_fine().compareTo(data_fine) == 0)){
-            utenteInSessioneIstruzione.setData_fine(new java.sql.Date(data_fine.getTime()));
-            isModified = true;
-        } else {
-            IstruzioneModificata.setData_fine(utenteInSessioneIstruzione.getData_fine());
-        }
-           
-
-
-        // ID USER
-         if(!req.getParameter("id_user").isEmpty()){
-         Integer id_user = Integer.valueOf(req.getParameter("id_user").split(" ", 3)[0]);
-  
-         utenteModificato.getId_user();
-         IstruzioneModificata.setId_user(id_user);
-         isModified = true;
-         }else {
-             IstruzioneModificata.setId_user(IstruzioneModificata.getId_user());
-         }
-
-      // 	Valutazione
-         if(!req.getParameter("valutazione").isEmpty()){
-          Integer valutazione = Integer.valueOf(req.getParameter("valutazione").split(" ", 3)[0]);
-          IstruzioneModificata.setValutazione(valutazione);
-          isModified = true;
-         }else {
-             IstruzioneModificata.setValutazione(IstruzioneModificata.getId_citta());
-         }
-      
 
        // CV
  
@@ -422,8 +384,9 @@ public class CurriculumServlet extends HttpServlet {
 
             try {
                 part.write(path);
-                System.out.println("File caricato correttamente" + path);
-                utenteModificato.setCV("/"+ fileName);
+                System.out.println("CV caricato correttamente" + path);
+                utenteInSessione.setCV("/"+ fileName);
+                utenteIMPL.update(utenteInSessione);
                 isModified = true;
             } catch (Exception e) {
                 ErrorManager.setErrorMessage("Qualcosa è andato storto",req);
@@ -431,29 +394,9 @@ public class CurriculumServlet extends HttpServlet {
             }
 
         }else {
-            utenteModificato.setCV(utenteInSessione.getCV());
+            //utenteModificato.setCV(utenteInSessione.getCV());
         }
     
-
-
-        IstruzioneIMPL istruzioneIMPL = new IstruzioneIMPL();
-        EsperienzaIMPL esperienzaIMPL = new EsperienzaIMPL();
-
-        istruzioneIMPL.update(IstruzioneModificata);
-        esperienzaIMPL.update(EsperienzaModificata);
-
-        session.removeAttribute("esperienza");
-        session.removeAttribute("istruzione");
-        session.setAttribute("esperienza", EsperienzaModificata);
-        session.setAttribute("istruzione", IstruzioneModificata);
-        if(isModified){
-           ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
-           } else {
-                ErrorManager.setOtherMessage("Non hai modificato nulla!",req);
-            }
-            req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
-        }
-        */
 
     }
 }

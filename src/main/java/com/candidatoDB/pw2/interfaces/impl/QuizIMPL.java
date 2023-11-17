@@ -1,5 +1,6 @@
 package com.candidatoDB.pw2.interfaces.impl;
 
+import com.candidatoDB.pw2.entity.Posizione;
 import com.candidatoDB.pw2.entity.Quiz;
 import com.candidatoDB.pw2.interfaces.QuizDAO;
 import com.servlets.pw2.controller.DBUtil;
@@ -8,6 +9,7 @@ import com.servlets.pw2.controller.SQLServerConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class QuizIMPL implements QuizDAO {
 
@@ -89,4 +91,34 @@ public class QuizIMPL implements QuizDAO {
         }
     	return nDomande;
     }
+    
+    @Override
+    public ArrayList<Quiz> getAllQuiz() {
+		ArrayList<Quiz> quiz = new ArrayList<>();
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		try {
+
+			String sql = "SELECT * FROM Quiz";
+			preparedStatement = connection.getConnection().prepareStatement(sql);
+			resultSet = preparedStatement.executeQuery();
+
+			while (resultSet.next()) {
+				Quiz q = new Quiz();
+				q.setId_quiz(resultSet.getInt(1));
+				q.setDescrizione(resultSet.getString(2));
+				q.setN_domande(resultSet.getInt(3));
+                quiz.add(q);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+
+			DBUtil.close(resultSet);
+			DBUtil.close(preparedStatement);
+			// DBUtil.close(connection);
+		}
+
+		return quiz;
+	} 
 }

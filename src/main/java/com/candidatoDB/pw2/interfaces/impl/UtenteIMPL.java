@@ -53,7 +53,7 @@ public class UtenteIMPL implements UtenteDAO {
 
 	@Override
 	public void update(Utente utente) {
-		String sql = "UPDATE Utente SET nome=?,cognome=?,codice_fiscale=?,email=?,data_nascita=?,indirizzo=?,id_citta=?,cap=?,telefono=?,ruolo_admin=?,password=?, foto_profilo=?, genere=?  WHERE id_user=?";
+		String sql = "UPDATE Utente SET nome=?,cognome=?,codice_fiscale=?,email=?,data_nascita=?,indirizzo=?,id_citta=?,cap=?,telefono=?,ruolo_admin=?,password=?, foto_profilo=?, genere=?, CV=?  WHERE id_user=?";
 		PreparedStatement statement = null;
 		
 		try {
@@ -76,7 +76,8 @@ public class UtenteIMPL implements UtenteDAO {
 			statement.setString(11, utente.getPassword());
 			statement.setString(12, utente.getFoto_profilo());
 			statement.setString(13, utente.getGenere());
-			statement.setInt(14, utente.getId_user());
+			statement.setInt(15, utente.getId_user());
+			statement.setString(14, utente.getCV());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -94,7 +95,7 @@ public class UtenteIMPL implements UtenteDAO {
 	public Utente findById(int id_user) {
 		Utente utente = new Utente();
 		//Citta cittaUtente = new Citta();
-		String sql = "SELECT Utente.id_user, Utente.nome, Utente.cognome, Utente.codice_fiscale, Utente.email, Utente.data_nascita, Utente.indirizzo, Utente.id_citta, Utente.cap, Utente.telefono, Utente.password, Utente.foto_profilo, Utente.genere, Utente.ruolo_admin from Utente where Utente.id_user=?";
+		String sql = "SELECT Utente.id_user, Utente.nome, Utente.cognome, Utente.codice_fiscale, Utente.email, Utente.data_nascita, Utente.indirizzo, Utente.id_citta, Utente.cap, Utente.telefono, Utente.password, Utente.foto_profilo, Utente.genere, Utente.ruolo_admin, Utente.CV from Utente where Utente.id_user=?";
 
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -125,6 +126,7 @@ public class UtenteIMPL implements UtenteDAO {
 				utente.setFoto_profilo(resultSet.getString(12));
 				utente.setGenere(resultSet.getString(13));
 				utente.setRuolo_admin(resultSet.getString(14));
+				utente.setCV(resultSet.getString(15));
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());

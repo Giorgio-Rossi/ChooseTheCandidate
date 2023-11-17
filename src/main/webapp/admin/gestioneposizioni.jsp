@@ -133,21 +133,23 @@
                             <div class="col-sm-3 text-lg-end">
                                 <span class="badge bg-success"><%=posizione.getStato()%></span>
                                
-                                <a href="<%=request.getContextPath()%>/admin/modificaPosizione.jsp?idPosizione=<%=posizione.getId_posizione()%>" class="btn btn-primary me-2">Modifica</a>
+                               <a href="<%=request.getContextPath()%>/admin/modificaPosizione.jsp?idPosizione=<%=posizione.getId_posizione()%>" class="btn btn-primary me-2">Modifica</a>
                                
-                                <a href="<%=request.getContextPath()%>/admin/aggiungiPosizione.jsp?idPosizione=<%=posizione.getId_posizione()%>" class="btn btn-success">Aggiungi</a>
+                               
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+         
 
             <%
                 }
             %>
 
         </div>
+        <a href="<%=request.getContextPath()%>/admin/aggiungiPosizione.jsp" class="btn btn-success">Aggiungi</a>
     </main>
 </body>
 </html>
