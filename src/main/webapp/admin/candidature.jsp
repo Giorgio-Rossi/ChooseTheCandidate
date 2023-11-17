@@ -73,18 +73,8 @@
 
 <h1>Candidature</h1>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light rounded justify-content-center"
-style="position: fixed;
-		align-items:center;
-		display:flex;
-			  top:85px;
-			  left:21.25%;
-			height:10%;
-			  width: 70%;
-			  z-index:2;
-				border-radius:20px;
-			  justify-content:space-around;
-			  border:3px solid #0072bc;">
+<nav class="navbar navbar-expand-lg bg-light"
+style="position: fixed; align-items:center; display:flex; top:85px; left:21.25%; height:10%; width: 70%; z-index:2; border-radius:20px; justify-content:space-around; border:3px solid #0072bc;">
     <a class="navbar-brand" href="${pageContext.request.contextPath}/admin/candidature.jsp">Ricerca Posizioni</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

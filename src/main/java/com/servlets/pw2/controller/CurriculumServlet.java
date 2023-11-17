@@ -218,7 +218,7 @@ public class CurriculumServlet extends HttpServlet {
                 nuova_istruzione.setData_fine(new java.sql.Date(data_fine_nuova.getTime()));
             }
 
-            if(!sede_istruzione_nuova.isEmpty()) {
+            if(sede_istruzione_nuova!=null && !sede_istruzione_nuova.isEmpty()) {
 
                 Integer id_citta_istruzione = Integer.valueOf(sede_istruzione_nuova.split(" ", 4)[0]);
                 Integer id_regione_istruzione = Integer.valueOf(sede_istruzione_nuova.split(" ", 4)[1]);
@@ -493,7 +493,7 @@ public class CurriculumServlet extends HttpServlet {
                 nuova_esperienza.setData_fine(new java.sql.Date(data_fine_nuova.getTime()));
             }
 
-            if(!sede_esperienza_nuova.isEmpty()) {
+            if(sede_esperienza_nuova!=null && !sede_esperienza_nuova.isEmpty()) {
 
                 Integer id_citta_esperienza = Integer.valueOf(sede_esperienza_nuova.split(" ", 4)[0]);
                 Integer id_regione_esperienza = Integer.valueOf(sede_esperienza_nuova.split(" ", 4)[1]);
