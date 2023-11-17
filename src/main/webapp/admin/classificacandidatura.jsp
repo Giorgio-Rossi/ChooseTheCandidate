@@ -244,7 +244,7 @@
 
                                 <div class="col">
                                     <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
-                                        <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
+                                        <a href="${pageContext.request.contextPath}/img/cv<%=utente.getCV()%>" target="_blank" class="file-upload btn btn-success  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
                                     </div>
                                 </div>
                             </div>
