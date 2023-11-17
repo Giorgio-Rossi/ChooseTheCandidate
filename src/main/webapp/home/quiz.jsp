@@ -39,13 +39,13 @@
 %>
 
 
-<div class="container-fluid">
-
-    <div class="jumbotron">
-        <h3><%=session.getAttribute("nome_quiz")%></h3>
+<div class="container-fluid" style="background-color:#d4d4d4;display:flex;justify-content:center;flex-direction:column;padding:0;">
+	<div >
+    <div  style="align-items:center;justify-content:center;padding-bottom:2%;height:100%">
+        <h3 style="font-size:5em;background-color:white;display:flex;align-items:center;justify-content:center;"><%=session.getAttribute("nome_quiz")%></h3>
     </div>
 
-    <form method="post" action="${pageContext.request.contextPath}/RisulatatoQuiz">
+    <form method="post" action="${pageContext.request.contextPath}/RisulatatoQuiz" >
 
         <%
             int ndomanda = 0;
@@ -53,14 +53,14 @@
             for(Map.Entry<Domanda,ArrayList<RisposteDomande>> entry : risposte.entrySet()){
         %>
 
-                <div class="card border-info mb-4 ">
+                <div class="card mb-4  " style="width:80%;margin-left:10%" >
 
-                    <div class="d-flex justify-content-between align-items-center card-header bg-info text-white" id="h1">
+                    <div class="d-flex justify-content-between align-items-center  center card-header text-white" id="h1" style="--bs-bg-opacity: 1;background-color:#0072BC;" >
                         <span>Domanda <%=i%></span>
                         <button type="button" data-bs-toggle="collapse" data-bs-target="#n<%=i%>" aria-expanded="false" aria-controls="collapseExample" class="btn btn-outline-light">
                         </button>
                     </div>
-                    <div id="n<%=i%>" class="collapse show" aria-labelledby="h1">
+                    <div id="n<%=i%>" class="collapse show" aria-labelledby="h1" >
                         <div class="card-body">
                             <p><%=entry.getKey().getTesto()%></p>
 
@@ -68,7 +68,6 @@
                                 int value = 1;
                                 for(RisposteDomande risposteDomande : entry.getValue()){
                             %>
-
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="<%=ndomanda%>" id="<%=entry.getKey().getTesto()%>" value="<%=value++%>">
                                         <label class="form-check-label" for="<%=risposteDomande.getScelta1()%>">
@@ -113,12 +112,12 @@
             };
         %>
 
-
-        <button type="submit" class="btn btn-success">Invia</button>
-
+		<div style="display:flex;align-items:center;justify-content:center;">
+        	<button style="width:25%;"type="submit" class="btn btn-success">Invia</button>
+		</div>
     </form>
 
-
+</div>
 </div>
 
 
