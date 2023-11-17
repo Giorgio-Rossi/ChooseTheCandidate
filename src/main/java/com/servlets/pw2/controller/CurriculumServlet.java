@@ -35,6 +35,7 @@ public class CurriculumServlet extends HttpServlet {
 
         IstruzioneIMPL istruzioneIMPL = new IstruzioneIMPL();
         EsperienzaIMPL esperienzaIMPL = new EsperienzaIMPL();
+        CittaIMPL cittaIMPL = new CittaIMPL();
         UtenteIMPL utenteIMPL = new UtenteIMPL();
 
         ArrayList<Istruzione> istruzioni_utente_loggato = (ArrayList<Istruzione>) istruzioneIMPL.getAllInstruction(utenteInSessione.getId_user());
@@ -137,11 +138,12 @@ public class CurriculumServlet extends HttpServlet {
 
         String[] id_istruzioni = req.getParameterValues("id_istruzione");
 
+
         //TODO GESTIRE VALIDAZIONI
         if(Arrays.asList(id_istruzioni).contains(" ")){
             Istruzione nuova_istruzione = new Istruzione();
 
-            nuova_istruzione.setId_user(utenteInSessione.getId_user());
+
 
 
             String string_descrizione_parameter = "descrizione_istruzione nuova";
@@ -210,16 +212,152 @@ public class CurriculumServlet extends HttpServlet {
 
             System.out.println(nuova_istruzione);
 
-            istruzioneIMPL.save(nuova_istruzione);
+            if(nuova_istruzione.isValid()){
+                nuova_istruzione.setId_user(utenteInSessione.getId_user());
+                istruzioneIMPL.save(nuova_istruzione);
+            }else{
+                ErrorManager.setOtherMessage("Non hai modificato nulla!",req);
+            }
+
 
 
             ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
-
 
         }
 
 
         //ESPERIENZE
+        for (Esperienza esperienza : esperienze_utente_loggato){
+
+            Esperienza update_esperienza = new Esperienza();
+
+            update_esperienza.setId_esperienza(esperienza.getId_esperienza());
+            update_esperienza.setUtente(utenteInSessione);
+
+
+            String string_descrizione_parameter = "descrizione_esperienza" + " " + esperienza.getId_esperienza();
+            String string_anni_parameter = "anni_esperienza" + " " + esperienza.getId_esperienza();
+            String string_azienda_parameter = "azienda_esperienza" + " " + esperienza.getId_esperienza();
+            String string_contratto_parameter = "contratto_esperienza" + " " + esperienza.getId_esperienza();
+            String string_posizione_parameter = "posizione_esperienza" + " " + esperienza.getId_esperienza();
+            String string_settore_parameter = "settore_esperienza" + " " + esperienza.getId_esperienza();
+            String string_ral_parameter = "ral_esperienza" + " " + esperienza.getId_esperienza();
+            String string_inizio_parameter = "inizio_esperienza" + " " + esperienza.getId_esperienza();
+            String string_fine_parameter = "fine_esperienza" + " " + esperienza.getId_esperienza();
+            String string_sede_parameter = "sede_esperienza" + " " + esperienza.getId_esperienza();
+
+
+
+
+            String descrizione_esperienza = req.getParameter(string_descrizione_parameter);
+            String anni_esperienza = req.getParameter(string_anni_parameter);
+            String azienda_esperienza = req.getParameter(string_azienda_parameter);
+            String contratto_esperienza = req.getParameter(string_contratto_parameter);
+            String posizione_esperienza = req.getParameter(string_posizione_parameter);
+            String settore_esperienza = req.getParameter(string_settore_parameter);
+            String ral_esperienza = req.getParameter(string_ral_parameter);
+            String inizio_esperienza = req.getParameter(string_inizio_parameter);
+            String fine_esperienza = req.getParameter(string_fine_parameter);
+            String sede_esperienza = req.getParameter(string_sede_parameter);
+
+
+            if (!esperienza.getDescrizione_attivita().equals(descrizione_esperienza)) {
+                update_esperienza.setDescrizione_attivita(descrizione_esperienza);
+                isModified = true;
+            } else {
+                update_esperienza.setDescrizione_attivita(esperienza.getDescrizione_attivita());
+            }
+
+            if (esperienza.getAnni() != Integer.parseInt(anni_esperienza)) {
+                update_esperienza.setAnni(Integer.parseInt(anni_esperienza));
+                isModified = true;
+            } else {
+                update_esperienza.setAnni(esperienza.getAnni());
+            }
+
+            if (esperienza.getAzienda().equals(azienda_esperienza)) {
+                update_esperienza.setAzienda(azienda_esperienza);
+                isModified = true;
+            } else {
+                update_esperienza.setAzienda(esperienza.getAzienda());
+            }
+
+
+            SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+            Date data_inizio;
+            Date data_fine;
+            try {
+                data_inizio = in.parse(inizio_esperienza);
+                data_fine = in.parse(fine_esperienza);
+            } catch (ParseException e) {
+                ErrorManager.setErrorMessage("Qualcosa è andato storto",req);
+                throw new RuntimeException(e);
+            }
+
+
+            if (esperienza.getData_inizio().compareTo(data_inizio) != 0) {
+                update_esperienza.setData_inizio(new java.sql.Date(data_inizio.getTime()));
+                isModified = true;
+            } else {
+                update_esperienza.setData_inizio(esperienza.getData_inizio());
+            }
+
+            if (esperienza.getData_fine().compareTo(data_fine) != 0) {
+                update_esperienza.setData_fine(new java.sql.Date(data_fine.getTime()));
+                isModified = true;
+            } else {
+                update_esperienza.setData_fine(esperienza.getData_fine());
+            }
+
+            if(!sede_esperienza.isEmpty()) {
+
+                Integer id_citta_esperienza = Integer.valueOf(sede_esperienza.split(" ", 4)[0]);
+                Integer id_regione_esperienza = Integer.valueOf(sede_esperienza.split(" ", 4)[1]);
+                String nome_citta_esperienza = sede_esperienza.split(" ", 4)[2];
+
+
+                if (esperienza.getId_citta() == null) {
+                    update_esperienza.setId_citta(cittaIMPL.getCittaById(id_citta_esperienza));
+                    isModified = true;
+                } else {
+                    update_esperienza.setId_citta(esperienza.getId_citta());
+                }
+            }
+
+            if (!esperienza.getTipo_contratto().equals(contratto_esperienza)) {
+                update_esperienza.setTipo_contratto(contratto_esperienza);
+                isModified = true;
+            } else {
+                update_esperienza.setTipo_contratto(esperienza.getTipo_contratto());
+            }
+
+            if (!esperienza.getPosizione_lavorativa().equals(posizione_esperienza)) {
+                update_esperienza.setPosizione_lavorativa(posizione_esperienza);
+                isModified = true;
+            } else {
+                update_esperienza.setPosizione_lavorativa(esperienza.getPosizione_lavorativa());
+            }
+
+            if (!esperienza.getSettore().equals(settore_esperienza)) {
+                update_esperienza.setSettore(settore_esperienza);
+                isModified = true;
+            } else {
+                update_esperienza.setSettore(esperienza.getSettore());
+            }
+
+            if (esperienza.getRal() != Integer.parseInt(ral_esperienza)) {
+                update_esperienza.setRal(Integer.parseInt(ral_esperienza));
+                isModified = true;
+            } else {
+                update_esperienza.setRal(esperienza.getRal());
+            }
+
+            esperienzaIMPL.update(update_esperienza);
+
+        }
+
+
+        String[] id_esperienze = req.getParameterValues("id_esperienza");
 
 
 

@@ -8,10 +8,7 @@ import com.candidatoDB.pw2.interfaces.EsperienzaDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -62,23 +59,31 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 
 	@Override
 	public void update(Esperienza esperienze) {
-		String sql = "UPDATE Esperienza SET id_esperienza=?,anni=?,descrizione_attivita=?,id_user=?,azienda=?,data_inizio=?,data_fine=?,ral=?,tipo_contratto=?,settore=?,posizione_lavorativa=?, id_citta=?";
+		String sql = "UPDATE Esperienza SET anni=?,descrizione_attivita=?,id_user=?,azienda=?,data_inizio=?,data_fine=?,ral=?,tipo_contratto=?,settore=?,posizione_lavorativa=?, id_citta=? where id_esperienza=?";
 		PreparedStatement statement = null;
 
 		try {
-			statement = connection.getConnection().prepareStatement(sql, new String[] { "id" });
-			statement.setInt(1, esperienze.getId_esperienza());
-			statement.setInt(2, esperienze.getAnni());
-			statement.setString(3, esperienze.getDescrizione_attivita());
-			statement.setInt(4, esperienze.getId_esperienza());
-			statement.setString(5, esperienze.getAzienda());
-			statement.setDate(6, new java.sql.Date(esperienze.getData_inizio().getTime()));
+			statement = connection.getConnection().prepareStatement(sql);
+
+			statement.setInt(1, esperienze.getAnni());
+			statement.setString(2, esperienze.getDescrizione_attivita());
+			statement.setInt(3, esperienze.getUtente().getId_user());
+			statement.setString(4, esperienze.getAzienda());
+			statement.setDate(5, new java.sql.Date(esperienze.getData_inizio().getTime()));
 			statement.setDate(6, new java.sql.Date(esperienze.getData_fine().getTime()));
-			statement.setInt(8, esperienze.getRal());
-			statement.setString(9, esperienze.getTipo_contratto());
-			statement.setString(10, esperienze.getSettore());
-			statement.setString(11, esperienze.getPosizione_lavorativa());
-			statement.setInt(12, esperienze.getId_citta().getId_citta());
+			statement.setInt(7, esperienze.getRal());
+			statement.setString(8, esperienze.getTipo_contratto());
+			statement.setString(9, esperienze.getSettore());
+			statement.setString(10, esperienze.getPosizione_lavorativa());
+
+			if(esperienze.getId_citta()==null){
+				statement.setNull(11, Types.INTEGER);
+			}else{
+				statement.setInt(11,esperienze.getId_citta().getId_citta());
+			}
+
+			statement.setInt(12, esperienze.getId_esperienza());
+
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());

@@ -1,9 +1,6 @@
 package com.candidatoDB.pw2.interfaces.impl;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -56,7 +53,13 @@ public class IstruzioneIMPL implements IstruzioneDAO {
 		try {
 			statement = connection.getConnection().prepareStatement(sql);
 			statement.setString(1, istruzioni.getGrado());
-			statement.setInt(2, istruzioni.getId_citta());
+
+			if(istruzioni.getId_citta()==0){
+				statement.setNull(2, Types.INTEGER);
+			}else{
+				statement.setInt(2,istruzioni.getId_citta());
+			}
+
 			statement.setString(3, istruzioni.getDescrizione_istruzione());
 			statement.setDate(4, new java.sql.Date(istruzioni.getData_inizio().getTime()));
 			statement.setDate(5, new java.sql.Date(istruzioni.getData_fine().getTime()));
