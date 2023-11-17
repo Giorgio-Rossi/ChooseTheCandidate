@@ -12,12 +12,11 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 Posizione posizione = new Posizione();
 
-
 String idPosizioneParam = request.getParameter("idPosizione");
 
 if (idPosizioneParam != null) {
-    int idPosizione = Integer.parseInt(idPosizioneParam);
-    posizione = posizioneIMPL.getPosizioneById(idPosizione);
+	int idPosizione = Integer.parseInt(idPosizioneParam);
+	posizione = posizioneIMPL.getPosizioneById(idPosizione);
 
 }
 %>
@@ -44,21 +43,23 @@ if (idPosizioneParam != null) {
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/homeuser.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/modificaPosizione.css">
 
-<body style="background-color: #d4d4d4">
+<body style="background-color: #d4d4d4; ">
 
 
 
 
-	<main style="margin-top: 58px">
+	<main style="margin: 50px; padding:0;">
 
 		<div class="container mt-5">
 
 			<div class="row flex-lg-nowrap">
 				<div class="col">
 					<div class="row">
-						<div class="col mb-3">
-							<div class="card mt-4">
+						<div class="col mb-3" >
+							<div class="card mt-4" style="border:2px solid blue;">
 								<div class="card-body">
 									<%
 									if (!ErrorManager.getSUccessMessage((HttpServletRequest) request).isEmpty()) {
@@ -91,63 +92,70 @@ if (idPosizioneParam != null) {
 									;
 									%>
 
-									<div class="e-profile">
+									<div class="e-profile" >
 
 										<div class="tab-content pt-3">
-											<div class="tab-pane active">
+											<div class="tab-pane active justify-content-center"
+												>
 												<form class="form" method="post"
 													action="${pageContext.request.contextPath}/updatePosizioni"
 													enctype='multipart/form-data'>
+													<div class="column">
 													<div class="row">
-														<div class="col">
-															<div class="row">
-																<div class="col">
-																	<div class="form-group">
-																		<label>Ruolo</label> <input class="form-control"
-																			type="text" name="nome"
-																			placeholder=<%=posizione.getRuolo()%>
-																			value=<%=posizione.getRuolo()%> required>
-																	</div>
-																</div>
-																<div class="col">
-                                                                <div class="form-group">
-                                                                    <label>Stato</label>
-                                                                    <input class="form-control" type="text" name="stato" placeholder=<%=posizione.getStato()%> value=<%=posizione.getStato()%> required>
-                                                                </div>
-                                                            </div>
-                                                           <div class="col">
-                                                                <div class="form-group">
-                                                                    <label>Citta</label>
-                                                                    <input class="form-control" type="text" name="citta" placeholder=<%=posizione.getCitta().getNome()%> value=<%=posizione.getCitta().getNome()%> required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div class="form-group">
-                                                                    <label>Descrizione</label>
-                                                                    <input class="form-control" type="text" name="desc" placeholder=<%=posizione.getDescrizione()%> value=<%=posizione.getDescrizione()%> required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div class="form-group">
-                                                                    <label>Numero ammissioni</label>
-                                                                    <input class="form-control" type="text" name="ammissioni" placeholder=<%=posizione.getN_ammissioni()%> value=<%=posizione.getN_ammissioni()%> required>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div class="form-group">
-                                                                    <label>Data inserimento</label>
-                                                                    <input class="form-control" type="date" name="data" placeholder=<%=posizione.getData_inserimento()%> value=<%=posizione.getData_inserimento()%> required>
-                                                                </div>
-                                                            </div>
-
-															</div>
-
+														<div class="form-group">
+															<label>Ruolo</label> <input class="form-control"
+																type="text" name="nome"
+																placeholder=<%=posizione.getRuolo()%>
+																value=<%=posizione.getRuolo()%> required>
 														</div>
 													</div>
 													<div class="row">
-														<div class="col d-flex justify-content-end">
-															<button class="btn btn-primary" type="submit">Salva</button>
+														<div class="form-group">
+															<label>Stato</label> <input class="form-control"
+																type="text" name="stato"
+																placeholder=<%=posizione.getStato()%>
+																value=<%=posizione.getStato()%> required>
 														</div>
+													</div>
+													<div class="row">
+														<div class="form-group">
+															<label>Citta</label> <input class="form-control"
+																type="text" name="citta"
+																placeholder=<%=posizione.getCitta().getNome()%>
+																value=<%=posizione.getCitta().getNome()%> required>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group">
+															<label>Descrizione</label> <input class="form-control"
+																type="text" name="desc"
+																placeholder=<%=posizione.getDescrizione()%>
+																value=<%=posizione.getDescrizione()%> required>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group">
+															<label>Numero ammissioni</label> <input
+																class="form-control" type="text" name="ammissioni"
+																placeholder=<%=posizione.getN_ammissioni()%>
+																value=<%=posizione.getN_ammissioni()%> required>
+														</div>
+													</div>
+													<div class="row">
+														<div class="form-group">
+															<label>Data inserimento</label> <input
+																class="form-control" type="date" name="data"
+																placeholder=<%=posizione.getData_inserimento()%>
+																value=<%=posizione.getData_inserimento()%> required>
+														</div>
+													</div>
+
+
+													<div class="row">
+														<div class="col d-flex justify-content-center">
+															<button class="btn btn-primary" type="submit" >Salva</button>
+														</div>
+													</div>
 													</div>
 												</form>
 											</div>

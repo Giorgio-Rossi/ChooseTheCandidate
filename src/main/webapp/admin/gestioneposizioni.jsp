@@ -104,7 +104,7 @@
         </form>
     </nav>
 
-    <main style="margin-top: 150px">
+    <main style="margin-top: 200px;display:flex; flex-direction:column;align-items:center">
         <div class="container">
 
             <%
@@ -149,7 +149,10 @@
             %>
 
         </div>
-        <a href="<%=request.getContextPath()%>/admin/aggiungiPosizione.jsp" class="btn btn-success">Aggiungi</a>
+        <div style="display:flex;margin-bottom:1%;" >
+       	 	<a href="<%=request.getContextPath()%>/admin/aggiungiPosizione.jsp" class=" btn btn-success" style="width:170px!important" >Aggiungi</a>
+        </div>
     </main>
+    
 </body>
 </html>
