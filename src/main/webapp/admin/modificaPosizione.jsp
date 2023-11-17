@@ -19,6 +19,18 @@ if (idPosizioneParam != null) {
 	posizione = posizioneIMPL.getPosizioneById(idPosizione);
 
 }
+
+ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
+
+ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
+
+QuizIMPL quizImpl = new QuizIMPL();
+ArrayList<Quiz> quiz = quizImpl.getAllQuiz();
+
+ArrayList<String> ruoli = posizioneIMPL.getAllRuoli();
+
+CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
+ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAllCategoriePosizioni();
 %>
 
 <html>
@@ -43,23 +55,23 @@ if (idPosizioneParam != null) {
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/homeuser.css">
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/modificaPosizione.css">
 
-<body style="background-color: #d4d4d4; ">
+<body style="background-color: #d4d4d4;">
 
 
 
 
-	<main style="margin: 50px; padding:0;">
+	<main style="margin: 50px; padding: 0;">
 
 		<div class="container mt-5">
 
 			<div class="row flex-lg-nowrap">
 				<div class="col">
 					<div class="row">
-						<div class="col mb-3" >
-							<div class="card mt-4" style="border:2px solid blue;">
+						<div class="col mb-3">
+							<div class="card mt-4" style="border: 2px solid blue;">
 								<div class="card-body">
 									<%
 									if (!ErrorManager.getSUccessMessage((HttpServletRequest) request).isEmpty()) {
@@ -92,70 +104,143 @@ if (idPosizioneParam != null) {
 									;
 									%>
 
-									<div class="e-profile" >
+									<div class="e-profile">
 
 										<div class="tab-content pt-3">
-											<div class="tab-pane active justify-content-center"
-												>
+											<div class="tab-pane active justify-content-center">
 												<form class="form" method="post"
 													action="${pageContext.request.contextPath}/updatePosizioni"
 													enctype='multipart/form-data'>
 													<div class="column">
-													<div class="row">
-														<div class="form-group">
-															<label>Ruolo</label> <input class="form-control"
-																type="text" name="nome"
-																placeholder=<%=posizione.getRuolo()%>
-																value=<%=posizione.getRuolo()%> required>
+														<div class="row">
+															<div class="form-group">
+																<label>Categoria</label> <select class="form-select" name="categoria" aria-label="Default select example">
+																	<option disabled selected><%=posizione.getCategoria().getNome_categoria()%></option>
+
+																	<%
+																	for (CategoriaPosizione cat : categorie_posizioni) {
+																	%>
+																	<option value="<%=cat.getId_categoria()%>"><%=cat.getNome_categoria()%></option>
+																	<%
+																	}
+																	;
+																	%>
+																</select>
+															</div>
 														</div>
-													</div>
-													<div class="row">
-														<div class="form-group">
-															<label>Stato</label> <input class="form-control"
-																type="text" name="stato"
-																placeholder=<%=posizione.getStato()%>
-																value=<%=posizione.getStato()%> required>
+
+														<div class="row">
+															<div class="form-group">
+																<label>Ruolo</label> <select class="form-select"
+																	name="ruolo" aria-label="Default select example">
+																	<option disabled selected><%=posizione.getRuolo()%></option>
+
+																	<%
+																	for (String r : ruoli) {
+																	%>
+																	<option value="<%=r%>"><%=r%></option>
+																	<%
+																	}
+																	%>
+																</select>
+															</div>
 														</div>
-													</div>
-													<div class="row">
-														<div class="form-group">
-															<label>Citta</label> <input class="form-control"
-																type="text" name="citta"
-																placeholder=<%=posizione.getCitta().getNome()%>
-																value=<%=posizione.getCitta().getNome()%> required>
+														<div class="row">
+															<div class="form-group">
+																<label>Stato</label> <input class="form-control"
+																	type="text" name="stato"
+																	placeholder=<%=posizione.getStato()%>
+																	value=<%=posizione.getStato()%> required>
+															</div>
 														</div>
-													</div>
-													<div class="row">
-														<div class="form-group">
-															<label>Descrizione</label> <input class="form-control"
-																type="text" name="desc"
-																placeholder=<%=posizione.getDescrizione()%>
-																value=<%=posizione.getDescrizione()%> required>
+														<div class="row">
+															<div class="form-group">
+																<%
+																Citta citta = (posizione.getCitta() != null) ? posizione.getCitta() : null;
+																%>
+																<label>Città</label> <select class="form-select"
+																	aria-label="Default select example" name="citta">
+
+																	<%
+																	if (citta != null) {
+																	%>
+																	<option
+																		value="<%=citta.getId_citta() + " " + citta.getRegione().getId_regione() + " " + citta.getNome()%>"
+																		selected><%=posizione.getCitta().getNome()%></option>
+																	<%
+																	} else {
+																	%>
+																	<option selected style="display: none" value="">Seleziona
+																		una città</option>
+																	<%
+																	}
+																	;
+																	%>
+																	<%
+																	for (Regione r : regioni) {
+																	%>
+																	<optgroup label="<%=r.getNome()%>">
+																		<%
+																		for (Citta c : cities) {
+																			if (c.getRegione().getNome().equals(r.getNome())) {
+																		%>
+																		<option
+																			value="<%=c.getId_citta() + " " + r.getId_regione() + " " + c.getNome()%>"><%=c.getNome()%></option>
+																		<%
+																		}
+																		}
+																		}
+																		%>
+																	
+																</select>
+															</div>
 														</div>
-													</div>
-													<div class="row">
-														<div class="form-group">
-															<label>Numero ammissioni</label> <input
-																class="form-control" type="text" name="ammissioni"
-																placeholder=<%=posizione.getN_ammissioni()%>
-																value=<%=posizione.getN_ammissioni()%> required>
+														<div class="row">
+															<div class="form-group">
+																<label>Descrizione</label>
+																<textarea class="form-control" type="text" name="desc"
+																	placeholder=<%=posizione.getDescrizione()%> required
+																	style="height: 120px; max-height: 300px;"></textarea>
+															</div>
 														</div>
-													</div>
-													<div class="row">
-														<div class="form-group">
-															<label>Data inserimento</label> <input
-																class="form-control" type="date" name="data"
-																placeholder=<%=posizione.getData_inserimento()%>
-																value=<%=posizione.getData_inserimento()%> required>
+														<div class="row">
+															<div class="form-group">
+																<label>Numero ammissioni</label> <input
+																	class="form-control" type="text" name="ammissioni"
+																	placeholder=<%=posizione.getN_ammissioni()%>
+																	value=<%=posizione.getN_ammissioni()%> required>
+															</div>
 														</div>
-													</div>
+														<div class="row">
+															<div class="form-group">
+																<label>Quiz </label> <select class="form-select"
+																	name="categoria" aria-label="Default select example">
+																	<option disabled selected>Quiz</option>
+																	<%
+																	for (Quiz q : quiz) {
+																	%>
+																	<option value="<%=q.getId_quiz()%>"><%=q.getDescrizione()%></option>
+																	<%
+																	}
+																	%>
+																</select>
+															</div>
+														</div>
+														<div class="row">
+															<div class="form-group">
+																<label>Aggiorna data</label> <input class="form-control"
+																	type="date" name="data"
+																	placeholder=<%=posizione.getData_inserimento()%>
+																	value=<%=posizione.getData_inserimento()%> required>
+															</div>
+														</div>
 
 
-													<div class="row">
-														<div class="col d-flex justify-content-center">
-															<button class="btn btn-primary" type="submit" >Salva</button>
+														<div class="row">
+															<div class="col d-flex justify-content-center">
+																<button class="btn btn-primary" type="submit">Salva</button>
+															</div>
 														</div>
-													</div>
 													</div>
 												</form>
 											</div>
