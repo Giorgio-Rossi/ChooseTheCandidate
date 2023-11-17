@@ -683,7 +683,7 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 	@Override
 	public void updatePosizione(Posizione posizione) {
-		String sql = "UPDATE Posizione SET id_posizione=?,n_ammissioni=?,descrizione=?,citta=?,categoria=?,quiz=?,stato=?,data_inserimento=?,ruolo=? WHERE id_user=?";
+		String sql = "UPDATE Posizione SET id_posizione=?,n_ammissioni=?,descrizione=?,citta=?,categoria=?,quiz=?,stato=?,ruolo=? WHERE id_posizione = ?";
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 
@@ -703,7 +703,6 @@ public class PosizioneIMPL implements PosizioneDAO {
 			posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt(6)));
 
 			statement.setString(7, posizione.getStato());
-			statement.setDate(8, new java.sql.Date(posizione.getData_inserimento().getTime()));
 			statement.setString(9, posizione.getRuolo());
 			
 			statement.executeUpdate();
