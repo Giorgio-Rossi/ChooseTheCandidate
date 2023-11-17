@@ -125,25 +125,23 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 									<div class="e-profile">
 										<div class="row justify-content-center">
 											<div class="col-12 col-sm-auto mb-3">
-												<%
-													if (utente.getCV() != null) {
-												%>
-												<img
-														src=<%=request.getContextPath() + "/img/cv" + utente.getCV()%>
-																alt="" height="150" class="rounded-3">
-												<%
-												} else {
-												%>
+
 												<i class="bi bi-file-earmark-person-fill"
 												   style="margin-right: 5px; font-size: 150px"></i>
-												<%
-													}
-												%>
+
 											</div>
 											<div class="d-flex justify-content-center">
 												<label for="fileUpload" class="file-upload btn btn-primary  rounded-pill shadow"><i class="bi bi-upload"></i> Aggiorna il tuo CV
-													<input id="fileUpload" type="file" accept="image/*" name="foto_profilo" form="modifica_istruzione" style="display: none">
+													<input id="fileUpload" type="file" accept="image/*,application/pdf" name="cv" form="modifica_istruzione" style="display: none">
+													<%
+														if(utente.getCV() != null){
+													%>
+													<%=utente.getCV()%>
+													<%
+														}
+													%>
 												</label>
+
 											</div>
 
 													<div class="col d-flex justify-content-end">
@@ -268,30 +266,31 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 												<div class="row">
 													<div class="col">
 														<div class="row">
+															<input type="hidden" id="custId2" name="id_esperienza" value="<%=esperienza.getId_esperienza()%>">
 
 															<div class="col">
 																<div class="form-group">
 																	<label for="descrizione_istruzione" class="form-label">Descrizione Esperienza</label>
-																	<textarea class="form-control" id="descrizione_esperienza" rows="3" name="descrizione_esperienza"><%=esperienza.getDescrizione_attivita()%></textarea>
+																	<textarea class="form-control" id="descrizione_esperienza" rows="3" name="descrizione_esperienza <%=esperienza.getId_esperienza()%>"><%=esperienza.getDescrizione_attivita()%></textarea>
 																</div>
 															</div>
 															<div class="col">
 																<div class="form-group">
 																	<label>Anni</label>
-																	<input class="form-control" type="text" name="anni_esperienza"  value=<%=esperienza.getAnni()%> >
+																	<input class="form-control" id="anni_esperienza" type="text" name="anni_esperienza <%=esperienza.getId_esperienza()%>"  value=<%=esperienza.getAnni()%> >
 																</div>
 															</div>
 															<div class="row">
 																<div class="col">
 																	<div class="form-group">
 																		<label>Azienda</label>
-																		<input class="form-control" type="text" name="azienda"  value=<%=esperienza.getAzienda()%> >
+																		<input class="form-control" id="azienda_esperienza" type="text" name="azienda_esperienza <%=esperienza.getId_esperienza()%>"  value=<%=esperienza.getAzienda()%> >
 																	</div>
 																</div>
 																<div class="col">
 																	<div class="form-group">
 																		<label>Tipo Contratto</label>
-																		<input class="form-control" type="text" name="tipo_contratto"  value=<%=esperienza.getTipo_contratto()%> >
+																		<input class="form-control" type="text" id="contratto_esperienza" name="contratto_esperienza <%=esperienza.getId_esperienza()%>"  value=<%=esperienza.getTipo_contratto()%> >
 																	</div>
 																</div>
 															</div>
@@ -299,19 +298,19 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																<div class="col">
 																	<div class="form-group">
 																		<label>Posizione Lavorativa</label>
-																		<input class="form-control" type="text" name="posizione_lavorativa"  value=<%=esperienza.getPosizione_lavorativa()%> >
+																		<input class="form-control" type="text" id="posizione_esperienza" name="posizione_esperienza <%=esperienza.getId_esperienza()%>"  value=<%=esperienza.getPosizione_lavorativa()%> >
 																	</div>
 																</div>
 																<div class="col">
 																	<div class="form-group">
 																		<label>Settore</label>
-																		<input class="form-control" type="text" name="settore"  value=<%=esperienza.getSettore()%> >
+																		<input class="form-control" type="text" id="settore_esperienza" name="settore_esperienza <%=esperienza.getId_esperienza()%>"  value=<%=esperienza.getSettore()%> >
 																	</div>
 																</div>
 																<div class="col">
 																	<div class="form-group">
 																		<label>RAL</label>
-																		<input class="form-control" type="text" name="ral"  value=<%=esperienza.getRal()%> >
+																		<input class="form-control" type="text" id="ral_esperienza" name="ral_esperienza <%=esperienza.getId_esperienza()%>"  value=<%=esperienza.getRal()%> >
 																	</div>
 																</div>
 
@@ -323,14 +322,14 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																<div class="form-group">
 																	<label>Data inizio</label>
 																	<%java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"); %>
-																	<input class="form-control" type="date" name="inizio_istruzione"  value=<%=esperienza.getData_inizio()%>>
+																	<input class="form-control" type="date" id="inizio_esperienza" name="inizio_esperienza <%=esperienza.getId_esperienza()%>"  value=<%=esperienza.getData_inizio()%>>
 																</div>
 															</div>
 															<div class="col">
 																<div class="form-group">
 																	<label>Data fine (se prevista)</label>
 																	<%java.text.DateFormat df2 = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ"); %>
-																	<input class="form-control" type="date" name="fine_istruzione"  value=<%=esperienza.getData_fine()%>>
+																	<input class="form-control" type="date" id="fine_esperienza" name="fine_esperienza <%=esperienza.getId_esperienza()%>"  value=<%=esperienza.getData_fine()%>>
 																</div>
 															</div>
 														</div>
@@ -341,7 +340,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																		System.out.println(citta);
 																	%>
 																	<label>Sede</label>
-																	<select class="form-select" aria-label="Default select example" name="citta">
+																	<select class="form-select" id="sede_esperienza" aria-label="Default select example" name="sede_esperienza <%=esperienza.getId_esperienza()%>">
 
 																		<%
 																			if(citta!=null){
@@ -363,7 +362,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
                                                                                     for(Citta c : cities){
                                                                                      if(c.getRegione().getNome().equals(r.getNome())){
                                                                                          %>
-																			<option value="<%=c.getId_citta()+" "+r.getId_regione()+" "+c.getNome()%>"><%=c.getNome()%></option>
+																			<option name="sede_esperienza <%=esperienza.getId_esperienza()%>" value="<%=c.getId_citta()+" "+r.getId_regione()+" "+c.getNome()%>"><%=c.getNome()%></option>
 																				<%
                                                                                      }
                                                                                     }
@@ -443,11 +442,23 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 			var $clone = $('#appendi_esperienza').clone();
 			$clone.find('input, textarea, select').val('');
+
+			$clone.find('#descrizione_esperienza').attr('name','descrizione_esperienza nuova')
+			$clone.find('#anni_esperienza').attr('name','anni_esperienza nuova')
+			$clone.find('#azienda_esperienza').attr('name','azienda_esperienza nuova')
+			$clone.find('#contratto_esperienza').attr('name','contratto_esperienza nuova')
+			$clone.find('#posizione_esperienza').attr('name','posizione_esperienza nuova')
+			$clone.find('#settore_esperienza').attr('name','settore_esperienza nuova')
+			$clone.find('#ral_esperienza').attr('name','ral_esperienza nuova')
+			$clone.find('#inizio_esperienza').attr('name','inizio_esperienza nuova')
+			$clone.find('#fine_esperienza').attr('name','fine_esperienza nuova')
+			$clone.find('#sede_esperienza').attr('name','sede_esperienza nuova')
+
+
+
+			$clone.find('input, textarea, select').attr('value', ' ');
 			$clone.appendTo('#appendi_esperienza');
-
-
 			document.getElementById('duplica_esperienza').style.visibility='hidden';
-
 		}
 
 

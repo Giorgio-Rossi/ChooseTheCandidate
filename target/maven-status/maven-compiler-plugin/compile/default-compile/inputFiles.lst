@@ -17,7 +17,9 @@ C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\servlets\pw2\controller\Candi
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\entity\CandidaturaUser.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\impl\CandidaturaIMPL.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\PosizioneDAO.java
+C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\servlets\pw2\controller\RicercaCandidatureServlet.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\entity\QuizDomande.java
+C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\impl\CandidaturaUserIMPL.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\servlets\pw2\controller\PosizioniPiuRecenti.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\UtenteDAO.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\entity\Regione.java
@@ -29,10 +31,14 @@ C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\Ca
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\RegioneDAO.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\Filter\UserCheckFilter.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\UtenteQuizDAO.java
+C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\Filter\AdminCheckFilter.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\logout\Logout.java
+C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\servlets\pw2\controller\VisualizzazionePosizioniAdmin.java
+C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\impl\UtenteSkillsIMPL.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\CittaDAO.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\servlets\pw2\controller\CandidatureEffettuateServlet.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\entity\RisposteDomande.java
+C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\servlets\pw2\controller\ExceptionHandler.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\entity\Utente.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\QuizDomandaDAO.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\entity\Domanda.java
@@ -41,6 +47,7 @@ C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\entity\Utente
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\servlets\pw2\controller\EffettuaCandidatura.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\QuizDAO.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\servlets\pw2\controller\CurriculumServlet.java
+C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\CandidaturaUserDAO.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\entity\Skill.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\servlets\pw2\controller\ProfiloServlet.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\servlets\pw2\controller\RicercaPosizioniServlet.java
@@ -56,4 +63,6 @@ C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\im
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\impl\PosizioneIMPL.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\RisposteDomandaDAO.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\autenticazione\Registrazione.java
+C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\servlets\pw2\controller\GestionePosizioni.java
+C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\UtenteSkillsDAO.java
 C:\Users\FRALON\IdeaProjects\PW2\src\main\java\com\candidatoDB\pw2\interfaces\CandidaturaDAO.java
