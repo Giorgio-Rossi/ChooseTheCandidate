@@ -13,7 +13,7 @@ ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
 
 ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
 
-
+%>
 
 <html>
 <head>
