@@ -201,7 +201,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 															<div class="row row-cols-3">
 																<div class="col">
 																	<div class="form-group">
-																		<%Citta citta = (new CittaIMPL().getCittaById(istruzione.getId_citta()) !=null)? new CittaIMPL().getCittaById(istruzione.getId_citta()) : null;
+																		<%Citta citta = (istruzione.getId_citta() != 0)? new CittaIMPL().getCittaById(istruzione.getId_citta()) : null;
 
 																		%>
 																		<label>Sede</label>
@@ -362,7 +362,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
                                                                                     for(Citta c : cities){
                                                                                      if(c.getRegione().getNome().equals(r.getNome())){
                                                                                          %>
-																			<option name="sede_esperienza <%=esperienza.getId_esperienza()%>" value="<%=c.getId_citta()+" "+r.getId_regione()+" "+c.getNome()%>"><%=c.getNome()%></option>
+																			<option name="sede_esperienza <%=esperienza.getId_esperienza()%>" value="<%=c.getId_citta()+" "+r.getId_regione()+" "+c.getNome()+" "+esperienza.getId_esperienza()%>"><%=c.getNome()%></option>
 																				<%
                                                                                      }
                                                                                     }

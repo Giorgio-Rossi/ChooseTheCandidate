@@ -71,64 +71,81 @@ public class CurriculumServlet extends HttpServlet {
             String sede_istruzione = req.getParameter(string_sede_parameter);
 
 
-            if (!istruzione.getDescrizione_istruzione().equals(descrizione_istruzione)) {
-                update_istruzione.setDescrizione_istruzione(descrizione_istruzione);
-                isModified = true;
-            } else {
-                update_istruzione.setDescrizione_istruzione(istruzione.getDescrizione_istruzione());
+            if(!descrizione_istruzione.isEmpty() && !descrizione_istruzione.equals("null")) {
+                if (!istruzione.getDescrizione_istruzione().equals(descrizione_istruzione)) {
+                    update_istruzione.setDescrizione_istruzione(descrizione_istruzione);
+                    isModified = true;
+                } else {
+                    update_istruzione.setDescrizione_istruzione(istruzione.getDescrizione_istruzione());
+                }
             }
 
-            if (!istruzione.getGrado().equals(grado_istruzione)) {
-                update_istruzione.setGrado(grado_istruzione);
-                isModified = true;
-            } else {
+            if(!grado_istruzione.isEmpty() && !grado_istruzione.equals("null")) {
+                if (istruzione.getGrado()!=null) {
+                    if( !istruzione.getGrado().equals(grado_istruzione)) {
+                        update_istruzione.setGrado(grado_istruzione);
+                        isModified = true;
+                    }else {
+                        update_istruzione.setGrado(istruzione.getGrado());
+                    }
+                } else {
+                    update_istruzione.setGrado(grado_istruzione);
+                    isModified = true;
+                }
+            }else {
                 update_istruzione.setGrado(istruzione.getGrado());
             }
 
-            if (istruzione.getValutazione() != Integer.parseInt(valutazione_istruzione)) {
-                update_istruzione.setValutazione(Integer.parseInt(valutazione_istruzione));
-                isModified = true;
-            } else {
-                update_istruzione.setValutazione(istruzione.getValutazione());
+            if(!valutazione_istruzione.isEmpty()) {
+                if (istruzione.getValutazione() != Integer.parseInt(valutazione_istruzione)) {
+                    update_istruzione.setValutazione(Integer.parseInt(valutazione_istruzione));
+                    isModified = true;
+                } else {
+                    update_istruzione.setValutazione(istruzione.getValutazione());
+                }
             }
 
 
-            SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
-            Date data_inizio;
-            Date data_fine;
-            try {
-                data_inizio = in.parse(inizo_istruzione);
-                data_fine = in.parse(fine_istruzione);
-            } catch (ParseException e) {
-                ErrorManager.setErrorMessage("Qualcosa è andato storto",req);
-                throw new RuntimeException(e);
-            }
+            if(!inizo_istruzione.isEmpty()) {
 
-
-            if (istruzione.getData_inizio().compareTo(data_inizio) != 0) {
+                SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+                Date data_inizio;
+                try {
+                    data_inizio = in.parse(inizo_istruzione);
+                } catch (ParseException e) {
+                    ErrorManager.setErrorMessage("Qualcosa è andato storto", req);
+                    throw new RuntimeException(e);
+                }
                 update_istruzione.setData_inizio(new java.sql.Date(data_inizio.getTime()));
-                isModified = true;
-            } else {
-                update_istruzione.setData_inizio(istruzione.getData_inizio());
             }
 
-            if (istruzione.getData_fine().compareTo(data_fine) != 0) {
-                update_istruzione.setData_fine(new java.sql.Date(data_fine.getTime()));
-                isModified = true;
-            } else {
-                update_istruzione.setData_fine(istruzione.getData_fine());
+            if(!fine_istruzione.isEmpty()) {
+
+                SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+                Date data_fine_nuova;
+                try {
+                    data_fine_nuova = in.parse(fine_istruzione);
+                } catch (ParseException e) {
+                    ErrorManager.setErrorMessage("Qualcosa è andato storto", req);
+                    throw new RuntimeException(e);
+                }
+                update_istruzione.setData_fine(new java.sql.Date(data_fine_nuova.getTime()));
             }
 
-            Integer id_citta_istruzione = Integer.valueOf(sede_istruzione.split(" ", 4)[0]);
-            Integer id_regione_istruzione = Integer.valueOf(sede_istruzione.split(" ", 4)[1]);
-            String nome_citta_istruzione = sede_istruzione.split(" ", 4)[2];
+
+            if(!sede_istruzione.isEmpty()) {
+
+                Integer id_citta_istruzione = Integer.valueOf(sede_istruzione.split(" ", 4)[0]);
+                Integer id_regione_istruzione = Integer.valueOf(sede_istruzione.split(" ", 4)[1]);
+                String nome_citta_istruzione = sede_istruzione.split(" ", 4)[2];
 
 
-            if (istruzione.getId_citta() != id_citta_istruzione) {
-                update_istruzione.setId_citta(id_citta_istruzione);
-                isModified = true;
-            } else {
-                update_istruzione.setId_citta(istruzione.getId_citta());
+                if (istruzione.getId_citta() != id_citta_istruzione) {
+                    update_istruzione.setId_citta(id_citta_istruzione);
+                    isModified = true;
+                } else {
+                    update_istruzione.setId_citta(istruzione.getId_citta());
+                }
             }
 
             istruzioneIMPL.update(update_istruzione);
@@ -201,7 +218,7 @@ public class CurriculumServlet extends HttpServlet {
                 nuova_istruzione.setData_fine(new java.sql.Date(data_fine_nuova.getTime()));
             }
 
-            if(sede_istruzione_nuova != null) {
+            if(!sede_istruzione_nuova.isEmpty()) {
 
                 Integer id_citta_istruzione = Integer.valueOf(sede_istruzione_nuova.split(" ", 4)[0]);
                 Integer id_regione_istruzione = Integer.valueOf(sede_istruzione_nuova.split(" ", 4)[1]);
@@ -210,7 +227,6 @@ public class CurriculumServlet extends HttpServlet {
                 nuova_istruzione.setId_citta(id_citta_istruzione);
             }
 
-            System.out.println(nuova_istruzione);
 
             if(nuova_istruzione.isValid()){
                 nuova_istruzione.setId_user(utenteInSessione.getId_user());
@@ -261,53 +277,73 @@ public class CurriculumServlet extends HttpServlet {
             String sede_esperienza = req.getParameter(string_sede_parameter);
 
 
-            if (!esperienza.getDescrizione_attivita().equals(descrizione_esperienza)) {
-                update_esperienza.setDescrizione_attivita(descrizione_esperienza);
-                isModified = true;
-            } else {
+            if(!descrizione_esperienza.isEmpty() && !descrizione_esperienza.equals("null")) {
+                if(esperienza.getDescrizione_attivita() != null){
+                    if (!esperienza.getDescrizione_attivita().equals(descrizione_esperienza)) {
+                        update_esperienza.setDescrizione_attivita(descrizione_esperienza);
+                        isModified = true;
+                    }else {
+                        update_esperienza.setDescrizione_attivita(esperienza.getDescrizione_attivita());
+                    }
+                } else {
+                    update_esperienza.setDescrizione_attivita(descrizione_esperienza);
+                    isModified = true;
+                }
+            }else {
                 update_esperienza.setDescrizione_attivita(esperienza.getDescrizione_attivita());
             }
 
-            if (esperienza.getAnni() != Integer.parseInt(anni_esperienza)) {
-                update_esperienza.setAnni(Integer.parseInt(anni_esperienza));
-                isModified = true;
-            } else {
-                update_esperienza.setAnni(esperienza.getAnni());
+            if(!anni_esperienza.isEmpty() && !anni_esperienza.equals("null")) {
+                if (esperienza.getAnni() != Integer.parseInt(anni_esperienza)) {
+                    update_esperienza.setAnni(Integer.parseInt(anni_esperienza));
+                    isModified = true;
+                } else {
+                    update_esperienza.setAnni(esperienza.getAnni());
+                }
             }
 
-            if (esperienza.getAzienda().equals(azienda_esperienza)) {
-                update_esperienza.setAzienda(azienda_esperienza);
-                isModified = true;
-            } else {
+            if(!azienda_esperienza.isEmpty() && !azienda_esperienza.equals("null")) {
+                if (esperienza.getAzienda()!=null) {
+                    if(esperienza.getAzienda().equals(azienda_esperienza)) {
+                        update_esperienza.setAzienda(azienda_esperienza);
+                        isModified = true;
+                    }else{
+                        update_esperienza.setAzienda(esperienza.getAzienda());
+                    }
+                } else {
+                    update_esperienza.setAzienda(azienda_esperienza);
+                    isModified = true;
+                }
+            }else {
                 update_esperienza.setAzienda(esperienza.getAzienda());
             }
 
 
-            SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
-            Date data_inizio;
-            Date data_fine;
-            try {
-                data_inizio = in.parse(inizio_esperienza);
-                data_fine = in.parse(fine_esperienza);
-            } catch (ParseException e) {
-                ErrorManager.setErrorMessage("Qualcosa è andato storto",req);
-                throw new RuntimeException(e);
-            }
-
-
-            if (esperienza.getData_inizio().compareTo(data_inizio) != 0) {
+            if(!inizio_esperienza.isEmpty()) {
+                SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+                Date data_inizio;
+                try {
+                    data_inizio = in.parse(inizio_esperienza);
+                } catch (ParseException e) {
+                    ErrorManager.setErrorMessage("Qualcosa è andato storto", req);
+                    throw new RuntimeException(e);
+                }
                 update_esperienza.setData_inizio(new java.sql.Date(data_inizio.getTime()));
-                isModified = true;
-            } else {
-                update_esperienza.setData_inizio(esperienza.getData_inizio());
             }
 
-            if (esperienza.getData_fine().compareTo(data_fine) != 0) {
-                update_esperienza.setData_fine(new java.sql.Date(data_fine.getTime()));
-                isModified = true;
-            } else {
-                update_esperienza.setData_fine(esperienza.getData_fine());
+            if(!fine_esperienza.isEmpty()) {
+
+                SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+                Date data_fine_nuova;
+                try {
+                    data_fine_nuova = in.parse(fine_esperienza);
+                } catch (ParseException e) {
+                    ErrorManager.setErrorMessage("Qualcosa è andato storto", req);
+                    throw new RuntimeException(e);
+                }
+                update_esperienza.setData_fine(new java.sql.Date(data_fine_nuova.getTime()));
             }
+
 
             if(!sede_esperienza.isEmpty()) {
 
@@ -324,32 +360,62 @@ public class CurriculumServlet extends HttpServlet {
                 }
             }
 
-            if (!esperienza.getTipo_contratto().equals(contratto_esperienza)) {
-                update_esperienza.setTipo_contratto(contratto_esperienza);
-                isModified = true;
+
+            if(!contratto_esperienza.isEmpty() && !contratto_esperienza.equals("null")) {
+                if (esperienza.getTipo_contratto()!=null) {
+                    if(!esperienza.getTipo_contratto().equals(contratto_esperienza)) {
+                        update_esperienza.setTipo_contratto(contratto_esperienza);
+                        isModified = true;
+                    }else {
+                        update_esperienza.setTipo_contratto(esperienza.getTipo_contratto());
+                    }
+                }else {
+                    update_esperienza.setTipo_contratto(contratto_esperienza);
+                    isModified = true;
+                }
             } else {
                 update_esperienza.setTipo_contratto(esperienza.getTipo_contratto());
             }
 
-            if (!esperienza.getPosizione_lavorativa().equals(posizione_esperienza)) {
-                update_esperienza.setPosizione_lavorativa(posizione_esperienza);
-                isModified = true;
-            } else {
+            if(!posizione_esperienza.isEmpty() && !posizione_esperienza.equals("null")) {
+                if (esperienza.getPosizione_lavorativa()!=null){
+                    if(!esperienza.getPosizione_lavorativa().equals(posizione_esperienza)) {
+                        update_esperienza.setPosizione_lavorativa(posizione_esperienza);
+                        isModified = true;
+                    }else {
+                        update_esperienza.setPosizione_lavorativa(esperienza.getPosizione_lavorativa());
+                    }
+                } else {
+                    update_esperienza.setPosizione_lavorativa(posizione_esperienza);
+                    isModified = true;
+                }
+            }else {
                 update_esperienza.setPosizione_lavorativa(esperienza.getPosizione_lavorativa());
             }
 
-            if (!esperienza.getSettore().equals(settore_esperienza)) {
-                update_esperienza.setSettore(settore_esperienza);
-                isModified = true;
-            } else {
+            if(!settore_esperienza.isEmpty() && !settore_esperienza.equals("null")) {
+                if (esperienza.getSettore()!=null) {
+                    if( !esperienza.getSettore().equals(settore_esperienza)) {
+                        update_esperienza.setSettore(settore_esperienza);
+                        isModified = true;
+                    } else {
+                        update_esperienza.setSettore(esperienza.getSettore());
+                    }
+                } else {
+                    update_esperienza.setSettore(settore_esperienza);
+                    isModified = true;
+                }
+            }else {
                 update_esperienza.setSettore(esperienza.getSettore());
             }
 
-            if (esperienza.getRal() != Integer.parseInt(ral_esperienza)) {
-                update_esperienza.setRal(Integer.parseInt(ral_esperienza));
-                isModified = true;
-            } else {
-                update_esperienza.setRal(esperienza.getRal());
+            if(!ral_esperienza.isEmpty() && !ral_esperienza.equals("null")) {
+                if (esperienza.getRal() != Integer.parseInt(ral_esperienza)) {
+                    update_esperienza.setRal(Integer.parseInt(ral_esperienza));
+                    isModified = true;
+                } else {
+                    update_esperienza.setRal(esperienza.getRal());
+                }
             }
 
             esperienzaIMPL.update(update_esperienza);
@@ -359,6 +425,95 @@ public class CurriculumServlet extends HttpServlet {
 
         String[] id_esperienze = req.getParameterValues("id_esperienza");
 
+        if(Arrays.asList(id_esperienze).contains(" ")){
+            Esperienza nuova_esperienza = new Esperienza();
+
+
+            String string_descrizione_parameter = "descrizione_esperienza nuova";
+            String string_anni_parameter = "anni_esperienza nuova";
+            String string_azienda_parameter = "azienda_esperienza nuova";
+            String string_contratto_parameter = "contratto_esperienza nuova";
+            String string_posizione_parameter = "posizione_esperienza nuova";
+            String string_settore_parameter = "settore_esperienza nuova";
+            String string_ral_parameter = "ral_esperienza nuova";
+            String string_inizio_parameter = "inizio_esperienza nuova";
+            String string_fine_parameter = "fine_esperienza nuova";
+            String string_sede_parameter = "sede_esperienza nuova";
+
+
+            String descrizione_esperienza_nuova = req.getParameter(string_descrizione_parameter);
+            String anni_esperienza_nuova = req.getParameter(string_anni_parameter);
+            String azienda_esperienza_nuova = req.getParameter(string_azienda_parameter);
+            String contratto_esperienza_nuova = req.getParameter(string_contratto_parameter);
+            String posizione_esperienza_nuova = req.getParameter(string_posizione_parameter);
+            String settore_esperienza_nuova = req.getParameter(string_settore_parameter);
+            String ral_esperienza_nuova = req.getParameter(string_ral_parameter);
+            String inizio_esperienza_nuova = req.getParameter(string_inizio_parameter);
+            String fine_esperienza_nuova = req.getParameter(string_fine_parameter);
+            String sede_esperienza_nuova = req.getParameter(string_sede_parameter);
+
+
+
+            if(!descrizione_esperienza_nuova.isEmpty()){
+                nuova_esperienza.setDescrizione_attivita(descrizione_esperienza_nuova);
+            }
+
+            if(!anni_esperienza_nuova.isEmpty()){
+                nuova_esperienza.setAnni(Integer.parseInt(anni_esperienza_nuova));
+            }
+
+
+            if(!azienda_esperienza_nuova.isEmpty()){
+                nuova_esperienza.setAzienda(azienda_esperienza_nuova);
+            }
+
+            if(!inizio_esperienza_nuova.isEmpty()) {
+
+                SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+                Date data_inizio_nuova;
+                try {
+                    data_inizio_nuova = in.parse(inizio_esperienza_nuova);
+                } catch (ParseException e) {
+                    ErrorManager.setErrorMessage("Qualcosa è andato storto", req);
+                    throw new RuntimeException(e);
+                }
+                nuova_esperienza.setData_inizio(new java.sql.Date(data_inizio_nuova.getTime()));
+            }
+
+            if(!fine_esperienza_nuova.isEmpty()) {
+
+                SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+                Date data_fine_nuova;
+                try {
+                    data_fine_nuova = in.parse(fine_esperienza_nuova);
+                } catch (ParseException e) {
+                    ErrorManager.setErrorMessage("Qualcosa è andato storto", req);
+                    throw new RuntimeException(e);
+                }
+                nuova_esperienza.setData_fine(new java.sql.Date(data_fine_nuova.getTime()));
+            }
+
+            if(!sede_esperienza_nuova.isEmpty()) {
+
+                Integer id_citta_esperienza = Integer.valueOf(sede_esperienza_nuova.split(" ", 4)[0]);
+                Integer id_regione_esperienza = Integer.valueOf(sede_esperienza_nuova.split(" ", 4)[1]);
+                String nome_citta_esperienza = sede_esperienza_nuova.split(" ", 4)[2];
+
+                nuova_esperienza.setId_citta(cittaIMPL.getCittaById(id_citta_esperienza));
+            }
+
+
+            if(nuova_esperienza.isValid()){
+                nuova_esperienza.setUtente(utenteInSessione);
+                esperienzaIMPL.save(nuova_esperienza);
+            }else{
+                ErrorManager.setOtherMessage("Non hai modificato nulla!",req);
+            }
+
+            ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
+
+        }
+
 
 
         if(isModified){
@@ -367,8 +522,6 @@ public class CurriculumServlet extends HttpServlet {
             ErrorManager.setOtherMessage("Non hai modificato nulla!",req);
         }
         req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
-
-
 
 
 

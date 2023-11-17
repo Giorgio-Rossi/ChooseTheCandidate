@@ -27,10 +27,25 @@ public class IstruzioneIMPL implements IstruzioneDAO {
 		try {
 			statement = connection.getConnection().prepareStatement(sql);
 			statement.setString(1, istruzioni.getGrado());
-			statement.setInt(2, istruzioni.getId_citta());
+			if(istruzioni.getId_citta()==0){
+				statement.setNull(2, Types.INTEGER);
+			}else{
+				statement.setInt(2,istruzioni.getId_citta());
+			}
 			statement.setString(3, istruzioni.getDescrizione_istruzione());
-			statement.setDate(4, new java.sql.Date(istruzioni.getData_inizio().getTime()));
-			statement.setDate(5, new java.sql.Date(istruzioni.getData_fine().getTime()));
+
+			if(istruzioni.getData_inizio() != null){
+				statement.setDate(4, new java.sql.Date(istruzioni.getData_inizio().getTime()));
+			}else{
+				statement.setNull(4, Types.INTEGER);
+			}
+
+			if(istruzioni.getData_fine() != null){
+				statement.setDate(5, new java.sql.Date(istruzioni.getData_fine().getTime()));
+			}else{
+				statement.setNull(5, Types.INTEGER);
+			}
+
 			statement.setInt(6, istruzioni.getId_user());
             statement.setInt(7, istruzioni.getValutazione());
 
@@ -61,8 +76,17 @@ public class IstruzioneIMPL implements IstruzioneDAO {
 			}
 
 			statement.setString(3, istruzioni.getDescrizione_istruzione());
-			statement.setDate(4, new java.sql.Date(istruzioni.getData_inizio().getTime()));
-			statement.setDate(5, new java.sql.Date(istruzioni.getData_fine().getTime()));
+			if(istruzioni.getData_inizio() != null){
+				statement.setDate(4, new java.sql.Date(istruzioni.getData_inizio().getTime()));
+			}else{
+				statement.setNull(4, Types.INTEGER);
+			}
+
+			if(istruzioni.getData_fine() != null){
+				statement.setDate(5, new java.sql.Date(istruzioni.getData_fine().getTime()));
+			}else{
+				statement.setNull(5, Types.INTEGER);
+			}
 			statement.setInt(6, istruzioni.getId_user());
             statement.setInt(7, istruzioni.getValutazione());
 			statement.setInt(8, istruzioni.getId_istruzione());
@@ -80,7 +104,7 @@ public class IstruzioneIMPL implements IstruzioneDAO {
 	@Override
 	public List<Istruzione> getAllInstruction(int id_user) {
 		ArrayList<Istruzione> istruzione1 = new ArrayList<Istruzione>();
-		String sql = "SELECT * FROM Istruzione i inner join Citta c  on i.id_citta = c.id_citta where i.id_user = ?";
+		String sql = "SELECT * FROM Istruzione  where id_user = ?";
 				
 		PreparedStatement statement = null;
 		
@@ -96,8 +120,12 @@ public class IstruzioneIMPL implements IstruzioneDAO {
 				istruzione.setGrado(resultSet.getString(2));
 				istruzione.setId_citta(resultSet.getInt(3));
 				istruzione.setDescrizione_istruzione(resultSet.getString(4));
-				istruzione.setData_inizio(new java.sql.Date(resultSet.getDate(5).getTime()));
-				istruzione.setData_fine(new java.sql.Date(resultSet.getDate(6).getTime()));
+				if(resultSet.getDate(5) != null) {
+					istruzione.setData_inizio(new java.sql.Date(resultSet.getDate(5).getTime()));
+				}
+				if(resultSet.getDate(6) != null){
+					istruzione.setData_fine(new java.sql.Date(resultSet.getDate(6).getTime()));
+				}
 				istruzione.setId_user(resultSet.getInt(7));
 				istruzione.setValutazione(resultSet.getInt(8));
 				istruzione1.add(istruzione);
@@ -106,7 +134,7 @@ public class IstruzioneIMPL implements IstruzioneDAO {
 			e.printStackTrace();
 		} finally {
 
-			DBUtil.close(resultSet);
+			//DBUtil.close(resultSet);
 			DBUtil.close(statement);
 			// DBUtil.close(connection);
 		}

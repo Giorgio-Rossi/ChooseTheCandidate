@@ -81,7 +81,7 @@ public class Istruzione {
 	}
 
 	public boolean isValid() {
-		return this.id_istruzione != 0 && this.grado != null && this.id_citta != 0 && this.descrizione_istruzione != null && this.data_inizio != null && this.data_fine != null && this.id_user != 0 && this.valutazione != 0;
+		return this.id_istruzione != 0 || this.grado != null || this.id_citta != 0 || this.descrizione_istruzione != null || this.data_inizio != null || this.data_fine != null || this.id_user != 0 || this.valutazione != 0;
 	}
 
 	@Override
