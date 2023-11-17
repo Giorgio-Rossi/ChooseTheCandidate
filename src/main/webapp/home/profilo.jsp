@@ -6,15 +6,13 @@
 <%@ page import="com.candidatoDB.pw2.entity.Regione" %>
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.RegioneIMPL" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Utente utente = (Utente) session.getAttribute("utente");
-    System.out.println(utente.toString());
+<%
+Utente utente = (Utente) session.getAttribute("utente");
 
-    ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
-    ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
+ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
 
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
 
-%>
 
 
 <html>

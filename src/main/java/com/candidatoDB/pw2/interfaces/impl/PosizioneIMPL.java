@@ -13,6 +13,7 @@ import com.candidatoDB.pw2.entity.CategoriaPosizione;
 import com.candidatoDB.pw2.entity.Citta;
 import com.candidatoDB.pw2.entity.Posizione;
 import com.candidatoDB.pw2.entity.Quiz;
+import com.candidatoDB.pw2.entity.Utente;
 import com.candidatoDB.pw2.interfaces.PosizioneDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
@@ -679,4 +680,40 @@ public class PosizioneIMPL implements PosizioneDAO {
 		}
 	
 	}
+
+	@Override
+	public void updatePosizione(Posizione posizione) {
+		String sql = "UPDATE Posizione SET id_posizione=?,n_ammissioni=?,descrizione=?,citta=?,categoria=?,quiz=?,stato=?,data_inserimento=?,ruolo=? WHERE id_user=?";
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setInt(1, posizione.getId_posizione());
+			statement.setInt(2, posizione.getN_ammissioni());
+			statement.setString(3, posizione.getDescrizione());
+			
+			CittaIMPL cittaIMPL = new CittaIMPL();
+			posizione.setCitta(cittaIMPL.getCittaById(resultSet.getInt(4)));
+			
+			CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
+			posizione.setCategoria(categoriaPosizioneIMPL.getCategoriaPosizioneById(resultSet.getInt(5)));
+			
+			QuizIMPL quizIMPL = new QuizIMPL();
+			posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt(6)));
+
+			statement.setString(7, posizione.getStato());
+			statement.setDate(8, new java.sql.Date(posizione.getData_inserimento().getTime()));
+			statement.setString(9, posizione.getRuolo());
+			
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(statement);
+			//DBUtil.close(connection.getConnection());
+		}
+
+	}
+
 }
