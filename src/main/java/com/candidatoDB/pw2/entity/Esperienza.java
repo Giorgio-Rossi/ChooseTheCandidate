@@ -116,6 +116,11 @@ public class Esperienza {
 		return id_citta;
 	}
 
+	public boolean isValid() {
+		return this.id_esperienza != 0 || this.anni != 0 || this.id_citta != null || this.descrizione_attivita != null || this.data_inizio != null || this.data_fine != null || this.utente != null || this.azienda != null || this.tipo_contratto != null
+				|| this.settore != null || this.posizione_lavorativa != null || this.ral < 0;
+	}
+
 	@Override
 	public String toString() {
 		return "Esperienza [id_esperienza=" + id_esperienza + ", anni=" + anni + ", descrizione_attivita="

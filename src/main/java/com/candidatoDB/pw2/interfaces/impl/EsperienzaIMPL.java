@@ -25,28 +25,40 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 
 	@Override
 	public void save(Esperienza esperienze) {
-		String sql = "INSERT INTO Esperienza(id_esperienza,anni,descrizione_attivita,id_user,azienda,data_inizio,data_fine,ral,tipo_contratto,settore,posizione_lavorativa,id_citta) VALUES(?,?,?,?,?,?,?,?,?,?,?,?))";
+		String sql = "INSERT INTO Esperienza(anni,descrizione_attivita,id_user,azienda,data_inizio,data_fine,ral,tipo_contratto,settore,posizione_lavorativa,id_citta) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
-			statement = connection.getConnection().prepareStatement(sql, new String[] { "id" });
-			statement.setInt(1, esperienze.getId_esperienza());
-			statement.setInt(2, esperienze.getAnni());
-			statement.setString(3, esperienze.getDescrizione_attivita());
-			statement.setInt(4, esperienze.getId_esperienza());
-			statement.setString(5, esperienze.getAzienda());
-			statement.setDate(6, new java.sql.Date(esperienze.getData_inizio().getTime()));
-			statement.setDate(6, new java.sql.Date(esperienze.getData_fine().getTime()));
-			statement.setInt(8, esperienze.getRal());
-			statement.setString(9, esperienze.getTipo_contratto());
-			statement.setString(10, esperienze.getSettore());
-			statement.setString(11, esperienze.getPosizione_lavorativa());
-			statement.setInt(12,esperienze.getId_citta().getId_citta());
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setInt(1, esperienze.getAnni());
+			statement.setString(2, esperienze.getDescrizione_attivita());
+			statement.setInt(3, esperienze.getUtente().getId_user());
+			statement.setString(4, esperienze.getAzienda());
+
+			if(esperienze.getData_inizio() != null){
+				statement.setDate(5, new java.sql.Date(esperienze.getData_inizio().getTime()));
+			}else{
+				statement.setNull(5, Types.INTEGER);
+			}
+
+			if(esperienze.getData_fine() != null){
+				statement.setDate(6, new java.sql.Date(esperienze.getData_fine().getTime()));
+			}else{
+				statement.setNull(6, Types.INTEGER);
+			}
+
+			statement.setInt(7, esperienze.getRal());
+			statement.setString(8, esperienze.getTipo_contratto());
+			statement.setString(9, esperienze.getSettore());
+			statement.setString(10, esperienze.getPosizione_lavorativa());
+
+			if(esperienze.getId_citta() == null){
+				statement.setNull(11, Types.INTEGER);
+			}else{
+				statement.setInt(11,esperienze.getId_citta().getId_citta());
+			}
 
 			statement.executeUpdate();
-			resultSet = statement.getGeneratedKeys();
-			if (resultSet.next())
-				esperienze.setId_esperienza(resultSet.getInt(1));
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 		} finally {
@@ -69,8 +81,17 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 			statement.setString(2, esperienze.getDescrizione_attivita());
 			statement.setInt(3, esperienze.getUtente().getId_user());
 			statement.setString(4, esperienze.getAzienda());
-			statement.setDate(5, new java.sql.Date(esperienze.getData_inizio().getTime()));
-			statement.setDate(6, new java.sql.Date(esperienze.getData_fine().getTime()));
+
+			if(esperienze.getData_inizio() != null){
+				statement.setDate(5, new java.sql.Date(esperienze.getData_inizio().getTime()));
+			}else{
+				statement.setNull(5, Types.INTEGER);
+			}
+			if(esperienze.getData_fine() != null){
+				statement.setDate(6, new java.sql.Date(esperienze.getData_fine().getTime()));
+			}else{
+				statement.setNull(6, Types.INTEGER);
+			}
 			statement.setInt(7, esperienze.getRal());
 			statement.setString(8, esperienze.getTipo_contratto());
 			statement.setString(9, esperienze.getSettore());
@@ -115,16 +136,21 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 				UtenteIMPL utenteIMPL = new UtenteIMPL();
 				esperienza.setUtente(utenteIMPL.findById(resultSet.getInt(4)));
 				esperienza.setAzienda(resultSet.getString(5));
-				
-				esperienza.setData_inizio(new java.sql.Date(resultSet.getDate(6).getTime()));
-				esperienza.setData_fine(new java.sql.Date(resultSet.getDate(7).getTime()));
+
+				if(resultSet.getDate(6) != null) {
+					esperienza.setData_inizio(new java.sql.Date(resultSet.getDate(6).getTime()));
+				}
+
+				if(resultSet.getDate(7) != null) {
+					esperienza.setData_fine(new java.sql.Date(resultSet.getDate(7).getTime()));
+				}
+
 				esperienza.setRal(resultSet.getInt(8));
 				esperienza.setTipo_contratto(resultSet.getString(9));
 				esperienza.setSettore(resultSet.getString(10));
 				esperienza.setPosizione_lavorativa(resultSet.getString(11));
 
 				if(resultSet.getString(12)==null){
-					System.out.println("No citta");
 				}else {
 					esperienza.setId_citta(new CittaIMPL().getCittaById(resultSet.getInt(12)));
 				}
@@ -138,7 +164,7 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 			e.printStackTrace();
 		} finally {
 
-			DBUtil.close(resultSet);
+			//DBUtil.close(resultSet);
 			DBUtil.close(statement);
 			// DBUtil.close(connection);
 		}
