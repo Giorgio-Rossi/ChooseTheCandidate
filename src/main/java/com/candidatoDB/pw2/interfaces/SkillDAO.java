@@ -16,6 +16,6 @@ public interface SkillDAO {
 
 	Skill findById(int id_skill);
 
-	
+	Skill findByName(String name_skill);
 
 }
