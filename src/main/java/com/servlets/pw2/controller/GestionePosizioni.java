@@ -52,10 +52,14 @@ public class GestionePosizioni extends HttpServlet {
 		posizione.setStato(stato);
 		posizione.setData_inserimento(new java.sql.Date(data_inserimento.getTime()));
 
+		System.out.println(" "+ruolo+ n_ammissioni+ descrizione+ stato+ new java.sql.Date(data_inserimento.getTime()));	
+		System.out.println(req.getParameter("citta"));
 		Integer id_citta = Integer.valueOf(req.getParameter("citta").split(" ", 3)[0]);
 		Integer id_regione = Integer.valueOf(req.getParameter("citta").split(" ", 3)[1]);
 		String nome_citta = req.getParameter("citta").split(" ", 3)[2];
 
+		System.out.println(""+id_citta+""+id_regione+nome_citta);
+		
 		CittaIMPL cittaIMPL = new CittaIMPL();
 		Regione regione = cittaIMPL.getRegione(id_regione);
 		Citta citta = new Citta(id_citta, regione, nome_citta);
@@ -83,7 +87,6 @@ public class GestionePosizioni extends HttpServlet {
 	}
 
 	public GestionePosizioni() {
-		// TODO Auto-generated constructor stub
 	}
 
 }
