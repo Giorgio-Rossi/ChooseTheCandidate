@@ -1,0 +1,17 @@
+.skillsMenu,
+.no-results {
+    display: none;
+}
+
+.item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.item:hover {
+    background-color: #CCC;
+}
+
+.item p {
+    margin: 0;
+}
