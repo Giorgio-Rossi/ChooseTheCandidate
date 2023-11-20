@@ -1,16 +1,9 @@
 <%@ page import="com.servlets.pw2.controller.ErrorManager"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="java.util.List"%>
-<%@ page import="com.candidatoDB.pw2.entity.Utente"%>
-<%@ page import="com.candidatoDB.pw2.entity.Citta"%>
-<%@ page import="com.candidatoDB.pw2.entity.Regione"%>
-<%@ page import="com.candidatoDB.pw2.entity.Esperienza"%>
-<%@ page import="com.candidatoDB.pw2.entity.Istruzione"%>
-<%@ page import="com.candidatoDB.pw2.interfaces.impl.RegioneIMPL"%>
-<%@ page import="com.candidatoDB.pw2.interfaces.impl.IstruzioneIMPL"%>
-<%@ page import="com.candidatoDB.pw2.interfaces.impl.EsperienzaIMPL"%>
-<%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteIMPL"%>
-<%@ page import="com.candidatoDB.pw2.interfaces.impl.CittaIMPL"%>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="com.candidatoDB.pw2.entity.*" %>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.*" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%
@@ -31,6 +24,10 @@ ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
 
 ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
 
+ArrayList<Skill> skills = (ArrayList<Skill>) new SkillIMPL().findAll();
+
+ArrayList<Skill> skill_utente = new UtenteSkillsIMPL().getAllUserSkillVerifiedOrNot(utente, true);
+
 
 /*
 for (Esperienza test : esperienze) {
@@ -42,7 +39,6 @@ for (Istruzione test2 : istruzioni) {
 }
 */
 
-//ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
 
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 %>
@@ -62,6 +58,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+
 </head>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -69,6 +66,9 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/homeuser.css">
+
+<link rel="stylesheet"
+	  href="${pageContext.request.contextPath}/css/cv.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -402,6 +402,50 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 										</div>
 									</div>
 
+									<h2>Le tue Skills</h2>
+									<div class="row row-cols-3 row-cols-lg-3 mb-lg-auto">
+										<div class="col-4 col-lg-2">
+											<div class="input-group rounded">
+												<input type="search" id="textboxEmp" class="my-textbox form-control rounded" placeholder="Search" aria-label="Cerca Skill" aria-describedby="search-addon" />
+												<span class="input-group-text border-0" id="search-addon">
+													<i class="bi bi-search"></i>
+										  		</span>
+											</div>
+											<div class="skillsMenu">
+												<div class="no-results">Non ci sono skill con questo nome</div>
+
+												<%
+												for(Skill skill : skills){
+												%>
+
+												<div class="item">
+													<p class="skill"><%=skill.getNome()%></p>
+												</div>
+												<%
+													};
+												%>
+
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-sm m-1" id="p">
+												<%
+													for(Skill u_skill : skill_utente){
+												%>
+												<%=u_skill.getNome()%>
+												<i class="bi bi-award-fill" style="font-size: 2rem"></i><br>
+												<%
+													};
+												%>
+
+											</div>
+										</div>
+
+									</div>
+
+
+
 								</div>
 							</div>
 						</div>
@@ -412,11 +456,53 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 
 
-
 	</main>
 
 
 	<script>
+
+		var $noResults = $('.no-results');
+		var $names = $(".skill");
+		var $personsMenu = $('.skillsMenu');
+
+		var $searchBox = $(".my-textbox").on('input', function() {
+			var value = $(this).val().trim().toUpperCase();
+
+			if (!value) {
+				$personsMenu.hide();
+				return;
+			}
+
+			var matches = $personsMenu.show().find('div').each(function() {
+				var content = $(this).text().toUpperCase();
+				$(this).toggle(content.indexOf(value) !== -1);
+			});
+
+			$noResults.toggle(matches.filter(':visible').length == 0);
+		});
+
+		$('.item').on('click', function() {
+			var v = $searchBox.val($(this).find('.skill').text());
+
+			var element3 = document.createElement("input");
+			element3.type = "button";
+			element3.name = "add";
+			element3.value="Verifica la skill!";
+			element3.className="btn btn-info btn-xs m-1";
+
+			var element = document.createElement("h6");
+			element.innerHTML = v.val();
+
+
+			//document.getElementById("p").innerHTML+=v.val()
+			document.getElementById("p").appendChild(element)
+			document.getElementById("p").appendChild(element3)
+			$personsMenu.hide();
+		});
+
+
+
+
 
 		function CloneIstruzione() {
 
