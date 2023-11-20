@@ -66,7 +66,7 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 
 
 				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none ">
-					<div class="slide slide1" style="width:300px1;;height:235px;">
+					<div class="slide slide1" style="width:300px;;height:235px;">
 						<div class="content">
 							<div class="icon" style="background-color:white;">
 								<i class="bi bi-card-list"

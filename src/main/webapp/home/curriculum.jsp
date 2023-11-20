@@ -470,12 +470,63 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 		</div>
 
 
+		<div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+			<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center p-lg-4">
+						<i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+						<h4 class="text-success mt-3">Skill verificata!</h4>
+						<p class="mt-3">Verifica altre Skill o aggiungine altre!</p>
+						<button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+			<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center p-lg-4">
+						<i class="bi bi-x-circle-fill" style="font-size: 5rem"></i>
+						<h4 class="text-danger mt-3">Hai già effettuato il quiz per questa candidatura!</h4>
+						<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
+						<button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
 
 	</main>
 
 
+	<%
+		//System.out.println(session.getAttribute("candidatura_fatta"));
+		String success =  session.getAttribute("skill_verificata") == null ?  null : session.getAttribute("skill_verificata").toString();
+
+		if(success != null && Boolean.parseBoolean(success)){
+	%>
 	<script>
-	//todo gestire l'aggiunta di skill già inserite/modificate, salvare prima di fare il quiz su una skill
+		var myModal = new bootstrap.Modal(document.getElementById('statusSuccessModal'))
+		myModal.show()
+		<% session.removeAttribute("skill_verificata");%>
+	</script>
+	<%
+	} else if(success!=null){
+	%>
+	<script>
+		var myModal = new bootstrap.Modal(document.getElementById('errorModal'))
+		myModal.show()
+		<% session.removeAttribute("skill_verificata");%>
+	</script>
+	<%
+		};
+	%>
+
+
+	<script>
 		var $noResults = $('.no-results');
 		var $names = $(".skill");
 		var $personsMenu = $('.skillsMenu');

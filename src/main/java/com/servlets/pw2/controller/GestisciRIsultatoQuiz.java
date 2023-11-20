@@ -100,7 +100,9 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
 
                 utenteSkillsIMPL.update(usersSkills);
 
-                //todo gestire risultato minimo
+                session.setAttribute("skill_verificata", "true");
+
+                //todo gestire risultato minimo e reindirizzamento dopo completamento, non funziona l'if di controllo iniziale
 
             }
 
@@ -115,7 +117,7 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
                 req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
             }else{
                 //todo gestire messaggio success in quiz
-                session.setAttribute("skill_verificata", "true");
+                session.setAttribute("", "false");
                 req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
             }
         }
