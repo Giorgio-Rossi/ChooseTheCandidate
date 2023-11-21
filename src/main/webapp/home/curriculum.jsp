@@ -26,7 +26,8 @@ ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
 
 ArrayList<Skill> skills = (ArrayList<Skill>) new SkillIMPL().findAll();
 
-ArrayList<Skill> skill_utente = new UtenteSkillsIMPL().getAllUserSkillVerifiedOrNot(utente, true);
+ArrayList<UsersSkills> skill_utente = new UtenteSkillsIMPL().getAllUserSkillVerifiedOrNot(utente);
+	System.out.println(skill_utente);
 
 
 /*
@@ -388,6 +389,60 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 										</div>
 										</div>
 
+										<h2>Le tue Skills</h2>
+										<div class="row row-cols-3 row-cols-lg-3 mb-lg-auto">
+											<div class="col-4 col-lg-2">
+												<div class="input-group rounded">
+													<input type="search" id="textboxEmp" class="my-textbox form-control rounded" placeholder="Search" aria-label="Cerca Skill" aria-describedby="search-addon" />
+													<span class="input-group-text border-0" id="search-addon">
+													<i class="bi bi-search"></i>
+										  		</span>
+												</div>
+												<div class="skillsMenu">
+													<div class="no-results">Non ci sono skill con questo nome</div>
+
+													<%
+														for(Skill skill : skills){
+													%>
+
+													<div class="item">
+														<p class="skill"><%=skill.getNome()%></p>
+													</div>
+													<%
+														};
+													%>
+
+												</div>
+											</div>
+
+											<div class="row">
+												<div class="col-sm m-1" id="p">
+													<%
+														for(UsersSkills u_skill : skill_utente){
+															Skill skill = new SkillIMPL().findById(u_skill.getId_skills());
+															if(u_skill.isVerificata()){
+													%>
+													<h6><%=skill.getNome()%></h6>
+													<i class="bi bi-award-fill" style="font-size: 2rem"></i><br>
+													<%
+													}else{
+													%>
+													<h6><%=skill.getNome()%></h6>
+													<!--<input type="hidden" id="skillname" name="add" value="<%=skill.getNome()%>">-->
+													<a class="btn btn-info btn-xs m-1" id="add" href="${pageContext.request.contextPath}/verificaSkill?id=<%=skill.getNome()%>">Verifica Skill!</a>
+													<%
+														}
+													%>
+													<%
+														}
+													%>
+
+												</div>
+											</div>
+
+										</div>
+
+
 									</form>
 
 									<div class="row mb-1">
@@ -402,47 +457,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 										</div>
 									</div>
 
-									<h2>Le tue Skills</h2>
-									<div class="row row-cols-3 row-cols-lg-3 mb-lg-auto">
-										<div class="col-4 col-lg-2">
-											<div class="input-group rounded">
-												<input type="search" id="textboxEmp" class="my-textbox form-control rounded" placeholder="Search" aria-label="Cerca Skill" aria-describedby="search-addon" />
-												<span class="input-group-text border-0" id="search-addon">
-													<i class="bi bi-search"></i>
-										  		</span>
-											</div>
-											<div class="skillsMenu">
-												<div class="no-results">Non ci sono skill con questo nome</div>
 
-												<%
-												for(Skill skill : skills){
-												%>
-
-												<div class="item">
-													<p class="skill"><%=skill.getNome()%></p>
-												</div>
-												<%
-													};
-												%>
-
-											</div>
-										</div>
-
-										<div class="row">
-											<div class="col-sm m-1" id="p">
-												<%
-													for(Skill u_skill : skill_utente){
-												%>
-												<%=u_skill.getNome()%>
-												<i class="bi bi-award-fill" style="font-size: 2rem"></i><br>
-												<%
-													};
-												%>
-
-											</div>
-										</div>
-
-									</div>
 
 
 
@@ -455,12 +470,63 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 		</div>
 
 
+		<div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+			<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center p-lg-4">
+						<i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+						<h4 class="text-success mt-3">Skill verificata!</h4>
+						<p class="mt-3">Verifica altre Skill o aggiungine altre!</p>
+						<button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+			<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center p-lg-4">
+						<i class="bi bi-x-circle-fill" style="font-size: 5rem"></i>
+						<h4 class="text-danger mt-3">Hai già effettuato il quiz per questa candidatura!</h4>
+						<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
+						<button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
 
 	</main>
 
 
-	<script>
+	<%
+		//System.out.println(session.getAttribute("candidatura_fatta"));
+		String success =  session.getAttribute("skill_verificata") == null ?  null : session.getAttribute("skill_verificata").toString();
 
+		if(success != null && Boolean.parseBoolean(success)){
+	%>
+	<script>
+		var myModal = new bootstrap.Modal(document.getElementById('statusSuccessModal'))
+		myModal.show()
+		<% session.removeAttribute("skill_verificata");%>
+	</script>
+	<%
+	} else if(success!=null){
+	%>
+	<script>
+		var myModal = new bootstrap.Modal(document.getElementById('errorModal'))
+		myModal.show()
+		<% session.removeAttribute("skill_verificata");%>
+	</script>
+	<%
+		};
+	%>
+
+
+	<script>
 		var $noResults = $('.no-results');
 		var $names = $(".skill");
 		var $personsMenu = $('.skillsMenu');
@@ -484,18 +550,35 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 		$('.item').on('click', function() {
 			var v = $searchBox.val($(this).find('.skill').text());
 
-			var element3 = document.createElement("input");
-			element3.type = "button";
+			var element3 = document.createElement("button");
+			element3.type = "submit";
 			element3.name = "add";
-			element3.value="Verifica la skill!";
+			element3.textContent="Verifica la skill!";
+			element3.value = v.val()
 			element3.className="btn btn-info btn-xs m-1";
 
 			var element = document.createElement("h6");
 			element.innerHTML = v.val();
 
 
-			//document.getElementById("p").innerHTML+=v.val()
+
+			var element2 = document.createElement("input")
+			element2.type = "hidden"
+			element2.id="skillname"
+			element2.name="add"
+			element2.value= v.val()
+
+			/*my_form=document.createElement('FORM');
+			my_form.name='myForm';
+			my_form.method='POST';
+			my_form.action='${pageContext.request.contextPath}/verificaSkill';
+			my_form.append(element3)
+			*/
+
+
+
 			document.getElementById("p").appendChild(element)
+			document.getElementById("p").appendChild(element2)
 			document.getElementById("p").appendChild(element3)
 			$personsMenu.hide();
 		});

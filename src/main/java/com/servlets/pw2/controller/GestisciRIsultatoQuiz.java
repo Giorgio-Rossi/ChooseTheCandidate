@@ -37,9 +37,12 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
 
         UtenteQuizIMPL utenteQuizIMPL = new UtenteQuizIMPL();
 
-        System.out.println(utenteQuizIMPL.getUtenteQuizById(id_quiz, utente));
+        UtenteSkillsIMPL utenteSkillsIMPL = new UtenteSkillsIMPL();
 
-        if(utenteQuizIMPL.getUtenteQuizById(id_quiz, utente) == null) {
+        int id_skill = session.getAttribute("id_skill") != null ? (int) session.getAttribute("id_skill") : -1;
+
+
+        if(utenteQuizIMPL.getUtenteQuizById(id_quiz, utente) == null || (id_skill>1 && !utenteSkillsIMPL.getById(id_skill).isVerificata())) {
 
             UtenteQuiz utenteQuiz = new UtenteQuiz();
 
@@ -56,7 +59,6 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
                 if (rispsota != null) {
                     for (RisposteDomande r : entry.getValue()) {
                         if (r.checkSceltaCorretta(rispsota)) {
-                            System.out.println("coretto");
                             punteggio_quiz += entry.getKey().getPunteggio();
                         }
                     }
@@ -75,28 +77,50 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
 
             utenteQuizIMPL.Save(utenteQuiz);
 
-            int id_posizione = (int) session.getAttribute("id_posizione");
-            UtenteIMPL utenteIMPL = new UtenteIMPL();
-            PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
-            candidaturaUser.setUtente(utenteIMPL.findById(utente.getId_user()));
-            candidaturaUser.setData_candidatura(new Date(System.currentTimeMillis()));
-            candidaturaUser.setPosizione(posizioneIMPL.getPosizioneById(id_posizione));
 
-            candidaturaUserIMPL.Save(candidaturaUser);
+            if(session.getAttribute("id_posizione") != null) {
+                int id_posizione = (int) session.getAttribute("id_posizione");
+                PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+                candidaturaUser.setUtente(utente);
+                candidaturaUser.setData_candidatura(new Date(System.currentTimeMillis()));
+                candidaturaUser.setPosizione(posizioneIMPL.getPosizioneById(id_posizione));
 
-            session.setAttribute("candidatura_fatta", "true");
+                candidaturaUserIMPL.Save(candidaturaUser);
+
+                session.setAttribute("candidatura_fatta", "true");
+
+            } else {
+
+                System.out.println("Ho fatto il quiz sulle skills");
+                UsersSkills usersSkills = utenteSkillsIMPL.getById(id_skill);
+
+                usersSkills.setVerificata(true);
+
+                System.out.println(usersSkills);
+
+                utenteSkillsIMPL.update(usersSkills);
+
+                session.setAttribute("skill_verificata", "true");
+
+                //todo gestire risultato minimo e reindirizzamento dopo completamento, non funziona l'if di controllo iniziale
+
+            }
 
             session.removeAttribute("quiz");
             session.removeAttribute("nome_quiz");
             session.removeAttribute("id_posizione");
-
-            resp.sendRedirect(req.getContextPath()+"/home/homeuser.jsp");
+            session.removeAttribute("id_skill");
 
         } else{
-            session.setAttribute("candidatura_fatta", "false");
-            req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
+            if(session.getAttribute("id_posizione") != null) {
+                session.setAttribute("candidatura_fatta", "false");
+                req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
+            }else{
+                //todo gestire messaggio success in quiz
+                session.setAttribute("", "false");
+                req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
+            }
         }
     }
 }
 
-//todo se la candidatura è già stata inviata allora disabilitare il bottone candidati

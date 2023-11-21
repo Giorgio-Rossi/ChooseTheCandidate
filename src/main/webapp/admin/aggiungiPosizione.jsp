@@ -13,6 +13,8 @@ ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
 ArrayList<Regione> regioni = new RegioneIMPL().getAllRegioni();
 QuizIMPL quizImpl = new QuizIMPL();
 ArrayList<Quiz> quiz = quizImpl.getAllQuiz();
+CategoriaPosizioneIMPL cpImpl = new CategoriaPosizioneIMPL();
+ArrayList<CategoriaPosizione> catpos= cpImpl.getAllCategoriePosizioni();
 %>
 <!DOCTYPE html>
 <html>
@@ -61,99 +63,111 @@ ArrayList<Quiz> quiz = quizImpl.getAllQuiz();
 
 	<jsp:include page="jspA/navbarHeaderAdmin.jsp" />
 
-<main style="margin-top: 58px">
+	<main style="margin-top: 58px">
 
-    <div class="container mt-5">
+		<div class="container mt-5">
 
-        <div class="row flex-lg-nowrap">
-            <div class="col">
-                <div class="row">
-                    <div class="col mb-3">
-                        <div class="card mt-4">
-                            <div class="card-body">
-                                <%
-                                    if(!ErrorManager.getSUccessMessage((HttpServletRequest) request).isEmpty()){
-                                %>
-                                <div class="alert alert-success">
-                                    <%= ErrorManager.getSUccessMessage((HttpServletRequest) request)%>
-                                </div>
-                                <%
-                                    };
-                                %>
-                                <%
-                                    if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){
-                                %>
-                                <div class="alert alert-danger">
-                                    <%= ErrorManager.getErrorMessage((HttpServletRequest) request)%>
-                                </div>
-                                <%
-                                    };
-                                %>
-                                <%
-                                    if(!ErrorManager.getOtherMessage((HttpServletRequest) request).isEmpty()){
-                                %>
-                                <div class="alert alert-warning">
-                                    <%= ErrorManager.getOtherMessage((HttpServletRequest) request)%>
-                                </div>
-                                <%
-                                    };
-                                %>
+			<div class="row flex-lg-nowrap">
+				<div class="col">
+					<div class="row">
+						<div class="col mb-3">
+							<div class="card mt-4">
+								<div class="card-body">
+									<%
+									if (!ErrorManager.getSUccessMessage((HttpServletRequest) request).isEmpty()) {
+									%>
+									<div class="alert alert-success">
+										<%=ErrorManager.getSUccessMessage((HttpServletRequest) request)%>
+									</div>
+									<%
+									}
+									;
+									%>
+									<%
+									if (!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()) {
+									%>
+									<div class="alert alert-danger">
+										<%=ErrorManager.getErrorMessage((HttpServletRequest) request)%>
+									</div>
+									<%
+									}
+									;
+									%>
+									<%
+									if (!ErrorManager.getOtherMessage((HttpServletRequest) request).isEmpty()) {
+									%>
+									<div class="alert alert-warning">
+										<%=ErrorManager.getOtherMessage((HttpServletRequest) request)%>
+									</div>
+									<%
+									}
+									;
+									%>
 
-                                <div class="e-profile">
-                                  <div class="tab-content pt-3">
-                                        <div class="tab-pane active">
-										<form method="post" action="${pageContext.request.contextPath}/gestionePosizioni" id="aggiungi_posizione"  enctype='multipart/form-data'>
-											<input type="text" name="categoria" id="categoria"
-													placeholder="Categoria" required><br> <input
-													type="text" name="ruolo" id="ruolo" placeholder="Ruolo"
-													required><br> <input type="text"
-													name="n_ammissioni" id="n_ammissioni"
-													placeholder="Numero Ammissioni" required><br>
-												<div class="form-group " aria-labelledby="navbarDropdown"
-													style="margin-right: 10px">
-													<select class="form-select" name="categoria"
-														aria-label="Default select example">
-														<option disabled selected>Quiz</option>
-														<%
-														for (Quiz q : quiz) {
-														%>
-														<option value="<%=q.getId_quiz()%>"><%=q.getDescrizione()%></option>
-														<%
-														}
-														%>
-													</select>
-												</div>
-												<br>
-												<div class="form-group " aria-labelledby="navbarDropdown"
-													style="margin-right: 10px">
-													<select class="form-select" name="citta"
-														aria-label="Default select example">
-														<option disabled selected>Città</option>
-														<%
-														for (Regione r : regioni) {
-														%>
-														<optgroup label="<%=r.getNome()%>">
+									<div class="e-profile">
+										<div class="tab-content pt-3">
+											<div class="tab-pane active">
+												<form method="post" action="${pageContext.request.contextPath}/gestionePosizioni">
+													<select class="form-select" name="categoria" id="categoria"
+															aria-label="Default select example">
+															<option disabled selected>Categoria</option>
 															<%
-															for (Citta c : cities) {
-																if (c.getRegione().getNome().equals(r.getNome())) {
+															for (CategoriaPosizione cp : catpos) {
 															%>
-															<option value="<%=c.getId_citta()%>"><%=c.getNome()%></option>
+															<option value="<%=cp.getId_categoria()+" "+ cp.getNome_categoria()%>"><%=cp.getNome_categoria()%></option>
 															<%
 															}
+															%>
+														</select><br> <input
+														type="text" name="ruolo" id="ruolo" placeholder="Ruolo"
+														required><br> <input type="number"
+														name="n_ammissioni" id="n_ammissioni"
+														placeholder="Numero Ammissioni" required><br>
+													<div class="form-group " aria-labelledby="navbarDropdown"
+														style="margin-right: 10px">
+														<select class="form-select" name="quiz" id="quiz"
+															aria-label="Default select example">
+															<option disabled selected>Quiz</option>
+															<%
+															for (Quiz q : quiz) {
+															%>
+															<option value="<%=q.getId_quiz()+" "+q.getDescrizione()+" "+q.getN_domande()%>"><%=q.getDescrizione()%></option>
+															<%
 															}
 															%>
-														</optgroup>
-														<%
-														}
-														%>
-													</select>
-												</div>
-												<br> <input type="text" name="data_inserimento"
-													id="data_inserimento" placeholder="Data Inserimento"
-													onfocus="(this.type='date')" min="2023-01-01"
-													max="2023-12-31" style="width: 11%;" required><br>
-											</div>
+														</select>
+													</div>
+													<br>
+													<div class="form-group " aria-labelledby="navbarDropdown"
+														style="margin-right: 10px">
+														<select class="form-select" name="citta" id="citta"
+															aria-label="Default select example">
+															<option disabled selected>Città</option>
+															<%
+															for (Regione r : regioni) {
+															%>
+															<optgroup label="<%=r.getNome()%>">
+																<%
+																for (Citta c : cities) {
+																	if (c.getRegione().getNome().equals(r.getNome())) {
+																%>
+																<option value="<%=c.getId_citta()+" "+c.getRegione().getId_regione()+" "+c.getNome()%>"><%=c.getNome()%></option>
+																<%
+																}
+																}
+																%>
+															</optgroup>
+															<%
+															}
+															%>
+														</select>
+													</div>
+													<br> <input type="text" name="data_inserimento"
+														id="data_inserimento" placeholder="Data Inserimento"
+														onfocus="(this.type='date')" min="2023-01-01"
+														max="2023-12-31" style="width: 11%;" required><br>
 											
+
 											<div class="form-group">
 
 												<input type="text" name="descrizione" id="descrizione"
@@ -166,17 +180,15 @@ ArrayList<Quiz> quiz = quizImpl.getAllQuiz();
 
 												<button type="submit" class="registrati">Conferma</button>
 											</div>
-										</form>
+											</form>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-
-
-
 	</main>
 </body>
 </html>

@@ -23,7 +23,7 @@ public class SkillIMPL implements SkillDAO {
 
 	@Override
 	public void save(Skill skill) {
-		String sql = "INSERT INTO Skill(id_skill,nome,tipo_skill) VALUES(?,?,?)";
+		String sql = "INSERT INTO Skill(id_skill,nome,tipo_skill, id_quiz) VALUES(?,?,?, ?)";
 		//Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -32,6 +32,7 @@ public class SkillIMPL implements SkillDAO {
 			statement.setInt(1, skill.getId_skill());
 			statement.setString(2, skill.getNome());
 			statement.setString(3, skill.getTipo_skill());
+			statement.setInt(4, skill.getId_quiz());
 			statement.executeUpdate();
 			resultSet = statement.getGeneratedKeys();
 			if (resultSet.next())
@@ -105,6 +106,8 @@ public class SkillIMPL implements SkillDAO {
 
 				skill.setTipo_skill(resultSet.getString(3));
 
+				skill.setId_quiz(resultSet.getInt(4));
+
 				skills.add(skill);
 			}
 		} catch (SQLException e) {
@@ -136,6 +139,8 @@ public class SkillIMPL implements SkillDAO {
 
 				skill.setTipo_skill(resultSet.getString(3));
 
+				skill.setId_quiz(resultSet.getInt(4));
+
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -146,5 +151,38 @@ public class SkillIMPL implements SkillDAO {
 		}
 		return skill;
 	}
+
+	@Override
+	public Skill findByName(String name_skill) {
+		Skill skill = null;
+		String sql = "SELECT * FROM Skill WHERE nome=?";
+		//Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			//connection = DbOperations.getInstance().getConnection();
+			statement =  connection.getConnection().prepareStatement(sql);
+			statement.setString(1, name_skill);
+			resultSet = statement.executeQuery();
+			if (resultSet.next()) {
+				skill = new Skill();
+				skill.setId_skill(resultSet.getInt(1));
+				skill.setNome(resultSet.getString(2));
+
+				skill.setTipo_skill(resultSet.getString(3));
+
+				skill.setId_quiz(resultSet.getInt(4));
+
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			//DBUtil.close((Connection) connection);
+		}
+		return skill;
+	}
+
 
 }

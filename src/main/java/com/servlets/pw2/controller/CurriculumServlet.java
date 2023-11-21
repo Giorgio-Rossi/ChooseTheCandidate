@@ -3,16 +3,8 @@ package com.servlets.pw2.controller;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 
-import com.candidatoDB.pw2.entity.Citta;
-import com.candidatoDB.pw2.entity.Esperienza;
-import com.candidatoDB.pw2.entity.Istruzione;
-import com.candidatoDB.pw2.entity.Regione;
-import com.candidatoDB.pw2.entity.Utente;
-import com.candidatoDB.pw2.interfaces.impl.CittaIMPL;
-import com.candidatoDB.pw2.interfaces.impl.EsperienzaIMPL;
-import com.candidatoDB.pw2.interfaces.impl.IstruzioneIMPL;
-import com.candidatoDB.pw2.interfaces.impl.RegioneIMPL;
-import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
+import com.candidatoDB.pw2.entity.*;
+import com.candidatoDB.pw2.interfaces.impl.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -513,6 +505,30 @@ public class CurriculumServlet extends HttpServlet {
             ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
 
         }
+
+
+
+        //SKILLS
+
+        if(req.getParameter("add")!=null){
+            String[] skill_aggiunte = req.getParameterValues("add");
+            System.out.println(Arrays.toString(skill_aggiunte));
+            UtenteSkillsIMPL utenteSkillsIMPL = new UtenteSkillsIMPL();
+            for(int i=0; i< skill_aggiunte.length;i++){
+
+                UsersSkills usersSkills = new UsersSkills();
+                usersSkills.setId_user(utenteInSessione.getId_user());
+                usersSkills.setId_skill(new SkillIMPL().findByName(skill_aggiunte[i]).getId_skill());
+                usersSkills.setVerificata(false);
+
+                if(utenteSkillsIMPL.getById(usersSkills.getId_skills()) != null){
+                    ErrorManager.setErrorMessage("Skill già inserita",req);
+                }else {
+                    utenteSkillsIMPL.save(usersSkills);
+                }
+
+            }
+        };
 
 
 
