@@ -166,7 +166,7 @@ style="position: fixed; align-items:center; display:flex; top:85px; left:21.25%;
                     <div class="slide slide1 ">
                         <div class="content  shadow">
 
-                            <div class="card-body p-4 bg-light">
+                            <div class="card-body p-4 bg-light" style="height:200px">
                                 <span class="badge rounded-pill bg-primary float-md-end mb-3 mb-sm-0"><%=p.getCategoria().getNome_categoria()%></span>
                                 <h5><%=p.getRuolo()%></h5>
                                 <div class="mt-3">
@@ -174,7 +174,7 @@ style="position: fixed; align-items:center; display:flex; top:85px; left:21.25%;
                                     <span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i><%=p.getCitta().getNome()%></span>
                                 </div>
 
-                                <div class="mt-3 d-flex justify-content-center">
+                                <div class="mt-3 d-flex" style="padding:0; padding-bottom:16px">
                                     <form action="classificacandidatura.jsp" method="get">
                                         <input type="hidden" name="id_posizione" value="<%=p.getId_posizione()%>" />
                                         <button type="submit" class="btn btn-success">Visualizza Candidati</button>
@@ -184,7 +184,7 @@ style="position: fixed; align-items:center; display:flex; top:85px; left:21.25%;
 
                         </div>
                     </div>
-                    <div class="slide slide2"  >
+                    <div class="slide slide2" style="overflow:auto;" >
                         <div class="content">
                             <p><%=p.getDescrizione()%></p>
                         </div>
