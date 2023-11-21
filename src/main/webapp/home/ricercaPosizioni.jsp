@@ -175,10 +175,10 @@
 					%>
 
 							<div class="card col-lg-4 col-md-6 col-12 mt-4 pt-2 d-flex  align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
-								<div class="slide slide1 ">
+								<div class="slide slide1 " >
 									<div class="content  shadow">
 
-											<div class="card-body p-4 bg-light">
+											<div class="card-body p-4 bg-light" style="height:200px">
 												<span class="badge rounded-pill bg-primary float-md-end mb-3 mb-sm-0"><%=p.getCategoria().getNome_categoria()%></span>
 												<h5><%=p.getRuolo()%></h5>
 												<div class="mt-3">
@@ -186,13 +186,13 @@
 													<span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i><%=p.getCitta().getNome()%></span>
 												</div>
 
-												<div class="mt-3">
+												<div class="mt-3" style="padding:0; padding-bottom:16px">
 													<%
 														//System.out.println(utenteQuizIMPL.getUtenteQuizById(p.getQuiz().getId_quiz(), utente));
 														if(candidaturaUserIMPL.getCandidaturaUserById(p.getId_posizione(),utente.getId_user())==null){
 													%>
 													<form action="${pageContext.request.contextPath}/EffettuaCandidatura" method="post">
-														<button type="submit" class="btn btn-primary" name="id_quiz" value="<%=p.getQuiz().getId_quiz()+" "+p.getId_posizione()%>">Candidati</button>
+														<button type="submit" class="btn btn-primary" name="id_quiz"  value="<%=p.getQuiz().getId_quiz()+" "+p.getId_posizione()%>">Candidati</button>
 													</form>
 
 													<%
@@ -207,8 +207,8 @@
 
 									</div>
 								</div>
-								<div class="slide slide2">
-									<div class="content">
+								<div class="slide slide2" style="overflow:auto;">
+									<div class="content" >
 										<p><%=p.getDescrizione()%></p>
 									</div>
 								</div>
