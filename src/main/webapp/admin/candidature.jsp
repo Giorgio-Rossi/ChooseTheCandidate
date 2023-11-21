@@ -184,7 +184,7 @@ style="position: fixed; align-items:center; display:flex; top:85px; left:21.25%;
 
                         </div>
                     </div>
-                    <div class="slide slide2">
+                    <div class="slide slide2"  >
                         <div class="content">
                             <p><%=p.getDescrizione()%></p>
                         </div>
