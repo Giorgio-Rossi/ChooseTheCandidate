@@ -23,8 +23,13 @@ import java.util.Objects;
 public class ProfiloServlet extends HttpServlet {
 
     String profilo = "/profilo/profilo.jsp";
+    private DbOperations dbOperationsr;
 
-
+    @Override
+    public void init() throws ServletException {
+        dbOperationsr = new DbOperations();
+    }
+    
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //todo fare il check dei parametri nulli
@@ -35,7 +40,7 @@ public class ProfiloServlet extends HttpServlet {
         //indirizzo citta cap fotoprofilo genere
 
         Utente utenteModificato = new Utente();
-
+        
         boolean isModified = false;
 
         utenteModificato.setId_user(utenteInSessione.getId_user());
@@ -69,7 +74,7 @@ public class ProfiloServlet extends HttpServlet {
             utenteModificato.setCodice_fiscale(utenteInSessione.getCodice_fiscale());
         }
 
-
+      
         if (!utenteInSessione.getEmail().equals(req.getParameter("email"))) {
             utenteModificato.setEmail(req.getParameter("email"));
             isModified = true;
@@ -142,14 +147,10 @@ public class ProfiloServlet extends HttpServlet {
 
 
         if (!Objects.equals(newpasw, "")) {
-            if (oldpsw.equals(utenteInSessione.getPassword())) {
-                if (newpasw.equals(confirmpsw)) {
+            if (oldpsw.equals(utenteInSessione.getPassword()) && newpasw.equals(confirmpsw) ) {
                     utenteModificato.setPassword(newpasw);
                     isModified = true;
                 }
-            } else {
-                System.out.println("error");
-            }
         } else {
             utenteModificato.setPassword(utenteInSessione.getPassword());
         }
@@ -182,17 +183,21 @@ public class ProfiloServlet extends HttpServlet {
             utenteModificato.setFoto_profilo(utenteInSessione.getFoto_profilo());
         }
 
+        
+        if(!dbOperationsr.ChechUser(utenteModificato)) {
             UtenteIMPL utenteIMPL = new UtenteIMPL();
             utenteIMPL.update(utenteModificato);
             session.removeAttribute("utente");
             session.setAttribute("utente", utenteModificato);
-            if(isModified){
+        }else if(isModified){
                 ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
             } else {
                 ErrorManager.setOtherMessage("Non hai modificato nulla!",req);
             }
             req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
         }
+    
+    
+ }
 
-    }
 

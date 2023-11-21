@@ -220,7 +220,7 @@ ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Vecchia Password</label>
-                                                                    <input class="form-control" type="password" placeholder="••••••" name="oldpsw">
+                                                                    <input class="form-control" type="password" placeholder="••••••" name="oldpsw" id="oldpsw">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -228,7 +228,7 @@ ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Nuova Password</label>
-                                                                    <input class="form-control" type="password" placeholder="••••••" name="newpsw">
+                                                                    <input class="form-control" type="password" placeholder="••••••" name="newpsw" id="newpsw">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -236,7 +236,7 @@ ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Conferma <span class="d-none d-xl-inline">Password</span></label>
-                                                                    <input class="form-control" type="password" placeholder="••••••" name="confirmpsw"></div>
+                                                                    <input class="form-control" type="password" placeholder="••••••" name="confirmpsw" id="confirmpsw"></div>
                                                             </div>
                                                         </div>
                                                     </div>
