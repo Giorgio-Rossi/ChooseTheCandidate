@@ -188,8 +188,13 @@
 
 												<div class="mt-3" style="padding:0; padding-bottom:16px">
 													<%
-														//System.out.println(utenteQuizIMPL.getUtenteQuizById(p.getQuiz().getId_quiz(), utente));
-														if(candidaturaUserIMPL.getCandidaturaUserById(p.getId_posizione(),utente.getId_user())==null){
+														if(p.getStato().equals("chiusa")){;
+													%>
+
+													<button type="submit" class="btn btn-danger" disabled name="id_quiz">La Posizione è stata chiusa</button>
+
+													<%
+														} else if(candidaturaUserIMPL.getCandidaturaUserById(p.getId_posizione(),utente.getId_user())==null){
 													%>
 													<form action="${pageContext.request.contextPath}/EffettuaCandidatura" method="post">
 														<button type="submit" class="btn btn-primary" name="id_quiz"  value="<%=p.getQuiz().getId_quiz()+" "+p.getId_posizione()%>">Candidati</button>
@@ -200,8 +205,9 @@
 													%>
 													<button type="submit" class="btn btn-warning" disabled name="id_quiz">Candidatura già inviata</button>
 													<%
-														};
+														} ;
 													%>
+
 												</div>
 											</div>
 
