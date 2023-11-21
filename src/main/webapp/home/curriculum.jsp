@@ -488,8 +488,8 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 				<div class="modal-content">
 					<div class="modal-body text-center p-lg-4">
 						<i class="bi bi-x-circle-fill" style="font-size: 5rem"></i>
-						<h4 class="text-danger mt-3">Hai già effettuato il quiz per questa candidatura!</h4>
-						<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
+						<h4 class="text-danger mt-3">Peccato, non hai raggiunto un puntggio sufficiente per verificare la Skill!</h4>
+						<p class="mt-3">Puoi comunque riprovare il quiz cercando di rispondere correttamente ad almeno metà delle domande</p>
 						<button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
 					</div>
 				</div>

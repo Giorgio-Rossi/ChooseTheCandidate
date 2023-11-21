@@ -40,9 +40,10 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
         UtenteSkillsIMPL utenteSkillsIMPL = new UtenteSkillsIMPL();
 
         int id_skill = session.getAttribute("id_skill") != null ? (int) session.getAttribute("id_skill") : -1;
+        int id_posizione =  session.getAttribute("id_posizione") != null ? (int) session.getAttribute("id_posizione") : -1;
 
 
-        if(utenteQuizIMPL.getUtenteQuizById(id_quiz, utente) == null || (id_skill>1 && !utenteSkillsIMPL.getById(id_skill).isVerificata())) {
+        if( id_posizione != -1 && candidaturaUserIMPL.getCandidaturaUserById(id_posizione,utente.getId_user())==null) {
 
             UtenteQuiz utenteQuiz = new UtenteQuiz();
 
@@ -75,32 +76,48 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
             utenteQuiz.setPunteggio(percentuale);
             utenteQuiz.setData_inserimento(new Date(System.currentTimeMillis()));
 
-            utenteQuizIMPL.Save(utenteQuiz);
+            //utenteQuizIMPL.Save(utenteQuiz);
 
 
             if(session.getAttribute("id_posizione") != null) {
-                int id_posizione = (int) session.getAttribute("id_posizione");
+                //int id_posizione = (int) session.getAttribute("id_posizione");
                 PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
                 candidaturaUser.setUtente(utente);
                 candidaturaUser.setData_candidatura(new Date(System.currentTimeMillis()));
                 candidaturaUser.setPosizione(posizioneIMPL.getPosizioneById(id_posizione));
 
+                utenteQuizIMPL.Save(utenteQuiz);
                 candidaturaUserIMPL.Save(candidaturaUser);
 
                 session.setAttribute("candidatura_fatta", "true");
 
+                req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
+
             } else {
 
-                System.out.println("Ho fatto il quiz sulle skills");
                 UsersSkills usersSkills = utenteSkillsIMPL.getById(id_skill);
 
-                usersSkills.setVerificata(true);
+                if(percentuale>=50.00){
+                    utenteQuizIMPL.Save(utenteQuiz);
 
-                System.out.println(usersSkills);
+                    usersSkills.setVerificata(true);
 
-                utenteSkillsIMPL.update(usersSkills);
+                    System.out.println(usersSkills);
 
-                session.setAttribute("skill_verificata", "true");
+                    utenteSkillsIMPL.update(usersSkills);
+
+                    session.setAttribute("skill_verificata", "true");
+
+                    req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
+                } else {
+                    session.setAttribute("skill_verificata", "false");
+
+                    req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
+                }
+
+
+
+
 
                 //todo gestire risultato minimo e reindirizzamento dopo completamento, non funziona l'if di controllo iniziale
 
@@ -112,14 +129,8 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
             session.removeAttribute("id_skill");
 
         } else{
-            if(session.getAttribute("id_posizione") != null) {
-                session.setAttribute("candidatura_fatta", "false");
-                req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
-            }else{
-                //todo gestire messaggio success in quiz
-                session.setAttribute("", "false");
-                req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
-            }
+            session.setAttribute("candidatura_fatta", "false");
+            req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
         }
     }
 }
