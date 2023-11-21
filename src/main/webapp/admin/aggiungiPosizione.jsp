@@ -131,7 +131,7 @@ ArrayList<CategoriaPosizione> catpos= cpImpl.getAllCategoriePosizioni();
 															<%
 															for (Quiz q : quiz) {
 															%>
-															<option value="<%=q.getId_quiz()+" "+q.getDescrizione()+" "+q.getN_domande()%>"><%=q.getDescrizione()%></option>
+															<option value="<%=q.getId_quiz()+" "+q.getDescrizione()%>"><%=q.getDescrizione()%></option>
 															<%
 															}
 															%>

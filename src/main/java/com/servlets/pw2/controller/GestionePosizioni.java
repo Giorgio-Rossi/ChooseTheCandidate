@@ -71,13 +71,12 @@ public class GestionePosizioni extends HttpServlet {
 		CategoriaPosizione Cat = new CategoriaPosizione(id_categoria, nome_categoria);
 		posizione.setCategoria(Cat);
 		
-		Integer id_quiz = Integer.valueOf(req.getParameter("quiz").split(" ", 3)[0]);
-		String descrizioneQuiz = req.getParameter("quiz").split(" ", 3)[1];
-		Integer nDomande = Integer.valueOf(req.getParameter("quiz").split(" ", 3)[2]);
+		Integer id_quiz = Integer.valueOf(req.getParameter("quiz").split(" ", 2)[0]);
+		String descrizioneQuiz = req.getParameter("quiz").split(" ", 2)[1];
+		
 		
 		QuizIMPL quizImpl=new QuizIMPL();
-		nDomande = quizImpl.getNdomandeById(id_quiz);
-		Quiz quiz = new Quiz(id_quiz, descrizioneQuiz, nDomande);
+		Quiz quiz = new Quiz(id_quiz, descrizioneQuiz);
 		posizione.setQuiz(quiz);
 		
 		posizioneImpl.nuovaPosizione(posizione);
