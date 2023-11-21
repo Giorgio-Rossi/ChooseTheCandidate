@@ -236,7 +236,8 @@
                                 </div>
 
                                 <div class="col border-right">
-                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3"><%= new UtenteSkillsIMPL().getAllUserSkillVerifiedOrNot(utente,true).size()%></strong>
+
+                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3"><%= new UtenteSkillsIMPL().getAllUserSkillVerifiedOrNot(utente).size()%></strong>
                                 </div>
                                 <div class="col border-right">
                                     <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3"><%=new UtenteQuizIMPL().getUtenteQuizById(new PosizioneIMPL().getPosizioneById(Integer.parseInt(id_posizione)).getQuiz().getId_quiz(),utente).getPunteggio()%>%</strong>

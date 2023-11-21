@@ -147,6 +147,8 @@ public class CurriculumServlet extends HttpServlet {
 
         String[] id_istruzioni = req.getParameterValues("id_istruzione");
 
+        System.out.println(Arrays.toString(id_istruzioni));
+
 
         //TODO GESTIRE VALIDAZIONI
         if(Arrays.asList(id_istruzioni).contains(" ")){
@@ -521,7 +523,7 @@ public class CurriculumServlet extends HttpServlet {
                 usersSkills.setId_skill(new SkillIMPL().findByName(skill_aggiunte[i]).getId_skill());
                 usersSkills.setVerificata(false);
 
-                if(utenteSkillsIMPL.getById(usersSkills.getId_skills()) != null){
+                if(utenteSkillsIMPL.getById(usersSkills.getId_skills()) == null){
                     ErrorManager.setErrorMessage("Skill già inserita",req);
                 }else {
                     utenteSkillsIMPL.save(usersSkills);
