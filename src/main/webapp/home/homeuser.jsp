@@ -72,7 +72,7 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 						<div class="content">
 							<div class="icon" style="background-color:white;">
 								<i class="bi bi-card-list"
-								   style="font-size: 10rem;text-align: center"><a href="statistichequiz.jsp" class="btn btn-info m-0"style="font-size: 1rem;">Statistiche Quiz</a></i>
+								   style="font-size: 10rem;text-align: center"><a href="${pageContext.request.contextPath}/home/statistichequiz.jsp" class="btn btn-info m-0"style="font-size: 1rem;">Statistiche Quiz</a></i>
 							</div>
 						</div>
 					</div>
