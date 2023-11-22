@@ -175,6 +175,7 @@ public class ProfiloServlet extends HttpServlet {
 			utenteIMPL.updateAll(utenteModificato);
 			session.removeAttribute("utente");
 			session.setAttribute("utente", utenteModificato);
+			ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
 			req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
 		} else if ((!utenteInSessione.getEmail().equals(utenteModificato.getEmail()))
 				&& (!utenteInSessione.getTelefono().equals(utenteModificato.getTelefono()))
@@ -184,6 +185,7 @@ public class ProfiloServlet extends HttpServlet {
 			utenteIMPL.updateMailAndTel(utenteModificato);
 			session.removeAttribute("utente");
 			session.setAttribute("utente", utenteModificato);
+			ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
 			req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
 		} else if ((!utenteInSessione.getEmail().equals(utenteModificato.getEmail()))
 				&& (!utenteInSessione.getCodice_fiscale().equals(utenteModificato.getCodice_fiscale()))
@@ -193,6 +195,7 @@ public class ProfiloServlet extends HttpServlet {
 			utenteIMPL.updateMailAndCodF(utenteModificato);
 			session.removeAttribute("utente");
 			session.setAttribute("utente", utenteModificato);
+			ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
 			req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
 		} else if ((!utenteInSessione.getTelefono().equals(utenteModificato.getTelefono()))
 				&& (!utenteInSessione.getCodice_fiscale().equals(utenteModificato.getCodice_fiscale()))
@@ -202,6 +205,7 @@ public class ProfiloServlet extends HttpServlet {
 			utenteIMPL.updateTelAndCodF(utenteModificato);
 			session.removeAttribute("utente");
 			session.setAttribute("utente", utenteModificato);
+			ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
 			req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
 		} else if ((!utenteInSessione.getEmail().equals(utenteModificato.getEmail()))
 				&& (!dbOperationsr.ChechUserMail(utenteModificato))) {
@@ -209,6 +213,7 @@ public class ProfiloServlet extends HttpServlet {
 			utenteIMPL.updateMail(utenteModificato);
 			session.removeAttribute("utente");
 			session.setAttribute("utente", utenteModificato);
+			ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
 			req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
 		} else if ((!utenteInSessione.getTelefono().equals(utenteModificato.getTelefono()))
 				&& (!dbOperationsr.ChechUserTel(utenteModificato))) {
@@ -216,6 +221,7 @@ public class ProfiloServlet extends HttpServlet {
 			utenteIMPL.updateTel(utenteModificato);
 			session.removeAttribute("utente");
 			session.setAttribute("utente", utenteModificato);
+			ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
 			req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
 		} else if ((!utenteInSessione.getCodice_fiscale().equals(utenteModificato.getCodice_fiscale()))
 				&& (!dbOperationsr.ChechUserCodF(utenteModificato))) {
@@ -223,13 +229,19 @@ public class ProfiloServlet extends HttpServlet {
 			utenteIMPL.updateCodF(utenteModificato);
 			session.removeAttribute("utente");
 			session.setAttribute("utente", utenteModificato);
+			ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
 			req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
-		} else {
+		} else if((utenteInSessione.getEmail().equals(utenteModificato.getEmail()))
+				&& (utenteInSessione.getTelefono().equals(utenteModificato.getTelefono()))
+				&& (utenteInSessione.getCodice_fiscale().equals(utenteModificato.getCodice_fiscale()))){
 			UtenteIMPL utenteIMPL = new UtenteIMPL();
 			utenteIMPL.updateOnlyNotUnique(utenteModificato);
 			session.removeAttribute("utente");
 			session.setAttribute("utente", utenteModificato);
+			ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
 			req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
+		} else {
+			ErrorManager.setOtherMessage("Non hai modificato nulla!",req);
 		}
 		/*
 		 * if(!dbOperationsr.ChechUser(utenteModificato)) { //UtenteIMPL utenteIMPL =
