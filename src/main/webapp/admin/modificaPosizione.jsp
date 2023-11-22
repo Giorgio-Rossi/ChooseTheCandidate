@@ -199,8 +199,8 @@ ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAl
 															<div class="form-group">
 																<label>Descrizione</label>
 																<textarea class="form-control" type="text" name="desc"
-																	placeholder="<%=posizione.getDescrizione()%>" required
-																	style="height: 120px; max-height: 300px;"></textarea>
+																	placeholder="<%=posizione.getDescrizione()%>"  required
+																	style="height: 120px; max-height: 300px;"><%=posizione.getDescrizione()%></textarea>
 															</div>
 														</div>
 														<div class="row">
