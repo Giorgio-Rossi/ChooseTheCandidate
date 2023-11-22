@@ -1,4 +1,3 @@
-<%@page import="com.candidatoDB.pw2.interfaces.impl.PosizioneIMPL"%>
 <%@ page import="com.candidatoDB.pw2.entity.Utente"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
@@ -6,10 +5,10 @@
 <%@ page import="java.util.Objects" %>
 <%@ page import="java.lang.reflect.Field" %>
 <%@ page import="java.util.Arrays" %>
-<%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteIMPL" %>
 <%@ page import="com.candidatoDB.pw2.entity.CandidaturaUser" %>
-<%@ page import="com.candidatoDB.pw2.interfaces.impl.CandidaturaIMPL" %>
 <%@ page import="com.candidatoDB.pw2.entity.Posizione" %>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.*" %>
+<%@ page import="com.candidatoDB.pw2.entity.UsersSkills" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <%
@@ -20,11 +19,14 @@
 	CandidaturaIMPL candidaturaIMPL = new CandidaturaIMPL();
 	CandidaturaUser candidaturaRecente = candidaturaIMPL.trovaCandidaturaPiuRecente(utenteLoggato.getId_user());
 	Posizione posizioneRecente = null;
-	System.out.println(candidaturaRecente);
 	if(candidaturaRecente!=null) {
 		posizioneRecente = candidaturaIMPL.getPosizioneByCandidaturaId(candidaturaRecente);
 	}
 PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+
+	UtenteSkillsIMPL utenteSkillsIMPL = new UtenteSkillsIMPL();
+	ArrayList<UsersSkills> usersSkills = utenteSkillsIMPL.getAllUserSkillVerifiedOrNot(utenteLoggato);
+	SkillIMPL skillIMPL = new SkillIMPL();
 
 
 %>
@@ -77,9 +79,9 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 					<div class="slide slide2" style="background-color:#0072BC">
 						<div class="content">
 							<h3>
-								Hello there!
+								Da modificare!
 							</h3>
-							<p>Trust yourself and keep going.</p>
+							<p>da modificare?!</p>
 						</div>
 					</div>
 				</div>
@@ -95,10 +97,34 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 					</div>
 					<div class="slide slide2" style="background-color:#0072BC">
 						<div class="content">
-							<h3>
-								Hello there!
-							</h3>
-							<p>Trust yourself and keep going.</p>
+							<div class="row row-cols-1">
+							<%
+								for(UsersSkills usersSkills1: usersSkills){
+							%>
+								<%
+									if(usersSkills1.isVerificata()){
+								%>
+								<div class="col">
+									<%=skillIMPL.findById(usersSkills1.getId_skills()).getNome()%>
+									<span class="badge rounded-pill bg-success float-md-end mb-3 mb-sm-0"><i class="bi bi-check2-circle"></i></span>
+								</div>
+
+								<%
+									}else{
+								%>
+								<div class="col">
+									<%=skillIMPL.findById(usersSkills1.getId_skills()).getNome()%>
+									<span class="badge rounded-pill bg-warning float-md-end mb-3 mb-sm-0">Da verificare</span>
+								</div>
+
+								<%
+									}
+								%>
+
+							<%
+								};
+							%>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -157,9 +183,9 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 					<div class="slide slide2" style="background-color:#0072BC">
 						<div class="content">
 							<h3>
-								Hello there!
+								Da modificare!
 							</h3>
-							<p>Trust yourself and keep going.</p>
+							<p>da modificare?!</p>
 						</div>
 					</div>
 				</div>
@@ -221,24 +247,28 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
         <%
         if(utenteLoggato.getId_citta()!=null){
         	List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.getId_citta());
+			System.out.println(posizioniRecenti);
         
             if (!posizioniRecenti.isEmpty()) {
                 for (Posizione posizione : posizioniRecenti) {
         %>
         <div class="mb-2">
-            <span class="text-muted d-block"><strong>Stato:</strong> <%=posizione.getStato() != null ? posizione.getStato() : ""%></span>
-            <span class="text-muted d-block"><strong>Ruolo:</strong> <%=posizione.getRuolo() != null ? posizione.getRuolo() : ""%></span>
+			<h5><%=posizione.getRuolo()%></h5>
+			<div class="mt-3">
+				<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i><%=posizione.getData_inserimento()%></span>
+				<span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i><%=posizione.getCitta().getNome()%></span>
+			</div>
         </div>
         <%
                 }
-            }
             } else {
         %>
         <div class="alert alert-info" role="alert">
-            <i class="bi bi-info-circle-fill m-1"></i> Nessun annuncio recente disponibile
+            <i class="bi bi-info-circle-fill m-1"></i> Nessun annuncio recente disponibile a <%=utenteLoggato.getId_citta().getNome()%>
         </div>
         <%
             }
+		}
         %>
     </div>
 </div>

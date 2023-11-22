@@ -92,26 +92,6 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 						<div class="col mb-3">
 							<div class="card mt-4">
 								<div class="card-body" >
-
-									<%
-										if(esperienze.isEmpty()){
-									%>
-									<div class="alert alert-warning">
-										<i class="bi bi-exclamation-diamond-fill m-1"></i> Non hai aggiunto nessuna esperienza lavorativa
-									</div>
-
-
-									<%
-									}else {
-									%>
-									<div class="alert alert-warning">
-										<i class="bi bi-exclamation-diamond-fill m-1"></i> Non hai aggiunto nessuna istruzione
-									</div>
-
-									<%
-										}
-									%>
-
 									<%
 										if(!ErrorManager.getSUccessMessage((HttpServletRequest) request).isEmpty()){
 									%>
