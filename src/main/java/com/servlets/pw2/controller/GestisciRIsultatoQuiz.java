@@ -42,8 +42,9 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
         int id_skill = session.getAttribute("id_skill") != null ? (int) session.getAttribute("id_skill") : -1;
         int id_posizione =  session.getAttribute("id_posizione") != null ? (int) session.getAttribute("id_posizione") : -1;
 
+        if( id_posizione != -1 || candidaturaUserIMPL.getCandidaturaUserById(id_posizione,utente.getId_user()) == null) {
 
-        if( id_posizione != -1 && candidaturaUserIMPL.getCandidaturaUserById(id_posizione,utente.getId_user())==null) {
+            System.out.println("if");
 
             UtenteQuiz utenteQuiz = new UtenteQuiz();
 
@@ -76,10 +77,8 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
             utenteQuiz.setPunteggio(percentuale);
             utenteQuiz.setData_inserimento(new Date(System.currentTimeMillis()));
 
-            //utenteQuizIMPL.Save(utenteQuiz);
 
-
-            if(session.getAttribute("id_posizione") != null) {
+            if(id_posizione != -1) {
                 //int id_posizione = (int) session.getAttribute("id_posizione");
                 PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
                 candidaturaUser.setUtente(utente);
@@ -95,7 +94,7 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
 
             } else {
 
-                UsersSkills usersSkills = utenteSkillsIMPL.getById(id_skill);
+                UsersSkills usersSkills = utenteSkillsIMPL.getById(id_skill, utente.getId_user());
 
                 if(percentuale>=50.00){
                     utenteQuizIMPL.Save(utenteQuiz);
@@ -129,6 +128,9 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
             session.removeAttribute("id_skill");
 
         } else{
+            System.out.println("no if");
+
+
             session.setAttribute("candidatura_fatta", "false");
             req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
         }

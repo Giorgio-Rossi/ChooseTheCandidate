@@ -523,7 +523,7 @@ public class CurriculumServlet extends HttpServlet {
                 usersSkills.setId_skill(new SkillIMPL().findByName(skill_aggiunte[i]).getId_skill());
                 usersSkills.setVerificata(false);
 
-                if(utenteSkillsIMPL.getById(usersSkills.getId_skills()) == null){
+                if(utenteSkillsIMPL.getById(usersSkills.getId_skills(), utenteInSessione.getId_user()) == null){
                     ErrorManager.setErrorMessage("Skill già inserita",req);
                 }else {
                     utenteSkillsIMPL.save(usersSkills);

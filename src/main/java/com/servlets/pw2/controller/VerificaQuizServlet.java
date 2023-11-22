@@ -27,6 +27,8 @@ public class VerificaQuizServlet  extends HttpServlet {
 
         Skill skill = skillIMPL.findByName(req.getParameter("id"));
 
+        //System.out.println(skill);
+
         QuizIMPL quizIMPL = new QuizIMPL();
         String nome_quiz = quizIMPL.getQuizById(skill.getId_quiz()).getDescrizione();
 

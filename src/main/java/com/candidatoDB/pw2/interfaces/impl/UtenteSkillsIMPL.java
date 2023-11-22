@@ -101,9 +101,9 @@ public class UtenteSkillsIMPL implements UtenteSkillsDAO {
     }
 
     @Override
-    public UsersSkills getById(int id_skill) {
+    public UsersSkills getById(int id_skill, int id_user) {
         UsersSkills usersSkills = null;
-        String sql = "SELECT * FROM UserSkills WHERE id_skill=?";
+        String sql = "SELECT * FROM UserSkills WHERE id_skill=? and id_user=?";
         //Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -111,6 +111,7 @@ public class UtenteSkillsIMPL implements UtenteSkillsDAO {
             //connection = DbOperations.getInstance().getConnection();
             statement =  connection.getConnection().prepareStatement(sql);
             statement.setInt(1, id_skill);
+            statement.setInt(2, id_user);
             resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 usersSkills = new UsersSkills();

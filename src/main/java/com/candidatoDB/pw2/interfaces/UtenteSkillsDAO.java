@@ -14,5 +14,5 @@ public interface UtenteSkillsDAO {
 
     void save(UsersSkills usersSkills);
 
-    UsersSkills getById(int id_skill);
+    UsersSkills getById(int id_skill, int id_user);
 }

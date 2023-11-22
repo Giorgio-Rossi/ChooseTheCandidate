@@ -549,7 +549,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																<div class="col">
 																	<div class="form-group">
 																		<%Citta citta = (esperienza.getId_citta() !=null)? esperienza.getId_citta() : null;
-																			System.out.println(citta);
+
 																		%>
 																		<label>Sede</label>
 																		<select class="form-select" id="sede_esperienza" aria-label="Default select example" name="sede_esperienza <%=esperienza.getId_esperienza()%>">
