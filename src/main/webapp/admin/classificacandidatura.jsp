@@ -84,13 +84,14 @@
 
                         <div class="d-flex justify-content-center">
                             <h5>
-                               Charles Dickens
+                               Primo Candidato
                             </h5>
                         </div>
 
                         <div class="col-auto d-flex justify-content-center">
                             <div class="candidate-list-images">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-md img-thumbnail rounded-circle" />
+                                <i class="bi bi-person-circle avatar-md img-thumbnail rounded-circle" style="font-size: 3rem"></i>
+
                             </div>
                         </div>
 
@@ -123,13 +124,13 @@
 
                         <div class="d-flex justify-content-center">
                             <h5>
-                                Charles Dickens
+                                Secondo Candidato
                             </h5>
                         </div>
 
                         <div class="col-auto d-flex justify-content-center">
                             <div class="candidate-list-images">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-md img-thumbnail rounded-circle" />
+                                <<i class="bi bi-person-circle avatar-md img-thumbnail rounded-circle" style="font-size: 3rem"></i>
                             </div>
                         </div>
 
@@ -162,13 +163,13 @@
 
                         <div class="d-flex justify-content-center">
                             <h5>
-                                Charles Dickens
+                                Terzo Candidato
                             </h5>
                         </div>
 
                         <div class="col-auto d-flex justify-content-center">
                             <div class="candidate-list-images">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-md img-thumbnail rounded-circle" />
+                                <i class="bi bi-person-circle avatar-md img-thumbnail rounded-circle" style="font-size: 3rem"></i>
                             </div>
                         </div>
 

@@ -183,9 +183,15 @@ public class ProfiloServlet extends HttpServlet {
             utenteModificato.setFoto_profilo(utenteInSessione.getFoto_profilo());
         }
 
+        //todo da modificare quando non sono state effettuate modifiche
+        UtenteIMPL utenteIMPL = new UtenteIMPL();
+        utenteIMPL.update(utenteModificato);
+        session.removeAttribute("utente");
+        session.setAttribute("utente", utenteModificato);
+        req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
         
-        if(!dbOperationsr.ChechUser(utenteModificato)) {
-            UtenteIMPL utenteIMPL = new UtenteIMPL();
+       /* if(!dbOperationsr.ChechUser(utenteModificato)) {
+            //UtenteIMPL utenteIMPL = new UtenteIMPL();
             utenteIMPL.update(utenteModificato);
             session.removeAttribute("utente");
             session.setAttribute("utente", utenteModificato);
@@ -193,8 +199,8 @@ public class ProfiloServlet extends HttpServlet {
                 ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
             } else {
                 ErrorManager.setOtherMessage("Non hai modificato nulla!",req);
-            }
-            req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
+            }*/
+            //req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
         }
     
     
