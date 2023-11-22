@@ -91,7 +91,7 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 						<div class="content">
 							<div class="icon" style="background-color:white">
 								<i class="bi bi-clipboard-data"
-								   style="font-size: 10rem;text-align: center"><h1 class="btn btn-info m-1"style="font-size: 1rem">Skills Verificate</h1></i>
+								   style="font-size: 10rem;text-align: center"><h1 class="btn btn-info m-1"style="font-size: 1rem">Le tue Skills</h1></i>
 							</div>
 						</div>
 					</div>
