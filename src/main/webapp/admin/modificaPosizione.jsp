@@ -109,13 +109,17 @@ ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAl
 											<div class="tab-pane active justify-content-center">
 												<form class="form" method="post"
 													action="${pageContext.request.contextPath}/updatePosizioni">
-													<input type="hidden" name="id_posizione" value="<%=posizione.getId_posizione()%>">
+													<input type="hidden" name="id_posizione"
+														value="<%=posizione.getId_posizione()%>">
 													<div class="column">
 														<div class="row">
 															<div class="form-group">
-																<label>Categoria</label> <select class="form-select" name="categoria" aria-label="Default select example">
+																<label>Categoria</label> <select class="form-select"
+																	name="categoria" aria-label="Default select example">
 
-																	<option value="<%=posizione.getCategoria().getId_categoria()%>" selected><%=posizione.getCategoria().getNome_categoria()%></option>
+																	<option
+																		value="<%=posizione.getCategoria().getId_categoria()%>"
+																		selected><%=posizione.getCategoria().getNome_categoria()%></option>
 
 																	<%
 																	for (CategoriaPosizione cat : categorie_posizioni) {
@@ -199,9 +203,7 @@ ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAl
 															<div class="form-group">
 																<label>Descrizione</label>
 																<textarea class="form-control" type="text" name="desc"
-																	placeholder="<%=posizione.getDescrizione()%>" 
-																	value=<%=posizione.getDescrizione()%> required
-																	style="height: 120px; max-height: 300px;"></textarea>
+																	required style="height: 120px; max-height: 500px;"><%=posizione.getDescrizione()%></textarea>
 															</div>
 														</div>
 														<div class="row">
@@ -216,7 +218,8 @@ ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAl
 															<div class="form-group">
 																<label>Quiz </label> <select class="form-select"
 																	name="quiz" aria-label="Default select example">
-																	<option value="<%=posizione.getQuiz().getId_quiz()%>" selected><%=posizione.getQuiz().getDescrizione()%></option>
+																	<option value="<%=posizione.getQuiz().getId_quiz()%>"
+																		selected><%=posizione.getQuiz().getDescrizione()%></option>
 																	<%
 																	for (Quiz q : quiz) {
 																	%>
