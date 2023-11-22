@@ -240,9 +240,11 @@ public class ProfiloServlet extends HttpServlet {
 			session.setAttribute("utente", utenteModificato);
 			ErrorManager.setSuccessMessage("Modifiche effettuate correttamente!",req);
 			req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
-		} else {
-			ErrorManager.setOtherMessage("Non hai modificato nulla!",req);
-		}
+		} else //if(dbOperationsr.ChechUserAll(utenteModificato)){
+			{
+			ErrorManager.setErrorMessage("Email o telefono o codice fiscale già usati da un altro utente", req);
+			req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
+		} 
 		/*
 		 * if(!dbOperationsr.ChechUser(utenteModificato)) { //UtenteIMPL utenteIMPL =
 		 * new UtenteIMPL(); utenteIMPL.update(utenteModificato);
