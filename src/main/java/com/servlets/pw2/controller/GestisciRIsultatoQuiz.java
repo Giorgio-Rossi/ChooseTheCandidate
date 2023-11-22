@@ -42,9 +42,7 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
         int id_skill = session.getAttribute("id_skill") != null ? (int) session.getAttribute("id_skill") : -1;
         int id_posizione =  session.getAttribute("id_posizione") != null ? (int) session.getAttribute("id_posizione") : -1;
 
-        if( id_posizione != -1 || candidaturaUserIMPL.getCandidaturaUserById(id_posizione,utente.getId_user()) == null) {
-
-            System.out.println("if");
+        if( id_posizione != -1 && candidaturaUserIMPL.getCandidaturaUserById(id_posizione,utente.getId_user()) == null) {
 
             UtenteQuiz utenteQuiz = new UtenteQuiz();
 
@@ -78,62 +76,88 @@ public class GestisciRIsultatoQuiz extends HttpServlet {
             utenteQuiz.setData_inserimento(new Date(System.currentTimeMillis()));
 
 
-            if(id_posizione != -1) {
-                //int id_posizione = (int) session.getAttribute("id_posizione");
-                PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
-                candidaturaUser.setUtente(utente);
-                candidaturaUser.setData_candidatura(new Date(System.currentTimeMillis()));
-                candidaturaUser.setPosizione(posizioneIMPL.getPosizioneById(id_posizione));
+            //int id_posizione = (int) session.getAttribute("id_posizione");
+            PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+            candidaturaUser.setUtente(utente);
+            candidaturaUser.setData_candidatura(new Date(System.currentTimeMillis()));
+            candidaturaUser.setPosizione(posizioneIMPL.getPosizioneById(id_posizione));
 
-                utenteQuizIMPL.Save(utenteQuiz);
-                candidaturaUserIMPL.Save(candidaturaUser);
+            utenteQuizIMPL.Save(utenteQuiz);
+            candidaturaUserIMPL.Save(candidaturaUser);
 
-                session.setAttribute("candidatura_fatta", "true");
+            session.setAttribute("candidatura_fatta", "true");
 
-                req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
-
-            } else {
-
-                UsersSkills usersSkills = utenteSkillsIMPL.getById(id_skill, utente.getId_user());
-
-                if(percentuale>=50.00){
-                    utenteQuizIMPL.Save(utenteQuiz);
-
-                    usersSkills.setVerificata(true);
-
-                    System.out.println(usersSkills);
-
-                    utenteSkillsIMPL.update(usersSkills);
-
-                    session.setAttribute("skill_verificata", "true");
-
-                    req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
-                } else {
-                    session.setAttribute("skill_verificata", "false");
-
-                    req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
-                }
-
-
-
-
-
-                //todo gestire risultato minimo e reindirizzamento dopo completamento, non funziona l'if di controllo iniziale
-
-            }
+            req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
 
             session.removeAttribute("quiz");
             session.removeAttribute("nome_quiz");
             session.removeAttribute("id_posizione");
             session.removeAttribute("id_skill");
 
-        } else{
-            System.out.println("no if");
+        } else if(id_skill != -1){
+            UtenteQuiz utenteQuiz = new UtenteQuiz();
+
+            HashMap<Domanda, ArrayList<RisposteDomande>> risposte = (HashMap<Domanda, ArrayList<RisposteDomande>>) session.getAttribute("quiz");
+
+            Integer punteggio_quiz = 0;
+
+            int i = 0;
+            for (Map.Entry<Domanda, ArrayList<RisposteDomande>> entry : risposte.entrySet()) {
+
+                String rispsota = (req.getParameter(String.valueOf(i++)));
 
 
+                if (rispsota != null) {
+                    for (RisposteDomande r : entry.getValue()) {
+                        if (r.checkSceltaCorretta(rispsota)) {
+                            punteggio_quiz += entry.getKey().getPunteggio();
+                        }
+                    }
+                }
+            }
+            QuizIMPL quizIMPL = new QuizIMPL();
+            Double punteggioOttenuto = (double) punteggio_quiz;
+            Integer punteggioTotale = quizIMPL.getPunteggioTotaleById(id_quiz);
+            Double percentuale = (punteggioOttenuto/punteggioTotale) * 100;
+
+
+            utenteQuiz.setId_quiz(id_quiz);
+            utenteQuiz.setId_user(utente.getId_user());
+            utenteQuiz.setPunteggio(percentuale);
+            utenteQuiz.setData_inserimento(new Date(System.currentTimeMillis()));
+
+            UsersSkills usersSkills = utenteSkillsIMPL.getById(id_skill, utente.getId_user());
+
+            if(percentuale>=50.00){
+                utenteQuizIMPL.Save(utenteQuiz);
+
+                usersSkills.setVerificata(true);
+
+                System.out.println(usersSkills);
+
+                utenteSkillsIMPL.update(usersSkills);
+
+                session.setAttribute("skill_verificata", "true");
+
+                req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
+            } else {
+                session.setAttribute("skill_verificata", "false");
+
+                req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
+            }
+
+
+            session.removeAttribute("quiz");
+            session.removeAttribute("nome_quiz");
+            session.removeAttribute("id_skill");
+
+
+        } else {
             session.setAttribute("candidatura_fatta", "false");
             req.getRequestDispatcher("/home/homeuser.jsp").forward(req, resp);
         }
+
     }
 }
+
 

@@ -131,7 +131,19 @@
                                 <span class="badge bg-info">Ammissioni massime: <%=posizione.getN_ammissioni()%></span>
                             </div>
                             <div class="col-sm-3 text-lg-end">
+                                <%
+                                    if(posizione.getStato().equals("aperta")){
+                                %>
                                 <span class="badge bg-success"><%=posizione.getStato()%></span>
+                                <%
+                                    }else {
+                                %>
+
+                                <span class="badge bg-danger"><%=posizione.getStato()%></span>
+
+                                <%
+                                    };
+                                %>
                                
                                <a href="<%=request.getContextPath()%>/admin/modificaPosizione.jsp?idPosizione=<%=posizione.getId_posizione()%>" class="btn btn-primary me-2">Modifica</a>
                                

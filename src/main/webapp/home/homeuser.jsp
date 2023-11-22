@@ -312,7 +312,6 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 
 
 <%
-	//System.out.println(session.getAttribute("candidatura_fatta"));
 	String success =  session.getAttribute("candidatura_fatta") == null ?  null : session.getAttribute("candidatura_fatta").toString();
 
 	if(success != null && Boolean.parseBoolean(success)){
