@@ -1,12 +1,8 @@
 
 package com.candidatoDB.pw2.interfaces.impl;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.candidatoDB.pw2.entity.CategoriaPosizione;
@@ -683,27 +679,22 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 	@Override
 	public void updatePosizione(Posizione posizione) {
-		String sql = "UPDATE Posizione SET id_posizione=?,n_ammissioni=?,descrizione=?,citta=?,categoria=?,quiz=?,stato=?,ruolo=? WHERE id_posizione = ?";
+		String sql = "UPDATE Posizione SET n_ammissioni=?,descrizione=?,id_citta=?,id_Categoria=?,id_quiz=?,stato=?,data_inserimento=?,ruolo=? WHERE id_posizione = ?";
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 
 		try {
 			statement = connection.getConnection().prepareStatement(sql);
-			statement.setInt(1, posizione.getId_posizione());
-			statement.setInt(2, posizione.getN_ammissioni());
-			statement.setString(3, posizione.getDescrizione());
-			
-			CittaIMPL cittaIMPL = new CittaIMPL();
-			posizione.setCitta(cittaIMPL.getCittaById(resultSet.getInt(4)));
-			
-			CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
-			posizione.setCategoria(categoriaPosizioneIMPL.getCategoriaPosizioneById(resultSet.getInt(5)));
-			
-			QuizIMPL quizIMPL = new QuizIMPL();
-			posizione.setQuiz(quizIMPL.getQuizById(resultSet.getInt(6)));
+			statement.setInt(1, posizione.getN_ammissioni());
+			statement.setString(2, posizione.getDescrizione());
 
-			statement.setString(7, posizione.getStato());
-			statement.setString(9, posizione.getRuolo());
+			statement.setInt(3,posizione.getCitta().getId_citta());
+			statement.setInt(4,posizione.getCategoria().getId_categoria());
+			statement.setInt(5,posizione.getQuiz().getId_quiz());
+			statement.setString(6, posizione.getStato());
+			statement.setDate(7, new Date(posizione.getData_inserimento().getTime()));
+			statement.setString(8, posizione.getRuolo());
+			statement.setInt(9, posizione.getId_posizione());
 			
 			statement.executeUpdate();
 		} catch (SQLException e) {

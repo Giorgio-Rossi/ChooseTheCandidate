@@ -37,8 +37,6 @@ public class ProfiloServlet extends HttpServlet {
         Utente utenteInSessione = (Utente) session.getAttribute("utente");
 
 
-        //indirizzo citta cap fotoprofilo genere
-
         Utente utenteModificato = new Utente();
         
         boolean isModified = false;
@@ -119,12 +117,10 @@ public class ProfiloServlet extends HttpServlet {
 
 
         if(!req.getParameter("citta").isEmpty()){
-            //System.out.println(req.getParameter("citta"));
             Integer id_citta = Integer.valueOf(req.getParameter("citta").split(" ", 3)[0]);
             Integer id_regione = Integer.valueOf(req.getParameter("citta").split(" ", 3)[1]);
             String nome_citta = req.getParameter("citta").split(" ", 3)[2];
 
-            //Citta citta_utente_sessione = utenteInSessione.getId_citta();
 
             CittaIMPL cittaIMPL = new CittaIMPL();
             Regione regione = cittaIMPL.getRegione(id_regione);
@@ -190,7 +186,7 @@ public class ProfiloServlet extends HttpServlet {
         session.setAttribute("utente", utenteModificato);
         req.getRequestDispatcher("/home/profilo.jsp").forward(req, resp);
         
-       /* if(!dbOperationsr.ChechUser(utenteModificato)) {
+        /*if(!dbOperationsr.ChechUser(utenteModificato)) {
             //UtenteIMPL utenteIMPL = new UtenteIMPL();
             utenteIMPL.update(utenteModificato);
             session.removeAttribute("utente");

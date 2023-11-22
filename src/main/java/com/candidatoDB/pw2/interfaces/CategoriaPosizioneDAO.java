@@ -6,7 +6,9 @@ import java.util.ArrayList;
 
 public interface CategoriaPosizioneDAO {
 
-    public CategoriaPosizione getCategoriaPosizioneById(int id_categoria);
+     CategoriaPosizione getCategoriaPosizioneById(int id_categoria);
 
-    public ArrayList<CategoriaPosizione> getAllCategoriePosizioni();
+     ArrayList<CategoriaPosizione> getAllCategoriePosizioni();
+
+     CategoriaPosizione getCategoriaById(int id_categoria);
 }
