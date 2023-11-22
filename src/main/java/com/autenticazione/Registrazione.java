@@ -57,7 +57,7 @@ public class Registrazione extends HttpServlet {
             utente.setData_nascita(new java.sql.Date(data_nascita.getTime()));
             utente.setPassword(password);
 
-            if(!dbOperationsr.ChechUser(utente)) {
+            if(!dbOperationsr.ChechUserAll(utente)) {
                 UtenteIMPL utenteIMPL = new UtenteIMPL();
                 utenteIMPL.save(utente);
                 ErrorManager.setSuccessMessage("Registrazione effettuata, fai il login!",req);

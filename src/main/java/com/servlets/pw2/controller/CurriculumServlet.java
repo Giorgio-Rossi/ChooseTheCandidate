@@ -557,7 +557,7 @@ public class CurriculumServlet extends HttpServlet {
                 part.write(path);
                 System.out.println("CV caricato correttamente" + path);
                 utenteInSessione.setCV("/"+ fileName);
-                utenteIMPL.update(utenteInSessione);
+                utenteIMPL.updateOnlyNotUnique(utenteInSessione);
                 isModified = true;
             } catch (Exception e) {
                 ErrorManager.setErrorMessage("Qualcosa è andato storto",req);
