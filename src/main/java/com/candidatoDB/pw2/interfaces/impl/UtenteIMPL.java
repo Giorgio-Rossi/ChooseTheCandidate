@@ -1095,5 +1095,50 @@ public class UtenteIMPL implements UtenteDAO {
 		return campi_vuoti;
 
 	}
+	//-----------------------------------------------------------------------------------------------
+	public Utente findByIdUtenteQuiz(int id_utente_quiz) {
+
+		Utente utente = new Utente();
+
+		// Citta cittaUtente = new Citta();
+
+		String sql = "SELECT u.id_user from Utente u join utenteQuiz uq on u.id_user=uq.id_user where uq.id_utente_quiz=?";
+
+		PreparedStatement statement = null;
+
+		ResultSet resultSet = null;
+
+		try {
+
+			statement = connection.getConnection().prepareStatement(sql);
+
+			statement.setInt(1, id_utente_quiz);
+
+			resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+
+				utente.setId_user(resultSet.getInt("id_user"));
+
+			}
+
+		} catch (SQLException e) {
+
+			System.err.println(e.getMessage());
+
+		} finally {
+
+			DBUtil.close(resultSet);
+
+			DBUtil.close(statement);
+
+			// DBUtil.close(connection.getConnection());
+
+		}
+
+		return utente;
+
+	}
+
 
 }

@@ -157,25 +157,32 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
 
 
 	@Override
-	public UtenteQuiz BestCandidatura(int id_user) {
+	public UtenteQuiz BestCandidatura(int id_utente_quiz) {
 	
 			 UtenteQuiz utenteQuiz = null;
-			    String sql="select top 1 punteggio,uq.*, uc.* from UtenteQuiz uq join CandidaturaUser uc on uq.id_user=uc.id_user where uq.id_user=? and uc.id_user=? order by punteggio desc";
+			    String sql="select p.ruolo, p.id_Categoria, p.id_citta, p.stato, (select max(uq.punteggio) from UtenteQuiz uq group by uq.id_user) as punteggio"
+			    		+ "from CandidaturaUser cu join posizione p on cu.id_posizione=p.id_posizione"
+			    		+ "join quiz q on p.id_quiz=q.id_quiz"
+			    		+ "join UtenteQuiz uq on q.id_quiz=uq.id_quiz"
+			    		+ "where uq.id_utente_quiz=?";
 			    PreparedStatement statement = null;
 			    ResultSet resultSet = null;
 			    try {
 			        statement = connection.getConnection().prepareStatement(sql);
-			        statement.setInt(1, id_user);
+			        statement.setInt(1, id_utente_quiz);
 			 
 			        resultSet = statement.executeQuery();
 			 
 			            while (resultSet.next()) {
-			            	utenteQuiz = new UtenteQuiz();
-							utenteQuiz.setId_utente_quiz(resultSet.getInt("id_utente_quiz"));
-							utenteQuiz.setId_quiz(resultSet.getInt("id_quiz"));
-							utenteQuiz.setPunteggio(resultSet.getDouble("punteggio"));
-							utenteQuiz.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
-							
+			            	utenteQuiz= new UtenteQuiz();
+			            	utenteQuiz.setId_utente_quiz(resultSet.getInt("id_utente_quiz"));
+			            	Posizione posizione=new Posizione();
+			                posizione.setRuolo(resultSet.getString("ruolo"));
+			                CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
+							posizione.setCategoria(categoriaPosizioneIMPL.getCategoriaPosizioneById(resultSet.getInt("id_categoria")));
+							CittaIMPL cittaIMPL = new CittaIMPL();
+							posizione.setCitta(cittaIMPL.getCittaById(resultSet.getInt("id_citta")));	                
+			                posizione.setStato(resultSet.getString("stato"));
 			            }
 			        
 			    } catch (SQLException e) {
