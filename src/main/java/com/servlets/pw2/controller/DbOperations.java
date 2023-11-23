@@ -204,7 +204,7 @@ public class DbOperations {
             ResultSet resultSet = result.executeQuery();
 
             if(resultSet.next()){
-				chiaveSicurezza = resultSet.getString("chiaveSicureza");
+				chiaveSicurezza = resultSet.getString("chiaveSicurezza");
             }else {
                 return utente;
             }
