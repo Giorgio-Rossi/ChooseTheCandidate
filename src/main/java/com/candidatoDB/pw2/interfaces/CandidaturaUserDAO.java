@@ -10,6 +10,8 @@ public interface CandidaturaUserDAO {
     void Save (CandidaturaUser candidaturaUser);
 
     CandidaturaUser getCandidaturaUserById(int id_posizione, int id_user);
+    
+//    CandidaturaUser BestCandidatura (int id_user);
 
 
 }

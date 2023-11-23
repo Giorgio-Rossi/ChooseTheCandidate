@@ -7,6 +7,7 @@
 <%@ page import="java.util.Arrays" %>
 <%@ page import="com.candidatoDB.pw2.entity.CandidaturaUser" %>
 <%@ page import="com.candidatoDB.pw2.entity.Posizione" %>
+<%@ page import="com.candidatoDB.pw2.entity.UtenteQuiz" %>
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.*" %>
 <%@ page import="com.candidatoDB.pw2.entity.UsersSkills" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
@@ -27,6 +28,10 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 	UtenteSkillsIMPL utenteSkillsIMPL = new UtenteSkillsIMPL();
 	ArrayList<UsersSkills> usersSkills = utenteSkillsIMPL.getAllUserSkillVerifiedOrNot(utenteLoggato);
 	SkillIMPL skillIMPL = new SkillIMPL();
+
+	UtenteQuizIMPL utenteQuizIMPL = new UtenteQuizIMPL();
+	
+	UtenteQuiz bestCandidatura = utenteQuizIMPL.BestCandidatura(utenteLoggato.getId_user());
 
 
 %>
@@ -171,24 +176,41 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 					</div>
 				</div>
 
-				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
+			<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
 					<div class="slide slide1"  style="width:300px;height:235px;">
 						<div class="content">
 							<div class="icon" style="background-color:white">
-								<i class="bi bi-award"
-								   style="font-size: 10rem;text-align: center"><h1 class="btn btn-info m-1"style="font-size: 1rem">Miglior Candidatura</h1></i>
+								<i class="bi bi-receipt-cutoff"
+								   style="font-size: 9rem;text-align: center"><h1 class="btn btn-info m-1"style="font-size: 1rem">Miglior Candidatura</h1></i>
 							</div>
 						</div>
 					</div>
 					<div class="slide slide2" style="background-color:#0072BC">
-						<div class="content">
-							<h3>
-								Da modificare!
-							</h3>
-							<p>da modificare?!</p>
+						<div class="card-body p-4">
+							<%
+								if(bestCandidatura!=null){
+							%>
+							<h5> <%=bestCandidatura.getPunteggio()%></h5>
+							<div class="mt-3">
+								<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i><%=bestCandidatura.getId_user()%></span>
+								<span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i><%=bestCandidatura.getData_inserimento()%></span>
+							</div>
+							<%
+							}else {
+							%>
+							<div class="alert alert-primary  align-items-center border border-0" role="alert">
+								<div>
+									<i class="bi bi-info-circle-fill m-1"></i> Non hai effettuato nessuna candidatura
+								</div>
+							</div>
+							<%
+								};
+							%>
+
 						</div>
 					</div>
 				</div>
+		
 
 				<div class="card col-lg-4 d-flex align-items-stretch" style=" background-color: rgba(0,0,0,0); border: none">
 					<div class="slide slide1"  style="width:300px;height:235px;">
@@ -242,8 +264,8 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 							</div>
 						</div>
 					</div>
-		<div class="slide slide2" style="background-color:#0072BC">
-    <div class="card-body p-4">
+		<div class="slide slide2" style="background-color:#0072BC;overflow:auto">
+    <div class="card-body p-4" >
         <%
         if(utenteLoggato.getId_citta()!=null){
         	List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.getId_citta());

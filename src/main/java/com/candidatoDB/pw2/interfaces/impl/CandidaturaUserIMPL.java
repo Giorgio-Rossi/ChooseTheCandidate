@@ -86,6 +86,38 @@ public class CandidaturaUserIMPL implements CandidaturaUserDAO {
         }
         return candidaturaUser;
     }
-
+//	@Override
+//	public CandidaturaUser BestCandidatura(int id_user) {
+//		 CandidaturaUser candidatura = null;
+//		    String sql="select top 1 punteggio, uc.* from UtenteQuiz uq join CandidaturaUser uc on uq.id_user=uc.id_user where uq.id_user=? and uc.id_user=? order by punteggio desc";
+//		    PreparedStatement statement = null;
+//		    ResultSet resultSet = null;
+//		    try {
+//		        statement = connection.getConnection().prepareStatement(sql);
+//		        statement.setInt(1, id_user);
+//		 
+//		        resultSet = statement.executeQuery();
+//		 
+//		            while (resultSet.next()) {
+//		            	candidatura = new CandidaturaUser();
+//						candidatura.setId_candidatura(resultSet.getInt("id_candidatura"));
+//						PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+//						candidatura.setPosizione(posizioneIMPL.getPosizioneById(resultSet.getInt("posizione")));
+//						UtenteIMPL utenteIMPL = new UtenteIMPL();
+//						candidatura.setUtente(utenteIMPL.findById(resultSet.getInt("utente")));
+//						candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate("data_candidatura").getTime()));
+//						
+//		            }
+//		        
+//		    } catch (SQLException e) {
+//		        System.err.println(e.getMessage());
+//		    } finally {
+//		        DBUtil.close(resultSet);
+//		        DBUtil.close(statement);
+//		        //DBUtil.close(connection.getConnection());
+//		    }
+//		    return candidatura;
+//}
+	
 }
 
