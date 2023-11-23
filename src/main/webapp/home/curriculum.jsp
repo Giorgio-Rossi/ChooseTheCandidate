@@ -373,8 +373,8 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																				<div class="modal-content">
 																					<div class="modal-body text-center p-lg-4">
 																						<i class="bi bi-exclamation-triangle-fill" style="font-size: 5rem"></i>
-																						<h4 class="text-warning mt-3">Sei sicuro di voler eliminare la posizione?</h4>
-																						<p class="mt-3">Una volta eliminata non sarà più possibile visualizzare eventuali candidati</p>
+																						<h4 class="text-warning mt-3">Sei sicuro di voler eliminare l' istruzione?</h4>
+																						<p class="mt-3">L'azione non è reversibile</p>
 																					</div>
 																					<div class="modal-footer">
 																						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
@@ -685,6 +685,27 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																			%>
 																		
 																	</select>
+
+																	<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#warningModal<%=esperienza.getId_esperienza()%>">
+																		Elimina esperienza
+																	</button>
+
+																	<div class="modal fade" id="warningModal<%=esperienza.getId_esperienza()%>" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+																		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+																			<div class="modal-content">
+																				<div class="modal-body text-center p-lg-4">
+																					<i class="bi bi-exclamation-triangle-fill" style="font-size: 5rem"></i>
+																					<h4 class="text-warning mt-3">Sei sicuro di voler eliminare l' esperienza?</h4>
+																					<p class="mt-3">L'azione non è reversibile </p>
+																				</div>
+																				<div class="modal-footer">
+																					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+																					<a href="<%=request.getContextPath()%>/EliminaEsperienza?id_esperienza=<%=esperienza.getId_esperienza()%>" class="btn btn-danger mt-2">Elimina esperienza</a>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
 																</div>
 															</div>
 														</div>
@@ -832,7 +853,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 			</div>
 		</div>
 
-		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+		<div class="modal fade" id="deleteModalI" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
 			<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
 				<div class="modal-content">
 					<div class="modal-body text-center p-lg-4">
@@ -844,10 +865,53 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 			</div>
 		</div>
 
+		<div class="modal fade" id="deleteModalE" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+			<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center p-lg-4">
+						<i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+						<h4 class="text-success mt-3">Hai eliminato correttamente l'esperienza!</h4>
+						<button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 
 
 
 	</main>
+
+	<%
+		String deleteE =  session.getAttribute("esperienza_eliminata") == null ?  null : session.getAttribute("esperienza_eliminata").toString();
+		String deleteI =  session.getAttribute("istruzione_eliminata") == null ?  null : session.getAttribute("istruzione_eliminata").toString();
+
+	%>
+
+	<%
+		if(deleteE != null && Boolean.parseBoolean(deleteE)){
+	%>
+	<script>
+		var myModal = new bootstrap.Modal(document.getElementById('deleteModalE'))
+		myModal.show()
+		<% session.removeAttribute("esperienza_eliminata");%>
+	</script>
+	<%
+		}
+	%>
+
+	<%
+		if(deleteI != null && Boolean.parseBoolean(deleteI)){
+	%>
+	<script>
+		var myModal = new bootstrap.Modal(document.getElementById('deleteModalI'))
+		myModal.show()
+		<% session.removeAttribute("istruzione_eliminata");%>
+	</script>
+	<%
+		}
+	%>
+
 
 
 	<%

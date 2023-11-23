@@ -12,7 +12,7 @@ public interface EsperienzaDAO {
 	
 	List<Esperienza> getAllExperience(int id_user);
 	
-	void deleteEsperienzaUtente(Esperienza esperienze);
+	void deleteEsperienzaUtente(Integer id_esperienza);
 }
 
 

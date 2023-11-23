@@ -172,13 +172,13 @@ public class EsperienzaIMPL implements EsperienzaDAO {
 	}
 
 		@Override
-		public void deleteEsperienzaUtente(Esperienza esperienza) {
-			String sql = "DELETE Esperienza WHERE id_user = ?";
+		public void deleteEsperienzaUtente(Integer id_esperienza) {
+			String sql = "DELETE Esperienza WHERE id_esperienza = ?";
 			PreparedStatement statement = null;
 			try {
 			
 				statement = connection.getConnection().prepareStatement(sql);
-				statement.setInt(1, esperienza.getId_esperienza());
+				statement.setInt(1, id_esperienza);
 				statement.executeUpdate();
 			} catch (SQLException e) {
 				System.err.println(e.getMessage());
