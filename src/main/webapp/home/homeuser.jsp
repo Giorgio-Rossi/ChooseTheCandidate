@@ -185,7 +185,7 @@
 					<div class="slide slide2" style="background-color:#0072BC">
 						<div class="card-body p-4">
 							<%
-								if(!bestCandidatura.isEmpty()){
+								if(bestCandidatura !=null){
 									Posizione posizione = (Posizione) bestCandidatura.keySet().toArray()[0];
 							%>
 

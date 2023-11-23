@@ -14,7 +14,6 @@ public class EliminaPosizioneServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer id_posizione = Integer.parseInt(req.getParameter("idPosizione"));
-        System.out.println(id_posizione);
         PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 
         posizioneIMPL.deletePosizione(id_posizione);
