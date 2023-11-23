@@ -33,6 +33,7 @@ public class Registrazione extends HttpServlet {
         String cognome = req.getParameter("cognome");
         String telefono = req.getParameter("telefono");
         String codF = req.getParameter("codice_fiscale");
+        String chiaveSicurezza = req.getParameter("chiaveSicurezza");
 
         SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
         String param = req.getParameter("data_nascita");
@@ -56,6 +57,7 @@ public class Registrazione extends HttpServlet {
             utente.setCodice_fiscale(codF);
             utente.setData_nascita(new java.sql.Date(data_nascita.getTime()));
             utente.setPassword(password);
+            utente.setChiaveSicurezza(chiaveSicurezza);
 
             if(!dbOperationsr.ChechUserAll(utente)) {
                 UtenteIMPL utenteIMPL = new UtenteIMPL();

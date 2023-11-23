@@ -60,6 +60,7 @@
 					<input type="text" name="codice_fiscale" pattern="^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$" id="codice_fiscale" placeholder="Codice Fiscale"  required><br>
 					<input type="tel" name="telefono" id="telefono" pattern="[0-9]{10}" placeholder="Numero telefono"><br>
 					<input type="password" name="check_password" id="check_password" placeholder="Password"  required><br>
+					<input type="text" name="chiaveSicurezza" id="chiaveSicurezza" placeholder="chiaveSicurezza"  required><br>
 
 				</div>
 			</form>
