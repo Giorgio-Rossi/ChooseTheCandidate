@@ -862,17 +862,36 @@ public class UtenteIMPL implements UtenteDAO {
 
 	public ArrayList<Utente> getTop3UserByIdCandidatura(int id_posizione) {
 
-		return null;
+		ArrayList<Utente> top_3_utenti = new ArrayList<>();
 
-	}
-
-	@Override
-
-	public ArrayList<Utente> getAllUserByIdCandidatura(int id_posizione) {
-
-		ArrayList<Utente> utenti_by_posizione = new ArrayList<>();
-
-		String sql = "SELECT * from CandidaturaUser cu inner join Utente u on cu.id_user = u.id_user inner join Posizione p on cu.id_posizione = p.id_posizione where p.id_posizione=?;";
+		String sql = "WITH ranked_users AS (\n" +
+				"    SELECT \n" +
+				"        U.id_user,\n" +
+				"        U.nome,\n" +
+				"        U.cognome,\n" +
+				"        COUNT(US.id_skill) AS SkillsVerificate,\n" +
+				"        UQ.punteggio AS PunteggioQuiz,\n" +
+				"        ROW_NUMBER() OVER (PARTITION BY U.id_user ORDER BY UQ.punteggio DESC, COUNT(US.id_skill) DESC) as user_rank\n" +
+				"    FROM\n" +
+				"        Utente U\n" +
+				"    JOIN \n" +
+				"        CandidaturaUser CU ON U.id_user = CU.id_user\n" +
+				"    JOIN \n" +
+				"        Posizione P ON CU.id_posizione = P.id_posizione\n" +
+				"    LEFT JOIN \n" +
+				"        UserSkills US ON U.id_user = US.id_user AND US.verificata = 1\n" +
+				"    LEFT JOIN \n" +
+				"        UtenteQuiz UQ ON U.id_user = UQ.id_user\n" +
+				"    LEFT JOIN \n" +
+				"        Quiz Q ON P.id_quiz = Q.id_quiz AND UQ.id_quiz = Q.id_quiz\n" +
+				"    WHERE\n" +
+				"        P.id_posizione = ?\n" +
+				"    GROUP BY \n" +
+				"        U.id_user, U.nome, U.cognome, UQ.punteggio\n" +
+				")\n" +
+				"SELECT * FROM ranked_users WHERE user_rank = 1\n" +
+				"ORDER BY SkillsVerificate DESC, PunteggioQuiz DESC \n" +
+				"OFFSET 0 ROWS FETCH NEXT 3 ROWS ONLY;";
 
 		PreparedStatement statement = null;
 
@@ -892,7 +911,7 @@ public class UtenteIMPL implements UtenteDAO {
 
 				Utente utente = utenteIMPL.findById(resultSet.getInt("id_user"));
 
-				utenti_by_posizione.add(utente);
+				top_3_utenti.add(utente);
 
 			}
 
@@ -910,7 +929,82 @@ public class UtenteIMPL implements UtenteDAO {
 
 		}
 
-		return utenti_by_posizione;
+		return top_3_utenti;
+
+	}
+
+	@Override
+
+	public ArrayList<Utente> getAllUserByIdCandidatura(int id_posizione) {
+
+		ArrayList<Utente> all_users_candidatura = new ArrayList<>();
+
+		String sql =  "WITH ranked_users AS (\n" +
+				"    SELECT \n" +
+				"        U.id_user,\n" +
+				"        U.nome,\n" +
+				"        U.cognome,\n" +
+				"        COUNT(US.id_skill) AS SkillsVerificate,\n" +
+				"        UQ.punteggio AS PunteggioQuiz,\n" +
+				"        ROW_NUMBER() OVER (PARTITION BY U.id_user ORDER BY UQ.punteggio DESC, COUNT(US.id_skill) DESC) as user_rank\n" +
+				"    FROM\n" +
+				"        Utente U\n" +
+				"    JOIN \n" +
+				"        CandidaturaUser CU ON U.id_user = CU.id_user\n" +
+				"    JOIN \n" +
+				"        Posizione P ON CU.id_posizione = P.id_posizione\n" +
+				"    LEFT JOIN \n" +
+				"        UserSkills US ON U.id_user = US.id_user AND US.verificata = 1\n" +
+				"    LEFT JOIN \n" +
+				"        UtenteQuiz UQ ON U.id_user = UQ.id_user\n" +
+				"    LEFT JOIN \n" +
+				"        Quiz Q ON P.id_quiz = Q.id_quiz AND UQ.id_quiz = Q.id_quiz\n" +
+				"    WHERE\n" +
+				"        P.id_posizione = ?\n" +
+				"    GROUP BY \n" +
+				"        U.id_user, U.nome, U.cognome, UQ.punteggio\n" +
+				")\n" +
+				"SELECT * FROM ranked_users WHERE user_rank = 1\n" +
+				"ORDER BY SkillsVerificate DESC, PunteggioQuiz DESC \n";
+
+		PreparedStatement statement = null;
+
+		ResultSet resultSet = null;
+
+		try {
+
+			statement = connection.getConnection().prepareStatement(sql);
+
+			statement.setInt(1, id_posizione);
+
+			resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+
+				UtenteIMPL utenteIMPL = new UtenteIMPL();
+
+				Utente utente = utenteIMPL.findById(resultSet.getInt("id_user"));
+
+				all_users_candidatura.add(utente);
+
+			}
+
+		} catch (SQLException e) {
+
+			System.err.println(e.getMessage());
+
+		} finally {
+
+			DBUtil.close(resultSet);
+
+			DBUtil.close(statement);
+
+			// DBUtil.close((Connection) connection);
+
+		}
+
+		return all_users_candidatura;
+
 
 	}
 
