@@ -242,17 +242,17 @@ insert into Citta (nome,id_regione) values ('Verona','20');
 insert into Citta (nome,id_regione) values ('Vicenza','20');
 
 /*	Inserimento degli utenti	*/
-INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('admin', 'admin', null,'admin@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Giorgio', 'Rossi', null, 'giorgiorossi@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)VALUES ('Nicolo', 'Drovandi', null,'nicolodrovandi@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Lorenzo', 'Franco', null,'lorenzofranco@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Luca', 'Sanguinetti', null, 'lucasanguinetti@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)VALUES ('Claudio', 'Balzani', null,'claudiobalzani@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Biagio', 'Ricci', null,'biagioricci@gmail.com', null, null, null, null, null, 'admin', 'admin' );
-insert into Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) values ('Matteo','Salvo','CF1','matteosalvo@gmail.com','20000203','Via Marconi 2','1','17900','347689876','user','salvini');
-insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Fiona','Giusti','CF2','fionagiusti@gmail.com','20030806','Via Roma 29','1','16177','349680856','user','fiona');
-insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password)values ('Gianluca','Torre','CF3','gianlu@gmail.com','19800407','Via Milano 56','2','20321','387689806','user','ciao','torre');
-insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Marta','Lupu','CF4','mlupu@gmail.com','20030203','Via Rodi 70','2','16167','339880856','user','marta');
+INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin , chiaveSicurezza,password) VALUES ('admin', 'admin', null,'admin@gmail.com', null, null, null, null, null,'admin', 'admin', 'admin' );
+INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password) VALUES ('Giorgio', 'Rossi', null, 'giorgiorossi@gmail.com', null, null, null, null, null,'admin', 'admin', 'admin' );
+INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password)VALUES ('Nicolo', 'Drovandi', null,'nicolodrovandi@gmail.com', null, null, null, null, null,'admin', 'admin', 'admin' );
+INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password) VALUES ('Lorenzo', 'Franco', null,'lorenzofranco@gmail.com', null, null, null, null, null, 'admin','admin', 'admin' );
+INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password) VALUES ('Luca', 'Sanguinetti', null, 'lucasanguinetti@gmail.com', null, null, null, null, null,'admin', 'admin', 'admin' );
+INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password)VALUES ('Claudio', 'Balzani', null,'claudiobalzani@gmail.com', null, null, null, null, null,'admin', 'admin', 'admin' );
+INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password) VALUES ('Biagio', 'Ricci', null,'biagioricci@gmail.com', null, null, null, null, null,'admin', 'admin', 'admin' );
+insert into Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password) values ('Matteo','Salvo','slvmtt00b03e300m','matteosalvo@gmail.com','20000203','Via Marconi 2','1','17900','3547689876','user','ciao','salvini');
+insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password)values ('Fiona','Giusti','gstfna03h06e300m','fionagiusti@gmail.com','20030806','Via Roma 29','1','16177','3495680856','user','ciao','fiona');
+insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password)values ('Gianluca','Torre','trrglc80d07e300m','gianlu@gmail.com','19800407','Via Milano 56','2','20321','3857689806','user','ciao','torre');
+insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password)values ('Marta','Lupu','lpumrt03b03e300m','mlupu@gmail.com','20030203','Via Rodi 70','2','16167','3398805856','user','ciao','marta');
 
 /*	Insert CategoriaPosizione	*/
 
