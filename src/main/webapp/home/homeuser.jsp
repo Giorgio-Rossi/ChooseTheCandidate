@@ -264,8 +264,8 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 							</div>
 						</div>
 					</div>
-		<div class="slide slide2" style="background-color:#0072BC">
-    <div class="card-body p-4">
+		<div class="slide slide2" style="background-color:#0072BC;overflow:auto">
+    <div class="card-body p-4" >
         <%
         if(utenteLoggato.getId_citta()!=null){
         	List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.getId_citta());
