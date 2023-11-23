@@ -29,15 +29,15 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 	ArrayList<UsersSkills> usersSkills = utenteSkillsIMPL.getAllUserSkillVerifiedOrNot(utenteLoggato);
 	SkillIMPL skillIMPL = new SkillIMPL();
 	
-	UtenteQuiz utenteQuiz = new UtenteQuiz();
-	int idUtenteQuiz = utenteQuiz.getId_utente_quiz();
+	//UtenteQuiz utenteQuiz = new UtenteQuiz();
+	//int idUtenteQuiz = utenteQuiz.getId_utente_quiz();
 
 	UtenteQuizIMPL utenteQuizIMPL = new UtenteQuizIMPL();
-Integer utenteLoggatoQuiz = utenteIMPL.findByIdUtenteQuiz(idUtenteQuiz);
+	//Integer utenteLoggatoQuiz = utenteIMPL.findByIdUtenteQuiz(idUtenteQuiz);
 	
 	
 	
-	UtenteQuiz bestCandidatura = utenteQuizIMPL.BestCandidatura(utenteLoggatoQuiz);
+	//UtenteQuiz bestCandidatura = utenteQuizIMPL.BestCandidatura(utenteLoggatoQuiz);
 
 
 %>
@@ -193,25 +193,18 @@ Integer utenteLoggatoQuiz = utenteIMPL.findByIdUtenteQuiz(idUtenteQuiz);
 					</div>
 					<div class="slide slide2" style="background-color:#0072BC">
 						<div class="card-body p-4">
-							<%
-								if(bestCandidatura!=null){
-							%>
-							<h5> <%=%></h5>
+							<h5></h5>
 							<div class="mt-3">
-								<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i><%=bestCandidatura.getId_user()%></span>
-								<span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i><%=bestCandidatura.getData_inserimento()%></span>
+								<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i></span>
+								<span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i></span>
 							</div>
-							<%
-							}else {
-							%>
+
 							<div class="alert alert-primary  align-items-center border border-0" role="alert">
 								<div>
 									<i class="bi bi-info-circle-fill m-1"></i> Non hai effettuato nessuna candidatura
 								</div>
 							</div>
-							<%
-								};
-							%>
+
 
 						</div>
 					</div>

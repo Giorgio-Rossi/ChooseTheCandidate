@@ -119,7 +119,6 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
 		return utenteQuiz;
 	}
 
-	// TODO CAMBIARE VALORE DI RITORNO MEDOTO
 	@Override
 	public ArrayList<UtenteQuiz> getAllUtenteQuizByUser(int id_user) {
 		ArrayList<UtenteQuiz> allUtenteQuizzes = new ArrayList<>();

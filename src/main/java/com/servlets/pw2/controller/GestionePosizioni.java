@@ -32,13 +32,15 @@ public class GestionePosizioni extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+
+
 		String ruolo = req.getParameter("ruolo");
 		int n_ammissioni = Integer.parseInt(req.getParameter("n_ammissioni"));
 		String descrizione = req.getParameter("descrizione");
 		String stato = req.getParameter("stato");
-		System.out.println(n_ammissioni);
 
-		/*
+
 		SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
 		String param = req.getParameter("data_inserimento");
 		Date data_inserimento;
@@ -84,9 +86,9 @@ public class GestionePosizioni extends HttpServlet {
 		
 		posizioneImpl.nuovaPosizione(posizione);
 		ErrorManager.setSuccessMessage("Posizione aggiunta con successo", req);
+		req.getSession().setAttribute("posizione_creata","true");
 		req.getRequestDispatcher("admin/gestioneposizioni.jsp").forward(req, resp);
 
-		 */
 
 	}
 
