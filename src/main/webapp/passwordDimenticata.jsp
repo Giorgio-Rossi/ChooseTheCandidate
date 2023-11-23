@@ -41,17 +41,46 @@ String chiaveSicurezza = request.getParameter("chiaveSicurezza");
 </head>
 <body>
 
-<form  method="post" id="form1" action="${pageContext.request.contextPath}/passwordDimenticata">
+	<form method="post" id="form1"
+		action="${pageContext.request.contextPath}/passwordDimenticata">
 
-<input type="text" name="chiaveSicurezza" id="chiaveSicurezza" placeholder="chiaveSicurezza" required><br>
-<input type="email" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" id="email" placeholder="Email" required><br> 
-								
+		<input type="text" name="chiaveSicurezza" id="chiaveSicurezza"
+			placeholder="chiaveSicurezza" required><br> <input
+			type="email" name="email"
+			pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" id="email"
+			placeholder="Email" required><br>
 
-<button type="submit" class="passwordDimenticata" >Conferma</button>
-							
-</form>
+		<div>
+			<%
+				if(!ErrorManager.getSUccessMessage((HttpServletRequest) request).isEmpty()){
+				%>
+			<div
+				style="margin-top: 4%; width: 100%; height: 1.5em; font-size: 1.5em; text-align: center; color: green; background: lightgreen; border: 3px solid darkgreen;; transform: translateX(2%); border-radius: 30px;">
+				<%= ErrorManager.getSUccessMessage((HttpServletRequest) request)%>
+			</div>
+			<%
+				};
+				%>
 
-							
+			<%
+				if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){
+				%>
+			<div class="alert_alert-danger" role="alert">
+				<%= ErrorManager.getErrorMessage((HttpServletRequest) request)%>
+			</div>
+			<%
+				};
+				%>
+				
+
+		</div>
+		<input type="submit" class="passwordDimenticata">
+
+	</form>
+
+
+
+
 	</main>
 </body>
 </html>
