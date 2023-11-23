@@ -116,9 +116,9 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
 
     //TODO CAMBIARE VALORE DI RITORNO MEDOTO
     @Override
-    public ArrayList<Quiz> getAllUtenteQuizByUser(int id_user) {
-        ArrayList<Quiz> allUtenteQuizzes = new ArrayList<>();
-        String sql = "SELECT * from UtenteQuiz uq inner join Quiz q on uq.id_quiz = q.id_quiz where uq.id_user = ?";
+    public ArrayList<UtenteQuiz> getAllUtenteQuizByUser(int id_user) {
+        ArrayList<UtenteQuiz> allUtenteQuizzes = new ArrayList<>();
+        String sql = "SELECT * from UtenteQuiz uq where uq.id_user = ?";
 
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -129,11 +129,15 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
             resultSet = statement.executeQuery();
 
                 while (resultSet.next()) {
-                    QuizIMPL quizIMPL = new QuizIMPL();
+                    UtenteQuiz utenteQuiz = new UtenteQuiz();
 
-                    Quiz quiz = quizIMPL.getQuizById(resultSet.getInt("id_quiz"));
+                   utenteQuiz.setId_utente_quiz(resultSet.getInt(1));
+                   utenteQuiz.setId_quiz(resultSet.getInt(2));
+                   utenteQuiz.setId_user(resultSet.getInt(3));
+                   utenteQuiz.setPunteggio(resultSet.getFloat(4));
+                   utenteQuiz.setData_inserimento(resultSet.getDate(5));
 
-                    allUtenteQuizzes.add(quiz);
+                    allUtenteQuizzes.add(utenteQuiz);
                 }
 
         } catch (SQLException e) {
