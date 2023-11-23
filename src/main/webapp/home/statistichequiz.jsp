@@ -66,7 +66,7 @@
 
                 <%
                     for(UtenteQuiz utenteQuiz: allUserQuizzes){
-                       Quiz quiz = new QuizIMPL().getQuizById(utenteQuiz.getId_quiz());
+                        Quiz quiz = new QuizIMPL().getQuizById(utenteQuiz.getId_quiz());
                 %>
                 <div class="col-xl-3 col-lg-6 mb-4">
                 <div class="bg-white rounded-lg p-5 shadow">

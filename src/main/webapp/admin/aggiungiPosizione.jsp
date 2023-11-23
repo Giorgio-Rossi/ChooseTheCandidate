@@ -118,12 +118,18 @@ ArrayList<CategoriaPosizione> catpos= cpImpl.getAllCategoriePosizioni();
 															<%
 															}
 															%>
-														</select><br> <input
-														type="text" name="ruolo" id="ruolo" placeholder="Ruolo"
-														required><br> <input type="number"
-														name="n_ammissioni" id="n_ammissioni"
-														placeholder="Numero Ammissioni" required><br>
-													<div class="form-group " aria-labelledby="navbarDropdown"
+														</select><br>
+													<div class="mb-3">
+														<label for="ruolo" class="form-label">Ruolo</label>
+														<input type="text" class="form-control " name="ruolo" id="ruolo" placeholder="Ruolo" required>
+													</div>
+
+													<label class="form-label" for="n_ammissioni">Numero ammissioni</label>
+													<div class="range" data-mdb-range-init>
+														<input type="range" name="n_ammissioni" class="form-range" min="1" max="400" id="n_ammissioni" />
+													</div>
+
+													<div class="form-group mb-3" aria-labelledby="navbarDropdown"
 														style="margin-right: 10px">
 														<select class="form-select" name="quiz" id="quiz"
 															aria-label="Default select example">
@@ -137,8 +143,8 @@ ArrayList<CategoriaPosizione> catpos= cpImpl.getAllCategoriePosizioni();
 															%>
 														</select>
 													</div>
-													<br>
-													<div class="form-group " aria-labelledby="navbarDropdown"
+
+													<div class="form-group mb-3" aria-labelledby="navbarDropdown"
 														style="margin-right: 10px">
 														<select class="form-select" name="citta" id="citta"
 															aria-label="Default select example">
@@ -162,23 +168,36 @@ ArrayList<CategoriaPosizione> catpos= cpImpl.getAllCategoriePosizioni();
 															%>
 														</select>
 													</div>
-													<br> <input type="text" name="data_inserimento"
-														id="data_inserimento" placeholder="Data Inserimento"
-														onfocus="(this.type='date')" min="2023-01-01"
-														max="2023-12-31" style="width: 11%;" required><br>
-											
 
-											<div class="form-group">
+													<div class="mb-3">
+														<label for="data_inserimento" class="form-label">Data inserimento</label>
+														<input type="date" class="form-control" name="data_inserimento" id="data_inserimento" onfocus="(this.type='date')" min="2023-01-01" max="2023-12-31"  required>
+													</div>
 
-												<input type="text" name="descrizione" id="descrizione"
-													placeholder="Descrizione" required><br> <input
-													type="text" name="stato" id="stato" placeholder="Stato"
-													required><br>
+													<div class="mb-3">
+														<label for="descrizione" class="form-label">Descrizione</label>
+														<input type="text" class="form-control" name="descrizione" id="descrizione" placeholder="Descrizione" required>
+													</div>
 
-											</div>
+
+													<div class="form-check">
+														<input class="form-check-input" type="radio" name="stato" id="aperta" value="aperta">
+														<label class="form-check-label" for="aperta">
+															Aperta
+														</label>
+													</div>
+
+													<div class="form-check mb-3">
+														<input class="form-check-input" type="radio" name="stato" id="chiusa" value="chiusa" checked>
+														<label class="form-check-label" for="chiusa">
+															Chiusa
+														</label>
+													</div>
+
+
+
 											<div class="bottomRegister">
-
-												<button type="submit" class="registrati">Conferma</button>
+												<button type="submit" class="btn btn-primary">Conferma</button>
 											</div>
 											</form>
 											</div>
@@ -189,6 +208,8 @@ ArrayList<CategoriaPosizione> catpos= cpImpl.getAllCategoriePosizioni();
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
 	</main>
 </body>
 </html>

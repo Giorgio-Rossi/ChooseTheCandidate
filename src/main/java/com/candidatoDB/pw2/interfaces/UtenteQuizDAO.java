@@ -16,7 +16,7 @@ public interface UtenteQuizDAO {
 
     UtenteQuiz getUtenteQuizById(int id_quiz, Utente utente);
 
-    ArrayList<Quiz> getAllUtenteQuizByUser(int id_user);
+    ArrayList<UtenteQuiz> getAllUtenteQuizByUser(int id_user);
     UtenteQuiz BestCandidatura (int id_user);
 //    UtenteQuiz bestPunteggio (int id_utente_quiz);
 //    
