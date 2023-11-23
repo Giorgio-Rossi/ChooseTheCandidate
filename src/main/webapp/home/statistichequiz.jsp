@@ -50,7 +50,9 @@
 
     UtenteQuizIMPL utenteQuizIMPL = new UtenteQuizIMPL();
     QuizIMPL quizIMPL = new QuizIMPL();
-    ArrayList<Quiz> allUserQuizzes = utenteQuizIMPL.getAllUtenteQuizByUser(utenteLoggato.getId_user());
+    ArrayList<UtenteQuiz> allUserQuizzes = utenteQuizIMPL.getAllUtenteQuizByUser(utenteLoggato.getId_user());
+
+    System.out.println(allUserQuizzes);
 
 %>
 
@@ -63,8 +65,8 @@
             <div class="row">
 
                 <%
-                    for(Quiz quiz: allUserQuizzes){
-                        UtenteQuiz utenteQuiz = utenteQuizIMPL.getUtenteQuizById(quiz.getId_quiz(),utenteLoggato);
+                    for(UtenteQuiz utenteQuiz: allUserQuizzes){
+                       Quiz quiz = new QuizIMPL().getQuizById(utenteQuiz.getId_quiz());
                 %>
                 <div class="col-xl-3 col-lg-6 mb-4">
                 <div class="bg-white rounded-lg p-5 shadow">
