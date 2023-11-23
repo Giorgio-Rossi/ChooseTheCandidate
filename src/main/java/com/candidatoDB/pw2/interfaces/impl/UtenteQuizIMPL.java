@@ -158,41 +158,43 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
 
 	@Override
 	public UtenteQuiz BestCandidatura(int id_utente_quiz) {
-	
-			 UtenteQuiz utenteQuiz = null;
-			    String sql="select p.ruolo, p.id_Categoria, p.id_citta, p.stato, (select max(uq.punteggio) from UtenteQuiz uq group by uq.id_user) as punteggio"
-			    		+ "from CandidaturaUser cu join posizione p on cu.id_posizione=p.id_posizione"
-			    		+ "join quiz q on p.id_quiz=q.id_quiz"
-			    		+ "join UtenteQuiz uq on q.id_quiz=uq.id_quiz"
-			    		+ "where uq.id_utente_quiz=?";
-			    PreparedStatement statement = null;
-			    ResultSet resultSet = null;
-			    try {
-			        statement = connection.getConnection().prepareStatement(sql);
-			        statement.setInt(1, id_utente_quiz);
-			 
-			        resultSet = statement.executeQuery();
-			 
-			            while (resultSet.next()) {
-			            	utenteQuiz= new UtenteQuiz();
-			            	utenteQuiz.setId_utente_quiz(resultSet.getInt("id_utente_quiz"));
-			            	Posizione posizione=new Posizione();
-			                posizione.setRuolo(resultSet.getString("ruolo"));
-			                CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
-							posizione.setCategoria(categoriaPosizioneIMPL.getCategoriaPosizioneById(resultSet.getInt("id_categoria")));
-							CittaIMPL cittaIMPL = new CittaIMPL();
-							posizione.setCitta(cittaIMPL.getCittaById(resultSet.getInt("id_citta")));	                
-			                posizione.setStato(resultSet.getString("stato"));
-			            }
-			        
-			    } catch (SQLException e) {
-			        System.err.println(e.getMessage());
-			    } finally {
-			        DBUtil.close(resultSet);
-			        DBUtil.close(statement);
-			        //DBUtil.close(connection.getConnection());
-			    }
-			    return utenteQuiz;
+	    UtenteQuiz utenteQuiz = null;
+	    String sql = "SELECT p.ruolo, p.id_Categoria, p.id_citta, p.stato, (SELECT MAX(uq.punteggio) FROM UtenteQuiz uq GROUP BY uq.id_user) AS punteggio " +
+	                 "FROM CandidaturaUser cu " +
+	                 "JOIN posizione p ON cu.id_posizione = p.id_posizione " +
+	                 "JOIN quiz q ON p.id_quiz = q.id_quiz " +
+	                 "JOIN UtenteQuiz uq ON q.id_quiz = uq.id_quiz " +
+	                 "WHERE uq.id_utente_quiz = ?";
+	    PreparedStatement statement = null;
+	    ResultSet resultSet = null;
+	    try {
+	        statement = connection.getConnection().prepareStatement(sql);
+	        statement.setInt(1, id_utente_quiz);
+
+	        resultSet = statement.executeQuery();
+
+	        while (resultSet.next()) {
+	            utenteQuiz = new UtenteQuiz();
+	            utenteQuiz.setId_utente_quiz(resultSet.getInt("id_utente_quiz"));
+	            Posizione posizione = new Posizione();
+	            posizione.setRuolo(resultSet.getString("ruolo"));
+	            CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
+	            posizione.setCategoria(categoriaPosizioneIMPL.getCategoriaPosizioneById(resultSet.getInt("id_categoria")));
+	            CittaIMPL cittaIMPL = new CittaIMPL();
+	            posizione.setCitta(cittaIMPL.getCittaById(resultSet.getInt("id_citta")));
+	            posizione.setStato(resultSet.getString("stato"));
+	        }
+
+	    } catch (SQLException e) {
+	        System.err.println(e.getMessage());
+	    } finally {
+	        DBUtil.close(resultSet);
+	        DBUtil.close(statement);
+	        //DBUtil.close(connection.getConnection());
+	    }
+	    return utenteQuiz;
+	}
+
 	}
 	
 
@@ -260,4 +262,3 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
 //	}
 //
 
-}

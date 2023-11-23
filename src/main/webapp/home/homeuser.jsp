@@ -28,10 +28,16 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 	UtenteSkillsIMPL utenteSkillsIMPL = new UtenteSkillsIMPL();
 	ArrayList<UsersSkills> usersSkills = utenteSkillsIMPL.getAllUserSkillVerifiedOrNot(utenteLoggato);
 	SkillIMPL skillIMPL = new SkillIMPL();
+	
+	UtenteQuiz utenteQuiz = new UtenteQuiz();
+	int idUtenteQuiz = utenteQuiz.getId_utente_quiz();
 
 	UtenteQuizIMPL utenteQuizIMPL = new UtenteQuizIMPL();
+Integer utenteLoggatoQuiz = utenteIMPL.findByIdUtenteQuiz(idUtenteQuiz);
 	
-	UtenteQuiz bestCandidatura = utenteQuizIMPL.BestCandidatura(utenteLoggato.getId_user());
+	
+	
+	UtenteQuiz bestCandidatura = utenteQuizIMPL.BestCandidatura(utenteLoggatoQuiz);
 
 
 %>
@@ -190,7 +196,7 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 							<%
 								if(bestCandidatura!=null){
 							%>
-							<h5> <%=bestCandidatura.getPunteggio()%></h5>
+							<h5> <%=%></h5>
 							<div class="mt-3">
 								<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i><%=bestCandidatura.getId_user()%></span>
 								<span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i><%=bestCandidatura.getData_inserimento()%></span>

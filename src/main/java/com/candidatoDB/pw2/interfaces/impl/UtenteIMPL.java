@@ -1096,7 +1096,7 @@ public class UtenteIMPL implements UtenteDAO {
 
 	}
 	//-----------------------------------------------------------------------------------------------
-	public Utente findByIdUtenteQuiz(int id_utente_quiz) {
+	public Integer findByIdUtenteQuiz(int id_utente_quiz) {
 
 		Utente utente = new Utente();
 
@@ -1136,7 +1136,7 @@ public class UtenteIMPL implements UtenteDAO {
 
 		}
 
-		return utente;
+		return utente.getId_user();
 
 	}
 
