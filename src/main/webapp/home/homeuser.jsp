@@ -1,15 +1,12 @@
 <%@ page import="com.candidatoDB.pw2.entity.Utente"%>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
 <%@ page import="java.util.stream.Stream" %>
-<%@ page import="java.util.Objects" %>
 <%@ page import="java.lang.reflect.Field" %>
-<%@ page import="java.util.Arrays" %>
 <%@ page import="com.candidatoDB.pw2.entity.CandidaturaUser" %>
 <%@ page import="com.candidatoDB.pw2.entity.Posizione" %>
 <%@ page import="com.candidatoDB.pw2.entity.UtenteQuiz" %>
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.*" %>
 <%@ page import="com.candidatoDB.pw2.entity.UsersSkills" %>
+<%@ page import="java.util.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <%
@@ -23,23 +20,17 @@
 	if(candidaturaRecente!=null) {
 		posizioneRecente = candidaturaIMPL.getPosizioneByCandidaturaId(candidaturaRecente);
 	}
-PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+	PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 
 	UtenteSkillsIMPL utenteSkillsIMPL = new UtenteSkillsIMPL();
 	ArrayList<UsersSkills> usersSkills = utenteSkillsIMPL.getAllUserSkillVerifiedOrNot(utenteLoggato);
 	SkillIMPL skillIMPL = new SkillIMPL();
-	
-	//UtenteQuiz utenteQuiz = new UtenteQuiz();
-	//int idUtenteQuiz = utenteQuiz.getId_utente_quiz();
 
 	UtenteQuizIMPL utenteQuizIMPL = new UtenteQuizIMPL();
-	//Integer utenteLoggatoQuiz = utenteIMPL.findByIdUtenteQuiz(idUtenteQuiz);
-	
-	
-	
-	//UtenteQuiz bestCandidatura = utenteQuizIMPL.BestCandidatura(utenteLoggatoQuiz);
 
+	Map<Posizione,UtenteQuiz> bestCandidatura = utenteQuizIMPL.BestCandidatura(utenteLoggato.getId_user());
 
+	System.out.println(bestCandidatura);
 %>
 
 <html>
@@ -193,18 +184,28 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
 					</div>
 					<div class="slide slide2" style="background-color:#0072BC">
 						<div class="card-body p-4">
-							<h5></h5>
-							<div class="mt-3">
-								<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i></span>
-								<span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i></span>
-							</div>
+							<%
+								if(!bestCandidatura.isEmpty()){
+									Posizione posizione = (Posizione) bestCandidatura.keySet().toArray()[0];
+							%>
 
+							<h5><%=posizione.getRuolo()%></h5>
+							<div class="mt-3">
+								<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i><%=bestCandidatura.get(posizione).getData_inserimento()%></span>
+								<span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i><%=posizione.getCitta().getNome()%></span>
+								<span class="text-muted d-block"><i class="bi bi-list-ul m-1"></i><%=bestCandidatura.get(posizione).getPunteggio()%></span>
+							</div>
+							<%
+							}else {
+							%>
 							<div class="alert alert-primary  align-items-center border border-0" role="alert">
 								<div>
 									<i class="bi bi-info-circle-fill m-1"></i> Non hai effettuato nessuna candidatura
 								</div>
 							</div>
-
+							<%
+								};
+							%>
 
 						</div>
 					</div>
@@ -268,8 +269,7 @@ PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
         <%
         if(utenteLoggato.getId_citta()!=null){
         	List<Posizione> posizioniRecenti = posizioneIMPL.topTreAnnunci(utenteLoggato.getId_citta());
-			System.out.println(posizioniRecenti);
-        
+
             if (!posizioniRecenti.isEmpty()) {
                 for (Posizione posizione : posizioniRecenti) {
         %>

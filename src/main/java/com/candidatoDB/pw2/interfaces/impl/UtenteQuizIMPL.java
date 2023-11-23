@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UtenteQuizIMPL implements UtenteQuizDAO {
 
@@ -84,15 +86,15 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
 		return utenteQuiz;
 	}
 
-	public UtenteQuiz getUtenteQuizById(Utente utente) {
+	public UtenteQuiz getUtenteQuizById(int id_utente_quiz) {
 		UtenteQuiz utenteQuiz = null;
-		String sql = "SELECT * from UtenteQuiz where id_user=?";
+		String sql = "SELECT * from UtenteQuiz where id_utente_quiz=?";
 
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
 			statement = connection.getConnection().prepareStatement(sql);
-			statement.setInt(1, utente.getId_user());
+			statement.setInt(1, id_utente_quiz);
 
 			resultSet = statement.executeQuery();
 
@@ -104,7 +106,7 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
 				while (resultSet.next()) {
 					utenteQuiz.setId_quiz(resultSet.getInt("id_quiz"));
 					utenteQuiz.setId_user(resultSet.getInt("id_user"));
-					utenteQuiz.setPunteggio(resultSet.getInt("punteggio"));
+					utenteQuiz.setPunteggio(resultSet.getFloat("punteggio"));
 					utenteQuiz.setData_inserimento(resultSet.getDate("data_inserimento"));
 
 				}
@@ -156,108 +158,51 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
 
 
 	@Override
-	public UtenteQuiz BestCandidatura(int id_utente_quiz) {
-	    UtenteQuiz utenteQuiz = null;
-	    String sql = "SELECT p.ruolo, p.id_Categoria, p.id_citta, p.stato, (SELECT MAX(uq.punteggio) FROM UtenteQuiz uq GROUP BY uq.id_user) AS punteggio " +
-	                 "FROM CandidaturaUser cu " +
-	                 "JOIN posizione p ON cu.id_posizione = p.id_posizione " +
-	                 "JOIN quiz q ON p.id_quiz = q.id_quiz " +
-	                 "JOIN UtenteQuiz uq ON q.id_quiz = uq.id_quiz " +
-	                 "WHERE uq.id_utente_quiz = ?";
+	public Map<Posizione,UtenteQuiz> BestCandidatura(int id_utente) {
+		Map<Posizione,UtenteQuiz> best_candidatura = null;
+	    String sql = "SELECT TOP 1 \n" +
+				"    UQ.id_user, \n" +
+				"    UQ.id_quiz, \n" +
+				"    UQ.punteggio, \n" +
+				"    CU.id_candidatura_user, \n" +
+				"    P.id_posizione, \n" +
+				"    P.descrizione, \n" +
+				"    UQ.id_utente_quiz \n" +
+				"FROM \n" +
+				"    UtenteQuiz UQ \n" +
+				"JOIN \n" +
+				"    CandidaturaUser CU ON UQ.id_user = CU.id_user \n" +
+				"JOIN \n" +
+				"    Posizione P ON CU.id_posizione = P.id_posizione AND P.id_quiz = UQ.id_quiz \n" +
+				"WHERE \n" +
+				"    UQ.id_user = ? \n" +
+				"ORDER BY \n" +
+				"    UQ.punteggio DESC;";
 	    PreparedStatement statement = null;
 	    ResultSet resultSet = null;
 	    try {
 	        statement = connection.getConnection().prepareStatement(sql);
-	        statement.setInt(1, id_utente_quiz);
+	        statement.setInt(1, id_utente);
 
 	        resultSet = statement.executeQuery();
 
 	        while (resultSet.next()) {
-	            utenteQuiz = new UtenteQuiz();
-	            utenteQuiz.setId_utente_quiz(resultSet.getInt("id_utente_quiz"));
-	            Posizione posizione = new Posizione();
-	            posizione.setRuolo(resultSet.getString("ruolo"));
-	            CategoriaPosizioneIMPL categoriaPosizioneIMPL = new CategoriaPosizioneIMPL();
-	            posizione.setCategoria(categoriaPosizioneIMPL.getCategoriaPosizioneById(resultSet.getInt("id_categoria")));
-	            CittaIMPL cittaIMPL = new CittaIMPL();
-	            posizione.setCitta(cittaIMPL.getCittaById(resultSet.getInt("id_citta")));
-	            posizione.setStato(resultSet.getString("stato"));
+				PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+				best_candidatura = new HashMap<>();
+
+				best_candidatura.put(posizioneIMPL.getPosizioneById(resultSet.getInt("id_posizione")),getUtenteQuizById(resultSet.getInt("id_utente_quiz")));
 	        }
 
 	    } catch (SQLException e) {
 	        System.err.println(e.getMessage());
 	    } finally {
-	        DBUtil.close(resultSet);
+	       // DBUtil.close(resultSet);
 	        DBUtil.close(statement);
 	        //DBUtil.close(connection.getConnection());
 	    }
-	    return utenteQuiz;
+	    return best_candidatura;
 	}
 
 	}
 	
-
-//	@Override
-//	public UtenteQuiz bestPunteggio(int id_utente_quiz) {
-//		UtenteQuiz utenteQuiz = null;
-//		String sql = "select top 1 punteggio from UtenteQuiz  where id_utente_quiz = ? order by punteggio desc ";
-//		PreparedStatement statement = null;
-//		ResultSet resultSet = null;
-//		try {
-//			statement = connection.getConnection().prepareStatement(sql);
-//			statement.setInt(1, id_utente_quiz);
-//
-//			resultSet = statement.executeQuery();
-//
-//			while (resultSet.next()) {
-//				utenteQuiz = new UtenteQuiz();
-//
-//				candidatura.setPosizione(posizioneIMPL.getPosizioneById(resultSet.getInt("posizione")));
-//				UtenteIMPL utenteIMPL = new UtenteIMPL();
-//				candidatura.setUtente(utenteIMPL.findById(resultSet.getInt("utente")));
-//				candidatura.setData_candidatura(new java.sql.Date(resultSet.getDate("data_candidatura").getTime()));
-//
-//			}
-//
-//		} catch (SQLException e) {
-//			System.err.println(e.getMessage());
-//		} finally {
-//			DBUtil.close(resultSet);
-//			DBUtil.close(statement);
-//			// DBUtil.close(connection.getConnection());
-//		}
-//		return utenteQuiz;
-//	}
-//
-//	@Override
-//	public UtenteQuiz findByIdUtenteQuiz(int id_utente_quiz) {
-//		UtenteQuiz utenteQuiz = new UtenteQuiz();
-//		String sql = "SELECT * from UtenteQuiz where id_utente_quiz = ?";
-//
-//		PreparedStatement statement = null;
-//		ResultSet resultSet = null;
-//		try {
-//			statement = connection.getConnection().prepareStatement(sql);
-//			statement.setInt(1, id_utente_quiz);
-//			resultSet = statement.executeQuery();
-//			while (resultSet.next()) {
-//
-//				utenteQuiz.setId_utente_quiz(resultSet.getInt("id_utente_quiz"));
-//				utenteQuiz.setId_user(resultSet.getInt("id_user"));
-//				utenteQuiz.setId_quiz(resultSet.getInt("id_quiz"));
-//				utenteQuiz.setPunteggio(resultSet.getDouble("punteggio"));
-//				utenteQuiz.setData_inserimento(new java.sql.Date(resultSet.getDate("data_inserimento").getTime()));
-//
-//				System.out.println("Funziono");
-//			}
-//		} catch (SQLException e) {
-//			System.err.println(e.getMessage());
-//		} finally {
-//			DBUtil.close(resultSet);
-//			DBUtil.close(statement);
-//			// DBUtil.close(connection.getConnection());
-//		}
-//		return utenteQuiz;
-//	}
-//
 
