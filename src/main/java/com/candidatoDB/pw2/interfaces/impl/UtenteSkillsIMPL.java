@@ -57,6 +57,40 @@ public class UtenteSkillsIMPL implements UtenteSkillsDAO {
         return allUserSkills;
     }
 
+    public ArrayList<UsersSkills> getAllUserSkillVerified(Utente utente) {
+        ArrayList<UsersSkills> allUserSkills = new ArrayList<>();
+        String sql = "select * from UserSkills where id_user = ? and verificata = 1";
+
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.getConnection().prepareStatement(sql);
+            statement.setInt(1, utente.getId_user());
+
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                UsersSkills usersSkills = new UsersSkills();
+
+                usersSkills.setId_user_skills(resultSet.getInt("id_user_skills"));
+                usersSkills.setId_user(resultSet.getInt("id_user"));
+                usersSkills.setId_skill(resultSet.getInt("id_skill"));
+                usersSkills.setVerificata(resultSet.getBoolean("verificata"));
+
+                allUserSkills.add(usersSkills);
+
+            }
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            DBUtil.close(resultSet);
+            DBUtil.close(statement);
+            //DBUtil.close(connection.getConnection());
+        }
+        return allUserSkills;
+    }
+
     @Override
     public void update(UsersSkills usersSkills) {
             String sql = "UPDATE UserSkills SET id_user=?,id_skill=?, verificata=? WHERE id_user_skills=?";

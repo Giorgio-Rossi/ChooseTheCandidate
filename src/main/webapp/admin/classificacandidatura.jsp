@@ -55,6 +55,8 @@
 
     ArrayList<Utente> all_user_posizione = utenteIMPL.getAllUserByIdCandidatura(Integer.parseInt(id_posizione));
 
+    ArrayList<Utente> top_3 = utenteIMPL.getTop3UserByIdCandidatura(Integer.parseInt(id_posizione));
+
 
 %>
 
@@ -66,125 +68,77 @@
 <main style="margin-top: 150px">
 
     <div class="container">
+        <h1><%=new PosizioneIMPL().getPosizioneById(Integer.parseInt(id_posizione)).getRuolo()%> <%=new PosizioneIMPL().getPosizioneById(Integer.parseInt(id_posizione)).getCitta().getNome()%></h1>
+        <%
+            if(top_3.isEmpty() && all_user_posizione.isEmpty()){
+        %>
+        <div class="alert alert-primary d-flex justify-content-center" role="alert">
+           Non sono presenti candidati per questa posizione
+        </div>
+        <%
+            };
+        %>
+
+
             <div class="row">
 
-                <div class="col mb-4">
-                    <div class="bg-white rounded-lg p-5 shadow">
-
-                        <div class="row">
-                            <div class="col border-right">
-                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-1-circle-fill"></i></div>
-                            </div>
-
-                            <div class="col-sm border-right">
-                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
-                            </div>
-
-                        </div>
-
-                        <div class="d-flex justify-content-center">
-                            <h5>
-                               Primo Candidato
-                            </h5>
-                        </div>
-
-                        <div class="col-auto d-flex justify-content-center">
-                            <div class="candidate-list-images">
-                                <i class="bi bi-person-circle avatar-md img-thumbnail rounded-circle" style="font-size: 3rem"></i>
-
-                            </div>
-                        </div>
-
-
-                        <div class="row text-center mt-4 justify-content-center">
-                            <div class="col-6 border-right">
-                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3">5</strong>
-                            </div>
-                            <div class="col-6 border-right">
-                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3">35</strong>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                <%
+                    int i=1;
+                    for(Utente utente: top_3){
+                %>
 
                 <div class="col mb-4">
                     <div class="bg-white rounded-lg p-5 shadow">
 
                         <div class="row">
                             <div class="col border-right">
-                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-1-circle-fill"></i></div>
+                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-<%=i%>-circle-fill"></i></div>
                             </div>
 
                             <div class="col-sm border-right">
-                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
+                                <a href="${pageContext.request.contextPath}/img/cv<%=utente.getCV()%>" target="_blank" class="file-upload btn btn-success  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
                             </div>
 
                         </div>
 
                         <div class="d-flex justify-content-center">
                             <h5>
-                                Secondo Candidato
+                               <%=utente.getNome()%> <%=utente.getCognome()%>
                             </h5>
                         </div>
 
                         <div class="col-auto d-flex justify-content-center">
                             <div class="candidate-list-images">
-                                <<i class="bi bi-person-circle avatar-md img-thumbnail rounded-circle" style="font-size: 3rem"></i>
+                                <%if(utente.getFoto_profilo()!=null){
+                                %>
+                                <img src=<%=request.getContextPath()+"/img/fotoprofili"+utente.getFoto_profilo()%> alt="" class="avatar-md img-thumbnail rounded-circle" />
+                                <%}else {
+                                %>
+                                <i class="bi bi-person-circle avatar-md img-thumbnail rounded-circle"></i>
+                                <%
+                                    }
+                                %>
                             </div>
                         </div>
 
 
                         <div class="row text-center mt-4 justify-content-center">
                             <div class="col-6 border-right">
-                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3">5</strong>
+                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3"><%= new UtenteSkillsIMPL().getAllUserSkillVerified(utente).size()%></strong>
                             </div>
                             <div class="col-6 border-right">
-                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3">85</strong>
+                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3"><%=new UtenteQuizIMPL().getUtenteQuizById(new PosizioneIMPL().getPosizioneById(Integer.parseInt(id_posizione)).getQuiz().getId_quiz(),utente).getPunteggio()%></strong>
                             </div>
                         </div>
 
                     </div>
                 </div>
 
-                <div class="col mb-4">
-                    <div class="bg-white rounded-lg p-5 shadow">
 
-                        <div class="row">
-                            <div class="col border-right">
-                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-1-circle-fill"></i></div>
-                            </div>
-
-                            <div class="col-sm border-right">
-                                <a href="${pageContext.request.contextPath}/img/fotoprofili/annie.png" class="file-upload btn btn-success btn-sm  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
-                            </div>
-
-                        </div>
-
-                        <div class="d-flex justify-content-center">
-                            <h5>
-                                Terzo Candidato
-                            </h5>
-                        </div>
-
-                        <div class="col-auto d-flex justify-content-center">
-                            <div class="candidate-list-images">
-                                <i class="bi bi-person-circle avatar-md img-thumbnail rounded-circle" style="font-size: 3rem"></i>
-                            </div>
-                        </div>
-
-
-                        <div class="row text-center mt-4 justify-content-center">
-                            <div class="col-6 border-right">
-                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3">5</strong>
-                            </div>
-                            <div class="col-6 border-right">
-                                <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3">85</strong>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                <%
+                        i++;
+                    };
+                %>
 
 
             </div>
@@ -196,9 +150,7 @@
     <div class="container">
 
                     <%
-                        HashMap<Utente, Double> utenti_punteggio = new HashMap<>();
-                        for(Utente utente : all_user_posizione){
-                            utenti_punteggio.put(utente, new UtenteQuizIMPL().getUtenteQuizById(new PosizioneIMPL().getPosizioneById(Integer.parseInt(id_posizione)).getQuiz().getId_quiz(),utente).getPunteggio());
+                        for(int j = 3;j<all_user_posizione.size();j++){
                     %>
 
                     <div class="candidate-list-box card mt-4">
@@ -206,9 +158,9 @@
                             <div class="align-items-center row">
                                 <div class="col-auto">
                                     <div class="candidate-list-images">
-                                        <%if(utente.getFoto_profilo()!=null){
+                                        <%if(all_user_posizione.get(j).getFoto_profilo()!=null){
                                         %>
-                                        <img src=<%=request.getContextPath()+"/img/fotoprofili"+utente.getFoto_profilo()%> alt="" class="avatar-md img-thumbnail rounded-circle" />
+                                        <img src=<%=request.getContextPath()+"/img/fotoprofili"+all_user_posizione.get(j).getFoto_profilo()%> alt="" class="avatar-md img-thumbnail rounded-circle" />
                                         <%}else {
                                         %>
                                         <i class="bi bi-person-circle avatar-md img-thumbnail rounded-circle"></i>
@@ -220,33 +172,33 @@
                                 <div class="col-lg-5">
                                     <div class="candidate-list-content mt-3 mt-lg-0">
                                         <h5 class="fs-19 mb-0">
-                                           <%=utente.getNome()%> <%=utente.getCognome()%>
+                                           <%=all_user_posizione.get(j).getNome()%> <%=all_user_posizione.get(j).getCognome()%>
                                         </h5>
-                                        <p class="text-muted mb-2"><i class="bi bi-calendar-check-fill m-1"></i> <%=utente.getData_nascita()%></p>
+                                        <p class="text-muted mb-2"><i class="bi bi-calendar-check-fill m-1"></i> <%=all_user_posizione.get(j).getData_nascita()%></p>
                                         <ul class="list-inline mb-0 text-muted">
                                             <%
-                                                if(utente.getId_citta()!=null){
+                                                if(all_user_posizione.get(j).getId_citta()!=null){
                                             %>
-                                            <li class="list-inline-item"><i class="bi bi-geo-alt-fill m-1"></i><%=utente.getId_citta().getNome()%></li>
+                                            <li class="list-inline-item"><i class="bi bi-geo-alt-fill m-1"></i><%=all_user_posizione.get(j).getId_citta().getNome()%></li>
                                             <%
                                                 };
                                             %>
-                                            <li class="list-inline-item"><i class="bi bi-envelope-fill m-1"></i><%=utente.getEmail()%></li>
+                                            <li class="list-inline-item"><i class="bi bi-envelope-fill m-1"></i><%=all_user_posizione.get(j).getEmail()%></li>
                                         </ul>
                                     </div>
                                 </div>
 
                                 <div class="col border-right">
 
-                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3"><%= new UtenteSkillsIMPL().getAllUserSkillVerifiedOrNot(utente).size()%></strong>
+                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3"><%= new UtenteSkillsIMPL().getAllUserSkillVerifiedOrNot(all_user_posizione.get(j)).size()%></strong>
                                 </div>
                                 <div class="col border-right">
-                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3"><%=new UtenteQuizIMPL().getUtenteQuizById(new PosizioneIMPL().getPosizioneById(Integer.parseInt(id_posizione)).getQuiz().getId_quiz(),utente).getPunteggio()%>%</strong>
+                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3"><%=new UtenteQuizIMPL().getUtenteQuizById(new PosizioneIMPL().getPosizioneById(Integer.parseInt(id_posizione)).getQuiz().getId_quiz(),all_user_posizione.get(j)).getPunteggio()%>%</strong>
                                 </div>
 
                                 <div class="col">
                                     <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
-                                        <a href="${pageContext.request.contextPath}/img/cv<%=utente.getCV()%>" target="_blank" class="file-upload btn btn-success  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
+                                        <a href="${pageContext.request.contextPath}/img/cv<%=all_user_posizione.get(j).getCV()%>" target="_blank" class="file-upload btn btn-success  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
                                     </div>
                                 </div>
                             </div>
