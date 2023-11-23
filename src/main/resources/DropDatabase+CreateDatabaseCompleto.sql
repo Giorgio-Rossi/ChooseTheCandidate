@@ -38,6 +38,7 @@ ruolo_admin varchar(10) not null check(ruolo_admin in('user','admin'))  CONSTRAI
 password varchar(200) not null,
 foto_profilo varchar(100),
 CV varchar(600),
+chiaveSicurezza varchar(200) not null,
 genere varchar(30)  check(genere in('uomo','donna','non specificare')),
 CONSTRAINT FK_utente_citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta)
 )

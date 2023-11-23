@@ -19,22 +19,20 @@ public class Utente {
 	private String telefono;
 	private String ruolo_admin;
 	private String password;
+	private String chiaveSicurezza;
 	private List<Esperienza> new_esperienza = new ArrayList<Esperienza> ();
-	
-
 	private String genere;
-
 	private String foto_profilo;
-
 	private String cv;
 	
 	
 	public Utente() {
 		super();
 	}
+	
 	public Utente(int id_user, String nome, String cognome, String codice_fiscale, String email, Date data_nascita,
 			String indirizzo, Citta id_citta, String cap, String telefono, String ruolo_admin, String password,
-			List<Esperienza> new_esperienza, String foto_profilo, String genere, String cv) {
+			List<Esperienza> new_esperienza, String foto_profilo, String genere, String cv, String chiaveSicurezza) {
 		super();
 		this.id_user = id_user;
 		this.nome = nome;
@@ -52,6 +50,7 @@ public class Utente {
 		this.foto_profilo = foto_profilo;
 		this.genere = genere;
 		this.cv = cv;
+		this.chiaveSicurezza = chiaveSicurezza;
 	}
 
 	public int getId_user() {
@@ -156,6 +155,13 @@ public class Utente {
 	public void setCV(String cv) {
 		this.cv = cv;
 	}
+	
+	public String getChiaveSicurezza() {
+		return chiaveSicurezza;
+	}
+	public void setChiaveSicurezza(String chiaveSicurezza) {
+		this.chiaveSicurezza = chiaveSicurezza;
+	}
 
 	public ArrayList<String> getEmptyParameter(){
 		ArrayList<String> campi_vuoti = new ArrayList<>();
@@ -196,7 +202,7 @@ public class Utente {
 				", genere='" + genere + '\'' +
 				", foto_profilo='" + foto_profilo + '\'' +
 				", cv='" + cv + '\'' +
+				", chiaveSicurezza='" + chiaveSicurezza + '\'' +
 				'}';
 	}
-
 }

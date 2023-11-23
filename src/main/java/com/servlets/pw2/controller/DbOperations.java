@@ -1,4 +1,4 @@
-    package com.servlets.pw2.controller;
+package com.servlets.pw2.controller;
  
 import com.candidatoDB.pw2.entity.Utente;
 import com.candidatoDB.pw2.interfaces.impl.UtenteIMPL;
@@ -172,6 +172,7 @@ public class DbOperations {
         }
         return exists;
     }
+    
     public boolean ChechUserTelAndCodF(Utente utente){
         boolean exists = false;
         try{
@@ -190,5 +191,27 @@ public class DbOperations {
             throw new RuntimeException(e);
         }
         return exists;
+    }
+    
+    
+    public Utente CheckChiaveSicurezza(String chiaveSicurezza, String email){
+        Utente utente = new Utente();
+        
+        try{
+            result = connection.getConnection().prepareStatement("SELECT * FROM Utente where chiaveSicurezza=? and email = ?");
+            result.setString(1, utente.getChiaveSicurezza());
+            result.setString(2, utente.getEmail());
+            ResultSet resultSet = result.executeQuery();
+
+            if(resultSet.next()){
+				chiaveSicurezza = resultSet.getString("chiaveSicureza");
+            }else {
+                return utente;
+            }
+ 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return utente;
     }
 }
