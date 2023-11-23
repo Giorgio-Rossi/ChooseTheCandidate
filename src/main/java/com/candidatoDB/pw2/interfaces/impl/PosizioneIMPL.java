@@ -706,11 +706,17 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 	@Override
 	public void deletePosizione(int id_posizione) {
-		String sql = "DELETE FROM Posizione WHERE id_posizione = ?";
+		String sql = "IF EXISTS (SELECT 1 FROM CandidaturaUser WHERE id_posizione = ?)\n" +
+				"BEGIN\n" +
+				"    DELETE FROM CandidaturaUser WHERE id_posizione = ?;\n" +
+				"END;\n" +
+				"DELETE FROM Posizione WHERE id_posizione = ?;";
 		PreparedStatement statement = null;
 		try {
 			statement = connection.getConnection().prepareStatement(sql);
 			statement.setInt(1, id_posizione);
+			statement.setInt(2, id_posizione);
+			statement.setInt(3, id_posizione);
 			statement.executeUpdate();
 
 		} catch (SQLException e) {
