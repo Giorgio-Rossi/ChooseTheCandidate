@@ -8,8 +8,8 @@
 </head>
 <body>
 
-	<!-- <form  method="post" id="form1" action="${pageContext.request.contextPath}/passwordDimenticata"> -->
-	<form>
+	<form  method="post" id="form1" action="${pageContext.request.contextPath}/passwordDimenticata"> 
+	
 		<input type="text" name="newpsw" id="newpsw" placeholder="newpsw"
 			required><br> <input type="text" name="confermapsw"
 			id="confermapsw" placeholder="confermapsw" required><br>
