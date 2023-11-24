@@ -65,7 +65,7 @@ public class Registrazione extends HttpServlet {
                 ErrorManager.setSuccessMessage("Registrazione effettuata, fai il login!",req);
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
             }else{
-                ErrorManager.setErrorMessage("Utente già esistente",req);
+                ErrorManager.setErrorMessage("Email, telefono o codice fiscale già registrati sul sito",req);
                 req.getRequestDispatcher("/registrazione.jsp").forward(req, resp);
             }
 
