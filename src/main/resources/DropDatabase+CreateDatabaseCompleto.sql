@@ -256,7 +256,16 @@ insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id
 
 /*	Insert CategoriaPosizione	*/
 
-
+insert into CategoriaPosizione ( nome_categoria) values ( 'Sviluppo Web');
+insert into CategoriaPosizione ( nome_categoria) values ( 'Testing web');
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Analisi software');
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Gestione Progetti');
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Sicurezza Informatica');
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Amministrazione di Sistema');
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Architettura Software');
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Specialista Tecnico');
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Supporto Tecnico');
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Gestione Qualità');
 
 
 
@@ -564,10 +573,12 @@ INSERT INTO QuizDomanda VALUES(75, 11);
 
 
 /*	Inserimento delle posizioni	*/
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','ciao','1','1','1','aperta','20231101','Sistemista');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','hola','1','2','2','aperta','20231102','Web Developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo uno sviluppatore Java','2','2','2','aperta','20231107','Java Developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo uno sviluppatore Front End','2','2','2','aperta','20231102','Front-End Developer');
+
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo un sistemista esperto con almeno 3 anni di esperienza su progetti di media grandezza','1','6','4','aperta','20231101','Sistemista');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo un full-stack developer','1','1','1','aperta','20231102','Web Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo uno sviluppatore Java','2','1','2','aperta','20231107','Java Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo uno sviluppatore Front End','1','2','8','aperta','20231102','Front-End Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('8','Cerchiamo uno sviluppatore Back End con nozioni di Java e Python','5','3','2','aperta','20231102','Back-End Developer');
 
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('2','Siamo alla ricerca di una figura per lo sviluppo di applicazioni web','6','3','2','aperta','20240120','Full stack web developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Siamo alla ricerca di uno sviluppatore Python/Django esperto per unirsi al nostro team. Lideale candidato avrà una passione per la programmazione e l innovazione tecnologica, con un focus su Python e il framework Django.','6','3','1','aperta','20240120','Sviluppatore python');
