@@ -35,7 +35,7 @@ public class passwordDimenticataServlet extends HttpServlet {
         Utente utente = new Utente();
       
         try{
-            utente = dbOperationsr.CheckChiaveSicurezza(chiaveSicurezza, email);
+           // utente = dbOperationsr.CheckChiaveSicurezza(chiaveSicurezza, email);
             System.out.println(utente);
         
             if(utente.getId_user() == 0) {
