@@ -20,7 +20,6 @@ import java.util.Objects;
 @MultipartConfig
 public class passwordDimenticataServlet extends HttpServlet {
 
-	String profilo = "/profilo/passwordDimenticata.jsp";
 	private DbOperations dbOperationsr;
 	
 	@Override
@@ -36,19 +35,31 @@ public class passwordDimenticataServlet extends HttpServlet {
         Utente utente = new Utente();
       
         try{
-            utente = dbOperationsr.CheckChiaveSicurezza(chiaveSicurezza, email);
+           // utente = dbOperationsr.CheckChiaveSicurezza(chiaveSicurezza, email);
             System.out.println(utente);
         
+            if(utente.getId_user() == 0) {
+                ErrorManager.setErrorMessage("Qualcosa è andato storto", req);
+            	resp.sendRedirect("passwordDimenticata.jsp");
+            	System.out.println("errore");
+            } else {
                 HttpSession session = req.getSession(true);
                 session.setAttribute("utente", utente);
                 resp.sendRedirect("home/resetPassword.jsp");
-    
-           
-            
+            }
+       
         } catch (IOException e) {
+        	
+        	
             ErrorManager.setErrorMessage("Qualcosa è andato storto", req);
             throw new RuntimeException(e);
             
+        }
+        
+        String verificaChiaveSicurezza= req.getParameter("chiaveSicurezza");
+
+        if (chiaveSicurezza.equals(verificaChiaveSicurezza)){
+            utente.setChiaveSicurezza(verificaChiaveSicurezza);
         }
 	}
 }
