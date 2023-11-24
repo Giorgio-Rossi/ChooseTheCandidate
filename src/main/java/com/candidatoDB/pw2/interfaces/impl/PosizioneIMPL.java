@@ -14,8 +14,6 @@ import com.candidatoDB.pw2.interfaces.PosizioneDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
 
-//TODO AGGIUNGERE LA CREAZIONE DEI QUIZ NEI METODI DI FILTRI
-
 public class PosizioneIMPL implements PosizioneDAO {
 	private SQLServerConnection connection = new SQLServerConnection();
 
@@ -704,6 +702,30 @@ public class PosizioneIMPL implements PosizioneDAO {
 			//DBUtil.close(connection.getConnection());
 		}
 
+	}
+
+	@Override
+	public void deletePosizione(int id_posizione) {
+		String sql = "IF EXISTS (SELECT 1 FROM CandidaturaUser WHERE id_posizione = ?)\n" +
+				"BEGIN\n" +
+				"    DELETE FROM CandidaturaUser WHERE id_posizione = ?;\n" +
+				"END;\n" +
+				"DELETE FROM Posizione WHERE id_posizione = ?;";
+		PreparedStatement statement = null;
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setInt(1, id_posizione);
+			statement.setInt(2, id_posizione);
+			statement.setInt(3, id_posizione);
+			statement.executeUpdate();
+
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+
+		} finally {
+			DBUtil.close(statement);
+			// DBUtil.close((Connection) connection);
+		}
 	}
 
 }

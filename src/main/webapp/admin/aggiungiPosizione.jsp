@@ -124,10 +124,11 @@ ArrayList<CategoriaPosizione> catpos= cpImpl.getAllCategoriePosizioni();
 														<input type="text" class="form-control " name="ruolo" id="ruolo" placeholder="Ruolo" required>
 													</div>
 
-													<label class="form-label" for="n_ammissioni">Numero ammissioni</label>
-													<div class="range" data-mdb-range-init>
-														<input type="range" name="n_ammissioni" class="form-range" min="1" max="400" id="n_ammissioni" />
+													<div class="mb-3">
+														<label for="n_ammissioni" class="form-label">Numero ammissioni</label><br>
+														<input type="number" name="n_ammissioni" class="form-group" min="1" max="400" id="n_ammissioni" />
 													</div>
+
 
 													<div class="form-group mb-3" aria-labelledby="navbarDropdown"
 														style="margin-right: 10px">

@@ -142,13 +142,13 @@ public class IstruzioneIMPL implements IstruzioneDAO {
 	}
 
 	@Override
-	public void deleteIstruzioneUtente(Istruzione istruzione) {
-		String sql = "DELETE Istruzione WHERE id_user = ?";
+	public void deleteIstruzioneUtente(int  id_istruzione) {
+		String sql = "DELETE Istruzione WHERE id_istruzione = ?";
 		PreparedStatement statement = null;
 		try {
 		
 			statement = connection.getConnection().prepareStatement(sql);
-			statement.setInt(1, istruzione.getId_istruzione());
+			statement.setInt(1, id_istruzione);
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());

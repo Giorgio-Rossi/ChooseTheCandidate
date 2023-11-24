@@ -364,6 +364,27 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																			
 																		</select>
 
+																		<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#warningModal<%=istruzione.getId_istruzione()%>">
+																			Elimina istruzione
+																		</button>
+
+																		<div class="modal fade" id="warningModal<%=istruzione.getId_istruzione()%>" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+																			<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+																				<div class="modal-content">
+																					<div class="modal-body text-center p-lg-4">
+																						<i class="bi bi-exclamation-triangle-fill" style="font-size: 5rem"></i>
+																						<h4 class="text-warning mt-3">Sei sicuro di voler eliminare la posizione?</h4>
+																						<p class="mt-3">Una volta eliminata non sarà più possibile visualizzare eventuali candidati</p>
+																					</div>
+																					<div class="modal-footer">
+																						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+																						<a href="<%=request.getContextPath()%>/EliminaIstruzione?id_istruzione=<%=istruzione.getId_istruzione()%>" class="btn btn-danger mt-2">Elimina Istruzione</a>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+
+
 																	</div>
 																</div>
 															</div>
@@ -806,6 +827,18 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 							rispondere correttamente ad almeno metà delle domande</p>
 						<button type="button" class="btn btn-sm mt-3 btn-danger"
 							data-bs-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+			<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center p-lg-4">
+						<i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+						<h4 class="text-success mt-3">Hai eliminato correttamente l'istruzione!</h4>
+						<button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
 					</div>
 				</div>
 			</div>

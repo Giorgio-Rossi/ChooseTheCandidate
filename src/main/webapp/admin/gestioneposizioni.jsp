@@ -146,8 +146,28 @@
                                 %>
                                
                                <a href="<%=request.getContextPath()%>/admin/modificaPosizione.jsp?idPosizione=<%=posizione.getId_posizione()%>" class="btn btn-primary me-2">Modifica</a>
-                               
-                               
+
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#warningModal<%=posizione.getId_posizione()%>">
+                                    Elimina
+                                </button>
+
+                                <div class="modal fade" id="warningModal<%=posizione.getId_posizione()%>" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+                                    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body text-center p-lg-4">
+                                                <i class="bi bi-exclamation-triangle-fill" style="font-size: 5rem"></i>
+                                                <h4 class="text-warning mt-3">Sei sicuro di voler eliminare la posizione?</h4>
+                                                <p class="mt-3">Una volta eliminata non sarà più possibile visualizzare eventuali candidati</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                                                <a href="<%=request.getContextPath()%>/eliminaPosizione?idPosizione=<%=posizione.getId_posizione()%>" class="btn btn-danger me-2">Elimina</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -165,6 +185,63 @@
        	 	<a href="<%=request.getContextPath()%>/admin/aggiungiPosizione.jsp" class=" btn btn-success" style="width:170px!important" >Aggiungi</a>
         </div>
     </main>
+
+
+    <div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center p-lg-4">
+                    <i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+                    <h4 class="text-success mt-3">Posizione creata correttamente!</h4>
+                    <p class="mt-3">Adesso è possibile modificarla e visualizzarne i candidati</p>
+                    <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center p-lg-4">
+                    <i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+                    <h4 class="text-success mt-3">Hai eliminato correttamente la candidatura!</h4>
+                    <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     
 </body>
+
+<%
+    String success =  session.getAttribute("posizione_creata") == null ?  null : session.getAttribute("posizione_creata").toString();
+    String delete =  session.getAttribute("posizione_eliminata") == null ?  null : session.getAttribute("posizione_eliminata").toString();
+
+
+    if(success != null && Boolean.parseBoolean(success)){
+%>
+<script>
+    var myModal = new bootstrap.Modal(document.getElementById('statusSuccessModal'))
+    myModal.show()
+    <% session.removeAttribute("posizione_creata");%>
+</script>
+<%
+    }
+%>
+<%
+    if(delete != null && Boolean.parseBoolean(delete)){
+%>
+<script>
+    var myModal = new bootstrap.Modal(document.getElementById('errorModal'))
+    myModal.show()
+    <% session.removeAttribute("posizione_eliminata");%>
+</script>
+<%
+    }
+%>
+
 </html>
