@@ -2,7 +2,10 @@ package com.candidatoDB.pw2.interfaces;
 
 import java.util.ArrayList;
 
+import com.candidatoDB.pw2.entity.Domanda;
 import com.candidatoDB.pw2.entity.Quiz;
+import com.candidatoDB.pw2.entity.QuizDomande;
+import com.candidatoDB.pw2.entity.RisposteDomande;
 
 public interface QuizDAO {
 
@@ -13,4 +16,6 @@ public interface QuizDAO {
     Integer getNdomandeById (int id_quiz);
     
     ArrayList<Quiz> getAllQuiz();
+
+    void save(Quiz quiz, ArrayList<Domanda> domande, ArrayList<RisposteDomande> risposteDomande);
 }

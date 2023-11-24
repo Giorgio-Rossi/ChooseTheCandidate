@@ -1,14 +1,11 @@
 package com.candidatoDB.pw2.interfaces.impl;
 
-import com.candidatoDB.pw2.entity.Posizione;
-import com.candidatoDB.pw2.entity.Quiz;
+import com.candidatoDB.pw2.entity.*;
 import com.candidatoDB.pw2.interfaces.QuizDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class QuizIMPL implements QuizDAO {
@@ -120,5 +117,83 @@ public class QuizIMPL implements QuizDAO {
 		}
 
 		return quiz;
-	} 
-}
+	}
+
+    @Override
+    public void save(Quiz quiz, ArrayList<Domanda> domande, ArrayList<RisposteDomande> risposteDomande) {
+        String InsertQuiz = "INSERT INTO Quiz VALUES (?,?);";
+        String InsertDomande = "INSERT INTO Domanda VALUES (?,?)";
+        String InsertRisposteDomanda = "INSERT INTO RisposteDomanda VALUES (?,?,?,?,?,?);";
+        String InsertQuizDomanda = "INSERT INTO QuizDomanda VALUES(?,?)";
+
+        PreparedStatement st_quiz = null;
+        PreparedStatement st_domande = null;
+        PreparedStatement st_risposte_domande = null;
+        PreparedStatement st_quiz_domande = null;
+
+        try {
+
+            st_quiz= connection.getConnection().prepareStatement(InsertQuiz, Statement.RETURN_GENERATED_KEYS);
+            st_domande= connection.getConnection().prepareStatement(InsertDomande, Statement.RETURN_GENERATED_KEYS);
+            st_risposte_domande = connection.getConnection().prepareStatement(InsertRisposteDomanda);
+            st_quiz_domande = connection.getConnection().prepareStatement(InsertQuizDomanda);
+
+            st_quiz.setString(1, quiz.getDescrizione());
+            st_quiz.setInt(2, quiz.getN_domande());
+
+            st_quiz.executeUpdate();
+
+            ResultSet generatedKeysQuiz = st_quiz.getGeneratedKeys();
+
+            generatedKeysQuiz.next();
+
+            int i= 0;
+            for(Domanda domanda: domande) {
+                st_domande.setString(1, domanda.getTesto());
+                st_domande.setInt(2,domanda.getPunteggio());
+
+                st_domande.executeUpdate();
+
+                ResultSet generatedKeys = st_domande.getGeneratedKeys();
+
+                generatedKeys.next();
+
+                st_risposte_domande.setString(1,risposteDomande.get(i).getScelta1());
+                st_risposte_domande.setString(2,risposteDomande.get(i).getScelta2());
+                st_risposte_domande.setString(3,risposteDomande.get(i).getScelta3());
+                st_risposte_domande.setString(4,risposteDomande.get(i).getScelta4());
+                st_risposte_domande.setString(5,risposteDomande.get(i).getScelta_corretta());
+
+                st_risposte_domande.setInt(6,generatedKeys.getInt(1));
+
+                st_risposte_domande.executeUpdate();
+
+                st_quiz_domande.setInt(1,generatedKeys.getInt(1));
+                st_quiz_domande.setInt(2,generatedKeysQuiz.getInt(1));
+
+                st_quiz_domande.executeUpdate();
+
+                i++;
+
+            }
+
+
+
+
+
+
+
+
+            // resultSet = statement.getGeneratedKeys();
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            // DBUtil.close(resultSet);
+            DBUtil.close(st_quiz);
+            DBUtil.close(st_domande);
+            DBUtil.close(st_risposte_domande);
+            // DBUtil.close((Connection) connection);
+        }
+    }
+    }
