@@ -177,12 +177,80 @@ public class QuizIMPL implements QuizDAO {
 
             }
 
+            // resultSet = statement.getGeneratedKeys();
 
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            // DBUtil.close(resultSet);
+            DBUtil.close(st_quiz);
+            DBUtil.close(st_domande);
+            DBUtil.close(st_risposte_domande);
+            // DBUtil.close((Connection) connection);
+        }
+    }
 
+    @Override
+    public void update(Quiz quiz, ArrayList<Domanda> domande, ArrayList<RisposteDomande> risposteDomande) {
+        String InsertQuiz = "UPDATE Quiz set descrizione=?, n_domande=? where id_quiz=? ;";
+        String InsertDomande = "UPDATE Domanda SET testo=?, punteggio=? where id_domanda=?";
+        String InsertRisposteDomanda = "UPDATE RisposteDomanda SET scelta1=?, scelta2=?, scelta3=?, scelta4=?, scelta_corretta=? WHERE id_risposta=?";
+        String InsertQuizDomanda = "UPDATE QuizDomanda SET id_domanda=?, id_quiz=? where id_domanda=? and id_quiz=?";
 
+        PreparedStatement st_quiz = null;
+        PreparedStatement st_domande = null;
+        PreparedStatement st_risposte_domande = null;
+        PreparedStatement st_quiz_domande = null;
 
+        try {
 
+            st_quiz= connection.getConnection().prepareStatement(InsertQuiz, Statement.RETURN_GENERATED_KEYS);
+            st_domande= connection.getConnection().prepareStatement(InsertDomande, Statement.RETURN_GENERATED_KEYS);
+            st_risposte_domande = connection.getConnection().prepareStatement(InsertRisposteDomanda);
+            st_quiz_domande = connection.getConnection().prepareStatement(InsertQuizDomanda);
 
+            st_quiz.setString(1, quiz.getDescrizione());
+            st_quiz.setInt(2, quiz.getN_domande());
+            st_quiz.setInt(3, quiz.getId_quiz());
+
+            st_quiz.executeUpdate();
+
+            ResultSet generatedKeysQuiz = st_quiz.getGeneratedKeys();
+
+            generatedKeysQuiz.next();
+
+            int i= 0;
+            for(Domanda domanda: domande) {
+                st_domande.setString(1, domanda.getTesto());
+                st_domande.setInt(2,domanda.getPunteggio());
+                st_domande.setInt(3,domanda.getId_domanda());
+
+                st_domande.executeUpdate();
+
+                ResultSet generatedKeys = st_domande.getGeneratedKeys();
+
+                generatedKeys.next();
+
+                st_risposte_domande.setString(1,risposteDomande.get(i).getScelta1());
+                st_risposte_domande.setString(2,risposteDomande.get(i).getScelta2());
+                st_risposte_domande.setString(3,risposteDomande.get(i).getScelta3());
+                st_risposte_domande.setString(4,risposteDomande.get(i).getScelta4());
+                st_risposte_domande.setString(5,risposteDomande.get(i).getScelta_corretta());
+
+                st_risposte_domande.setInt(6,risposteDomande.get(i).getId_risposta());
+
+                st_risposte_domande.executeUpdate();
+
+                st_quiz_domande.setInt(1,generatedKeys.getInt(1));
+                st_quiz_domande.setInt(2,generatedKeysQuiz.getInt(1));
+                st_quiz_domande.setInt(3,generatedKeys.getInt(1));
+                st_quiz_domande.setInt(4,generatedKeysQuiz.getInt(1));
+
+                st_quiz_domande.executeUpdate();
+
+                i++;
+
+            }
 
             // resultSet = statement.getGeneratedKeys();
 

@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-sm-3 text-lg-end">
 
-                            <a href="<%=request.getContextPath()%>/admin/modificaQuiz.jsp?idPosizione=<%=quiz.getId_quiz()%>" class="btn btn-primary me-2">Modifica</a>
+                            <a href="<%=request.getContextPath()%>/admin/modificaQuiz.jsp?idQuiz=<%=quiz.getId_quiz()%>" class="btn btn-primary me-2">Modifica</a>
 
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#warningModal<%=quiz.getId_quiz()%>">
                                 Elimina
@@ -121,9 +121,22 @@
     </div>
 </div>
 
+<div class="modal fade" id="errorModal2" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+                <h4 class="text-success mt-3">Hai modificato correttamente il Quiz!</h4>
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <%
     String success =  session.getAttribute("quiz_creato") == null ?  null : session.getAttribute("quiz_creato").toString();
     String delete =  session.getAttribute("quiz_eliminato") == null ?  null : session.getAttribute("quiz_eliminato").toString();
+    String other =  session.getAttribute("quiz_modificato") == null ?  null : session.getAttribute("quiz_modificato").toString();
 
 
     if(success != null && Boolean.parseBoolean(success)){
@@ -148,6 +161,18 @@
 <%
     }
 %>
+<%
+    if(other != null && Boolean.parseBoolean(other)){
+%>
+<script>
+    var myModal = new bootstrap.Modal(document.getElementById('errorModal2'))
+    myModal.show()
+    <% session.removeAttribute("quiz_modificato");%>
+</script>
+<%
+    }
+%>
+
 
 </body>
 </html>

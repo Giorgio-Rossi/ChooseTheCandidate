@@ -19,5 +19,7 @@ public interface QuizDAO {
 
     void save(Quiz quiz, ArrayList<Domanda> domande, ArrayList<RisposteDomande> risposteDomande);
 
+    void update(Quiz quiz, ArrayList<Domanda> domande, ArrayList<RisposteDomande> risposteDomande);
+
     void delete(Integer id_quiz);
 }
