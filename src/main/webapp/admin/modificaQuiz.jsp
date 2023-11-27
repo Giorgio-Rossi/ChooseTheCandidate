@@ -144,7 +144,7 @@
                                                                     int i=1;
                                                                     for(Map.Entry<Domanda,ArrayList<RisposteDomande>> entry : risposte.entrySet()){
                                                                 %>
-                                                                <tr id='addr0'>
+                                                                <tr id='addr<%=i%>'>
                                                                     <td>
                                                                         <%=i%>
                                                                     </td>
@@ -215,6 +215,7 @@
                                                                     </td>
                                                                 </tr>
                                                                 <%
+                                                                        i++;
                                                                     };
                                                                 %>
                                                                 <tr id='addr1'></tr>
