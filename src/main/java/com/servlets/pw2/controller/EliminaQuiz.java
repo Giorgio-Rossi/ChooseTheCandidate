@@ -19,10 +19,13 @@ public class EliminaQuiz extends HttpServlet {
         Integer id_quiz = Integer.parseInt(req.getParameter("idQuiz"));
         QuizIMPL quizIMPL = new QuizIMPL();
 
+        req.getSession().setAttribute("posizioni_modificare",quizIMPL.getAllPosizioniByQuiz(id_quiz));
 
         quizIMPL.delete(id_quiz);
 
+
         req.getSession().setAttribute("quiz_eliminato","true");
+
         req.getRequestDispatcher("admin/gestionequiz.jsp").forward(req, resp);
     }
 }

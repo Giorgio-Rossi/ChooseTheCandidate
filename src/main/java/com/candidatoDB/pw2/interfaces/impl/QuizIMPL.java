@@ -321,6 +321,35 @@ public class QuizIMPL implements QuizDAO {
     }
 
     @Override
+    public ArrayList<Posizione> getAllPosizioniByQuiz(int id_quiz) {
+        ArrayList<Posizione> posizioni = new ArrayList<>();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+
+            String sql = "SELECT * FROM Posizione where id_quiz=?";
+            preparedStatement = connection.getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1,id_quiz);
+            resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Posizione p = new Posizione();
+                PosizioneIMPL posizioneIMPL = new PosizioneIMPL();
+                posizioni.add(posizioneIMPL.getPosizioneById(resultSet.getInt("id_posizione")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+
+            DBUtil.close(resultSet);
+            DBUtil.close(preparedStatement);
+            // DBUtil.close(connection);
+        }
+
+        return posizioni;
+    }
+
+    @Override
     public void delete(Integer id_quiz) {
         String sql = "DELETE FROM UtenteQuiz WHERE id_quiz = ? DELETE FROM RisposteDomanda WHERE id_domanda IN (SELECT id_domanda FROM QuizDomanda WHERE id_quiz = ?);DELETE FROM QuizDomanda WHERE id_quiz = ?;UPDATE Posizione SET id_quiz = NULL WHERE id_quiz = ?; UPDATE Skill SET id_quiz = NULL WHERE id_quiz = ?; DELETE FROM Quiz WHERE id_quiz = ?;";
         PreparedStatement statement = null;

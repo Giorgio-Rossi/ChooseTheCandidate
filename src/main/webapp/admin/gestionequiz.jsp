@@ -1,6 +1,7 @@
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.QuizIMPL" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.candidatoDB.pw2.entity.Quiz" %>
+<%@ page import="com.candidatoDB.pw2.entity.Posizione" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -114,7 +115,19 @@
             <div class="modal-body text-center p-lg-4">
                 <i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
                 <h4 class="text-success mt-3">Hai eliminato correttamente il Quiz!</h4>
-                <p class="mt-3">Ricordati di assegnare un nuovo quiz alle posizioni che avevano il quiz eliminato</p>
+                <p class="mt-3">Ricordati di assegnare un nuovo quiz alle posizioni che avevano il quiz eliminato:
+
+                    <%
+                        ArrayList<Posizione> posizioni =  session.getAttribute("posizioni_modificare") == null ?  null : (ArrayList<Posizione>) session.getAttribute("posizioni_modificare");
+                        if(posizioni!=null){
+                    for(Posizione posizione:posizioni){
+                    %>
+                    <%=posizione.getRuolo()%> <%=posizione.getCitta().getNome()%>
+                    <%
+                            }
+                        };
+                    %>
+                </p>
                 <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
             </div>
         </div>
