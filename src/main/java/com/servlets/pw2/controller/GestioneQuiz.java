@@ -62,20 +62,8 @@ public class GestioneQuiz extends HttpServlet {
             risposteDomanda.setScelta3(scelte3[i]);
             risposteDomanda.setScelta4(scelte4[i]);
 
-            switch (sceltecorrette[i]){
-                case "1":
-                    risposteDomanda.setScelta_corretta("scelta1");
-                    break;
-                case "2":
-                    risposteDomanda.setScelta_corretta("scelta2");
-                    break;
-                case "3":
-                    risposteDomanda.setScelta_corretta("scelta3");
-                    break;
-                case "4":
-                    risposteDomanda.setScelta_corretta("scelta4");
-                    break;
-            }
+            risposteDomanda.setScelta_corretta(sceltecorrette[i]);
+
             domande_quiz.add(domanda);
             risposte_domande_quiz.add(risposteDomanda);
         }
@@ -86,7 +74,10 @@ public class GestioneQuiz extends HttpServlet {
 
         quizIMPL.save(quiz, domande_quiz, risposte_domande_quiz);
 
+        req.getSession().setAttribute("quiz_creato", "true");
+
         req.getRequestDispatcher("admin/gestionequiz.jsp").forward(req, resp);
+
 
     }
 }

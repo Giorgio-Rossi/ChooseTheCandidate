@@ -171,7 +171,13 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																		</td>
 																		<td>
 																			<div class="mb-3">
-																				<textarea class="form-control" name="sceltacorretta" placeholder="Scelta Corretta (1,2,3,4)"  rows="3" required></textarea>
+																				<select class="form-select" aria-label="Default select example" name="sceltacorretta" required>
+																					<option disabled>Scelta corretta</option>
+																					<option value="scelta1">1</option>
+																					<option value="scelta2">2</option>
+																					<option value="scelta3">3</option>
+																					<option value="scelta4">4</option>
+																				</select>
 																			</div>
 																		</td>
 																	</tr>
@@ -205,7 +211,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	$(document).ready(function(){
 		var i=1;
 		$("#add_row").click(function(){
-			$('#addr'+i).html("<td>"+ (i+1) +"</td><td> <div class='mb-3'> <textarea class='form-control' name='domanda' placeholder='Domanda' rows='3' required></textarea> <input type='number' name='punteggio' class='form-control' min='1' max='10' placeholder='Punteggio' required /> </div> </td> <td> <div class='mb-3'> <textarea class='form-control' name='scelta1' placeholder='Scelta 1'  rows='3' required></textarea> </div> </td> <td> <div class='mb-3'> <textarea class='form-control' name='scelta2' placeholder='Scelta 2' rows='3' required></textarea> </div> </td> <td> <div class='mb-3'> <textarea class='form-control' name='scelta3' placeholder='Scelta 3'  rows='3' required></textarea> </div> </td> <td> <div class='mb-3'> <textarea class='form-control' name='scelta4' placeholder='Scelta 4'  rows='3' required></textarea> </div> </td> <td> <div class='mb-3'> <textarea class='form-control' name='sceltacorretta' placeholder='Scelta Corretta (1,2,3,4)'  rows='3' required></textarea> </div> </td>");
+			$('#addr'+i).html("<td>"+ (i+1) +"</td><td> <div class='mb-3'> <textarea class='form-control' name='domanda' placeholder='Domanda' rows='3' required></textarea> <input type='number' name='punteggio' class='form-control' min='1' max='10' placeholder='Punteggio' required /> </div> </td> <td> <div class='mb-3'> <textarea class='form-control' name='scelta1' placeholder='Scelta 1'  rows='3' required></textarea> </div> </td> <td> <div class='mb-3'> <textarea class='form-control' name='scelta2' placeholder='Scelta 2' rows='3' required></textarea> </div> </td> <td> <div class='mb-3'> <textarea class='form-control' name='scelta3' placeholder='Scelta 3'  rows='3' required></textarea> </div> </td> <td> <div class='mb-3'> <textarea class='form-control' name='scelta4' placeholder='Scelta 4'  rows='3' required></textarea> </div> </td> <td> <div class='mb-3'> <select class='form-select' aria-label='Default select example' name='sceltacorretta' required> <option disabled>Scelta corretta</option> <option value='scelta1'>1</option> <option value='scelta2'>2</option> <option value='scelta3'>3</option> <option value='scelta4'>4</option></select>");
 
 			$('#tab_logic').append('<tr id="addr'+(i+1)+'"></tr>');
 			i++;

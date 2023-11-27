@@ -65,12 +65,12 @@
                                     <div class="modal-content">
                                         <div class="modal-body text-center p-lg-4">
                                             <i class="bi bi-exclamation-triangle-fill" style="font-size: 5rem"></i>
-                                            <h4 class="text-warning mt-3">Sei sicuro di voler eliminare la posizione?</h4>
-                                            <p class="mt-3">Una volta eliminata non sarà più possibile visualizzare eventuali candidati</p>
+                                            <h4 class="text-warning mt-3">Sei sicuro di voler eliminare il Quiz?</h4>
+                                            <p class="mt-3">Una volta eliminato verranno perse le statistiche degli utenti e le domande associate</p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                                            <a href="<%=request.getContextPath()%>/eliminaPosizione?idPosizione=<%=quiz.getId_quiz()%>" class="btn btn-danger me-2">Elimina</a>
+                                            <a href="<%=request.getContextPath()%>/eliminaQuiz?idQuiz=<%=quiz.getId_quiz()%>" class="btn btn-danger me-2">Elimina</a>
                                         </div>
                                     </div>
                                 </div>
@@ -94,6 +94,60 @@
         <a href="<%=request.getContextPath()%>/admin/aggiungiQuiz.jsp" class=" btn btn-success" style="width:170px!important" >Aggiungi</a>
     </div>
 </main>
+
+<div class="modal fade" id="statusSuccessModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+                <h4 class="text-success mt-3">Quiz creato correttamente!</h4>
+                <p class="mt-3">Adesso è possibile modificarlo o eliminarlo</p>
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center p-lg-4">
+                <i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+                <h4 class="text-success mt-3">Hai eliminato correttamente il Quiz!</h4>
+                <p class="mt-3">Ricordati di assegnare un nuovo quiz alle posizioni che avevano il quiz eliminato</p>
+                <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%
+    String success =  session.getAttribute("quiz_creato") == null ?  null : session.getAttribute("quiz_creato").toString();
+    String delete =  session.getAttribute("quiz_eliminato") == null ?  null : session.getAttribute("quiz_eliminato").toString();
+
+
+    if(success != null && Boolean.parseBoolean(success)){
+%>
+<script>
+    var myModal = new bootstrap.Modal(document.getElementById('statusSuccessModal'))
+    myModal.show()
+    <% session.removeAttribute("quiz_creato");%>
+</script>
+<%
+    }
+%>
+
+<%
+    if(delete != null && Boolean.parseBoolean(delete)){
+%>
+<script>
+    var myModal = new bootstrap.Modal(document.getElementById('errorModal'))
+    myModal.show()
+    <% session.removeAttribute("quiz_eliminato");%>
+</script>
+<%
+    }
+%>
 
 </body>
 </html>

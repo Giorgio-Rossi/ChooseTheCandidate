@@ -196,4 +196,27 @@ public class QuizIMPL implements QuizDAO {
             // DBUtil.close((Connection) connection);
         }
     }
+
+    @Override
+    public void delete(Integer id_quiz) {
+        String sql = "DELETE FROM UtenteQuiz WHERE id_quiz = ? DELETE FROM RisposteDomanda WHERE id_domanda IN (SELECT id_domanda FROM QuizDomanda WHERE id_quiz = ?);DELETE FROM QuizDomanda WHERE id_quiz = ?;UPDATE Posizione SET id_quiz = NULL WHERE id_quiz = ?; UPDATE Skill SET id_quiz = NULL WHERE id_quiz = ?; DELETE FROM Quiz WHERE id_quiz = ?;";
+        PreparedStatement statement = null;
+        try {
+            statement = connection.getConnection().prepareStatement(sql);
+            statement.setInt(1, id_quiz);
+            statement.setInt(2, id_quiz);
+            statement.setInt(3, id_quiz);
+            statement.setInt(4, id_quiz);
+            statement.setInt(5, id_quiz);
+            statement.setInt(6, id_quiz);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+
+        } finally {
+            DBUtil.close(statement);
+            // DBUtil.close((Connection) connection);
+        }
     }
+}
