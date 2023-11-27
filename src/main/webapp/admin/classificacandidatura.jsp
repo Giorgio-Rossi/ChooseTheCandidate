@@ -1,12 +1,12 @@
 <%@ page import="com.candidatoDB.pw2.entity.Utente" %>
-<%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteIMPL" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteQuizIMPL" %>
-<%@ page import="com.candidatoDB.pw2.interfaces.impl.PosizioneIMPL" %>
-<%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteSkillsIMPL" %>
 <%@ page import="java.util.Comparator" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="com.candidatoDB.pw2.entity.UtenteQuiz" %>
+<%@ page import="com.candidatoDB.pw2.interfaces.impl.*" %>
+<%@ page import="com.candidatoDB.pw2.entity.Skill" %>
+<%@ page import="com.candidatoDB.pw2.entity.UsersSkills" %>
+<%@ page import="java.util.Arrays" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,6 +15,8 @@
     <link rel="icon" type="image/x-icon"
           href="${pageContext.request.contextPath}/img/logoPag.png"
           style="border-radius: 10px">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -62,6 +64,12 @@
 
 <body style="background-color: #d4d4d4">
 
+<script>
+    $(document).ready(function(){
+        $('[data-bs-toggle="tooltip"]').tooltip();
+    });
+</script>
+
 <jsp:include page="jspA/navbarHeaderAdmin.jsp" />
 
 
@@ -75,6 +83,7 @@
         <div class="alert alert-primary d-flex justify-content-center" role="alert">
            Non sono presenti candidati per questa posizione
         </div>
+
         <%
             };
         %>
@@ -123,7 +132,14 @@
 
 
                         <div class="row text-center mt-4 justify-content-center">
-                            <div class="col-6 border-right">
+                            <%
+                                ArrayList<String> skills = new ArrayList<>();
+                                ArrayList<UsersSkills> usersSkills = new UtenteSkillsIMPL().getAllUserSkillVerified(utente);
+                                for(UsersSkills us : usersSkills){
+                                    skills.add(new SkillIMPL().findById(us.getId_skills()).getNome());
+                                }
+                            %>
+                            <div class="col-6 border-right"  data-bs-custom-class="custom-tooltip"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Skills verificate: <%=skills.toString().replace("[","").replace("]","")%>">
                                 <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3"><%= new UtenteSkillsIMPL().getAllUserSkillVerified(utente).size()%></strong>
                             </div>
                             <div class="col-6 border-right">
@@ -189,8 +205,14 @@
                                 </div>
 
                                 <div class="col border-right">
-
-                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"></i></div><strong class="h3"><%= new UtenteSkillsIMPL().getAllUserSkillVerifiedOrNot(all_user_posizione.get(j)).size()%></strong>
+                                    <%
+                                        ArrayList<String> skills = new ArrayList<>();
+                                        ArrayList<UsersSkills> usersSkills = new UtenteSkillsIMPL().getAllUserSkillVerified(all_user_posizione.get(j));
+                                        for(UsersSkills us : usersSkills){
+                                            skills.add(new SkillIMPL().findById(us.getId_skills()).getNome());
+                                        }
+                                    %>
+                                    <div class="h4 font-weight-bold mb-0"><i class="bi bi-award-fill"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Skills verificate: <%=skills.toString().replace("[","").replace("]","")%>"></i></div><strong class="h3"><%= new UtenteSkillsIMPL().getAllUserSkillVerified(all_user_posizione.get(j)).size()%></strong>
                                 </div>
                                 <div class="col border-right">
                                     <div class="h4 font-weight-bold mb-0"><i class="bi bi-card-checklist"></i></div><strong class="h3"><%=new UtenteQuizIMPL().getUtenteQuizById(new PosizioneIMPL().getPosizioneById(Integer.parseInt(id_posizione)).getQuiz().getId_quiz(),all_user_posizione.get(j)).getPunteggio()%>%</strong>

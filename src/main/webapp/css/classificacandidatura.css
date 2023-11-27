@@ -12,7 +12,6 @@
 }
 
 
-
 .favorite-icon a {
     display: inline-block;
     width: 30px;
@@ -37,4 +36,11 @@
 
 .mt-1 {
     margin-top: 0.25rem!important;
+}
+
+:root {
+    --bs-info: #0dcaf0;
+}
+.custom-tooltip {
+    --bs-tooltip-bg: var(--bs-info);
 }

@@ -54,7 +54,7 @@
                         </div>
                         <div class="col-sm-3 text-lg-end">
 
-                            <a href="<%=request.getContextPath()%>/admin/modificaPosizione.jsp?idPosizione=<%=quiz.getId_quiz()%>" class="btn btn-primary me-2">Modifica</a>
+                            <a href="<%=request.getContextPath()%>/admin/modificaQuiz.jsp?idPosizione=<%=quiz.getId_quiz()%>" class="btn btn-primary me-2">Modifica</a>
 
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#warningModal<%=quiz.getId_quiz()%>">
                                 Elimina
