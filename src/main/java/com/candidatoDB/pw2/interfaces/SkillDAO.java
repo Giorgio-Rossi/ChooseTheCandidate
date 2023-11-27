@@ -10,7 +10,7 @@ public interface SkillDAO {
 
 	void update(Skill skill);
 
-	void delete(Skill skill);
+	void delete(int id_skill);
 
 	List<Skill> findAll();
 

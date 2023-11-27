@@ -970,9 +970,9 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 			var element3 = document.createElement("button");
 			element3.type = "submit";
 			element3.name = "add";
-			element3.textContent = "Verifica la skill!";
+			element3.textContent = "Salva prima di verificare la skill!";
 			element3.value = v.val()
-			element3.className = "btn btn-info btn-xs m-1";
+			element3.className = "btn btn-info disabled btn-xs m-1";
 
 			var element = document.createElement("h6");
 			element.innerHTML = v.val();

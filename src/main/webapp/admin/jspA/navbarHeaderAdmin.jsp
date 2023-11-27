@@ -35,6 +35,17 @@ String Uri = request.getRequestURI().toString();
 						   style="margin-right: 5px; font-size: 20px"></i><span>Gestione Quiz</span>
 					</a>
 
+					<a href="${pageContext.request.contextPath}/admin/gestioneSkills.jsp"
+					   class="list-group-item list-group-item-action py-2 ripple
+
+						<%
+						 String Path4 = request.getContextPath() + "/admin/gestioneSkills.jsp"; %>
+						<%
+						if (Uri.equals(Path4)){ %>active<% }; %>">
+						<i class="bi bi-gear-wide-connected"
+						   style="margin-right: 5px; font-size: 20px"></i><span>Gestione Skills</span>
+					</a>
+
 
 					<!-- INSERIRE UN IF DENTRO AL CLASS PER ANDARE A SCRIVERE ACTIVE -->
 					<a

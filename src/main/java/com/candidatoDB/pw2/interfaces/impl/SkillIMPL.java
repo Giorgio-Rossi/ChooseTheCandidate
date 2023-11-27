@@ -23,20 +23,17 @@ public class SkillIMPL implements SkillDAO {
 
 	@Override
 	public void save(Skill skill) {
-		String sql = "INSERT INTO Skill(id_skill,nome,tipo_skill, id_quiz) VALUES(?,?,?, ?)";
+		String sql = "INSERT INTO Skill(nome,tipo_skill, id_quiz) VALUES(?,?, ?)";
 		//Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
 		try {
-			statement = connection.getConnection().prepareStatement(sql, new String[] { "id" });
-			statement.setInt(1, skill.getId_skill());
-			statement.setString(2, skill.getNome());
-			statement.setString(3, skill.getTipo_skill());
-			statement.setInt(4, skill.getId_quiz());
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setString(1, skill.getNome());
+			statement.setString(2, skill.getTipo_skill());
+			statement.setInt(3, skill.getId_quiz());
 			statement.executeUpdate();
-			resultSet = statement.getGeneratedKeys();
-			if (resultSet.next())
-				skill.setId_skill(resultSet.getInt(1));
+
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 		} finally {
@@ -49,15 +46,17 @@ public class SkillIMPL implements SkillDAO {
 
 	@Override
 	public void update(Skill skill) {
-		String sql = "UPDATE Skill SET id_skill=?,nome=?,tipo_skill=? WHERE id_skill=?";
+		String sql = "UPDATE Skill SET nome=?,tipo_skill=?,id_quiz=? WHERE id_skill=?";
 		//Connection connection = null;
 		PreparedStatement statement = null;
 		try {
 			//connection = DbOperations.getConnection();
 			statement =  connection.getConnection().prepareStatement(sql);
-			statement.setInt(1, skill.getId_skill());
-			statement.setString(2, skill.getNome());
-			statement.setString(3, skill.getTipo_skill());
+			statement.setString(1, skill.getNome());
+			statement.setString(2, skill.getTipo_skill());
+			statement.setInt(3, skill.getId_quiz());
+			statement.setInt(4,skill.getId_skill());
+
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
@@ -69,14 +68,15 @@ public class SkillIMPL implements SkillDAO {
 	}
 
 	@Override
-	public void delete(Skill skill) {
-		String sql = "DELETE FROM Skill WHERE id_skill=?";
+	public void delete(int id_skill) {
+		String sql = "DELETE FROM UserSkills WHERE id_skill = ? DELETE FROM Skill WHERE id_skill = ?;";
 		//Connection connection = null;
 		PreparedStatement statement = null;
 		try {
 			//connection = DbOperations.getInstance().getConnection();
 			statement = connection.getConnection().prepareStatement(sql);
-			statement.setInt(1, skill.getId_skill());
+			statement.setInt(1, id_skill);
+			statement.setInt(2, id_skill);
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
