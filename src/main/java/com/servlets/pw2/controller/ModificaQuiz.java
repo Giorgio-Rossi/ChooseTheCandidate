@@ -52,27 +52,55 @@ public class ModificaQuiz extends HttpServlet {
 
         for(int i = 0; i<domande.length;i++){
 
-            domande_quiz.get(i).setTesto(domande[i]);
-            domande_quiz.get(i).setPunteggio(Integer.parseInt(punteggi[i]));
+            boolean inBounds = i+1 > domande_quiz.size();
 
-            ArrayList<RisposteDomande> risposte_domanda= new RisposteDomandaIMPL().getRisposteDomandaByIdDomanda(domande_quiz.get(i).getId_domanda());
+            if(inBounds){
+                Domanda nuova_domanda = new Domanda();
+                nuova_domanda.setTesto(domande[i]);
+                nuova_domanda.setPunteggio(Integer.parseInt(punteggi[i]));
 
-            for(RisposteDomande risposteDomande: risposte_domanda){
-                risposteDomande.setScelta1(scelte1[i]);
-                risposteDomande.setScelta2(scelte2[i]);
-                risposteDomande.setScelta3(scelte3[i]);
-                risposteDomande.setScelta4(scelte4[i]);
-                risposteDomande.setScelta_corretta(sceltecorrette[i]);
+                RisposteDomande risposteDomande_nuova = new RisposteDomande();
+                risposteDomande_nuova.setScelta1(scelte1[i]);
+                risposteDomande_nuova.setScelta2(scelte2[i]);
+                risposteDomande_nuova.setScelta3(scelte3[i]);
+                risposteDomande_nuova.setScelta4(scelte4[i]);
+                risposteDomande_nuova.setScelta_corretta(sceltecorrette[i]);
 
-                risposte_domande_quiz.add(risposteDomande);
+                System.out.println(nuova_domanda);
+                System.out.println(risposteDomande_nuova);
+
+                quizIMPL.AddDomandeRisposte(quiz,nuova_domanda,risposteDomande_nuova);
+
+            }
+
+            if(!inBounds) {
+
+                domande_quiz.get(i).setTesto(domande[i]);
+                domande_quiz.get(i).setPunteggio(Integer.parseInt(punteggi[i]));
+
+                ArrayList<RisposteDomande> risposte_domanda = new RisposteDomandaIMPL().getRisposteDomandaByIdDomanda(domande_quiz.get(i).getId_domanda());
+
+                for (RisposteDomande risposteDomande : risposte_domanda) {
+                    risposteDomande.setScelta1(scelte1[i]);
+                    risposteDomande.setScelta2(scelte2[i]);
+                    risposteDomande.setScelta3(scelte3[i]);
+                    risposteDomande.setScelta4(scelte4[i]);
+                    risposteDomande.setScelta_corretta(sceltecorrette[i]);
+
+                    risposte_domande_quiz.add(risposteDomande);
+                }
+
             }
 
 
         }
 
+
         System.out.println(quiz);
         System.out.println(domande_quiz);
         System.out.println(risposte_domande_quiz);
+
+
 
         quizIMPL.update(quiz, domande_quiz, risposte_domande_quiz);
 

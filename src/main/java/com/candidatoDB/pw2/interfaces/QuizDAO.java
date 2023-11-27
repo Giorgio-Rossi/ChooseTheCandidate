@@ -21,5 +21,7 @@ public interface QuizDAO {
 
     void update(Quiz quiz, ArrayList<Domanda> domande, ArrayList<RisposteDomande> risposteDomande);
 
+    void AddDomandeRisposte(Quiz quiz, Domanda nuova_domanda, RisposteDomande nuova_risposteDomande);
+
     void delete(Integer id_quiz);
 }

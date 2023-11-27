@@ -266,6 +266,61 @@ public class QuizIMPL implements QuizDAO {
     }
 
     @Override
+    public void AddDomandeRisposte(Quiz quiz, Domanda nuova_domanda, RisposteDomande nuova_risposteDomande) {
+        String InsertDomande = "INSERT INTO Domanda VALUES (?,?)";
+        String InsertRisposteDomanda = "INSERT INTO RisposteDomanda VALUES (?,?,?,?,?,?);";
+        String InsertQuizDomanda = "INSERT INTO QuizDomanda VALUES(?,?)";
+
+        PreparedStatement st_quiz = null;
+        PreparedStatement st_domande = null;
+        PreparedStatement st_risposte_domande = null;
+        PreparedStatement st_quiz_domande = null;
+
+        try {
+
+            st_domande= connection.getConnection().prepareStatement(InsertDomande, Statement.RETURN_GENERATED_KEYS);
+            st_risposte_domande = connection.getConnection().prepareStatement(InsertRisposteDomanda);
+            st_quiz_domande = connection.getConnection().prepareStatement(InsertQuizDomanda);
+
+            int i= 0;
+
+                st_domande.setString(1, nuova_domanda.getTesto());
+                st_domande.setInt(2,nuova_domanda.getPunteggio());
+
+                st_domande.executeUpdate();
+
+                ResultSet generatedKeys = st_domande.getGeneratedKeys();
+
+                generatedKeys.next();
+
+                st_risposte_domande.setString(1,nuova_risposteDomande.getScelta1());
+                st_risposte_domande.setString(2,nuova_risposteDomande.getScelta2());
+                st_risposte_domande.setString(3,nuova_risposteDomande.getScelta3());
+                st_risposte_domande.setString(4,nuova_risposteDomande.getScelta4());
+                st_risposte_domande.setString(5,nuova_risposteDomande.getScelta_corretta());
+
+                st_risposte_domande.setInt(6,generatedKeys.getInt(1));
+
+                st_risposte_domande.executeUpdate();
+
+                st_quiz_domande.setInt(1,generatedKeys.getInt(1));
+                st_quiz_domande.setInt(2,quiz.getId_quiz());
+
+                st_quiz_domande.executeUpdate();
+
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            // DBUtil.close(resultSet);
+            DBUtil.close(st_quiz);
+            DBUtil.close(st_domande);
+            DBUtil.close(st_risposte_domande);
+            // DBUtil.close((Connection) connection);
+        }
+    }
+
+    @Override
     public void delete(Integer id_quiz) {
         String sql = "DELETE FROM UtenteQuiz WHERE id_quiz = ? DELETE FROM RisposteDomanda WHERE id_domanda IN (SELECT id_domanda FROM QuizDomanda WHERE id_quiz = ?);DELETE FROM QuizDomanda WHERE id_quiz = ?;UPDATE Posizione SET id_quiz = NULL WHERE id_quiz = ?; UPDATE Skill SET id_quiz = NULL WHERE id_quiz = ?; DELETE FROM Quiz WHERE id_quiz = ?;";
         PreparedStatement statement = null;
