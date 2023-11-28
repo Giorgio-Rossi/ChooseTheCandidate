@@ -4,6 +4,8 @@
 <%@ page import="com.candidatoDB.pw2.entity.*" %>
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.*" %>
 <%@ page import="com.servlets.pw2.controller.ErrorManager" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page isELIgnored="false"%>
 
 <%
@@ -124,7 +126,10 @@
                         <div class="row flex-fill">
                             <div class="col-sm-5">
                                 <h4 class="h5"><%=posizione.getRuolo()%></h4>
-                                <span class="badge bg-primary m-1"><%=posizione.getCitta().getNome()%></span><span class="badge bg-success"><i class="bi bi-calendar-check-fill mt-2"> <%=posizione.getData_inserimento()%></i></span>
+                                <%
+                                    DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                                %>
+                                <span class="badge bg-primary m-1"><%=posizione.getCitta().getNome()%></span><span class="badge bg-success"><i class="bi bi-calendar-check-fill mt-2"> <%=dateFormat.format(posizione.getData_inserimento())%></i></span>
                             </div>
                             <div class="col-sm-4 py-2">
                                 <span class="badge bg-info"><%=posizione.getCategoria().getNome_categoria()%></span>

@@ -11,10 +11,7 @@ import com.candidatoDB.pw2.interfaces.UtenteQuizDAO;
 import com.servlets.pw2.controller.DBUtil;
 import com.servlets.pw2.controller.SQLServerConnection;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +33,7 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
 			statement.setInt(1, utenteQuiz.getId_quiz());
 			statement.setInt(2, utenteQuiz.getId_user());
 			statement.setDouble(3, utenteQuiz.getPunteggio());
-			statement.setDate(4, utenteQuiz.getData_inserimento());
+			statement.setTimestamp(4, new Timestamp(utenteQuiz.getData_inserimento().getTime()));
 
 			statement.executeUpdate();
 			// resultSet = statement.getGeneratedKeys();
@@ -73,7 +70,7 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
 					utenteQuiz.setId_quiz(resultSet.getInt("id_quiz"));
 					utenteQuiz.setId_user(resultSet.getInt("id_user"));
 					utenteQuiz.setPunteggio(resultSet.getInt("punteggio"));
-					utenteQuiz.setData_inserimento(resultSet.getDate("data_inserimento"));
+					utenteQuiz.setData_inserimento(resultSet.getTimestamp("data_inserimento"));
 				}
 			}
 		} catch (SQLException e) {
@@ -107,7 +104,7 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
 					utenteQuiz.setId_quiz(resultSet.getInt("id_quiz"));
 					utenteQuiz.setId_user(resultSet.getInt("id_user"));
 					utenteQuiz.setPunteggio(resultSet.getFloat("punteggio"));
-					utenteQuiz.setData_inserimento(resultSet.getDate("data_inserimento"));
+					utenteQuiz.setData_inserimento(resultSet.getTimestamp("data_inserimento"));
 
 				}
 			}
@@ -141,7 +138,7 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
 				utenteQuiz.setId_quiz(resultSet.getInt(2));
 				utenteQuiz.setId_user(resultSet.getInt(3));
 				utenteQuiz.setPunteggio(resultSet.getFloat(4));
-				utenteQuiz.setData_inserimento(resultSet.getDate(5));
+				utenteQuiz.setData_inserimento(resultSet.getTimestamp(5));
 
 				allUtenteQuizzes.add(utenteQuiz);
 			}

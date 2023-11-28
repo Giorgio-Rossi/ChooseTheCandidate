@@ -20,4 +20,6 @@ public interface UtenteQuizDAO {
 //    UtenteQuiz bestPunteggio (int id_utente_quiz);
 //    
 //    UtenteQuiz findByIdUtenteQuiz (int id_utente_quiz);
+
+
 }

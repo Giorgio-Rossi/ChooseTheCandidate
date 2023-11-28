@@ -7,6 +7,8 @@
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.*" %>
 <%@ page import="com.candidatoDB.pw2.entity.UsersSkills" %>
 <%@ page import="java.util.*" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <%
@@ -59,6 +61,9 @@
 <link rel="stylesheet"
 	  href="${pageContext.request.contextPath}/css/homeuser.css">
 
+<link rel="stylesheet"
+	  href="${pageContext.request.contextPath}/css/statistichequiz.css" />
+
 <body style="background-color: #d4d4d4;heigth:100vh!important;">
 
 <jsp:include page="jsp/navbarHeader.jsp" />
@@ -80,10 +85,21 @@
 					</div>
 					<div class="slide slide2" style="background-color:#0072BC">
 						<div class="content">
-							<h3>
-								Da modificare!
-							</h3>
-							<p>da modificare?!</p>
+
+								<h1 class="h6 font-weight-bold text-center">Media Quiz</h1>
+
+								<div class="progress mx-auto" data-value='70'>
+          <span class="progress-left">
+                        <span class="progress-bar border-success"></span>
+          </span>
+									<span class="progress-right">
+                        <span class="progress-bar border-success"></span>
+          </span>
+									<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+										<div class="h2 font-weight-bold">70<sup class="small">%</sup></div>
+									</div>
+								</div>
+
 						</div>
 					</div>
 				</div>
@@ -191,7 +207,10 @@
 
 							<h5><%=posizione.getRuolo()%></h5>
 							<div class="mt-3">
-								<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i><%=bestCandidatura.get(posizione).getData_inserimento()%></span>
+								<%
+									DateFormat dateFormat1 = new SimpleDateFormat("dd/MM/yyyy");
+								%>
+								<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i><%=dateFormat1.format(bestCandidatura.get(posizione).getData_inserimento())%></span>
 								<span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i><%=posizione.getCitta().getNome()%></span>
 								<span class="text-muted d-block"><i class="bi bi-list-ul m-1"></i><%=bestCandidatura.get(posizione).getPunteggio()%></span>
 							</div>
@@ -272,11 +291,27 @@
 
             if (!posizioniRecenti.isEmpty()) {
                 for (Posizione posizione : posizioniRecenti) {
+
         %>
+		<%
+				if(posizione.getStato().equals("aperta")){
+		%>
+		<span class="badge rounded-pill bg-success float-md-end mb-3 mb-sm-0"><%=posizione.getStato()%></span>
+		<%
+		}else{
+		%>
+		<span class="badge rounded-pill bg-danger float-md-end mb-3 mb-sm-0"><%=posizione.getStato()%></span>
+		<%
+			};
+		%>
+
         <div class="mb-2">
 			<h5><%=posizione.getRuolo()%></h5>
 			<div class="mt-3">
-				<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i><%=posizione.getData_inserimento()%></span>
+				<%
+					DateFormat dateFormat2 = new SimpleDateFormat("dd/MM/yyyy");
+				%>
+				<span class="text-muted d-block"><i class="bi bi-calendar-check-fill m-1"></i><%=dateFormat2.format(posizione.getData_inserimento())%></span>
 				<span class="text-muted d-block"><i class="bi bi-geo-alt-fill m-1"></i><%=posizione.getCitta().getNome()%></span>
 			</div>
         </div>
@@ -412,6 +447,35 @@
 	</div>
 </div>
 
+<script>
+	$(function() {
+
+		$(".progress").each(function() {
+
+			var value = $(this).attr('data-value');
+			var left = $(this).find('.progress-left .progress-bar');
+			var right = $(this).find('.progress-right .progress-bar');
+
+			if (value > 0) {
+				if (value <= 50) {
+					right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+				} else {
+					right.css('transform', 'rotate(180deg)')
+					left.css('transform', 'rotate(' + percentageToDegrees(value - 50) + 'deg)')
+				}
+			}
+
+		})
+
+		function percentageToDegrees(percentage) {
+
+			return percentage / 100 * 360
+
+		}
+
+	});
+
+</script>
 
 </body>
 </html>

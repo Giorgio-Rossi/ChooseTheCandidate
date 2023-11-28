@@ -4,6 +4,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.QuizIMPL" %>
 <%@ page import="com.candidatoDB.pw2.entity.Quiz" %>
+<%@ page import="java.text.DateFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -87,7 +89,10 @@
 
                     <div class="row text-center mt-4 justify-content-center">
                         <div class="col-6 border-right ">
-                            <div class="h4 font-weight-bold mb-0"><i class="bi bi-calendar-check-fill mt-1"></i></div><span class="small text-gray"><%=utenteQuiz.getData_inserimento()%></span>
+                            <%
+                                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                            %>
+                            <div class="h4 font-weight-bold mb-0"><i class="bi bi-calendar-check-fill mt-1"></i></div><span class="small text-gray"><%=dateFormat.format(utenteQuiz.getData_inserimento())%></span>
                         </div>
                     </div>
 

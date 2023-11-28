@@ -11,7 +11,7 @@ public class UtenteQuiz {
 	private int id_user;
 	private double punteggio;
 
-	private Date data_inserimento;
+	private java.util.Date data_inserimento;
 	
 	public UtenteQuiz() {
 		super();
@@ -49,11 +49,11 @@ public class UtenteQuiz {
 		this.punteggio = punteggio;
 	}
 
-	public void setData_inserimento(Date data_inserimento) {
+	public void setData_inserimento(java.util.Date data_inserimento) {
 		this.data_inserimento = data_inserimento;
 	}
 
-	public Date getData_inserimento() {
+	public java.util.Date getData_inserimento() {
 		return data_inserimento;
 	}
 
