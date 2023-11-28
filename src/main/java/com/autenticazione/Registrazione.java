@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
+import java.util.UUID;
+
 
 @WebServlet(name = "registrazione", value = "/registrazione")
 public class Registrazione extends HttpServlet {
@@ -33,7 +36,8 @@ public class Registrazione extends HttpServlet {
         String cognome = req.getParameter("cognome");
         String telefono = req.getParameter("telefono");
         String codF = req.getParameter("codice_fiscale");
-        String chiaveSicurezza = req.getParameter("chiaveSicurezza");
+        //String chiaveSicurezza = req.getParameter("chiaveSicurezza");
+
 
         SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
         String param = req.getParameter("data_nascita");
@@ -50,6 +54,8 @@ public class Registrazione extends HttpServlet {
 
         if (password.equals(conferma_password)){
             Utente utente = new Utente();
+            String token = generateToken();
+
             utente.setNome(nome);
             utente.setCognome(cognome);
             utente.setEmail(email);
@@ -57,11 +63,14 @@ public class Registrazione extends HttpServlet {
             utente.setCodice_fiscale(codF);
             utente.setData_nascita(new java.sql.Date(data_nascita.getTime()));
             utente.setPassword(password);
-            utente.setChiaveSicurezza(chiaveSicurezza);
+            utente.setToken(token);
 
             if(!dbOperationsr.ChechUserAll(utente)) {
                 UtenteIMPL utenteIMPL = new UtenteIMPL();
                 utenteIMPL.save(utente);
+
+                req.getSession().setAttribute("password_token",token);
+
                 ErrorManager.setSuccessMessage("Registrazione effettuata, fai il login!",req);
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
             }else{
@@ -69,6 +78,13 @@ public class Registrazione extends HttpServlet {
                 req.getRequestDispatcher("/registrazione.jsp").forward(req, resp);
             }
 
+        }else{
+            ErrorManager.setErrorMessage("Le passowrd inserite non corrispondono",req);
+            req.getRequestDispatcher("/registrazione.jsp").forward(req, resp);
         }
+    }
+
+    public static String generateToken() {
+        return UUID.randomUUID().toString();
     }
 }

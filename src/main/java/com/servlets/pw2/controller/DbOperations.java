@@ -202,9 +202,9 @@ public class DbOperations {
         Integer id_utente = null;
 
         try{
-            result = connection.getConnection().prepareStatement("SELECT * FROM Utente where chiaveSicurezza=? and email=?");
-            result.setString(1, utente.getChiaveSicurezza());
-            result.setString(2, utente.getEmail());
+            result = connection.getConnection().prepareStatement("SELECT * FROM Utente where token=? and email=?");
+            result.setString(1, chiaveSicurezza);
+            result.setString(2, email);
             ResultSet resultSet = result.executeQuery();
 
             if(resultSet.next()){
@@ -215,7 +215,6 @@ public class DbOperations {
 
             }else {
             	System.out.println("utente nullo");
-
                 return utente;
             	
             }

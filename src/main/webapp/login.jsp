@@ -8,9 +8,26 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/img/logoPag.png" style="border-radius: 10px">
 	<link rel="stylesheet" href="css/style.css">
-	
-</head>
+	<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+			crossorigin="anonymous"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet"
+		  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/css/card.css" />
 
+</head>
+<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+		crossorigin="anonymous"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>
+
+<%
+
+%>
 
 <body class="container2">
 <div class="left">
@@ -59,7 +76,8 @@
 	<div class="bottomLogin">
 		<button form="form1"  type="submit">Login</button>
 		<div class="linksLog">
-			<p><a href="${pageContext.request.contextPath}/passwordDimenticata.jsp">Password dimenticata?</a></p>
+			<button type="button" class="btn btn-link a" data-bs-toggle="modal" data-bs-target="#resetPassword" data-bs-whatever="@getbootstrap">Password dimenticata?</button>
+			<!--<p><a href="#resetPassword">Password dimenticata?</a></p>-->
 			<p>Non hai un account? <a href="${pageContext.request.contextPath}/registrazione.jsp"><b>Registrati qui</b></a></p>
 		</div>
 	</div>
@@ -72,6 +90,71 @@
 	</div>
 
 </div>
+
+
+<div class="modal fade" id="resetPassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="exampleModalLabel">Reimposta password</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<form method="post" id="verify_token" action="${pageContext.request.contextPath}/passwordDimenticata">
+					<div class="mb-3">
+						<label for="email" class="col-form-label">Email:</label>
+						<input type="email" class="form-control" name="email" id="email" required>
+					</div>
+					<div class="mb-3">
+						<label for="token" class="col-form-label">Token:</label>
+						<input type="text" name="token" class="form-control" id="token" required>
+					</div>
+					<button type="submit" form="verify_token" class="btn btn-primary">Verifica</button>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="resetPassword2" tabindex="-1"  data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5">Reimposta password</h1>
+			</div>
+			<div class="modal-body">
+				<form method="post" id="verify_psw" action="${pageContext.request.contextPath}/cambiaPassword">
+					<div class="mb-3">
+						<label for="npw" class="col-form-label">Nuova password:</label>
+						<input type="password" class="form-control" name="nuova_password" id="npw" required>
+					</div>
+					<div class="mb-3">
+						<label for="cpw" class="col-form-label">Conferma password:</label>
+						<input type="password" name="confirm_password" class="form-control" id="cpw" required>
+					</div>
+					<button type="submit" form="verify_psw"  class="btn btn-primary">Cambia password</button>
+				</form>
+			</div>
+	</div>
+</div>
+
+<%
+	String token_verificato =  session.getAttribute("token_giusto") == null ?  null : session.getAttribute("token_giusto").toString();
+
+	if(token_verificato != null && Boolean.parseBoolean(token_verificato)){
+%>
+<script>
+	var myModal = new bootstrap.Modal(document.getElementById('resetPassword2'))
+	myModal.show()
+	<% session.removeAttribute("token_giusto");%>
+</script>
+<%
+}
+%>
 
 </body>
 </html>

@@ -19,7 +19,7 @@ public class Utente {
 	private String telefono;
 	private String ruolo_admin;
 	private String password;
-	private String chiaveSicurezza;
+	private String token;
 	private List<Esperienza> new_esperienza = new ArrayList<Esperienza> ();
 	private String genere;
 	private String foto_profilo;
@@ -32,7 +32,7 @@ public class Utente {
 	
 	public Utente(int id_user, String nome, String cognome, String codice_fiscale, String email, Date data_nascita,
 			String indirizzo, Citta id_citta, String cap, String telefono, String ruolo_admin, String password,
-			List<Esperienza> new_esperienza, String foto_profilo, String genere, String cv, String chiaveSicurezza) {
+			List<Esperienza> new_esperienza, String foto_profilo, String genere, String cv, String token) {
 		super();
 		this.id_user = id_user;
 		this.nome = nome;
@@ -50,7 +50,7 @@ public class Utente {
 		this.foto_profilo = foto_profilo;
 		this.genere = genere;
 		this.cv = cv;
-		this.chiaveSicurezza = chiaveSicurezza;
+		this.token = token;
 	}
 
 	public int getId_user() {
@@ -156,11 +156,11 @@ public class Utente {
 		this.cv = cv;
 	}
 	
-	public String getChiaveSicurezza() {
-		return chiaveSicurezza;
+	public String getToken() {
+		return token;
 	}
-	public void setChiaveSicurezza(String chiaveSicurezza) {
-		this.chiaveSicurezza = chiaveSicurezza;
+	public void setToken(String token) {
+		this.token = token;
 	}
 
 	public ArrayList<String> getEmptyParameter(){
@@ -202,7 +202,7 @@ public class Utente {
 				", genere='" + genere + '\'' +
 				", foto_profilo='" + foto_profilo + '\'' +
 				", cv='" + cv + '\'' +
-				", chiaveSicurezza='" + chiaveSicurezza + '\'' +
+				", token='" + token + '\'' +
 				'}';
 	}
 }

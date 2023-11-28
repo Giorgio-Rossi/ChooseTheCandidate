@@ -366,6 +366,29 @@
 	</div>
 </div>
 
+<div class="modal fade" id="warningModal" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+	<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+		<div class="modal-content">
+			<div class="modal-body text-center p-lg-4">
+				<i class="bi bi-exclamation-triangle-fill" style="font-size: 5rem"></i>
+				<h4 class="text-warning mt-3">Attenzione</h4>
+				<p class="mt-3">Questo è il token per il recupero della password, salvalo perchè non sarà più visualizzabile</p>
+				<%
+					String token =  session.getAttribute("password_token") == null ?  null : session.getAttribute("password_token").toString();
+					if(token != null){
+				%>
+				<p class="mt-3"><strong><%=token%></strong></p>
+				<%
+					}
+				%>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ho capito</button>
+			</div>
+		</div>
+	</div>
+</div>
+
 
 <%
 	String success =  session.getAttribute("candidatura_fatta") == null ?  null : session.getAttribute("candidatura_fatta").toString();
@@ -387,6 +410,17 @@
 </script>
 <%
 	};
+%>
+<%
+if(token != null){
+%>
+<script>
+	var myModal = new bootstrap.Modal(document.getElementById('warningModal'))
+	myModal.show()
+	<% session.removeAttribute("password_token");%>
+</script>
+<%
+}
 %>
 
 

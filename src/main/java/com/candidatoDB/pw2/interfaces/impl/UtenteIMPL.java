@@ -34,7 +34,7 @@ public class UtenteIMPL implements UtenteDAO {
 
 	public void save(Utente utente) {
 
-		String sql = "INSERT INTO Utente(nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap,telefono,password) VALUES(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO Utente(nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap,telefono,password,token) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 
 		PreparedStatement statement = null;
 
@@ -68,6 +68,8 @@ public class UtenteIMPL implements UtenteDAO {
 
 			statement.setString(10, utente.getPassword());
 
+			statement.setString(11, utente.getToken());
+
 			statement.executeUpdate();
 
 			// resultSet = statement.getGeneratedKeys();
@@ -92,7 +94,7 @@ public class UtenteIMPL implements UtenteDAO {
 
 	public void updateAll(Utente utente) {
 
-		String sql = "UPDATE Utente SET nome=?,cognome=?,codice_fiscale=?,email=?,data_nascita=?,indirizzo=?,id_citta=?,cap=?,telefono=?,ruolo_admin=?,password=?, foto_profilo=?, genere=?, CV=?  WHERE id_user=?";
+		String sql = "UPDATE Utente SET nome=?,cognome=?,codice_fiscale=?,email=?,data_nascita=?,indirizzo=?,id_citta=?,cap=?,telefono=?,ruolo_admin=?,password=?, foto_profilo=?, genere=?, CV=?, token=?  WHERE id_user=?";
 
 		PreparedStatement statement = null;
 
@@ -136,9 +138,11 @@ public class UtenteIMPL implements UtenteDAO {
 
 			statement.setString(13, utente.getGenere());
 
-			statement.setInt(15, utente.getId_user());
+			statement.setInt(16, utente.getId_user());
 
 			statement.setString(14, utente.getCV());
+
+			statement.setString(15, utente.getToken());
 
 			statement.executeUpdate();
 

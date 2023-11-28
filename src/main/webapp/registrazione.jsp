@@ -24,20 +24,8 @@
 	<div class="bottom">
 		<div class="formRegistra">
 			<form method="post" action="${pageContext.request.contextPath}/registrazione" >
-
-				<!-- <form method="get" id="form1" action="something.php">
-                </form>
-                <button type="submit" form="form1">Click me!</button> -->
 				<div class="formleft">
-					<%
-						if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){
-					%>
-					<div class="alert_alert-danger" role="alert">
-						<%= ErrorManager.getErrorMessage((HttpServletRequest) request)%>
-					</div>
-					<%
-						};
-					%>
+
 
 					<input type="text"  name="nome" id="nome" placeholder="Nome"  required><br>
 					<input type="text"  name="data_nascita" id="data_nascita" placeholder="Data Nascita" onfocus="(this.type='date')" min="1930-01-01" max="2023-12-31" style="width:105%;" required><br>	
@@ -53,6 +41,15 @@
 					<div class="linksLog" style="padding-top: 4%;">
 						<p>Sei già registrato? <a href="${pageContext.request.contextPath}/login.jsp"><b>Torna al login</b></a></p>
 					</div>
+					<%
+						if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){
+					%>
+					<div class="alert_alert-danger" role="alert">
+						<%= ErrorManager.getErrorMessage((HttpServletRequest) request)%>
+					</div>
+					<%
+						};
+					%>
 				</div>
 				<div class="formright">
 
@@ -60,7 +57,6 @@
 					<input type="text" name="codice_fiscale" pattern="^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$" id="codice_fiscale" placeholder="Codice Fiscale"  required><br>
 					<input type="tel" name="telefono" id="telefono" pattern="[0-9]{10}" placeholder="Numero telefono"><br>
 					<input type="password" name="check_password" id="check_password" placeholder="Password"  required><br>
-					<input type="text" name="chiaveSicurezza" id="chiaveSicurezza" placeholder="chiaveSicurezza"  required><br>
 
 				</div>
 			</form>

@@ -29,6 +29,8 @@ public class Login extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         Utente utente;
+
+        System.out.println(req.getSession().getAttribute("password_token"));
       
         try{
             utente = dbOperations.Autenticazione(email, password);

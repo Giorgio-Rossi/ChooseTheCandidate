@@ -32,66 +32,33 @@ public class passwordDimenticataServlet extends HttpServlet {
 	public void init() throws ServletException {
 		dbOperationsr = new DbOperations();
 	}
-	 /*
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("/resetPassword.jsp").forward(request, response);
-    }
-       protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String chiaveSegreta = request.getParameter("chiaveSegreta");
-
-        if (isValidUser(email, chiaveSegreta)) {
-
-
-            response.sendRedirect(request.getContextPath() + "/passwordReset.jsp");
-        } else {
-            response.sendRedirect(request.getContextPath() + "/resetError.jsp");
-        }
-    }
-
-	*/
-	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
        
-        String chiaveSicurezza = req.getParameter("chiaveSicurezza");
+        String token = req.getParameter("token");
         String email = req.getParameter("email");
         Utente utente = new Utente();
-        
-        utente = dbOperationsr.CheckChiaveSicurezza(chiaveSicurezza, email);
-      
+
         try{
-           // utente = dbOperationsr.CheckChiaveSicurezza(chiaveSicurezza, email);
-            System.out.println(utente);
-        
+            utente = dbOperationsr.CheckChiaveSicurezza(token, email);
+
             if(utente.getId_user() == 0) {
-                ErrorManager.setErrorMessage("Qualcosa è andato storto", req);
-            	resp.sendRedirect("passwordDimenticata.jsp");
-            	System.out.println("errore");
+                ErrorManager.setErrorMessage("Il token o l'email sono sbagliati", req);
+                req.getRequestDispatcher("/login.jsp").forward(req, resp);
             } else {
-                HttpSession session = req.getSession(true);
-                session.setAttribute("utente", utente);
-                resp.sendRedirect("home/resetPassword.jsp");
+                req.getSession().setAttribute("token_giusto", "true");
+                req.getSession().setAttribute("utente", utente);
+                req.getRequestDispatcher("/login.jsp").forward(req, resp);
             }
        
         } catch (IOException e) {
-        	
-        	
             ErrorManager.setErrorMessage("Qualcosa è andato storto", req);
             throw new RuntimeException(e);
-            
         }
-        
-        String verificaChiaveSicurezza= req.getParameter("chiaveSicurezza");
 
-        if (chiaveSicurezza.equals(verificaChiaveSicurezza)){
-            utente.setChiaveSicurezza(verificaChiaveSicurezza);
-        }
 	}
-    }
+}
 
 
 
