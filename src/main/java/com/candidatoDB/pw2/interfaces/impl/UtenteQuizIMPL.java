@@ -200,6 +200,34 @@ public class UtenteQuizIMPL implements UtenteQuizDAO {
 	    return best_candidatura;
 	}
 
+	@Override
+	public Double mediaByUser(int id_user) {
+		Double media = null;
+		String sql = "SELECT AVG(punteggio) as MediaPunteggio\n" +
+				"FROM UtenteQuiz\n" +
+				"WHERE id_user = ?";
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setInt(1, id_user);
+
+			resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+				media = resultSet.getDouble("MediaPunteggio");
+			}
+
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			// DBUtil.close(resultSet);
+			DBUtil.close(statement);
+			//DBUtil.close(connection.getConnection());
+		}
+		return media;
 	}
+
+}
 	
 

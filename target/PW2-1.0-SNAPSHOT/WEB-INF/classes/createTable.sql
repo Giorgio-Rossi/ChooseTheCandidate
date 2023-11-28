@@ -181,4 +181,13 @@ ALTER TABLE Posizione ALTER COLUMN descrizione varchar(700);
 ALTER TABLE Quiz ALTER COLUMN descrizione varchar(700);
 ALTER TABLE UtenteQuiz ALTER COLUMN punteggio float
 
+ALTER TABLE Posizione
+    ALTER COLUMN data_inserimento datetime;
+
+ALTER TABLE CandidaturaUser
+    ALTER COLUMN data_candidatura datetime;
+
+ALTER TABLE UtenteQuiz
+    ALTER COLUMN data_inserimento datetime;
+
 

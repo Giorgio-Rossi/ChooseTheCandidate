@@ -21,5 +21,5 @@ public interface UtenteQuizDAO {
 //    
 //    UtenteQuiz findByIdUtenteQuiz (int id_utente_quiz);
 
-
+    Double mediaByUser(int id_user);
 }
