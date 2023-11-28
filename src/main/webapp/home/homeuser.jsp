@@ -88,7 +88,7 @@
 
 								<h1 class="h6 font-weight-bold text-center">Media Quiz</h1>
 
-								<div class="progress mx-auto" data-value='<%=Math.round(media)%>'>
+								<div class="progress mx-auto" data-value='<%=Math.round(media*10.0)/10.0%>'>
           <span class="progress-left">
                         <span class="progress-bar border-success"></span>
           </span>
@@ -96,7 +96,7 @@
                         <span class="progress-bar border-success"></span>
           </span>
 									<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
-										<div class="h2 font-weight-bold"><%=Math.round(media)%><sup class="small">%</sup></div>
+										<div class="h2 font-weight-bold"><%=Math.round(media*10.0)/10.0%><sup class="small">%</sup></div>
 									</div>
 								</div>
 
