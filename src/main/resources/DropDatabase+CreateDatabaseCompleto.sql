@@ -38,7 +38,7 @@ ruolo_admin varchar(10) not null check(ruolo_admin in('user','admin'))  CONSTRAI
 password varchar(200) not null,
 foto_profilo varchar(100),
 CV varchar(600),
-chiaveSicurezza varchar(200) not null,
+token varchar(200),
 genere varchar(30)  check(genere in('uomo','donna','non specificare')),
 CONSTRAINT FK_utente_citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta)
 )
@@ -191,68 +191,365 @@ INSERT INTO Regione (nome) values('Umbria');
 INSERT INTO Regione (nome) values('Valle D Aosta');
 INSERT INTO Regione (nome) values('Veneto');
 
-/*	Inserimento delle Citta	*/
-insert into Citta (nome,id_regione) values ('Genova','8');
-insert into Citta (nome,id_regione) values ('Roma','7');
-insert into Citta (nome,id_regione) values ('Napoli','4');
-insert into Citta (nome,id_regione) values ('Lodi','9');
-insert into Citta (nome,id_regione) values ('Torino','12');
-insert into Citta (nome,id_regione) values ('Venezia','20');
-insert into Citta (nome,id_regione) values ('Firenze','16');
-insert into Citta (nome,id_regione) values ('Bologna','5');
+/* Abbruzzo 1*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Aquila', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pescara', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Avezzano', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Sulmona', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Chieti', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Teramo', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Roseto degli Abruzzi', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Lanciano', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Vasto', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Atri', 1);
 
-insert into Citta (nome,id_regione) values ('Aquila','1');
-insert into Citta (nome,id_regione) values ('Pescara','1');
-insert into Citta (nome,id_regione) values ('Potenza','2');
-insert into Citta (nome,id_regione) values ('Matera','2');
-insert into Citta (nome,id_regione) values ('Reggio Calabria','3');
-insert into Citta (nome,id_regione) values ('Catanzaro','3');
-insert into Citta (nome,id_regione) values ('Avellino','4');
-insert into Citta (nome,id_regione) values ('Salerno','4');
-insert into Citta (nome,id_regione) values ('Reggio Emilia','5');
-insert into Citta (nome,id_regione) values ('Udine','6');
-insert into Citta (nome,id_regione) values ('Trieste','6');
-insert into Citta (nome,id_regione) values ('Latina','7');
-insert into Citta (nome,id_regione) values ('Viterbo','7');
-insert into Citta (nome,id_regione) values ('Savona','8');
-insert into Citta (nome,id_regione) values ('La Spezia','8');
-insert into Citta (nome,id_regione) values ('Bergamo','9');
-insert into Citta (nome,id_regione) values ('Brescia','9');
-insert into Citta (nome,id_regione) values ('Ancona','10');
-insert into Citta (nome,id_regione) values ('Ascoli','10');
-insert into Citta (nome,id_regione) values ('Campobasso','11');
-insert into Citta (nome,id_regione) values ('Isernia','11');
-insert into Citta (nome,id_regione) values ('Asti','12');
-insert into Citta (nome,id_regione) values ('Novare','12');
-insert into Citta (nome,id_regione) values ('Bari','13');
-insert into Citta (nome,id_regione) values ('Lecce','13');
-insert into Citta (nome,id_regione) values ('Cagliari','14');
-insert into Citta (nome,id_regione) values ('Alghero','14');
-insert into Citta (nome,id_regione) values ('Palermo','15');
-insert into Citta (nome,id_regione) values ('Catania','15');
-insert into Citta (nome,id_regione) values ('Pisa','16');
-insert into Citta (nome,id_regione) values ('Lucca','16');
-insert into Citta (nome,id_regione) values ('Bolzano','17');
-insert into Citta (nome,id_regione) values ('Trento','17');
-insert into Citta (nome,id_regione) values ('Perugia','18');
-insert into Citta (nome,id_regione) values ('Assisi','18');
-insert into Citta (nome,id_regione) values ('Aosta','19');
-insert into Citta (nome,id_regione) values ('Champoluc','19');
-insert into Citta (nome,id_regione) values ('Verona','20');
-insert into Citta (nome,id_regione) values ('Vicenza','20');
+/* Basilicata 2*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Potenza', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Matera', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pisticci', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Lauria', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Rionero in Vulture', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Melfi', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Venosa', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Lavello', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Tricarico', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Montescaglioso', 2);
+
+/* Calabria 3 */
+INSERT INTO Citta (nome, id_regione) VALUES ('Reggio Calabria', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Catanzaro', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cosenza', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Crotone', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Vibo Valentia', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Lamezia Terme', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Rossano', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pizzo', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Amantea', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Paola', 3);
+
+/* Campania 4*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Napoli', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Salerno', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Avellino', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Benevento', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Caserta', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pompei', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Torre del Greco', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cava de Tirreni', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Castellammare di Stabia', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Nocera Inferiore', 4);
+
+/* Emilia-Romagna 5*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Bologna', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Modena', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Parma', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Reggio Emilia', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Ferrara', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Ravenna', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Forlì', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cesena', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Piacenza', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Imola', 5);
+
+/* Friuli-Venezia-Giulia 6*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Trieste', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Udine', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pordenone', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Gorizia', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Monfalcone', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Sacile', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cividale del Friuli', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Palmanova', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Aquileia', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('San Daniele del Friuli', 6);
+
+/* Lazio 7*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Roma', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Latina', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Viterbo', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Frosinone', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Rieti', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Civitavecchia', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Tivoli', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Anzio', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Fiumicino', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Nettuno', 7);
+
+/* Liguria 8*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Genova', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Savona', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('La Spezia', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Sanremo', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Sestri Levante', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Alassio', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Chiavari', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Imperia', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Ventimiglia', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Rapallo', 8);
+
+/* Lombardia 9*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Milano', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Bergamo', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Brescia', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Monza', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Como', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pavia', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cremona', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Lodi', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Varese', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Mantova', 9);
+
+/* Marche 10*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Ancona', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pesaro', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Macerata', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Fano', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Jesi', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Civitanova Marche', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Ascoli Piceno', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Senigallia', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Recanati', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Fermo', 10);
+
+/* Molise 11*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Campobasso', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Termoli', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Isernia', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Venafro', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Larino', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Trivento', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Bojano', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Guglionesi', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Campomarino', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Riccia', 11);
+
+/* Piemonte 12*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Torino', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Novara', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Alessandria', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Asti', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cuneo', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Vercelli', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Biella', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Alba', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Casale Monferrato', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Chieri', 12);
+
+/* Puglia 13*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Bari', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Lecce', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Taranto', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Foggia', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Brindisi', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Andria', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Barletta', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Molfetta', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Bitonto', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cerignola', 13);
+
+/* Sardegna 14*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Cagliari', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Sassari', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Olbia', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Alghero', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Nuoro', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Oristano', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Quartu Sant Elena', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Iglesias', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Carbonia', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Ozieri', 14);
+
+-- Sicilia (Regione 15)
+INSERT INTO Citta (nome, id_regione) VALUES ('Palermo', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Catania', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Messina', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Siracusa', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Trapani', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Marsala', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Agrigento', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Caltanissetta', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Enna', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Gela', 15);
+
+-- Toscana (Regione 16)
+INSERT INTO Citta (nome, id_regione) VALUES ('Firenze', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pisa', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Siena', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Livorno', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Lucca', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Prato', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Massa', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Grosseto', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Arezzo', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Carrara', 16);
+
+-- Trentino-Alto-Adige (Regione 17)
+INSERT INTO Citta (nome, id_regione) VALUES ('Bolzano', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Trento', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Rovereto', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Merano', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Bressanone', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Caldaro', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cavalese', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Egna', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Ortisei', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Vipiteno', 17);
+
+-- Umbria (Regione 18)
+INSERT INTO Citta (nome, id_regione) VALUES ('Perugia', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Assisi', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Terni', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Foligno', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Spoleto', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Gubbio', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Città di Castello', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Orvieto', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Narni', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Amelia', 18);
+
+-- Valle d'Aosta (Regione 19)
+INSERT INTO Citta (nome, id_regione) VALUES ('Aosta', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Courmayeur', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Saint-Vincent', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Champoluc', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cogne', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('La Thuile', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Gressoney-Saint-Jean', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Bard', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Nus', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Hone', 19);
+
+-- Veneto (Regione 20)
+INSERT INTO Citta (nome, id_regione) VALUES ('Venezia', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Verona', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Padova', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Vicenza', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Treviso', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Belluno', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Rovigo', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Chioggia', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Bassano del Grappa', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Conegliano', 20);
+
 
 /*	Inserimento degli utenti	*/
-INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin , chiaveSicurezza,password) VALUES ('admin', 'admin', null,'admin@gmail.com', null, null, null, null, null,'admin', 'admin', 'admin' );
-INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password) VALUES ('Giorgio', 'Rossi', null, 'giorgiorossi@gmail.com', null, null, null, null, null,'admin', 'admin', 'admin' );
-INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password)VALUES ('Nicolo', 'Drovandi', null,'nicolodrovandi@gmail.com', null, null, null, null, null,'admin', 'admin', 'admin' );
-INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password) VALUES ('Lorenzo', 'Franco', null,'lorenzofranco@gmail.com', null, null, null, null, null, 'admin','admin', 'admin' );
-INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password) VALUES ('Luca', 'Sanguinetti', null, 'lucasanguinetti@gmail.com', null, null, null, null, null,'admin', 'admin', 'admin' );
-INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password)VALUES ('Claudio', 'Balzani', null,'claudiobalzani@gmail.com', null, null, null, null, null,'admin', 'admin', 'admin' );
-INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password) VALUES ('Biagio', 'Ricci', null,'biagioricci@gmail.com', null, null, null, null, null,'admin', 'admin', 'admin' );
-insert into Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password) values ('Matteo','Salvo','slvmtt00b03e300m','matteosalvo@gmail.com','20000203','Via Marconi 2','1','17900','3547689876','user','ciao','salvini');
-insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password)values ('Fiona','Giusti','gstfna03h06e300m','fionagiusti@gmail.com','20030806','Via Roma 29','1','16177','3495680856','user','ciao','fiona');
-insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password)values ('Gianluca','Torre','trrglc80d07e300m','gianlu@gmail.com','19800407','Via Milano 56','2','20321','3857689806','user','ciao','torre');
-insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,chiaveSicurezza,password)values ('Marta','Lupu','lpumrt03b03e300m','mlupu@gmail.com','20030203','Via Rodi 70','2','16167','3398805856','user','ciao','marta');
+
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere) VALUES ('Marco', 'Russo', 'RSSMRC92C15F839B', 'marco@email.com', '1992-03-10', 'Via Dante 21', 4, '00400', '7778889999', 'user', 'pwdMarco1011',  'uomo');
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere) VALUES ('Giorgia', 'Ferrari', 'FRRGGR91R21D859C', 'giorgia@email.com', '1991-12-05', 'Via Leonardo 33', 1, '00100', '3334445555', 'user', 'pwdGiorgia1213',  'donna');
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere) VALUES ('Alessandro', 'Martini', 'MRTLSN90A02H501E', 'alessandro@email.com', '1990-04-18', 'Via Roma 10', 2, '00200', '9998887776', 'user', 'pwdAlessandro1415',  'uomo');
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere) VALUES ('Sofia', 'Conti', 'CNTSF90M41F839D', 'sofia@email.com', '1990-09-22', 'Via Garibaldi 5', 3, '00300', '1112223333', 'user', 'pwdSofia1617',  'donna');
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere) VALUES ('Matteo', 'Moretti', 'MRTTMT89T30F839E', 'matteo@email.com', '1989-07-12', 'Via Vespucci 7', 4, '00400', '6667778888', 'user', 'pwdMatteo1819',  'uomo');
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere) VALUES ('Elisa', 'Gallo', 'GLLELS88P41D859F', 'elisa@email.com', '1988-11-30', 'Via Mazzini 56', 1, '00100', '4445556666', 'user', 'pwdElisa2021', 'donna');
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere) VALUES ('Giovanni', 'Romano', 'RMNGVN87R31H501G', 'giovanni@email.com', '1987-06-07', 'Via Colombo 23', 2, '00200', '0001112222', 'user', 'pwdGiovanni2324', 'uomo');
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere) VALUES ('Alice', 'Rossi', 'RSSLCR95L13H501T', 'alice@email.com', '1995-08-25', 'Via Verdi 12', 1, '00100', '1234567890', 'user', 'pwdAlice123', 'donna');
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere) VALUES ('Luca', 'Bianchi', 'BNCLCU94M14Z352P', 'luca@email.com', '1994-06-18', 'Via Roma 45', 2, '00200', '9876543210', 'user', 'pwdLuca456', 'uomo');
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere) VALUES ('Sophia', 'Verdi', 'VRDSHP93H45F839A', 'sophia@email.com', '1993-11-02', 'Via Garibaldi 78', 3, '00300', '5556667777', 'user', 'pwdSophia789', 'donna');
+INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('admin', 'admin', null,'admin@gmail.com', null, null, null, null, null,'admin', 'admin' );
+INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Giorgio', 'Rossi', null, 'giorgiorossi@gmail.com', null, null, null, null, null,'admin', 'admin' );
+INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)VALUES ('Nicolo', 'Drovandi', null,'nicolodrovandi@gmail.com', null, null, null, null, null,'admin', 'admin' );
+INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Lorenzo', 'Franco', null,'lorenzofranco@gmail.com', null, null, null, null, null, 'admin','admin');
+INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Luca', 'Sanguinetti', null, 'lucasanguinetti@gmail.com', null, null, null, null, null,'admin', 'admin');
+INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)VALUES ('Claudio', 'Balzani', null,'claudiobalzani@gmail.com', null, null, null, null, null,'admin', 'admin' );
+INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Biagio', 'Ricci', null,'biagioricci@gmail.com', null, null, null, null, null,'admin', 'admin' );
+insert into Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) values ('Matteo','Salvo','slvmtt00b03e300m','matteosalvo@gmail.com','20000203','Via Marconi 2','1','17900','3547689876','user','salvini');
+insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Fiona','Giusti','gstfna03h06e300m','fionagiusti@gmail.com','20030806','Via Roma 29','1','16177','3495680856','user','fiona');
+insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Gianluca','Torre','trrglc80d07e300m','gianlu@gmail.com','19800407','Via Milano 56','2','20321','3857689806','user','torre');
+insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Marta','Lupu','lpumrt03b03e300m','mlupu@gmail.com','20030203','Via Rodi 70','2','16167','3398805856','user','marta');
+
+/* Insert esperienze */
+
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (3, 'Sviluppo software e gestione database', 1, 'Tech Solutions', '2018-05-01', '2021-06-30', 60000, 'Tempo pieno', 'Tecnologia', 'Sviluppatore Software');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (5, 'Analisi dei mercati finanziari e gestione portafogli clienti', 1, 'Investment Bank', '2016-10-15', '2021-10-15', 85000, 'Tempo pieno', 'Finanza', 'Analista Finanziario');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (4, 'Progettazione e sviluppo di siti web', 3, 'Web Solutions Co.', '2017-09-01', '2021-09-01', 55000, 'Tempo pieno', 'Tecnologia', 'Web Developer');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (6, 'Gestione strategica e sviluppo di prodotti', 4, 'Prodotti Innovativi Srl', '2015-07-20', '2021-07-20', 72000, 'Tempo pieno', 'Produzione', 'Product Manager');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (2, 'Ricerca e sviluppo nuovi materiali', 5, 'Lab Research', '2020-04-10', '2022-04-10', 60000, 'Tempo pieno', 'Ricerca', 'Ricercatore');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (4, 'Analisi dati e sviluppo di modelli statistici', 6, 'Data Analytics Inc.', '2017-01-05', '2021-01-05', 65000, 'Tempo pieno', 'Analisi dati', 'Data Scientist');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (3, 'Sviluppo strategie marketing e campagne pubblicitarie', 7, 'Marketing Agency', '2018-08-12', '2021-08-12', 58000, 'Tempo pieno', 'Marketing', 'Marketing Manager');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (5, 'Gestione progetti di sviluppo software', 8, 'Tech Solutions', '2016-06-30', '2021-06-30', 70000, 'Tempo pieno', 'Tecnologia', 'Project Manager');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (4, 'Sviluppo e implementazione strategie di vendita', 9, 'Sales Company', '2017-11-25', '2021-11-25', 60000, 'Tempo pieno', 'Vendite', 'Sales Manager');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (7, 'Gestione operativa e logistica', 10, 'Logistics Solutions', '2014-09-08', '2021-09-08', 68000, 'Tempo pieno', 'Logistica', 'Operations Manager');
+
+/* Istruzione */
+-- Istruzione per Marco Russo
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 4, 'Diploma in Informatica presso Scuola Tecnica Informatica XYZ', '2008-09-01', '2010-07-01', 1, 88),
+    ('Laurea in Informatica Applicata', 4, 'Corso di laurea triennale in Informatica Applicata presso Università XYZ', '2010-09-01', '2013-07-01', 1, 95),
+    ('Master in Data Science', 4, 'Master in Data Science presso Università XYZ', '2014-09-01', '2016-07-01', 1, 98);
+
+-- Istruzione per Giorgia Ferrari
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 1, 'Diploma in Informatica presso Scuola Tecnica Informatica ABC', '2008-09-01', '2010-07-01', 2, 86),
+    ('Laurea in Economia e Informatica', 1, 'Corso di laurea triennale in Economia e Informatica presso Università ABC', '2010-09-01', '2013-07-01', 2, 92),
+    ('Dottorato in Informatica Aziendale', 1, 'Dottorato in Informatica Aziendale presso Università ABC', '2014-09-01', '2018-07-01', 2, 96);
+
+-- Istruzione per Alessandro Martini
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 2, 'Diploma in Informatica presso Scuola Tecnica Informatica Milano', '2008-09-01', '2010-07-01', 3, 85),
+    ('Laurea in Ingegneria Informatica', 2, 'Corso di laurea triennale in Ingegneria Informatica presso Politecnico di Milano', '2010-09-01', '2013-07-01', 3, 88),
+    ('Specializzazione in Design e Sviluppo Software', 2, 'Corso di specializzazione in Design e Sviluppo Software', '2014-09-01', '2015-07-01', 3, 94);
+
+-- Istruzione per Sofia Conti
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 3, 'Diploma in Informatica presso Scuola Tecnica Informatica LMN', '2008-09-01', '2010-07-01', 4, 87),
+    ('Laurea in Psicologia Informatica', 3, 'Corso di laurea triennale in Psicologia Informatica presso Università LMN', '2010-09-01', '2013-07-01', 4, 94),
+    ('Master in Psicologia delle Interfacce', 3, 'Master in Psicologia delle Interfacce presso Università LMN', '2014-09-01', '2016-07-01', 4, 97);
+
+-- Istruzione per Matteo Moretti
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 4, 'Diploma in Informatica presso Scuola Tecnica Informatica XYZ', '2008-09-01', '2010-07-01', 5, 82),
+    ('Laurea in Ingegneria Informatica', 4, 'Corso di laurea triennale in Ingegneria Informatica presso Università XYZ', '2010-09-01', '2013-07-01', 5, 90),
+    ('Dottorato in Sistemi Intelligenti', 4, 'Dottorato in Sistemi Intelligenti presso Università XYZ', '2014-09-01', '2018-07-01', 5, 96);
+
+-- Istruzione per Elisa Gallo
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 1, 'Diploma in Informatica presso Scuola Tecnica Informatica ABC', '2008-09-01', '2010-07-01', 6, 89),
+    ('Laurea in Lettere Informatiche', 1, 'Corso di laurea triennale in Lettere Informatiche presso Università ABC', '2010-09-01', '2013-07-01', 6, 91),
+    ('Master in Storia dell Informatica', 1, 'Master in Storia dell Informatica presso Università ABC', '2014-09-01', '2016-07-01', 6, 95);
+
+-- Istruzione per Giovanni Romano
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 2, 'Diploma in Informatica presso Scuola Tecnica Informatica DEF', '2008-09-01', '2010-07-01', 7, 92),
+    ('Laurea in Medicina Informatica', 2, 'Corso di laurea triennale in Medicina Informatica presso Università DEF', '2010-09-01', '2013-07-01', 7, 96),
+    ('Specializzazione in Chirurgia Informatica', 2, 'Specializzazione in Chirurgia Informatica presso Università DEF', '2014-09-01', '2019-07-01', 7, 99);
+
+-- Istruzione per Alice Rossi
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 1, 'Diploma in Informatica presso Scuola Tecnica Informatica ABC', '2008-09-01', '2010-07-01', 8, 88),
+    ('Laurea in Scienze Politiche Informatiche', 1, 'Corso di laurea triennale in Scienze Politiche Informatiche presso Università ABC', '2010-09-01', '2013-07-01', 8, 89),
+    ('Master in Relazioni Informatiche', 1, 'Master in Relazioni Informatiche presso Università ABC', '2014-09-01', '2016-07-01', 8, 94);
+
+-- Istruzione per Luca Bianchi
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 2, 'Diploma in Informatica presso Scuola Tecnica Informatica DEF', '2008-09-01', '2010-07-01', 9, 90),
+    ('Laurea in Economia Aziendale e Informatica', 2, 'Corso di laurea triennale in Economia Aziendale e Informatica presso Università DEF', '2010-09-01', '2013-07-01', 9, 93),
+    ('Master in Finanza Informatica', 2, 'Master in Finanza Informatica presso Università DEF', '2014-09-01', '2016-07-01', 9, 97);
+
+-- Istruzione per Sophia Verdi
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 3, 'Diploma in Informatica presso Scuola Tecnica Informatica LMN', '2008-09-01', '2010-07-01', 10, 85),
+    ('Laurea in Lingue Straniere Informatiche', 3, 'Corso di laurea triennale in Lingue Straniere Informatiche presso Università LMN', '2010-09-01', '2013-07-01', 10, 87),
+    ('Diploma in Traduzione e Interpretariato Informatico', 3, 'Diploma in Traduzione e Interpretariato Informatico presso Università LMN', '2014-09-01', '2016-07-01', 10, 91);
+
 
 /*	Insert CategoriaPosizione	*/
 
