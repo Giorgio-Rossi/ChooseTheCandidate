@@ -126,7 +126,7 @@ ArrayList<CategoriaPosizione> catpos= cpImpl.getAllCategoriePosizioni();
 
 													<div class="mb-3">
 														<label for="n_ammissioni" class="form-label">Numero ammissioni</label><br>
-														<input type="number" name="n_ammissioni" class="form-group" min="1" max="400" id="n_ammissioni" />
+														<input type="number" name="n_ammissioni" class="form-control" min="1" max="400" id="n_ammissioni" required/>
 													</div>
 
 
@@ -177,7 +177,7 @@ ArrayList<CategoriaPosizione> catpos= cpImpl.getAllCategoriePosizioni();
 
 													<div class="mb-3">
 														<label for="descrizione" class="form-label">Descrizione</label>
-														<input type="text" class="form-control" name="descrizione" id="descrizione" placeholder="Descrizione" required>
+														<textarea class="form-control mb-1" name="descrizione" id="descrizione"  rows="3" required></textarea>
 													</div>
 
 

@@ -216,4 +216,11 @@ a:hover, a:active {
   color: blue;
   font-style: oblique;
 }
-
+@media screen and (max-width: 1500px) {
+  #img2 {
+    display: none;
+  }
+  .left2{
+	  width:100%
+  }
+}
