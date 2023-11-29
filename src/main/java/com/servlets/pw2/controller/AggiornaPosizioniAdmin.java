@@ -101,6 +101,7 @@ public class AggiornaPosizioniAdmin extends HttpServlet {
 		posizioneImpl.updatePosizione(posizione);
 
 		ErrorManager.setSuccessMessage("Posizione modificata con successo", req);
+		req.getSession().setAttribute("posizione_modificata","true");
 		req.getRequestDispatcher("admin/gestioneposizioni.jsp").forward(req, resp);
 
 	}

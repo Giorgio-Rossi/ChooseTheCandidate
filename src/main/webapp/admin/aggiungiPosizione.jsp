@@ -17,7 +17,7 @@ CategoriaPosizioneIMPL cpImpl = new CategoriaPosizioneIMPL();
 ArrayList<CategoriaPosizione> catpos= cpImpl.getAllCategoriePosizioni();
 %>
 <!DOCTYPE html>
-<html>
+<html lang="it">
 
 <head>
 <meta charset="ISO-8859-1">
@@ -119,6 +119,7 @@ ArrayList<CategoriaPosizione> catpos= cpImpl.getAllCategoriePosizioni();
 															}
 															%>
 														</select><br>
+
 													<div class="mb-3">
 														<label for="ruolo" class="form-label">Ruolo</label>
 														<input type="text" class="form-control " name="ruolo" id="ruolo" placeholder="Ruolo" required>

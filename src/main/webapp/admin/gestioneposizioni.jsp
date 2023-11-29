@@ -210,7 +210,19 @@
             <div class="modal-content">
                 <div class="modal-body text-center p-lg-4">
                     <i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
-                    <h4 class="text-success mt-3">Hai eliminato correttamente la candidatura!</h4>
+                    <h4 class="text-success mt-3">Hai eliminato correttamente la posizione!</h4>
+                    <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="errorModal2" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body text-center p-lg-4">
+                    <i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+                    <h4 class="text-success mt-3">Hai modificato correttamente la posizione!</h4>
                     <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
                 </div>
             </div>
@@ -225,6 +237,7 @@
 <%
     String success =  session.getAttribute("posizione_creata") == null ?  null : session.getAttribute("posizione_creata").toString();
     String delete =  session.getAttribute("posizione_eliminata") == null ?  null : session.getAttribute("posizione_eliminata").toString();
+    String edit =  session.getAttribute("posizione_modificata") == null ?  null : session.getAttribute("posizione_modificata").toString();
 
 
     if(success != null && Boolean.parseBoolean(success)){
@@ -244,6 +257,18 @@
     var myModal = new bootstrap.Modal(document.getElementById('errorModal'))
     myModal.show()
     <% session.removeAttribute("posizione_eliminata");%>
+</script>
+<%
+    }
+%>
+
+<%
+    if(edit != null && Boolean.parseBoolean(edit)){
+%>
+<script>
+    var myModal = new bootstrap.Modal(document.getElementById('errorModal2'))
+    myModal.show()
+    <% session.removeAttribute("posizione_modificata");%>
 </script>
 <%
     }

@@ -885,4 +885,26 @@ INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,st
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Sei appassionato di tecnologia e di programmazione? iamo cercando un/una Back-end Developer con esperienza in ambito Node con Javascript/Typescript','8','3','2','aperta','20240120','Back-end web developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('1','ll candidato è diplomato/laureato, ha maturato esperienza pluriennale nello sviluppo software web based, ed ha una conoscenza tecnica della lingua inglese. Sono requisiti fondamentali una buona capacità relazionale, attitudine al lavoro in team, capacità di adattamento e flessibilità.','5','3','2','aperta','20240120','Full stack web developer');
 
+/*INSERIMENTO CATEGORIE SEZIONE AMMINISTRATIVA*/
+insert into CategoriaPosizione
+values ('Amministrazione Generale')
+     ,('Finanze e Contabilita')
+     ,('Risorse Umane (HR)')
+     ,('Amministrazione delle Operazioni')
+     ,('Gestione Contratti e Legalita')
+     ,('Acquisti e Approvvigionamento')
+     ,('Segreteria e Supporto Amministrativo');
 
+
+/*INSERIMENTO CATEGORIE SEZIONE IT*/
+insert into CategoriaPosizione
+values ('Sviluppo Software')
+     ,('Amministrazione di Sistemi e Reti')
+     ,('Gestione del Progetto')
+     ,('Supporto Tecnico')
+     ,('Analisi dei Dati e Business Intelligence')
+     ,('Progettazione UX/UI')
+     ,('Sicurezza Informatica')
+     ,('Cloud Computing')
+     ,('Database')
+     ,('Sicurezza Informatica');

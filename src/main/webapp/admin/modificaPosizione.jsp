@@ -106,11 +106,11 @@ ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAl
 									<div class="e-profile">
 
 										<div class="tab-content pt-3">
-											<div class="tab-pane active justify-content-center">
+											<div class="tab-pane active">
 												<form class="form" method="post"
 													action="${pageContext.request.contextPath}/updatePosizioni">
 													<input type="hidden" name="id_posizione" value="<%=posizione.getId_posizione()%>">
-													<div class="column">
+
 														<div class="row">
 															<div class="form-group">
 																<label>Categoria</label> <select class="form-select" name="categoria" aria-label="Default select example">
@@ -145,14 +145,22 @@ ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAl
 																</select>
 															</div>
 														</div>
-														<div class="row">
-															<div class="form-group">
-																<label>Stato</label> <input class="form-control"
-																	type="text" name="stato"
-																	placeholder="<%=posizione.getStato()%>"
-																	value=<%=posizione.getStato()%> required>
+
+
+
+															<div class="form-check">
+																<label class="form-check-label" for="aperta">Aperta</label>
+																<input class="form-group" type="radio" name="stato" id="aperta" value="aperta">
 															</div>
-														</div>
+
+															<div class="form-check mb-3">
+																<label class="form-check-label" for="chiusa">
+																	Chiusa
+																</label>
+																<input class="form-group" type="radio" name="stato" id="chiusa" value="chiusa" checked>
+															</div>
+
+
 														<div class="row">
 															<div class="form-group">
 																<%
@@ -241,7 +249,7 @@ ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAl
 																<button class="btn btn-primary" type="submit">Salva</button>
 															</div>
 														</div>
-													</div>
+
 												</form>
 											</div>
 										</div>
