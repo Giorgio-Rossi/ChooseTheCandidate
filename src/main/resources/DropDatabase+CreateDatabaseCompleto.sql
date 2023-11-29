@@ -431,18 +431,6 @@ INSERT INTO Citta (nome, id_regione) VALUES ('Chioggia', 20);
 INSERT INTO Citta (nome, id_regione) VALUES ('Bassano del Grappa', 20);
 INSERT INTO Citta (nome, id_regione) VALUES ('Conegliano', 20);
 
--- Regione 21
-INSERT INTO Citta (nome, id_regione) VALUES ('Città Nuova', 21);
-INSERT INTO Citta (nome, id_regione) VALUES ('Villaggio del Sole', 21);
-INSERT INTO Citta (nome, id_regione) VALUES ('Monte Verde', 21);
-INSERT INTO Citta (nome, id_regione) VALUES ('Oasi Felice', 21);
-INSERT INTO Citta (nome, id_regione) VALUES ('Pace Eterna', 21);
-INSERT INTO Citta (nome, id_regione) VALUES ('Sole Nascente', 21);
-INSERT INTO Citta (nome, id_regione) VALUES ('Giardino degli Angeli', 21);
-INSERT INTO Citta (nome, id_regione) VALUES ('Rifugio Sereno', 21);
-INSERT INTO Citta (nome, id_regione) VALUES ('Luogo Tranquillo', 21);
-INSERT INTO Citta (nome, id_regione) VALUES ('Valle dei Sogni', 21);
-
 
 /*	Inserimento degli utenti	*/
 
@@ -467,6 +455,29 @@ insert into Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_
 insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Fiona','Giusti','gstfna03h06e300m','fionagiusti@gmail.com','20030806','Via Roma 29','1','16177','3495680856','user','fiona');
 insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Gianluca','Torre','trrglc80d07e300m','gianlu@gmail.com','19800407','Via Milano 56','2','20321','3857689806','user','torre');
 insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)values ('Marta','Lupu','lpumrt03b03e300m','mlupu@gmail.com','20030203','Via Rodi 70','2','16167','3398805856','user','marta');
+
+/* Insert esperienze */
+
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (3, 'Sviluppo software e gestione database', 1, 'Tech Solutions', '2018-05-01', '2021-06-30', 60000, 'Tempo pieno', 'Tecnologia', 'Sviluppatore Software');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (5, 'Analisi dei mercati finanziari e gestione portafogli clienti', 1, 'Investment Bank', '2016-10-15', '2021-10-15', 85000, 'Tempo pieno', 'Finanza', 'Analista Finanziario');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (4, 'Progettazione e sviluppo di siti web', 3, 'Web Solutions Co.', '2017-09-01', '2021-09-01', 55000, 'Tempo pieno', 'Tecnologia', 'Web Developer');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (6, 'Gestione strategica e sviluppo di prodotti', 4, 'Prodotti Innovativi Srl', '2015-07-20', '2021-07-20', 72000, 'Tempo pieno', 'Produzione', 'Product Manager');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (2, 'Ricerca e sviluppo nuovi materiali', 5, 'Lab Research', '2020-04-10', '2022-04-10', 60000, 'Tempo pieno', 'Ricerca', 'Ricercatore');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (4, 'Analisi dati e sviluppo di modelli statistici', 6, 'Data Analytics Inc.', '2017-01-05', '2021-01-05', 65000, 'Tempo pieno', 'Analisi dati', 'Data Scientist');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (3, 'Sviluppo strategie marketing e campagne pubblicitarie', 7, 'Marketing Agency', '2018-08-12', '2021-08-12', 58000, 'Tempo pieno', 'Marketing', 'Marketing Manager');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (5, 'Gestione progetti di sviluppo software', 8, 'Tech Solutions', '2016-06-30', '2021-06-30', 70000, 'Tempo pieno', 'Tecnologia', 'Project Manager');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (4, 'Sviluppo e implementazione strategie di vendita', 9, 'Sales Company', '2017-11-25', '2021-11-25', 60000, 'Tempo pieno', 'Vendite', 'Sales Manager');
+INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
+VALUES (7, 'Gestione operativa e logistica', 10, 'Logistics Solutions', '2014-09-08', '2021-09-08', 68000, 'Tempo pieno', 'Logistica', 'Operations Manager');
 
 /*	Insert CategoriaPosizione	*/
 
