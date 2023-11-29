@@ -38,7 +38,7 @@ ruolo_admin varchar(10) not null check(ruolo_admin in('user','admin'))  CONSTRAI
 password varchar(200) not null,
 foto_profilo varchar(100),
 CV varchar(600),
-token varchar(200) not null,
+token varchar(200),
 genere varchar(30)  check(genere in('uomo','donna','non specificare')),
 CONSTRAINT FK_utente_citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta)
 )
@@ -235,7 +235,7 @@ INSERT INTO Citta (nome, id_regione) VALUES ('Benevento', 4);
 INSERT INTO Citta (nome, id_regione) VALUES ('Caserta', 4);
 INSERT INTO Citta (nome, id_regione) VALUES ('Pompei', 4);
 INSERT INTO Citta (nome, id_regione) VALUES ('Torre del Greco', 4);
-INSERT INTO Citta (nome, id_regione) VALUES ("Cava de' Tirreni", 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cava de Tirreni', 4);
 INSERT INTO Citta (nome, id_regione) VALUES ('Castellammare di Stabia', 4);
 INSERT INTO Citta (nome, id_regione) VALUES ('Nocera Inferiore', 4);
 
@@ -354,7 +354,7 @@ INSERT INTO Citta (nome, id_regione) VALUES ('Olbia', 14);
 INSERT INTO Citta (nome, id_regione) VALUES ('Alghero', 14);
 INSERT INTO Citta (nome, id_regione) VALUES ('Nuoro', 14);
 INSERT INTO Citta (nome, id_regione) VALUES ('Oristano', 14);
-INSERT INTO Citta (nome, id_regione) VALUES ("Quartu Sant'Elena", 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Quartu Sant Elena', 14);
 INSERT INTO Citta (nome, id_regione) VALUES ('Iglesias', 14);
 INSERT INTO Citta (nome, id_regione) VALUES ('Carbonia', 14);
 INSERT INTO Citta (nome, id_regione) VALUES ('Ozieri', 14);
@@ -478,6 +478,78 @@ INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizi
 VALUES (4, 'Sviluppo e implementazione strategie di vendita', 9, 'Sales Company', '2017-11-25', '2021-11-25', 60000, 'Tempo pieno', 'Vendite', 'Sales Manager');
 INSERT INTO Esperienza (anni, descrizione_attivita, id_user, azienda, data_inizio, data_fine, ral, tipo_contratto, settore, posizione_lavorativa)
 VALUES (7, 'Gestione operativa e logistica', 10, 'Logistics Solutions', '2014-09-08', '2021-09-08', 68000, 'Tempo pieno', 'Logistica', 'Operations Manager');
+
+/* Istruzione */
+-- Istruzione per Marco Russo
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 4, 'Diploma in Informatica presso Scuola Tecnica Informatica XYZ', '2008-09-01', '2010-07-01', 1, 88),
+    ('Laurea in Informatica Applicata', 4, 'Corso di laurea triennale in Informatica Applicata presso Università XYZ', '2010-09-01', '2013-07-01', 1, 95),
+    ('Master in Data Science', 4, 'Master in Data Science presso Università XYZ', '2014-09-01', '2016-07-01', 1, 98);
+
+-- Istruzione per Giorgia Ferrari
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 1, 'Diploma in Informatica presso Scuola Tecnica Informatica ABC', '2008-09-01', '2010-07-01', 2, 86),
+    ('Laurea in Economia e Informatica', 1, 'Corso di laurea triennale in Economia e Informatica presso Università ABC', '2010-09-01', '2013-07-01', 2, 92),
+    ('Dottorato in Informatica Aziendale', 1, 'Dottorato in Informatica Aziendale presso Università ABC', '2014-09-01', '2018-07-01', 2, 96);
+
+-- Istruzione per Alessandro Martini
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 2, 'Diploma in Informatica presso Scuola Tecnica Informatica Milano', '2008-09-01', '2010-07-01', 3, 85),
+    ('Laurea in Ingegneria Informatica', 2, 'Corso di laurea triennale in Ingegneria Informatica presso Politecnico di Milano', '2010-09-01', '2013-07-01', 3, 88),
+    ('Specializzazione in Design e Sviluppo Software', 2, 'Corso di specializzazione in Design e Sviluppo Software', '2014-09-01', '2015-07-01', 3, 94);
+
+-- Istruzione per Sofia Conti
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 3, 'Diploma in Informatica presso Scuola Tecnica Informatica LMN', '2008-09-01', '2010-07-01', 4, 87),
+    ('Laurea in Psicologia Informatica', 3, 'Corso di laurea triennale in Psicologia Informatica presso Università LMN', '2010-09-01', '2013-07-01', 4, 94),
+    ('Master in Psicologia delle Interfacce', 3, 'Master in Psicologia delle Interfacce presso Università LMN', '2014-09-01', '2016-07-01', 4, 97);
+
+-- Istruzione per Matteo Moretti
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 4, 'Diploma in Informatica presso Scuola Tecnica Informatica XYZ', '2008-09-01', '2010-07-01', 5, 82),
+    ('Laurea in Ingegneria Informatica', 4, 'Corso di laurea triennale in Ingegneria Informatica presso Università XYZ', '2010-09-01', '2013-07-01', 5, 90),
+    ('Dottorato in Sistemi Intelligenti', 4, 'Dottorato in Sistemi Intelligenti presso Università XYZ', '2014-09-01', '2018-07-01', 5, 96);
+
+-- Istruzione per Elisa Gallo
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 1, 'Diploma in Informatica presso Scuola Tecnica Informatica ABC', '2008-09-01', '2010-07-01', 6, 89),
+    ('Laurea in Lettere Informatiche', 1, 'Corso di laurea triennale in Lettere Informatiche presso Università ABC', '2010-09-01', '2013-07-01', 6, 91),
+    ('Master in Storia dell Informatica', 1, 'Master in Storia dell Informatica presso Università ABC', '2014-09-01', '2016-07-01', 6, 95);
+
+-- Istruzione per Giovanni Romano
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 2, 'Diploma in Informatica presso Scuola Tecnica Informatica DEF', '2008-09-01', '2010-07-01', 7, 92),
+    ('Laurea in Medicina Informatica', 2, 'Corso di laurea triennale in Medicina Informatica presso Università DEF', '2010-09-01', '2013-07-01', 7, 96),
+    ('Specializzazione in Chirurgia Informatica', 2, 'Specializzazione in Chirurgia Informatica presso Università DEF', '2014-09-01', '2019-07-01', 7, 99);
+
+-- Istruzione per Alice Rossi
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 1, 'Diploma in Informatica presso Scuola Tecnica Informatica ABC', '2008-09-01', '2010-07-01', 8, 88),
+    ('Laurea in Scienze Politiche Informatiche', 1, 'Corso di laurea triennale in Scienze Politiche Informatiche presso Università ABC', '2010-09-01', '2013-07-01', 8, 89),
+    ('Master in Relazioni Informatiche', 1, 'Master in Relazioni Informatiche presso Università ABC', '2014-09-01', '2016-07-01', 8, 94);
+
+-- Istruzione per Luca Bianchi
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 2, 'Diploma in Informatica presso Scuola Tecnica Informatica DEF', '2008-09-01', '2010-07-01', 9, 90),
+    ('Laurea in Economia Aziendale e Informatica', 2, 'Corso di laurea triennale in Economia Aziendale e Informatica presso Università DEF', '2010-09-01', '2013-07-01', 9, 93),
+    ('Master in Finanza Informatica', 2, 'Master in Finanza Informatica presso Università DEF', '2014-09-01', '2016-07-01', 9, 97);
+
+-- Istruzione per Sophia Verdi
+INSERT INTO Istruzione (grado, id_citta, descrizione_istruzione, data_inizio, data_fine, id_user, valutazione)
+VALUES 
+    ('Diploma in Informatica', 3, 'Diploma in Informatica presso Scuola Tecnica Informatica LMN', '2008-09-01', '2010-07-01', 10, 85),
+    ('Laurea in Lingue Straniere Informatiche', 3, 'Corso di laurea triennale in Lingue Straniere Informatiche presso Università LMN', '2010-09-01', '2013-07-01', 10, 87),
+    ('Diploma in Traduzione e Interpretariato Informatico', 3, 'Diploma in Traduzione e Interpretariato Informatico presso Università LMN', '2014-09-01', '2016-07-01', 10, 91);
+
 
 /*	Insert CategoriaPosizione	*/
 
