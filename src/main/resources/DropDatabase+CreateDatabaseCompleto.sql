@@ -191,55 +191,258 @@ INSERT INTO Regione (nome) values('Umbria');
 INSERT INTO Regione (nome) values('Valle D Aosta');
 INSERT INTO Regione (nome) values('Veneto');
 
-/*	Inserimento delle Citta	*/
-insert into Citta (nome,id_regione) values ('Genova','8');
-insert into Citta (nome,id_regione) values ('Roma','7');
-insert into Citta (nome,id_regione) values ('Napoli','4');
-insert into Citta (nome,id_regione) values ('Lodi','9');
-insert into Citta (nome,id_regione) values ('Torino','12');
-insert into Citta (nome,id_regione) values ('Venezia','20');
-insert into Citta (nome,id_regione) values ('Firenze','16');
-insert into Citta (nome,id_regione) values ('Bologna','5');
+/* Abbruzzo 1*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Aquila', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pescara', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Avezzano', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Sulmona', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Chieti', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Teramo', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Roseto degli Abruzzi', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Lanciano', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Vasto', 1);
+INSERT INTO Citta (nome, id_regione) VALUES ('Atri', 1);
 
-insert into Citta (nome,id_regione) values ('Aquila','1');
-insert into Citta (nome,id_regione) values ('Pescara','1');
-insert into Citta (nome,id_regione) values ('Potenza','2');
-insert into Citta (nome,id_regione) values ('Matera','2');
-insert into Citta (nome,id_regione) values ('Reggio Calabria','3');
-insert into Citta (nome,id_regione) values ('Catanzaro','3');
-insert into Citta (nome,id_regione) values ('Avellino','4');
-insert into Citta (nome,id_regione) values ('Salerno','4');
-insert into Citta (nome,id_regione) values ('Reggio Emilia','5');
-insert into Citta (nome,id_regione) values ('Udine','6');
-insert into Citta (nome,id_regione) values ('Trieste','6');
-insert into Citta (nome,id_regione) values ('Latina','7');
-insert into Citta (nome,id_regione) values ('Viterbo','7');
-insert into Citta (nome,id_regione) values ('Savona','8');
-insert into Citta (nome,id_regione) values ('La Spezia','8');
-insert into Citta (nome,id_regione) values ('Bergamo','9');
-insert into Citta (nome,id_regione) values ('Brescia','9');
-insert into Citta (nome,id_regione) values ('Ancona','10');
-insert into Citta (nome,id_regione) values ('Ascoli','10');
-insert into Citta (nome,id_regione) values ('Campobasso','11');
-insert into Citta (nome,id_regione) values ('Isernia','11');
-insert into Citta (nome,id_regione) values ('Asti','12');
-insert into Citta (nome,id_regione) values ('Novare','12');
-insert into Citta (nome,id_regione) values ('Bari','13');
-insert into Citta (nome,id_regione) values ('Lecce','13');
-insert into Citta (nome,id_regione) values ('Cagliari','14');
-insert into Citta (nome,id_regione) values ('Alghero','14');
-insert into Citta (nome,id_regione) values ('Palermo','15');
-insert into Citta (nome,id_regione) values ('Catania','15');
-insert into Citta (nome,id_regione) values ('Pisa','16');
-insert into Citta (nome,id_regione) values ('Lucca','16');
-insert into Citta (nome,id_regione) values ('Bolzano','17');
-insert into Citta (nome,id_regione) values ('Trento','17');
-insert into Citta (nome,id_regione) values ('Perugia','18');
-insert into Citta (nome,id_regione) values ('Assisi','18');
-insert into Citta (nome,id_regione) values ('Aosta','19');
-insert into Citta (nome,id_regione) values ('Champoluc','19');
-insert into Citta (nome,id_regione) values ('Verona','20');
-insert into Citta (nome,id_regione) values ('Vicenza','20');
+/* Basilicata 2*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Potenza', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Matera', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pisticci', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Lauria', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Rionero in Vulture', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Melfi', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Venosa', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Lavello', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Tricarico', 2);
+INSERT INTO Citta (nome, id_regione) VALUES ('Montescaglioso', 2);
+
+/* Calabria 3 */
+INSERT INTO Citta (nome, id_regione) VALUES ('Reggio Calabria', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Catanzaro', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cosenza', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Crotone', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Vibo Valentia', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Lamezia Terme', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Rossano', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pizzo', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Amantea', 3);
+INSERT INTO Citta (nome, id_regione) VALUES ('Paola', 3);
+
+/* Campania 4*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Napoli', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Salerno', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Avellino', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Benevento', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Caserta', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pompei', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Torre del Greco', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ("Cava de' Tirreni", 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Castellammare di Stabia', 4);
+INSERT INTO Citta (nome, id_regione) VALUES ('Nocera Inferiore', 4);
+
+/* Emilia-Romagna 5*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Bologna', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Modena', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Parma', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Reggio Emilia', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Ferrara', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Ravenna', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Forlì', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cesena', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Piacenza', 5);
+INSERT INTO Citta (nome, id_regione) VALUES ('Imola', 5);
+
+/* Friuli-Venezia-Giulia 6*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Trieste', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Udine', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pordenone', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Gorizia', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Monfalcone', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Sacile', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cividale del Friuli', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Palmanova', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('Aquileia', 6);
+INSERT INTO Citta (nome, id_regione) VALUES ('San Daniele del Friuli', 6);
+
+/* Lazio 7*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Roma', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Latina', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Viterbo', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Frosinone', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Rieti', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Civitavecchia', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Tivoli', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Anzio', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Fiumicino', 7);
+INSERT INTO Citta (nome, id_regione) VALUES ('Nettuno', 7);
+
+/* Liguria 8*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Genova', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Savona', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('La Spezia', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Sanremo', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Sestri Levante', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Alassio', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Chiavari', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Imperia', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Ventimiglia', 8);
+INSERT INTO Citta (nome, id_regione) VALUES ('Rapallo', 8);
+
+/* Lombardia 9*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Milano', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Bergamo', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Brescia', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Monza', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Como', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pavia', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cremona', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Lodi', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Varese', 9);
+INSERT INTO Citta (nome, id_regione) VALUES ('Mantova', 9);
+
+/* Marche 10*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Ancona', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pesaro', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Macerata', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Fano', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Jesi', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Civitanova Marche', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Ascoli Piceno', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Senigallia', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Recanati', 10);
+INSERT INTO Citta (nome, id_regione) VALUES ('Fermo', 10);
+
+/* Molise 11*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Campobasso', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Termoli', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Isernia', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Venafro', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Larino', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Trivento', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Bojano', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Guglionesi', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Campomarino', 11);
+INSERT INTO Citta (nome, id_regione) VALUES ('Riccia', 11);
+
+/* Piemonte 12*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Torino', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Novara', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Alessandria', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Asti', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cuneo', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Vercelli', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Biella', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Alba', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Casale Monferrato', 12);
+INSERT INTO Citta (nome, id_regione) VALUES ('Chieri', 12);
+
+/* Puglia 13*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Bari', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Lecce', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Taranto', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Foggia', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Brindisi', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Andria', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Barletta', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Molfetta', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Bitonto', 13);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cerignola', 13);
+
+/* Sardegna 14*/
+INSERT INTO Citta (nome, id_regione) VALUES ('Cagliari', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Sassari', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Olbia', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Alghero', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Nuoro', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Oristano', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ("Quartu Sant'Elena", 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Iglesias', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Carbonia', 14);
+INSERT INTO Citta (nome, id_regione) VALUES ('Ozieri', 14);
+
+-- Sicilia (Regione 15)
+INSERT INTO Citta (nome, id_regione) VALUES ('Palermo', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Catania', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Messina', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Siracusa', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Trapani', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Marsala', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Agrigento', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Caltanissetta', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Enna', 15);
+INSERT INTO Citta (nome, id_regione) VALUES ('Gela', 15);
+
+-- Toscana (Regione 16)
+INSERT INTO Citta (nome, id_regione) VALUES ('Firenze', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pisa', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Siena', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Livorno', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Lucca', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Prato', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Massa', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Grosseto', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Arezzo', 16);
+INSERT INTO Citta (nome, id_regione) VALUES ('Carrara', 16);
+
+-- Trentino-Alto-Adige (Regione 17)
+INSERT INTO Citta (nome, id_regione) VALUES ('Bolzano', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Trento', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Rovereto', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Merano', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Bressanone', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Caldaro', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cavalese', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Egna', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Ortisei', 17);
+INSERT INTO Citta (nome, id_regione) VALUES ('Vipiteno', 17);
+
+-- Umbria (Regione 18)
+INSERT INTO Citta (nome, id_regione) VALUES ('Perugia', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Assisi', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Terni', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Foligno', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Spoleto', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Gubbio', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Città di Castello', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Orvieto', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Narni', 18);
+INSERT INTO Citta (nome, id_regione) VALUES ('Amelia', 18);
+
+-- Valle d'Aosta (Regione 19)
+INSERT INTO Citta (nome, id_regione) VALUES ('Aosta', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Courmayeur', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Saint-Vincent', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Champoluc', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Cogne', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('La Thuile', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Gressoney-Saint-Jean', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Bard', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Nus', 19);
+INSERT INTO Citta (nome, id_regione) VALUES ('Hone', 19);
+
+-- Veneto (Regione 20)
+INSERT INTO Citta (nome, id_regione) VALUES ('Venezia', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Verona', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Padova', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Vicenza', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Treviso', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Belluno', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Rovigo', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Chioggia', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Bassano del Grappa', 20);
+INSERT INTO Citta (nome, id_regione) VALUES ('Conegliano', 20);
+
+-- Regione 21
+INSERT INTO Citta (nome, id_regione) VALUES ('Città Nuova', 21);
+INSERT INTO Citta (nome, id_regione) VALUES ('Villaggio del Sole', 21);
+INSERT INTO Citta (nome, id_regione) VALUES ('Monte Verde', 21);
+INSERT INTO Citta (nome, id_regione) VALUES ('Oasi Felice', 21);
+INSERT INTO Citta (nome, id_regione) VALUES ('Pace Eterna', 21);
+INSERT INTO Citta (nome, id_regione) VALUES ('Sole Nascente', 21);
+INSERT INTO Citta (nome, id_regione) VALUES ('Giardino degli Angeli', 21);
+INSERT INTO Citta (nome, id_regione) VALUES ('Rifugio Sereno', 21);
+INSERT INTO Citta (nome, id_regione) VALUES ('Luogo Tranquillo', 21);
+INSERT INTO Citta (nome, id_regione) VALUES ('Valle dei Sogni', 21);
+
 
 /*	Inserimento degli utenti	*/
 
