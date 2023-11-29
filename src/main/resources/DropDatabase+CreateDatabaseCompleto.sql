@@ -109,7 +109,7 @@ id_utente_quiz int identity not null primary key,
 id_quiz int not null,
 id_user int not null,
 punteggio float not null,
-data_inserimento date,
+data_inserimento datetime,
  
 CONSTRAINT FK_Quiz_UtenteQuiz FOREIGN KEY (id_quiz) REFERENCES Quiz (id_quiz),
 CONSTRAINT FK_Utente_UtenteQuiz FOREIGN KEY (id_user) REFERENCES Utente (id_user)
@@ -140,7 +140,7 @@ id_citta int not null,
 id_Categoria int not null,
 id_quiz int,
 stato varchar(500) not null check(stato in('aperta','chiusa')),
-data_inserimento date,
+data_inserimento datetime,
 ruolo varchar(500),
  
 CONSTRAINT FK_Posizione_Citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta),
