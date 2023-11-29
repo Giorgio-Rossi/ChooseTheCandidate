@@ -30,17 +30,17 @@
 %>
 
 <body class="container2">
-<div class="left">
-	<div class="top">
+<div id="left2">
+	<div class="top2">
 		<img src="img/logoPag.png" alt ="Immagine HP">
 	</div>
-	<div class="center">
+	<div class="center2">
 
 		<h3>Log in</h3>
 		<form  method="post" id="form1" action="${pageContext.request.contextPath}/login">
-			<div class="formLogin">
-				<input type="email" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required placeholder="Email"/><br>
-				<input type="password" name="password" required placeholder="Password"/><br>
+			<div class="formLogin2">
+				<input class="input2" type="email" name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required placeholder="Email"/><br>
+				<input class="input2" type="password" name="password" required placeholder="Password"/><br>
 			</div>
 			<!-- Alert Success -->
 				<%
@@ -65,7 +65,7 @@
 				<%
 				if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){
 				%>
-			<div class="alert_alert-danger" role="alert">
+			<div class="alert_alert-danger2" role="alert">
 				<%= ErrorManager.getErrorMessage((HttpServletRequest) request)%>
 			</div>
 				<%
@@ -73,9 +73,9 @@
 				%>
 	</div>
 
-	<div class="bottomLogin">
-		<button form="form1"  type="submit">Login</button>
-		<div class="linksLog">
+	<div class="bottomLogin2">
+		<button form="form1" id="button2"type="submit">Login</button>
+		<div class="linksLog2">
 			<button type="button" class="btn btn-link a" data-bs-toggle="modal" data-bs-target="#resetPassword" data-bs-whatever="@getbootstrap">Password dimenticata?</button>
 			<!--<p><a href="#resetPassword">Password dimenticata?</a></p>-->
 			<p>Non hai un account? <a href="${pageContext.request.contextPath}/registrazione.jsp"><b>Registrati qui</b></a></p>
@@ -84,10 +84,11 @@
 
 	</form>
 </div>
-<div class="right">
-	<div  id="img" class="subtitleImg">
+<div class="right2">
+	<div  id="img2" class="subtitleImg2">
 		<h1>CAMBIARE IL MONDO<br> UN PASSO ALLA VOLTA</h1>
 	</div>
+
 
 </div>
 
@@ -103,11 +104,11 @@
 				<form method="post" id="verify_token" action="${pageContext.request.contextPath}/passwordDimenticata">
 					<div class="mb-3">
 						<label for="email" class="col-form-label">Email:</label>
-						<input type="email" class="form-control" name="email" id="email" required>
+						<input class="input2" type="email" class="form-control" name="email" id="email" required>
 					</div>
 					<div class="mb-3">
 						<label for="token" class="col-form-label">Token:</label>
-						<input type="text" name="token" class="form-control" id="token" required>
+						<input class="input2" type="text" name="token" class="form-control" id="token" required>
 					</div>
 					<button type="submit" form="verify_token" class="btn btn-primary">Verifica</button>
 				</form>
@@ -130,11 +131,11 @@
 				<form method="post" id="verify_psw" action="${pageContext.request.contextPath}/cambiaPassword">
 					<div class="mb-3">
 						<label for="npw" class="col-form-label">Nuova password:</label>
-						<input type="password" class="form-control" name="nuova_password" id="npw" required>
+						<input class="input2" type="password" class="form-control" name="nuova_password" id="npw" required>
 					</div>
 					<div class="mb-3">
 						<label for="cpw" class="col-form-label">Conferma password:</label>
-						<input type="password" name="confirm_password" class="form-control" id="cpw" required>
+						<input class="input2" type="password" name="confirm_password" class="form-control" id="cpw" required>
 					</div>
 					<button type="submit" form="verify_psw"  class="btn btn-primary">Cambia password</button>
 				</form>
