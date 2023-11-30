@@ -1026,6 +1026,26 @@ INSERT INTO QuizDomanda VALUES(103, 17);
 INSERT INTO QuizDomanda VALUES(104, 17);
 INSERT INTO QuizDomanda VALUES(105, 17);
 
+/*Insert  Skill */
+
+INSERT INTO Skill VALUES(1, 'Python','hard');
+INSERT INTO Skill VALUES(2, 'Java','hard');
+INSERT INTO Skill VALUES(3, 'C','hard');
+INSERT INTO Skill VALUES(4, 'C++','hard');
+INSERT INTO Skill VALUES(5, 'Javascript','hard');
+INSERT INTO Skill VALUES(6, 'HTML, CSS','hard');
+INSERT INTO Skill VALUES(7, 'Comunicazione efficace','soft');
+INSERT INTO Skill VALUES(8, 'Lavoro di squadra','soft');
+INSERT INTO Skill VALUES(9, 'Leadership','soft');
+INSERT INTO Skill VALUES(10, 'Gestione dello stress','soft');
+INSERT INTO Skill VALUES(11, 'Risoluzione dei problemi','soft');
+INSERT INTO Skill VALUES(12, 'Linux','hard');
+INSERT INTO Skill VALUES(13, 'Windows','hard');
+INSERT INTO Skill VALUES(14, 'React: Introduzione','hard');
+INSERT INTO Skill VALUES(15, 'Angular: Concetti di Base','hard');
+INSERT INTO Skill VALUES(16, 'Django: Fondamenti','hard');
+INSERT INTO Skill VALUES(17, 'Git: Concetti di Base','hard');
+
 
 /*	Inserimento delle posizioni	*/
 
