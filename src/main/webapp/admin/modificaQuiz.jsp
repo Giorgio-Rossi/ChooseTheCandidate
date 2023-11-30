@@ -103,7 +103,7 @@
                                 <div class="e-profile">
                                     <div class="tab-content pt-3">
                                         <div class="tab-pane active">
-                                            <form method="post" action="${pageContext.request.contextPath}/modificaQuiz">
+                                            <form method="post" action="${pageContext.request.contextPath}/modificaQuiz" accept-charset="ISO-8859-1">
                                                 <input type="hidden" name="id_quiz" value="<%=quiz.getId_quiz()%>">
                                                 <div class="mb-3">
                                                     <label for="nome" class="form-label">Nome</label>

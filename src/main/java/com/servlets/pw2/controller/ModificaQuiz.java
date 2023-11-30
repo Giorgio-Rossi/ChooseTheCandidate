@@ -22,6 +22,7 @@ public class ModificaQuiz extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("ISO-8859-1");
         int id_quiz = Integer.parseInt(req.getParameter("id_quiz"));
 
         String nome_quiz = req.getParameter("nome");
@@ -33,6 +34,7 @@ public class ModificaQuiz extends HttpServlet {
         String[] scelte4 = req.getParameterValues("scelta4");
         String[] sceltecorrette = req.getParameterValues("sceltacorretta");
 
+        /*
         System.out.println(nome_quiz);
         System.out.println(Arrays.toString(domande));
         System.out.println(Arrays.toString(punteggi));
@@ -41,6 +43,9 @@ public class ModificaQuiz extends HttpServlet {
         System.out.println(Arrays.toString(scelte3));
         System.out.println(Arrays.toString(scelte4));
         System.out.println(Arrays.toString(sceltecorrette));
+
+         */
+        System.out.println(Arrays.toString(domande));
 
         QuizIMPL quizIMPL = new QuizIMPL();
         Quiz quiz = quizIMPL.getQuizById(id_quiz);

@@ -1,0 +1,357 @@
+Subject: [PATCH] pulizia e correzione piccoli errori e creazione patch
+---
+Index: target/PW2-1.0-SNAPSHOT/WEB-INF/classes/createTable.sql
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/createTable.sql b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/createTable.sql
+--- a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/createTable.sql	(revision e7ca3b2434bd2977e5b8e715dc2ec5476bc58a19)
++++ b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/createTable.sql	(date 1701161701093)
+@@ -181,4 +181,13 @@
+ ALTER TABLE Quiz ALTER COLUMN descrizione varchar(700);
+ ALTER TABLE UtenteQuiz ALTER COLUMN punteggio float
+ 
++ALTER TABLE Posizione
++    ALTER COLUMN data_inserimento datetime;
++
++ALTER TABLE CandidaturaUser
++    ALTER COLUMN data_candidatura datetime;
++
++ALTER TABLE UtenteQuiz
++    ALTER COLUMN data_inserimento datetime;
++
+ 
+Index: src/main/java/com/candidatoDB/pw2/interfaces/UtenteQuizDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/candidatoDB/pw2/interfaces/UtenteQuizDAO.java b/src/main/java/com/candidatoDB/pw2/interfaces/UtenteQuizDAO.java
+--- a/src/main/java/com/candidatoDB/pw2/interfaces/UtenteQuizDAO.java	(revision e7ca3b2434bd2977e5b8e715dc2ec5476bc58a19)
++++ b/src/main/java/com/candidatoDB/pw2/interfaces/UtenteQuizDAO.java	(date 1701164881737)
+@@ -21,5 +21,5 @@
+ //    
+ //    UtenteQuiz findByIdUtenteQuiz (int id_utente_quiz);
+ 
+-
++    Double mediaByUser(int id_user);
+ }
+Index: src/main/webapp/home/homeuser.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/home/homeuser.jsp b/src/main/webapp/home/homeuser.jsp
+--- a/src/main/webapp/home/homeuser.jsp	(revision e7ca3b2434bd2977e5b8e715dc2ec5476bc58a19)
++++ b/src/main/webapp/home/homeuser.jsp	(date 1701165895118)
+@@ -32,7 +32,7 @@
+ 
+ 	Map<Posizione,UtenteQuiz> bestCandidatura = utenteQuizIMPL.BestCandidatura(utenteLoggato.getId_user());
+ 
+-	System.out.println(bestCandidatura);
++	Double media = utenteQuizIMPL.mediaByUser(utenteLoggato.getId_user());
+ %>
+ 
+ <html>
+@@ -88,7 +88,7 @@
+ 
+ 								<h1 class="h6 font-weight-bold text-center">Media Quiz</h1>
+ 
+-								<div class="progress mx-auto" data-value='70'>
++								<div class="progress mx-auto" data-value='<%=Math.round(media)%>'>
+           <span class="progress-left">
+                         <span class="progress-bar border-success"></span>
+           </span>
+@@ -96,7 +96,7 @@
+                         <span class="progress-bar border-success"></span>
+           </span>
+ 									<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+-										<div class="h2 font-weight-bold">70<sup class="small">%</sup></div>
++										<div class="h2 font-weight-bold"><%=Math.round(media)%><sup class="small">%</sup></div>
+ 									</div>
+ 								</div>
+ 
+@@ -456,6 +456,7 @@
+ 			var left = $(this).find('.progress-left .progress-bar');
+ 			var right = $(this).find('.progress-right .progress-bar');
+ 
++
+ 			if (value > 0) {
+ 				if (value <= 50) {
+ 					right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+@@ -468,9 +469,7 @@
+ 		})
+ 
+ 		function percentageToDegrees(percentage) {
+-
+ 			return percentage / 100 * 360
+-
+ 		}
+ 
+ 	});
+Index: src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java b/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java
+--- a/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java	(revision e7ca3b2434bd2977e5b8e715dc2ec5476bc58a19)
++++ b/src/main/java/com/candidatoDB/pw2/interfaces/impl/UtenteQuizIMPL.java	(date 1701164881732)
+@@ -200,6 +200,34 @@
+ 	    return best_candidatura;
+ 	}
+ 
++	@Override
++	public Double mediaByUser(int id_user) {
++		Double media = null;
++		String sql = "SELECT AVG(punteggio) as MediaPunteggio\n" +
++				"FROM UtenteQuiz\n" +
++				"WHERE id_user = ?";
++		PreparedStatement statement = null;
++		ResultSet resultSet = null;
++		try {
++			statement = connection.getConnection().prepareStatement(sql);
++			statement.setInt(1, id_user);
++
++			resultSet = statement.executeQuery();
++
++			while (resultSet.next()) {
++				media = resultSet.getDouble("MediaPunteggio");
++			}
++
++		} catch (SQLException e) {
++			System.err.println(e.getMessage());
++		} finally {
++			// DBUtil.close(resultSet);
++			DBUtil.close(statement);
++			//DBUtil.close(connection.getConnection());
++		}
++		return media;
+ 	}
++
++}
+ 	
+ 
+Index: target/PW2-1.0-SNAPSHOT/home/homeuser.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/PW2-1.0-SNAPSHOT/home/homeuser.jsp b/target/PW2-1.0-SNAPSHOT/home/homeuser.jsp
+--- a/target/PW2-1.0-SNAPSHOT/home/homeuser.jsp	(revision e7ca3b2434bd2977e5b8e715dc2ec5476bc58a19)
++++ b/target/PW2-1.0-SNAPSHOT/home/homeuser.jsp	(date 1701165895118)
+@@ -32,7 +32,7 @@
+ 
+ 	Map<Posizione,UtenteQuiz> bestCandidatura = utenteQuizIMPL.BestCandidatura(utenteLoggato.getId_user());
+ 
+-	System.out.println(bestCandidatura);
++	Double media = utenteQuizIMPL.mediaByUser(utenteLoggato.getId_user());
+ %>
+ 
+ <html>
+@@ -88,7 +88,7 @@
+ 
+ 								<h1 class="h6 font-weight-bold text-center">Media Quiz</h1>
+ 
+-								<div class="progress mx-auto" data-value='70'>
++								<div class="progress mx-auto" data-value='<%=Math.round(media)%>'>
+           <span class="progress-left">
+                         <span class="progress-bar border-success"></span>
+           </span>
+@@ -96,7 +96,7 @@
+                         <span class="progress-bar border-success"></span>
+           </span>
+ 									<div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+-										<div class="h2 font-weight-bold">70<sup class="small">%</sup></div>
++										<div class="h2 font-weight-bold"><%=Math.round(media)%><sup class="small">%</sup></div>
+ 									</div>
+ 								</div>
+ 
+@@ -456,6 +456,7 @@
+ 			var left = $(this).find('.progress-left .progress-bar');
+ 			var right = $(this).find('.progress-right .progress-bar');
+ 
++
+ 			if (value > 0) {
+ 				if (value <= 50) {
+ 					right.css('transform', 'rotate(' + percentageToDegrees(value) + 'deg)')
+@@ -468,9 +469,7 @@
+ 		})
+ 
+ 		function percentageToDegrees(percentage) {
+-
+ 			return percentage / 100 * 360
+-
+ 		}
+ 
+ 	});
+diff --git a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/entity/UtenteQuiz.class b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/entity/UtenteQuiz.class
+index 8c56031d4d5630e5c415d61e3dbe3ba5a1cd8bbb..f149c346b16c0adbfcf2b94faa415dec796f4ce5
+GIT binary patch
+literal 2231
+zc$|$^-EJC36#fPXYm>FX;9!$D4oU5J!LDiCHf>5wTtnTgME~T}y@)Dn4J$k`-X-ji
+z%6*Pr^dTy>m5M6mq7TrAs(NO23t?HRT(EQI%sJnD=WoQ{|GfSSz(+7sh#{^aq2n5o
+z44D_!E34AAoKEGdvln(tFeD#yhl?6R+$f#QV-E8gQaY|fXV`4Hmz9>~w0YYSZsV}h
+z`(dwQJA#X=%C~|9`<ns(kztXyPX}s$`cf&FDUlX+q$P|-$5JnKOFFXu=?0$Nm%3#g
+zH;`wT?+pl|)8Q^5G~~&ujsk8HZ@S+)<qkRUOS*>)GEEiBK=5v*VF|mMrHI#b+{QY?
+z%B6K-*IlP&iSM{LC&?3*BRqyx!!*rCsX0!>vFLNBQ)Nih-L}n;ZgR)|a&UQO_n%p3
+zUD9NmZp-SPSbZ+{fifY^IpJ+J-zrB0pI0~g7ke)Q(xnr5;iQgXsbdQ>lu{~>NhjX)
+zNy0ECOv-oibt&)7O#nyP8=d$Yold?UC!OwSkkXq_CX9xJ&ylt<RfU`pE`ze|MA>GI
+zQrMVbPPl#n7?zF5vZRjPLBC}mahdh>IHkMNmipk(b%iJTR__a2oV#r=oy6l5_EFRD
+zM7F~L!^RkvJFnaeJ3#k4<j86Xw|~X(v(cO~^g*9eeY>`|(RAI5L9aSZbC%<?tDYTU
+z{=69;#A<08qHcA&$DGnMheL*gap=Y8lLNQUc8bA_1)?mk6h{-a&%US1nvP@l>s`z9
+zY)`{yG~sU*u!heW*8ks>UJ~CJcWH2AG>q5iOV0>NG5HRtH5;rn?`oy#rgZ^KzEAYM
+zL%a8BWzxU=C)n@GtVrLK0$oCaK<<*H`$o8jcW9LW8v(#ih(n{bC;`g1hS17uLoAeU
+z50NRaCWgqB3&|l?#@Or1ewnauV4kQgVg)&@61@T;-c<M1h#+AG_etq`z@ezZiz!J4
+z7*~=EF`=XaHdS!<u@x|^j6(ba+Akv-Nu^wi49`F*aITTHyez3g3n%Cf`4kmG-nSYN
+zP6mV-%8^7C!bI*x64{O>vJfV+Nj~>y5J?9_b|Q&n!bFTnBJV~M$%Kh)lh4i!BH4h*
+zt|H(QiH(Tlehm@XjU@6O9*l^@RrQnQE$Xr`kq6|nH-m`m7D;4Jwf|&L+Y`O&V|_?i
+z4`*P>p^{i1kkxc{SAGix^(Zo^hxGTscRnDkJj=^wm3<;hB(w7xw}3EO?G3bifELHc
+Z%IXn5p>>YVs`UF5brlXn14np@!oMkImF)lk
+
+diff --git a/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/interfaces/impl/PosizioneIMPL.class b/target/PW2-1.0-SNAPSHOT/WEB-INF/classes/com/candidatoDB/pw2/interfaces/impl/PosizioneIMPL.class
+index b593603dad245f735b7112b359160abcb971eaa7..8214e743da425ea823c774ea699968c498b8b182
+GIT binary patch
+literal 19044
+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
+

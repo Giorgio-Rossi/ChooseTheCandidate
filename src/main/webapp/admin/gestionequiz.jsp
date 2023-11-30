@@ -2,7 +2,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.candidatoDB.pw2.entity.Quiz" %>
 <%@ page import="com.candidatoDB.pw2.entity.Posizione" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
@@ -102,7 +101,7 @@
             <div class="modal-body text-center p-lg-4">
                 <i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
                 <h4 class="text-success mt-3">Quiz creato correttamente!</h4>
-                <p class="mt-3">Adesso Ã¨ possibile modificarlo o eliminarlo</p>
+                <p class="mt-3">Adesso è possibile modificarlo o eliminarlo</p>
                 <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
             </div>
         </div>
