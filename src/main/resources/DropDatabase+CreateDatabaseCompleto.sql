@@ -159,15 +159,21 @@ CONSTRAINT FK_User_CandidaturaUser FOREIGN KEY (id_user) REFERENCES Utente (id_u
 )
 
 
+/*INSERIMENTO CATEGORIE SEZIONE IT*/
+     
+insert into CategoriaPosizione
+values ('Sviluppo Software')
+     ,('Amministrazione di Sistemi e Reti')
+     ,('Gestione del Progetto')
+     ,('Supporto Tecnico')
+     ,('Analisi dei Dati e Business Intelligence')
+     ,('Progettazione UX/UI')
+     ,('Sicurezza Informatica')
+     ,('Cloud Computing')
+     ,('Database'),
+     ,('Sviluppo Web'),
+     ,('Sicurezza Informatica');
 
-
-
-
-/*INSERT*/
-insert into CategoriaPosizione ( nome_categoria) values ( 'bella desc');
-insert into CategoriaPosizione ( nome_categoria) values ( ' desc 2');
-insert into CategoriaPosizione ( nome_categoria) values ( 'Sviluppo Web');
-insert into CategoriaPosizione ( nome_categoria) values ( 'Testing web');
 
 /*	Inserimento delle Regione	*/
 INSERT INTO Regione (nome) values('Abbruzzo');
@@ -1074,15 +1080,4 @@ values ('Amministrazione Generale')
      ,('Segreteria e Supporto Amministrativo');
 
 
-/*INSERIMENTO CATEGORIE SEZIONE IT*/
-insert into CategoriaPosizione
-values ('Sviluppo Software')
-     ,('Amministrazione di Sistemi e Reti')
-     ,('Gestione del Progetto')
-     ,('Supporto Tecnico')
-     ,('Analisi dei Dati e Business Intelligence')
-     ,('Progettazione UX/UI')
-     ,('Sicurezza Informatica')
-     ,('Cloud Computing')
-     ,('Database')
-     ,('Sicurezza Informatica');
+
