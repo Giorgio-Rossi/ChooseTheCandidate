@@ -551,6 +551,7 @@ VALUES
     ('Diploma in Traduzione e Interpretariato Informatico', 3, 'Diploma in Traduzione e Interpretariato Informatico presso Università LMN', '2014-09-01', '2016-07-01', 10, 91);
 
 
+    
 /*	Insert CategoriaPosizione	*/
 
 insert into CategoriaPosizione ( nome_categoria) values ( 'Sviluppo Web');
@@ -563,6 +564,9 @@ INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Architettura Software')
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Specialista Tecnico');
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Supporto Tecnico');
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Gestione Qualità');
+
+
+
 
 
 
@@ -601,10 +605,10 @@ INSERT INTO QuizDomanda VALUES(8, 1);
 INSERT INTO Quiz VALUES ('Java', 8);
 
 INSERT INTO Domanda VALUES ('Qual è il principio fondamentale di Java che contribuisce a garantire la portabilità del codice?', 1);
-INSERT INTO Domanda VALUES ('Cosa rappresenta l acronimo "JVM" in Java?', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta l acronimo JVM in Java?', 1);
 INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per l ambiente di esecuzione in cui viene eseguito il codice Java?', 1);
-INSERT INTO Domanda VALUES (' Qual è il risultato dell istruzione "System.out.println(5 / 2);" in Java? ', 1);
-INSERT INTO Domanda VALUES ('Cosa rappresenta il termine "thread" in Java?', 1);
+INSERT INTO Domanda VALUES (' Qual è il risultato dell istruzione System.out.println(5 / 2); in Java? ', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta il termine thread in Java?', 1);
 INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per la gestione delle eccezioni in Java?', 1);
 INSERT INTO Domanda VALUES ('Qual è il costrutto utilizzato per iterare attraverso una collezione di elementi in Java?', 1);
 INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per la capacità di una classe di ereditare da una sola classe base in Java?', 1);
@@ -632,12 +636,12 @@ INSERT INTO QuizDomanda VALUES(16, 2);
 INSERT INTO Quiz VALUES ('C', 8);
 
 INSERT INTO Domanda VALUES ('Qual è il simbolo utilizzato per l operatore di assegnazione in C?', 1);
-INSERT INTO Domanda VALUES ('Cosa rappresenta il termine "printf" in C?', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta il termine printf in C?', 1);
 INSERT INTO Domanda VALUES ('Qual è la differenza tra un array e un puntatore in C?', 1);
-INSERT INTO Domanda VALUES ('Come si dichiara una variabile intera (int) chiamata "numero" in C?', 1);
+INSERT INTO Domanda VALUES ('Come si dichiara una variabile intera (int) chiamata numero in C?', 1);
 INSERT INTO Domanda VALUES ('Qual è l operatore utilizzato per accedere all indirizzo di una variabile in C?', 1);
-INSERT INTO Domanda VALUES ('Cosa fa l istruzione "sizeof" in C?', 1);
-INSERT INTO Domanda VALUES ('Cosa rappresenta il termine "void" in una dichiarazione di funzione in C?', 1);
+INSERT INTO Domanda VALUES ('Cosa fa l istruzione sizeof in C?', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta il termine void in una dichiarazione di funzione in C?', 1);
 INSERT INTO Domanda VALUES ('Qual è l operatore logico per l AND in C?', 1);
 
 INSERT INTO RisposteDomanda VALUES (':=', '=', '->', '==', 'scelta2', 17)
@@ -663,13 +667,13 @@ INSERT INTO QuizDomanda VALUES(24, 3);
 INSERT INTO Quiz VALUES ('C++', 8);
 
 INSERT INTO Domanda VALUES ('Qual è la differenza principale tra C e C++?', 1);
-INSERT INTO Domanda VALUES ('Cosa rappresenta il termine "polimorfismo" in C++?', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta il termine polimorfismo in C++?', 1);
 INSERT INTO Domanda VALUES ('Qual è l operatore utilizzato per la gestione delle eccezioni in C++?', 1);
-INSERT INTO Domanda VALUES ('Cosa rappresenta l acronimo "STL" in C++?', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta l acronimo STL in C++?', 1);
 INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per indicare la creazione di una nuova classe basata su un altra classe esistente in C++?', 1);
 INSERT INTO Domanda VALUES ('Come si dichiara una variabile costante (const) in C++?', 1);
 INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per una funzione membro di una classe che viene chiamata automaticamente quando un oggetto di quella classe viene creato?', 1);
-INSERT INTO Domanda VALUES ('Qual è il risultato dell istruzione "cout << 5 / 2" in C++?', 1);
+INSERT INTO Domanda VALUES ('Qual è il risultato dell istruzione cout << 5 / 2 in C++?', 1);
 
 INSERT INTO RisposteDomanda VALUES ('C++ è un linguaggio interpretato, mentre C è compilato.', 'C++ è un estensione di C che aggiunge il supporto agli oggetti.', 'C++ è noto per essere più veloce in termini di esecuzione rispetto a C.', 'C++ è completamente incompatibile con C.', 'scelta2', 25)
 INSERT INTO RisposteDomanda VALUES ('La capacità di avere molteplici definizioni di una stessa funzione nello stesso programma.', 'La capacità di una classe di ereditare da più di una classe base.', 'La capacità di una funzione di essere utilizzata in modo diverso a seconda del tipo degli oggetti su cui viene chiamata.', 'La capacità di utilizzare una variabile senza dichiararla.', 'scelta3', 26);
@@ -697,17 +701,17 @@ INSERT INTO Domanda VALUES ('Qual è il tipo di dati primitivo per rappresentare
 INSERT INTO Domanda VALUES ('Come si dichiara una variabile in JavaScript?', 1);
 INSERT INTO Domanda VALUES ('Quale operatore è utilizzato per la concatenazione di stringhe in JavaScript?', 1);
 INSERT INTO Domanda VALUES ('Come si crea un array vuoto in JavaScript?', 1);
-INSERT INTO Domanda VALUES ('Cosa rappresenta l acronimo "DOM" in JavaScript?', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta l acronimo DOM in JavaScript?', 1);
 INSERT INTO Domanda VALUES ('Qual è l output del seguente codice JavaScript?', 1);
 INSERT INTO Domanda VALUES ('Come si definisce una funzione in JavaScript?', 1);
-INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per la capacità di una funzione di richiamare se stessa in JavaScript? ```console.log(3 + 2 + "7");```', 1);
+INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per la capacità di una funzione di richiamare se stessa in JavaScript? ```console.log(3 + 2 + 7);```', 1);
 
 INSERT INTO RisposteDomanda VALUES ('int', 'long', 'float', 'number', 'scelta4', 33)
 INSERT INTO RisposteDomanda VALUES ('declare var nome_variabile;', 'let nome_variabile;', 'variable nome_variabile;', 'var nome_variabile;', 'scelta4', 34);
 INSERT INTO RisposteDomanda VALUES ('+', '&', '||', ':', 'scelta1', 35);
 INSERT INTO RisposteDomanda VALUES ('emptyArray()', '[]', 'new Array()', 'array()', 'scelta2', 36);
 INSERT INTO RisposteDomanda VALUES ('Data Object Model', 'Document Object Model', 'Digital Object Model', 'Dynamic Object Model', 'scelta1', 37);
-INSERT INTO RisposteDomanda VALUES ('57', '12', '32', '"57"', 'scelta4', 38);
+INSERT INTO RisposteDomanda VALUES ('57', '12', '32', '57', 'scelta4', 38);
 INSERT INTO RisposteDomanda VALUES ('function nome_funzione(parametri) {}', 'def nome_funzione(parametri) {}', 'create function nome_funzione(parametri) {}', 'func nome_funzione(parametri) {}', 'scelta1', 39);
 INSERT INTO RisposteDomanda VALUES ('Ricorsione', 'Chiamata multipla', 'Esecuzione parallela', 'Iterazione', 'scelta1', 40);
 
@@ -726,7 +730,7 @@ INSERT INTO Quiz VALUES ('HTML, CSS', 10);
 
 INSERT INTO Domanda VALUES ('Qual è il linguaggio utilizzato per definire la struttura di una pagina web? ', 1);
 INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per il tipo di tag HTML che non richiede una tag di chiusura?', 1);
-INSERT INTO Domanda VALUES ('Cosa rappresenta l acronimo "CSS" in relazione alla progettazione web?', 1);
+INSERT INTO Domanda VALUES ('Cosa rappresenta l acronimo CSS in relazione alla progettazione web?', 1);
 INSERT INTO Domanda VALUES ('Qual è il selettore in CSS che seleziona tutti gli elementi di un determinato tipo?', 1);
 INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per il modello di formattazione che consente di posizionare elementi HTML in modo relativo agli altri?', 1);
 INSERT INTO Domanda VALUES ('Qual è il termine utilizzato per l attributo HTML che definisce lo stile CSS direttamente nell elemento?', 1);
@@ -867,6 +871,160 @@ INSERT INTO QuizDomanda VALUES(72, 11);
 INSERT INTO QuizDomanda VALUES(73, 11);
 INSERT INTO QuizDomanda VALUES(74, 11);
 INSERT INTO QuizDomanda VALUES(75, 11);
+
+
+
+
+/* QUIZ NUOVI HARDSKILL */
+INSERT INTO Quiz VALUES ('Linux', 5);
+
+
+-- Inserisci domande casuali per il nuovo quiz
+INSERT INTO Domanda VALUES ('Cos''è Linux e quali sono le sue principali caratteristiche?', 2);
+INSERT INTO Domanda VALUES ('Spiega il concetto di shell in Linux.', 1);
+INSERT INTO Domanda VALUES ('Qual è la differenza tra una directory e un file in Linux?', 2);
+INSERT INTO Domanda VALUES ('Descrivi il ruolo del file /etc/passwd in Linux.', 2);
+INSERT INTO Domanda VALUES ('Come funziona la gestione dei permessi in Linux?', 1);
+
+-- Inserisci risposte casuali per le nuove domande
+INSERT INTO RisposteDomanda VALUES ('Linux è un sistema operativo open source basato su kernel Unix.', 'Linux è una suite di produttività aziendale.', 'Linux è specifico solo per dispositivi mobili.', 'Linux è una piattaforma per il design grafico.', 'scelta1', 76);
+INSERT INTO RisposteDomanda VALUES ('La shell in Linux è un interprete di comandi che consente agli utenti di interagire con il sistema operativo.', 'La shell in Linux è un concetto obsoleto e non dovrebbe essere utilizzata.', 'Linux non supporta una shell.', 'La shell in Linux è utilizzata solo per la gestione dei file.', 'scelta1', 77);
+INSERT INTO RisposteDomanda VALUES ('In Linux, una directory è una raccolta di file, mentre un file contiene dati o programmi.', 'Le directory e i file in Linux sono sinonimi e possono essere utilizzati intercambiabilmente.', 'Linux non supporta directory o file.', 'Le directory in Linux sono utilizzate solo per la gestione degli utenti.', 'scelta1', 78);
+INSERT INTO RisposteDomanda VALUES ('Il file /etc/passwd in Linux contiene informazioni sugli account degli utenti, come nome utente, UID e GID.', 'Il file /etc/passwd in Linux è un concetto obsoleto e non dovrebbe essere utilizzato.', 'Linux non ha un file /etc/passwd.', 'Il file /etc/passwd in Linux contiene solo informazioni sui privilegi di amministratore.', 'scelta1', 79);
+INSERT INTO RisposteDomanda VALUES ('La gestione dei permessi in Linux si basa sull''utilizzo di comandi come chmod e chown per controllare l''accesso ai file e alle directory.', 'La gestione dei permessi in Linux è un concetto obsoleto e non dovrebbe essere utilizzata.', 'Linux non supporta la gestione dei permessi.', 'La gestione dei permessi in Linux è limitata solo agli account amministrativi.', 'scelta1', 80);
+
+INSERT INTO QuizDomanda VALUES(76, 12);	
+INSERT INTO QuizDomanda VALUES(77, 12);
+INSERT INTO QuizDomanda VALUES(78, 12);	
+INSERT INTO QuizDomanda VALUES(79, 12);
+INSERT INTO QuizDomanda VALUES(80, 12);
+
+
+
+
+INSERT INTO Quiz VALUES ('Windows', 5);
+
+-- Inserisci domande casuali per il nuovo quiz
+INSERT INTO Domanda VALUES ('Cos''è Windows e quali sono le sue principali caratteristiche?', 2);
+INSERT INTO Domanda VALUES ('Spiega il concetto di file system in Windows.', 1);
+INSERT INTO Domanda VALUES ('Qual è la differenza tra una finestra e un processo in Windows?', 4);
+INSERT INTO Domanda VALUES ('Descrivi il ruolo del registro di sistema in Windows.', 1);
+INSERT INTO Domanda VALUES ('Come funziona la gestione degli utenti in Windows?', 2);
+
+-- Inserisci risposte casuali per le nuove domande
+INSERT INTO RisposteDomanda VALUES ('Windows è un sistema operativo per computer sviluppato da Microsoft.', 'Windows è una suite di produttività aziendale.', 'Windows è specifico solo per dispositivi mobili.', 'Windows è una piattaforma per il design grafico.', 'scelta1', 81);
+INSERT INTO RisposteDomanda VALUES ('Il file system in Windows gestisce la memorizzazione e l''organizzazione dei file su un disco.', 'Il file system in Windows è un concetto obsoleto e non dovrebbe essere utilizzato.', 'Windows non supporta un file system.', 'Il file system in Windows è limitato solo ai file di sistema.', 'scelta1', 82);
+INSERT INTO RisposteDomanda VALUES ('In Windows, una finestra rappresenta un''area visualizzabile dell''interfaccia utente, mentre un processo è un''istanza di un''applicazione in esecuzione.', 'Le finestre e i processi in Windows sono sinonimi e possono essere utilizzati intercambiabilmente.', 'Windows non supporta finestre o processi.', 'Le finestre in Windows sono utilizzate solo per la gestione degli utenti.', 'scelta1', 83);
+INSERT INTO RisposteDomanda VALUES ('Il registro di sistema in Windows contiene informazioni di configurazione importanti per il sistema operativo e le applicazioni.', 'Il registro di sistema in Windows è un concetto obsoleto e non dovrebbe essere utilizzato.', 'Windows non ha un registro di sistema.', 'Il registro di sistema in Windows è limitato solo alla registrazione degli errori di sistema.', 'scelta1', 84);
+INSERT INTO RisposteDomanda VALUES ('La gestione degli utenti in Windows si basa sull''utilizzo di account utente che possono avere diverse autorizzazioni.', 'La gestione degli utenti in Windows è un concetto obsoleto e non dovrebbe essere utilizzata.', 'Windows non supporta la gestione degli utenti.', 'La gestione degli utenti in Windows è limitata solo agli account amministrativi.', 'scelta1', 85);
+
+--Collega le nuove domande al nuovo quiz per Widnwos
+INSERT INTO QuizDomanda VALUES(81, 13);	-- Dove 13 è l'ID del nuovo quiz
+INSERT INTO QuizDomanda VALUES(82, 13);
+INSERT INTO QuizDomanda VALUES(83, 13);
+INSERT INTO QuizDomanda VALUES(84, 13);
+INSERT INTO QuizDomanda VALUES(85, 13);
+
+
+
+INSERT INTO Quiz VALUES ('React: Introduzione', 5);
+
+-- Inserisci domande casuali per il nuovo quiz
+INSERT INTO Domanda VALUES ('Cos''è React e quali sono i suoi principali concetti?', 1);
+INSERT INTO Domanda VALUES ('Spiega il concetto di componenti controllati e non controllati in React.', 4);
+INSERT INTO Domanda VALUES ('Qual è la differenza tra state e props in React?', 4);
+INSERT INTO Domanda VALUES ('Descrivi il ciclo di vita di un componente React.', 2);
+INSERT INTO Domanda VALUES ('Come funziona la gestione degli eventi in React?', 3);
+
+-- Inserisci risposte casuali per le nuove domande
+INSERT INTO RisposteDomanda VALUES ('React è una libreria JavaScript per la costruzione di interfacce utente.', 'React è un linguaggio di programmazione indipendente.', 'React è specifico solo per lo sviluppo del lato server.', 'React è una piattaforma per la creazione di pagine web statiche.', 'scelta1', 86);
+INSERT INTO RisposteDomanda VALUES ('I componenti controllati sono gestiti completamente dallo stato di React, mentre i componenti non controllati mantengono il proprio stato interno.', 'I componenti controllati e non controllati sono sinonimi e possono essere utilizzati intercambiabilmente.', 'I componenti non controllati sono obsoleti in React.', 'React non supporta la distinzione tra componenti controllati e non controllati.', 'scelta1', 87);
+INSERT INTO RisposteDomanda VALUES ('Lo state in React è uno spazio di memoria interno di un componente, mentre le props sono dati passati da un componente padre a un componente figlio.', 'state e props sono sinonimi e possono essere utilizzati intercambiabilmente.', 'React non supporta l''utilizzo di state e props.', 'Le props in React sono utilizzate solo per la gestione degli eventi.', 'scelta1', 88);
+INSERT INTO RisposteDomanda VALUES ('Il ciclo di vita di un componente React comprende fasi come il montaggio, l''aggiornamento e lo smontaggio.', 'Il ciclo di vita di un componente React include solo la fase di aggiornamento.', 'Il ciclo di vita di un componente React include solo la fase di montaggio.', 'Il ciclo di vita di un componente React è un concetto obsoleto.', 'scelta1', 89);
+INSERT INTO RisposteDomanda VALUES ('La gestione degli eventi in React si basa sull''utilizzo di funzioni di gestione degli eventi come onClick e onChange.', 'React non supporta la gestione degli eventi.', 'La gestione degli eventi in React può essere effettuata solo mediante l''utilizzo di librerie esterne.', 'La gestione degli eventi in React si basa esclusivamente sulla manipolazione diretta del DOM.', 'scelta1', 90);
+
+-- Collega le nuove domande al nuovo quiz per React
+-- Collega le nuove domande al nuovo quiz per Git
+INSERT INTO QuizDomanda VALUES(86, 14); 
+INSERT INTO QuizDomanda VALUES(87, 14);
+INSERT INTO QuizDomanda VALUES(88, 14);
+INSERT INTO QuizDomanda VALUES(89, 14);
+INSERT INTO QuizDomanda VALUES(90, 14);
+
+
+
+
+
+INSERT INTO Quiz VALUES ('Angular: Concetti di Base', 5);
+
+-- Inserisci domande casuali per il nuovo quiz
+INSERT INTO Domanda VALUES ('Cos''è Angular e quali sono le sue principali caratteristiche?', 5);
+INSERT INTO Domanda VALUES ('Spiega il concetto di binding in Angular.', 3);
+INSERT INTO Domanda VALUES ('Qual è la differenza tra un componente e un servizio in Angular?', 4);
+INSERT INTO Domanda VALUES ('Descrivi il concetto di dependency injection in Angular.', 2);
+INSERT INTO Domanda VALUES ('Come funziona la gestione delle route in Angular?', 1);
+
+-- Inserisci risposte casuali per le nuove domande
+INSERT INTO RisposteDomanda VALUES ('Angular è un framework TypeScript per la costruzione di applicazioni web.', 'Angular è una libreria JavaScript indipendente.', 'Angular è specifico solo per lo sviluppo del lato server.', 'Angular è una piattaforma per la creazione di pagine web statiche.', 'scelta1', 91);
+INSERT INTO RisposteDomanda VALUES ('Il binding in Angular consente di sincronizzare automaticamente i dati tra il modello e la vista.', 'Il binding in Angular è un concetto obsoleto e non dovrebbe essere utilizzato.', 'Il binding in Angular si basa solo sull''utilizzo di variabili globali.', 'Angular non supporta la sincronizzazione automatica tra il modello e la vista.', 'scelta1', 92);
+INSERT INTO RisposteDomanda VALUES ('In Angular, un componente rappresenta un''elemento dell''interfaccia utente, mentre un servizio è un oggetto con funzionalità condivise tra più componenti.', 'I componenti e i servizi in Angular sono sinonimi e possono essere utilizzati intercambiabilmente.', 'Angular non supporta l''utilizzo di servizi.', 'I servizi in Angular rappresentano solo funzionalità legate al database.', 'scelta1', 93);
+INSERT INTO RisposteDomanda VALUES ('La dependency injection in Angular consente di iniettare automaticamente le dipendenze nei componenti e nei servizi.', 'La dependency injection in Angular è un concetto obsoleto e non dovrebbe essere utilizzata.', 'Angular non supporta la dependency injection.', 'La dependency injection in Angular può essere utilizzata solo con componenti.', 'scelta1', 94);
+INSERT INTO RisposteDomanda VALUES ('La gestione delle route in Angular si basa sull''utilizzo del modulo RouterModule e dell''oggetto Router.', 'La gestione delle route in Angular è una funzionalità obsoleta.', 'Angular non supporta la gestione delle route.', 'La gestione delle route in Angular si basa esclusivamente sulla manipolazione diretta del DOM.', 'scelta1', 95);
+
+INSERT INTO QuizDomanda VALUES(91, 15);  -- Dove 15 è l'ID del nuovo quiz
+INSERT INTO QuizDomanda VALUES(92, 15);
+INSERT INTO QuizDomanda VALUES(93, 15);
+INSERT INTO QuizDomanda VALUES(94, 15);
+INSERT INTO QuizDomanda VALUES(95, 15);
+
+
+
+-- Genera casualmente un nuovo quiz per Django
+INSERT INTO Quiz VALUES ('Django: Fondamenti', 11);
+
+-- Inserisci domande casuali per il nuovo quiz
+INSERT INTO Domanda VALUES ('Cos è Django e quali sono i suoi principali concetti?', 6);
+INSERT INTO Domanda VALUES ('Spiega il concetto di ORM in Django.', 1);
+INSERT INTO Domanda VALUES ('Qual è la differenza tra un modello e una vista in Django?', 2);
+INSERT INTO Domanda VALUES ('Descrivi il concetto di middleware in Django.', 3);
+INSERT INTO Domanda VALUES ('Come funziona la gestione degli URL in Django?', 1);
+
+-- Inserisci risposte casuali per le nuove domande
+INSERT INTO RisposteDomanda VALUES ('Django è un framework web Python per lo sviluppo rapido di applicazioni.', 'Django è un linguaggio di programmazione indipendente.', 'Django è specifico solo per lo sviluppo del lato client.', 'Django è una piattaforma per la creazione di applicazioni mobile.', 'scelta1', 96);
+INSERT INTO RisposteDomanda VALUES ('L''ORM in Django consente di interagire con il database utilizzando oggetti Python invece di query SQL dirette.', 'L''ORM in Django è un concetto obsoleto e non dovrebbe essere utilizzato.', 'Django non supporta l''utilizzo di ORM.', 'L''ORM in Django è limitato solo ai database SQL.', 'scelta1', 97);
+INSERT INTO RisposteDomanda VALUES ('In Django, un modello rappresenta la struttura dei dati nel database, mentre una vista è responsabile della presentazione dei dati all''utente.', 'I modelli e le viste in Django sono sinonimi e possono essere utilizzati intercambiabilmente.', 'Django non supporta la definizione di modelli e viste.', 'I modelli in Django sono utilizzati solo per la gestione degli URL.', 'scelta1', 98);
+INSERT INTO RisposteDomanda VALUES ('Il middleware in Django è uno strato di processi che possono modificare la richiesta, la risposta o l''esecuzione di un''applicazione.', 'Il middleware in Django è un concetto obsoleto e non dovrebbe essere utilizzato.', 'Django non supporta l''utilizzo di middleware.', 'Il middleware in Django è limitato solo alle funzionalità del lato server.', 'scelta1', 99);
+INSERT INTO RisposteDomanda VALUES ('La gestione degli URL in Django si basa sull''utilizzo di file di configurazione e funzioni di visualizzazione.', 'La gestione degli URL in Django è una funzionalità obsoleta.', 'Django non supporta la gestione degli URL.', 'La gestione degli URL in Django si basa esclusivamente sulla manipolazione diretta del DOM.', 'scelta1', 100);
+-- Collega le nuove domande al nuovo quiz per Angular
+INSERT INTO QuizDomanda VALUES(96, 16);  -- Dove 16 è l'ID del nuovo quiz
+INSERT INTO QuizDomanda VALUES(97, 16);
+INSERT INTO QuizDomanda VALUES(98, 16);
+INSERT INTO QuizDomanda VALUES(99, 16);
+INSERT INTO QuizDomanda VALUES(100, 16);
+
+
+
+--  quiz per Git
+INSERT INTO Quiz VALUES ('Git: Concetti di Base', 12);
+
+INSERT INTO Domanda VALUES ('Cos è Git e come funziona?', 1);
+INSERT INTO Domanda VALUES ('Spiega il concetto di branch in Git.', 1);
+INSERT INTO Domanda VALUES ('Qual è la differenza tra commit e push in Git?', 1);
+INSERT INTO Domanda VALUES ('Descrivi il processo di risoluzione dei conflitti in Git.',1);
+INSERT INTO Domanda VALUES ('Come funziona il comando git merge in Git?', 1);
+
+-- Inserisci risposte casuali per le nuove domande
+INSERT INTO RisposteDomanda VALUES ('Git è un sistema di controllo di versione distribuito per il tracciamento delle modifiche al codice sorgente.', 'Git è un sistema operativo indipendente.', 'Git è specifico solo per il controllo dei file multimediali.', 'Git è una piattaforma per la creazione di database relazionali.', 'scelta1', 101);
+INSERT INTO RisposteDomanda VALUES ('Un branch in Git è un ramo separato di sviluppo che consente di lavorare su nuove funzionalità senza influire sul ramo principale.', 'I branch in Git sono obsoleti e non dovrebbero essere utilizzati.', 'Git non supporta la creazione di branch.', 'I branch in Git sono utilizzati solo per scopi di debugging.', 'scelta1', 102);
+INSERT INTO RisposteDomanda VALUES ('Il commit in Git registra le modifiche nel repository locale, mentre il push invia le modifiche al repository remoto.', 'commit e push sono sinonimi e possono essere utilizzati intercambiabilmente.', 'commit in Git invia le modifiche al repository remoto senza bisogno di push.', 'Il push in Git registra le modifiche solo nel repository locale.', 'scelta1', 103);
+INSERT INTO RisposteDomanda VALUES ('La risoluzione dei conflitti in Git avviene quando ci sono modifiche conflittuali tra branch o commit.', 'La risoluzione dei conflitti in Git è un concetto obsoleto e non dovrebbe essere utilizzata.', 'Git non supporta la risoluzione dei conflitti.', 'La risoluzione dei conflitti in Git avviene solo nel repository remoto.', 'scelta1', 104);
+INSERT INTO RisposteDomanda VALUES ('Il comando git merge in Git combina le modifiche di un branch con un altro.', 'Il comando git merge è un concetto obsoleto e non dovrebbe essere utilizzato.', 'Git non supporta il merge tra branch.', 'Il comando git merge in Git elimina tutte le modifiche non commit in un branch.', 'scelta1', 105);
+-- Collega le nuove domande al nuovo quiz per Django
+INSERT INTO QuizDomanda VALUES(101, 17);  -- Dove 17 è l'ID del nuovo quiz
+INSERT INTO QuizDomanda VALUES(102, 17);
+INSERT INTO QuizDomanda VALUES(103, 17);
+INSERT INTO QuizDomanda VALUES(104, 17);
+INSERT INTO QuizDomanda VALUES(105, 17);
 
 
 /*	Inserimento delle posizioni	*/
