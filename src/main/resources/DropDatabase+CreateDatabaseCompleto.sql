@@ -159,15 +159,8 @@ CONSTRAINT FK_User_CandidaturaUser FOREIGN KEY (id_user) REFERENCES Utente (id_u
 )
 
 
-
-
-
-
-/*INSERT*/
-insert into CategoriaPosizione ( nome_categoria) values ( 'bella desc');
-insert into CategoriaPosizione ( nome_categoria) values ( ' desc 2');
-insert into CategoriaPosizione ( nome_categoria) values ( 'Sviluppo Web');
-insert into CategoriaPosizione ( nome_categoria) values ( 'Testing web');
+/*INSERIMENTO CATEGORIE SEZIONE IT*/
+     
 
 /*	Inserimento delle Regione	*/
 INSERT INTO Regione (nome) values('Abbruzzo');
@@ -554,20 +547,26 @@ VALUES
     
 /*	Insert CategoriaPosizione	*/
 
-insert into CategoriaPosizione ( nome_categoria) values ( 'Sviluppo Web');
-insert into CategoriaPosizione ( nome_categoria) values ( 'Testing web');
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Analisi software');
+insert into CategoriaPosizione (nome_categoria) values ('Sviluppattore');
+--Sviluppatore di Software, Sviluppatore Web, Sviluppatore Front-end, Sviluppatore Back-end, Sviluppatore Full-stack, Sviluppatore Mobile, Sviluppatore di Applicazioni, Sviluppatore di Giochi, Sviluppatore Embedded, Sviluppatore DevOps
+insert into CategoriaPosizione (nome_categoria) values ('Analyst'); 
+--Analista di Dati,Analista di Sistema,Analista di Business,Analista di Sicurezza,Analista di Marketing,Analista delle Operazioni
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Gestione Progetti');
+--Project Manager, Coordinatore di Progetto, Direttore dei Progetti, Responsabile della Gestione Progetti, Project Leader, Analista di Progetto,
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Sicurezza Informatica');
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Amministrazione di Sistema');
+--Esperto di Sicurezza Informatica, Analista di Sicurezza delle Informazioni, Amministratore di Sicurezza di Rete, Esperto di Analisi delle Vulnerabilità, Architetto di Sicurezza, Ingegnere di Sicurezza, Consulente di Sicurezza, Esperto di Penetration Testing
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Amministrazione di Sistema e Reti');
+--mministratore di Rete, Ingegnere di Rete, Specialista di Sistemi e Reti, Tecnico di Supporto di Rete, Gestore di Infrastruttura IT, Amministratore di Server, Tecnico di Sistemi, Responsabile di Reti, Esperto di Architettura di Rete
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Architettura Software');
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Specialista Tecnico');
+--Progettista Software, Ingegnere Software, Architetto delle Applicazioni, Design Pattern Specialist, Analista di Architettura Software, Lead Developer, Esperto di Software Design
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Supporto Tecnico');
+Tecnico di Assistenza, Tecnico del Supporto Clienti, Esperto di Supporto Tecnico, Tecnico di Primo Livello, Tecnico di Secondo Livello, Analista del Supporto Tecnico, Ingegnere del Supporto Tecnico, Tecnico di Rete, Tecnico di Assistenza Tecnica.
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Gestione Qualità');
-
-
-
-
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Analisi dei Dati e Business Intelligence');
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Progettazione UX/UI');
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Sviluppo Software');
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Analyst developer');
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Cloud Computing');
 
 
 /*	Inserimento	quiz Python - Domande e Risposte	*/
@@ -1026,7 +1025,295 @@ INSERT INTO QuizDomanda VALUES(103, 17);
 INSERT INTO QuizDomanda VALUES(104, 17);
 INSERT INTO QuizDomanda VALUES(105, 17);
 
-
+/* Inserimento quiz softskill */
+ 
+ 
+--QUIZ PROBLEM SOLVING--
+-- Quiz Soft Skills 4
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Problem Solving', 5);
+ 
+ 
+-- Domande per il Quiz "Problem Solving" (Quiz ID: 4)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Definisci il concetto di pensiero laterale nel problem solving.', 9),
+       ('Qual è la definizione di problem solving?', 8),
+       ('Quali sono i passaggi principali nel processo di problem solving?', 9),
+       ('Come si affronta un problema per il quale non si ha una soluzione immediata?', 8),
+       ('Cosa si intende per approccio sistematico nel problem solving?', 9);
+ 
+-- Quiz "Problem Solving" (Quiz ID: 4)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (106, 18), (107, 18), (108, 18), (109, 18), (110, 18);
+ 
+ 
+-- 4Risoste per problem solving
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Un modo creativo di pensare che considera diverse prospettive', 'Un approccio lineare e logico alla risoluzione dei problemi', 'Una strategia che si basa solo sulle conoscenze passate', 'Un approccio che ignora le variabili del problema', 'scelta1', 106);
+-- Domanda 2
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Il processo di risolvere un problema in modo efficace', 'Un problema irrisolvibile', 'Un concetto teorico senza applicazioni pratiche', 'La ricerca di problemi senza soluzioni', 'scelta1', 107);
+-- Domanda 3
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Identificazione del problema, analisi, generazione di soluzioni, valutazione delle soluzioni', 'Esclusione delle idee, accettazione del primo risultato, chiusura del processo', 'Individuazione del problema, elaborazione di una soluzione, implementazione della soluzione', 'Sperimentazione casuale, selezione casuale, accettazione della soluzione', 'scelta1', 108);
+-- Domanda 4
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Esaminando il problema da diverse prospettive, chiedendo aiuto ad altri, sperimentando nuove idee', 'Rinunciando al problema, ignorandolo completamente', 'Accettando la situazione senza tentare di risolvere il problema', 'Concentrandosi solo sui problemi noti', 'scelta1', 109);
+-- Domanda 5
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Un approccio strutturato che utilizza metodi e procedure per affrontare un problema', 'Un approccio casuale e disorganizzato alla risoluzione dei problemi', 'Evitare completamente di affrontare il problema', 'Accettare le soluzioni senza valutarle', 'scelta1', 110);
+ 
+ 
+--QUIZ ADATTABILITA'--
+-- Quiz Soft Skills 5
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Adattabilità', 4);
+ 
+-- Domande per il Quiz "Adattabilità" (Quiz ID: 5)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Cos''è la flessibilità mentale?', 8),
+       ('Come va gestita una situazione in cui bisogna adattarsi a un cambiamento improvviso nel lavoro.', 9),
+       ('Quali sono i vantaggi dell''adattabilità in un ambiente lavorativo?', 8),
+       ('Come si mantiene la calma e la produttività in situazioni di cambiamento repentino?', 9);
+ 
+-- Quiz "Adattabilità" (Quiz ID: 5)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (111, 19), (112, 19), (113, 19), (114, 19);
+ 
+ 
+-- 5Risoste per adattabilità
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('La capacità di adattarsi a nuove situazioni, idee o metodi', 'Rigidezza mentale e resistenza ai cambiamenti', 'Mancanza di aderenza a schemi predefiniti', 'Assenza di capacità decisionale', 'scelta1', 111);
+-- Domanda 2
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Mantenendo la calma, cercando di comprendere il cambiamento e adattando le azioni di conseguenza', 'Ignorando completamente il cambiamento', 'Pensando solo a soluzioni rigide', 'Pretendendo che il cambiamento non sia reale', 'scelta1', 112);
+-- Domanda 3
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Aumento della resilienza, migliore capacità di risolvere problemi, maggiore adattabilità alle nuove situazioni', 'Limitazioni nella gestione delle sfide, riduzione della creatività', 'Mancanza di adattamento alle mutevoli esigenze', 'Incremento delle rigidità nell''ambiente lavorativo', 'scelta1', 113);
+-- Domanda 4
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Respirando profondamente, mantenendo la prospettiva, e cercando il supporto di colleghi o superiori', 'Smettendo di lavorare finché la situazione non è tornata alla normalità', 'Pretendendo che il cambiamento non sia accaduto', 'Agendo in modo impulsivo senza valutare la situazione', 'scelta1', 114);
+ 
+ 
+--QUIZ CREATIVITA' E INNOVAZIONE--
+-- Quiz Soft Skills 6
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Creatività e Innovazione', 5);
+ 
+-- Domande per il Quiz "Creatività e Innovazione" (Quiz ID: 6)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Qual è il legame tra creatività e problem solving?', 9),
+       ('Cos''hanno in comune creatività e innovazione', 8),
+       ('Come si incoraggia l''innovazione in un team di lavoro?', 9),
+       ('Quali sono gli ostacoli principali alla creatività e all''innovazione nel contesto lavorativo?', 8),
+       ('Come si può stimolare la propria creatività quando si affronta un problema complesso?', 9);
+ 
+-- Quiz "Creatività e Innovazione" (Quiz ID: 6)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (115, 20), (116, 20), (117, 20), (118, 20), (119, 20);
+ 
+-- 6Risoste per creatività e innovazione
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('La creatività è parte del processo di problem solving', 'Non c''è alcun legame tra creatività e problem solving', 'Il problem solving limita la creatività', 'La creatività è incompatibile con il problem solving', 'scelta1', 115);
+-- Domanda 2
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Entrambe richiedono un approccio non convenzionale e l''apertura a nuove idee', 'La creatività si basa solo su vecchi schemi mentre l''innovazione richiede nuovi schemi', 'La creatività è limitata mentre l''innovazione è sempre nuova', 'La creatività è individuale mentre l''innovazione è di gruppo', 'scelta1', 116);
+-- Domanda 3
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Promuovendo un ambiente aperto all''espressione di idee, incoraggiando la diversità e la collaborazione', 'Limitando le discussioni e le idee innovative', 'Riducendo la diversità di pensiero e l''interazione tra i membri del team', 'Incentivando la competizione e il segreto delle informazioni', 'scelta1', 117);
+-- Domanda 4
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Paura del fallimento, conformità eccessiva, mancanza di risorse e tempo limitato', 'Apertura mentale, collaborazione, abbondanza di risorse', 'Approccio sperimentale, valutazione delle idee, adattabilità', 'Eccessiva creatività, mancanza di struttura, scarsa comunicazione', 'scelta1', 118);
+-- Domanda 5
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Spostando prospettive, esplorando diverse soluzioni, prendendosi del tempo per riflettere', 'Evitando il problema, concentrandosi solo su soluzioni note', 'Chiedendo suggerimenti solo a un gruppo ristretto di persone', 'Lavorando sempre in modo simile a come si è fatto in passato', 'scelta1', 119);
+ 
+ 
+--QUIZ GESTIONE DEL TEMPO--
+-- Quiz Soft Skills 7
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Gestione del Tempo', 6);
+ 
+-- Domande per il Quiz "Gestione del Tempo" (Quiz ID: 7)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Quali sono alcune strategie efficaci per gestire il tempo?', 9),
+       ('Come si priorizzano i compiti quando hai molte scadenze ravvicinate?', 8),
+       ('Perchè è importante saper gestire il proprio tempo?', 9),
+       ('Cos''è più importante: efficienza o efficacia nella gestione del tempo?', 8),
+       ('Quali tecniche sono utili per migliorare la gestione del tempo?', 9);
+       ('E'' venerdì e ti sono rimasti 10 compiti da svolgere ma sai che ne riuscirai a svolgere solo 8, a quali rinunci?', 7);
+ 
+ 
+-- Quiz "Gestione del Tempo" (Quiz ID: 7)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (120, 21), (121, 21), (122, 21), (123, 21), (124, 21), (125, 21);
+ 
+-- 7Risoste per gestione del tempo
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Pianificazione giornaliera, prioritizzazione delle attività, eliminazione delle distrazioni', 'Procrastinazione, gestione casuale delle attività, multitasking', 'Impegno in molte attività contemporaneamente, lavoro senza pause', 'Esclusione di alcune attività importanti per risparmiare tempo', 'scelta1', 120);
+-- Domanda 2
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Valutando l''urgenza e l''importanza di ciascun compito, concentrandosi su quelli più critici', 'Ignorando le scadenze e gestendo i compiti casualmente', 'Dando priorità solo ai compiti più facili da svolgere', 'Iniziando sempre dal compito meno urgente', 'scelta1', 121);
+-- Domanda 3
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Per aumentare la produttività, ridurre lo stress e raggiungere gli obiettivi in modo efficiente', 'Per rendere più complessa la gestione quotidiana', 'Per avere più tempo libero senza fare nulla', 'Per affrontare le attività in modo disorganizzato', 'scelta1', 122);
+-- Domanda 4
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Efficienza: fare le cose nel modo più rapido possibile', 'Efficacia: fare le cose giuste per raggiungere gli obiettivi', 'Entrambe hanno lo stesso peso nella gestione del tempo', 'Nessuna delle precedenti', 'scelta1', 123);
+-- Domanda 5
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Tecnica Pomodoro, Matrice di Eisenhower, To-do list prioritaria', 'Aumentare il multitasking, eliminare le pause, lavorare senza obiettivi', 'Procrastinare costantemente, non pianificare nulla, seguire uno schema casuale', 'Gestione del tempo in base all''umore del momento', 'scelta1', 124);
+-- Domanda 6
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Alle attività meno importanti o meno urgenti, considerando l''urgenza e l''importanza di ciascuna', 'Alle attività più importanti, tralasciando quelle meno cruciali', 'Casualmente, senza considerare l''importanza delle attività', 'Lavorando su tutte le attività in modo ugualmente distribuito', 'scelta1', 125);
+ 
+ 
+--QUIZ EMPATIA E COMPASSIONE--
+-- Quiz Soft Skills 9
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Empatia e Compassione', 4);
+ 
+ 
+-- Domande per il Quiz "Empatia e Compassione" (Quiz ID: 9)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Qual è la differenza tra empatia e compassione?', 8),
+       ('Quali sono le caratteristiche comuni tra empatia e compassione', 9),
+       ('Quali vantaggi comporta l''esercizio dell''empatia nel mondo del lavoro?', 8),
+       ('Come si gestiscono le situazioni emotive dei colleghi durante momenti difficili?', 9);
+ 
+ 
+-- Quiz "Empatia e Compassione" (Quiz ID: 9)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (126, 22), (127, 22), (128, 22), (129, 22);
+ 
+-- 9Risoste per empatia e compassione
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Empatia è la capacità di comprendere i sentimenti degli altri, mentre la compassione è l''azione di aiutare gli altri', 'Non c''è differenza tra empatia e compassione', 'Empatia e compassione sono sinonimi', 'La compassione è la capacità di comprendere i sentimenti degli altri, mentre l''empatia è l''azione di aiutare gli altri', 'scelta1', 126);
+-- Domanda 2
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Entrambe coinvolgono la comprensione e la condivisione dei sentimenti degli altri, la capacità di aiutare', 'Empatia e compassione non hanno caratteristiche comuni', 'Solo la compassione coinvolge la comprensione dei sentimenti altrui', 'Solo l''empatia coinvolge la capacità di aiutare gli altri', 'scelta1', 127);
+-- Domanda 3
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Aumento della fiducia e della coesione del team, miglioramento delle relazioni interpersonali, riduzione dei conflitti', 'Diminuzione della fiducia, isolamento nel team, aumento dei conflitti', 'Miglioramento delle relazioni solo con alcuni colleghi, senza impatto sul lavoro', 'Riduzione della coesione del team e aumento delle tensioni', 'scelta1', 128);
+-- Domanda 4
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Ascoltando attivamente, mostrando empatia senza giudicare, offrendo supporto e conforto', 'Ignorando le situazioni emotive, criticando i colleghi, non prestando attenzione', 'Evitando completamente le situazioni emotive, non mostrando interesse', 'Giudicando i colleghi, ignorando le loro emozioni, non offrendo supporto', 'scelta1', 129);
+ 
+ 
+--QUIZ PENSIERO CRITICO--
+-- Quiz Soft Skills 10
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Pensiero Critico', 5);
+ 
+-- Domande per il Quiz "Pensiero Critico" (Quiz ID: 10)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Cos''è il pensiero critico?', 8),
+       ('Quali sono i vantaggi di saper usare il pensiero critico?', 9),
+       ('Qual è l''importanza del pensiero critico nell''ambiente lavorativo?', 8),
+       ('Quali sono gli ostacoli principali al pensiero critico nel contesto lavorativo?', 9);
+       ('Perchè il pensiero critico è importante nel contesto lavorativo',7);
+ 
+-- Quiz "Pensiero Critico" (Quiz ID: 10)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (130, 23), (131, 23), (132, 23), (133, 23), (134,23);
+ 
+-- 10Risoste per pensiero Critico
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Il pensiero critico è la capacità di valutare, analizzare e formulare giudizi in modo riflessivo e razionale', 'Il pensiero critico non esiste', 'Il pensiero critico è l''abilità di accettare qualsiasi informazione senza valutazione', 'Il pensiero critico è la capacità di accettare solo le idee personali', 'scelta1', 130);
+-- Domanda 2
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Aiuta a prendere decisioni informate, migliora la risoluzione dei problemi, favorisce la comprensione e la comunicazione', 'Non ci sono vantaggi nell''usare il pensiero critico', 'Riduce la capacità di valutare informazioni, limita la risoluzione dei problemi', 'Complica la comprensione e la comunicazione', 'scelta1', 131);
+-- Domanda 3
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Il pensiero critico è cruciale per prendere decisioni informate e risolvere problemi complessi', 'Il pensiero critico non ha importanza nell''ambiente lavorativo', 'Il pensiero critico crea confusione e complica il lavoro', 'Il pensiero critico limita la creatività nel lavoro', 'scelta1', 132);
+-- Domanda 4
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('La mancanza di tempo, la resistenza al cambiamento, la paura del fallimento', 'L''entusiasmo per il pensiero critico, la gestione ottimale del tempo', 'La collaborazione eccessiva, la scarsa fiducia nelle capacità personali', 'L''apertura al cambiamento, la gestione efficiente del tempo', 'scelta1', 133);
+-- Domanda 5
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Perché aiuta a valutare informazioni, prendere decisioni informed, risolvere problemi complessi e favorire la comprensione e comunicazione.', 'Il pensiero critico non è importante nel contesto lavorativo', 'Perché complica le decisioni e rallenta i processi lavorativi', 'Perché limita la capacità di valutare informazioni', 'scelta1', 134);
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+/*Insert  Skill */
+ 
+INSERT INTO Skill VALUES(1, 'Python','hard');
+INSERT INTO Skill VALUES(2, 'Java','hard');
+INSERT INTO Skill VALUES(3, 'C','hard');
+INSERT INTO Skill VALUES(4, 'C++','hard');
+INSERT INTO Skill VALUES(5, 'Javascript','hard');
+INSERT INTO Skill VALUES(6, 'HTML, CSS','hard');
+INSERT INTO Skill VALUES(7, 'Comunicazione efficace','soft');
+INSERT INTO Skill VALUES(8, 'Lavoro di squadra','soft');
+INSERT INTO Skill VALUES(9, 'Leadership','soft');
+INSERT INTO Skill VALUES(10, 'Gestione dello stress','soft');
+INSERT INTO Skill VALUES(11, 'Risoluzione dei problemi','soft');
+INSERT INTO Skill VALUES(12, 'Linux','hard');
+INSERT INTO Skill VALUES(13, 'Windows','hard');
+INSERT INTO Skill VALUES(14, 'React: Introduzione','hard');
+INSERT INTO Skill VALUES(15, 'Angular: Concetti di Base','hard');
+INSERT INTO Skill VALUES(16, 'Django: Fondamenti','hard');
+INSERT INTO Skill VALUES(17, 'Git: Concetti di Base','hard');
+insert into Skill values(18, 'Problem solving','soft');
+insert into Skill values(19, 'Adattabilità','soft');
+insert into Skill values(20, 'Creatività e Innovazione','soft');
+insert into Skill values(21, 'Gestione del tempo','soft');
+insert into Skill values(22, 'Relationship','soft');
+insert into Skill values(23, 'Pensiero critico','soft');
+ 
+/*Insert userskill*/
+ 
+insert into UserSkills values (8, 1, 1),
+                             (8, 2, 1),
+							 (8, 3, 1),
+							 (8, 22, 1),
+							 (8, 16, 1),
+							 (11, 23, 1),
+							 (15, 20, 1),
+							 (9, 4, 1),
+							 (9, 6, 1),
+							 (10, 8, 1),
+							 (13, 10, 1),
+							 (10, 12, 1),
+							 (11, 17, 1),
+							 (10, 19, 1),
+							 (11, 21, 1),
+							 (12, 11, 1),
+							 (14, 13, 1),
+							 (9, 16, 1),
+							 (9, 5, 1),
+							 (16, 3, 1),
+							 (11, 1, 1);
+/*insert userQuiz*/
+ 
+insert into UtenteQuiz values (1,8,6, '2023-11-18 18:34:50'),
+                              (1,11,4, '2023-11-18 18:34:50'),
+							  (2,8,6, '2023-11-18 18:34:50'),
+                              (3,8,1, '2023-11-18 18:34:50'),
+							  (22,8,4, '2023-11-18 18:34:50'),
+                              (16,8,6, '2023-11-18 18:34:50'),
+							  (4,9,4, '2023-11-18 18:34:50'),
+                              (6,9,2, '2023-11-18 18:34:50'),
+							  (16,9,10, '2023-11-18 18:34:50'),
+                              (5,9,3, '2023-11-18 18:34:50'),
+							  (8,10,6, '2023-11-18 18:34:50'),
+                              (12,10,2, '2023-11-18 18:34:50'),
+							  (19,10,25, '2023-11-18 18:34:50'),
+                              (23,11,17, '2023-11-18 18:34:50'),
+							  (17,11,9, '2023-11-18 18:34:50'),
+                              (21,11,30, '2023-11-18 18:34:50'),
+							  (1,11,6, '2023-11-18 18:34:50'),
+                              (11,12,5, '2023-11-18 18:34:50'),
 /*	Inserimento delle posizioni	*/
 
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo un sistemista esperto con almeno 3 anni di esperienza su progetti di media grandezza','1','6','4','aperta','20231101','Sistemista');
@@ -1044,25 +1331,4 @@ INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,st
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('1','ll candidato è diplomato/laureato, ha maturato esperienza pluriennale nello sviluppo software web based, ed ha una conoscenza tecnica della lingua inglese. Sono requisiti fondamentali una buona capacità relazionale, attitudine al lavoro in team, capacità di adattamento e flessibilità.','5','3','2','aperta','20240120','Full stack web developer');
 
 /*INSERIMENTO CATEGORIE SEZIONE AMMINISTRATIVA*/
-insert into CategoriaPosizione
-values ('Amministrazione Generale')
-     ,('Finanze e Contabilita')
-     ,('Risorse Umane (HR)')
-     ,('Amministrazione delle Operazioni')
-     ,('Gestione Contratti e Legalita')
-     ,('Acquisti e Approvvigionamento')
-     ,('Segreteria e Supporto Amministrativo');
 
-
-/*INSERIMENTO CATEGORIE SEZIONE IT*/
-insert into CategoriaPosizione
-values ('Sviluppo Software')
-     ,('Amministrazione di Sistemi e Reti')
-     ,('Gestione del Progetto')
-     ,('Supporto Tecnico')
-     ,('Analisi dei Dati e Business Intelligence')
-     ,('Progettazione UX/UI')
-     ,('Sicurezza Informatica')
-     ,('Cloud Computing')
-     ,('Database')
-     ,('Sicurezza Informatica');
