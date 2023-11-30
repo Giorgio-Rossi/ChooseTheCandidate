@@ -869,33 +869,6 @@ INSERT INTO QuizDomanda VALUES(74, 11);
 INSERT INTO QuizDomanda VALUES(75, 11);
 
 
-
-
-
-/* QUIZ PER LE POSIZIONI */
-
-
-/* Direttore Amministrativo */
-INSERT INTO Quiz VALUES ('Direttore Amministrativo', 5);
-
-INSERT INTO Domanda VALUES ('Qual''è l'' obiettivo principale della gestione finanziaria da parte di un Direttore Amministrativo?', 6);
-INSERT INTO Domanda VALUES ('Quali competenze sono essenziali per un Direttore Amministrativo in un''azienda IT?', 9);
-INSERT INTO Domanda VALUES ('Cosa include tipicamente il ruolo di Direttore Amministrativo nella pianificazione aziendale?', 7);
-INSERT INTO Domanda VALUES ('Qual'' è il ruolo principale di un Direttore Amministrativo in un''azienda IT?', 8);
-
-INSERT INTO RisposteDomanda VALUES ('Aumentare la produttività del personale', 'Migliorare la soddisfazione del cliente', ' Massimizzare i profitti e gestire le risorse finanziarie', 'Ridurre i costi operativi', 'scelta3', ?);
-INSERT INTO RisposteDomanda VALUES ('Programmazione avanzata e sviluppo software', 'Conoscenza approfondita di linguaggi di programmazione', 'Gestione finanziaria, contabilità e competenze amministrative', 'Progettazione di interfacce utente intuitive', 'scelta3', ?);
-INSERT INTO RisposteDomanda VALUES ('Sviluppo di nuovi prodotti e servizi', 'Gestione delle risorse umane e selezione del personale', 'Ottimizzazione delle operazioni quotidiane', 'Analisi dei dati per migliorare le performance', 'scelta3', ?);
-INSERT INTO RisposteDomanda VALUES ('Scrivere codice per applicazioni aziendali', 'Gestire le operazioni finanziarie e amministrative', 'Condurre ricerche di mercato per nuovi prodotti', ' Sviluppare nuove strategie di marketing', 'scelta2', ?);
-
-INSERT INTO QuizDomanda VALUES(?, ?);
-INSERT INTO QuizDomanda VALUES(?, ?);
-INSERT INTO QuizDomanda VALUES(?, ?);
-INSERT INTO QuizDomanda VALUES(?, ?);
-
-
-
-
 /*	Inserimento delle posizioni	*/
 
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo un sistemista esperto con almeno 3 anni di esperienza su progetti di media grandezza','1','6','4','aperta','20231101','Sistemista');
