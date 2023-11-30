@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class SQLServerConnection {
         static Connection connection =  null;
-        String dburl = "jdbc:sqlserver://127.0.0.1;databaseName=ProjectWork2;encrypt=false;";
+        String dburl = "jdbc:sqlserver://127.0.0.1;databaseName=ProjectWork2;encrypt=false;characterEncoding=ISO-8859-1";
         String user = "sa";
         String password = "zucchetti";
         public void Connect(){

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java"%>
+<%@ page contentType="text/html" language="java"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.candidatoDB.pw2.entity.*"%>
@@ -149,16 +149,21 @@ ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAl
 
 
 															<div class="form-check">
-																<label class="form-check-label" for="aperta">Aperta</label>
-																<input class="form-group" type="radio" name="stato" id="aperta" value="aperta">
+																<label class="form-check-label" for="aperta">Aperta:</label>
+																<div style="flex-direction: row; display: flex">
+																	<div class="form-check">
+																		<p>Si</p>
+																		<input class="form-group" type="radio" name="stato" id="aperta" value="aperta">
+																	</div>
+																	<div class="form-check">
+																		<p>No</p>
+																		<input class="form-group" type="radio" name="stato" id="chiusa" value="chiusa" checked>
+																	</div>
+																</div>
+
 															</div>
 
-															<div class="form-check mb-3">
-																<label class="form-check-label" for="chiusa">
-																	Chiusa
-																</label>
-																<input class="form-group" type="radio" name="stato" id="chiusa" value="chiusa" checked>
-															</div>
+
 
 
 														<div class="row">
@@ -166,7 +171,7 @@ ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAl
 																<%
 																Citta citta = (posizione.getCitta() != null) ? posizione.getCitta() : null;
 																%>
-																<label>Citt√†</label> <select class="form-select"
+																<label>Citt‡</label> <select class="form-select"
 																	aria-label="Default select example" name="citta">
 
 																	<%
@@ -179,7 +184,7 @@ ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAl
 																	} else {
 																	%>
 																	<option selected style="display: none" value="">Seleziona
-																		una citt√†</option>
+																		una citt‡</option>
 																	<%
 																	}
 																	;
