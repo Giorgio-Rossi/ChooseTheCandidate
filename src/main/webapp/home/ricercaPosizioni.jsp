@@ -218,9 +218,11 @@
 
 									</div>
 								</div>
-								<div class="slide slide2" style="overflow:auto;">
-									<div class="content" >
+								<div class="slide slide2" >
+									<div style="width:100%;height:90%;display:flex;overflow:auto;">
+									<div class="content"style="display:flex;" >
 										<p><%=p.getDescrizione()%></p>
+									</div>
 									</div>
 								</div>
 							</div>

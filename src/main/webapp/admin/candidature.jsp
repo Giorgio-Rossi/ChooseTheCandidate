@@ -189,9 +189,11 @@ style="position: fixed; align-items:center; display:flex; top:85px; left:21.25%;
 
                         </div>
                     </div>
-                    <div class="slide slide2" style="overflow:auto;" >
+                    <div class="slide slide2">
+                    <div style="width:100%;height:90%;display:flex;overflow:auto;">
                         <div class="content">
                             <p><%=p.getDescrizione()%></p>
+                        </div>
                         </div>
                     </div>
                 </div>

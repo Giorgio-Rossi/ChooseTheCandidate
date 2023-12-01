@@ -365,10 +365,16 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																			
 																		</select>
 
+
+
+																	</div>
+																	
+																</div>
+																<div style="margin:1%;justify-content:flex-end;display:flex;width:100%;padding-right:22px">
 																		<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#warningModal<%=istruzione.getId_istruzione()%>">
 																			Elimina istruzione
 																		</button>
-
+</div>
 																		<div class="modal fade" id="warningModal<%=istruzione.getId_istruzione()%>" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
 																			<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
 																				<div class="modal-content">
@@ -384,12 +390,10 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																				</div>
 																			</div>
 																		</div>
-
-
-																	</div>
-																</div>
 															</div>
+															
 														</div>
+														
 														<hr style="margin-top:20px; width:90%;margin-left:5%">		
 													</div>
 
@@ -687,11 +691,15 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																			%>
 																		
 																	</select>
+																	
 
-																	<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#warningModal<%=esperienza.getId_esperienza()%>">
+																</div>
+															</div>
+															<div style="margin:1%;justify-content:flex-end;display:flex;width:100%;padding-right:22px">
+																	<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#warningModal<%=esperienza.getId_esperienza()%>" >
 																		Elimina esperienza
 																	</button>
-
+																	</div>
 																	<div class="modal fade" id="warningModal<%=esperienza.getId_esperienza()%>" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
 																		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
 																			<div class="modal-content">
@@ -707,9 +715,6 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																			</div>
 																		</div>
 																	</div>
-
-																</div>
-															</div>
 														</div>
 													</div>
 													
