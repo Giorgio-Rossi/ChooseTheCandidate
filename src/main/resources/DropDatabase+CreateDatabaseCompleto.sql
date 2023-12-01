@@ -1301,6 +1301,171 @@ insert into quizdomanda values(76, 26),
                               (47, 26);
  
  
+-- Quiz Sistemista Informatico
+-- Quiz Soft Skills 10
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze Sistemista Informatico', 8);
+
+-- Domande per il Quiz "Competenze Sistemista Informatico" (Quiz ID: 10)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Cosa significa RAID?', 8),
+       ('Qual è la differenza tra HTTP e HTTPS?', 9),
+       ('Descrivi il concetto di virtualizzazione.', 8),
+       ('Cos’è un attacco DDoS e come funziona?', 9),
+       ('Spiega la differenza tra un hub, uno switch e un router.', 8),
+       ('Cosa sono i protocolli TCP/IP e a cosa servono?', 9),
+       ('Descrivi brevemente la differenza tra un sistema operativo Windows e Linux.', 8),
+       ('Quali sono i principali vantaggi e svantaggi del cloud computing?', 9);
+
+-- Quiz "Competenze Sistemista Informatico" (Quiz ID: 10)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (130, 23), (131, 23), (132, 23), (133, 23), (134, 23), (135, 23), (136, 23), (137, 23);
+
+-- Risposte per "Competenze Sistemista Informatico"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Redundant Array of Independent Disks: un metodo di archiviazione dei dati che utilizza più dischi per garantire la ridondanza e/o prestazioni migliori.', 'Remote Access to Important Data: un protocollo per accedere a dati remoti in modo sicuro.', 'RAID: una tecnica per ridurre i costi di archiviazione dei dati.', 'RAID: un tipo di processore per migliorare le prestazioni dei server.', 'scelta1', 130),
+       -- Domanda 2
+       ('HTTP (Hypertext Transfer Protocol) è non sicuro, mentre HTTPS (HTTP Secure) è sicuro e cifrato SSL/TLS.', 'HTTP è più veloce di HTTPS.', 'HTTP è utilizzato solo per siti web statici, mentre HTTPS è per siti dinamici.', 'HTTP è vecchio, mentre HTTPS è il nuovo protocollo di rete.', 'scelta1', 131),
+       -- Domanda 3
+       ('La virtualizzazione è la creazione di risorse hardware/software virtuali piuttosto che fisiche.', 'La virtualizzazione riguarda la creazione di reti virtuali all’interno di un’azienda.', 'La virtualizzazione è l'uso esclusivo di computer portatili.', 'La virtualizzazione si riferisce all'uso esclusivo di software open-source.', 'scelta1', 132),
+       -- Domanda 4
+       ('Un attacco DDoS (Distributed Denial of Service) sovraccarica un server con un'enorme quantità di richieste, rendendolo inaccessibile agli utenti legittimi.', 'Un attacco DDoS permette di accedere ai dati sensibili di un server.', 'Un attacco DDoS è simile a un attacco fisico a un server.', 'Un attacco DDoS limita il numero di richieste al server per garantire la sicurezza.', 'scelta1', 133),
+       -- Domanda 5
+       ('Un hub trasmette i dati a tutti i dispositivi connessi, uno switch li invia solo al dispositivo di destinazione, mentre un router gestisce il traffico tra reti diverse.', 'Non c’è differenza tra un hub, uno switch e un router.', 'Uno switch è più veloce di un hub ma meno sicuro di un router.', 'Uno switch è un dispositivo wireless, mentre un router gestisce solo reti cablate.', 'scelta1', 134),
+       -- Domanda 6
+       ('TCP/IP è un insieme di protocolli utilizzati per la comunicazione su Internet, definendo come i dati dovrebbero essere inviati e ricevuti.', 'TCP/IP è un metodo per la manutenzione dei computer aziendali.', 'TCP/IP è un linguaggio di programmazione per sviluppare applicazioni web.', 'TCP/IP riguarda esclusivamente la sicurezza delle reti aziendali.', 'scelta1', 135),
+       -- Domanda 7
+       ('Windows è comunemente usato per desktop e sistemi operativi personali, mentre Linux è più popolare nei server e negli ambienti aziendali.', 'Windows è completamente gratuito, mentre Linux è a pagamento.', 'Windows è più sicuro di Linux.', 'Linux è stato sviluppato da Microsoft, mentre Windows è open-source.', 'scelta1', 136),
+       -- Domanda 8
+       ('Vantaggi: scalabilità, flessibilità, riduzione dei costi di hardware. Svantaggi: dipendenza dalla connessione Internet, questioni di sicurezza e privacy.', 'Vantaggi: alta sicurezza e controllo. Svantaggi: costo elevato e complessità.', 'Vantaggi: accesso ovunque. Svantaggi: nessun controllo sull'ambiente di hosting.', 'Vantaggi: nessun costo. Svantaggi: ridotta affidabilità e prestazioni.', 'scelta1', 137);
+
+    
+       
+       
+-- Quiz Web Developer
+-- Quiz Soft Skills 11
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze Web Developer', 8);
+
+-- Domande per il Quiz "Competenze Web Developer" (Quiz ID: 11)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Spiega la differenza tra HTML, CSS e JavaScript.', 8),
+       ('Cosa sono i framework frontend e perché sono utili?', 9),
+       ('Descrivi l’utilizzo di AJAX in web development.', 8),
+       ('Qual è l’importanza della SEO per un sito web?', 9),
+       ('Quali sono le best practices per la sicurezza di un sito web?', 8),
+       ('Spiega il concetto di responsive design e perché è importante.', 9),
+       ('Cos’è il version control e come aiuta nello sviluppo web?', 8),
+       ('Descrivi il funzionamento dei cookie nei siti web.', 9);
+
+-- Quiz "Competenze Web Developer" (Quiz ID: 11)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (138, 24), (139, 24), (140, 24), (141, 24), (142, 24), (143, 24), (144, 24), (145, 24);
+
+-- Risposte per "Competenze Web Developer"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('HTML è il linguaggio di markup per la struttura del contenuto, CSS è utilizzato per lo stile e la presentazione, JavaScript è per l’interattività e la logica.', 'HTML, CSS e JavaScript sono tutti linguaggi di scripting intercambiabili.', 'HTML e CSS sono lo stesso linguaggio, JavaScript è un linguaggio di database.', 'JavaScript è utilizzato solo per la struttura del contenuto.', 'scelta1', 138),
+       -- Domanda 2
+       ('I framework frontend sono set di strumenti e librerie predefinite che semplificano lo sviluppo web, fornendo modelli e funzioni comuni.', 'I framework frontend non sono utili poiché limitano la flessibilità dello sviluppo.', 'I framework frontend sono utilizzati esclusivamente per il backend del sito web.', 'I framework frontend sono solo per principianti.', 'scelta1', 139),
+       -- Domanda 3
+       ('AJAX (Asynchronous JavaScript and XML) consente agli utenti di interagire con un sito web senza dover ricaricare la pagina.', 'AJAX è un linguaggio di programmazione per il web.', 'AJAX è una nuova versione di HTML5.', 'AJAX è usato solo per animazioni su siti web.', 'scelta1', 140),
+       -- Domanda 4
+       ('La SEO (Search Engine Optimization) è importante per migliorare la visibilità e il posizionamento di un sito web sui motori di ricerca.', 'La SEO è irrilevante per un sito web.', 'La SEO riguarda esclusivamente la grafica di un sito web.', 'La SEO è utile solo per siti web aziendali.', 'scelta1', 141),
+       -- Domanda 5
+       ('Best practices includono l'uso di HTTPS, l'aggiornamento costante dei software, la protezione contro attacchi di SQL injection e XSS.', 'Non ci sono best practices per la sicurezza di un sito web.', 'La sicurezza di un sito web non è importante.', 'Basta affidarsi a un buon firewall per la sicurezza del sito web.', 'scelta1', 142),
+       -- Domanda 6
+       ('Il responsive design è la capacità di un sito web di adattarsi a diverse dimensioni di schermi e dispositivi, importante per garantire un’esperienza utente ottimale.', 'Il responsive design riguarda solo il backend di un sito web.', 'Il responsive design è utile solo per i dispositivi mobili.', 'Il responsive design non è più rilevante.', 'scelta1', 143),
+       -- Domanda 7
+       ('Il version control permette di tenere traccia delle modifiche al codice, consentendo il lavoro collaborativo e il ripristino a versioni precedenti.', 'Il version control è esclusivamente per la gestione dei server web.', 'Il version control è un framework di frontend.', 'Il version control è solo per principianti.', 'scelta1', 144),
+       -- Domanda 8
+       ('I cookie sono piccoli file di testo memorizzati sul computer dell’utente per tracciare informazioni come preferenze e stato di login.', 'I cookie sono solo per l’archiviazione di immagini nei siti web.', 'I cookie non sono più utilizzati nei siti web moderni.', 'I cookie sono usati solo per la grafica dei siti web.', 'scelta1', 145);
+
+       
+       
+       
+-- Quiz Cybersecurity
+-- Quiz Soft Skills 12
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Conoscenze Cybersecurity', 8);
+
+-- Domande per il Quiz "Conoscenze Cybersecurity" (Quiz ID: 12)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Definisci l’attacco di phishing e come può essere prevenuto.', 8),
+       ('Cosa sono le vulnerabilità zero-day e come possono essere affrontate?', 9),
+       ('Spiega l’importanza dell’implementazione di un firewall per la sicurezza informatica.', 8),
+       ('Qual è la differenza tra crittografia simmetrica e asimmetrica?', 9),
+       ('Come funziona un attacco di tipo DDoS e quali sono le possibili contromisure?', 8),
+       ('Descrivi l’uso delle VPN (Virtual Private Network) per la sicurezza.', 9),
+       ('Cosa sono gli IDS (Intrusion Detection System) e come funzionano?', 8),
+       ('Spiega il concetto di penetration testing e perché è importante.', 9);
+
+-- Quiz "Conoscenze Cybersecurity" (Quiz ID: 12)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (146, 25), (147, 25), (148, 25), (149, 25), (150, 25), (151, 25), (152, 25), (153, 25);
+
+-- Risposte per "Conoscenze Cybersecurity"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Il phishing è un attacco che mira a ottenere informazioni sensibili tramite messaggi ingannevoli; può essere prevenuto con formazione agli utenti e filtri antispam.', 'Il phishing è un attacco informatico su reti sociali; non può essere prevenuto.', 'Il phishing è un tipo di attacco che colpisce solo server aziendali; è impossibile prevenirlo.', 'Il phishing riguarda solo l’invio di email non richieste.', 'scelta1', 146),
+       -- Domanda 2
+       ('Le vulnerabilità zero-day sono falle di sicurezza sfruttate prima che il produttore possa rilasciare un fix; possono essere affrontate con aggiornamenti costanti e soluzioni di sicurezza aggiuntive.', 'Le vulnerabilità zero-day non richiedono azioni specifiche; non possono essere affrontate.', 'Le vulnerabilità zero-day non rappresentano una minaccia per la sicurezza informatica.', 'Le vulnerabilità zero-day sono prevenibili solo tramite cambiamenti hardware.', 'scelta1', 147),
+       -- Domanda 3
+       ('Un firewall filtra il traffico di rete in entrata e in uscita, aiutando a proteggere da attacchi esterni e interni.', 'Un firewall non è essenziale per la sicurezza informatica.', 'Il firewall è utile solo per proteggere contro gli attacchi di phishing.', 'Il firewall è solo per la protezione dei file sui computer.', 'scelta1', 148),
+       -- Domanda 4
+       ('La crittografia simmetrica utilizza la stessa chiave per crittografare e decrittografare i dati, mentre la crittografia asimmetrica utilizza una coppia di chiavi (pubblica/privata).', 'Non esiste differenza tra crittografia simmetrica e asimmetrica.', 'La crittografia asimmetrica è più debole della crittografia simmetrica.', 'La crittografia simmetrica è utilizzata solo per i siti web.', 'scelta1', 149),
+       -- Domanda 5
+       ('Un attacco DDoS sovraccarica un sistema o un servizio con una quantità eccessiva di traffico, rendendolo inaccessibile; contromisure possibili includono filtri e servizi anti-DDoS.', 'Un attacco DDoS è impossibile da fermare.', 'Un attacco DDoS è solo un errore di sistema.', 'Un attacco DDoS è efficace solo su server di grandi dimensioni.', 'scelta1', 150),
+       -- Domanda 6
+       ('Le VPN consentono di creare una connessione sicura su reti pubbliche come Internet, garantendo crittografia dei dati e privacy.', 'Le VPN sono utilizzate solo per l’accesso ai social network.', 'Le VPN sono utilizzate solo per siti di streaming.', 'Le VPN non offrono protezione aggiuntiva.', 'scelta1', 151),
+       -- Domanda 7
+       ('Gli IDS monitorano il traffico di rete per individuare comportamenti sospetti o attacchi informatici; possono essere basati su firme o comportamento.', 'Gli IDS non sono utili per la sicurezza informatica.', 'Gli IDS sono utilizzati solo per le reti aziendali.', 'Gli IDS non possono rilevare gli attacchi informatici.', 'scelta1', 152),
+       -- Domanda 8
+       ('Il penetration testing è un test di sicurezza che simula gli attacchi informatici per identificare e correggere le vulnerabilità; è importante per mantenere la sicurezza preventiva.', 'Il penetration testing non è essenziale per la sicurezza informatica.', 'Il penetration testing è solo per i principianti.', 'Il penetration testing può compromettere la sicurezza di un sistema.', 'scelta1', 153);
+
+                              
+
+       
+-- Quiz Ingegnere del Software
+-- Quiz Soft Skills 15
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze Ingegnere del Software', 8);
+
+-- Domande per il Quiz "Competenze Ingegnere del Software" (Quiz ID: 15)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Spiega il concetto di design pattern e fornisci un esempio.', 8),
+       ('Qual è la differenza tra waterfall e metodologie Agile nello sviluppo software?', 9),
+       ('Cosa sono i principi SOLID nel contesto della programmazione orientata agli oggetti?', 8),
+       ('Descrivi il processo di continuous integration e continuous deployment (CI/CD).', 9),
+       ('Che cos’è il version control e quali benefici offre nello sviluppo software?', 8),
+       ('Illustra le differenze tra testing unitario, di integrazione e di sistema.', 9),
+       ('Cosa significa il termine "refactoring" e quando è appropriato farlo?', 8),
+       ('Spiega l’importanza di documentare il codice durante lo sviluppo software.', 9);
+
+-- Quiz "Competenze Ingegnere del Software" (Quiz ID: 15)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (166, 30), (167, 30), (168, 30), (169, 30), (170, 30), (171, 30), (172, 30), (173, 30);
+
+-- Risposte per "Competenze Ingegnere del Software"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('I design pattern sono soluzioni ricorrenti a problemi comuni nello sviluppo software; un esempio è il pattern Singleton.', 'I design pattern non sono utili nello sviluppo software.', 'I design pattern sono sinonimi di codice di buona qualità.', 'I design pattern non sono adattabili.', 'scelta1', 166),
+       -- Domanda 2
+       ('Waterfall è un approccio sequenziale allo sviluppo software, mentre Agile è iterativo e si adatta ai cambiamenti.', 'Waterfall e Agile sono la stessa cosa.', 'Agile non è adatto allo sviluppo software.', 'Waterfall non è più utilizzato nello sviluppo software.', 'scelta1', 167),
+       -- Domanda 3
+       ('I principi SOLID sono linee guida per scrivere codice manutenibile e scalabile, come il principio di singola responsabilità e l’inversione delle dipendenze.', 'I principi SOLID non sono importanti nello sviluppo software.', 'I principi SOLID si applicano solo ai linguaggi di programmazione specifici.', 'I principi SOLID non influenzano la qualità del codice.', 'scelta1', 168),
+       -- Domanda 4
+       ('La continuous integration coinvolge l’integrazione frequente del codice nel repository con test automatici; continuous deployment è la pratica di rilasciare il software in modo automatico e frequente.', 'La continuous integration non è rilevante nello sviluppo software.', 'La continuous deployment coinvolge solo test manuali.', 'La continuous integration è solo per grandi progetti software.', 'scelta1', 169),
+       -- Domanda 5
+       ('Il version control gestisce le modifiche al codice, consentendo il tracciamento delle revisioni e facilitando la collaborazione; offre benefici come la gestione delle versioni e la risoluzione delle conflittualità.', 'Il version control non è utile nello sviluppo software.', 'Il version control è solo per il codice di piccole dimensioni.', 'Il version control è solo per i singoli sviluppatori.', 'scelta1', 170),
+       -- Domanda 6
+       ('Il testing unitario verifica singole unità di codice, quello di integrazione testa l’interazione tra unità e quello di sistema testa il sistema completo.', 'Non esistono differenze tra i diversi tipi di testing.', 'Il testing unitario e di integrazione sono la stessa cosa.', 'Il testing di sistema è il più inutile tra i tre.', 'scelta1', 171),
+       -- Domanda 7
+       ('Il refactoring è il processo di miglioramento del codice senza modificarne il comportamento; è appropriato farlo durante lo sviluppo per migliorare la leggibilità e la manutenibilità del codice.', 'Il refactoring compromette la qualità del codice.', 'Il refactoring non è utile nello sviluppo software.', 'Il refactoring è solo per i progetti già completati.', 'scelta1', 172),
+       -- Domanda 8
+       ('La documentazione del codice aiuta a comprendere il funzionamento del software; è importante per la manutenzione, la collaborazione e la comprensione del codice.', 'La documentazione del codice non è importante.', 'La documentazione del codice rallenta lo sviluppo.', 'La documentazione del codice è utile solo per i programmatori esperti.', 'scelta1', 173);
+
  
 /*Insert  Skill */
  
@@ -1394,6 +1559,71 @@ INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,st
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('2','Siamo alla ricerca di sviluppatori Web Full stack con almeno 4 anni di esperienza, è un requisito gradito la conoscenza dei seguenti CMS/linguaggi: Wordpress, Prestashop, Magento 2, HTML, CSS, Javascript, PHP, MySQL.','7','3','5','aperta','20240120','Senior web developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Sei appassionato di tecnologia e di programmazione? iamo cercando un/una Back-end Developer con esperienza in ambito Node con Javascript/Typescript','8','3','2','aperta','20240120','Back-end web developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('1','ll candidato è diplomato/laureato, ha maturato esperienza pluriennale nello sviluppo software web based, ed ha una conoscenza tecnica della lingua inglese. Sono requisiti fondamentali una buona capacità relazionale, attitudine al lavoro in team, capacità di adattamento e flessibilità.','5','3','2','aperta','20240120','Full stack web developer');
+
+-- Sviluppatore Full-Stack
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo uno sviluppatore full-stack altamente motivato per unirsi al nostro team dinamico. La persona ideale avrà competenze sia nel frontend che nel backend e sarà coinvolta nello sviluppo di soluzioni software innovative.', 1, 1, 1, 'aperta', '2023-11-30 10:00:00.000', 'Sviluppatore Full-Stack'); 
+-- Ingegnere del Software
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Stiamo cercando un ingegnere del software talentuoso e appassionato per contribuire alla progettazione, sviluppo e manutenzione del nostro software. Se hai esperienza nella creazione di soluzioni scalabili, sei la persona che stiamo cercando.', 2, 2, 2, 'aperta', '2023-11-30 11:30:00.000', 'Ingegnere del Software');
+
+/*creare quiz*/
+-- Project Manager Software
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Project Manager Software con una comprovata esperienza nella gestione di progetti software complessi. Se hai una forte leadership e capacità organizzative, entra a far parte della nostra squadra.', 3, 3, 3, 'aperta', '2023-11-30 13:45:00.000', 'Project Manager Software');
+-- Scrum Master
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo uno Scrum Master motivato e orientato ai risultati per guidare e facilitare le pratiche agile nel nostro team di sviluppo. Se sei appassionato di metodologie agili, candidati ora.', 4, 1, 4, 'aperta', '2023-11-30 14:30:00.000', 'Scrum Master');
+-- Progettista UX/UI
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Stiamo cercando un Progettista UX/UI creativo ed esperto per migliorare l''esperienza degli utenti dei nostri prodotti software. Se hai una visione innovativa e competenze di progettazione eccezionali, fai domanda oggi stesso.', 5, 6, 5, 'aperta', '2023-11-30 15:15:00.000', 'Progettista UX/UI');
+-- Architetto dell'Esperienza Utente
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Architetto dell''Esperienza Utente appassionato per guidare la progettazione di interfacce utente intuitive e coinvolgenti. Se hai una forte comprensione dell''usabilità, sei la persona giusta per noi.', 6, 6, 6, 'aperta', '2023-11-30 16:00:00.000', 'Architetto dell''Esperienza Utente');
+-- Direttore Amministrativo
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Direttore Amministrativo altamente qualificato per sovrintendere alle operazioni quotidiane dell''azienda. Il candidato ideale avrà una solida comprensione delle pratiche aziendali e un forte orientamento alla leadership.', 7, 3, 7, 'aperta', '2023-11-30 16:45:00.000', 'Direttore Amministrativo');
+-- Responsabile Amministrativo
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Stiamo cercando un Responsabile Amministrativo con esperienza comprovata nella gestione delle operazioni finanziarie e contabili. Se hai una solida competenza in finanza aziendale, candidati ora.', 8, 3, 8, 'aperta', '2023-11-30 17:30:00.000', 'Responsabile Amministrativo');
+-- Responsabile Finanziario
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Responsabile Finanziario esperto per guidare la gestione finanziaria dell''azienda. Se hai una solida competenza contabile e una visione strategica delle finanze, ti incoraggiamo a candidarti.',29, 3, 1, 'aperta', '2023-11-30 18:15:00.000', 'Responsabile Finanziario');
+-- Contabile
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Contabile altamente organizzato con esperienza nella gestione delle transazioni finanziarie. Se sei preciso e attento ai dettagli, potresti essere la persona giusta per unirti al nostro team contabile.', 23, 3, 1, 'aperta', '2023-11-29 09:00:00.000', 'Contabile');
+-- Responsabile delle Risorse Umane
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Responsabile delle Risorse Umane che guidi le iniziative HR, dalla selezione alla gestione delle prestazioni. Se hai una forte capacità relazionale e una visione strategica delle risorse umane, ti invitiamo a candidarti.', 76, 3, 1, 'aperta', '2023-11-30 09:45:00.000', 'Responsabile delle Risorse Umane');
+-- Recruiter
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Recruiter talentuoso con abilità di ricerca e selezione. Se hai una buona comprensione del mercato del lavoro e capacità di valutare il talento, ti invitiamo a far parte del nostro team HR.', 1, 3, 1, 'aperta', '2023-11-30 10:30:00.000', 'Recruiter');
+-- Responsabile Contratti
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Responsabile Contratti con esperienza nella gestione e negoziazione di contratti aziendali. Se hai competenze legali e una buona comprensione delle pratiche contrattuali, candidati ora.', 3, 3, 1, 'aperta', '2023-11-29 11:15:00.000', 'Responsabile Contratti');
+-- Avvocato Aziendale o Consulente Legale
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Avvocato Aziendale o Consulente Legale per fornire consulenza legale interna. Se hai una solida esperienza in diritto commerciale, contrattuale e delle società, potresti essere la persona che stiamo cercando.', 7,3, 1, 'aperta', '2023-11-29 12:00:00.000', 'Avvocato Aziendale o Consulente Legale');
+-- Amministratore del Database
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Amministratore del Database esperto per gestire e ottimizzare i database aziendali. Se hai competenze nella progettazione, implementazione e manutenzione di database, ti invitiamo a candidarti.', 9, 9, 1, 'aperta', '2023-11-29 12:45:00.000', 'Amministratore del Database');
+-- Sviluppatore di Database
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Stiamo cercando uno Sviluppatore di Database talentuoso per progettare e implementare soluzioni database efficaci. Se hai competenze nello sviluppo SQL e una conoscenza approfondita delle best practice, fai domanda oggi stesso.', 20, 9, 1, 'aperta', '2023-11-29 13:30:00.000', 'Sviluppatore di Database');
+-- Architetto Cloud
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Architetto Cloud altamente qualificato per progettare e implementare soluzioni cloud scalabili e sicure. Se hai esperienza nella migrazione verso il cloud e nella gestione delle risorse cloud, candidati subito.', 2, 8, 1, 'aperta', '2023-11-29 14:15:00.000', 'Architetto Cloud');
+-- Ingegnere di Sistemi Cloud
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Ingegnere di Sistemi Cloud per supportare lo sviluppo e la gestione di infrastrutture cloud. Se hai competenze nella configurazione e nell''ottimizzazione delle risorse cloud, ti invitiamo a far parte del nostro team.', 80, 8, 1, 'aperta', '2023-11-29 15:00:00.000', 'Ingegnere di Sistemi Cloud');
+-- Amministratore di Reti
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Amministratore di Reti competente per gestire e mantenere la nostra infrastruttura di rete. Se hai esperienza nella progettazione, implementazione e sicurezza delle reti, fai domanda oggi stesso.', 64, 2, 1, 'aperta', '2023-11-29 15:45:00.000', 'Amministratore di Reti');
+-- Tecnico di Supporto IT
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Tecnico di Supporto IT per fornire assistenza tecnica agli utenti interni ed esterni. Se hai una passione per la risoluzione dei problemi tecnici e un''eccellente capacità di comunicazione, candidati subito.', 32, 4, 1, 'aperta', '2023-11-29 16:30:00.000', 'Tecnico di Supporto IT');
+
+
 
 
 /*insert candidaturauser*/
