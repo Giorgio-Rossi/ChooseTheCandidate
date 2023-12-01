@@ -117,9 +117,9 @@ CONSTRAINT FK_Utente_UtenteQuiz FOREIGN KEY (id_user) REFERENCES Utente (id_user
  
 create table Skill(
 id_skill int identity not null primary key,
-id_quiz int,
 nome varchar(500),
 tipo_skill varchar(500) not null check(tipo_skill in('soft','hard')),
+id_quiz int,
 CONSTRAINT FK_Skill_Quiz FOREIGN KEY (id_quiz) REFERENCES Quiz (id_quiz)
 )
  
@@ -1301,29 +1301,29 @@ insert into quizdomanda values(76, 26),
  
 /*Insert  Skill */
  
-INSERT INTO Skill VALUES(1, 'Python','hard');
-INSERT INTO Skill VALUES(2, 'Java','hard');
-INSERT INTO Skill VALUES(3, 'C','hard');
-INSERT INTO Skill VALUES(4, 'C++','hard');
-INSERT INTO Skill VALUES(5, 'Javascript','hard');
-INSERT INTO Skill VALUES(6, 'HTML, CSS','hard');
-INSERT INTO Skill VALUES(7, 'Comunicazione efficace','soft');
-INSERT INTO Skill VALUES(8, 'Lavoro di squadra','soft');
-INSERT INTO Skill VALUES(9, 'Leadership','soft');
-INSERT INTO Skill VALUES(10, 'Gestione dello stress','soft');
-INSERT INTO Skill VALUES(11, 'Risoluzione dei problemi','soft');
-INSERT INTO Skill VALUES(12, 'Linux','hard');
-INSERT INTO Skill VALUES(13, 'Windows','hard');
-INSERT INTO Skill VALUES(14, 'React: Introduzione','hard');
-INSERT INTO Skill VALUES(15, 'Angular: Concetti di Base','hard');
-INSERT INTO Skill VALUES(16, 'Django: Fondamenti','hard');
-INSERT INTO Skill VALUES(17, 'Git: Concetti di Base','hard');
-insert into Skill values(18, 'Problem solving','soft');
-insert into Skill values(19, 'Adattabilità','soft');
-insert into Skill values(20, 'Creatività e Innovazione','soft');
-insert into Skill values(21, 'Gestione del tempo','soft');
-insert into Skill values(22, 'Relationship','soft');
-insert into Skill values(23, 'Pensiero critico','soft');
+INSERT INTO Skill VALUES('Python','hard', 1);
+INSERT INTO Skill VALUES('Java','hard', 2);
+INSERT INTO Skill VALUES('C','hard', 3);
+INSERT INTO Skill VALUES('C++','hard', 4);
+INSERT INTO Skill VALUES('Javascript','hard', 5);
+INSERT INTO Skill VALUES('HTML, CSS','hard', 6);
+INSERT INTO Skill VALUES('Comunicazione efficace','soft', 7);
+INSERT INTO Skill VALUES('Lavoro di squadra','soft', 8);
+INSERT INTO Skill VALUES('Leadership','soft', 9);
+INSERT INTO Skill VALUES('Gestione dello stress','soft', 10);
+INSERT INTO Skill VALUES('Risoluzione dei problemi','soft', 11);
+INSERT INTO Skill VALUES('Linux','hard', 12);
+INSERT INTO Skill VALUES('Windows','hard', 13);
+INSERT INTO Skill VALUES('React: Introduzione','hard', 14);
+INSERT INTO Skill VALUES('Angular: Concetti di Base','hard', 15);
+INSERT INTO Skill VALUES('Django: Fondamenti','hard', 16);
+INSERT INTO Skill VALUES('Git: Concetti di Base','hard', 17);
+insert into Skill values('Problem solving','soft', 18);
+insert into Skill values('Adattabilità','soft', 19);
+insert into Skill values('Creatività e Innovazione','soft', 20);
+insert into Skill values('Gestione del tempo','soft', 21);
+insert into Skill values('Relationship','soft', 22);
+insert into Skill values('Pensiero critico','soft', 23);
  
 /*Insert userskill*/
  
@@ -1372,8 +1372,8 @@ insert into UtenteQuiz values (1,8,6, '2023-11-18 18:34:50'),
                               (13,14,14, '2023-11-18 18:34:50'),
                               (20,15,30, '2023-11-18 18:34:50'),
                               (3,16,5, '2023-11-18 18:34:50'),
-                              (25,8,10, '2023-11-18 18:34:50'),
-                              (26,8,18, '2023-11-18 18:34:50');
+                              (25,18,10, '2023-11-18 18:34:50'),
+                              (26,18,18, '2023-11-18 18:34:50');
                               
 
 /*	Inserimento delle posizioni	*/
@@ -1394,8 +1394,8 @@ INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,st
 
 /*insert candidaturauser*/
                               
-insert into candidaturauser values(4, 8, '2023-09-12 16:25:35'),
-                                  (6, 8, '2023-09-17 12:55:35');
+insert into candidaturauser values(4, 18, '2023-09-12 16:25:35'),
+                                  (6, 18, '2023-09-17 12:55:35');
 
 
 
