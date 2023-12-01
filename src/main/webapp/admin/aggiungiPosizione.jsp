@@ -183,14 +183,14 @@ ArrayList<CategoriaPosizione> catpos= cpImpl.getAllCategoriePosizioni();
 
 
 													<div class="form-check">
-														<input class="form-check-input" type="radio" name="stato" id="aperta" value="aperta">
+														<input class="form-check-input" type="radio" name="stato" id="aperta" value="aperta" checked>
 														<label class="form-check-label" for="aperta">
 															Aperta
 														</label>
 													</div>
 
 													<div class="form-check mb-3">
-														<input class="form-check-input" type="radio" name="stato" id="chiusa" value="chiusa" checked>
+														<input class="form-check-input" type="radio" name="stato" id="chiusa" value="chiusa" >
 														<label class="form-check-label" for="chiusa">
 															Chiusa
 														</label>

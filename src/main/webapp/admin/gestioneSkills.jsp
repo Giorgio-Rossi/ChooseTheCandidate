@@ -53,7 +53,17 @@
                         </div>
                         <div class="col-sm-4 py-2">
                             <span class="badge bg-info"><%=skill.getTipo_skill()%></span>
+                            <%
+                                if(new QuizIMPL().getQuizById(skill.getId_quiz()).getDescrizione() == null){
+                            %>
+                            <span class="badge bg-warning">Quiz non assegnato</span>
+                            <%
+                                }else {
+                            %>
                             <span class="badge bg-info">Quiz: <%=new QuizIMPL().getQuizById(skill.getId_quiz()).getDescrizione()%></span>
+                            <%
+                                };
+                            %>
                         </div>
                         <div class="col-sm-3 text-lg-end">
 

@@ -1198,7 +1198,7 @@ INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta
 VALUES ('Empatia è la capacità di comprendere i sentimenti degli altri, mentre la compassione è l''azione di aiutare gli altri', 'Non c''è differenza tra empatia e compassione', 'Empatia e compassione sono sinonimi', 'La compassione è la capacità di comprendere i sentimenti degli altri, mentre l''empatia è l''azione di aiutare gli altri', 'scelta1', 126);
 -- Domanda 2
 INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
-VALUES ('Entrambe coinvolgono la comprensione e la condivisione dei sentimenti degli altri, la capacità di aiutare', 'Empatia e compassione non hanno caratteristiche comuni', 'Solo la compassione coinvolge la comprensione dei sentimenti altrui', 'Solo l''empatia coinvolge la capacità di aiutare gli altri', 'scelta1', 127);
+VALUES ('Empatia è la capacità di comprendere i sentimenti degli altri, mentre la compassione è l''azione di aiutare gli altri', 'Non c''è differenza tra empatia e compassione', 'Empatia e compassione sono sinonimi', 'La compassione è la capacità di comprendere i sentimenti degli altri, mentre l''empatia è l''azione di aiutare gli altri', 'scelta1', 126);
 -- Domanda 3
 INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
 VALUES ('Aumento della fiducia e della coesione del team, miglioramento delle relazioni interpersonali, riduzione dei conflitti', 'Diminuzione della fiducia, isolamento nel team, aumento dei conflitti', 'Miglioramento delle relazioni solo con alcuni colleghi, senza impatto sul lavoro', 'Riduzione della coesione del team e aumento delle tensioni', 'scelta1', 128);
