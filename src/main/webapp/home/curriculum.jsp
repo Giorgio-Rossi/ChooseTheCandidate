@@ -5,7 +5,7 @@
 <%@ page import="com.candidatoDB.pw2.entity.*"%>
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.*"%>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;" language="java"%>
 <%
 Utente utente = (Utente) session.getAttribute("utente");
 UtenteIMPL utenteIMPL = new UtenteIMPL();
@@ -229,7 +229,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																			name="sede_istruzione nuova">
 
 																			<option selected style="display: none;" value="">Seleziona
-																				una citt√†</option>
+																				una citt‡</option>
 																			<%
 																				for(Regione r : regioni) {
 																			%>
@@ -341,7 +341,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																			}else{
 																			%>
 																			<option selected style="display: none" value="">Seleziona
-																				una citt√†</option>
+																				una citt‡</option>
 																			<%
 																				};
 																			%>
@@ -374,7 +374,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																					<div class="modal-body text-center p-lg-4">
 																						<i class="bi bi-exclamation-triangle-fill" style="font-size: 5rem"></i>
 																						<h4 class="text-warning mt-3">Sei sicuro di voler eliminare l' istruzione?</h4>
-																						<p class="mt-3">L'azione non √® reversibile</p>
+																						<p class="mt-3">L'azione non Ë reversibile</p>
 																					</div>
 																					<div class="modal-footer">
 																						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
@@ -507,7 +507,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																		name="sede_esperienza nuova">
 
 																		<option selected style="display: none" value="">Seleziona
-																			una citt√†</option>
+																			una citt‡</option>
 																		<%
 																			for(Regione r : regioni) {
 																		%>
@@ -663,7 +663,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																			}else{
 																			%>
 																		<option selected style="display: none" value="">Seleziona
-																			una citt√†</option>
+																			una citt‡</option>
 																		<%
 																				};
 																			%>
@@ -696,7 +696,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 																				<div class="modal-body text-center p-lg-4">
 																					<i class="bi bi-exclamation-triangle-fill" style="font-size: 5rem"></i>
 																					<h4 class="text-warning mt-3">Sei sicuro di voler eliminare l' esperienza?</h4>
-																					<p class="mt-3">L'azione non √® reversibile </p>
+																					<p class="mt-3">L'azione non Ë reversibile </p>
 																				</div>
 																				<div class="modal-footer">
 																					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
@@ -845,7 +845,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 						<h4 class="text-danger mt-3">Peccato, non hai raggiunto un
 							puntggio sufficiente per verificare la Skill!</h4>
 						<p class="mt-3">Puoi comunque riprovare il quiz cercando di
-							rispondere correttamente ad almeno met√† delle domande</p>
+							rispondere correttamente ad almeno met‡ delle domande</p>
 						<button type="button" class="btn btn-sm mt-3 btn-danger"
 							data-bs-dismiss="modal">Ok</button>
 					</div>

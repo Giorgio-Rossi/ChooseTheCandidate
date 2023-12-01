@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;" language="java"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.candidatoDB.pw2.entity.*"%>
@@ -158,7 +158,7 @@
 															<%
 																Citta citta = (posizione.getCitta() != null) ? posizione.getCitta() : null;
 															%>
-															<label>Citt√†</label> <select class="form-select"
+															<label>Citt‡</label> <select class="form-select"
 																						 aria-label="Default select example" name="citta">
 
 															<%
@@ -171,7 +171,7 @@
 															} else {
 															%>
 															<option selected style="display: none" value="">Seleziona
-																una citt√†</option>
+																una citt‡</option>
 															<%
 																}
 																;

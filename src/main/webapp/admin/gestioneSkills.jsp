@@ -3,7 +3,7 @@
 <%@ page import="com.candidatoDB.pw2.entity.Quiz" %>
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.SkillIMPL" %>
 <%@ page import="com.candidatoDB.pw2.entity.Skill" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;" language="java" %>
 <%
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
@@ -104,7 +104,7 @@
             <div class="modal-body text-center p-lg-4">
                 <i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
                 <h4 class="text-success mt-3">Skill creata correttamente!</h4>
-                <p class="mt-3">Adesso Ã¨ possibile modificarla o eliminarla</p>
+                <p class="mt-3">Adesso è possibile modificarla o eliminarla</p>
                 <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
             </div>
         </div>

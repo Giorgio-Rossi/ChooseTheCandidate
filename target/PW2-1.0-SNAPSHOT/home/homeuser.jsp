@@ -9,7 +9,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.DateFormat" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;" language="java"%>
 
 <%
 	response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -236,7 +236,7 @@
 						<div class="content">
 							<div class="icon" style="background-color:white">
 								<i class="bi bi-receipt-cutoff"
-								   style="font-size: 9rem;text-align: center"><h1 class="btn btn-info m-1"style="font-size: 1rem">Candidatura pi√π recente</h1></i>
+								   style="font-size: 9rem;text-align: center"><h1 class="btn btn-info m-1"style="font-size: 1rem">Candidatura pi˘ recente</h1></i>
 							</div>
 						</div>
 					</div>
@@ -358,7 +358,7 @@
 		<div class="modal-content">
 			<div class="modal-body text-center p-lg-4">
 				<i class="bi bi-x-circle-fill" style="font-size: 5rem"></i>
-				<h4 class="text-danger mt-3">Hai gi√† effettuato il quiz per questa candidatura!</h4>
+				<h4 class="text-danger mt-3">Hai gi‡ effettuato il quiz per questa candidatura!</h4>
 				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
 				<button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
 			</div>
@@ -372,7 +372,7 @@
 			<div class="modal-body text-center p-lg-4">
 				<i class="bi bi-exclamation-triangle-fill" style="font-size: 5rem"></i>
 				<h4 class="text-warning mt-3">Attenzione</h4>
-				<p class="mt-3">Questo √® il token per il recupero della password, salvalo perch√® non sar√† pi√π visualizzabile</p>
+				<p class="mt-3">Questo Ë il token per il recupero della password, salvalo perchË non sar‡ pi˘ visualizzabile</p>
 				<%
 					String token =  session.getAttribute("password_token") == null ?  null : session.getAttribute("password_token").toString();
 					if(token != null){
@@ -444,7 +444,7 @@ if(token != null){
 		<div class="modal-content">
 			<div class="modal-body text-center p-lg-4">
 				<i class="bi bi-x-circle-fill" style="font-size: 5rem"></i>
-				<h4 class="text-danger mt-3">Hai gi√† effettuato il quiz per questa candidatura!</h4>
+				<h4 class="text-danger mt-3">Hai gi‡ effettuato il quiz per questa candidatura!</h4>
 				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
 				<button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
 			</div>
@@ -473,7 +473,7 @@ if(token != null){
 		<div class="modal-content">
 			<div class="modal-body text-center p-lg-4">
 				<i class="bi bi-x-circle-fill" style="font-size: 5rem"></i>
-				<h4 class="text-danger mt-3">Hai gi√† effettuato il quiz per questa candidatura!</h4>
+				<h4 class="text-danger mt-3">Hai gi‡ effettuato il quiz per questa candidatura!</h4>
 				<p class="mt-3">Controlla i risultati del test nella sezione Statistiche Quiz</p>
 				<button type="button" class="btn btn-sm mt-3 btn-danger" data-bs-dismiss="modal">Ok</button>
 			</div>

@@ -131,9 +131,12 @@ public class ProfiloServlet extends HttpServlet {
 		}
  
 		if (!Objects.equals(newpasw, "")) {
+			System.out.println(oldpsw+ newpasw+ confirmpsw);
 			if (oldpsw.equals(utenteInSessione.getPassword()) && newpasw.equals(confirmpsw)) {
 				utenteModificato.setPassword(newpasw);
 				isModified = true;
+			}else{
+				ErrorManager.setErrorMessage("Le password non coincidono oppure la vecchia password è errata", req);
 			}
 		} else {
 			utenteModificato.setPassword(utenteInSessione.getPassword());

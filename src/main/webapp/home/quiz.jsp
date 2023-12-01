@@ -3,7 +3,7 @@
 <%@ page import="com.candidatoDB.pw2.entity.RisposteDomande" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Map" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;" language="java" %>
 
 <html>
 <head>

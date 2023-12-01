@@ -1,5 +1,5 @@
 <%@ page import="com.servlets.pw2.controller.ErrorManager" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java"
+<%@ page contentType="text/html;" language="java"
 
 %>
 
@@ -39,7 +39,7 @@
 
 					<button type="submit" class="registrati2">Conferma</button>
 					<div class="linksLog2" style="padding-top: 4%;">
-						<p>Sei gi√† registrato? <a href="${pageContext.request.contextPath}/login.jsp"><b>Torna al login</b></a></p>
+						<p>Sei gi‡ registrato? <a href="${pageContext.request.contextPath}/login.jsp"><b>Torna al login</b></a></p>
 					</div>
 					<%
 						if(!ErrorManager.getErrorMessage((HttpServletRequest) request).isEmpty()){

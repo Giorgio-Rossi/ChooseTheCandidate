@@ -4,7 +4,7 @@
 <%@ page import="com.servlets.pw2.controller.ErrorManager" %>
 <%@ page import="java.text.DateFormat" %>
 <%@ page import="java.text.SimpleDateFormat" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;" language="java"%>
 <%
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 %>
@@ -100,7 +100,7 @@ style="position: fixed; align-items:center; display:flex; top:85px; left:21.25%;
             </div>
             <div class="form-group" aria-labelledby="navbarDropdown" style="margin-right:10px">
                 <select class="form-select" name="citta" aria-label="Default select example">
-                    <option disabled selected>Citt√†</option>
+                    <option disabled selected>Citt‡</option>
                     <option value="">Tutte</option>
                     <%
                         for(Regione r : regioni) {

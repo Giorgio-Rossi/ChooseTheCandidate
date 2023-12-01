@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;" language="java"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="com.candidatoDB.pw2.entity.*"%>
@@ -150,7 +150,7 @@ ArrayList<CategoriaPosizione> catpos= cpImpl.getAllCategoriePosizioni();
 														style="margin-right: 10px">
 														<select class="form-select" name="citta" id="citta"
 															aria-label="Default select example">
-															<option disabled selected>Citt√†</option>
+															<option disabled selected>Citt‡</option>
 															<%
 															for (Regione r : regioni) {
 															%>

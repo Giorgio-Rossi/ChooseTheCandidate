@@ -7,7 +7,7 @@
 <%@ page import="com.candidatoDB.pw2.entity.Skill" %>
 <%@ page import="com.candidatoDB.pw2.entity.UsersSkills" %>
 <%@ page import="java.util.Arrays" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;" language="java" %>
 <html>
 <head>
     <title>Classifica Candidatura</title>

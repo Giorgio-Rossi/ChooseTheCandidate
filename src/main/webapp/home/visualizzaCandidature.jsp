@@ -1,5 +1,5 @@
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.CandidaturaIMPL"%>
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html;"%>
 <%@ page import="com.candidatoDB.pw2.entity.CandidaturaUser"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.candidatoDB.pw2.interfaces.impl.UtenteIMPL"%>

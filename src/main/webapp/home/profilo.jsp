@@ -168,7 +168,7 @@ ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
                                                                     <%Citta citta = (utente.getId_citta() !=null)?utente.getId_citta() : null;
 
                                                                     %>
-                                                                    <label>Città di nascita</label>
+                                                                    <label>Citt� di nascita</label>
                                                                     <select class="form-select" aria-label="Default select example" name="citta">
 
                                                                         <%
@@ -179,7 +179,7 @@ ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
                                                                         <%
                                                                             }else{
                                                                         %>
-                                                                             <option selected style="display: none" value="">Seleziona una città</option>
+                                                                             <option selected style="display: none" value="">Seleziona una citt�</option>
                                                                         <%
                                                                             };
                                                                         %>
@@ -220,7 +220,7 @@ ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Vecchia Password</label>
-                                                                    <input class="form-control" type="password" placeholder="••••••" name="oldpsw" id="oldpsw">
+                                                                    <input class="form-control" type="password"  name="oldpsw" id="oldpsw">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -228,7 +228,7 @@ ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Nuova Password</label>
-                                                                    <input class="form-control" type="password" placeholder="••••••" name="newpsw" id="newpsw">
+                                                                    <input class="form-control" type="password"  name="newpsw" id="newpsw">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -236,7 +236,7 @@ ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Conferma <span class="d-none d-xl-inline">Password</span></label>
-                                                                    <input class="form-control" type="password" placeholder="••••••" name="confirmpsw" id="confirmpsw"></div>
+                                                                    <input class="form-control" type="password"  name="confirmpsw" id="confirmpsw"></div>
                                                             </div>
                                                         </div>
                                                     </div>

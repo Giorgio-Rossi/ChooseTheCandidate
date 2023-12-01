@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;" language="java"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.candidatoDB.pw2.entity.*" %>
@@ -112,7 +112,7 @@
 						</div>
 						<div class="form-group " aria-labelledby="navbarDropdown" style="margin-right:10px">
 							<select class="form-select" name="citta" aria-label="Default select example">
-								<option disabled selected>Citt√†</option>
+								<option disabled selected>Citt‡</option>
 								<option value="">Tutte</option>
 								<%
 									for(Regione r : regioni) {
@@ -196,7 +196,7 @@
 														if(p.getStato().equals("chiusa")){;
 													%>
 
-													<button type="submit" class="btn btn-danger" disabled name="id_quiz">La Posizione √® stata chiusa</button>
+													<button type="submit" class="btn btn-danger" disabled name="id_quiz">La Posizione Ë stata chiusa</button>
 
 													<%
 														} else if(candidaturaUserIMPL.getCandidaturaUserById(p.getId_posizione(),utente.getId_user())==null){
@@ -208,7 +208,7 @@
 													<%
 														}else{
 													%>
-													<button type="submit" class="btn btn-warning" disabled name="id_quiz">Candidatura gi√† inviata</button>
+													<button type="submit" class="btn btn-warning" disabled name="id_quiz">Candidatura gi‡ inviata</button>
 													<%
 														} ;
 													%>

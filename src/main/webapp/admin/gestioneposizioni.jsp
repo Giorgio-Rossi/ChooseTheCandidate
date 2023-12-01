@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java"%>
+<%@ page contentType="text/html;" language="java"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.candidatoDB.pw2.entity.*" %>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="form-group " aria-labelledby="navbarDropdown" style="margin-right:10px">
                     <select class="form-select" name="citta" aria-label="Default select example">
-                        <option disabled selected>Citt√†</option>
+                        <option disabled selected>Citt‡</option>
                         <option value="">Tutte</option>
                         <%
                             for (Regione r : regioni) {
@@ -162,7 +162,7 @@
                                             <div class="modal-body text-center p-lg-4">
                                                 <i class="bi bi-exclamation-triangle-fill" style="font-size: 5rem"></i>
                                                 <h4 class="text-warning mt-3">Sei sicuro di voler eliminare la posizione?</h4>
-                                                <p class="mt-3">Una volta eliminata non sar√† pi√π possibile visualizzare eventuali candidati</p>
+                                                <p class="mt-3">Una volta eliminata non sar‡ pi˘ possibile visualizzare eventuali candidati</p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
@@ -198,7 +198,7 @@
                 <div class="modal-body text-center p-lg-4">
                     <i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
                     <h4 class="text-success mt-3">Posizione creata correttamente!</h4>
-                    <p class="mt-3">Adesso √® possibile modificarla e visualizzarne i candidati</p>
+                    <p class="mt-3">Adesso Ë possibile modificarla e visualizzarne i candidati</p>
                     <button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
                 </div>
             </div>
