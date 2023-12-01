@@ -1165,7 +1165,7 @@ INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta
 VALUES ('Per aumentare la produttività, ridurre lo stress e raggiungere gli obiettivi in modo efficiente', 'Per rendere più complessa la gestione quotidiana', 'Per avere più tempo libero senza fare nulla', 'Per affrontare le attività in modo disorganizzato', 'scelta1', 122);
 -- Domanda 4
 INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
-VALUES ('Efficienza: fare le cose nel modo più rapido possibile', 'Efficacia: fare le cose giuste per raggiungere gli obiettivi', 'Entrambe hanno lo stesso peso nella gestione del tempo', 'Nessuna delle precedenti', 'scelta1', 123);
+VALUES ('Per aumentare la produttività, ridurre lo stress e raggiungere gli obiettivi in modo efficiente', 'Per rendere più complessa la gestione quotidiana', 'Per avere più tempo libero senza fare nulla', 'Per affrontare le attività in modo disorganizzato', 'scelta1', 122);
 -- Domanda 5
 INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
 VALUES ('Tecnica Pomodoro, Matrice di Eisenhower, To-do list prioritaria', 'Aumentare il multitasking, eliminare le pause, lavorare senza obiettivi', 'Procrastinare costantemente, non pianificare nulla, seguire uno schema casuale', 'Gestione del tempo in base all''umore del momento', 'scelta1', 124);

@@ -55,6 +55,17 @@
 <div class="container">
 
     <%
+        if(candidature.isEmpty()){
+    %>
+    <div class="alert alert-primary d-flex justify-content-center" role="alert">
+        Non hai ancora effettuato delle candidature.
+    </div>
+
+    <%
+        };
+    %>
+
+    <%
         for(CandidaturaUser candidaturaUser : candidature){
     %>
 

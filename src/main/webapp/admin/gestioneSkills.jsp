@@ -59,7 +59,7 @@
 
                             <a href="<%=request.getContextPath()%>/admin/modificaSkills.jsp?idSkill=<%=skill.getId_skill()%>" class="btn btn-primary me-2">Modifica</a>
 
-                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#warningModal<%=skill.getId_quiz()%>">
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#warningModal<%=skill.getId_skill()%>">
                                 Elimina
                             </button>
 
