@@ -117,9 +117,10 @@ CONSTRAINT FK_Utente_UtenteQuiz FOREIGN KEY (id_user) REFERENCES Utente (id_user
  
 create table Skill(
 id_skill int identity not null primary key,
+
 nome varchar(500),
 tipo_skill varchar(500) not null check(tipo_skill in('soft','hard')),
-id_quiz int,
+id_quiz int,		
 CONSTRAINT FK_Skill_Quiz FOREIGN KEY (id_quiz) REFERENCES Quiz (id_quiz)
 )
  
@@ -545,29 +546,31 @@ VALUES
 
 
     
-/*	Insert CategoriaPosizione	*/
+/*INSERIMENTO CATEGORIE SEZIONE AMMINISTRATIVA*/
+insert into CategoriaPosizione
+values ('Amministrazione Generale')
+     ,('Finanze e Contabilita')
+     ,('Risorse Umane (HR)')
+     ,('Amministrazione delle Operazioni')
+     ,('Gestione Contratti e Legalita')
+     ,('Acquisti e Approvvigionamento')
+     ,('Segreteria e Supporto Amministrativo');
 
-insert into CategoriaPosizione (nome_categoria) values ('Sviluppattore');
---Sviluppatore di Software, Sviluppatore Web, Sviluppatore Front-end, Sviluppatore Back-end, Sviluppatore Full-stack, Sviluppatore Mobile, Sviluppatore di Applicazioni, Sviluppatore di Giochi, Sviluppatore Embedded, Sviluppatore DevOps
-insert into CategoriaPosizione (nome_categoria) values ('Analyst'); 
---Analista di Dati,Analista di Sistema,Analista di Business,Analista di Sicurezza,Analista di Marketing,Analista delle Operazioni
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Gestione Progetti');
---Project Manager, Coordinatore di Progetto, Direttore dei Progetti, Responsabile della Gestione Progetti, Project Leader, Analista di Progetto,
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Sicurezza Informatica');
---Esperto di Sicurezza Informatica, Analista di Sicurezza delle Informazioni, Amministratore di Sicurezza di Rete, Esperto di Analisi delle Vulnerabilità, Architetto di Sicurezza, Ingegnere di Sicurezza, Consulente di Sicurezza, Esperto di Penetration Testing
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Amministrazione di Sistema e Reti');
---mministratore di Rete, Ingegnere di Rete, Specialista di Sistemi e Reti, Tecnico di Supporto di Rete, Gestore di Infrastruttura IT, Amministratore di Server, Tecnico di Sistemi, Responsabile di Reti, Esperto di Architettura di Rete
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Architettura Software');
---Progettista Software, Ingegnere Software, Architetto delle Applicazioni, Design Pattern Specialist, Analista di Architettura Software, Lead Developer, Esperto di Software Design
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Supporto Tecnico');
---Tecnico di Assistenza, Tecnico del Supporto Clienti, Esperto di Supporto Tecnico, Tecnico di Primo Livello, Tecnico di Secondo Livello, Analista del Supporto Tecnico, Ingegnere del Supporto Tecnico, Tecnico di Rete, Tecnico di Assistenza Tecnica.
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Gestione Qualità');
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Analisi dei Dati e Business Intelligence');
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Progettazione UX/UI');
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Sviluppo Software');
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Analyst developer');
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Cloud Computing');
 
+/*INSERIMENTO CATEGORIE SEZIONE IT*/
+insert into CategoriaPosizione
+values ('Sviluppo Software')
+     ,('Amministrazione di Sistemi e Reti')
+     ,('Gestione del Progetto')
+     ,('Supporto Tecnico')
+     ,('Analisi dei Dati e Business Intelligence')
+     ,('Progettazione UX/UI')
+     ,('Sicurezza Informatica')
+     ,('Cloud Computing')
+     ,('Database')
+     ,('Sicurezza Informatica');
+	 
+	
 
 /*	Inserimento	quiz Python - Domande e Risposte	*/
 INSERT INTO Quiz VALUES ('Python', 8);
@@ -977,8 +980,9 @@ INSERT INTO QuizDomanda VALUES(94, 15);
 INSERT INTO QuizDomanda VALUES(95, 15);
 
 
+
 -- Genera casualmente un nuovo quiz per Django
-INSERT INTO Quiz VALUES ('Django: Fondamenti', 5);
+INSERT INTO Quiz VALUES ('Django: Fondamenti', 11);
 
 -- Inserisci domande casuali per il nuovo quiz
 INSERT INTO Domanda VALUES ('Cos è Django e quali sono i suoi principali concetti?', 6);
@@ -1003,7 +1007,7 @@ INSERT INTO QuizDomanda VALUES(100, 16);
 
 
 --  quiz per Git
-INSERT INTO Quiz VALUES ('Git: Concetti di Base', 5);
+INSERT INTO Quiz VALUES ('Git: Concetti di Base', 12);
 
 INSERT INTO Domanda VALUES ('Cos è Git e come funziona?', 1);
 INSERT INTO Domanda VALUES ('Spiega il concetto di branch in Git.', 1);
@@ -1296,34 +1300,34 @@ insert into quizdomanda values(76, 26),
                               (40, 26),
                               (42, 26),
                               (47, 26);
- 
- 
- 
+									   
+
+									  
 /*Insert  Skill */
  
-INSERT INTO Skill VALUES('Python','hard', 1);
-INSERT INTO Skill VALUES('Java','hard', 2);
-INSERT INTO Skill VALUES('C','hard', 3);
-INSERT INTO Skill VALUES('C++','hard', 4);
-INSERT INTO Skill VALUES('Javascript','hard', 5);
-INSERT INTO Skill VALUES('HTML, CSS','hard', 6);
-INSERT INTO Skill VALUES('Comunicazione efficace','soft', 7);
-INSERT INTO Skill VALUES('Lavoro di squadra','soft', 8);
-INSERT INTO Skill VALUES('Leadership','soft', 9);
-INSERT INTO Skill VALUES('Gestione dello stress','soft', 10);
-INSERT INTO Skill VALUES('Risoluzione dei problemi','soft', 11);
-INSERT INTO Skill VALUES('Linux','hard', 12);
-INSERT INTO Skill VALUES('Windows','hard', 13);
-INSERT INTO Skill VALUES('React: Introduzione','hard', 14);
-INSERT INTO Skill VALUES('Angular: Concetti di Base','hard', 15);
-INSERT INTO Skill VALUES('Django: Fondamenti','hard', 16);
-INSERT INTO Skill VALUES('Git: Concetti di Base','hard', 17);
-insert into Skill values('Problem solving','soft', 18);
-insert into Skill values('Adattabilità','soft', 19);
-insert into Skill values('Creatività e Innovazione','soft', 20);
-insert into Skill values('Gestione del tempo','soft', 21);
-insert into Skill values('Relationship','soft', 22);
-insert into Skill values('Pensiero critico','soft', 23);
+INSERT INTO Skill VALUES(1, 'Python','hard');
+INSERT INTO Skill VALUES(2, 'Java','hard');
+INSERT INTO Skill VALUES(3, 'C','hard');
+INSERT INTO Skill VALUES(4, 'C++','hard');
+INSERT INTO Skill VALUES(5, 'Javascript','hard');
+INSERT INTO Skill VALUES(6, 'HTML, CSS','hard');
+INSERT INTO Skill VALUES(7, 'Comunicazione efficace','soft');
+INSERT INTO Skill VALUES(8, 'Lavoro di squadra','soft');
+INSERT INTO Skill VALUES(9, 'Leadership','soft');
+INSERT INTO Skill VALUES(10, 'Gestione dello stress','soft');
+INSERT INTO Skill VALUES(11, 'Risoluzione dei problemi','soft');
+INSERT INTO Skill VALUES(12, 'Linux','hard');
+INSERT INTO Skill VALUES(13, 'Windows','hard');
+INSERT INTO Skill VALUES(14, 'React: Introduzione','hard');
+INSERT INTO Skill VALUES(15, 'Angular: Concetti di Base','hard');
+INSERT INTO Skill VALUES(16, 'Django: Fondamenti','hard');
+INSERT INTO Skill VALUES(17, 'Git: Concetti di Base','hard');
+insert into Skill values(18, 'Problem solving','soft');
+insert into Skill values(19, 'Adattabilità','soft');
+insert into Skill values(20, 'Creatività e Innovazione','soft');
+insert into Skill values(21, 'Gestione del tempo','soft');
+insert into Skill values(22, 'Relationship','soft');
+insert into Skill values(23, 'Pensiero critico','soft');
  
 /*Insert userskill*/
  
@@ -1374,8 +1378,14 @@ insert into UtenteQuiz values (1,8,6, '2023-11-18 18:34:50'),
                               (3,16,5, '2023-11-18 18:34:50'),
                               (25,18,10, '2023-11-18 18:34:50'),
                               (26,18,18, '2023-11-18 18:34:50');
-                              
-
+																
+										  
+																
+										 
+															   
+															   
+																
+																
 /*	Inserimento delle posizioni	*/
 
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo un sistemista esperto con almeno 3 anni di esperienza su progetti di media grandezza','1','6','4','aperta','20231101','Sistemista');
@@ -1392,10 +1402,86 @@ INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,st
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Sei appassionato di tecnologia e di programmazione? iamo cercando un/una Back-end Developer con esperienza in ambito Node con Javascript/Typescript','8','3','2','aperta','20240120','Back-end web developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('1','ll candidato è diplomato/laureato, ha maturato esperienza pluriennale nello sviluppo software web based, ed ha una conoscenza tecnica della lingua inglese. Sono requisiti fondamentali una buona capacità relazionale, attitudine al lavoro in team, capacità di adattamento e flessibilità.','5','3','2','aperta','20240120','Full stack web developer');
 
-/*insert candidaturauser*/
-                              
-insert into candidaturauser values(4, 18, '2023-09-12 16:25:35'),
-                                  (6, 18, '2023-09-17 12:55:35');
 
 
+
+-- Sviluppatore Full-Stack
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo uno sviluppatore full-stack altamente motivato per unirsi al nostro team dinamico. La persona ideale avrà competenze sia nel frontend che nel backend e sarà coinvolta nello sviluppo di soluzioni software innovative.', 1, 1, 1, 'aperta', '2023-11-30 10:00:00.000', 'Sviluppatore Full-Stack'); 
+
+-- Ingegnere del Software
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Stiamo cercando un ingegnere del software talentuoso e appassionato per contribuire alla progettazione, sviluppo e manutenzione del nostro software. Se hai esperienza nella creazione di soluzioni scalabili, sei la persona che stiamo cercando.', 2, 2, 2, 'aperta', '2023-11-30 11:30:00.000', 'Ingegnere del Software');
+
+-- Project Manager Software
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Project Manager Software con una comprovata esperienza nella gestione di progetti software complessi. Se hai una forte leadership e capacità organizzative, entra a far parte della nostra squadra.', 3, 3, 3, 'aperta', '2023-11-30 13:45:00.000', 'Project Manager Software');
+
+-- Scrum Master
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo uno Scrum Master motivato e orientato ai risultati per guidare e facilitare le pratiche agile nel nostro team di sviluppo. Se sei appassionato di metodologie agili, candidati ora.', 4, 1, 4, 'aperta', '2023-11-30 14:30:00.000', 'Scrum Master');
+
+-- Progettista UX/UI
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Stiamo cercando un Progettista UX/UI creativo ed esperto per migliorare l''esperienza degli utenti dei nostri prodotti software. Se hai una visione innovativa e competenze di progettazione eccezionali, fai domanda oggi stesso.', 5, 6, 5, 'aperta', '2023-11-30 15:15:00.000', 'Progettista UX/UI');
+
+-- Architetto dell'Esperienza Utente
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Architetto dell''Esperienza Utente appassionato per guidare la progettazione di interfacce utente intuitive e coinvolgenti. Se hai una forte comprensione dell''usabilità, sei la persona giusta per noi.', 6, 6, 6, 'aperta', '2023-11-30 16:00:00.000', 'Architetto dell''Esperienza Utente');
+
+-- Direttore Amministrativo
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Direttore Amministrativo altamente qualificato per sovrintendere alle operazioni quotidiane dell''azienda. Il candidato ideale avrà una solida comprensione delle pratiche aziendali e un forte orientamento alla leadership.', 7, 3, 7, 'aperta', '2023-11-30 16:45:00.000', 'Direttore Amministrativo');
+
+-- Responsabile Amministrativo
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Stiamo cercando un Responsabile Amministrativo con esperienza comprovata nella gestione delle operazioni finanziarie e contabili. Se hai una solida competenza in finanza aziendale, candidati ora.', 8, 3, 8, 'aperta', '2023-11-30 17:30:00.000', 'Responsabile Amministrativo');
+
+-- Responsabile Finanziario
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Responsabile Finanziario esperto per guidare la gestione finanziaria dell''azienda. Se hai una solida competenza contabile e una visione strategica delle finanze, ti incoraggiamo a candidarti.',29, 3, 1, 'aperta', '2023-11-30 18:15:00.000', 'Responsabile Finanziario');
+
+-- Contabile
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Contabile altamente organizzato con esperienza nella gestione delle transazioni finanziarie. Se sei preciso e attento ai dettagli, potresti essere la persona giusta per unirti al nostro team contabile.', 23, 3, 1, 'aperta', '2023-11-29 09:00:00.000', 'Contabile');
+
+-- Responsabile delle Risorse Umane
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Responsabile delle Risorse Umane che guidi le iniziative HR, dalla selezione alla gestione delle prestazioni. Se hai una forte capacità relazionale e una visione strategica delle risorse umane, ti invitiamo a candidarti.', 76, 3, 1, 'aperta', '2023-11-30 09:45:00.000', 'Responsabile delle Risorse Umane');
+
+-- Recruiter
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Recruiter talentuoso con abilità di ricerca e selezione. Se hai una buona comprensione del mercato del lavoro e capacità di valutare il talento, ti invitiamo a far parte del nostro team HR.', 1, 3, 1, 'aperta', '2023-11-30 10:30:00.000', 'Recruiter');
+
+-- Responsabile Contratti
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Responsabile Contratti con esperienza nella gestione e negoziazione di contratti aziendali. Se hai competenze legali e una buona comprensione delle pratiche contrattuali, candidati ora.', 3, 3, 1, 'aperta', '2023-11-29 11:15:00.000', 'Responsabile Contratti');
+
+-- Avvocato Aziendale o Consulente Legale
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Avvocato Aziendale o Consulente Legale per fornire consulenza legale interna. Se hai una solida esperienza in diritto commerciale, contrattuale e delle società, potresti essere la persona che stiamo cercando.', 7,3, 1, 'aperta', '2023-11-29 12:00:00.000', 'Avvocato Aziendale o Consulente Legale');
+
+-- Amministratore del Database
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Amministratore del Database esperto per gestire e ottimizzare i database aziendali. Se hai competenze nella progettazione, implementazione e manutenzione di database, ti invitiamo a candidarti.', 9, 9, 1, 'aperta', '2023-11-29 12:45:00.000', 'Amministratore del Database');
+
+-- Sviluppatore di Database
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Stiamo cercando uno Sviluppatore di Database talentuoso per progettare e implementare soluzioni database efficaci. Se hai competenze nello sviluppo SQL e una conoscenza approfondita delle best practice, fai domanda oggi stesso.', 20, 9, 1, 'aperta', '2023-11-29 13:30:00.000', 'Sviluppatore di Database');
+
+-- Architetto Cloud
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Architetto Cloud altamente qualificato per progettare e implementare soluzioni cloud scalabili e sicure. Se hai esperienza nella migrazione verso il cloud e nella gestione delle risorse cloud, candidati subito.', 2, 8, 1, 'aperta', '2023-11-29 14:15:00.000', 'Architetto Cloud');
+
+-- Ingegnere di Sistemi Cloud
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Ingegnere di Sistemi Cloud per supportare lo sviluppo e la gestione di infrastrutture cloud. Se hai competenze nella configurazione e nell''ottimizzazione delle risorse cloud, ti invitiamo a far parte del nostro team.', 80, 8, 1, 'aperta', '2023-11-29 15:00:00.000', 'Ingegnere di Sistemi Cloud');
+
+-- Amministratore di Reti
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Amministratore di Reti competente per gestire e mantenere la nostra infrastruttura di rete. Se hai esperienza nella progettazione, implementazione e sicurezza delle reti, fai domanda oggi stesso.', 64, 2, 1, 'aperta', '2023-11-29 15:45:00.000', 'Amministratore di Reti');
+
+-- Tecnico di Supporto IT
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Tecnico di Supporto IT per fornire assistenza tecnica agli utenti interni ed esterni. Se hai una passione per la risoluzione dei problemi tecnici e un''eccellente capacità di comunicazione, candidati subito.', 32, 4, 1, 'aperta', '2023-11-29 16:30:00.000', 'Tecnico di Supporto IT');
 
