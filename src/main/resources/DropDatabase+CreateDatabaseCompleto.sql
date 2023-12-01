@@ -748,11 +748,10 @@ INSERT INTO RisposteDomanda VALUES ('Cascading Style Sheet', 'Creative Styling S
 INSERT INTO RisposteDomanda VALUES ('*', '#', '.', ':', 'scelta1', 44);
 INSERT INTO RisposteDomanda VALUES ('Layout di griglia', 'Box Model', 'Posizionamento statico', 'Modello di posizionamento', 'scelta1', 45);
 INSERT INTO RisposteDomanda VALUES ('Style', 'Class', 'Id', 'Link', 'scelta1', 46);
-INSERT INTO RisposteDomanda VALUES ('<link>', '<style>', '<script>', '<css>', 'scelta1', 47);
-INSERT INTO RisposteDomanda VALUES ('.', '#', '*', ':', 'scelta1', 48);
-INSERT INTO RisposteDomanda VALUES ('<ul>', '<li>', '<ol>', '<dl>', 'scelta3', 49);
+INSERT INTO RisposteDomanda VALUES ('link', 'style', 'script', 'css', 'scelta1', 47);
+INSERT INTO RisposteDomanda VALUES ('a', '#', '*', ':', 'scelta1', 48);
+INSERT INTO RisposteDomanda VALUES ('ul', 'li', 'ol', 'dl', 'scelta3', 49);
 INSERT INTO RisposteDomanda VALUES ('color', 'text-color', 'font-color', 'style', 'scelta1', 50);
-
 
 INSERT INTO QuizDomanda VALUES(41, 6);
 INSERT INTO QuizDomanda VALUES(42, 6);
@@ -1382,7 +1381,7 @@ insert into UtenteQuiz values (1,8,6, '2023-11-18 18:34:50'),
 
 /*	Inserimento delle posizioni	*/
 
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo un sistemista esperto con almeno 3 anni di esperienza su progetti di media grandezza','1','6','4','aperta','20231101','Sistemista');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo un sistemista esperto con almeno 3 anni di esperienza su progetti di media grandezza','1','6','3','aperta','20231101','Sistemista');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo un full-stack developer','1','1','1','aperta','20231102','Web Developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo uno sviluppatore Java','2','1','2','aperta','20231107','Java Developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo uno sviluppatore Front End','1','2','25','aperta','20231102','Front-End Developer');
