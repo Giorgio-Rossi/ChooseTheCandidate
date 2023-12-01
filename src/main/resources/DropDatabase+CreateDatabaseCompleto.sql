@@ -560,7 +560,7 @@ INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Amministrazione di Sist
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Architettura Software');
 --Progettista Software, Ingegnere Software, Architetto delle Applicazioni, Design Pattern Specialist, Analista di Architettura Software, Lead Developer, Esperto di Software Design
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Supporto Tecnico');
-Tecnico di Assistenza, Tecnico del Supporto Clienti, Esperto di Supporto Tecnico, Tecnico di Primo Livello, Tecnico di Secondo Livello, Analista del Supporto Tecnico, Ingegnere del Supporto Tecnico, Tecnico di Rete, Tecnico di Assistenza Tecnica.
+--Tecnico di Assistenza, Tecnico del Supporto Clienti, Esperto di Supporto Tecnico, Tecnico di Primo Livello, Tecnico di Secondo Livello, Analista del Supporto Tecnico, Ingegnere del Supporto Tecnico, Tecnico di Rete, Tecnico di Assistenza Tecnica.
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Gestione Qualità');
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Analisi dei Dati e Business Intelligence');
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Progettazione UX/UI');
@@ -977,9 +977,8 @@ INSERT INTO QuizDomanda VALUES(94, 15);
 INSERT INTO QuizDomanda VALUES(95, 15);
 
 
-
 -- Genera casualmente un nuovo quiz per Django
-INSERT INTO Quiz VALUES ('Django: Fondamenti', 11);
+INSERT INTO Quiz VALUES ('Django: Fondamenti', 5);
 
 -- Inserisci domande casuali per il nuovo quiz
 INSERT INTO Domanda VALUES ('Cos è Django e quali sono i suoi principali concetti?', 6);
@@ -1004,7 +1003,7 @@ INSERT INTO QuizDomanda VALUES(100, 16);
 
 
 --  quiz per Git
-INSERT INTO Quiz VALUES ('Git: Concetti di Base', 12);
+INSERT INTO Quiz VALUES ('Git: Concetti di Base', 5);
 
 INSERT INTO Domanda VALUES ('Cos è Git e come funziona?', 1);
 INSERT INTO Domanda VALUES ('Spiega il concetto di branch in Git.', 1);
@@ -1143,7 +1142,7 @@ VALUES ('Quali sono alcune strategie efficaci per gestire il tempo?', 9),
        ('Come si priorizzano i compiti quando hai molte scadenze ravvicinate?', 8),
        ('Perchè è importante saper gestire il proprio tempo?', 9),
        ('Cos''è più importante: efficienza o efficacia nella gestione del tempo?', 8),
-       ('Quali tecniche sono utili per migliorare la gestione del tempo?', 9);
+       ('Quali tecniche sono utili per migliorare la gestione del tempo?', 9),
        ('E'' venerdì e ti sono rimasti 10 compiti da svolgere ma sai che ne riuscirai a svolgere solo 8, a quali rinunci?', 7);
  
  
@@ -1215,7 +1214,7 @@ INSERT INTO Domanda (testo, punteggio)
 VALUES ('Cos''è il pensiero critico?', 8),
        ('Quali sono i vantaggi di saper usare il pensiero critico?', 9),
        ('Qual è l''importanza del pensiero critico nell''ambiente lavorativo?', 8),
-       ('Quali sono gli ostacoli principali al pensiero critico nel contesto lavorativo?', 9);
+       ('Quali sono gli ostacoli principali al pensiero critico nel contesto lavorativo?', 9),
        ('Perchè il pensiero critico è importante nel contesto lavorativo',7);
  
 -- Quiz "Pensiero Critico" (Quiz ID: 10)
@@ -1239,9 +1238,64 @@ VALUES ('La mancanza di tempo, la resistenza al cambiamento, la paura del fallim
 INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
 VALUES ('Perché aiuta a valutare informazioni, prendere decisioni informed, risolvere problemi complessi e favorire la comprensione e comunicazione.', 'Il pensiero critico non è importante nel contesto lavorativo', 'Perché complica le decisioni e rallenta i processi lavorativi', 'Perché limita la capacità di valutare informazioni', 'scelta1', 134);
  
+
+/*quiz per la posizione di sviluppatore python con conoscenza di Django*/
+insert into quiz values ('Python and Django', 10);
+
+insert into quizdomanda values(96, 24),
+                              (97, 24),
+                              (99, 24),
+                              (100, 24),
+                              (2, 24),
+                              (3, 24),
+                              (4, 24),
+                              (5, 24),
+                              (7, 24),
+                              (8, 24);
+                              
+                              
+/*quiz per la posizione front-end devoloper*/
+insert into quiz values('Front-end', 15)
+
+insert into quizdomanda values(33, 25),
+                              (34, 25),
+                              (35, 25),
+                              (36, 25),
+                              (38, 25),
+                              (39, 25),
+                              (40, 25),
+                              (42, 25),
+                              (43, 25),
+                              (44, 25),
+                              (45, 25),
+                              (46, 25),
+                              (48, 25),
+                              (49, 25),
+                              (50, 25);
  
- 
- 
+ /*quiz per la posizione full-stack web devoloper*/
+insert into quiz values('Web', 20)
+
+insert into quizdomanda values(76, 26),
+                              (77, 26),
+                              (79, 26),
+                              (82, 26),
+                              (84, 26),
+                              (87, 26),
+                              (89, 26),
+                              (91, 26),
+                              (94, 26),
+                              (95, 26),
+                              (4, 26),
+                              (9, 26),
+                              (15, 26),
+                              (20, 26),
+                              (25, 26),
+                              (30, 26),
+                              (35, 26),
+                              (40, 26),
+                              (42, 26),
+                              (47, 26);
  
  
  
@@ -1314,21 +1368,34 @@ insert into UtenteQuiz values (1,8,6, '2023-11-18 18:34:50'),
                               (21,11,30, '2023-11-18 18:34:50'),
 							  (1,11,6, '2023-11-18 18:34:50'),
                               (11,12,5, '2023-11-18 18:34:50'),
+                              (10,13,5, '2023-11-18 18:34:50'),
+                              (13,14,14, '2023-11-18 18:34:50'),
+                              (20,15,30, '2023-11-18 18:34:50'),
+                              (3,16,5, '2023-11-18 18:34:50'),
+                              (25,8,10, '2023-11-18 18:34:50'),
+                              (26,8,18, '2023-11-18 18:34:50');
+                              
+
 /*	Inserimento delle posizioni	*/
 
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo un sistemista esperto con almeno 3 anni di esperienza su progetti di media grandezza','1','6','4','aperta','20231101','Sistemista');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo un full-stack developer','1','1','1','aperta','20231102','Web Developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo uno sviluppatore Java','2','1','2','aperta','20231107','Java Developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo uno sviluppatore Front End','1','2','8','aperta','20231102','Front-End Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo uno sviluppatore Front End','1','2','25','aperta','20231102','Front-End Developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('8','Cerchiamo uno sviluppatore Back End con nozioni di Java e Python','5','3','2','aperta','20231102','Back-End Developer');
 
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('2','Siamo alla ricerca di una figura per lo sviluppo di applicazioni web','6','3','2','aperta','20240120','Full stack web developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Siamo alla ricerca di uno sviluppatore Python/Django esperto per unirsi al nostro team. Lideale candidato avrà una passione per la programmazione e l innovazione tecnologica, con un focus su Python e il framework Django.','6','3','1','aperta','20240120','Sviluppatore python');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('2','Siamo alla ricerca di una figura per lo sviluppo di applicazioni web','6','3','26','aperta','20240120','Full stack web developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Siamo alla ricerca di uno sviluppatore Python/Django esperto per unirsi al nostro team. Lideale candidato avrà una passione per la programmazione e l innovazione tecnologica, con un focus su Python e il framework Django.','6','3','24','aperta','20240120','Sviluppatore python');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Siamo alla ricerca di giovani candidati con passione per la tecnologia per un percorso di crescita nell ambito IT/Digital. Nello specifico, le risorse avranno l’opportunità di essere inserite negli ambiti di Cyber Security, di sviluppo software e di tecnologie per dei Canali Digitali con l’obiettivo di partecipare a progetti interfunzionali dalla definizione delle soluzioni con il cliente interno, di sviluppo/programmazione e supporto nelle fasi di certificazione fino alla manutenzione/gestione delle applicazioni.','29','3','1','aperta','20240120','Cyber security, Sviluppo software');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Il candidato che stiamo cercando avrà le seguenti responsabilità: implementazione di interfacce per gestionali in cloud; realizzare prototipi delle interfacce sotto la direzione del team leader. Ai candidati sarà offerta l’opportunità di lavorare in un ambiente dinamico, in forte espansione all’interno del quale sono previsti percorsi di crescita, supportati da una continua attenzione alla valorizzazione delle risorse.','13','3','6','aperta','20240120','Sviluppatore front end');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('2','Siamo alla ricerca di sviluppatori Web Full stack con almeno 4 anni di esperienza, è un requisito gradito la conoscenza dei seguenti CMS/linguaggi: Wordpress, Prestashop, Magento 2, HTML, CSS, Javascript, PHP, MySQL.','7','3','5','aperta','20240120','Senior web developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Sei appassionato di tecnologia e di programmazione? iamo cercando un/una Back-end Developer con esperienza in ambito Node con Javascript/Typescript','8','3','2','aperta','20240120','Back-end web developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('1','ll candidato è diplomato/laureato, ha maturato esperienza pluriennale nello sviluppo software web based, ed ha una conoscenza tecnica della lingua inglese. Sono requisiti fondamentali una buona capacità relazionale, attitudine al lavoro in team, capacità di adattamento e flessibilità.','5','3','2','aperta','20240120','Full stack web developer');
 
-/*INSERIMENTO CATEGORIE SEZIONE AMMINISTRATIVA*/
+/*insert candidaturauser*/
+                              
+insert into candidaturauser values(4, 8, '2023-09-12 16:25:35'),
+                                  (6, 8, '2023-09-17 12:55:35');
+
+
 
