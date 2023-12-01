@@ -894,7 +894,7 @@ public class UtenteIMPL implements UtenteDAO {
 				"        U.id_user, U.nome, U.cognome, UQ.punteggio\n" +
 				")\n" +
 				"SELECT * FROM ranked_users WHERE user_rank = 1\n" +
-				"ORDER BY SkillsVerificate DESC, PunteggioQuiz DESC \n" +
+				"ORDER BY PunteggioQuiz DESC, SkillsVerificate DESC \n" +
 				"OFFSET 0 ROWS FETCH NEXT 3 ROWS ONLY;";
 
 		PreparedStatement statement = null;
@@ -969,7 +969,7 @@ public class UtenteIMPL implements UtenteDAO {
 				"        U.id_user, U.nome, U.cognome, UQ.punteggio\n" +
 				")\n" +
 				"SELECT * FROM ranked_users WHERE user_rank = 1\n" +
-				"ORDER BY SkillsVerificate DESC, PunteggioQuiz DESC \n";
+				"ORDER BY PunteggioQuiz DESC, SkillsVerificate DESC \n";
 
 		PreparedStatement statement = null;
 

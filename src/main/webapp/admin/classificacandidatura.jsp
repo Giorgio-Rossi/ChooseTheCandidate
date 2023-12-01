@@ -105,7 +105,15 @@
                             </div>
 
                             <div class="col-sm border-right">
+                                <%if(utente.getCV()!=null){
+                                %>
                                 <a href="${pageContext.request.contextPath}/img/cv<%=utente.getCV()%>" target="_blank" class="file-upload btn btn-success  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
+                                <%}else {
+                                %>
+                                <button type="button" class="btn btn-success  rounded-pill shadow" disabled>CV non caricato</button>
+                                <%
+                                    }
+                                %>
                             </div>
 
                         </div>
@@ -220,7 +228,15 @@
 
                                 <div class="col">
                                     <div class="mt-2 mt-lg-0 d-flex flex-wrap align-items-start gap-1">
+                                        <%if(all_user_posizione.get(j).getCV()!=null){
+                                        %>
                                         <a href="${pageContext.request.contextPath}/img/cv<%=all_user_posizione.get(j).getCV()%>" target="_blank" class="file-upload btn btn-success  rounded-pill shadow"><i class="bi bi-file-earmark-arrow-down-fill"></i>Curriculum</a>
+                                        <%}else {
+                                        %>
+                                        <button type="button" class="btn btn-success  rounded-pill shadow" disabled>CV non caricato</button>
+                                        <%
+                                            }
+                                        %>
                                     </div>
                                 </div>
                             </div>
