@@ -1941,28 +1941,60 @@ VALUES ('Progettazione concettuale, progettazione logica, implementazione fisica
        ('Migliora le prestazioni del database, contribuisce a un migliore utilizzo delle risorse di sistema.', 'L''ottimizzazione del database non ha impatto sulle prestazioni del sistema.', 'Solo migliora le prestazioni del database.', 'Solo contribuisce a un migliore utilizzo delle risorse.', 'scelta1', 247),
        -- Domanda 5
        ('Attraverso la valutazione delle vulnerabilità, l''applicazione di patch, l''implementazione di criteri di sicurezza.', 'I problemi di sicurezza non possono essere risolti in un database.', 'Solo applicando patch.', 'Solo implementando criteri di sicurezza.', 'scelta1', 248);
-       
-       
 
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
 
-       
+
+
+
+--Quiz sviluppatore di db
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze per Sviluppatore di Database', 5);
+
+INSERT INTO Domanda (testo, punteggio)
+VALUES ( 'Cos''è un indice in un database e quale è il suo scopo principale?', 8),
+       ('Quali sono le differenze tra un database SQL e un database NoSQL?', 9),
+       ('Cosa significa normalizzazione in un database relazionale?', 8),
+       ('Cosa sono le stored procedure in un database?', 9),
+       ('Qual è l''importanza dell''indicizzazione in un database?', 8);
+
+--Quiz sviluppatore di db (ID Quiz: 46)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (249, 46), (250, 46), (251, 46), (252, 46), (253, 46);
+
+
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Un indice è un tipo di dato in un database.', 'Un indice è una chiave primaria di una tabella.', 'Un indice è una struttura che migliora la velocità di ricerca dei dati in una tabella.', 'Un indice è una procedura memorizzata in un database.', 'scelta3', 249),
+       -- Domanda 2
+       ('SQL supporta solo linguaggio di query strutturato, mentre NoSQL supporta solo database non relazionali.', 'SQL è basato su schema, mentre NoSQL è basato su schema flessibile.', 'SQL è adatto solo per dati piccoli, mentre NoSQL è adatto solo per dati molto grandi.', 'SQL è più veloce di NoSQL nella maggior parte dei casi.', 'scelta2', 250),
+       -- Domanda 3
+       ('La normalizzazione è il processo di aggiunta di dati duplicati per migliorare le prestazioni.', 'La normalizzazione è il processo di organizzare i dati in modo efficiente riducendo la ridondanza.', 'La normalizzazione è il processo di eliminazione di tutte le tabelle in un database.', 'La normalizzazione è il processo di creazione di un database senza relazioni.', 'scelta2', 251),
+       -- Domanda 4
+       ('Le stored procedure sono un tipo di linguaggio di programmazione.', 'Le stored procedure sono procedure che vengono eseguite solo una volta.', 'Le stored procedure sono un insieme di istruzioni SQL precompilate che possono essere eseguite.', 'Le stored procedure sono utilizzate solo per la creazione di tabelle in un database.', 'scelta3', 252),
+       -- Domanda 5
+       ('L''indicizzazione rallenta le ricerche in un database.', ' L''indicizzazione non ha alcun impatto sulle prestazioni di un database.', 'L''indicizzazione accelera le ricerche e l''accesso ai dati in un database.', ' L''indicizzazione è utile solo per le tabelle vuote.', 'scelta3', 253);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --lascia qua in fondo -- Quiz per il Tecnico di Supporto IT (ID Quiz: 35)
 -- Domande per il Quiz "Tecnico di Supporto IT"
 INSERT INTO Domanda (testo, punteggio)
