@@ -1311,7 +1311,7 @@ INSERT INTO Domanda (testo, punteggio)
 VALUES ('Cosa significa RAID?', 8),
        ('Qual è la differenza tra HTTP e HTTPS?', 9),
        ('Descrivi il concetto di virtualizzazione.', 8),
-       ('Cos’è un attacco DDoS e come funziona?', 9),
+       ('Cos''è un attacco DDoS e come funziona?', 9),
        ('Spiega la differenza tra un hub, uno switch e un router.', 8),
        ('Cosa sono i protocolli TCP/IP e a cosa servono?', 9),
        ('Descrivi brevemente la differenza tra un sistema operativo Windows e Linux.', 8),
@@ -1328,7 +1328,7 @@ VALUES ('Redundant Array of Independent Disks: un metodo di archiviazione dei da
        -- Domanda 2
        ('HTTP (Hypertext Transfer Protocol) è non sicuro, mentre HTTPS (HTTP Secure) è sicuro e cifrato SSL/TLS.', 'HTTP è più veloce di HTTPS.', 'HTTP è utilizzato solo per siti web statici, mentre HTTPS è per siti dinamici.', 'HTTP è vecchio, mentre HTTPS è il nuovo protocollo di rete.', 'scelta1', 131),
        -- Domanda 3
-       ('La virtualizzazione è la creazione di risorse hardware/software virtuali piuttosto che fisiche.', 'La virtualizzazione riguarda la creazione di reti virtuali all’interno di un’azienda.', 'La virtualizzazione è l'uso esclusivo di computer portatili.', 'La virtualizzazione si riferisce all'uso esclusivo di software open-source.', 'scelta1', 132),
+       ('La virtualizzazione è la creazione di risorse hardware/software virtuali piuttosto che fisiche.', 'La virtualizzazione riguarda la creazione di reti virtuali all’interno di un’azienda.', 'La virtualizzazione è l''uso esclusivo di computer portatili.', 'La virtualizzazione si riferisce all''uso esclusivo di software open-source.', 'scelta1', 132),
        -- Domanda 4
        ('Un attacco DDoS (Distributed Denial of Service) sovraccarica un server con un''enorme quantità di richieste, rendendolo inaccessibile agli utenti legittimi.', 'Un attacco DDoS permette di accedere ai dati sensibili di un server.', 'Un attacco DDoS è simile a un attacco fisico a un server.', 'Un attacco DDoS limita il numero di richieste al server per garantire la sicurezza.', 'scelta1', 133),
        -- Domanda 5
@@ -1383,7 +1383,20 @@ VALUES ('HTML è il linguaggio di markup per la struttura del contenuto, CSS è 
        ('I cookie sono piccoli file di testo memorizzati sul computer dell’utente per tracciare informazioni come preferenze e stato di login.', 'I cookie sono solo per l’archiviazione di immagini nei siti web.', 'I cookie non sono più utilizzati nei siti web moderni.', 'I cookie sono usati solo per la grafica dei siti web.', 'scelta1', 145);
 
        
-       
+
+	   INSERT INTO Domanda (testo, punteggio)
+VALUES ('', 8),
+       ('', 9),
+       ('', 8),
+       ('', 9),
+       ('', 8),
+       ('', 9),
+       ('', 8),
+       ('', 9),
+	   ('', 8),
+       ('', 9),
+       ('', 8),
+       ('', 9);
        
 -- Quiz Cybersecurity
 -- Quiz Soft Skills 12
@@ -1486,7 +1499,7 @@ VALUES ('group by', 'order by', 'group by to by', 'division for', 'scelta1', 174
        -- Domanda 4
        ('Serve solo per collegare le tabelle', 'Serve per avere un coolegamento tra tabelle e può essere uguale in determinate condizioni', 'Sono le chiavi esterne della tabella madre', 'Funge da identificatore univoco della tabella e serve per evitare i avere record identici', 'scelta4', 177),
        -- Domanda 5
-       ('Si crea una terza tabella con nome quello della relazione e campi le due chiavi primarie delle due tabelle sotto forma di chiavi esterne più eventuali attributi', 'Si uniscono le due tabelle diventando una unica con chiave primaria la combinazione delle chiavi primarie delle due tabelle', 'La tabella più importante ricava come attributo la chiave primaria dell''altra tabella sotto forma di chiave esterna', 'Non succede niente', 'scelta1', 178),
+       ('Si crea una terza tabella con nome quello della relazione e campi le due chiavi primarie delle due tabelle sotto forma di chiavi esterne più eventuali attributi', 'Si uniscono le due tabelle diventando una unica con chiave primaria la combinazione delle chiavi primarie delle due tabelle', 'La tabella più importante ricava come attributo la chiave primaria dell''altra tabella sotto forma di chiave esterna', 'Non succede niente', 'scelta1', 178);
 
  
 insert into quizdomanda values(2, 31),
@@ -1952,12 +1965,12 @@ VALUES ('Progettazione concettuale, progettazione logica, implementazione fisica
        
 --lascia qua in fondo -- Quiz per il Tecnico di Supporto IT (ID Quiz: 35)
 -- Domande per il Quiz "Tecnico di Supporto IT"
-INSERT INTO Domanda (id_domanda, testo, punteggio)
-VALUES (269, 'Descrivi i passaggi fondamentali per risolvere un problema di connessione internet.', 8),
-       (270, 'Come identifichi e risolvi i problemi di stampa su una rete condivisa?', 9),
-       (271, 'Quale approccio useresti per gestire richieste di supporto multiple contemporaneamente?', 8),
-       (272, 'Come affronti le richieste di supporto da parte di utenti non tecnici?', 9),
-       (273, 'Quali sono gli strumenti di monitoraggio dei sistemi che utilizzi abitualmente?', 8);
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Descrivi i passaggi fondamentali per risolvere un problema di connessione internet.', 8),
+       ('Come identifichi e risolvi i problemi di stampa su una rete condivisa?', 9),
+       ('Quale approccio useresti per gestire richieste di supporto multiple contemporaneamente?', 8),
+       ('Come affronti le richieste di supporto da parte di utenti non tecnici?', 9),
+       ('Quali sono gli strumenti di monitoraggio dei sistemi che utilizzi abitualmente?', 8);
 
 -- Quiz "Tecnico di Supporto IT" (ID Quiz: 35)
 INSERT INTO QuizDomanda (id_domanda, id_quiz)
