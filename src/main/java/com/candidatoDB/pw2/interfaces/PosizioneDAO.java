@@ -37,7 +37,8 @@ public interface PosizioneDAO {
 	void updatePosizione(Posizione posizione);
 
 	void deletePosizione(int id_posizione);
-	
+
+	Integer getCurrentCandidature(int id_posizione);
 	
 }
 

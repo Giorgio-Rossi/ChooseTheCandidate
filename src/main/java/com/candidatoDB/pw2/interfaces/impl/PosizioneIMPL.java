@@ -728,4 +728,31 @@ public class PosizioneIMPL implements PosizioneDAO {
 		}
 	}
 
+	@Override
+	public Integer getCurrentCandidature(int id_posizione) {
+		Integer nCandidature = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+
+		try {
+			String sql = "SELECT COUNT(*) AS Numero_Candidati FROM CandidaturaUser WHERE id_posizione = ?;";
+			statement = connection.getConnection().prepareStatement(sql);
+
+			statement.setInt(1, id_posizione);
+
+			resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+				nCandidature = resultSet.getInt("Numero_Candidati");
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(resultSet);
+			DBUtil.close(statement);
+		}
+
+		return nCandidature;
+	}
+
 }

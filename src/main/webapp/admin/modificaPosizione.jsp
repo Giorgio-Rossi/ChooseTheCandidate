@@ -153,11 +153,11 @@ ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAl
 																<div style="flex-direction: row; display: flex">
 																	<div class="form-check">
 																		<p>Si</p>
-																		<input class="form-group" type="radio" name="stato" id="aperta" value="aperta">
+																		<input class="form-group" type="radio" name="stato" id="aperta" value="aperta" checked>
 																	</div>
 																	<div class="form-check">
 																		<p>No</p>
-																		<input class="form-group" type="radio" name="stato" id="chiusa" value="chiusa" checked>
+																		<input class="form-group" type="radio" name="stato" id="chiusa" value="chiusa" >
 																	</div>
 																</div>
 
