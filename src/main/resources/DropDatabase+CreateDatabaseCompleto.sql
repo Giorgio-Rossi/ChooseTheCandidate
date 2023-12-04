@@ -1941,28 +1941,152 @@ VALUES ('Progettazione concettuale, progettazione logica, implementazione fisica
        ('Migliora le prestazioni del database, contribuisce a un migliore utilizzo delle risorse di sistema.', 'L''ottimizzazione del database non ha impatto sulle prestazioni del sistema.', 'Solo migliora le prestazioni del database.', 'Solo contribuisce a un migliore utilizzo delle risorse.', 'scelta1', 247),
        -- Domanda 5
        ('Attraverso la valutazione delle vulnerabilità, l''applicazione di patch, l''implementazione di criteri di sicurezza.', 'I problemi di sicurezza non possono essere risolti in un database.', 'Solo applicando patch.', 'Solo implementando criteri di sicurezza.', 'scelta1', 248);
-       
-       
 
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
 
-       
+
+
+
+--Quiz sviluppatore di db
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze per Sviluppatore di Database', 5);
+
+INSERT INTO Domanda (testo, punteggio)
+VALUES ( 'Cos''è un indice in un database e quale è il suo scopo principale?', 8),
+       ('Quali sono le differenze tra un database SQL e un database NoSQL?', 9),
+       ('Cosa significa normalizzazione in un database relazionale?', 8),
+       ('Cosa sono le stored procedure in un database?', 9),
+       ('Qual è l''importanza dell''indicizzazione in un database?', 8);
+
+--Quiz sviluppatore di db (ID Quiz: 46)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (249, 46), (250, 46), (251, 46), (252, 46), (253, 46);
+
+
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Un indice è un tipo di dato in un database.', 'Un indice è una chiave primaria di una tabella.', 'Un indice è una struttura che migliora la velocità di ricerca dei dati in una tabella.', 'Un indice è una procedura memorizzata in un database.', 'scelta3', 249),
+       -- Domanda 2
+       ('SQL supporta solo linguaggio di query strutturato, mentre NoSQL supporta solo database non relazionali.', 'SQL è basato su schema, mentre NoSQL è basato su schema flessibile.', 'SQL è adatto solo per dati piccoli, mentre NoSQL è adatto solo per dati molto grandi.', 'SQL è più veloce di NoSQL nella maggior parte dei casi.', 'scelta2', 250),
+       -- Domanda 3
+       ('La normalizzazione è il processo di aggiunta di dati duplicati per migliorare le prestazioni.', 'La normalizzazione è il processo di organizzare i dati in modo efficiente riducendo la ridondanza.', 'La normalizzazione è il processo di eliminazione di tutte le tabelle in un database.', 'La normalizzazione è il processo di creazione di un database senza relazioni.', 'scelta2', 251),
+       -- Domanda 4
+       ('Le stored procedure sono un tipo di linguaggio di programmazione.', 'Le stored procedure sono procedure che vengono eseguite solo una volta.', 'Le stored procedure sono un insieme di istruzioni SQL precompilate che possono essere eseguite.', 'Le stored procedure sono utilizzate solo per la creazione di tabelle in un database.', 'scelta3', 252),
+       -- Domanda 5
+       ('L''indicizzazione rallenta le ricerche in un database.', ' L''indicizzazione non ha alcun impatto sulle prestazioni di un database.', 'L''indicizzazione accelera le ricerche e l''accesso ai dati in un database.', ' L''indicizzazione è utile solo per le tabelle vuote.', 'scelta3', 253);
+
+
+
+
+
+
+
+--Quiz   Architetto Cloud
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze per Architetto Cloud', 5);
+
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Cos''è un''architettura cloud e quali sono i vantaggi principali nell''implementarla?', 8),
+       ('Quali sono le principali sfide nella progettazione di un''infrastruttura cloud scalabile e sicura?', 9),
+       ('Descrivi il concetto di migrazione verso il cloud e quali sono i fattori chiave da considerare.', 8),
+       ('Quali sono le competenze chiave richieste per un Architetto Cloud?', 9),
+       ('Come si gestisce l''archiviazione dei dati in un ambiente cloud?', 8);
+
+--Quiz sviluppatore di db (ID Quiz: 47)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (254, 47), (255, 47), (256, 47), (257, 47), (258, 47);
+
+
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Un servizio di pulizia online','Una tecnologia obsoleta' ,'Un modello di erogazione di servizi su Internet' ,'Una nuova specie di nuvole nel cielo.' , 'scelta3', 254),
+       -- Domanda 2
+       ('Trovare il miglior caffè nel cloud','Gestire la connessione Wi-Fi del cloud','Assicurare la scalabilità e la sicurezza' ,'Contare le nuvole nel cloud.' , 'scelta3', 255),
+       -- Domanda 3
+       ('Spostare fisicamente gli uccelli in una zona nuvolosa','Trasferire i dati e le applicazioni in un ambiente cloud' ,'Cambiare il clima attraverso la tecnologia cloud' ,'Creare nuove nuvole artificiali.' , 'scelta3', 256),
+       -- Domanda 4
+       ('Conoscenza avanzata di come fare un castello di sabbia','Abilità nel costruire castelli di nuvole' ,'Esperienza nella progettazione e implementazione di soluzioni cloud' ,'Abilità di predire il tempo atmosferico.' , 'scelta2', 257),
+       -- Domanda 5
+       ('Usando un vecchio baule nel cielo','Trasformando i dati in nuvole virtuali' ,'Utilizzando servizi di archiviazione cloud' ,'Scrivendo i dati su un foglio di carta e lanciandolo in aria.' , 'scelta3', 258);
+
+
+
+
+--Quiz    Ingegnere di Sistemi Cloud
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze per Ingegnere di Sistemi Cloud', 5);
+
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Cos''è la "container orchestration" e qual è il suo ruolo nell''ambiente cloud?', 8),
+       ('Spiega il concetto di "serverless computing" e come si differenzia da un approccio tradizionale basato su server.', 9),
+       ('Qual è l''importanza della distribuzione geografica dei dati in un ambiente cloud e come può influire sulla performance?', 8),
+       ('Cosa sono i servizi di CDN (Content Delivery Network) e come possono beneficiare un''infrastruttura cloud?', 9),
+       ('Descrivi il concetto di "auto-scaling" e come può essere implementato in un ambiente cloud.', 8);
+
+--Quiz s Ingegnere di Sistemi Cloud (ID Quiz: 48)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (259, 48), (260, 48), (261, 48), (262, 48), (263, 48);
+
+
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Una tecnologia per gestire la distribuzione automatica di container.', 'Una forma di crittografia avanzata per i dati cloud.','Un protocollo di sicurezza per le reti cloud.' , 'Un tipo di firewall per le applicazioni cloud.', 'scelta1', 259),
+       -- Domanda 2
+       ('Il serverless computing si riferisce a un ambiente senza server, mentre l''approccio tradizionale utilizza server fisici.',' Nel serverless computing, i server sono completamente eliminati, mentre nell''approccio tradizionale sono presenti in modo statico.' ,' Serverless computing è un termine sbagliato; ogni applicazione richiede server.' ,'Nel serverless computing, i server sono presenti, ma gestiti automaticamente, mentre nell''approccio tradizionale richiedono configurazione manuale.' , 'scelta4', 260),
+       -- Domanda 3
+       ('La distribuzione geografica dei dati non influisce sulla performance.','La distribuzione geografica dei dati può migliorare la ridondanza e la resistenza ai guasti.' ,'La distribuzione geografica dei dati rallenta sempre la performance.' ,'La distribuzione geografica dei dati è solo un requisito normativo, senza impatto sulla performance.' , 'scelta2', 261),
+       -- Domanda 4
+       ('Servizi di gestione dei dati aziendali.','Una tecnologia per la crittografia dei dati in transito.' ,'Una rete di server distribuiti globalmente per migliorare la distribuzione dei contenuti.' ,'Software per la gestione dei container.' , 'scelta3', 262),
+       -- Domanda 5
+       ('Auto-scaling è l''automazione dei processi di sicurezza in un ambiente cloud.','Auto-scaling è la capacità di un sistema di adattarsi dinamicamente al carico di lavoro.' ,'Auto-scaling è una funzione riservata solo per i grandi fornitori di servizi cloud.' ,'Auto-scaling è una tecnologia obsoleta senza applicazioni pratiche.' , 'scelta2', 263);
+
+
+
+
+--Quiz    Amministratore di Reti
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze per Amministratore di Reti', 5);
+
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Cos''è un indirizzo IP e quale differenza c''è tra un indirizzo IP statico e dinamico?', 8),
+       ('Descrivi le principali misure di sicurezza che un Amministratore di Reti dovrebbe adottare per proteggere una rete aziendale.', 9),
+       ('Quali sono i vantaggi e gli svantaggi dell''utilizzo di una connessione VPN (Virtual Private Network) in un ambiente di rete aziendale?', 8),
+       ('Cosa si intende per subnetting in una rete e qual è il suo scopo?', 9),
+       ('Spiega l''importanza di un backup regolare dei dati e quali procedure di backup consiglieresti per una rete aziendale.', 8);
+
+--Quiz Amministratore di Reti (ID Quiz: 49)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (264, 49), (265, 49), (266, 49), (267, 49), (268, 49);
+
+
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Un indirizzo IP è un identificatore univoco assegnato a ogni dispositivo in una rete. L''indirizzo IP statico è fisso, mentre l''indirizzo IP dinamico può cambiare.', ' Un indirizzo IP è una password per accedere a una rete. L''indirizzo IP statico è fisso, mentre l''indirizzo IP dinamico può cambiare.', 'Un indirizzo IP è un tipo di virus informatico. L''indirizzo IP statico è fisso, mentre l''indirizzo IP dinamico può cambiare.', 'Un indirizzo IP è un termine informatico senza significato. L''indirizzo IP statico è fisso, mentre l''indirizzo IP dinamico può cambiare.', 'scelta1', 264),
+       -- Domanda 2
+       ('Disattivare completamente la sicurezza per facilitare l''accesso alla rete.', 'Utilizzare una password comune per tutti i dispositivi.','Implementare un firewall, aggiornare regolarmente i software di sicurezza e monitorare il traffico di rete in modo proattivo.' ,'Condividere liberamente tutte le informazioni sulla rete con chiunque.' , 'scelta3', 265),
+       -- Domanda 3
+       ('Vantaggio: maggiore sicurezza. Svantaggio: nessuno.', 'Vantaggio: accesso sicuro alla rete da posizioni remote. Svantaggio: possibile rallentamento della velocità di connessione.', 'Vantaggio: nessuno. Svantaggio: maggiore sicurezza.', 'Vantaggio: connessione più veloce. Svantaggio: accesso limitato alla rete.', 'scelta2', 266),
+       -- Domanda 4
+       ('Subnetting è un termine informatico senza significato.', 'Subnetting è la suddivisione di una rete IP in sotto-reti più piccole. Scopo: ottimizzare l''uso degli indirizzi IP.', 'Subnetting è l''aggiunta di nuovi dispositivi a una rete senza pianificazione. Scopo: aumentare il caos.', 'Subnetting è una tecnica per disabilitare porzioni di una rete. Scopo: rendere la rete più vulnerabile.', 'scelta2', 267),
+       -- Domanda 5
+       ('Non è importante effettuare backup regolari dei dati. Le procedure di backup includono il salvataggio occasionale su un disco rigido esterno.', 'L''importanza del backup è garantire la perdita totale dei dati in caso di guasto hardware. Le procedure di backup includono il salvataggio giornaliero su un server remoto sicuro.', 'Backup regolari sono importanti per prevenire la perdita permanente dei dati. Le procedure di backup includono la memorizzazione dei dati su chiavette USB.', 'Backup regolari sono necessari solo per grandi aziende. Le procedure di backup includono il salvataggio su CD una volta al mese.', 'scelta2', 268);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 --lascia qua in fondo -- Quiz per il Tecnico di Supporto IT (ID Quiz: 35)
 -- Domande per il Quiz "Tecnico di Supporto IT"
 INSERT INTO Domanda (testo, punteggio)
