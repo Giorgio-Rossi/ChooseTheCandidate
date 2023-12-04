@@ -1319,7 +1319,7 @@ VALUES ('Cosa significa RAID?', 8),
 
 -- Quiz "Competenze Sistemista Informatico" (Quiz ID: 10)
 INSERT INTO QuizDomanda (id_domanda, id_quiz)
-VALUES (130, 23), (131, 23), (132, 23), (133, 23), (134, 23), (135, 23), (136, 23), (137, 23);
+VALUES (130, 27), (131, 27), (132, 27), (133, 27), (134, 27), (135, 27), (136, 27), (137, 27);
 
 -- Risposte per "Competenze Sistemista Informatico"
 -- Domanda 1
@@ -1330,7 +1330,7 @@ VALUES ('Redundant Array of Independent Disks: un metodo di archiviazione dei da
        -- Domanda 3
        ('La virtualizzazione è la creazione di risorse hardware/software virtuali piuttosto che fisiche.', 'La virtualizzazione riguarda la creazione di reti virtuali all’interno di un’azienda.', 'La virtualizzazione è l'uso esclusivo di computer portatili.', 'La virtualizzazione si riferisce all'uso esclusivo di software open-source.', 'scelta1', 132),
        -- Domanda 4
-       ('Un attacco DDoS (Distributed Denial of Service) sovraccarica un server con un'enorme quantità di richieste, rendendolo inaccessibile agli utenti legittimi.', 'Un attacco DDoS permette di accedere ai dati sensibili di un server.', 'Un attacco DDoS è simile a un attacco fisico a un server.', 'Un attacco DDoS limita il numero di richieste al server per garantire la sicurezza.', 'scelta1', 133),
+       ('Un attacco DDoS (Distributed Denial of Service) sovraccarica un server con un''enorme quantità di richieste, rendendolo inaccessibile agli utenti legittimi.', 'Un attacco DDoS permette di accedere ai dati sensibili di un server.', 'Un attacco DDoS è simile a un attacco fisico a un server.', 'Un attacco DDoS limita il numero di richieste al server per garantire la sicurezza.', 'scelta1', 133),
        -- Domanda 5
        ('Un hub trasmette i dati a tutti i dispositivi connessi, uno switch li invia solo al dispositivo di destinazione, mentre un router gestisce il traffico tra reti diverse.', 'Non c’è differenza tra un hub, uno switch e un router.', 'Uno switch è più veloce di un hub ma meno sicuro di un router.', 'Uno switch è un dispositivo wireless, mentre un router gestisce solo reti cablate.', 'scelta1', 134),
        -- Domanda 6
@@ -1338,7 +1338,7 @@ VALUES ('Redundant Array of Independent Disks: un metodo di archiviazione dei da
        -- Domanda 7
        ('Windows è comunemente usato per desktop e sistemi operativi personali, mentre Linux è più popolare nei server e negli ambienti aziendali.', 'Windows è completamente gratuito, mentre Linux è a pagamento.', 'Windows è più sicuro di Linux.', 'Linux è stato sviluppato da Microsoft, mentre Windows è open-source.', 'scelta1', 136),
        -- Domanda 8
-       ('Vantaggi: scalabilità, flessibilità, riduzione dei costi di hardware. Svantaggi: dipendenza dalla connessione Internet, questioni di sicurezza e privacy.', 'Vantaggi: alta sicurezza e controllo. Svantaggi: costo elevato e complessità.', 'Vantaggi: accesso ovunque. Svantaggi: nessun controllo sull'ambiente di hosting.', 'Vantaggi: nessun costo. Svantaggi: ridotta affidabilità e prestazioni.', 'scelta1', 137);
+       ('Vantaggi: scalabilità, flessibilità, riduzione dei costi di hardware. Svantaggi: dipendenza dalla connessione Internet, questioni di sicurezza e privacy.', 'Vantaggi: alta sicurezza e controllo. Svantaggi: costo elevato e complessità.', 'Vantaggi: accesso ovunque. Svantaggi: nessun controllo sull''ambiente di hosting.', 'Vantaggi: nessun costo. Svantaggi: ridotta affidabilità e prestazioni.', 'scelta1', 137);
 
     
        
@@ -1361,7 +1361,7 @@ VALUES ('Spiega la differenza tra HTML, CSS e JavaScript.', 8),
 
 -- Quiz "Competenze Web Developer" (Quiz ID: 11)
 INSERT INTO QuizDomanda (id_domanda, id_quiz)
-VALUES (138, 24), (139, 24), (140, 24), (141, 24), (142, 24), (143, 24), (144, 24), (145, 24);
+VALUES (138, 28), (139, 28), (140, 28), (141, 28), (142, 28), (143, 28), (144, 28), (145, 28);
 
 -- Risposte per "Competenze Web Developer"
 -- Domanda 1
@@ -1374,7 +1374,7 @@ VALUES ('HTML è il linguaggio di markup per la struttura del contenuto, CSS è 
        -- Domanda 4
        ('La SEO (Search Engine Optimization) è importante per migliorare la visibilità e il posizionamento di un sito web sui motori di ricerca.', 'La SEO è irrilevante per un sito web.', 'La SEO riguarda esclusivamente la grafica di un sito web.', 'La SEO è utile solo per siti web aziendali.', 'scelta1', 141),
        -- Domanda 5
-       ('Best practices includono l'uso di HTTPS, l'aggiornamento costante dei software, la protezione contro attacchi di SQL injection e XSS.', 'Non ci sono best practices per la sicurezza di un sito web.', 'La sicurezza di un sito web non è importante.', 'Basta affidarsi a un buon firewall per la sicurezza del sito web.', 'scelta1', 142),
+       ('Best practices includono l''uso di HTTPS, l''aggiornamento costante dei software, la protezione contro attacchi di SQL injection e XSS.', 'Non ci sono best practices per la sicurezza di un sito web.', 'La sicurezza di un sito web non è importante.', 'Basta affidarsi a un buon firewall per la sicurezza del sito web.', 'scelta1', 142),
        -- Domanda 6
        ('Il responsive design è la capacità di un sito web di adattarsi a diverse dimensioni di schermi e dispositivi, importante per garantire un’esperienza utente ottimale.', 'Il responsive design riguarda solo il backend di un sito web.', 'Il responsive design è utile solo per i dispositivi mobili.', 'Il responsive design non è più rilevante.', 'scelta1', 143),
        -- Domanda 7
@@ -1403,7 +1403,7 @@ VALUES ('Definisci l’attacco di phishing e come può essere prevenuto.', 8),
 
 -- Quiz "Conoscenze Cybersecurity" (Quiz ID: 12)
 INSERT INTO QuizDomanda (id_domanda, id_quiz)
-VALUES (146, 25), (147, 25), (148, 25), (149, 25), (150, 25), (151, 25), (152, 25), (153, 25);
+VALUES (146, 29), (147, 29), (148, 29), (149, 29), (150, 29), (151, 29), (152, 29), (153, 29);
 
 -- Risposte per "Conoscenze Cybersecurity"
 -- Domanda 1
@@ -1466,7 +1466,515 @@ VALUES ('I design pattern sono soluzioni ricorrenti a problemi comuni nello svil
        -- Domanda 8
        ('La documentazione del codice aiuta a comprendere il funzionamento del software; è importante per la manutenzione, la collaborazione e la comprensione del codice.', 'La documentazione del codice non è importante.', 'La documentazione del codice rallenta lo sviluppo.', 'La documentazione del codice è utile solo per i programmatori esperti.', 'scelta1', 173);
 
+
+-- Quiz "back-end"
+ insert into quiz values('Back-End', 15)
+
+ INSERT INTO Domanda (testo, punteggio)
+VALUES ('Qual''è il comando SQL per raggruppare?', 8),
+       ('Qual''è il linguaggio più comune per fare le query su java?', 9),
+       ('Qual''è l''ordine di esecuzione dei comandi?', 8),
+       ('Cos''è e qual''è la funzione della chiave primaria all''interno di una tabella', 9),
+       ('Cosa succede se si ha una ralazione molti a molti?', 8);
+  
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('group by', 'order by', 'group by to by', 'division for', 'scelta1', 174),
+       -- Domanda 2
+       ('jbpc', 'jbdc', 'jdbc', 'ybdc', 'scelta2', 175),
+       -- Domanda 3
+       ('select, from, where, e poi tutti gli altri', 'from, group by, where, select order by', 'from, where, group by, having, select, order by', 'from, group by, having, where, select, order by', 'scelta3', 176),
+       -- Domanda 4
+       ('Serve solo per collegare le tabelle', 'Serve per avere un coolegamento tra tabelle e può essere uguale in determinate condizioni', 'Sono le chiavi esterne della tabella madre', 'Funge da identificatore univoco della tabella e serve per evitare i avere record identici', 'scelta4', 177),
+       -- Domanda 5
+       ('Si crea una terza tabella con nome quello della relazione e campi le due chiavi primarie delle due tabelle sotto forma di chiavi esterne più eventuali attributi', 'Si uniscono le due tabelle diventando una unica con chiave primaria la combinazione delle chiavi primarie delle due tabelle', 'La tabella più importante ricava come attributo la chiave primaria dell''altra tabella sotto forma di chiave esterna', 'Non succede niente', 'scelta1', 178),
+
  
+insert into quizdomanda values(2, 31),
+                              (3, 31),
+                              (5, 31),
+                              (6, 31),
+                              (8, 31),
+                              (10, 31),
+                              (12, 31),
+                              (13, 31),
+                              (15, 31),
+                              (16, 31),
+                              (174, 31),
+                              (175, 31),
+                              (176, 31),
+                              (177, 31),
+                              (178, 31);
+                              
+      
+-- Quiz Project Manager
+-- Quiz Soft Skills 20
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze Project Manager', 8);
+
+-- Domande per il Quiz "Competenze Project Manager" (Quiz ID: 20)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Qual è il ruolo principale di un Project Manager in un team di sviluppo software?', 8),
+       ('Spiega la differenza tra il modello Waterfall e Agile e quali benefici offrono.', 9),
+       ('Come gestisci efficacemente le risorse e i tempi all’interno di un progetto software?', 8),
+       ('Descrivi il processo di pianificazione di progetti software.', 9),
+       ('Quali sono le principali sfide che un Project Manager potrebbe affrontare in un progetto software?', 8),
+       ('Spiega il concetto di gestione dei rischi in un progetto software.', 9),
+       ('Quali sono i vantaggi dell’implementazione di una comunicazione efficace nel contesto dei progetti software?', 8),
+       ('Descrivi l’importanza della leadership nel ruolo di un Project Manager.', 9);
+
+-- Quiz "Competenze Project Manager" (Quiz ID: 20)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (179, 32), (180, 32), (181, 32), (182, 32), (183, 32), (184, 32), (185, 32), (186, 32);
+
+-- Risposte per "Competenze Project Manager"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Il Project Manager coordina il team, pianifica il progetto e assicura il raggiungimento degli obiettivi entro i limiti di tempo e budget.', 'Il Project Manager non è coinvolto nel team.', 'Il Project Manager si occupa solo del budget del progetto.', 'Il Project Manager si concentra solo sulla pianificazione.', 'scelta1', 179),
+       -- Domanda 2
+       ('Waterfall è un approccio sequenziale, mentre Agile è iterativo e adattivo; Agile permette maggiore flessibilità e risposta ai cambiamenti.', 'Waterfall è più adattabile di Agile.', 'Waterfall e Agile sono la stessa cosa.', 'Agile non è adatto allo sviluppo software.', 'scelta1', 180),
+       -- Domanda 3
+       ('Gestisco le risorse assegnando compiti in base alle competenze e pianifico i tempi utilizzando metodologie di gestione del tempo come la PERT e il Gantt.', 'Non gestisco le risorse e i tempi all’interno del progetto.', 'Gestisco le risorse in modo casuale.', 'Non pianifico i tempi del progetto.', 'scelta1', 181),
+       -- Domanda 4
+       ('La pianificazione di progetti software coinvolge la definizione degli obiettivi, la stima dei tempi, la creazione di un piano di lavoro e l’allocazione delle risorse.', 'La pianificazione di progetti software non è importante.', 'La pianificazione di progetti software è solo per progetti di grandi dimensioni.', 'La pianificazione di progetti software riguarda solo gli obiettivi.', 'scelta1', 182),
+       -- Domanda 5
+       ('Le sfide possono includere il rispetto dei tempi, la gestione delle risorse, l’adattamento ai cambiamenti dei requisiti e la comunicazione efficace.', 'Non esistono sfide in un progetto software.', 'Le sfide in un progetto software non riguardano la comunicazione.', 'Le sfide in un progetto software sono solo tecnologiche.', 'scelta1', 183),
+       -- Domanda 6
+       ('La gestione dei rischi coinvolge l’identificazione, l’analisi e la mitigazione dei rischi nel progetto per ridurre la loro probabilità e impatto.', 'La gestione dei rischi non è importante in un progetto software.', 'La gestione dei rischi riguarda solo gli errori del team.', 'La gestione dei rischi è solo per i progetti di lunga durata.', 'scelta1', 184),
+       -- Domanda 7
+       ('Una comunicazione efficace riduce i malintesi, migliora la collaborazione e garantisce che tutte le parti coinvolte siano informate e allineate.', 'La comunicazione efficace non è importante nei progetti software.', 'La comunicazione efficace è solo per i team di piccole dimensioni.', 'La comunicazione efficace rallenta i progetti software.', 'scelta1', 185),
+       -- Domanda 8
+       ('La leadership è fondamentale per motivare il team, guidare il progetto e prendere decisioni cruciali.', 'La leadership non è necessaria in un Project Manager.', 'La leadership è solo per i team senior.', 'La leadership non influenza la riuscita del progetto.', 'scelta1', 186);
+
+       
+-- Quiz Scrum Master
+-- Quiz Soft Skills 33
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze Scrum Master', 6);
+
+-- Domande per il Quiz "Competenze Scrum Master" (Quiz ID: 33)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Qual è il ruolo principale dello Scrum Master in un team Agile?', 8),
+       ('Spiega il concetto di sprint nel contesto di Scrum.', 9),
+       ('Come gestisci gli ostacoli e le impedimenti nel processo di sviluppo Agile?', 8),
+       ('Quali sono i principali strumenti utilizzati da uno Scrum Master per facilitare la collaborazione del team?', 9),
+       ('Descrivi la differenza tra un meeting di Sprint Planning e uno di Sprint Review.', 8),
+       ('Qual è l’importanza della trasparenza e ispezione nel framework Agile?', 9);
+
+-- Quiz "Competenze Scrum Master" (Quiz ID: 33)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (187, 33), (188, 33), (189, 33), (190, 33), (191, 33), (192, 33);
+
+-- Risposte per "Competenze Scrum Master"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Lo Scrum Master è responsabile di facilitare il processo Agile, rimuovere gli ostacoli e garantire che il team segua correttamente i principi di Scrum.', 'Lo Scrum Master non ha alcun ruolo specifico in un team Agile.', 'Lo Scrum Master è responsabile della pianificazione dei progetti.', 'Lo Scrum Master è solo uno sviluppatore senior.', 'scelta1', 187),
+       -- Domanda 2
+       ('Lo sprint è un periodo di tempo fisso, solitamente di 2-4 settimane, in cui viene sviluppato un incremento di funzionalità del prodotto.', 'Lo sprint è una riunione giornaliera del team Agile.', 'Lo sprint non è parte di Scrum.', 'Lo sprint è solo per grandi progetti.', 'scelta1', 188),
+       -- Domanda 3
+       ('Gestisco gli ostacoli collaborando con il team per risolverli rapidamente e rimuovendo le impedimenti che bloccano lo sviluppo.', 'Gli ostacoli non sono gestiti dallo Scrum Master.', 'Gli ostacoli vengono ignorati.', 'Gli ostacoli vengono gestiti solo dai manager.', 'scelta1', 189),
+       -- Domanda 4
+       ('Gli strumenti includono la bacheca Scrum (Scrum board), software di gestione dei task, applicazioni di comunicazione e collaborazione.', 'Gli Scrum Master non utilizzano strumenti.', 'Gli Scrum Master utilizzano solo email.', 'Gli Scrum Master utilizzano solo la carta e penna.', 'scelta1', 190),
+       -- Domanda 5
+       ('Lo Sprint Planning si concentra sulla pianificazione delle attività da svolgere nell’Sprint, mentre lo Sprint Review valuta il lavoro svolto e presenta il prodotto al cliente.', 'Lo Sprint Planning e lo Sprint Review sono la stessa cosa.', 'Lo Sprint Planning è per la presentazione al cliente.', 'Lo Sprint Review è per pianificare le attività.', 'scelta1', 191),
+       -- Domanda 6
+       ('La trasparenza e l’ispezione sono fondamentali per garantire che il processo di sviluppo sia visibile, comprensibile e che le modifiche necessarie siano effettuate.', 'La trasparenza e l’ispezione non sono importanti nel framework Agile.', 'La trasparenza e l’ispezione sono utilizzate solo in alcuni team.', 'La trasparenza e l’ispezione sono solo per i team di sviluppo.', 'scelta1', 192);
+
+       
+-- Quiz Progettista UX/UI
+-- Quiz Soft Skills 34
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze Progettista UX/UI', 5);
+
+-- Domande per il Quiz "Competenze Progettista UX/UI" (Quiz ID: 34)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Qual è la differenza tra UX e UI design?', 8),
+       ('Descrivi il processo di creazione di una user persona nel design UX.', 9),
+       ('Qual è l''importanza dei test utente nel design UX/UI?', 8),
+       ('Cosa significa "mobile-first design"?', 9),
+       ('Come si crea un wireframe nel processo di progettazione UX/UI?', 8);
+
+-- Quiz "Competenze Progettista UX/UI" (Quiz ID: 34)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (193, 34), (194, 34), (195, 34), (196, 34), (197, 34);
+
+-- Risposte per "Competenze Progettista UX/UI"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('UX design si concentra sull''esperienza dell''utente, mentre UI design si riferisce all''aspetto visivo dell''interfaccia.', 'Non c''è differenza tra UX e UI design.', 'UX design riguarda solo i dispositivi mobili.', 'UI design riguarda solo il design del sito web.', 'scelta1', 193),
+       -- Domanda 2
+       ('Creare una user persona coinvolge la raccolta di dati demografici, comportamentali, obiettivi e sfide degli utenti per creare un profilo immaginario rappresentativo.', 'Le user persona non sono parte del processo di design.', 'La user persona si riferisce solo agli utenti più giovani.', 'La user persona si riferisce solo agli utenti più anziani.', 'scelta1', 194),
+       -- Domanda 3
+       ('I test utente sono essenziali per comprendere le reazioni e il comportamento degli utenti di fronte al prodotto o all''interfaccia e per identificare miglioramenti.', 'I test utente non sono rilevanti nel design UX/UI.', 'I test utente sono utilizzati solo nelle fasi finali del progetto.', 'I test utente sono utilizzati solo per la fase di ricerca.', 'scelta1', 195),
+       -- Domanda 4
+       ('"Mobile-first design" significa progettare un''interfaccia considerando innanzitutto i dispositivi mobili e adattando successivamente il design per i desktop.', 'Il "mobile-first design" riguarda solo l''aspetto estetico.', 'Il "mobile-first design" è obsoleto nel mondo del design.', 'Il "mobile-first design" si riferisce solo alle app per dispositivi mobili.', 'scelta1', 196),
+       -- Domanda 5
+       ('I wireframe sono creati utilizzando strumenti come software di progettazione grafica o strumenti specifici per la prototipazione, presentando la struttura di base dell''interfaccia senza dettagli visivi.', 'I wireframe non sono importanti nel design UX/UI.', 'I wireframe sono sempre dettagliati al massimo.', 'I wireframe vengono creati solo alla fine del processo di design.', 'scelta1', 197);
+
+       
+--quiz 35 da mettere qua ma le domande vanno in fondo     
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Tecnico di supporto IT', 5); 
+       
+       
+       
+       
+-- Quiz Architetto dell'Esperienza Utente (UX Architect)
+-- Quiz Soft Skills 36
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze Architetto dell''Esperienza Utente', 6);
+
+-- Domande per il Quiz "Competenze Architetto dell''Esperienza Utente" (Quiz ID: 36)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Quali sono le fasi fondamentali del processo di progettazione dell''esperienza utente (UX)?', 8),
+       ('Descrivi l''importanza della ricerca utente nel design dell''esperienza utente.', 9),
+       ('Spiega il concetto di mappatura del percorso utente (user journey mapping) e come viene utilizzato nel processo di design.', 8),
+       ('Qual è il ruolo della prototipazione nel design dell''esperienza utente?', 9),
+       ('Cosa comporta l''usabilità nel contesto dell''architettura dell''esperienza utente?', 8),
+       ('Descrivi l''importanza dell''accessibilità nell''architettura dell''esperienza utente.', 9);
+
+-- Quiz "Competenze Architetto dell''Esperienza Utente" (Quiz ID: 36)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (198, 36), (199, 36), (200, 36), (201, 36), (202, 36), (203, 36);
+
+-- Risposte per "Competenze Architetto dell''Esperienza Utente"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Ricerca, Analisi, Progettazione, Test', 'Progettazione, Sviluppo, Implementazione, Valutazione', 'Test, Valutazione, Implementazione, Sviluppo', 'Sviluppo, Ricerca, Analisi, Implementazione', 'scelta1', 198),
+       -- Domanda 2
+       ('La ricerca utente aiuta a comprendere le esigenze, i comportamenti e le preferenze degli utenti finali, guidando decisioni informate durante il processo di design.', 'La ricerca utente non è rilevante nel design dell''esperienza utente.', 'La ricerca utente si concentra solo sulla fase di test finale.', 'La ricerca utente si basa solo su dati demografici.', 'scelta1', 199),
+       -- Domanda 3
+       ('Il mappatura del percorso utente visualizza il percorso che un utente compie con un prodotto o servizio, consentendo di comprendere le interazioni e le emozioni degli utenti durante l''utilizzo.', 'Il mappatura del percorso utente è utile solo per valutare il prodotto una volta completato.', 'Il mappatura del percorso utente riguarda solo l''aspetto visivo delle interfacce utente.', 'Il mappatura del percorso utente si concentra solo sugli utenti più giovani.', 'scelta1', 200),
+       -- Domanda 4
+       ('I prototipi consentono di creare rappresentazioni funzionali o visuali di un prodotto, consentendo test e iterazioni prima della realizzazione definitiva.', 'I prototipi non sono utili nel design dell''esperienza utente.', 'I prototipi vengono creati solo alla fine del processo di design.', 'I prototipi si concentrano solo sull''aspetto visivo senza funzionalità.', 'scelta1', 201),
+       -- Domanda 5
+       ('L''usabilità si concentra sull''efficacia, l''efficienza e la soddisfazione con cui gli utenti possono raggiungere i propri obiettivi utilizzando un sistema o un prodotto.', 'L''usabilità non è una considerazione importante nell''architettura dell''esperienza utente.', 'L''usabilità si concentra solo sull''aspetto estetico di un prodotto.', 'L''usabilità si concentra solo sulle prestazioni di un sistema.', 'scelta1', 202),
+       -- Domanda 6
+       ('L''accessibilità si riferisce alla progettazione di prodotti, siti web e applicazioni che possono essere utilizzati da tutti, comprese le persone con disabilità o esigenze diverse.', 'L''accessibilità non è rilevante nell''architettura dell''esperienza utente.', 'L''accessibilità si concentra solo sulla grafica e i colori.', 'L''accessibilità riguarda solo l''accesso da dispositivi mobili.', 'scelta1', 203);
+
+       
+-- Quiz Direttore Amministrativo
+-- Quiz Soft Skills 37
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze Direttore Amministrativo', 5);
+
+-- Domande per il Quiz "Competenze Direttore Amministrativo" (Quiz ID: 37)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Descrivi le responsabilità principali di un Direttore Amministrativo in un''organizzazione.', 8),
+       ('Quali sono gli aspetti chiave della gestione finanziaria e contabile che un Direttore Amministrativo dovrebbe supervisionare?', 9),
+       ('Spiega l''importanza della pianificazione finanziaria nel ruolo di un Direttore Amministrativo.', 8),
+       ('Come gestiresti efficacemente le risorse umane e la struttura organizzativa all''interno di un''azienda?', 9),
+       ('Qual è l''importanza della compliance normativa e come garantiresti che l''azienda sia conforme alle leggi e ai regolamenti?', 8);
+
+-- Quiz "Competenze Direttore Amministrativo" (Quiz ID: 37)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (204, 37), (205, 37), (206, 37), (207, 37), (208, 37);
+
+-- Risposte per "Competenze Direttore Amministrativo"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Le responsabilità principali includono la gestione finanziaria, la pianificazione strategica, la supervisione delle risorse umane e la garanzia della conformità normativa.', 'Il Direttore Amministrativo si occupa solo della contabilità.', 'Le responsabilità principali riguardano solo le questioni amministrative interne.', 'La gestione delle risorse umane è l''unica responsabilità del Direttore Amministrativo.', 'scelta1', 204),
+       -- Domanda 2
+       ('Gli aspetti chiave includono la contabilità, il budgeting, la gestione delle entrate e delle spese, la redazione dei bilanci e la gestione delle relazioni finanziarie con banche e fornitori.', 'La gestione finanziaria non è una priorità per il Direttore Amministrativo.', 'Il Direttore Amministrativo si occupa solo della gestione delle risorse umane.', 'Gli aspetti chiave includono solo la supervisione della struttura organizzativa.', 'scelta1', 205),
+       -- Domanda 3
+       ('La pianificazione finanziaria è cruciale per assicurare la sostenibilità finanziaria a lungo termine e prevedere eventuali rischi finanziari.', 'La pianificazione finanziaria è irrilevante per un Direttore Amministrativo.', 'La pianificazione finanziaria si concentra solo sui profitti a breve termine.', 'La pianificazione finanziaria riguarda solo la gestione del personale.', 'scelta1', 206),
+       -- Domanda 4
+       ('Gestirei le risorse umane attraverso strategie di reclutamento efficaci, programmi di sviluppo del personale e la creazione di un ambiente di lavoro positivo.', 'La gestione delle risorse umane non è responsabilità del Direttore Amministrativo.', 'Gestirei le risorse umane solo attraverso la supervisione gerarchica.', 'Gestirei le risorse umane solo attraverso politiche di riduzione dei costi.', 'scelta1', 207),
+       -- Domanda 5
+       ('La compliance normativa è fondamentale per evitare sanzioni legali e garantire che l''azienda operi in conformità con leggi e regolamenti.', 'La compliance normativa è trascurabile per il Direttore Amministrativo.', 'La compliance normativa riguarda solo la gestione delle risorse umane.', 'La compliance normativa riguarda solo la gestione finanziaria.', 'scelta1', 208);
+
+       
+-- Quiz Responsabile Amministrativo
+-- Quiz Soft Skills 38
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze Responsabile Amministrativo', 5);
+
+-- Domande per il Quiz "Competenze Responsabile Amministrativo" (Quiz ID: 38)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Descrivi le responsabilità principali di un Responsabile Amministrativo in un''organizzazione.', 8),
+       ('Quali sono gli aspetti chiave della gestione finanziaria e contabile che un Responsabile Amministrativo dovrebbe supervisionare?', 9),
+       ('Spiega l''importanza della pianificazione finanziaria nel ruolo di un Responsabile Amministrativo.', 8),
+       ('Come gestiresti efficacemente le risorse umane e la struttura organizzativa all''interno di un''azienda?', 9),
+       ('Qual è l''importanza della compliance normativa e come garantiresti che l''azienda sia conforme alle leggi e ai regolamenti?', 8);
+
+-- Quiz "Competenze Responsabile Amministrativo" (Quiz ID: 38)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (209, 38), (210, 38), (211, 38), (212, 38), (213, 38);
+
+-- Risposte per "Competenze Responsabile Amministrativo"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Le responsabilità principali includono la gestione finanziaria, la pianificazione strategica, la supervisione delle risorse umane e la garanzia della conformità normativa.', 'Il Responsabile Amministrativo si occupa solo della contabilità.', 'Le responsabilità principali riguardano solo le questioni amministrative interne.', 'La gestione delle risorse umane è l''unica responsabilità del Responsabile Amministrativo.', 'scelta1', 209),
+       -- Domanda 2
+       ('Gli aspetti chiave includono la contabilità, il budgeting, la gestione delle entrate e delle spese, la redazione dei bilanci e la gestione delle relazioni finanziarie con banche e fornitori.', 'La gestione finanziaria non è una priorità per il Responsabile Amministrativo.', 'Il Responsabile Amministrativo si occupa solo della gestione delle risorse umane.', 'Gli aspetti chiave includono solo la supervisione della struttura organizzativa.', 'scelta1', 210),
+       -- Domanda 3
+       ('La pianificazione finanziaria è cruciale per assicurare la sostenibilità finanziaria a lungo termine e prevedere eventuali rischi finanziari.', 'La pianificazione finanziaria è irrilevante per un Responsabile Amministrativo.', 'La pianificazione finanziaria si concentra solo sui profitti a breve termine.', 'La pianificazione finanziaria riguarda solo la gestione del personale.', 'scelta1', 211),
+       -- Domanda 4
+       ('Gestirei le risorse umane attraverso strategie di reclutamento efficaci, programmi di sviluppo del personale e la creazione di un ambiente di lavoro positivo.', 'La gestione delle risorse umane non è responsabilità del Responsabile Amministrativo.', 'Gestirei le risorse umane solo attraverso la supervisione gerarchica.', 'Gestirei le risorse umane solo attraverso politiche di riduzione dei costi.', 'scelta1', 212),
+       -- Domanda 5
+       ('La compliance normativa è fondamentale per evitare sanzioni legali e garantire che l''azienda operi in conformità con leggi e regolamenti.', 'La compliance normativa è trascurabile per il Responsabile Amministrativo.', 'La compliance normativa riguarda solo la gestione delle risorse umane.', 'La compliance normativa riguarda solo la gestione finanziaria.', 'scelta1', 213);
+
+       
+-- Quiz Responsabile Finanziario
+-- Quiz Soft Skills 39
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze Responsabile Finanziario', 5);
+
+-- Domande per il Quiz "Competenze Responsabile Finanziario" (Quiz ID: 39)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Qual è la differenza tra finanza e contabilità?', 8),
+       ('Spiega l''importanza dell''analisi finanziaria nelle decisioni aziendali.', 9),
+       ('Quali sono le strategie principali per gestire un budget aziendale in modo efficace?', 8),
+       ('Come può un Responsabile Finanziario gestire e mitigare i rischi finanziari di un''azienda?', 9),
+       ('Qual è il ruolo del Responsabile Finanziario nella pianificazione finanziaria a breve e lungo termine?', 8);
+
+-- Quiz "Competenze Responsabile Finanziario" (Quiz ID: 39)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (214, 39), (215, 39), (216, 39), (217, 39), (218, 39);
+
+-- Risposte per "Competenze Responsabile Finanziario"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('La finanza riguarda la gestione del denaro e delle risorse, mentre la contabilità si concentra sulla registrazione e classificazione dei dati finanziari.', 'Non esiste differenza tra finanza e contabilità.', 'La contabilità è legata ai profitti, la finanza alle spese aziendali.', 'La contabilità si occupa solo dei budget, la finanza delle previsioni finanziarie.', 'scelta1', 214),
+       -- Domanda 2
+       ('L''analisi finanziaria fornisce informazioni dettagliate sullo stato finanziario dell''azienda e aiuta a prendere decisioni informate riguardo investimenti, espansioni o risparmi.', 'L''analisi finanziaria non influisce sulle decisioni aziendali.', 'L''analisi finanziaria è solo per la documentazione aziendale.', 'L''analisi finanziaria si concentra solo sulla contabilità.', 'scelta1', 215),
+       -- Domanda 3
+       ('Le strategie possono includere riduzione dei costi superflui, investimenti mirati, revisione periodica del budget e adozione di tecnologie efficienti.', 'Non ci sono strategie per gestire un budget aziendale.', 'Le strategie per gestire il budget sono limitate al taglio delle risorse umane.', 'Le strategie per gestire il budget sono solo in ambito informatico.', 'scelta1', 216),
+       -- Domanda 4
+       ('Il Responsabile Finanziario può identificare i rischi finanziari, valutarli e attuare piani di mitigazione, ad esempio tramite assicurazioni, diversificazione degli investimenti o riserve di liquidità.', 'Il Responsabile Finanziario non ha responsabilità nella gestione dei rischi finanziari.', 'I rischi finanziari non sono gestibili.', 'I rischi finanziari possono essere gestiti solo dal CEO.', 'scelta1', 217),
+       -- Domanda 5
+       ('Il Responsabile Finanziario definisce obiettivi finanziari chiari a breve e lungo termine per garantire la stabilità e la crescita finanziaria dell''azienda.', 'Gli obiettivi finanziari non sono importanti per il Responsabile Finanziario.', 'Gli obiettivi finanziari sono stabiliti solo dal reparto vendite.', 'Gli obiettivi finanziari sono importanti solo a breve termine.', 'scelta1', 218);
+
+       
+-- Quiz per Responsabile Finanziario
+-- Quiz Soft Skills 39
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze Responsabile Finanziario', 5);
+
+-- Domande per il Quiz "Competenze Responsabile Finanziario" (Quiz ID: 39)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Qual è l''importanza dell''analisi dei costi in un''azienda?', 8),
+       ('Spiega il concetto di budget aziendale e come viene utilizzato nella pianificazione finanziaria.', 9),
+       ('Descrivi le principali fonti di finanziamento per un''azienda e i loro impatti sulla gestione finanziaria.', 8),
+       ('Come un responsabile finanziario gestisce i rischi finanziari all''interno di un''azienda?', 9),
+       ('Qual è il ruolo delle performance finanziarie nel processo decisionale aziendale?', 8);
+
+-- Quiz "Competenze Responsabile Finanziario" (Quiz ID: 39)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (219, 40), (220, 40), (221, 40), (222, 40), (223, 40);
+
+-- Risposte per "Competenze Responsabile Finanziario"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('L''analisi dei costi permette di identificare aree di inefficienza, ottimizzare le risorse e prendere decisioni informate per migliorare la redditività aziendale.', 'L''analisi dei costi non è rilevante per la gestione aziendale.', 'L''analisi dei costi riguarda solo i profitti aziendali.', 'L''analisi dei costi è solo una funzione del reparto contabile.', 'scelta1', 219),
+       -- Domanda 2
+       ('Il budget aziendale è un piano finanziario che descrive le entrate e le spese previste per un determinato periodo, aiutando nell''allocazione delle risorse e nella pianificazione finanziaria.', 'Il budget aziendale non ha alcun ruolo nella gestione finanziaria.', 'Il budget aziendale è un processo casuale.', 'Il budget aziendale riguarda solo le spese aziendali.', 'scelta1', 220),
+       -- Domanda 3
+       ('Le fonti di finanziamento includono prestiti bancari, investitori privati, emissioni di azioni e utili reinvestiti, ognuno con impatti diversi sulle finanze aziendali e sui rapporti con i finanziatori.', 'Non esistono fonti di finanziamento per le aziende.', 'Le fonti di finanziamento non influenzano la gestione finanziaria.', 'Le fonti di finanziamento sono esclusivamente attraverso prestiti bancari.', 'scelta1', 221),
+       -- Domanda 4
+       ('Gestisce i rischi attraverso l''identificazione, la valutazione e la mitigazione dei rischi finanziari, adottando strategie di copertura e diversificazione delle fonti di finanziamento.', 'I responsabili finanziari non gestiscono i rischi finanziari.', 'I rischi finanziari non sono rilevanti per la gestione aziendale.', 'La gestione dei rischi finanziari è compito esclusivo del reparto legale.', 'scelta1', 222),
+       -- Domanda 5
+       ('Le performance finanziarie forniscono dati e metriche che supportano il processo decisionale aziendale, come investimenti, espansioni o riduzioni di costi.', 'Le performance finanziarie non influenzano il processo decisionale aziendale.', 'Il processo decisionale aziendale non è basato sulle performance finanziarie.', 'Il processo decisionale aziendale si basa solo sull''intuizione.', 'scelta1', 223);
+
+  
+-- Quiz per Responsabile Risorse Umane
+-- Quiz Soft Skills 41
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze Responsabile Risorse Umane', 5);
+
+-- Domande per il Quiz "Competenze Responsabile Risorse Umane" (Quiz ID: 41)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Qual è il ruolo delle risorse umane nella strategia aziendale?', 8),
+       ('Come vengono gestiti i processi di selezione e assunzione del personale?', 9),
+       ('Descrivi l''importanza della formazione e dello sviluppo del personale.', 8),
+       ('Come affrontare le problematiche legate al clima organizzativo e alle relazioni interne?', 9),
+       ('Quali sono le sfide principali nell''amministrazione delle risorse umane?', 8);
+
+-- Quiz "Competenze Responsabile Risorse Umane" (Quiz ID: 41)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (224, 41), (225, 41), (226, 41), (227, 41), (228, 41);
+
+-- Risposte per "Competenze Responsabile Risorse Umane"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Le risorse umane giocano un ruolo chiave nell''allineamento delle persone con gli obiettivi aziendali e nella gestione del capitale umano.', 'Le risorse umane non hanno un ruolo strategico nell''azienda.', 'Il ruolo delle risorse umane è solo amministrativo.', 'Le risorse umane non influenzano la strategia aziendale.', 'scelta1', 224),
+       -- Domanda 2
+       ('Attraverso la progettazione di processi efficaci, la valutazione delle competenze e delle culture aziendali, e la selezione di candidati in linea con le esigenze dell''azienda.', 'La selezione del personale avviene in modo casuale senza seguire procedure specifiche.', 'La gestione delle risorse umane non coinvolge la selezione del personale.', 'I processi di selezione si basano solo sull''esperienza personale.', 'scelta1', 225),
+       -- Domanda 3
+       ('La formazione e lo sviluppo del personale favoriscono l''acquisizione di nuove competenze, la crescita professionale e la retention dei talenti all''interno dell''organizzazione.', 'La formazione del personale è irrilevante per il successo aziendale.', 'Lo sviluppo del personale non influisce sulla produttività.', 'La formazione del personale è un costo aggiuntivo senza beneficio aziendale.', 'scelta1', 226),
+       -- Domanda 4
+       ('Affrontando le problematiche attraverso la promozione di una cultura aziendale positiva, l''ascolto attivo dei dipendenti e la gestione tempestiva di conflitti o tensioni interne.', 'Le problematiche interne non sono di competenza delle risorse umane.', 'Le problematiche interne vengono ignorate.', 'La gestione delle problematiche è responsabilità esclusiva del management.', 'scelta1', 227),
+       -- Domanda 5
+       ('Le sfide includono la gestione del cambiamento organizzativo, l''attrazione e la retention dei talenti, la conformità normativa e la gestione delle prestazioni.', 'La gestione delle risorse umane non affronta sfide specifiche.', 'La retention dei talenti non è una sfida per le risorse umane.', 'Le sfide riguardano solo l''aspetto amministrativo delle risorse umane.', 'scelta1', 228);
+
+       
+-- Quiz per Recruiter
+-- Quiz Soft Skills 42
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze del Recruiter', 5);
+
+-- Domande per il Quiz "Competenze del Recruiter" (Quiz ID: 42)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Quali sono le competenze fondamentali per un recruiter?', 8),
+       ('Come viene condotto un efficace processo di selezione?', 9),
+       ('Descrivi l''importanza delle soft skills nella valutazione dei candidati.', 8),
+       ('Quali sono le sfide principali nel reclutamento e nella gestione del personale?', 9),
+       ('Come si valuta la cultura aziendale di un candidato?', 8);
+
+-- Quiz "Competenze del Recruiter" (Quiz ID: 42)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (229, 42), (230, 42), (231, 42), (232, 42), (233, 42);
+
+-- Risposte per "Competenze del Recruiter"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Capacità di comunicazione, conoscenza approfondita del ruolo, abilità di valutazione delle competenze.', 'Non ci sono competenze specifiche per un recruiter.', 'Conoscenza generale dell''azienda, esperienza lavorativa nel settore.', 'Solo competenze informatiche e tecniche.', 'scelta1', 229),
+       -- Domanda 2
+       ('Attraverso la definizione dei requisiti del ruolo, la valutazione dei candidati in base alle competenze richieste e l''utilizzo di strumenti di selezione appropriati.', 'La selezione avviene in modo casuale senza seguire procedure specifiche.', 'Non esiste un processo standard di selezione.', 'La selezione si basa solo sull''intuizione del recruiter.', 'scelta1', 230),
+       -- Domanda 3
+       ('Le soft skills sono fondamentali per valutare l''adattabilità, la gestione dello stress e la capacità di collaborare dei candidati.', 'Solo le competenze tecniche sono rilevanti nel processo di selezione.', 'Le soft skills non sono considerate nel processo di reclutamento.', 'Solo l''esperienza lavorativa è importante.', 'scelta1', 231),
+       -- Domanda 4
+       ('Le sfide includono l''attrazione e la retention dei talenti, la gestione dei tempi di selezione e la concorrenza con altre aziende.', 'Il reclutamento non ha sfide specifiche.', 'La retention dei talenti non è una sfida.', 'Le sfide riguardano solo l''aspetto burocratico del reclutamento.', 'scelta1', 232),
+       -- Domanda 5
+       ('Valutando la coerenza dei valori del candidato con quelli dell''azienda, attraverso interviste specifiche e la valutazione delle esperienze passate.', 'La cultura aziendale non è rilevante nel processo di selezione.', 'La cultura aziendale viene valutata solo tramite test psicometrici.', 'Non c''è modo di valutare la cultura aziendale di un candidato.', 'scelta1', 233);
+
+       
+-- Quiz per Responsabile Contratti
+-- Quiz Soft Skills 43
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze del Responsabile Contratti', 5);
+
+-- Domande per il Quiz "Competenze del Responsabile Contratti" (Quiz ID: 43)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Quali sono le competenze chiave richieste per un responsabile contratti?', 8),
+       ('Descrivi il processo di gestione contrattuale da negoziazione a firma.', 9),
+       ('Qual è l''importanza della precisione e della comprensione legale nel ruolo di responsabile contratti?', 8),
+       ('Quali sono le sfide più comuni nel gestire contratti complessi?', 9),
+       ('Come si assicura la conformità dei contratti alle normative e regolamenti?', 8);
+
+-- Quiz "Competenze del Responsabile Contratti" (Quiz ID: 43)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (234, 43), (235, 43), (236, 43), (237, 43), (238, 43);
+
+-- Risposte per "Competenze del Responsabile Contratti"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Conoscenza legale, capacità di negoziazione, abilità di gestione dei tempi.', 'Solo conoscenza amministrativa.', 'Solo competenze informatiche.', 'Solo abilità di comunicazione.', 'scelta1', 234),
+       -- Domanda 2
+       ('Attraverso la definizione dei termini, la negoziazione delle condizioni, la revisione legale e l''approvazione finale.', 'I contratti vengono firmati senza alcun processo specifico.', 'Non c''è processo di negoziazione.', 'Solo tramite l''approvazione legale senza negoziazione.', 'scelta1', 235),
+       -- Domanda 3
+       ('È fondamentale per garantire che i termini siano chiari, corretti e conformi alla legge.', 'La precisione e la comprensione legale non sono rilevanti nel ruolo di responsabile contratti.', 'La comprensione legale è più importante della precisione.', 'La precisione è più importante della comprensione legale.', 'scelta1', 236),
+       -- Domanda 4
+       ('Le sfide includono la gestione dei tempi, la complessità delle clausole e la mitigazione dei rischi.', 'Non ci sono sfide nella gestione dei contratti.', 'Solo la complessità delle clausole.', 'Solo la gestione dei tempi.', 'scelta1', 237),
+       -- Domanda 5
+       ('Attraverso la revisione legale costante, l''utilizzo di modelli standard e l''aggiornamento sulle normative vigenti.', 'Non esiste un modo per garantire la conformità.', 'Solo attraverso l''utilizzo di modelli standard.', 'Solo tramite la revisione legale finale.', 'scelta1', 238);
+
+       
+-- Quiz per il Legale Aziendale
+-- Quiz Soft Skills 44
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze del Legale Aziendale', 5);
+
+-- Domande per il Quiz "Competenze del Legale Aziendale" (Quiz ID: 44)
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Quali sono i principali rischi legali che un''azienda potrebbe affrontare?', 8),
+       ('Spiega l''importanza della compliance normativa per un''azienda.', 9),
+       ('Come gestisci una controversia legale all''interno di un''azienda?', 8),
+       ('Quale approccio adotti per minimizzare i rischi legali all''interno di un''azienda?', 9),
+       ('Come contribuisce il legale aziendale nella redazione dei contratti aziendali?', 8);
+
+-- Quiz "Competenze del Legale Aziendale" (Quiz ID: 44)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (239, 44), (240, 44), (241, 44), (242, 44), (243, 44);
+
+-- Risposte per "Competenze del Legale Aziendale"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Rischi contrattuali, controversie legali, problemi di conformità, violazioni della privacy.', 'Un''azienda non affronta rischi legali.', 'Solo violazioni della privacy.', 'Solo rischi contrattuali.', 'scelta1', 239),
+       -- Domanda 2
+       ('Evita sanzioni legali, riduce le vulnerabilità aziendali, costruisce fiducia con i clienti e le parti interessate.', 'La compliance normativa non è importante per un''azienda.', 'Solo per evitare sanzioni legali.', 'Solo per ridurre le vulnerabilità aziendali.', 'scelta1', 240),
+       -- Domanda 3
+       ('Attraverso negoziazione, mediazione, se necessario, ricorrendo a soluzioni legali.', 'Non è possibile gestire controversie legali all''interno di un''azienda.', 'Solo attraverso soluzioni legali.', 'Solo attraverso mediazione.', 'scelta1', 241),
+       -- Domanda 4
+       ('Conduzione di audit legali, formazione del personale, implementazione di procedure interne.', 'Non è possibile minimizzare i rischi legali.', 'Solo attraverso formazione del personale.', 'Solo tramite implementazione di procedure interne.', 'scelta1', 242),
+       -- Domanda 5
+       ('Nella redazione accurata, nella revisione e nella negoziazione dei termini dei contratti aziendali.', 'Il legale aziendale non è coinvolto nella redazione dei contratti.', 'Solo nella revisione dei contratti.', 'Solo nella negoziazione dei termini contrattuali.', 'scelta1', 243);
+
+       
+-- Quiz per l'Amministratore del Database
+-- Quiz Soft Skills 45
+INSERT INTO Quiz (descrizione, n_domande)
+VALUES ('Competenze dell''Amministratore del Database', 5);
+-- Domande per il Quiz "Competenze dell'Amministratore del Database"
+INSERT INTO Domanda (testo, punteggio)
+VALUES ('Quali sono le principali fasi di progettazione di un database?', 8),
+       ('Spiega il concetto di normalizzazione dei dati e perché è importante.', 9),
+       ('Come gestiresti un problema di rallentamento delle query in un database?', 8),
+       ('Quale ruolo gioca l''ottimizzazione del database nelle prestazioni complessive del sistema?', 9),
+       ('Come identifichi e risolvi i problemi di sicurezza in un database?', 8);
+
+-- Quiz "Competenze dell'Amministratore del Database" (ID Quiz: 45)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (244, 45), (245, 45), (246, 45), (247, 45), (248, 45);
+
+-- Risposte per "Competenze dell'Amministratore del Database"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Progettazione concettuale, progettazione logica, implementazione fisica.', 'Solo implementazione fisica.', 'Solo progettazione logica.', 'Solo progettazione concettuale.', 'scelta1', 244),
+       -- Domanda 2
+       ('La normalizzazione organizza i dati per ridurre la ridondanza e garantire l''integrità dei dati.', 'La normalizzazione non ha importanza in un database.', 'La normalizzazione duplica i dati per una migliore accessibilità.', 'La normalizzazione non è relativa all''integrità dei dati.', 'scelta1', 245),
+       -- Domanda 3
+       ('Analizzando gli indici, ottimizzando le query, verificando le statistiche dei database.', 'Non è possibile gestire il rallentamento delle query.', 'Solo analizzando gli indici.', 'Solo ottimizzando le query.', 'scelta1', 246),
+       -- Domanda 4
+       ('Migliora le prestazioni del database, contribuisce a un migliore utilizzo delle risorse di sistema.', 'L''ottimizzazione del database non ha impatto sulle prestazioni del sistema.', 'Solo migliora le prestazioni del database.', 'Solo contribuisce a un migliore utilizzo delle risorse.', 'scelta1', 247),
+       -- Domanda 5
+       ('Attraverso la valutazione delle vulnerabilità, l''applicazione di patch, l''implementazione di criteri di sicurezza.', 'I problemi di sicurezza non possono essere risolti in un database.', 'Solo applicando patch.', 'Solo implementando criteri di sicurezza.', 'scelta1', 248);
+       
+       
+
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+
+       
+--lascia qua in fondo -- Quiz per il Tecnico di Supporto IT (ID Quiz: 35)
+-- Domande per il Quiz "Tecnico di Supporto IT"
+INSERT INTO Domanda (id_domanda, testo, punteggio)
+VALUES (269, 'Descrivi i passaggi fondamentali per risolvere un problema di connessione internet.', 8),
+       (270, 'Come identifichi e risolvi i problemi di stampa su una rete condivisa?', 9),
+       (271, 'Quale approccio useresti per gestire richieste di supporto multiple contemporaneamente?', 8),
+       (272, 'Come affronti le richieste di supporto da parte di utenti non tecnici?', 9),
+       (273, 'Quali sono gli strumenti di monitoraggio dei sistemi che utilizzi abitualmente?', 8);
+
+-- Quiz "Tecnico di Supporto IT" (ID Quiz: 35)
+INSERT INTO QuizDomanda (id_domanda, id_quiz)
+VALUES (269, 35), (270, 35), (271, 35), (272, 35), (273, 35);
+
+-- Risposte per "Tecnico di Supporto IT"
+-- Domanda 1
+INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
+VALUES ('Verifica hardware, controlla connessioni fisiche, testa connessione con un altro dispositivo.', 'Riavvia il router, controlla le mail, contatta l''ISP.', 'Cambia browser, cancella la cronologia, usa un nuovo computer.', 'Cambia password, chiama il supporto.', 'scelta1', 269),
+       -- Domanda 2
+       ('Verifica lo stato della stampante, controlla i driver, verifica la connessione di rete.', 'Non ci sono problemi con le stampanti di rete.', 'Disconnettiti e riconnettiti alla rete.', 'Cambia la stampante.', 'scelta1', 270),
+       -- Domanda 3
+       ('Priorità basata sull''impatto, gestione multitasking, comunicazione efficace con gli utenti.', 'Risolvere una richiesta alla volta.', 'Ignorare le richieste di supporto meno urgenti.', 'Impiegare il minor tempo possibile in ogni richiesta.', 'scelta1', 271),
+       -- Domanda 4
+       ('Comunicare in modo chiaro e non tecnico, seguire procedure step-by-step, offrire assistenza remota.', 'Richiedere assistenza da un altro tecnico, ignorare la richiesta.', 'Fornire istruzioni complesse, assumere che l''utente capisca termini tecnici.', 'Chiedere all''utente di chiamare un altro dipartimento.', 'scelta1', 272),
+       -- Domanda 5
+       ('Nagios, Zabbix, SolarWinds.', 'Nessuno strumento di monitoraggio è necessario.', 'Solo Nagios.', 'Solo Zabbix.', 'scelta1', 273);
 /*Insert  Skill */
  
 INSERT INTO Skill VALUES('Python','hard', 1);
@@ -1546,82 +2054,82 @@ insert into UtenteQuiz values (1,8,6, '2023-11-18 18:34:50'),
 
 /*	Inserimento delle posizioni	*/
 
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo un sistemista esperto con almeno 3 anni di esperienza su progetti di media grandezza','1','6','3','aperta','20231101','Sistemista');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo un full-stack developer','1','1','1','aperta','20231102','Web Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo un sistemista esperto con almeno 3 anni di esperienza su progetti di media grandezza','1','6','27','aperta','20231101','Sistemista');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo un full-stack developer','1','1','26','aperta','20231102','Web Developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo uno sviluppatore Java','2','1','2','aperta','20231107','Java Developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo uno sviluppatore Front End','1','2','25','aperta','20231102','Front-End Developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('8','Cerchiamo uno sviluppatore Back End con nozioni di Java e Python','5','3','2','aperta','20231102','Back-End Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('8','Cerchiamo uno sviluppatore Back End con nozioni di Java e Python','5','3','31','aperta','20231102','Back-End Developer');
 
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('2','Siamo alla ricerca di una figura per lo sviluppo di applicazioni web','6','3','26','aperta','20240120','Full stack web developer');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Siamo alla ricerca di uno sviluppatore Python/Django esperto per unirsi al nostro team. Lideale candidato avrà una passione per la programmazione e l innovazione tecnologica, con un focus su Python e il framework Django.','6','3','24','aperta','20240120','Sviluppatore python');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Siamo alla ricerca di giovani candidati con passione per la tecnologia per un percorso di crescita nell ambito IT/Digital. Nello specifico, le risorse avranno l’opportunità di essere inserite negli ambiti di Cyber Security, di sviluppo software e di tecnologie per dei Canali Digitali con l’obiettivo di partecipare a progetti interfunzionali dalla definizione delle soluzioni con il cliente interno, di sviluppo/programmazione e supporto nelle fasi di certificazione fino alla manutenzione/gestione delle applicazioni.','29','3','1','aperta','20240120','Cyber security, Sviluppo software');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Il candidato che stiamo cercando avrà le seguenti responsabilità: implementazione di interfacce per gestionali in cloud; realizzare prototipi delle interfacce sotto la direzione del team leader. Ai candidati sarà offerta l’opportunità di lavorare in un ambiente dinamico, in forte espansione all’interno del quale sono previsti percorsi di crescita, supportati da una continua attenzione alla valorizzazione delle risorse.','13','3','6','aperta','20240120','Sviluppatore front end');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('2','Siamo alla ricerca di sviluppatori Web Full stack con almeno 4 anni di esperienza, è un requisito gradito la conoscenza dei seguenti CMS/linguaggi: Wordpress, Prestashop, Magento 2, HTML, CSS, Javascript, PHP, MySQL.','7','3','5','aperta','20240120','Senior web developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Sei appassionato di tecnologia e di programmazione? iamo cercando un/una Back-end Developer con esperienza in ambito Node con Javascript/Typescript','8','3','2','aperta','20240120','Back-end web developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('1','ll candidato è diplomato/laureato, ha maturato esperienza pluriennale nello sviluppo software web based, ed ha una conoscenza tecnica della lingua inglese. Sono requisiti fondamentali una buona capacità relazionale, attitudine al lavoro in team, capacità di adattamento e flessibilità.','5','3','2','aperta','20240120','Full stack web developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Siamo alla ricerca di giovani candidati con passione per la tecnologia per un percorso di crescita nell ambito IT/Digital. Nello specifico, le risorse avranno l’opportunità di essere inserite negli ambiti di Cyber Security, di sviluppo software e di tecnologie per dei Canali Digitali con l’obiettivo di partecipare a progetti interfunzionali dalla definizione delle soluzioni con il cliente interno, di sviluppo/programmazione e supporto nelle fasi di certificazione fino alla manutenzione/gestione delle applicazioni.','29','3','29','aperta','20240120','Cyber security, Sviluppo software');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Il candidato che stiamo cercando avrà le seguenti responsabilità: implementazione di interfacce per gestionali in cloud; realizzare prototipi delle interfacce sotto la direzione del team leader. Ai candidati sarà offerta l’opportunità di lavorare in un ambiente dinamico, in forte espansione all’interno del quale sono previsti percorsi di crescita, supportati da una continua attenzione alla valorizzazione delle risorse.','13','3','25','aperta','20240120','Sviluppatore front end');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('2','Siamo alla ricerca di sviluppatori Web Full stack con almeno 4 anni di esperienza, è un requisito gradito la conoscenza dei seguenti CMS/linguaggi: Wordpress, Prestashop, Magento 2, HTML, CSS, Javascript, PHP, MySQL.','7','3','26','aperta','20240120','Senior web developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Sei appassionato di tecnologia e di programmazione? iamo cercando un/una Back-end Developer con esperienza in ambito Node con Javascript/Typescript','8','3','31','aperta','20240120','Back-end web developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('1','ll candidato è diplomato/laureato, ha maturato esperienza pluriennale nello sviluppo software web based, ed ha una conoscenza tecnica della lingua inglese. Sono requisiti fondamentali una buona capacità relazionale, attitudine al lavoro in team, capacità di adattamento e flessibilità.','5','3','26','aperta','20240120','Full stack web developer');
 
 -- Sviluppatore Full-Stack
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo uno sviluppatore full-stack altamente motivato per unirsi al nostro team dinamico. La persona ideale avrà competenze sia nel frontend che nel backend e sarà coinvolta nello sviluppo di soluzioni software innovative.', 1, 1, 1, 'aperta', '2023-11-30 10:00:00.000', 'Sviluppatore Full-Stack'); 
+VALUES (300, 'Cerchiamo uno sviluppatore full-stack altamente motivato per unirsi al nostro team dinamico. La persona ideale avrà competenze sia nel frontend che nel backend e sarà coinvolta nello sviluppo di soluzioni software innovative.', 1, 1, 26, 'aperta', '2023-11-30 10:00:00.000', 'Sviluppatore Full-Stack'); 
 -- Ingegnere del Software
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Stiamo cercando un ingegnere del software talentuoso e appassionato per contribuire alla progettazione, sviluppo e manutenzione del nostro software. Se hai esperienza nella creazione di soluzioni scalabili, sei la persona che stiamo cercando.', 2, 2, 2, 'aperta', '2023-11-30 11:30:00.000', 'Ingegnere del Software');
+VALUES (300, 'Stiamo cercando un ingegnere del software talentuoso e appassionato per contribuire alla progettazione, sviluppo e manutenzione del nostro software. Se hai esperienza nella creazione di soluzioni scalabili, sei la persona che stiamo cercando.', 2, 2, 30, 'aperta', '2023-11-30 11:30:00.000', 'Ingegnere del Software');
 
 /*creare quiz*/
 -- Project Manager Software
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Siamo alla ricerca di un Project Manager Software con una comprovata esperienza nella gestione di progetti software complessi. Se hai una forte leadership e capacità organizzative, entra a far parte della nostra squadra.', 3, 3, 3, 'aperta', '2023-11-30 13:45:00.000', 'Project Manager Software');
+VALUES (300, 'Siamo alla ricerca di un Project Manager Software con una comprovata esperienza nella gestione di progetti software complessi. Se hai una forte leadership e capacità organizzative, entra a far parte della nostra squadra.', 3, 3, 32, 'aperta', '2023-11-30 13:45:00.000', 'Project Manager Software');
 -- Scrum Master
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo uno Scrum Master motivato e orientato ai risultati per guidare e facilitare le pratiche agile nel nostro team di sviluppo. Se sei appassionato di metodologie agili, candidati ora.', 4, 1, 4, 'aperta', '2023-11-30 14:30:00.000', 'Scrum Master');
+VALUES (300, 'Cerchiamo uno Scrum Master motivato e orientato ai risultati per guidare e facilitare le pratiche agile nel nostro team di sviluppo. Se sei appassionato di metodologie agili, candidati ora.', 4, 1, 33, 'aperta', '2023-11-30 14:30:00.000', 'Scrum Master');
 -- Progettista UX/UI
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Stiamo cercando un Progettista UX/UI creativo ed esperto per migliorare l''esperienza degli utenti dei nostri prodotti software. Se hai una visione innovativa e competenze di progettazione eccezionali, fai domanda oggi stesso.', 5, 6, 5, 'aperta', '2023-11-30 15:15:00.000', 'Progettista UX/UI');
+VALUES (300, 'Stiamo cercando un Progettista UX/UI creativo ed esperto per migliorare l''esperienza degli utenti dei nostri prodotti software. Se hai una visione innovativa e competenze di progettazione eccezionali, fai domanda oggi stesso.', 5, 6, 34, 'aperta', '2023-11-30 15:15:00.000', 'Progettista UX/UI');
 -- Architetto dell'Esperienza Utente
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Architetto dell''Esperienza Utente appassionato per guidare la progettazione di interfacce utente intuitive e coinvolgenti. Se hai una forte comprensione dell''usabilità, sei la persona giusta per noi.', 6, 6, 6, 'aperta', '2023-11-30 16:00:00.000', 'Architetto dell''Esperienza Utente');
+VALUES (300, 'Cerchiamo un Architetto dell''Esperienza Utente appassionato per guidare la progettazione di interfacce utente intuitive e coinvolgenti. Se hai una forte comprensione dell''usabilità, sei la persona giusta per noi.', 6, 6, 36, 'aperta', '2023-11-30 16:00:00.000', 'Architetto dell''Esperienza Utente');
 -- Direttore Amministrativo
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Direttore Amministrativo altamente qualificato per sovrintendere alle operazioni quotidiane dell''azienda. Il candidato ideale avrà una solida comprensione delle pratiche aziendali e un forte orientamento alla leadership.', 7, 3, 7, 'aperta', '2023-11-30 16:45:00.000', 'Direttore Amministrativo');
+VALUES (300, 'Cerchiamo un Direttore Amministrativo altamente qualificato per sovrintendere alle operazioni quotidiane dell''azienda. Il candidato ideale avrà una solida comprensione delle pratiche aziendali e un forte orientamento alla leadership.', 7, 3, 37, 'aperta', '2023-11-30 16:45:00.000', 'Direttore Amministrativo');
 -- Responsabile Amministrativo
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Stiamo cercando un Responsabile Amministrativo con esperienza comprovata nella gestione delle operazioni finanziarie e contabili. Se hai una solida competenza in finanza aziendale, candidati ora.', 8, 3, 8, 'aperta', '2023-11-30 17:30:00.000', 'Responsabile Amministrativo');
+VALUES (300, 'Stiamo cercando un Responsabile Amministrativo con esperienza comprovata nella gestione delle operazioni finanziarie e contabili. Se hai una solida competenza in finanza aziendale, candidati ora.', 8, 3, 38, 'aperta', '2023-11-30 17:30:00.000', 'Responsabile Amministrativo');
 -- Responsabile Finanziario
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Siamo alla ricerca di un Responsabile Finanziario esperto per guidare la gestione finanziaria dell''azienda. Se hai una solida competenza contabile e una visione strategica delle finanze, ti incoraggiamo a candidarti.',29, 3, 1, 'aperta', '2023-11-30 18:15:00.000', 'Responsabile Finanziario');
+VALUES (300, 'Siamo alla ricerca di un Responsabile Finanziario esperto per guidare la gestione finanziaria dell''azienda. Se hai una solida competenza contabile e una visione strategica delle finanze, ti incoraggiamo a candidarti.',29, 3, 39, 'aperta', '2023-11-30 18:15:00.000', 'Responsabile Finanziario');
 -- Contabile
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Contabile altamente organizzato con esperienza nella gestione delle transazioni finanziarie. Se sei preciso e attento ai dettagli, potresti essere la persona giusta per unirti al nostro team contabile.', 23, 3, 1, 'aperta', '2023-11-29 09:00:00.000', 'Contabile');
+VALUES (300, 'Cerchiamo un Contabile altamente organizzato con esperienza nella gestione delle transazioni finanziarie. Se sei preciso e attento ai dettagli, potresti essere la persona giusta per unirti al nostro team contabile.', 23, 3, 40, 'aperta', '2023-11-29 09:00:00.000', 'Contabile');
 -- Responsabile delle Risorse Umane
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Responsabile delle Risorse Umane che guidi le iniziative HR, dalla selezione alla gestione delle prestazioni. Se hai una forte capacità relazionale e una visione strategica delle risorse umane, ti invitiamo a candidarti.', 76, 3, 1, 'aperta', '2023-11-30 09:45:00.000', 'Responsabile delle Risorse Umane');
+VALUES (300, 'Cerchiamo un Responsabile delle Risorse Umane che guidi le iniziative HR, dalla selezione alla gestione delle prestazioni. Se hai una forte capacità relazionale e una visione strategica delle risorse umane, ti invitiamo a candidarti.', 76, 3, 41, 'aperta', '2023-11-30 09:45:00.000', 'Responsabile delle Risorse Umane');
 -- Recruiter
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Recruiter talentuoso con abilità di ricerca e selezione. Se hai una buona comprensione del mercato del lavoro e capacità di valutare il talento, ti invitiamo a far parte del nostro team HR.', 1, 3, 1, 'aperta', '2023-11-30 10:30:00.000', 'Recruiter');
+VALUES (300, 'Cerchiamo un Recruiter talentuoso con abilità di ricerca e selezione. Se hai una buona comprensione del mercato del lavoro e capacità di valutare il talento, ti invitiamo a far parte del nostro team HR.', 1, 3, 42, 'aperta', '2023-11-30 10:30:00.000', 'Recruiter');
 -- Responsabile Contratti
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Siamo alla ricerca di un Responsabile Contratti con esperienza nella gestione e negoziazione di contratti aziendali. Se hai competenze legali e una buona comprensione delle pratiche contrattuali, candidati ora.', 3, 3, 1, 'aperta', '2023-11-29 11:15:00.000', 'Responsabile Contratti');
+VALUES (300, 'Siamo alla ricerca di un Responsabile Contratti con esperienza nella gestione e negoziazione di contratti aziendali. Se hai competenze legali e una buona comprensione delle pratiche contrattuali, candidati ora.', 3, 3, 43, 'aperta', '2023-11-29 11:15:00.000', 'Responsabile Contratti');
 -- Avvocato Aziendale o Consulente Legale
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Avvocato Aziendale o Consulente Legale per fornire consulenza legale interna. Se hai una solida esperienza in diritto commerciale, contrattuale e delle società, potresti essere la persona che stiamo cercando.', 7,3, 1, 'aperta', '2023-11-29 12:00:00.000', 'Avvocato Aziendale o Consulente Legale');
+VALUES (300, 'Cerchiamo un Avvocato Aziendale o Consulente Legale per fornire consulenza legale interna. Se hai una solida esperienza in diritto commerciale, contrattuale e delle società, potresti essere la persona che stiamo cercando.', 7,3, 44, 'aperta', '2023-11-29 12:00:00.000', 'Avvocato Aziendale o Consulente Legale');
 -- Amministratore del Database
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Amministratore del Database esperto per gestire e ottimizzare i database aziendali. Se hai competenze nella progettazione, implementazione e manutenzione di database, ti invitiamo a candidarti.', 9, 9, 1, 'aperta', '2023-11-29 12:45:00.000', 'Amministratore del Database');
+VALUES (300, 'Cerchiamo un Amministratore del Database esperto per gestire e ottimizzare i database aziendali. Se hai competenze nella progettazione, implementazione e manutenzione di database, ti invitiamo a candidarti.', 9, 9, 45, 'aperta', '2023-11-29 12:45:00.000', 'Amministratore del Database');
 -- Sviluppatore di Database
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Stiamo cercando uno Sviluppatore di Database talentuoso per progettare e implementare soluzioni database efficaci. Se hai competenze nello sviluppo SQL e una conoscenza approfondita delle best practice, fai domanda oggi stesso.', 20, 9, 1, 'aperta', '2023-11-29 13:30:00.000', 'Sviluppatore di Database');
+VALUES (300, 'Stiamo cercando uno Sviluppatore di Database talentuoso per progettare e implementare soluzioni database efficaci. Se hai competenze nello sviluppo SQL e una conoscenza approfondita delle best practice, fai domanda oggi stesso.', 20, 9, 46, 'aperta', '2023-11-29 13:30:00.000', 'Sviluppatore di Database');
 -- Architetto Cloud
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Architetto Cloud altamente qualificato per progettare e implementare soluzioni cloud scalabili e sicure. Se hai esperienza nella migrazione verso il cloud e nella gestione delle risorse cloud, candidati subito.', 2, 8, 1, 'aperta', '2023-11-29 14:15:00.000', 'Architetto Cloud');
+VALUES (300, 'Cerchiamo un Architetto Cloud altamente qualificato per progettare e implementare soluzioni cloud scalabili e sicure. Se hai esperienza nella migrazione verso il cloud e nella gestione delle risorse cloud, candidati subito.', 2, 8, 47, 'aperta', '2023-11-29 14:15:00.000', 'Architetto Cloud');
 -- Ingegnere di Sistemi Cloud
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Siamo alla ricerca di un Ingegnere di Sistemi Cloud per supportare lo sviluppo e la gestione di infrastrutture cloud. Se hai competenze nella configurazione e nell''ottimizzazione delle risorse cloud, ti invitiamo a far parte del nostro team.', 80, 8, 1, 'aperta', '2023-11-29 15:00:00.000', 'Ingegnere di Sistemi Cloud');
+VALUES (300, 'Siamo alla ricerca di un Ingegnere di Sistemi Cloud per supportare lo sviluppo e la gestione di infrastrutture cloud. Se hai competenze nella configurazione e nell''ottimizzazione delle risorse cloud, ti invitiamo a far parte del nostro team.', 80, 8, 48, 'aperta', '2023-11-29 15:00:00.000', 'Ingegnere di Sistemi Cloud');
 -- Amministratore di Reti
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Amministratore di Reti competente per gestire e mantenere la nostra infrastruttura di rete. Se hai esperienza nella progettazione, implementazione e sicurezza delle reti, fai domanda oggi stesso.', 64, 2, 1, 'aperta', '2023-11-29 15:45:00.000', 'Amministratore di Reti');
+VALUES (300, 'Cerchiamo un Amministratore di Reti competente per gestire e mantenere la nostra infrastruttura di rete. Se hai esperienza nella progettazione, implementazione e sicurezza delle reti, fai domanda oggi stesso.', 64, 2, 49, 'aperta', '2023-11-29 15:45:00.000', 'Amministratore di Reti');
 -- Tecnico di Supporto IT
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Siamo alla ricerca di un Tecnico di Supporto IT per fornire assistenza tecnica agli utenti interni ed esterni. Se hai una passione per la risoluzione dei problemi tecnici e un''eccellente capacità di comunicazione, candidati subito.', 32, 4, 1, 'aperta', '2023-11-29 16:30:00.000', 'Tecnico di Supporto IT');
+VALUES (300, 'Siamo alla ricerca di un Tecnico di Supporto IT per fornire assistenza tecnica agli utenti interni ed esterni. Se hai una passione per la risoluzione dei problemi tecnici e un''eccellente capacità di comunicazione, candidati subito.', 32, 4, 35, 'aperta', '2023-11-29 16:30:00.000', 'Tecnico di Supporto IT');
 
 
 
