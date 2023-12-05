@@ -134,6 +134,17 @@
                             <div class="col-sm-4 py-2">
                                 <span class="badge bg-info"><%=posizione.getCategoria().getNome_categoria()%></span>
                                 <span class="badge bg-info">Ammissioni massime: <%=posizione.getN_ammissioni()%></span>
+                                <%
+                                    if(posizione.getQuiz().getDescrizione()==null){
+                                %>
+                                <span class="badge bg-warning">Quiz non assegnato</span>
+                                <%
+                                    }else {
+                                %>
+                                <span class="badge bg-info"><%=posizione.getQuiz().getDescrizione()%></span>
+                                <%
+                                    }
+                                %>
                             </div>
                             <div class="col-sm-3 text-lg-end">
                                 <%

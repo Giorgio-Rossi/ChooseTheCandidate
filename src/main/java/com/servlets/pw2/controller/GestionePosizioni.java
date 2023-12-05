@@ -57,9 +57,13 @@ public class GestionePosizioni extends HttpServlet {
 		posizione.setStato(stato);
 		posizione.setData_inserimento(new java.sql.Date(data_inserimento.getTime()));
 
-		System.out.println(" "+ruolo+ n_ammissioni+ descrizione+ stato+ new java.sql.Date(data_inserimento.getTime()));	
-		System.out.println(req.getParameter("citta"));
-		Integer id_citta = Integer.valueOf(req.getParameter("citta").split(" ", 3)[0]);
+		String checkCit = req.getParameter("citta") == null ? "-1" : req.getParameter("citta");
+		if(checkCit.equals("-1")){
+			ErrorManager.setErrorMessage("Inserisci una città valida",req);
+			req.getRequestDispatcher("admin/aggiungiPosizione.jsp").forward(req, resp);
+		}
+		Integer id_citta = Integer.valueOf(req.getParameter("citta").split(" ", 3)[0]) == null ? -1 : Integer.valueOf(req.getParameter("citta").split(" ", 3)[0]);
+
 		Integer id_regione = Integer.valueOf(req.getParameter("citta").split(" ", 3)[1]);
 		String nome_citta = req.getParameter("citta").split(" ", 3)[2];
 
@@ -70,20 +74,28 @@ public class GestionePosizioni extends HttpServlet {
 		Citta citta = new Citta(id_citta, regione, nome_citta);
 		posizione.setCitta(citta);
 
+		String checkCat = req.getParameter("categoria") == null ? "-1" : req.getParameter("categoria");
+		if(checkCat.equals("-1")){
+			ErrorManager.setErrorMessage("Inserisci una categoria valida",req);
+			req.getRequestDispatcher("admin/aggiungiPosizione.jsp").forward(req, resp);
+		}
 		Integer id_categoria = Integer.valueOf(req.getParameter("categoria").split(" ", 2)[0]);
 		String nome_categoria = req.getParameter("categoria").split(" ", 2)[1];
 
 		CategoriaPosizione Cat = new CategoriaPosizione(id_categoria, nome_categoria);
 		posizione.setCategoria(Cat);
-		
-		Integer id_quiz = Integer.valueOf(req.getParameter("quiz").split(" ", 2)[0]);
-		String descrizioneQuiz = req.getParameter("quiz").split(" ", 2)[1];
-		
-		
-		QuizIMPL quizImpl=new QuizIMPL();
-		Quiz quiz = new Quiz(id_quiz, descrizioneQuiz);
-		posizione.setQuiz(quiz);
-		
+
+
+		String checkQuiz = req.getParameter("quiz") == null ? "-1" : req.getParameter("quiz");
+		if(!checkQuiz.equals("-1")){
+			Integer id_quiz = Integer.valueOf(req.getParameter("quiz").split(" ", 2)[0]);
+			String descrizioneQuiz = req.getParameter("quiz").split(" ", 2)[1];
+
+			QuizIMPL quizImpl=new QuizIMPL();
+			Quiz quiz = new Quiz(id_quiz, descrizioneQuiz);
+			posizione.setQuiz(quiz);
+		}
+
 		posizioneImpl.nuovaPosizione(posizione);
 		ErrorManager.setSuccessMessage("Posizione aggiunta con successo", req);
 		req.getSession().setAttribute("posizione_creata","true");

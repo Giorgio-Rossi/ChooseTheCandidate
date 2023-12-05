@@ -12,8 +12,6 @@ UtenteIMPL utenteIMPL = new UtenteIMPL();
 
 Utente IdUtente = utenteIMPL.findById(utente.getId_user());
 
-//Esperienza esperienza = (Esperienza) session.getAttribute("esperienza");
-
 EsperienzaIMPL esperienzeUtente = new EsperienzaIMPL();
 List<Esperienza> esperienze = esperienzeUtente.getAllExperience(IdUtente.getId_user());
 
@@ -27,19 +25,6 @@ ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
 ArrayList<Skill> skills = (ArrayList<Skill>) new SkillIMPL().findAll();
 
 ArrayList<UsersSkills> skill_utente = new UtenteSkillsIMPL().getAllUserSkillVerifiedOrNot(utente);
-	System.out.println(skill_utente);
-
-
-/*
-for (Esperienza test : esperienze) {
-	System.out.println(test + "");
-}
-
-for (Istruzione test2 : istruzioni) {
-	System.out.println(test2 + "");
-}
-*/
-
 
 response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 %>

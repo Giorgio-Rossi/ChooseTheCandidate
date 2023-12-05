@@ -125,6 +125,14 @@ public class CurriculumServlet extends HttpServlet {
             }
 
 
+            if (fine_istruzione.compareTo(inizo_istruzione) < 0) {
+                ErrorManager.setErrorMessage("Inserire date valide", req);
+                req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
+            }
+
+
+
+
             if(!sede_istruzione.isEmpty()) {
 
                 Integer id_citta_istruzione = Integer.valueOf(sede_istruzione.split(" ", 4)[0]);
@@ -211,6 +219,13 @@ public class CurriculumServlet extends HttpServlet {
                 }
                 nuova_istruzione.setData_fine(new java.sql.Date(data_fine_nuova.getTime()));
             }
+
+            if (fine_istruzione_nuova.compareTo(inizo_istruzione_nuova) < 0) {
+                ErrorManager.setErrorMessage("Inserire date valide", req);
+                req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
+            }
+
+
 
             if(sede_istruzione_nuova!=null && !sede_istruzione_nuova.isEmpty()) {
 
@@ -336,6 +351,11 @@ public class CurriculumServlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 update_esperienza.setData_fine(new java.sql.Date(data_fine_nuova.getTime()));
+            }
+
+            if (fine_esperienza.compareTo(inizio_esperienza) < 0) {
+                ErrorManager.setErrorMessage("Inserire date valide", req);
+                req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
             }
 
 
@@ -485,6 +505,11 @@ public class CurriculumServlet extends HttpServlet {
                     throw new RuntimeException(e);
                 }
                 nuova_esperienza.setData_fine(new java.sql.Date(data_fine_nuova.getTime()));
+            }
+
+            if (fine_esperienza_nuova.compareTo(inizio_esperienza_nuova) < 0) {
+                ErrorManager.setErrorMessage("Inserire date valide", req);
+                req.getRequestDispatcher("/home/curriculum.jsp").forward(req, resp);
             }
 
             if(sede_esperienza_nuova!=null && !sede_esperienza_nuova.isEmpty()) {

@@ -90,13 +90,16 @@ public class AggiornaPosizioniAdmin extends HttpServlet {
 
 		Integer id_quiz = Integer.valueOf(req.getParameter("quiz"));
 
-		QuizIMPL quizImpl = new QuizIMPL();
+		System.out.println(id_quiz);
 
-		posizione.setQuiz(quizImpl.getQuizById(id_quiz));
+		if(id_quiz!=0) {
+
+			QuizIMPL quizImpl = new QuizIMPL();
+
+			posizione.setQuiz(quizImpl.getQuizById(id_quiz));
+		}
 
 		posizione.setId_posizione(id_poszione);
-
-		System.out.println(posizione);
 
 		posizioneImpl.updatePosizione(posizione);
 

@@ -661,7 +661,11 @@ public class PosizioneIMPL implements PosizioneDAO {
 			statement.setInt(2, posizione.getCategoria().getId_categoria());
 			statement.setInt(3, posizione.getCitta().getId_citta());
 			statement.setInt(4, posizione.getN_ammissioni());
-			statement.setInt(5, posizione.getQuiz().getId_quiz());
+			if(posizione.getQuiz() !=null) {
+				statement.setInt(5, posizione.getQuiz().getId_quiz());
+			}else {
+				statement.setNull(5, Types.INTEGER );
+			}
 			statement.setString(6, posizione.getDescrizione());
 			statement.setString(7, posizione.getStato());
 			statement.setTimestamp(8, new Timestamp(posizione.getData_inserimento().getTime()));
@@ -688,7 +692,11 @@ public class PosizioneIMPL implements PosizioneDAO {
 
 			statement.setInt(3,posizione.getCitta().getId_citta());
 			statement.setInt(4,posizione.getCategoria().getId_categoria());
-			statement.setInt(5,posizione.getQuiz().getId_quiz());
+			if(posizione.getQuiz() !=null) {
+				statement.setInt(5, posizione.getQuiz().getId_quiz());
+			}else {
+				statement.setNull(5, Types.INTEGER );
+			}
 			statement.setString(6, posizione.getStato());
 			statement.setTimestamp(7, new Timestamp(posizione.getData_inserimento().getTime()));
 			statement.setString(8, posizione.getRuolo());

@@ -85,13 +85,10 @@ ArrayList<Citta> cities = new CittaIMPL().getAllCitta();
                                             %>
                                         </div>
                                         <div class="d-flex justify-content-center">
-                                        <label for="fileUpload" class="file-upload btn btn-primary  rounded-pill shadow"><i class="bi bi-upload"></i> Cambia la foto profilo
+                                        <label for="fileUpload" class="file-upload btn btn-info  rounded-pill shadow"><i class="bi bi-upload"></i> Cambia la foto profilo
                                             <input id="fileUpload" type="file" accept="image/*" name="foto_profilo" form="modifica_profilo" style="display: none">
                                         </label>
                                         </div>
-                                            <div class="text-center text-sm-right">
-                                                <div class="text-muted"><small>Registrato il 09 Dec 2017</small></div>
-                                            </div>
                                     </div>
                                     <div class="tab-content pt-3">
                                         <div class="tab-pane active">
