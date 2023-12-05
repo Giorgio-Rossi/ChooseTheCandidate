@@ -219,7 +219,7 @@ ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAl
 														<div class="row">
 															<div class="form-group">
 																<label>Numero ammissioni</label> <input
-																	class="form-control" type="text" name="ammissioni"
+																	class="form-control" min="<%=posizioneIMPL.getCurrentCandidature(posizione.getId_posizione())%>" max="400" type="number" name="ammissioni"
 																	placeholder="<%=posizione.getN_ammissioni()%>"
 																	value=<%=posizione.getN_ammissioni()%> required>
 															</div>
