@@ -2264,6 +2264,95 @@ VALUES (300, 'Cerchiamo un Amministratore di Reti competente per gestire e mante
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
 VALUES (300, 'Siamo alla ricerca di un Tecnico di Supporto IT per fornire assistenza tecnica agli utenti interni ed esterni. Se hai una passione per la risoluzione dei problemi tecnici e un''eccellente capacità di comunicazione, candidati subito.', 32, 7, 35, 'aperta', '2023-11-29 16:30:00.000', 'Tecnico di Supporto IT');
 
+-- Sviluppatore Full-Stack
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo uno sviluppatore full-stack altamente motivato per unirsi al nostro team dinamico. La persona ideale avrà competenze sia nel frontend che nel backend e sarà coinvolta nello sviluppo di soluzioni software innovative.', 1, 1, 26, 'aperta', '2023-11-30 10:00:00.000', 'Sviluppatore Full-Stack'); 
+-- Sviluppatore Full-Stack
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo uno sviluppatore full-stack altamente motivato per unirsi al nostro team dinamico. La persona ideale avrà competenze sia nel frontend che nel backend e sarà coinvolta nello sviluppo di soluzioni software innovative.', 1, 1, 26, 'aperta', '2023-11-30 10:00:00.000', 'Sviluppatore Full-Stack'); 
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo un sistemista esperto con almeno 3 anni di esperienza su progetti di media grandezza','49','5','27','aperta','20231101','Sistemista');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo un full-stack developer','32','1','26','aperta','20231102','Web Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo uno sviluppatore Java','61','11','2','aperta','20231107','Java Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo uno sviluppatore Front End','61','1','25','aperta','20231102','Front-End Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('8','Cerchiamo uno sviluppatore Back End con nozioni di Java e Python','61','11','31','aperta','20231102','Back-End Developer');
+
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('2','Siamo alla ricerca di una figura per lo sviluppo di applicazioni web','61','1','26','aperta','20240120','Full stack web developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Siamo alla ricerca di uno sviluppatore Python/Django esperto per unirsi al nostro team. Lideale candidato avrà una passione per la programmazione e l innovazione tecnologica, con un focus su Python e il framework Django.','16','11','24','aperta','20240120','Sviluppatore python');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Siamo alla ricerca di giovani candidati con passione per la tecnologia per un percorso di crescita nell ambito IT/Digital. Nello specifico, le risorse avranno l’opportunità di essere inserite negli ambiti di Cyber Security, di sviluppo software e di tecnologie per dei Canali Digitali con l’obiettivo di partecipare a progetti interfunzionali dalla definizione delle soluzioni con il cliente interno, di sviluppo/programmazione e supporto nelle fasi di certificazione fino alla manutenzione/gestione delle applicazioni.','61','4','29','aperta','20240120','Cyber security, Sviluppo software');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Il candidato che stiamo cercando avrà le seguenti responsabilità: implementazione di interfacce per gestionali in cloud; realizzare prototipi delle interfacce sotto la direzione del team leader. Ai candidati sarà offerta l’opportunità di lavorare in un ambiente dinamico, in forte espansione all’interno del quale sono previsti percorsi di crescita, supportati da una continua attenzione alla valorizzazione delle risorse.','61','1','25','aperta','20240120','Sviluppatore front end');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('2','Siamo alla ricerca di sviluppatori Web Full stack con almeno 4 anni di esperienza, è un requisito gradito la conoscenza dei seguenti CMS/linguaggi: Wordpress, Prestashop, Magento 2, HTML, CSS, Javascript, PHP, MySQL.','61','1','26','aperta','20240120','Senior web developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Sei appassionato di tecnologia e di programmazione? iamo cercando un/una Back-end Developer con esperienza in ambito Node con Javascript/Typescript','61','11','31','aperta','20240120','Back-end web developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('1','ll candidato è diplomato/laureato, ha maturato esperienza pluriennale nello sviluppo software web based, ed ha una conoscenza tecnica della lingua inglese. Sono requisiti fondamentali una buona capacità relazionale, attitudine al lavoro in team, capacità di adattamento e flessibilità.','61','1','26','aperta','20240120','Full stack web developer');
+
+-- Sviluppatore Full-Stack
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo uno sviluppatore full-stack altamente motivato per unirsi al nostro team dinamico. La persona ideale avrà competenze sia nel frontend che nel backend e sarà coinvolta nello sviluppo di soluzioni software innovative.','61', '1', '26', 'aperta', '2023-11-30 10:00:00.000', 'Sviluppatore Full-Stack'); 
+-- Ingegnere del Software
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Stiamo cercando un ingegnere del software talentuoso e appassionato per contribuire alla progettazione, sviluppo e manutenzione del nostro software. Se hai esperienza nella creazione di soluzioni scalabili, sei la persona che stiamo cercando.', '61', '11', '30', 'aperta', '2023-11-30 11:30:00.000', 'Ingegnere del Software');
+
+/*creare quiz*/
+-- Project Manager Software
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Project Manager Software con una comprovata esperienza nella gestione di progetti software complessi. Se hai una forte leadership e capacità organizzative, entra a far parte della nostra squadra.', '61', '3', '32', 'aperta', '2023-11-30 13:45:00.000', 'Project Manager Software');
+-- Scrum Master
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo uno Scrum Master motivato e orientato ai risultati per guidare e facilitare le pratiche agile nel nostro team di sviluppo. Se sei appassionato di metodologie agili, candidati ora.', '61', '3', '33', 'aperta', '2023-11-30 14:30:00.000', 'Scrum Master');
+-- Progettista UX/UI
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Stiamo cercando un Progettista UX/UI creativo ed esperto per migliorare l''esperienza degli utenti dei nostri prodotti software. Se hai una visione innovativa e competenze di progettazione eccezionali, fai domanda oggi stesso.', '61', 10, 34, 'aperta', '2023-11-30 15:15:00.000', 'Progettista UX/UI');
+-- Architetto dell'Esperienza Utente
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Architetto dell''Esperienza Utente appassionato per guidare la progettazione di interfacce utente intuitive e coinvolgenti. Se hai una forte comprensione dell''usabilità, sei la persona giusta per noi.', '61', 10, 36, 'aperta', '2023-11-30 16:00:00.000', 'Architetto dell''Esperienza Utente');
+-- Direttore Amministrativo
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Direttore Amministrativo altamente qualificato per sovrintendere alle operazioni quotidiane dell''azienda. Il candidato ideale avrà una solida comprensione delle pratiche aziendali e un forte orientamento alla leadership.', '61', 14, 37, 'aperta', '2023-11-30 16:45:00.000', 'Direttore Amministrativo');
+-- Responsabile Amministrativo
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Stiamo cercando un Responsabile Amministrativo con esperienza comprovata nella gestione delle operazioni finanziarie e contabili. Se hai una solida competenza in finanza aziendale, candidati ora.', '61', 14, 38, 'aperta', '2023-11-30 17:30:00.000', 'Responsabile Amministrativo');
+-- Responsabile Finanziario
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Responsabile Finanziario esperto per guidare la gestione finanziaria dell''azienda. Se hai una solida competenza contabile e una visione strategica delle finanze, ti incoraggiamo a candidarti.','61', 14, 39, 'aperta', '2023-11-30 18:15:00.000', 'Responsabile Finanziario');
+-- Contabile
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Contabile altamente organizzato con esperienza nella gestione delle transazioni finanziarie. Se sei preciso e attento ai dettagli, potresti essere la persona giusta per unirti al nostro team contabile.', '61', 14, 40, 'aperta', '2023-11-29 09:00:00.000', 'Contabile');
+-- Responsabile delle Risorse Umane
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Responsabile delle Risorse Umane che guidi le iniziative HR, dalla selezione alla gestione delle prestazioni. Se hai una forte capacità relazionale e una visione strategica delle risorse umane, ti invitiamo a candidarti.', '61', 14, 41, 'aperta', '2023-11-30 09:45:00.000', 'Responsabile delle Risorse Umane');
+-- Recruiter
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Recruiter talentuoso con abilità di ricerca e selezione. Se hai una buona comprensione del mercato del lavoro e capacità di valutare il talento, ti invitiamo a far parte del nostro team HR.', '61', 14, 42, 'aperta', '2023-11-30 10:30:00.000', 'Recruiter');
+-- Responsabile Contratti
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Responsabile Contratti con esperienza nella gestione e negoziazione di contratti aziendali. Se hai competenze legali e una buona comprensione delle pratiche contrattuali, candidati ora.', '61', 14, 43, 'aperta', '2023-11-29 11:15:00.000', 'Responsabile Contratti');
+-- Avvocato Aziendale o Consulente Legale
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Avvocato Aziendale o Consulente Legale per fornire consulenza legale interna. Se hai una solida esperienza in diritto commerciale, contrattuale e delle società, potresti essere la persona che stiamo cercando.', '61',14, 44, 'aperta', '2023-11-29 12:00:00.000', 'Avvocato Aziendale o Consulente Legale');
+-- Amministratore del Database
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Amministratore del Database esperto per gestire e ottimizzare i database aziendali. Se hai competenze nella progettazione, implementazione e manutenzione di database, ti invitiamo a candidarti.', '61', 9, 45, 'aperta', '2023-11-29 12:45:00.000', 'Amministratore del Database');
+-- Sviluppatore di Database
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Stiamo cercando uno Sviluppatore di Database talentuoso per progettare e implementare soluzioni database efficaci. Se hai competenze nello sviluppo SQL e una conoscenza approfondita delle best practice, fai domanda oggi stesso.', '61', 9, 46, 'aperta', '2023-11-29 13:30:00.000', 'Sviluppatore di Database');
+-- Architetto Cloud
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Architetto Cloud altamente qualificato per progettare e implementare soluzioni cloud scalabili e sicure. Se hai esperienza nella migrazione verso il cloud e nella gestione delle risorse cloud, candidati subito.', '61', 13, 47, 'aperta', '2023-11-29 14:15:00.000', 'Architetto Cloud');
+-- Ingegnere di Sistemi Cloud
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Ingegnere di Sistemi Cloud per supportare lo sviluppo e la gestione di infrastrutture cloud. Se hai competenze nella configurazione e nell''ottimizzazione delle risorse cloud, ti invitiamo a far parte del nostro team.', '61', 13, 48, 'aperta', '2023-11-29 15:00:00.000', 'Ingegnere di Sistemi Cloud');
+-- Amministratore di Reti
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo un Amministratore di Reti competente per gestire e mantenere la nostra infrastruttura di rete. Se hai esperienza nella progettazione, implementazione e sicurezza delle reti, fai domanda oggi stesso.', '61', 5, 49, 'aperta', '2023-11-29 15:45:00.000', 'Amministratore di Reti');
+-- Tecnico di Supporto IT
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Siamo alla ricerca di un Tecnico di Supporto IT per fornire assistenza tecnica agli utenti interni ed esterni. Se hai una passione per la risoluzione dei problemi tecnici e un''eccellente capacità di comunicazione, candidati subito.', '61', 7, 35, 'aperta', '2023-11-29 16:30:00.000', 'Tecnico di Supporto IT');
+
+-- Sviluppatore Full-Stack
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo uno sviluppatore full-stack altamente motivato per unirsi al nostro team dinamico. La persona ideale avrà competenze sia nel frontend che nel backend e sarà coinvolta nello sviluppo di soluzioni software innovative.', '61', 1, 26, 'aperta', '2023-11-30 10:00:00.000', 'Sviluppatore Full-Stack'); 
+-- Sviluppatore Full-Stack
+INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
+VALUES (300, 'Cerchiamo uno sviluppatore full-stack altamente motivato per unirsi al nostro team dinamico. La persona ideale avrà competenze sia nel frontend che nel backend e sarà coinvolta nello sviluppo di soluzioni software innovative.', '61', 1, 26, 'aperta', '2023-11-30 10:00:00.000', 'Sviluppatore Full-Stack'); 
 
 
 
