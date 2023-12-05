@@ -433,16 +433,16 @@ INSERT INTO Citta (nome, id_regione) VALUES ('Conegliano', 20);
 
 /*	Inserimento degli utenti	*/
 
-INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Marco', 'Russo', 'RSSMRC92C15F839B', 'marco@email.com', '1992-03-10', 'Via Dante 21', 4, '00400', '7778889999', 'user', 'pwdMarco1011',  'uomo', true);
-INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Giorgia', 'Ferrari', 'FRRGGR91R21D859C', 'giorgia@email.com', '1991-12-05', 'Via Leonardo 33', 1, '00100', '3334445555', 'user', 'pwdGiorgia1213',  'donna', true);
-INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Alessandro', 'Martini', 'MRTLSN90A02H501E', 'alessandro@email.com', '1990-04-18', 'Via Roma 10', 2, '00200', '9998887776', 'user', 'pwdAlessandro1415',  'uomo', true);
-INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Sofia', 'Conti', 'CNTSF90M41F839D', 'sofia@email.com', '1990-09-22', 'Via Garibaldi 5', 3, '00300', '1112223333', 'user', 'pwdSofia1617',  'donna', true);
-INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Matteo', 'Moretti', 'MRTTMT89T30F839E', 'matteo@email.com', '1989-07-12', 'Via Vespucci 7', 4, '00400', '6667778888', 'user', 'pwdMatteo1819',  'uomo', true);
-INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Elisa', 'Gallo', 'GLLELS88P41D859F', 'elisa@email.com', '1988-11-30', 'Via Mazzini 56', 1, '00100', '4445556666', 'user', 'pwdElisa2021', 'donna', true);
-INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Giovanni', 'Romano', 'RMNGVN87R31H501G', 'giovanni@email.com', '1987-06-07', 'Via Colombo 23', 2, '00200', '0001112222', 'user', 'pwdGiovanni2324', 'uomo', true);
-INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Alice', 'Rossi', 'RSSLCR95L13H501T', 'alice@email.com', '1995-08-25', 'Via Verdi 12', 1, '00100', '1234567890', 'user', 'pwdAlice123', 'donna', true);
-INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Luca', 'Bianchi', 'BNCLCU94M14Z352P', 'luca@email.com', '1994-06-18', 'Via Roma 45', 2, '00200', '9876543210', 'user', 'pwdLuca456', 'uomo', true);
-INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Sophia', 'Verdi', 'VRDSHP93H45F839A', 'sophia@email.com', '1993-11-02', 'Via Garibaldi 78', 3, '00300', '5556667777', 'user', 'pwdSophia789', 'donna', true);
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Marco', 'Russo', 'RSSMRC92C15F839B', 'marco@email.com', '1992-03-10', 'Via Dante 21', 4, '00400', '7778889999', 'user', 'pwdMarco1011',  'uomo', 1);
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Giorgia', 'Ferrari', 'FRRGGR91R21D859C', 'giorgia@email.com', '1991-12-05', 'Via Leonardo 33', 1, '00100', '3334445555', 'user', 'pwdGiorgia1213',  'donna', 1);
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Alessandro', 'Martini', 'MRTLSN90A02H501E', 'alessandro@email.com', '1990-04-18', 'Via Roma 10', 2, '00200', '9998887776', 'user', 'pwdAlessandro1415',  'uomo', 1);
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Sofia', 'Conti', 'CNTSF90M41F839D', 'sofia@email.com', '1990-09-22', 'Via Garibaldi 5', 3, '00300', '1112223333', 'user', 'pwdSofia1617',  'donna', 1);
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Matteo', 'Moretti', 'MRTTMT89T30F839E', 'matteo@email.com', '1989-07-12', 'Via Vespucci 7', 4, '00400', '6667778888', 'user', 'pwdMatteo1819',  'uomo', 1);
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Elisa', 'Gallo', 'GLLELS88P41D859F', 'elisa@email.com', '1988-11-30', 'Via Mazzini 56', 1, '00100', '4445556666', 'user', 'pwdElisa2021', 'donna', 1);
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Giovanni', 'Romano', 'RMNGVN87R31H501G', 'giovanni@email.com', '1987-06-07', 'Via Colombo 23', 2, '00200', '0001112222', 'user', 'pwdGiovanni2324', 'uomo', 1);
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Alice', 'Rossi', 'RSSLCR95L13H501T', 'alice@email.com', '1995-08-25', 'Via Verdi 12', 1, '00100', '1234567890', 'user', 'pwdAlice123', 'donna', 1);
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Luca', 'Bianchi', 'BNCLCU94M14Z352P', 'luca@email.com', '1994-06-18', 'Via Roma 45', 2, '00200', '9876543210', 'user', 'pwdLuca456', 'uomo', 1);
+INSERT INTO Utente (nome, cognome, codice_fiscale, email, data_nascita, indirizzo, id_citta, cap, telefono, ruolo_admin, password, genere, primo_login) VALUES ('Sophia', 'Verdi', 'VRDSHP93H45F839A', 'sophia@email.com', '1993-11-02', 'Via Garibaldi 78', 3, '00300', '5556667777', 'user', 'pwdSophia789', 'donna', 1);
 INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('admin', 'admin', null,'admin@gmail.com', null, null, null, null, null,'admin', 'admin' );
 INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Giorgio', 'Rossi', null, 'giorgiorossi@gmail.com', null, null, null, null, null,'admin', 'admin' );
 INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)VALUES ('Nicolo', 'Drovandi', null,'nicolodrovandi@gmail.com', null, null, null, null, null,'admin', 'admin' );
@@ -450,10 +450,10 @@ INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_
 INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Luca', 'Sanguinetti', null, 'lucasanguinetti@gmail.com', null, null, null, null, null,'admin', 'admin');
 INSERT INTO Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password)VALUES ('Claudio', 'Balzani', null,'claudiobalzani@gmail.com', null, null, null, null, null,'admin', 'admin' );
 INSERT INTO Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password) VALUES ('Biagio', 'Ricci', null,'biagioricci@gmail.com', null, null, null, null, null,'admin', 'admin' );
-insert into Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password, primo_login) values ('Matteo','Salvo','slvmtt00b03e300m','matteosalvo@gmail.com','20000203','Via Marconi 2','1','17900','3547689876','user','salvini', true);
-insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password, primo_login)values ('Fiona','Giusti','gstfna03h06e300m','fionagiusti@gmail.com','20030806','Via Roma 29','1','16177','3495680856','user','fiona', true);
-insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password, primo_login)values ('Gianluca','Torre','trrglc80d07e300m','gianlu@gmail.com','19800407','Via Milano 56','2','20321','3857689806','user','torre', true);
-insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password, primo_login)values ('Marta','Lupu','lpumrt03b03e300m','mlupu@gmail.com','20030203','Via Rodi 70','2','16167','3398805856','user','marta', true);
+insert into Utente (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password, primo_login) values ('Matteo','Salvo','slvmtt00b03e300m','matteosalvo@gmail.com','20000203','Via Marconi 2','1','17900','3547689876','user','salvini', 1);
+insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password, primo_login)values ('Fiona','Giusti','gstfna03h06e300m','fionagiusti@gmail.com','20030806','Via Roma 29','1','16177','3495680856','user','fiona', 1);
+insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password, primo_login)values ('Gianluca','Torre','trrglc80d07e300m','gianlu@gmail.com','19800407','Via Milano 56','2','20321','3857689806','user','torre', 1);
+insert into Utente  (nome,cognome,codice_fiscale,email,data_nascita,indirizzo,id_citta,cap ,telefono,ruolo_admin ,password, primo_login)values ('Marta','Lupu','lpumrt03b03e300m','mlupu@gmail.com','20030203','Via Rodi 70','2','16167','3398805856','user','marta', 1);
 
 /* Insert esperienze */
 
@@ -553,7 +553,7 @@ VALUES
     
 /*	Insert CategoriaPosizione	*/
 
-insert into CategoriaPosizione (nome_categoria) values ('Sviluppattore');
+insert into CategoriaPosizione (nome_categoria) values ('Sviluppattore Web');
 --Sviluppatore di Software, Sviluppatore Web, Sviluppatore Front-end, Sviluppatore Back-end, Sviluppatore Full-stack, Sviluppatore Mobile, Sviluppatore di Applicazioni, Sviluppatore di Giochi, Sviluppatore Embedded, Sviluppatore DevOps
 insert into CategoriaPosizione (nome_categoria) values ('Analyst'); 
 --Analista di Dati,Analista di Sistema,Analista di Business,Analista di Sicurezza,Analista di Marketing,Analista delle Operazioni
@@ -568,12 +568,12 @@ INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Architettura Software')
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Supporto Tecnico');
 --Tecnico di Assistenza, Tecnico del Supporto Clienti, Esperto di Supporto Tecnico, Tecnico di Primo Livello, Tecnico di Secondo Livello, Analista del Supporto Tecnico, Ingegnere del Supporto Tecnico, Tecnico di Rete, Tecnico di Assistenza Tecnica.
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Gestione Qualità');
-INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Analisi dei Dati e Business Intelligence');
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Database Administrator');
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Progettazione UX/UI');
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Sviluppo Software');
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Analyst developer');
 INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Cloud Computing');
-
+INSERT INTO CategoriaPosizione (nome_categoria) VALUES ('Amministrazione');
 
 /*	Inserimento	quiz Python - Domande e Risposte	*/
 INSERT INTO Quiz VALUES ('Python', 8);
@@ -2187,26 +2187,26 @@ insert into UtenteQuiz values (1,18,80, '2023-11-18 18:34:50'),
 
 /*	Inserimento delle posizioni	*/
 
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo un sistemista esperto con almeno 3 anni di esperienza su progetti di media grandezza','1','6','27','aperta','20231101','Sistemista');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo un sistemista esperto con almeno 3 anni di esperienza su progetti di media grandezza','1','5','27','aperta','20231101','Sistemista');
 INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo un full-stack developer','1','1','26','aperta','20231102','Web Developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo uno sviluppatore Java','2','1','2','aperta','20231107','Java Developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo uno sviluppatore Front End','1','2','25','aperta','20231102','Front-End Developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('8','Cerchiamo uno sviluppatore Back End con nozioni di Java e Python','5','3','31','aperta','20231102','Back-End Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Cerchiamo uno sviluppatore Java','2','11','2','aperta','20231107','Java Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Cerchiamo uno sviluppatore Front End','1','1','25','aperta','20231102','Front-End Developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('8','Cerchiamo uno sviluppatore Back End con nozioni di Java e Python','5','11','31','aperta','20231102','Back-End Developer');
 
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('2','Siamo alla ricerca di una figura per lo sviluppo di applicazioni web','6','3','26','aperta','20240120','Full stack web developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Siamo alla ricerca di uno sviluppatore Python/Django esperto per unirsi al nostro team. Lideale candidato avrà una passione per la programmazione e l innovazione tecnologica, con un focus su Python e il framework Django.','6','3','24','aperta','20240120','Sviluppatore python');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Siamo alla ricerca di giovani candidati con passione per la tecnologia per un percorso di crescita nell ambito IT/Digital. Nello specifico, le risorse avranno l’opportunità di essere inserite negli ambiti di Cyber Security, di sviluppo software e di tecnologie per dei Canali Digitali con l’obiettivo di partecipare a progetti interfunzionali dalla definizione delle soluzioni con il cliente interno, di sviluppo/programmazione e supporto nelle fasi di certificazione fino alla manutenzione/gestione delle applicazioni.','29','3','29','aperta','20240120','Cyber security, Sviluppo software');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Il candidato che stiamo cercando avrà le seguenti responsabilità: implementazione di interfacce per gestionali in cloud; realizzare prototipi delle interfacce sotto la direzione del team leader. Ai candidati sarà offerta l’opportunità di lavorare in un ambiente dinamico, in forte espansione all’interno del quale sono previsti percorsi di crescita, supportati da una continua attenzione alla valorizzazione delle risorse.','13','3','25','aperta','20240120','Sviluppatore front end');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('2','Siamo alla ricerca di sviluppatori Web Full stack con almeno 4 anni di esperienza, è un requisito gradito la conoscenza dei seguenti CMS/linguaggi: Wordpress, Prestashop, Magento 2, HTML, CSS, Javascript, PHP, MySQL.','7','3','26','aperta','20240120','Senior web developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Sei appassionato di tecnologia e di programmazione? iamo cercando un/una Back-end Developer con esperienza in ambito Node con Javascript/Typescript','8','3','31','aperta','20240120','Back-end web developer');
-INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('1','ll candidato è diplomato/laureato, ha maturato esperienza pluriennale nello sviluppo software web based, ed ha una conoscenza tecnica della lingua inglese. Sono requisiti fondamentali una buona capacità relazionale, attitudine al lavoro in team, capacità di adattamento e flessibilità.','5','3','26','aperta','20240120','Full stack web developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('2','Siamo alla ricerca di una figura per lo sviluppo di applicazioni web','6','1','26','aperta','20240120','Full stack web developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Siamo alla ricerca di uno sviluppatore Python/Django esperto per unirsi al nostro team. Lideale candidato avrà una passione per la programmazione e l innovazione tecnologica, con un focus su Python e il framework Django.','6','11','24','aperta','20240120','Sviluppatore python');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('10','Siamo alla ricerca di giovani candidati con passione per la tecnologia per un percorso di crescita nell ambito IT/Digital. Nello specifico, le risorse avranno l’opportunità di essere inserite negli ambiti di Cyber Security, di sviluppo software e di tecnologie per dei Canali Digitali con l’obiettivo di partecipare a progetti interfunzionali dalla definizione delle soluzioni con il cliente interno, di sviluppo/programmazione e supporto nelle fasi di certificazione fino alla manutenzione/gestione delle applicazioni.','29','4','29','aperta','20240120','Cyber security, Sviluppo software');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('5','Il candidato che stiamo cercando avrà le seguenti responsabilità: implementazione di interfacce per gestionali in cloud; realizzare prototipi delle interfacce sotto la direzione del team leader. Ai candidati sarà offerta l’opportunità di lavorare in un ambiente dinamico, in forte espansione all’interno del quale sono previsti percorsi di crescita, supportati da una continua attenzione alla valorizzazione delle risorse.','13','1','25','aperta','20240120','Sviluppatore front end');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('2','Siamo alla ricerca di sviluppatori Web Full stack con almeno 4 anni di esperienza, è un requisito gradito la conoscenza dei seguenti CMS/linguaggi: Wordpress, Prestashop, Magento 2, HTML, CSS, Javascript, PHP, MySQL.','7','1','26','aperta','20240120','Senior web developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('3','Sei appassionato di tecnologia e di programmazione? iamo cercando un/una Back-end Developer con esperienza in ambito Node con Javascript/Typescript','8','11','31','aperta','20240120','Back-end web developer');
+INSERT INTO Posizione (n_ammissioni,descrizione,id_citta,id_Categoria,id_quiz,stato,data_inserimento,ruolo) VALUES('1','ll candidato è diplomato/laureato, ha maturato esperienza pluriennale nello sviluppo software web based, ed ha una conoscenza tecnica della lingua inglese. Sono requisiti fondamentali una buona capacità relazionale, attitudine al lavoro in team, capacità di adattamento e flessibilità.','5','1','26','aperta','20240120','Full stack web developer');
 
 -- Sviluppatore Full-Stack
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
 VALUES (300, 'Cerchiamo uno sviluppatore full-stack altamente motivato per unirsi al nostro team dinamico. La persona ideale avrà competenze sia nel frontend che nel backend e sarà coinvolta nello sviluppo di soluzioni software innovative.', 1, 1, 26, 'aperta', '2023-11-30 10:00:00.000', 'Sviluppatore Full-Stack'); 
 -- Ingegnere del Software
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Stiamo cercando un ingegnere del software talentuoso e appassionato per contribuire alla progettazione, sviluppo e manutenzione del nostro software. Se hai esperienza nella creazione di soluzioni scalabili, sei la persona che stiamo cercando.', 2, 2, 30, 'aperta', '2023-11-30 11:30:00.000', 'Ingegnere del Software');
+VALUES (300, 'Stiamo cercando un ingegnere del software talentuoso e appassionato per contribuire alla progettazione, sviluppo e manutenzione del nostro software. Se hai esperienza nella creazione di soluzioni scalabili, sei la persona che stiamo cercando.', 2, 11, 30, 'aperta', '2023-11-30 11:30:00.000', 'Ingegnere del Software');
 
 /*creare quiz*/
 -- Project Manager Software
@@ -2214,37 +2214,37 @@ INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_qui
 VALUES (300, 'Siamo alla ricerca di un Project Manager Software con una comprovata esperienza nella gestione di progetti software complessi. Se hai una forte leadership e capacità organizzative, entra a far parte della nostra squadra.', 3, 3, 32, 'aperta', '2023-11-30 13:45:00.000', 'Project Manager Software');
 -- Scrum Master
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo uno Scrum Master motivato e orientato ai risultati per guidare e facilitare le pratiche agile nel nostro team di sviluppo. Se sei appassionato di metodologie agili, candidati ora.', 4, 1, 33, 'aperta', '2023-11-30 14:30:00.000', 'Scrum Master');
+VALUES (300, 'Cerchiamo uno Scrum Master motivato e orientato ai risultati per guidare e facilitare le pratiche agile nel nostro team di sviluppo. Se sei appassionato di metodologie agili, candidati ora.', 4, 3, 33, 'aperta', '2023-11-30 14:30:00.000', 'Scrum Master');
 -- Progettista UX/UI
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Stiamo cercando un Progettista UX/UI creativo ed esperto per migliorare l''esperienza degli utenti dei nostri prodotti software. Se hai una visione innovativa e competenze di progettazione eccezionali, fai domanda oggi stesso.', 5, 6, 34, 'aperta', '2023-11-30 15:15:00.000', 'Progettista UX/UI');
+VALUES (300, 'Stiamo cercando un Progettista UX/UI creativo ed esperto per migliorare l''esperienza degli utenti dei nostri prodotti software. Se hai una visione innovativa e competenze di progettazione eccezionali, fai domanda oggi stesso.', 5, 10, 34, 'aperta', '2023-11-30 15:15:00.000', 'Progettista UX/UI');
 -- Architetto dell'Esperienza Utente
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Architetto dell''Esperienza Utente appassionato per guidare la progettazione di interfacce utente intuitive e coinvolgenti. Se hai una forte comprensione dell''usabilità, sei la persona giusta per noi.', 6, 6, 36, 'aperta', '2023-11-30 16:00:00.000', 'Architetto dell''Esperienza Utente');
+VALUES (300, 'Cerchiamo un Architetto dell''Esperienza Utente appassionato per guidare la progettazione di interfacce utente intuitive e coinvolgenti. Se hai una forte comprensione dell''usabilità, sei la persona giusta per noi.', 6, 10, 36, 'aperta', '2023-11-30 16:00:00.000', 'Architetto dell''Esperienza Utente');
 -- Direttore Amministrativo
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Direttore Amministrativo altamente qualificato per sovrintendere alle operazioni quotidiane dell''azienda. Il candidato ideale avrà una solida comprensione delle pratiche aziendali e un forte orientamento alla leadership.', 7, 3, 37, 'aperta', '2023-11-30 16:45:00.000', 'Direttore Amministrativo');
+VALUES (300, 'Cerchiamo un Direttore Amministrativo altamente qualificato per sovrintendere alle operazioni quotidiane dell''azienda. Il candidato ideale avrà una solida comprensione delle pratiche aziendali e un forte orientamento alla leadership.', 7, 14, 37, 'aperta', '2023-11-30 16:45:00.000', 'Direttore Amministrativo');
 -- Responsabile Amministrativo
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Stiamo cercando un Responsabile Amministrativo con esperienza comprovata nella gestione delle operazioni finanziarie e contabili. Se hai una solida competenza in finanza aziendale, candidati ora.', 8, 3, 38, 'aperta', '2023-11-30 17:30:00.000', 'Responsabile Amministrativo');
+VALUES (300, 'Stiamo cercando un Responsabile Amministrativo con esperienza comprovata nella gestione delle operazioni finanziarie e contabili. Se hai una solida competenza in finanza aziendale, candidati ora.', 8, 14, 38, 'aperta', '2023-11-30 17:30:00.000', 'Responsabile Amministrativo');
 -- Responsabile Finanziario
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Siamo alla ricerca di un Responsabile Finanziario esperto per guidare la gestione finanziaria dell''azienda. Se hai una solida competenza contabile e una visione strategica delle finanze, ti incoraggiamo a candidarti.',29, 3, 39, 'aperta', '2023-11-30 18:15:00.000', 'Responsabile Finanziario');
+VALUES (300, 'Siamo alla ricerca di un Responsabile Finanziario esperto per guidare la gestione finanziaria dell''azienda. Se hai una solida competenza contabile e una visione strategica delle finanze, ti incoraggiamo a candidarti.',29, 14, 39, 'aperta', '2023-11-30 18:15:00.000', 'Responsabile Finanziario');
 -- Contabile
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Contabile altamente organizzato con esperienza nella gestione delle transazioni finanziarie. Se sei preciso e attento ai dettagli, potresti essere la persona giusta per unirti al nostro team contabile.', 23, 3, 40, 'aperta', '2023-11-29 09:00:00.000', 'Contabile');
+VALUES (300, 'Cerchiamo un Contabile altamente organizzato con esperienza nella gestione delle transazioni finanziarie. Se sei preciso e attento ai dettagli, potresti essere la persona giusta per unirti al nostro team contabile.', 23, 14, 40, 'aperta', '2023-11-29 09:00:00.000', 'Contabile');
 -- Responsabile delle Risorse Umane
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Responsabile delle Risorse Umane che guidi le iniziative HR, dalla selezione alla gestione delle prestazioni. Se hai una forte capacità relazionale e una visione strategica delle risorse umane, ti invitiamo a candidarti.', 76, 3, 41, 'aperta', '2023-11-30 09:45:00.000', 'Responsabile delle Risorse Umane');
+VALUES (300, 'Cerchiamo un Responsabile delle Risorse Umane che guidi le iniziative HR, dalla selezione alla gestione delle prestazioni. Se hai una forte capacità relazionale e una visione strategica delle risorse umane, ti invitiamo a candidarti.', 76, 14, 41, 'aperta', '2023-11-30 09:45:00.000', 'Responsabile delle Risorse Umane');
 -- Recruiter
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Recruiter talentuoso con abilità di ricerca e selezione. Se hai una buona comprensione del mercato del lavoro e capacità di valutare il talento, ti invitiamo a far parte del nostro team HR.', 1, 3, 42, 'aperta', '2023-11-30 10:30:00.000', 'Recruiter');
+VALUES (300, 'Cerchiamo un Recruiter talentuoso con abilità di ricerca e selezione. Se hai una buona comprensione del mercato del lavoro e capacità di valutare il talento, ti invitiamo a far parte del nostro team HR.', 1, 14, 42, 'aperta', '2023-11-30 10:30:00.000', 'Recruiter');
 -- Responsabile Contratti
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Siamo alla ricerca di un Responsabile Contratti con esperienza nella gestione e negoziazione di contratti aziendali. Se hai competenze legali e una buona comprensione delle pratiche contrattuali, candidati ora.', 3, 3, 43, 'aperta', '2023-11-29 11:15:00.000', 'Responsabile Contratti');
+VALUES (300, 'Siamo alla ricerca di un Responsabile Contratti con esperienza nella gestione e negoziazione di contratti aziendali. Se hai competenze legali e una buona comprensione delle pratiche contrattuali, candidati ora.', 3, 14, 43, 'aperta', '2023-11-29 11:15:00.000', 'Responsabile Contratti');
 -- Avvocato Aziendale o Consulente Legale
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Avvocato Aziendale o Consulente Legale per fornire consulenza legale interna. Se hai una solida esperienza in diritto commerciale, contrattuale e delle società, potresti essere la persona che stiamo cercando.', 7,3, 44, 'aperta', '2023-11-29 12:00:00.000', 'Avvocato Aziendale o Consulente Legale');
+VALUES (300, 'Cerchiamo un Avvocato Aziendale o Consulente Legale per fornire consulenza legale interna. Se hai una solida esperienza in diritto commerciale, contrattuale e delle società, potresti essere la persona che stiamo cercando.', 7,14, 44, 'aperta', '2023-11-29 12:00:00.000', 'Avvocato Aziendale o Consulente Legale');
 -- Amministratore del Database
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
 VALUES (300, 'Cerchiamo un Amministratore del Database esperto per gestire e ottimizzare i database aziendali. Se hai competenze nella progettazione, implementazione e manutenzione di database, ti invitiamo a candidarti.', 9, 9, 45, 'aperta', '2023-11-29 12:45:00.000', 'Amministratore del Database');
@@ -2253,16 +2253,16 @@ INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_qui
 VALUES (300, 'Stiamo cercando uno Sviluppatore di Database talentuoso per progettare e implementare soluzioni database efficaci. Se hai competenze nello sviluppo SQL e una conoscenza approfondita delle best practice, fai domanda oggi stesso.', 20, 9, 46, 'aperta', '2023-11-29 13:30:00.000', 'Sviluppatore di Database');
 -- Architetto Cloud
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Architetto Cloud altamente qualificato per progettare e implementare soluzioni cloud scalabili e sicure. Se hai esperienza nella migrazione verso il cloud e nella gestione delle risorse cloud, candidati subito.', 2, 8, 47, 'aperta', '2023-11-29 14:15:00.000', 'Architetto Cloud');
+VALUES (300, 'Cerchiamo un Architetto Cloud altamente qualificato per progettare e implementare soluzioni cloud scalabili e sicure. Se hai esperienza nella migrazione verso il cloud e nella gestione delle risorse cloud, candidati subito.', 2, 13, 47, 'aperta', '2023-11-29 14:15:00.000', 'Architetto Cloud');
 -- Ingegnere di Sistemi Cloud
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Siamo alla ricerca di un Ingegnere di Sistemi Cloud per supportare lo sviluppo e la gestione di infrastrutture cloud. Se hai competenze nella configurazione e nell''ottimizzazione delle risorse cloud, ti invitiamo a far parte del nostro team.', 80, 8, 48, 'aperta', '2023-11-29 15:00:00.000', 'Ingegnere di Sistemi Cloud');
+VALUES (300, 'Siamo alla ricerca di un Ingegnere di Sistemi Cloud per supportare lo sviluppo e la gestione di infrastrutture cloud. Se hai competenze nella configurazione e nell''ottimizzazione delle risorse cloud, ti invitiamo a far parte del nostro team.', 80, 13, 48, 'aperta', '2023-11-29 15:00:00.000', 'Ingegnere di Sistemi Cloud');
 -- Amministratore di Reti
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Cerchiamo un Amministratore di Reti competente per gestire e mantenere la nostra infrastruttura di rete. Se hai esperienza nella progettazione, implementazione e sicurezza delle reti, fai domanda oggi stesso.', 64, 2, 49, 'aperta', '2023-11-29 15:45:00.000', 'Amministratore di Reti');
+VALUES (300, 'Cerchiamo un Amministratore di Reti competente per gestire e mantenere la nostra infrastruttura di rete. Se hai esperienza nella progettazione, implementazione e sicurezza delle reti, fai domanda oggi stesso.', 64, 5, 49, 'aperta', '2023-11-29 15:45:00.000', 'Amministratore di Reti');
 -- Tecnico di Supporto IT
 INSERT INTO Posizione (n_ammissioni, descrizione, id_citta, id_Categoria, id_quiz, stato, data_inserimento, ruolo)
-VALUES (300, 'Siamo alla ricerca di un Tecnico di Supporto IT per fornire assistenza tecnica agli utenti interni ed esterni. Se hai una passione per la risoluzione dei problemi tecnici e un''eccellente capacità di comunicazione, candidati subito.', 32, 4, 35, 'aperta', '2023-11-29 16:30:00.000', 'Tecnico di Supporto IT');
+VALUES (300, 'Siamo alla ricerca di un Tecnico di Supporto IT per fornire assistenza tecnica agli utenti interni ed esterni. Se hai una passione per la risoluzione dei problemi tecnici e un''eccellente capacità di comunicazione, candidati subito.', 32, 7, 35, 'aperta', '2023-11-29 16:30:00.000', 'Tecnico di Supporto IT');
 
 
 
