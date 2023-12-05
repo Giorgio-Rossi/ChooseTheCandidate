@@ -87,6 +87,23 @@ public class SkillIMPL implements SkillDAO {
 
 	}
 
+	public void deleteUserSkill(int id_skill, int id_user) {
+		String sql = "DELETE FROM UserSkills WHERE id_skill = ? and id_user=?;";
+		PreparedStatement statement = null;
+		try {
+			statement = connection.getConnection().prepareStatement(sql);
+			statement.setInt(1, id_skill);
+			statement.setInt(2, id_user);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DBUtil.close(statement);
+			//DBUtil.close((Connection) connection);
+		}
+
+	}
+
 	@Override
 	public List<Skill> findAll() {
 		List<Skill> skills = new ArrayList<Skill>();

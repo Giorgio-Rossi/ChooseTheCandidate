@@ -21,6 +21,7 @@ public class CurriculumServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("ISO-8859-1");
 
         HttpSession session = req.getSession();
         Utente utenteInSessione = (Utente) session.getAttribute("utente");
@@ -545,6 +546,7 @@ public class CurriculumServlet extends HttpServlet {
 
                 UsersSkills usersSkills = new UsersSkills();
                 usersSkills.setId_user(utenteInSessione.getId_user());
+                System.out.println(skill_aggiunte[i]);
                 usersSkills.setId_skill(new SkillIMPL().findByName(skill_aggiunte[i]).getId_skill());
                 usersSkills.setVerificata(false);
 

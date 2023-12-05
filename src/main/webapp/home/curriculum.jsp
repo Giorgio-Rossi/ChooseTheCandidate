@@ -753,29 +753,81 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 												</div>
 											</div>
 
-											<div class="row">
-												<div class="col-sm m-1" id="p">
-													<%
-														for(UsersSkills u_skill : skill_utente){
-															Skill skill = new SkillIMPL().findById(u_skill.getId_skills());
-															if(u_skill.isVerificata()){
-													%>
-													<h6><%=skill.getNome()%></h6>
-													<i class="bi bi-award-fill" style="font-size: 2rem"></i><br>
-													<%
-													}else{
-													%>
-													<h6><%=skill.getNome()%></h6>
-													<!--<input type="hidden" id="skillname" name="add" value="<%=skill.getNome()%>">-->
-													<a class="btn btn-info btn-xs m-1" id="add"
-														href="${pageContext.request.contextPath}/verificaSkill?id=<%=skill.getNome()%>">Verifica
-														Skill!</a>
-													<%
+										</div>
+
+
+											<div class="row mt-2 mb-lg-auto" id="p">
+												<%
+													for(UsersSkills u_skill : skill_utente){
+														Skill skill = new SkillIMPL().findById(u_skill.getId_skills());
+														if(u_skill.isVerificata()){
+												%>
+													<div class="col-md-2 ">
+														<div class="card mb-4 mb-md-1">
+															<div class="card-body">
+																<button type="button" class="btn btn-danger btn-sm rounded-4 mt-2 float-md-end mb-3 mb-sm-0" data-bs-toggle="modal" data-bs-target="#warningModal<%=skill.getId_skill()%>"><i class="bi bi-trash"></i></button>
+																<h6><%=skill.getNome()%></h6>
+																<i class="bi bi-award-fill" style="font-size: 2rem"></i><br>
+															</div>
+														</div>
+													</div>
+
+												<div class="modal fade" id="warningModal<%=skill.getId_skill()%>" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+													<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+														<div class="modal-content">
+															<div class="modal-body text-center p-lg-4">
+																<i class="bi bi-exclamation-triangle-fill" style="font-size: 5rem"></i>
+																<h4 class="text-warning mt-3">Sei sicuro di voler rimuovere la Skills?</h4>
+																<p class="mt-3">Una volta eliminata, perderai il badge della verifica.</p>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+																<a href="${pageContext.request.contextPath}/eliminaUserSkill?idSkill=<%=skill.getId_skill()%>&idUser=<%=utente.getId_user()%>" class="btn btn-danger me-2">Elimina</a>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<%
+												}else{
+												%>
+
+												<div class="col-md-2 ">
+													<div class="card mb-4 mb-md-1">
+														<div class="card-body">
+															<button type="button" class="btn btn-danger btn-sm rounded-4 mt-2 float-md-end mb-3 mb-sm-0" data-bs-toggle="modal" data-bs-target="#warningModal<%=skill.getId_skill()%>">
+																<i class="bi bi-trash"></i></button>
+															<h6><%=skill.getNome()%></h6>
+															<a class="btn btn-info btn-xs m-1" id="add"
+															   href="${pageContext.request.contextPath}/verificaSkill?id=<%=skill.getNome()%>">Verifica
+																Skill!</a>
+														</div>
+													</div>
+												</div>
+
+												<div class="modal fade" id="warningModal<%=skill.getId_skill()%>" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+													<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+														<div class="modal-content">
+															<div class="modal-body text-center p-lg-4">
+																<i class="bi bi-exclamation-triangle-fill" style="font-size: 5rem"></i>
+																<h4 class="text-warning mt-3">Sei sicuro di voler rimuovere la Skills?</h4>
+																<p class="mt-3">Una volta eliminata, perderai il badge della verifica.</p>
+															</div>
+															<div class="modal-footer">
+																<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+																<a href="${pageContext.request.contextPath}/eliminaUserSkill?idSkill=<%=skill.getId_skill()%>&idUser=<%=utente.getId_user()%>" class="btn btn-danger me-2">Elimina</a>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<%
 													}
-													%>
-													<%
+												%>
+												<%
 													}
-													%>
+												%>
+
 
 												</div>
 											</div>
@@ -784,6 +836,9 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 
 									</form>
+
+
+
 
 									<div class="row mb-1">
 										<div class="col d-flex justify-content-end">
@@ -870,6 +925,18 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 			</div>
 		</div>
 
+		<div class="modal fade" id="removeSkill" tabindex="-1" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+			<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+				<div class="modal-content">
+					<div class="modal-body text-center p-lg-4">
+						<i class="bi bi-check-circle-fill" style="font-size: 5rem"></i>
+						<h4 class="text-success mt-3">Hai rimosso correttamente la skill!</h4>
+						<button type="button" class="btn btn-sm mt-3 btn-success" data-bs-dismiss="modal">Ok</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 
 
 
@@ -878,6 +945,8 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	<%
 		String deleteE =  session.getAttribute("esperienza_eliminata") == null ?  null : session.getAttribute("esperienza_eliminata").toString();
 		String deleteI =  session.getAttribute("istruzione_eliminata") == null ?  null : session.getAttribute("istruzione_eliminata").toString();
+		String skill_rimossa =  session.getAttribute("skill_rimossa") == null ?  null : session.getAttribute("skill_rimossa").toString();
+
 
 	%>
 
@@ -900,6 +969,18 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 		var myModal = new bootstrap.Modal(document.getElementById('deleteModalI'))
 		myModal.show()
 		<% session.removeAttribute("istruzione_eliminata");%>
+	</script>
+	<%
+		}
+	%>
+
+	<%
+		if(skill_rimossa != null && Boolean.parseBoolean(skill_rimossa)){
+	%>
+	<script>
+		var myModal = new bootstrap.Modal(document.getElementById('removeSkill'))
+		myModal.show()
+		<% session.removeAttribute("skill_rimossa");%>
 	</script>
 	<%
 		}
@@ -976,16 +1057,29 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 			element2.name = "add"
 			element2.value = v.val()
 
-			/*my_form=document.createElement('FORM');
-			my_form.name='myForm';
-			my_form.method='POST';
-			my_form.action='${pageContext.request.contextPath}/verificaSkill';
-			my_form.append(element3)
-			 */
+			var col = document.createElement("div")
+			col.className= "col-md-2"
 
+			var card = document.createElement("div")
+			card.className= "card mb-4 mb-md-1"
+
+			var cardBody = document.createElement("div")
+			cardBody.className= "card-body"
+
+			cardBody.appendChild(element)
+			cardBody.appendChild(element2)
+			cardBody.appendChild(element3)
+			card.appendChild(cardBody)
+			col.appendChild(card)
+
+			document.getElementById("p").appendChild(col)
+
+			/*
 			document.getElementById("p").appendChild(element)
 			document.getElementById("p").appendChild(element2)
 			document.getElementById("p").appendChild(element3)
+
+			 */
 			$personsMenu.hide();
 		});
 
