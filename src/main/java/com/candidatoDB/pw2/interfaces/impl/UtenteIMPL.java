@@ -601,6 +601,35 @@ public class UtenteIMPL implements UtenteDAO {
 	}
 
 	@Override
+	public void UpdatePrimoLogin(Utente user) {
+		String sql = "UPDATE Utente SET primo_login=? WHERE id_user=?";
+
+		PreparedStatement statement = null;
+
+		try {
+
+			statement = connection.getConnection().prepareStatement(sql);
+
+			statement.setBoolean(1, user.getPrimo_login());
+
+			statement.setInt(2, user.getId_user());
+
+			statement.executeUpdate();
+
+		} catch (SQLException e) {
+
+			System.err.println(e.getMessage());
+
+		} finally {
+
+			DBUtil.close(statement);
+
+			// DBUtil.close(connection.getConnection());
+
+		}
+	}
+
+	@Override
 
 	public Utente findById(int id_user) {
 
@@ -608,7 +637,7 @@ public class UtenteIMPL implements UtenteDAO {
 
 		// Citta cittaUtente = new Citta();
 
-		String sql = "SELECT Utente.id_user, Utente.nome, Utente.cognome, Utente.codice_fiscale, Utente.email, Utente.data_nascita, Utente.indirizzo, Utente.id_citta, Utente.cap, Utente.telefono, Utente.password, Utente.foto_profilo, Utente.genere, Utente.ruolo_admin, Utente.CV from Utente where Utente.id_user=?";
+		String sql = "SELECT Utente.id_user, Utente.nome, Utente.cognome, Utente.codice_fiscale, Utente.email, Utente.data_nascita, Utente.indirizzo, Utente.id_citta, Utente.cap, Utente.telefono, Utente.password, Utente.foto_profilo, Utente.genere, Utente.ruolo_admin, Utente.CV, Utente.token, Utente.primo_login from Utente where Utente.id_user=?";
 
 		PreparedStatement statement = null;
 
@@ -669,6 +698,10 @@ public class UtenteIMPL implements UtenteDAO {
 				utente.setRuolo_admin(resultSet.getString(14));
 
 				utente.setCV(resultSet.getString(15));
+
+				utente.setToken(resultSet.getString(16));
+
+				utente.setPrimo_login(resultSet.getBoolean(17));
 
 			}
 

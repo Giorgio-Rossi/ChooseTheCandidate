@@ -24,6 +24,8 @@ public class Utente {
 	private String genere;
 	private String foto_profilo;
 	private String cv;
+
+	private Boolean primo_login;
 	
 	
 	public Utente() {
@@ -32,7 +34,7 @@ public class Utente {
 	
 	public Utente(int id_user, String nome, String cognome, String codice_fiscale, String email, Date data_nascita,
 			String indirizzo, Citta id_citta, String cap, String telefono, String ruolo_admin, String password,
-			List<Esperienza> new_esperienza, String foto_profilo, String genere, String cv, String token) {
+			List<Esperienza> new_esperienza, String foto_profilo, String genere, String cv, String token, Boolean primo_login) {
 		super();
 		this.id_user = id_user;
 		this.nome = nome;
@@ -51,6 +53,7 @@ public class Utente {
 		this.genere = genere;
 		this.cv = cv;
 		this.token = token;
+		this.primo_login = primo_login;
 	}
 
 	public int getId_user() {
@@ -148,7 +151,14 @@ public class Utente {
 		this.foto_profilo = foto_profilo;
 	}
 
-	
+	public void setPrimo_login(Boolean primo_login) {
+		this.primo_login = primo_login;
+	}
+
+	public Boolean getPrimo_login() {
+		return primo_login;
+	}
+
 	public String getCV() {
 		return cv;
 	}

@@ -394,11 +394,16 @@
 				<h4 class="text-warning mt-3">Attenzione</h4>
 				<p class="mt-3">Questo è il token per il recupero della password, salvalo perchè non sarà più visualizzabile</p>
 				<%
-					String token =  session.getAttribute("password_token") == null ?  null : session.getAttribute("password_token").toString();
+					if(!utenteLoggato.getPrimo_login()){
+
+				%>
+				<%
+					String token =  utenteLoggato.getToken();
 					if(token != null){
 				%>
 				<p class="mt-3"><strong><%=token%></strong></p>
 				<%
+						}
 					}
 				%>
 			</div>
@@ -432,7 +437,9 @@
 	};
 %>
 <%
-if(token != null){
+if(!utenteLoggato.getPrimo_login()){
+	utenteLoggato.setPrimo_login(true);
+	utenteIMPL.UpdatePrimoLogin(utenteLoggato);
 %>
 <script>
 	var myModal = new bootstrap.Modal(document.getElementById('warningModal'))

@@ -32,6 +32,7 @@ public interface UtenteDAO {
 	public void updateMailAndCodF(Utente utente);
 	public void updateTelAndCodF(Utente utente);
 	public void updateOnlyNotUnique(Utente utente);
-	
+
+	void UpdatePrimoLogin(Utente user);
 	
 }

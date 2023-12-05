@@ -69,8 +69,6 @@ public class Registrazione extends HttpServlet {
                 UtenteIMPL utenteIMPL = new UtenteIMPL();
                 utenteIMPL.save(utente);
 
-                req.getSession().setAttribute("password_token",token);
-
                 ErrorManager.setSuccessMessage("Registrazione effettuata, fai il login!",req);
                 req.getRequestDispatcher("/login.jsp").forward(req, resp);
             }else{

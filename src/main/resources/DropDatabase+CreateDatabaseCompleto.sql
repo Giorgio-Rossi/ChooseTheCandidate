@@ -40,6 +40,7 @@ foto_profilo varchar(100),
 genere varchar(30)  check(genere in('uomo','donna','non specificare')),
 CV varchar(600),
 token varchar(200),
+primo_login bit CONSTRAINT primo_login_DF default 0,
 
 CONSTRAINT FK_utente_citta FOREIGN KEY (id_citta) REFERENCES Citta (id_citta)
 )
@@ -2269,6 +2270,8 @@ VALUES (300, 'Siamo alla ricerca di un Tecnico di Supporto IT per fornire assist
                               
 insert into candidaturauser values(4, 18, '2023-09-12 16:25:35'),
                                   (6, 18, '2023-09-17 12:55:35');
+
+
 
 
 
