@@ -241,10 +241,11 @@ ArrayList<CategoriaPosizione> categorie_posizioni = categoriaPosizioneIMPL.getAl
 														</div>
 														<div class="row">
 															<div class="form-group">
+																<%java.text.DateFormat df = new java.text.SimpleDateFormat("yyyy-MM-dd"); %>
 																<label>Aggiorna data</label> <input class="form-control"
 																	type="date" name="data"
-																	placeholder="<%=posizione.getData_inserimento()%>"
-																	value=<%=posizione.getData_inserimento()%> required>
+																	placeholder="<%=df.format(posizione.getData_inserimento())%>"
+																	value=<%=df.format(posizione.getData_inserimento())%> required>
 															</div>
 														</div>
 

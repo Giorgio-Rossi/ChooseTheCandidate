@@ -116,6 +116,17 @@
 					<div class="slide slide2" style="background-color:#0072BC">
 						<div class="content">
 							<div class="row row-cols-1">
+								<%
+									if(usersSkills.isEmpty()){
+								%>
+								<div class="alert alert-info" role="alert">
+									<i class="bi bi-info-circle-fill m-1"></i> Nessuna skill salvata.
+								</div>
+
+								<%
+									}else{
+								%>
+
 							<%
 								for(UsersSkills usersSkills1: usersSkills){
 							%>
@@ -140,6 +151,7 @@
 								%>
 
 							<%
+									}
 								};
 							%>
 							</div>
@@ -325,8 +337,15 @@
         </div>
         <%
             }
-		}
+		} else {
         %>
+		<div class="alert alert-info" role="alert">
+			<i class="bi bi-info-circle-fill m-1"></i> Inserisci una città per visualizzare gli annunci recenti.
+		</div>
+
+		<%
+			}
+		%>
     </div>
 </div>
 </div>

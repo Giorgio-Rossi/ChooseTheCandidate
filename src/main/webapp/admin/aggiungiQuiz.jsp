@@ -16,7 +16,6 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <html>
 
 <head>
-<meta charset="ISO-8859-1">
 <title>Nuovo Quiz</title>
 <link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/img/logoPag.png"

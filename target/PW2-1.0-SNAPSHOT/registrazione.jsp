@@ -34,10 +34,7 @@
 					<div  id="focusMessage"></div>
 					<input class="input2" type="email"  name="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" id="email" placeholder="Email"  required><br>
 					<input class="input2" type="password"  name="password" id="password" placeholder="Password"  required
-					title="Lunghezza compresa tra 8 e 256 caratteri;
-					Almeno una lettera maiuscola ed una minuscola;
-					Almeno un numero;
-					Almeno un carattere speciale tra: ! # $ % & @ ( ) * + , . / - : ; = ? [ ] _ { | } \>" onfocus="focusFunction()" onblur="blurFunction()">
+					onfocus="focusFunction()" onblur="blurFunction()">
 					<br>
 					<script>
 					function focusFunction() {
@@ -73,7 +70,7 @@
 					<input class="input2" type="text" name="cognome" id="cognome" placeholder="Cognome"  required><br>
 					<input class="input2" type="text" name="codice_fiscale" pattern="^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$" id="codice_fiscale" placeholder="Codice Fiscale"  required><br>
 					<input class="input2" type="tel" name="telefono" id="telefono" pattern="[0-9]{10}" placeholder="Numero telefono"><br>
-					<input class="input2" type="password" name="check_password" id="check_password" placeholder="Password" required>
+					<input class="input2" type="password" name="check_password" id="check_password" placeholder="Conferma Password" required>
 					
 				</div>
 			</form>
