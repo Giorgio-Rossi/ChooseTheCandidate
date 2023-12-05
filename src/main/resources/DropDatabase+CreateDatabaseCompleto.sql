@@ -1319,26 +1319,26 @@ VALUES ('Cosa significa RAID?', 8),
 
 -- Quiz "Competenze Sistemista Informatico" (Quiz ID: 10)
 INSERT INTO QuizDomanda (id_domanda, id_quiz)
-VALUES (130, 27), (131, 27), (132, 27), (133, 27), (134, 27), (135, 27), (136, 27), (137, 27);
+VALUES (135, 27), (136, 27), (137, 27), (138, 27), (139, 27), (140, 27), (141, 27), (142, 27);
 
 -- Risposte per "Competenze Sistemista Informatico"
 -- Domanda 1
 INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
-VALUES ('Redundant Array of Independent Disks: un metodo di archiviazione dei dati che utilizza più dischi per garantire la ridondanza e/o prestazioni migliori.', 'Remote Access to Important Data: un protocollo per accedere a dati remoti in modo sicuro.', 'RAID: una tecnica per ridurre i costi di archiviazione dei dati.', 'RAID: un tipo di processore per migliorare le prestazioni dei server.', 'scelta1', 130),
+VALUES ('Redundant Array of Independent Disks: un metodo di archiviazione dei dati che utilizza più dischi per garantire la ridondanza e/o prestazioni migliori.', 'Remote Access to Important Data: un protocollo per accedere a dati remoti in modo sicuro.', 'RAID: una tecnica per ridurre i costi di archiviazione dei dati.', 'RAID: un tipo di processore per migliorare le prestazioni dei server.', 'scelta1', 135),
        -- Domanda 2
-       ('HTTP (Hypertext Transfer Protocol) è non sicuro, mentre HTTPS (HTTP Secure) è sicuro e cifrato SSL/TLS.', 'HTTP è più veloce di HTTPS.', 'HTTP è utilizzato solo per siti web statici, mentre HTTPS è per siti dinamici.', 'HTTP è vecchio, mentre HTTPS è il nuovo protocollo di rete.', 'scelta1', 131),
+       ('HTTP (Hypertext Transfer Protocol) è non sicuro, mentre HTTPS (HTTP Secure) è sicuro e cifrato SSL/TLS.', 'HTTP è più veloce di HTTPS.', 'HTTP è utilizzato solo per siti web statici, mentre HTTPS è per siti dinamici.', 'HTTP è vecchio, mentre HTTPS è il nuovo protocollo di rete.', 'scelta1', 136),
        -- Domanda 3
-       ('La virtualizzazione è la creazione di risorse hardware/software virtuali piuttosto che fisiche.', 'La virtualizzazione riguarda la creazione di reti virtuali all’interno di un’azienda.', 'La virtualizzazione è l''uso esclusivo di computer portatili.', 'La virtualizzazione si riferisce all''uso esclusivo di software open-source.', 'scelta1', 132),
+       ('La virtualizzazione è la creazione di risorse hardware/software virtuali piuttosto che fisiche.', 'La virtualizzazione riguarda la creazione di reti virtuali all’interno di un’azienda.', 'La virtualizzazione è l''uso esclusivo di computer portatili.', 'La virtualizzazione si riferisce all''uso esclusivo di software open-source.', 'scelta1', 137),
        -- Domanda 4
-       ('Un attacco DDoS (Distributed Denial of Service) sovraccarica un server con un''enorme quantità di richieste, rendendolo inaccessibile agli utenti legittimi.', 'Un attacco DDoS permette di accedere ai dati sensibili di un server.', 'Un attacco DDoS è simile a un attacco fisico a un server.', 'Un attacco DDoS limita il numero di richieste al server per garantire la sicurezza.', 'scelta1', 133),
+       ('Un attacco DDoS (Distributed Denial of Service) sovraccarica un server con un''enorme quantità di richieste, rendendolo inaccessibile agli utenti legittimi.', 'Un attacco DDoS permette di accedere ai dati sensibili di un server.', 'Un attacco DDoS è simile a un attacco fisico a un server.', 'Un attacco DDoS limita il numero di richieste al server per garantire la sicurezza.', 'scelta1', 138),
        -- Domanda 5
-       ('Un hub trasmette i dati a tutti i dispositivi connessi, uno switch li invia solo al dispositivo di destinazione, mentre un router gestisce il traffico tra reti diverse.', 'Non c’è differenza tra un hub, uno switch e un router.', 'Uno switch è più veloce di un hub ma meno sicuro di un router.', 'Uno switch è un dispositivo wireless, mentre un router gestisce solo reti cablate.', 'scelta1', 134),
+       ('Un hub trasmette i dati a tutti i dispositivi connessi, uno switch li invia solo al dispositivo di destinazione, mentre un router gestisce il traffico tra reti diverse.', 'Non c’è differenza tra un hub, uno switch e un router.', 'Uno switch è più veloce di un hub ma meno sicuro di un router.', 'Uno switch è un dispositivo wireless, mentre un router gestisce solo reti cablate.', 'scelta1', 139),
        -- Domanda 6
-       ('TCP/IP è un insieme di protocolli utilizzati per la comunicazione su Internet, definendo come i dati dovrebbero essere inviati e ricevuti.', 'TCP/IP è un metodo per la manutenzione dei computer aziendali.', 'TCP/IP è un linguaggio di programmazione per sviluppare applicazioni web.', 'TCP/IP riguarda esclusivamente la sicurezza delle reti aziendali.', 'scelta1', 135),
+       ('TCP/IP è un insieme di protocolli utilizzati per la comunicazione su Internet, definendo come i dati dovrebbero essere inviati e ricevuti.', 'TCP/IP è un metodo per la manutenzione dei computer aziendali.', 'TCP/IP è un linguaggio di programmazione per sviluppare applicazioni web.', 'TCP/IP riguarda esclusivamente la sicurezza delle reti aziendali.', 'scelta1', 140),
        -- Domanda 7
-       ('Windows è comunemente usato per desktop e sistemi operativi personali, mentre Linux è più popolare nei server e negli ambienti aziendali.', 'Windows è completamente gratuito, mentre Linux è a pagamento.', 'Windows è più sicuro di Linux.', 'Linux è stato sviluppato da Microsoft, mentre Windows è open-source.', 'scelta1', 136),
+       ('Windows è comunemente usato per desktop e sistemi operativi personali, mentre Linux è più popolare nei server e negli ambienti aziendali.', 'Windows è completamente gratuito, mentre Linux è a pagamento.', 'Windows è più sicuro di Linux.', 'Linux è stato sviluppato da Microsoft, mentre Windows è open-source.', 'scelta1', 141),
        -- Domanda 8
-       ('Vantaggi: scalabilità, flessibilità, riduzione dei costi di hardware. Svantaggi: dipendenza dalla connessione Internet, questioni di sicurezza e privacy.', 'Vantaggi: alta sicurezza e controllo. Svantaggi: costo elevato e complessità.', 'Vantaggi: accesso ovunque. Svantaggi: nessun controllo sull''ambiente di hosting.', 'Vantaggi: nessun costo. Svantaggi: ridotta affidabilità e prestazioni.', 'scelta1', 137);
+       ('Vantaggi: scalabilità, flessibilità, riduzione dei costi di hardware. Svantaggi: dipendenza dalla connessione Internet, questioni di sicurezza e privacy.', 'Vantaggi: alta sicurezza e controllo. Svantaggi: costo elevato e complessità.', 'Vantaggi: accesso ovunque. Svantaggi: nessun controllo sull''ambiente di hosting.', 'Vantaggi: nessun costo. Svantaggi: ridotta affidabilità e prestazioni.', 'scelta1', 142);
 
     
        
@@ -1361,43 +1361,29 @@ VALUES ('Spiega la differenza tra HTML, CSS e JavaScript.', 8),
 
 -- Quiz "Competenze Web Developer" (Quiz ID: 11)
 INSERT INTO QuizDomanda (id_domanda, id_quiz)
-VALUES (138, 28), (139, 28), (140, 28), (141, 28), (142, 28), (143, 28), (144, 28), (145, 28);
+VALUES (143, 28), (144, 28), (145, 28), (146, 28), (147, 28), (148, 28), (149, 28), (150, 28);
 
 -- Risposte per "Competenze Web Developer"
 -- Domanda 1
 INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
-VALUES ('HTML è il linguaggio di markup per la struttura del contenuto, CSS è utilizzato per lo stile e la presentazione, JavaScript è per l’interattività e la logica.', 'HTML, CSS e JavaScript sono tutti linguaggi di scripting intercambiabili.', 'HTML e CSS sono lo stesso linguaggio, JavaScript è un linguaggio di database.', 'JavaScript è utilizzato solo per la struttura del contenuto.', 'scelta1', 138),
+VALUES ('HTML è il linguaggio di markup per la struttura del contenuto, CSS è utilizzato per lo stile e la presentazione, JavaScript è per l’interattività e la logica.', 'HTML, CSS e JavaScript sono tutti linguaggi di scripting intercambiabili.', 'HTML e CSS sono lo stesso linguaggio, JavaScript è un linguaggio di database.', 'JavaScript è utilizzato solo per la struttura del contenuto.', 'scelta1', 143),
        -- Domanda 2
-       ('I framework frontend sono set di strumenti e librerie predefinite che semplificano lo sviluppo web, fornendo modelli e funzioni comuni.', 'I framework frontend non sono utili poiché limitano la flessibilità dello sviluppo.', 'I framework frontend sono utilizzati esclusivamente per il backend del sito web.', 'I framework frontend sono solo per principianti.', 'scelta1', 139),
+       ('I framework frontend sono set di strumenti e librerie predefinite che semplificano lo sviluppo web, fornendo modelli e funzioni comuni.', 'I framework frontend non sono utili poiché limitano la flessibilità dello sviluppo.', 'I framework frontend sono utilizzati esclusivamente per il backend del sito web.', 'I framework frontend sono solo per principianti.', 'scelta1', 144),
        -- Domanda 3
-       ('AJAX (Asynchronous JavaScript and XML) consente agli utenti di interagire con un sito web senza dover ricaricare la pagina.', 'AJAX è un linguaggio di programmazione per il web.', 'AJAX è una nuova versione di HTML5.', 'AJAX è usato solo per animazioni su siti web.', 'scelta1', 140),
+       ('AJAX (Asynchronous JavaScript and XML) consente agli utenti di interagire con un sito web senza dover ricaricare la pagina.', 'AJAX è un linguaggio di programmazione per il web.', 'AJAX è una nuova versione di HTML5.', 'AJAX è usato solo per animazioni su siti web.', 'scelta1', 145),
        -- Domanda 4
-       ('La SEO (Search Engine Optimization) è importante per migliorare la visibilità e il posizionamento di un sito web sui motori di ricerca.', 'La SEO è irrilevante per un sito web.', 'La SEO riguarda esclusivamente la grafica di un sito web.', 'La SEO è utile solo per siti web aziendali.', 'scelta1', 141),
+       ('La SEO (Search Engine Optimization) è importante per migliorare la visibilità e il posizionamento di un sito web sui motori di ricerca.', 'La SEO è irrilevante per un sito web.', 'La SEO riguarda esclusivamente la grafica di un sito web.', 'La SEO è utile solo per siti web aziendali.', 'scelta1', 146),
        -- Domanda 5
-       ('Best practices includono l''uso di HTTPS, l''aggiornamento costante dei software, la protezione contro attacchi di SQL injection e XSS.', 'Non ci sono best practices per la sicurezza di un sito web.', 'La sicurezza di un sito web non è importante.', 'Basta affidarsi a un buon firewall per la sicurezza del sito web.', 'scelta1', 142),
+       ('Best practices includono l''uso di HTTPS, l''aggiornamento costante dei software, la protezione contro attacchi di SQL injection e XSS.', 'Non ci sono best practices per la sicurezza di un sito web.', 'La sicurezza di un sito web non è importante.', 'Basta affidarsi a un buon firewall per la sicurezza del sito web.', 'scelta1', 147),
        -- Domanda 6
-       ('Il responsive design è la capacità di un sito web di adattarsi a diverse dimensioni di schermi e dispositivi, importante per garantire un’esperienza utente ottimale.', 'Il responsive design riguarda solo il backend di un sito web.', 'Il responsive design è utile solo per i dispositivi mobili.', 'Il responsive design non è più rilevante.', 'scelta1', 143),
+       ('Il responsive design è la capacità di un sito web di adattarsi a diverse dimensioni di schermi e dispositivi, importante per garantire un’esperienza utente ottimale.', 'Il responsive design riguarda solo il backend di un sito web.', 'Il responsive design è utile solo per i dispositivi mobili.', 'Il responsive design non è più rilevante.', 'scelta1', 148),
        -- Domanda 7
-       ('Il version control permette di tenere traccia delle modifiche al codice, consentendo il lavoro collaborativo e il ripristino a versioni precedenti.', 'Il version control è esclusivamente per la gestione dei server web.', 'Il version control è un framework di frontend.', 'Il version control è solo per principianti.', 'scelta1', 144),
+       ('Il version control permette di tenere traccia delle modifiche al codice, consentendo il lavoro collaborativo e il ripristino a versioni precedenti.', 'Il version control è esclusivamente per la gestione dei server web.', 'Il version control è un framework di frontend.', 'Il version control è solo per principianti.', 'scelta1', 149),
        -- Domanda 8
-       ('I cookie sono piccoli file di testo memorizzati sul computer dell’utente per tracciare informazioni come preferenze e stato di login.', 'I cookie sono solo per l’archiviazione di immagini nei siti web.', 'I cookie non sono più utilizzati nei siti web moderni.', 'I cookie sono usati solo per la grafica dei siti web.', 'scelta1', 145);
+       ('I cookie sono piccoli file di testo memorizzati sul computer dell’utente per tracciare informazioni come preferenze e stato di login.', 'I cookie sono solo per l’archiviazione di immagini nei siti web.', 'I cookie non sono più utilizzati nei siti web moderni.', 'I cookie sono usati solo per la grafica dei siti web.', 'scelta1', 150);
 
        
-
-	   INSERT INTO Domanda (testo, punteggio)
-VALUES ('', 8),
-       ('', 9),
-       ('', 8),
-       ('', 9),
-       ('', 8),
-       ('', 9),
-       ('', 8),
-       ('', 9),
-	   ('', 8),
-       ('', 9),
-       ('', 8),
-       ('', 9);
-       
+    
 -- Quiz Cybersecurity
 -- Quiz Soft Skills 12
 INSERT INTO Quiz (descrizione, n_domande)
@@ -1416,29 +1402,37 @@ VALUES ('Definisci l’attacco di phishing e come può essere prevenuto.', 8),
 
 -- Quiz "Conoscenze Cybersecurity" (Quiz ID: 12)
 INSERT INTO QuizDomanda (id_domanda, id_quiz)
-VALUES (146, 29), (147, 29), (148, 29), (149, 29), (150, 29), (151, 29), (152, 29), (153, 29);
+VALUES (151, 29), (152, 29), (153, 29), (154, 29), (155, 29), (156, 29), (157, 29), (158, 29);
 
 -- Risposte per "Conoscenze Cybersecurity"
 -- Domanda 1
 INSERT INTO RisposteDomanda (scelta1, scelta2, scelta3, scelta4, scelta_corretta, id_domanda)
-VALUES ('Il phishing è un attacco che mira a ottenere informazioni sensibili tramite messaggi ingannevoli; può essere prevenuto con formazione agli utenti e filtri antispam.', 'Il phishing è un attacco informatico su reti sociali; non può essere prevenuto.', 'Il phishing è un tipo di attacco che colpisce solo server aziendali; è impossibile prevenirlo.', 'Il phishing riguarda solo l’invio di email non richieste.', 'scelta1', 146),
+VALUES ('Il phishing è un attacco che mira a ottenere informazioni sensibili tramite messaggi ingannevoli; può essere prevenuto con formazione agli utenti e filtri antispam.', 'Il phishing è un attacco informatico su reti sociali; non può essere prevenuto.', 'Il phishing è un tipo di attacco che colpisce solo server aziendali; è impossibile prevenirlo.', 'Il phishing riguarda solo l’invio di email non richieste.', 'scelta1', 151),
        -- Domanda 2
-       ('Le vulnerabilità zero-day sono falle di sicurezza sfruttate prima che il produttore possa rilasciare un fix; possono essere affrontate con aggiornamenti costanti e soluzioni di sicurezza aggiuntive.', 'Le vulnerabilità zero-day non richiedono azioni specifiche; non possono essere affrontate.', 'Le vulnerabilità zero-day non rappresentano una minaccia per la sicurezza informatica.', 'Le vulnerabilità zero-day sono prevenibili solo tramite cambiamenti hardware.', 'scelta1', 147),
+       ('Le vulnerabilità zero-day sono falle di sicurezza sfruttate prima che il produttore possa rilasciare un fix; possono essere affrontate con aggiornamenti costanti e soluzioni di sicurezza aggiuntive.', 'Le vulnerabilità zero-day non richiedono azioni specifiche; non possono essere affrontate.', 'Le vulnerabilità zero-day non rappresentano una minaccia per la sicurezza informatica.', 'Le vulnerabilità zero-day sono prevenibili solo tramite cambiamenti hardware.', 'scelta1', 152),
        -- Domanda 3
-       ('Un firewall filtra il traffico di rete in entrata e in uscita, aiutando a proteggere da attacchi esterni e interni.', 'Un firewall non è essenziale per la sicurezza informatica.', 'Il firewall è utile solo per proteggere contro gli attacchi di phishing.', 'Il firewall è solo per la protezione dei file sui computer.', 'scelta1', 148),
+       ('Un firewall filtra il traffico di rete in entrata e in uscita, aiutando a proteggere da attacchi esterni e interni.', 'Un firewall non è essenziale per la sicurezza informatica.', 'Il firewall è utile solo per proteggere contro gli attacchi di phishing.', 'Il firewall è solo per la protezione dei file sui computer.', 'scelta1', 153),
        -- Domanda 4
-       ('La crittografia simmetrica utilizza la stessa chiave per crittografare e decrittografare i dati, mentre la crittografia asimmetrica utilizza una coppia di chiavi (pubblica/privata).', 'Non esiste differenza tra crittografia simmetrica e asimmetrica.', 'La crittografia asimmetrica è più debole della crittografia simmetrica.', 'La crittografia simmetrica è utilizzata solo per i siti web.', 'scelta1', 149),
+       ('La crittografia simmetrica utilizza la stessa chiave per crittografare e decrittografare i dati, mentre la crittografia asimmetrica utilizza una coppia di chiavi (pubblica/privata).', 'Non esiste differenza tra crittografia simmetrica e asimmetrica.', 'La crittografia asimmetrica è più debole della crittografia simmetrica.', 'La crittografia simmetrica è utilizzata solo per i siti web.', 'scelta1', 154),
        -- Domanda 5
-       ('Un attacco DDoS sovraccarica un sistema o un servizio con una quantità eccessiva di traffico, rendendolo inaccessibile; contromisure possibili includono filtri e servizi anti-DDoS.', 'Un attacco DDoS è impossibile da fermare.', 'Un attacco DDoS è solo un errore di sistema.', 'Un attacco DDoS è efficace solo su server di grandi dimensioni.', 'scelta1', 150),
+       ('Un attacco DDoS sovraccarica un sistema o un servizio con una quantità eccessiva di traffico, rendendolo inaccessibile; contromisure possibili includono filtri e servizi anti-DDoS.', 'Un attacco DDoS è impossibile da fermare.', 'Un attacco DDoS è solo un errore di sistema.', 'Un attacco DDoS è efficace solo su server di grandi dimensioni.', 'scelta1', 155),
        -- Domanda 6
-       ('Le VPN consentono di creare una connessione sicura su reti pubbliche come Internet, garantendo crittografia dei dati e privacy.', 'Le VPN sono utilizzate solo per l’accesso ai social network.', 'Le VPN sono utilizzate solo per siti di streaming.', 'Le VPN non offrono protezione aggiuntiva.', 'scelta1', 151),
+       ('Le VPN consentono di creare una connessione sicura su reti pubbliche come Internet, garantendo crittografia dei dati e privacy.', 'Le VPN sono utilizzate solo per l’accesso ai social network.', 'Le VPN sono utilizzate solo per siti di streaming.', 'Le VPN non offrono protezione aggiuntiva.', 'scelta1', 156),
        -- Domanda 7
-       ('Gli IDS monitorano il traffico di rete per individuare comportamenti sospetti o attacchi informatici; possono essere basati su firme o comportamento.', 'Gli IDS non sono utili per la sicurezza informatica.', 'Gli IDS sono utilizzati solo per le reti aziendali.', 'Gli IDS non possono rilevare gli attacchi informatici.', 'scelta1', 152),
+       ('Gli IDS monitorano il traffico di rete per individuare comportamenti sospetti o attacchi informatici; possono essere basati su firme o comportamento.', 'Gli IDS non sono utili per la sicurezza informatica.', 'Gli IDS sono utilizzati solo per le reti aziendali.', 'Gli IDS non possono rilevare gli attacchi informatici.', 'scelta1', 157),
        -- Domanda 8
-       ('Il penetration testing è un test di sicurezza che simula gli attacchi informatici per identificare e correggere le vulnerabilità; è importante per mantenere la sicurezza preventiva.', 'Il penetration testing non è essenziale per la sicurezza informatica.', 'Il penetration testing è solo per i principianti.', 'Il penetration testing può compromettere la sicurezza di un sistema.', 'scelta1', 153);
+       ('Il penetration testing è un test di sicurezza che simula gli attacchi informatici per identificare e correggere le vulnerabilità; è importante per mantenere la sicurezza preventiva.', 'Il penetration testing non è essenziale per la sicurezza informatica.', 'Il penetration testing è solo per i principianti.', 'Il penetration testing può compromettere la sicurezza di un sistema.', 'scelta1', 158);
 
                               
 
+	   INSERT INTO Domanda (testo, punteggio)
+VALUES ('', 8),
+       ('', 9),
+       ('', 8),
+       ('', 9),
+       ('', 8),
+       ('', 9),
+       ('', 8);
        
 -- Quiz Ingegnere del Software
 -- Quiz Soft Skills 15
@@ -2140,11 +2134,11 @@ insert into Skill values('Pensiero critico','soft', 23);
  
 /*Insert userskill*/
  
-insert into UserSkills values (8, 1, 1),
-                             (8, 2, 1),
+insert into UserSkills values (18, 1, 1),
+                             (18, 2, 1),
 							 (8, 3, 1),
 							 (8, 22, 1),
-							 (8, 16, 1),
+							 (18, 16, 1),
 							 (11, 23, 1),
 							 (15, 20, 1),
 							 (9, 4, 1),
@@ -2163,12 +2157,12 @@ insert into UserSkills values (8, 1, 1),
 							 (11, 1, 1);
 /*insert userQuiz*/
  
-insert into UtenteQuiz values (1,8,6, '2023-11-18 18:34:50'),
+insert into UtenteQuiz values (1,18,6, '2023-11-18 18:34:50'),
                               (1,11,4, '2023-11-18 18:34:50'),
-							  (2,8,6, '2023-11-18 18:34:50'),
+							  (2,18,6, '2023-11-18 18:34:50'),
                               (3,8,1, '2023-11-18 18:34:50'),
 							  (22,8,4, '2023-11-18 18:34:50'),
-                              (16,8,6, '2023-11-18 18:34:50'),
+                              (16,18,6, '2023-11-18 18:34:50'),
 							  (4,9,4, '2023-11-18 18:34:50'),
                               (6,9,2, '2023-11-18 18:34:50'),
 							  (16,9,10, '2023-11-18 18:34:50'),
