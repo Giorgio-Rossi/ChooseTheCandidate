@@ -170,6 +170,21 @@ style="position: fixed; align-items:center; display:flex; top:85px; left:21.25%;
 
                             <div class="card-body p-4 bg-light" style="height:200px">
                                 <span class="badge rounded-pill bg-primary float-md-end mb-3 mb-sm-0"><%=p.getCategoria().getNome_categoria()%></span>
+                                <%
+                                    if(posizioneIMPL.getCurrentCandidature(p.getId_posizione()) >= p.getN_ammissioni()){
+                                %>
+                                <span class="badge rounded-pill bg-danger  mb-3 mb-sm-0">N°candidature inviate: <%=posizioneIMPL.getCurrentCandidature(p.getId_posizione())%>/<%=p.getN_ammissioni()%></span>
+                                <%
+                                }else if(posizioneIMPL.getCurrentCandidature(p.getId_posizione()) >= ((p.getN_ammissioni()*75)/100)){
+                                %>
+                                <span class="badge rounded-pill bg-warning  mb-3 mb-sm-0">N°candidature inviate: <%=posizioneIMPL.getCurrentCandidature(p.getId_posizione())%>/<%=p.getN_ammissioni()%></span>
+                                <%
+                                }else{
+                                %>
+                                <span class="badge rounded-pill bg-success  mb-3 mb-sm-0">N°candidature inviate: <%=posizioneIMPL.getCurrentCandidature(p.getId_posizione())%>/<%=p.getN_ammissioni()%></span>
+                                <%
+                                    }
+                                %>
                                 <h5><%=p.getRuolo()%></h5>
                                 <div class="mt-3">
                                     <%

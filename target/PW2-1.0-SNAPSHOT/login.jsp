@@ -6,8 +6,8 @@
 <head>
 	<title>Login</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/img/logoPag.png" style="border-radius: 10px">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/img/logoPag.png" id="immagineLogo">
 	<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 			rel="stylesheet"
@@ -46,16 +46,7 @@
 				<%
 				if(!ErrorManager.getSUccessMessage((HttpServletRequest) request).isEmpty()){
 				%>
-				<div style="margin-top: 4%;
-					 width: 100%;
-					 height:1.5em;
-					  font-size: 1.5em;
-					  text-align: center;
-					  color: green;
-					  background: lightgreen;
-					  border:3px solid darkgreen;;
-					  transform: translateX(2%);
-					   border-radius: 30px;">
+				<div id="alert_success2" >
 					<%= ErrorManager.getSUccessMessage((HttpServletRequest) request)%>
 				</div>
 				<%

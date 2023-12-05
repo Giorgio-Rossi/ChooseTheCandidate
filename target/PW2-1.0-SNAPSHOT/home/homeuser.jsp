@@ -283,7 +283,8 @@
 							</div>
 						</div>
 					</div>
-		<div class="slide slide2" style="background-color:#0072BC;overflow:auto">
+		<div class="slide slide2" style="background-color:#0072BC;">
+		<div style="width:100%;height:90%;display:flex;overflow:auto;">
     <div class="card-body p-4" >
         <%
         if(utenteLoggato.getId_citta()!=null){
@@ -328,7 +329,7 @@
         %>
     </div>
 </div>
-
+</div>
 
 
 
