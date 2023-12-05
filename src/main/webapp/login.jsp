@@ -19,6 +19,7 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/css/card.css" />
 
 </head>
+<script src="${pageContext.request.contextPath}/javascript/checkcampi.js"></script>
 <script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -92,7 +93,7 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<form method="post" id="verify_token" action="${pageContext.request.contextPath}/passwordDimenticata">
+				<form method="post" id="verify_token" action="${pageContext.request.contextPath}/passwordDimenticata" >
 					<div class="mb-3">
 						<label for="email" class="col-form-label">Email:</label>
 						<input class="input2" type="email" class="form-control" name="email" id="email" required>
@@ -119,21 +120,23 @@
 				<h1 class="modal-title fs-5">Reimposta password</h1>
 			</div>
 			<div class="modal-body">
-				<form method="post" id="verify_psw" action="${pageContext.request.contextPath}/cambiaPassword">
+				<form method="post" id="verify_psw" action="${pageContext.request.contextPath}/cambiaPassword" onsubmit="return validateCambioPass()">
 					<div class="mb-3">
 						<label for="npw" class="col-form-label">Nuova password:</label>
-						<input class="input2" type="password" class="form-control" name="nuova_password" id="npw" required>
+						<input class="input2" type="password" class="form-control" name="nuova_password" id="npw" required onfocus="focusFunction()" onblur="blurFunction()">
 					</div>
 					<div class="mb-3">
 						<label for="cpw" class="col-form-label">Conferma password:</label>
 						<input class="input2" type="password" name="confirm_password" class="form-control" id="cpw" required>
 					</div>
 					<button type="submit" form="verify_psw"  class="btn btn-primary">Cambia password</button>
+					
 				</form>
 			</div>
 	</div>
-</div>
 
+</div>
+	<div style="width:800px;height:400px;font-size:2em;" id="focusMessage"></div>
 <%
 	String token_verificato =  session.getAttribute("token_giusto") == null ?  null : session.getAttribute("token_giusto").toString();
 

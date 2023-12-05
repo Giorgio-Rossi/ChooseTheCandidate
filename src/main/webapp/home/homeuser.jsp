@@ -114,8 +114,9 @@
 						</div>
 					</div>
 					<div class="slide slide2" style="background-color:#0072BC">
-						<div class="content">
-							<div class="row row-cols-1">
+				<div  style="width:105%;height:90%;display:flex;overflow:auto; overflow-x:hidden">
+						<div class="content" style="display:flex">
+							<div class="row row-cols-1" style="display:flex">
 								<%
 									if(usersSkills.isEmpty()){
 								%>
@@ -155,6 +156,7 @@
 								};
 							%>
 							</div>
+						</div>
 						</div>
 					</div>
 				</div>
