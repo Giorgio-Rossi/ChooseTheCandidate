@@ -114,8 +114,9 @@
 						</div>
 					</div>
 					<div class="slide slide2" style="background-color:#0072BC">
-						<div class="content">
-							<div class="row row-cols-1">
+				<div  style="width:105%;height:90%;display:flex;overflow:auto; overflow-x:hidden">
+						<div class="content" style="display:flex">
+							<div class="row row-cols-1" style="display:flex">
 								<%
 									if(usersSkills.isEmpty()){
 								%>
@@ -155,6 +156,7 @@
 								};
 							%>
 							</div>
+						</div>
 						</div>
 					</div>
 				</div>
@@ -394,7 +396,7 @@
 				<h4 class="text-warning mt-3">Attenzione</h4>
 				<p class="mt-3">Questo è il token per il recupero della password, salvalo perchè non sarà più visualizzabile</p>
 				<%
-					if(!utenteLoggato.getPrimo_login()){
+					if(utenteLoggato.getPrimo_login()!=null && !utenteLoggato.getPrimo_login()){
 
 				%>
 				<%
@@ -437,7 +439,7 @@
 	};
 %>
 <%
-if(!utenteLoggato.getPrimo_login()){
+if(utenteLoggato.getPrimo_login()!=null && !utenteLoggato.getPrimo_login()){
 	utenteLoggato.setPrimo_login(true);
 	utenteIMPL.UpdatePrimoLogin(utenteLoggato);
 %>

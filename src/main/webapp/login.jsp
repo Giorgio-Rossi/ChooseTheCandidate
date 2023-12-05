@@ -19,7 +19,7 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="${pageContext.request.contextPath}/css/card.css" />
 
 </head>
-<script src="${pageContext.request.contextPath}/javascript/checkcampi.js"></script>
+<script src="${pageContext.request.contextPath}/javascript/checkcampi.js" charset="utf-8"></script>
 <script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

@@ -9,13 +9,13 @@
 <html>
 
 <head>
-	<meta charset="ISO-8859-1">
+
 	<title>Registrazione</title>
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/img/logoPag.png" id="immagineLogo">
 
 </head>
-<script src="${pageContext.request.contextPath}/javascript/checkcampi.js"></script>
+<script src="${pageContext.request.contextPath}/javascript/checkcampi.js" charset="utf-8"></script>
 <body class="container2">
 
 <div class="left2">

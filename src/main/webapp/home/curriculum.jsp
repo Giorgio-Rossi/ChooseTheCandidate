@@ -98,15 +98,6 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 									<%
 										};
 									%>
-									<%
-										if(!ErrorManager.getOtherMessage((HttpServletRequest) request).isEmpty()){
-									%>
-									<div class="alert alert-warning">
-										<%= ErrorManager.getOtherMessage((HttpServletRequest) request)%>
-									</div>
-									<%
-										};
-									%>
 
 									<form class="form" method="post"
 										action="${pageContext.request.contextPath}/curriculumUtente"

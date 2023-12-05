@@ -67,7 +67,7 @@
     </context-param>
     <jsp-config>
         <jsp-property-group>
-            <url-pattern>*.jsp</url-pattern>
+            <url-pattern>*.jsp, *.js</url-pattern>
             <page-encoding>ISO-8859-1</page-encoding>
         </jsp-property-group>
     </jsp-config>
