@@ -168,7 +168,7 @@ style="position: fixed; align-items:center; display:flex; top:85px; left:21.25%;
                     <div class="slide slide1 ">
                         <div class="content  shadow">
 
-                            <div class="card-body p-4 bg-light" style="height:200px">
+                            <div class="card-body p-4 bg-light" style="height:220px;width:420px">
                                 <span class="badge rounded-pill bg-primary float-md-end mb-3 mb-sm-0"><%=p.getCategoria().getNome_categoria()%></span>
                                 <%
                                     if(posizioneIMPL.getCurrentCandidature(p.getId_posizione()) >= p.getN_ammissioni()){
@@ -205,7 +205,7 @@ style="position: fixed; align-items:center; display:flex; top:85px; left:21.25%;
                         </div>
                     </div>
                     <div class="slide slide2">
-                    <div style="width:100%;height:90%;display:flex;overflow:auto;">
+                    <div style="width:100%;height:90%;display:flex;overflow:auto;transform:translateY(15px);">
                         <div class="content">
                             <p><%=p.getDescrizione()%></p>
                         </div>
