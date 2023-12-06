@@ -204,7 +204,7 @@ style="position: fixed; align-items:center; display:flex; top:85px; left:21.25%;
 
                         </div>
                     </div>
-                    <div class="slide slide2">
+                    <div class="slide slide2" style="width:420px;">
                     <div style="width:100%;height:90%;display:flex;overflow:auto;transform:translateY(15px);">
                         <div class="content">
                             <p><%=p.getDescrizione()%></p>

@@ -831,14 +831,14 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 
 
-									<div class="row mb-1">
+									<div class="row mb-1" style="transform: translate(-30px, -100px);">
 										<div class="col d-flex justify-content-end">
 											<button class="btn btn-primary" onclick="CloneIstruzione()"
 												id="duplica_istruzione">Aggiungi Istruzione</button>
 										</div>
 									</div>
 
-									<div class="row">
+									<div class="row" style="transform: translate(-30px, -100px);">
 										<div class="col d-flex justify-content-end">
 											<button class="btn btn-primary" onclick="CloneEsperienza()"
 												id="duplica_esperienza">Aggiungi Esperienza</button>
