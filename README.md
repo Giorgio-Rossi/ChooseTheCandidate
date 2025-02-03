@@ -21,5 +21,12 @@
 <p>To run the project in your local environment, follow these steps:</p>
 <ol>
   <li>Clone the repository to your local machine.</li>
+  ## Steps
+
+### 1. Clone the repository:
+```sh
+git clone <repository-url>
+cd Ki_Data
+
   <li></li>
 </ol>
