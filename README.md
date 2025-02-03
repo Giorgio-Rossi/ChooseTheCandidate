@@ -3,8 +3,8 @@
 <h2>📦 Technologies</h2>
 <ul>
 <li><code>Java</code></li>
+<li><code>JPS, JSP, Servlet</code></li>
 <li><code>Apache tomcat</code></li>
-<li><code>JSP, Servlet</code></li>
 <li><code>Java EE</code></li>
 <li><code>SQL Server</code></li>
 <li><code>Pattern DAO</code></li>
@@ -20,13 +20,22 @@
 <h2>🚦 Running the Project</h2>
 <p>To run the project in your local environment, follow these steps:</p>
 <ol>
-  <li>Clone the repository to your local machine.</li>
-  ## Steps
-
-### 1. Clone the repository:
+  
+### 1. Clone the repository on your local machine:
 ```sh
 git clone <repository-url>
-cd Ki_Data
-
-  <li></li>
+cd ChooseTheCandidate
+```
+### 2. Build the prjoject:
+```sh
+mvn clean install
+```
+### 3. Clone the file .war into tomcat webapps folder:
+```sh
+cp target/PW2-1.0-SNAPSHOT.war /path/to/tomcat/webapps/
+```
+### 4. Start the tomcat:
+```
+/path/to/tomcat/bin/startup.sh
+```
 </ol>
